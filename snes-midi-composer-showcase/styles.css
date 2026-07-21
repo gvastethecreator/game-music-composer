@@ -32,6 +32,7 @@
 /* Product entry, feedback and access pass */
 [hidden]{display:none!important}
 .skip-link{position:fixed;left:12px;top:12px;z-index:1000;transform:translateY(-160%);border-radius:7px;background:var(--amber-hi);color:#171008;padding:10px 14px;font-weight:800;box-shadow:0 8px 24px #000b}.skip-link:focus{transform:translateY(0)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 :where(a,button,input,select):focus-visible{outline:2px solid var(--cyan);outline-offset:3px;box-shadow:0 0 0 5px #061313}
 button:disabled{cursor:wait;filter:saturate(.35);opacity:.68}
 .start-rack{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);gap:14px;margin-top:8px;padding:22px;overflow:hidden}
@@ -62,9 +63,15 @@ button:disabled{cursor:wait;filter:saturate(.35);opacity:.68}
 .recipe-guide p{margin:0;color:#7f8784;font-size:10px;line-height:1.45}
 .app-notice{position:fixed;right:18px;bottom:18px;z-index:900;width:min(420px,calc(100% - 28px));border:1px solid var(--cyan);border-radius:9px;background:#0b1211f2;color:#e9f4f1;padding:13px 15px;box-shadow:0 18px 50px #000d;font-weight:700}
 .app-notice[data-tone=error]{border-color:var(--red);background:#1a0d0cf5}
+.browser-head-actions{display:flex;align-items:center;gap:6px}.local-import-status{margin:5px 0 9px;color:#737c79;font:8px/1.45 var(--mono)}
+.track-row.local-cue{border-left:3px solid var(--cyan)}.quality-local{color:var(--cyan)!important}.compact-button[aria-disabled=true]{pointer-events:none;opacity:.42}
+.soundbank-compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:13px}
+.soundbank-compare article{position:relative;display:grid;grid-template-columns:1fr auto;gap:5px 12px;align-items:end;border:1px solid #303736;border-radius:9px;background:linear-gradient(145deg,#101514,#090b0b);padding:13px}
+.soundbank-compare article.active{border-color:var(--cyan);box-shadow:inset 3px 0 var(--cyan),0 0 18px #78ece916}
+.soundbank-compare span{grid-column:1/-1;color:#737c79;font:700 8px var(--mono);letter-spacing:.1em}.soundbank-compare strong{display:block;font-size:15px}.soundbank-compare p{grid-column:1;margin:0;color:#8d9693;font-size:10px}.soundbank-compare button{grid-column:2;grid-row:2/4;align-self:center;min-width:94px}
 
 @media(max-width:1100px){
-  .start-rack{grid-template-columns:1fr}.start-path{min-height:130px}.recipe-guide{grid-template-columns:1fr}.recipe-guide ol{grid-template-columns:1fr 1fr}
+  .start-rack{grid-template-columns:1fr}.start-path{min-height:130px}.recipe-guide{grid-template-columns:1fr}.recipe-guide ol{grid-template-columns:1fr 1fr}.soundbank-compare{grid-template-columns:1fr}
 }
 @media(max-width:620px){
   .top-rack{gap:12px}.app-tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}.app-tabs button{width:auto;min-width:0;padding:10px 8px}
@@ -73,7 +80,8 @@ button:disabled{cursor:wait;filter:saturate(.35);opacity:.68}
   .start-proof{grid-template-columns:1fr 1fr;margin:0 -16px -16px}.start-proof>div{justify-content:flex-start;padding-left:16px}
   .category-tabs{position:sticky;top:0;z-index:20;scroll-snap-type:x proximity}.category-tabs button{scroll-snap-align:start}
   .workstation-grid{display:flex;flex-direction:column}.roll-column{order:1}.browser-rack{order:2}.instrument-column{order:3;max-height:330px}.track-list{max-height:440px}
-  .transport-group .compact-button span{display:none}.recipe-guide ol{grid-template-columns:1fr}.app-notice{right:14px;bottom:14px}
+  .compact-control-strip{overflow-x:hidden}.transport-group{width:100%;flex-wrap:wrap;white-space:normal}.transport-group>.mini-label{width:100%}.transport-group select{flex:1 1 calc(50% - 4px);min-height:44px}.transport-group .compact-button{display:grid;place-items:center;flex:1 1 48px;min-height:44px}.transport-group #midiLink{flex-basis:92px}.transport-group .compact-button span{display:none}
+  .pitch-control button{width:44px;min-width:44px;height:44px}.inline-control input,.scrub-module input,.instrument-row input,.bank-keyboard-head input{min-height:28px;border:0;background:linear-gradient(#252525,#171717) center/100% 7px no-repeat}.soundbank-compare button,.micro-button{min-height:44px;padding:8px 12px;font-size:9px}.recipe-guide ol{grid-template-columns:1fr}.app-notice{right:14px;bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
