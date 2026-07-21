@@ -1,0 +1,68 @@
+{
+  "desktop": {
+    "initial": {
+      "tabs": 10,
+      "tracks": 10,
+      "total": 100,
+      "title": "Fernway Crossing",
+      "bodyWidth": 1430,
+      "innerWidth": 1440
+    },
+    "tab": {
+      "tracks": 10,
+      "category": "Emotion & Narrative"
+    },
+    "play": {
+      "paused": false,
+      "currentTime": 1.489908,
+      "state": "PLAYING",
+      "active": "02 VOICES"
+    },
+    "controls": {
+      "rate": 0.8,
+      "bpm": "78 BPM",
+      "volume": "\u22129.0 dB",
+      "ceiling": "\u22123.0"
+    },
+    "content": {
+      "x": 0,
+      "y": 0,
+      "width": 1430,
+      "height": 2129
+    },
+    "screenshot": "/mnt/data/neospc-v3.2-desktop.png"
+  },
+  "mobile": {
+    "initial": {
+      "tabs": 10,
+      "tracks": 10,
+      "total": 100,
+      "title": "Fernway Crossing",
+      "bodyWidth": 390,
+      "innerWidth": 390
+    },
+    "tab": {
+      "tracks": 10,
+      "category": "Emotion & Narrative"
+    },
+    "play": {
+      "paused": false,
+      "currentTime": 1.492,
+      "state": "PLAYING",
+      "active": "02 VOICES"
+    },
+    "controls": {
+      "rate": 0.8,
+      "bpm": "78 BPM",
+      "volume": "\u22129.0 dB",
+      "ceiling": "\u22123.0"
+    },
+    "content": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 5015
+    },
+    "screenshot": "/mnt/data/neospc-v3.2-mobile.png"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blackflagworks.dev/schemas/neospc-generation-harness-v2.2.json",
+  "title": "Neo-SPC Generation Harness Instance",
+  "type": "object",
+  "required": [
+    "seed",
+    "harmony",
+    "arp",
+    "bassline",
+    "humanize",
+    "chop",
+    "mix",
+    "transport"
+  ],
+  "properties": {
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "harmony": {
+      "type": "object"
+    },
+    "arp": {
+      "type": "object"
+    },
+    "bassline": {
+      "type": "object"
+    },
+    "humanize": {
+      "type": "object"
+    },
+    "chop": {
+      "type": "object"
+    },
+    "mix": {
+      "type": "object"
+    },
+    "transport": {
+      "type": "object"
+    }
+  }
+}

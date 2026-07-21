@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blackflagworks.dev/schemas/neospc-generation-harness-v3.json",
+  "title": "Neo-SPC Full Composition Harness Instance",
+  "type": "object",
+  "required": ["brief","harmony","form","melody","counterpoint","rhythm","arp","bassline","drums","orchestration","texture","humanize","mix","render","review"],
+  "properties": {
+    "brief":{"type":"object"},"harmony":{"type":"object"},"form":{"type":"object"},"melody":{"type":"object"},"counterpoint":{"type":"object"},"rhythm":{"type":"object"},"arp":{"type":"object"},"bassline":{"type":"object"},"drums":{"type":"object"},"orchestration":{"type":"object"},"texture":{"type":"object"},"humanize":{"type":"object"},"mix":{"type":"object"},"render":{"type":"object"},"review":{"type":"object"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,3315 @@
+{
+  "version": "2.2.0",
+  "count": 142,
+  "progressions": [
+    {
+      "id": "maj_pop_01",
+      "label": "Hopeful Axis",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ],
+      "length": 4,
+      "moods": [
+        "hopeful",
+        "open"
+      ],
+      "genres": [
+        "pop",
+        "town",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_02",
+      "label": "Yearning Axis",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "IV",
+        "iv"
+      ],
+      "length": 4,
+      "moods": [
+        "yearning",
+        "bittersweet"
+      ],
+      "genres": [
+        "emotion",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_03",
+      "label": "Nostalgic Mediant",
+      "mode": "major",
+      "roman": [
+        "I",
+        "iii",
+        "IV",
+        "iv"
+      ],
+      "length": 4,
+      "moods": [
+        "nostalgic",
+        "wistful"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_04",
+      "label": "Cheerful Turn",
+      "mode": "major",
+      "roman": [
+        "I",
+        "IV",
+        "V",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "cheerful",
+        "stable"
+      ],
+      "genres": [
+        "town",
+        "festival"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_05",
+      "label": "Reflective Descent",
+      "mode": "major",
+      "roman": [
+        "I",
+        "vi",
+        "IV",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "reflective",
+        "warm"
+      ],
+      "genres": [
+        "adventure",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_06",
+      "label": "Triumphant Plagal",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVII",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "triumphant",
+        "open"
+      ],
+      "genres": [
+        "rock",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_07",
+      "label": "Longing Line",
+      "mode": "major",
+      "roman": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "longing",
+        "hopeful"
+      ],
+      "genres": [
+        "emotion",
+        "pop"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_08",
+      "label": "Surprise Mediant",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVI",
+        "IV",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "surprising",
+        "dramatic"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_09",
+      "label": "Serene Loop",
+      "mode": "major",
+      "roman": [
+        "I",
+        "ii",
+        "IV",
+        "vi"
+      ],
+      "length": 4,
+      "moods": [
+        "serene",
+        "gentle"
+      ],
+      "genres": [
+        "safe-room",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_10",
+      "label": "Bittersweet Borrow",
+      "mode": "major",
+      "roman": [
+        "IV",
+        "iv",
+        "I",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "bittersweet",
+        "comforting"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_01",
+      "label": "Melancholic Cycle",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VI",
+        "III",
+        "VII"
+      ],
+      "length": 4,
+      "moods": [
+        "melancholic",
+        "broad"
+      ],
+      "genres": [
+        "emotion",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_02",
+      "label": "Tense Descent",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VII",
+        "VI",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "tense",
+        "dramatic"
+      ],
+      "genres": [
+        "battle",
+        "horror"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_03",
+      "label": "Sad Plagal",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "iv",
+        "VI",
+        "v"
+      ],
+      "length": 4,
+      "moods": [
+        "sad",
+        "reflective"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_04",
+      "label": "Dramatic Minor",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "iv",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "dramatic",
+        "gothic"
+      ],
+      "genres": [
+        "boss",
+        "fantasy"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_05",
+      "label": "Anxious Pedal",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bII",
+        "i",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "anxious",
+        "ominous"
+      ],
+      "genres": [
+        "horror",
+        "mystery"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_06",
+      "label": "Epic Minor",
+      "mode": "minor",
+      "roman": [
+        "bVI",
+        "VII",
+        "i",
+        "v"
+      ],
+      "length": 4,
+      "moods": [
+        "epic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_07",
+      "label": "Brooding Slash",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "V/iv",
+        "iv",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "brooding",
+        "dark"
+      ],
+      "genres": [
+        "narrative",
+        "boss"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_08",
+      "label": "Atmospheric Minor",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "III",
+        "VII",
+        "iv"
+      ],
+      "length": 4,
+      "moods": [
+        "atmospheric",
+        "somber"
+      ],
+      "genres": [
+        "horror",
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "min_09",
+      "label": "Passionate Sequence",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VI",
+        "iv",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "passionate",
+        "tragic"
+      ],
+      "genres": [
+        "emotion",
+        "classical"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_dor_01",
+      "label": "Dorian Shuttle",
+      "mode": "dorian",
+      "roman": [
+        "i",
+        "IV",
+        "i",
+        "bVII"
+      ],
+      "length": 4,
+      "moods": [
+        "adventurous",
+        "reflective"
+      ],
+      "genres": [
+        "adventure",
+        "funk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_mix_01",
+      "label": "Double Plagal",
+      "mode": "mixolydian",
+      "roman": [
+        "bVII",
+        "IV",
+        "I",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "open",
+        "regal"
+      ],
+      "genres": [
+        "adventure",
+        "rock"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_mix_02",
+      "label": "Subtonic Shuttle",
+      "mode": "mixolydian",
+      "roman": [
+        "I",
+        "bVII",
+        "I",
+        "IV"
+      ],
+      "length": 4,
+      "moods": [
+        "folk",
+        "warm"
+      ],
+      "genres": [
+        "town",
+        "folk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_lyd_01",
+      "label": "Lydian Wonder",
+      "mode": "lydian",
+      "roman": [
+        "I",
+        "II",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "wonder",
+        "celestial"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "lydian",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_phr_01",
+      "label": "Phrygian Threat",
+      "mode": "phrygian",
+      "roman": [
+        "i",
+        "bII",
+        "i",
+        "bVII"
+      ],
+      "length": 4,
+      "moods": [
+        "threatening",
+        "ancient"
+      ],
+      "genres": [
+        "horror",
+        "ritual"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_aeo_01",
+      "label": "Aeolian Cadence",
+      "mode": "aeolian",
+      "roman": [
+        "bVI",
+        "bVII",
+        "i",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "dramatic",
+        "resolute"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "modal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "modal_aeo_02",
+      "label": "Lament",
+      "mode": "aeolian",
+      "roman": [
+        "i",
+        "bVII",
+        "bVI",
+        "v"
+      ],
+      "length": 4,
+      "moods": [
+        "lamenting",
+        "somber"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_01",
+      "label": "Major ii-V-I",
+      "mode": "major",
+      "roman": [
+        "ii7",
+        "V7",
+        "Imaj7",
+        "Imaj7"
+      ],
+      "length": 4,
+      "moods": [
+        "smooth",
+        "sophisticated"
+      ],
+      "genres": [
+        "jazz"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_02",
+      "label": "Minor iiø-V-i",
+      "mode": "minor",
+      "roman": [
+        "iiø7",
+        "V7b9",
+        "imaj7",
+        "im6"
+      ],
+      "length": 4,
+      "moods": [
+        "noir",
+        "poignant"
+      ],
+      "genres": [
+        "jazz-noir"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_03",
+      "label": "Turnaround",
+      "mode": "major",
+      "roman": [
+        "Imaj7",
+        "VI7",
+        "ii7",
+        "V7"
+      ],
+      "length": 4,
+      "moods": [
+        "urban",
+        "anticipatory"
+      ],
+      "genres": [
+        "jazz",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_04",
+      "label": "Backdoor",
+      "mode": "major",
+      "roman": [
+        "iv7",
+        "bVII7",
+        "Imaj7",
+        "VI7"
+      ],
+      "length": 4,
+      "moods": [
+        "velvety",
+        "surprising"
+      ],
+      "genres": [
+        "jazz",
+        "soul"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_05",
+      "label": "Tritone Route",
+      "mode": "major",
+      "roman": [
+        "ii7",
+        "bII7",
+        "Imaj7",
+        "VI7"
+      ],
+      "length": 4,
+      "moods": [
+        "sophisticated",
+        "tense"
+      ],
+      "genres": [
+        "jazz",
+        "fusion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_06",
+      "label": "Rhythm Bridge",
+      "mode": "major",
+      "roman": [
+        "III7",
+        "VI7",
+        "II7",
+        "V7"
+      ],
+      "length": 4,
+      "moods": [
+        "driving",
+        "swing"
+      ],
+      "genres": [
+        "bebop",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "jazz_07",
+      "label": "Coltrane Slice",
+      "mode": "major",
+      "roman": [
+        "Imaj7",
+        "bIII7",
+        "bVImaj7",
+        "VII7"
+      ],
+      "length": 4,
+      "moods": [
+        "expansive",
+        "complex"
+      ],
+      "genres": [
+        "jazz",
+        "experimental"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "classical_01",
+      "label": "Romanesca",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "vi",
+        "iii",
+        "IV",
+        "I",
+        "IV",
+        "V"
+      ],
+      "length": 8,
+      "moods": [
+        "narrative",
+        "classical"
+      ],
+      "genres": [
+        "classical",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "classical_02",
+      "label": "Descending Fifths",
+      "mode": "major",
+      "roman": [
+        "I",
+        "IV",
+        "vii°",
+        "iii",
+        "vi",
+        "ii",
+        "V",
+        "I"
+      ],
+      "length": 8,
+      "moods": [
+        "formal",
+        "inevitable"
+      ],
+      "genres": [
+        "classical"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "classical_03",
+      "label": "Prinner Cadence",
+      "mode": "major",
+      "roman": [
+        "IV6",
+        "I6",
+        "ii6",
+        "V",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "gentle",
+        "courtly"
+      ],
+      "genres": [
+        "classical",
+        "town"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "classical_04",
+      "label": "Lament Bass",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "V6",
+        "VII",
+        "IV6",
+        "VI",
+        "III6",
+        "iv",
+        "V"
+      ],
+      "length": 8,
+      "moods": [
+        "tragic",
+        "baroque"
+      ],
+      "genres": [
+        "classical",
+        "horror"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "cinematic_01",
+      "label": "Heroic Expansion",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVII",
+        "IV",
+        "vi",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "heroic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "cinematic_02",
+      "label": "Ominous Rise",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bII",
+        "bVI",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "ominous",
+        "foreboding"
+      ],
+      "genres": [
+        "horror",
+        "boss"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "cinematic_03",
+      "label": "Celestial Float",
+      "mode": "lydian",
+      "roman": [
+        "I",
+        "II",
+        "vi",
+        "IV"
+      ],
+      "length": 4,
+      "moods": [
+        "celestial",
+        "floating"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "electronic_01",
+      "label": "Minor Static Drive",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "i",
+        "bVI",
+        "bVII"
+      ],
+      "length": 4,
+      "moods": [
+        "driving",
+        "dark"
+      ],
+      "genres": [
+        "techno",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "electronic_02",
+      "label": "Neon Resolve",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bVI",
+        "III",
+        "bVII"
+      ],
+      "length": 4,
+      "moods": [
+        "neon",
+        "energetic"
+      ],
+      "genres": [
+        "synthwave",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "maj_pop_01_rot1",
+      "label": "Hopeful Axis — Rotation",
+      "mode": "major",
+      "roman": [
+        "V",
+        "vi",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "hopeful",
+        "open"
+      ],
+      "genres": [
+        "pop",
+        "town",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_01_hold",
+      "label": "Hopeful Axis — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "vi",
+        "IV",
+        "IV"
+      ],
+      "length": 5,
+      "moods": [
+        "hopeful",
+        "open"
+      ],
+      "genres": [
+        "pop",
+        "town",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_02_rot1",
+      "label": "Yearning Axis — Rotation",
+      "mode": "major",
+      "roman": [
+        "V",
+        "IV",
+        "iv",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "yearning",
+        "bittersweet"
+      ],
+      "genres": [
+        "emotion",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_02_hold",
+      "label": "Yearning Axis — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "IV",
+        "iv",
+        "iv"
+      ],
+      "length": 5,
+      "moods": [
+        "yearning",
+        "bittersweet"
+      ],
+      "genres": [
+        "emotion",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_03_rot1",
+      "label": "Nostalgic Mediant — Rotation",
+      "mode": "major",
+      "roman": [
+        "iii",
+        "IV",
+        "iv",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "nostalgic",
+        "wistful"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_03_hold",
+      "label": "Nostalgic Mediant — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "iii",
+        "IV",
+        "iv",
+        "iv"
+      ],
+      "length": 5,
+      "moods": [
+        "nostalgic",
+        "wistful"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_04_rot1",
+      "label": "Cheerful Turn — Rotation",
+      "mode": "major",
+      "roman": [
+        "IV",
+        "V",
+        "I",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "cheerful",
+        "stable"
+      ],
+      "genres": [
+        "town",
+        "festival"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_04_hold",
+      "label": "Cheerful Turn — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "IV",
+        "V",
+        "I",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "cheerful",
+        "stable"
+      ],
+      "genres": [
+        "town",
+        "festival"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_05_rot1",
+      "label": "Reflective Descent — Rotation",
+      "mode": "major",
+      "roman": [
+        "vi",
+        "IV",
+        "V",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "reflective",
+        "warm"
+      ],
+      "genres": [
+        "adventure",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_05_hold",
+      "label": "Reflective Descent — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "vi",
+        "IV",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "reflective",
+        "warm"
+      ],
+      "genres": [
+        "adventure",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_06_rot1",
+      "label": "Triumphant Plagal — Rotation",
+      "mode": "major",
+      "roman": [
+        "bVII",
+        "IV",
+        "I",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "triumphant",
+        "open"
+      ],
+      "genres": [
+        "rock",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_06_hold",
+      "label": "Triumphant Plagal — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVII",
+        "IV",
+        "I",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "triumphant",
+        "open"
+      ],
+      "genres": [
+        "rock",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_07_rot1",
+      "label": "Longing Line — Rotation",
+      "mode": "major",
+      "roman": [
+        "IV",
+        "I",
+        "V",
+        "vi"
+      ],
+      "length": 4,
+      "moods": [
+        "longing",
+        "hopeful"
+      ],
+      "genres": [
+        "emotion",
+        "pop"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_07_hold",
+      "label": "Longing Line — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "vi",
+        "IV",
+        "I",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "longing",
+        "hopeful"
+      ],
+      "genres": [
+        "emotion",
+        "pop"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_08_rot1",
+      "label": "Surprise Mediant — Rotation",
+      "mode": "major",
+      "roman": [
+        "bVI",
+        "IV",
+        "V",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "surprising",
+        "dramatic"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_08_hold",
+      "label": "Surprise Mediant — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVI",
+        "IV",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "surprising",
+        "dramatic"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_09_rot1",
+      "label": "Serene Loop — Rotation",
+      "mode": "major",
+      "roman": [
+        "ii",
+        "IV",
+        "vi",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "serene",
+        "gentle"
+      ],
+      "genres": [
+        "safe-room",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_09_hold",
+      "label": "Serene Loop — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "ii",
+        "IV",
+        "vi",
+        "vi"
+      ],
+      "length": 5,
+      "moods": [
+        "serene",
+        "gentle"
+      ],
+      "genres": [
+        "safe-room",
+        "town"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "maj_pop_10_rot1",
+      "label": "Bittersweet Borrow — Rotation",
+      "mode": "major",
+      "roman": [
+        "iv",
+        "I",
+        "I",
+        "IV"
+      ],
+      "length": 4,
+      "moods": [
+        "bittersweet",
+        "comforting"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "maj_pop_10_hold",
+      "label": "Bittersweet Borrow — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "IV",
+        "iv",
+        "I",
+        "I",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "bittersweet",
+        "comforting"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_01_rot1",
+      "label": "Melancholic Cycle — Rotation",
+      "mode": "minor",
+      "roman": [
+        "VI",
+        "III",
+        "VII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "melancholic",
+        "broad"
+      ],
+      "genres": [
+        "emotion",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_01_hold",
+      "label": "Melancholic Cycle — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VI",
+        "III",
+        "VII",
+        "VII"
+      ],
+      "length": 5,
+      "moods": [
+        "melancholic",
+        "broad"
+      ],
+      "genres": [
+        "emotion",
+        "adventure"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_02_rot1",
+      "label": "Tense Descent — Rotation",
+      "mode": "minor",
+      "roman": [
+        "VII",
+        "VI",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "tense",
+        "dramatic"
+      ],
+      "genres": [
+        "battle",
+        "horror"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_02_hold",
+      "label": "Tense Descent — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VII",
+        "VI",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "tense",
+        "dramatic"
+      ],
+      "genres": [
+        "battle",
+        "horror"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_03_rot1",
+      "label": "Sad Plagal — Rotation",
+      "mode": "minor",
+      "roman": [
+        "iv",
+        "VI",
+        "v",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "sad",
+        "reflective"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_03_hold",
+      "label": "Sad Plagal — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "iv",
+        "VI",
+        "v",
+        "v"
+      ],
+      "length": 5,
+      "moods": [
+        "sad",
+        "reflective"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_04_rot1",
+      "label": "Dramatic Minor — Rotation",
+      "mode": "minor",
+      "roman": [
+        "iv",
+        "V",
+        "i",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "dramatic",
+        "gothic"
+      ],
+      "genres": [
+        "boss",
+        "fantasy"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_04_hold",
+      "label": "Dramatic Minor — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "iv",
+        "V",
+        "i",
+        "i"
+      ],
+      "length": 5,
+      "moods": [
+        "dramatic",
+        "gothic"
+      ],
+      "genres": [
+        "boss",
+        "fantasy"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_05_rot1",
+      "label": "Anxious Pedal — Rotation",
+      "mode": "minor",
+      "roman": [
+        "bII",
+        "i",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "anxious",
+        "ominous"
+      ],
+      "genres": [
+        "horror",
+        "mystery"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_05_hold",
+      "label": "Anxious Pedal — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bII",
+        "i",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "anxious",
+        "ominous"
+      ],
+      "genres": [
+        "horror",
+        "mystery"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_06_rot1",
+      "label": "Epic Minor — Rotation",
+      "mode": "minor",
+      "roman": [
+        "VII",
+        "i",
+        "v",
+        "bVI"
+      ],
+      "length": 4,
+      "moods": [
+        "epic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_06_hold",
+      "label": "Epic Minor — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "bVI",
+        "VII",
+        "i",
+        "v",
+        "v"
+      ],
+      "length": 5,
+      "moods": [
+        "epic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_07_rot1",
+      "label": "Brooding Slash — Rotation",
+      "mode": "minor",
+      "roman": [
+        "V/iv",
+        "iv",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "brooding",
+        "dark"
+      ],
+      "genres": [
+        "narrative",
+        "boss"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_07_hold",
+      "label": "Brooding Slash — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "V/iv",
+        "iv",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "brooding",
+        "dark"
+      ],
+      "genres": [
+        "narrative",
+        "boss"
+      ],
+      "cadence": "dominant",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_08_rot1",
+      "label": "Atmospheric Minor — Rotation",
+      "mode": "minor",
+      "roman": [
+        "III",
+        "VII",
+        "iv",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "atmospheric",
+        "somber"
+      ],
+      "genres": [
+        "horror",
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_08_hold",
+      "label": "Atmospheric Minor — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "III",
+        "VII",
+        "iv",
+        "iv"
+      ],
+      "length": 5,
+      "moods": [
+        "atmospheric",
+        "somber"
+      ],
+      "genres": [
+        "horror",
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "min_09_rot1",
+      "label": "Passionate Sequence — Rotation",
+      "mode": "minor",
+      "roman": [
+        "VI",
+        "iv",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "passionate",
+        "tragic"
+      ],
+      "genres": [
+        "emotion",
+        "classical"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "min_09_hold",
+      "label": "Passionate Sequence — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VI",
+        "iv",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "passionate",
+        "tragic"
+      ],
+      "genres": [
+        "emotion",
+        "classical"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_dor_01_rot1",
+      "label": "Dorian Shuttle — Rotation",
+      "mode": "dorian",
+      "roman": [
+        "IV",
+        "i",
+        "bVII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "adventurous",
+        "reflective"
+      ],
+      "genres": [
+        "adventure",
+        "funk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_dor_01_hold",
+      "label": "Dorian Shuttle — Held Arrival",
+      "mode": "dorian",
+      "roman": [
+        "i",
+        "IV",
+        "i",
+        "bVII",
+        "bVII"
+      ],
+      "length": 5,
+      "moods": [
+        "adventurous",
+        "reflective"
+      ],
+      "genres": [
+        "adventure",
+        "funk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_mix_01_rot1",
+      "label": "Double Plagal — Rotation",
+      "mode": "mixolydian",
+      "roman": [
+        "IV",
+        "I",
+        "I",
+        "bVII"
+      ],
+      "length": 4,
+      "moods": [
+        "open",
+        "regal"
+      ],
+      "genres": [
+        "adventure",
+        "rock"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_mix_01_hold",
+      "label": "Double Plagal — Held Arrival",
+      "mode": "mixolydian",
+      "roman": [
+        "bVII",
+        "IV",
+        "I",
+        "I",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "open",
+        "regal"
+      ],
+      "genres": [
+        "adventure",
+        "rock"
+      ],
+      "cadence": "plagal",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_mix_02_rot1",
+      "label": "Subtonic Shuttle — Rotation",
+      "mode": "mixolydian",
+      "roman": [
+        "bVII",
+        "I",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "folk",
+        "warm"
+      ],
+      "genres": [
+        "town",
+        "folk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_mix_02_hold",
+      "label": "Subtonic Shuttle — Held Arrival",
+      "mode": "mixolydian",
+      "roman": [
+        "I",
+        "bVII",
+        "I",
+        "IV",
+        "IV"
+      ],
+      "length": 5,
+      "moods": [
+        "folk",
+        "warm"
+      ],
+      "genres": [
+        "town",
+        "folk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_lyd_01_rot1",
+      "label": "Lydian Wonder — Rotation",
+      "mode": "lydian",
+      "roman": [
+        "II",
+        "IV",
+        "I",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "wonder",
+        "celestial"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "lydian",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_lyd_01_hold",
+      "label": "Lydian Wonder — Held Arrival",
+      "mode": "lydian",
+      "roman": [
+        "I",
+        "II",
+        "IV",
+        "I",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "wonder",
+        "celestial"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "lydian",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_phr_01_rot1",
+      "label": "Phrygian Threat — Rotation",
+      "mode": "phrygian",
+      "roman": [
+        "bII",
+        "i",
+        "bVII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "threatening",
+        "ancient"
+      ],
+      "genres": [
+        "horror",
+        "ritual"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_phr_01_hold",
+      "label": "Phrygian Threat — Held Arrival",
+      "mode": "phrygian",
+      "roman": [
+        "i",
+        "bII",
+        "i",
+        "bVII",
+        "bVII"
+      ],
+      "length": 5,
+      "moods": [
+        "threatening",
+        "ancient"
+      ],
+      "genres": [
+        "horror",
+        "ritual"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_aeo_01_rot1",
+      "label": "Aeolian Cadence — Rotation",
+      "mode": "aeolian",
+      "roman": [
+        "bVII",
+        "i",
+        "i",
+        "bVI"
+      ],
+      "length": 4,
+      "moods": [
+        "dramatic",
+        "resolute"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "modal",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_aeo_01_hold",
+      "label": "Aeolian Cadence — Held Arrival",
+      "mode": "aeolian",
+      "roman": [
+        "bVI",
+        "bVII",
+        "i",
+        "i",
+        "i"
+      ],
+      "length": 5,
+      "moods": [
+        "dramatic",
+        "resolute"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "modal",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "modal_aeo_02_rot1",
+      "label": "Lament — Rotation",
+      "mode": "aeolian",
+      "roman": [
+        "bVII",
+        "bVI",
+        "v",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "lamenting",
+        "somber"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "modal_aeo_02_hold",
+      "label": "Lament — Held Arrival",
+      "mode": "aeolian",
+      "roman": [
+        "i",
+        "bVII",
+        "bVI",
+        "v",
+        "v"
+      ],
+      "length": 5,
+      "moods": [
+        "lamenting",
+        "somber"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_01_rot1",
+      "label": "Major ii-V-I — Rotation",
+      "mode": "major",
+      "roman": [
+        "V7",
+        "Imaj7",
+        "Imaj7",
+        "ii7"
+      ],
+      "length": 4,
+      "moods": [
+        "smooth",
+        "sophisticated"
+      ],
+      "genres": [
+        "jazz"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_01_hold",
+      "label": "Major ii-V-I — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "ii7",
+        "V7",
+        "Imaj7",
+        "Imaj7",
+        "Imaj7"
+      ],
+      "length": 5,
+      "moods": [
+        "smooth",
+        "sophisticated"
+      ],
+      "genres": [
+        "jazz"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_02_rot1",
+      "label": "Minor iiø-V-i — Rotation",
+      "mode": "minor",
+      "roman": [
+        "V7b9",
+        "imaj7",
+        "im6",
+        "iiø7"
+      ],
+      "length": 4,
+      "moods": [
+        "noir",
+        "poignant"
+      ],
+      "genres": [
+        "jazz-noir"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_02_hold",
+      "label": "Minor iiø-V-i — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "iiø7",
+        "V7b9",
+        "imaj7",
+        "im6",
+        "im6"
+      ],
+      "length": 5,
+      "moods": [
+        "noir",
+        "poignant"
+      ],
+      "genres": [
+        "jazz-noir"
+      ],
+      "cadence": "jazz cadence",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_03_rot1",
+      "label": "Turnaround — Rotation",
+      "mode": "major",
+      "roman": [
+        "VI7",
+        "ii7",
+        "V7",
+        "Imaj7"
+      ],
+      "length": 4,
+      "moods": [
+        "urban",
+        "anticipatory"
+      ],
+      "genres": [
+        "jazz",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_03_hold",
+      "label": "Turnaround — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "Imaj7",
+        "VI7",
+        "ii7",
+        "V7",
+        "V7"
+      ],
+      "length": 5,
+      "moods": [
+        "urban",
+        "anticipatory"
+      ],
+      "genres": [
+        "jazz",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_04_rot1",
+      "label": "Backdoor — Rotation",
+      "mode": "major",
+      "roman": [
+        "bVII7",
+        "Imaj7",
+        "VI7",
+        "iv7"
+      ],
+      "length": 4,
+      "moods": [
+        "velvety",
+        "surprising"
+      ],
+      "genres": [
+        "jazz",
+        "soul"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_04_hold",
+      "label": "Backdoor — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "iv7",
+        "bVII7",
+        "Imaj7",
+        "VI7",
+        "VI7"
+      ],
+      "length": 5,
+      "moods": [
+        "velvety",
+        "surprising"
+      ],
+      "genres": [
+        "jazz",
+        "soul"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_05_rot1",
+      "label": "Tritone Route — Rotation",
+      "mode": "major",
+      "roman": [
+        "bII7",
+        "Imaj7",
+        "VI7",
+        "ii7"
+      ],
+      "length": 4,
+      "moods": [
+        "sophisticated",
+        "tense"
+      ],
+      "genres": [
+        "jazz",
+        "fusion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_05_hold",
+      "label": "Tritone Route — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "ii7",
+        "bII7",
+        "Imaj7",
+        "VI7",
+        "VI7"
+      ],
+      "length": 5,
+      "moods": [
+        "sophisticated",
+        "tense"
+      ],
+      "genres": [
+        "jazz",
+        "fusion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_06_rot1",
+      "label": "Rhythm Bridge — Rotation",
+      "mode": "major",
+      "roman": [
+        "VI7",
+        "II7",
+        "V7",
+        "III7"
+      ],
+      "length": 4,
+      "moods": [
+        "driving",
+        "swing"
+      ],
+      "genres": [
+        "bebop",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_06_hold",
+      "label": "Rhythm Bridge — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "III7",
+        "VI7",
+        "II7",
+        "V7",
+        "V7"
+      ],
+      "length": 5,
+      "moods": [
+        "driving",
+        "swing"
+      ],
+      "genres": [
+        "bebop",
+        "swing"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "jazz_07_rot1",
+      "label": "Coltrane Slice — Rotation",
+      "mode": "major",
+      "roman": [
+        "bIII7",
+        "bVImaj7",
+        "VII7",
+        "Imaj7"
+      ],
+      "length": 4,
+      "moods": [
+        "expansive",
+        "complex"
+      ],
+      "genres": [
+        "jazz",
+        "experimental"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "jazz_07_hold",
+      "label": "Coltrane Slice — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "Imaj7",
+        "bIII7",
+        "bVImaj7",
+        "VII7",
+        "VII7"
+      ],
+      "length": 5,
+      "moods": [
+        "expansive",
+        "complex"
+      ],
+      "genres": [
+        "jazz",
+        "experimental"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "classical_01_rot1",
+      "label": "Romanesca — Rotation",
+      "mode": "major",
+      "roman": [
+        "V",
+        "vi",
+        "iii",
+        "IV",
+        "I",
+        "IV",
+        "V",
+        "I"
+      ],
+      "length": 8,
+      "moods": [
+        "narrative",
+        "classical"
+      ],
+      "genres": [
+        "classical",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "classical_01_hold",
+      "label": "Romanesca — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "vi",
+        "iii",
+        "IV",
+        "I",
+        "IV",
+        "V",
+        "V"
+      ],
+      "length": 9,
+      "moods": [
+        "narrative",
+        "classical"
+      ],
+      "genres": [
+        "classical",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "classical_02_rot1",
+      "label": "Descending Fifths — Rotation",
+      "mode": "major",
+      "roman": [
+        "IV",
+        "vii°",
+        "iii",
+        "vi",
+        "ii",
+        "V",
+        "I",
+        "I"
+      ],
+      "length": 8,
+      "moods": [
+        "formal",
+        "inevitable"
+      ],
+      "genres": [
+        "classical"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "classical_02_hold",
+      "label": "Descending Fifths — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "IV",
+        "vii°",
+        "iii",
+        "vi",
+        "ii",
+        "V",
+        "I",
+        "I"
+      ],
+      "length": 9,
+      "moods": [
+        "formal",
+        "inevitable"
+      ],
+      "genres": [
+        "classical"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "classical_03_rot1",
+      "label": "Prinner Cadence — Rotation",
+      "mode": "major",
+      "roman": [
+        "I6",
+        "ii6",
+        "V",
+        "I",
+        "IV6"
+      ],
+      "length": 5,
+      "moods": [
+        "gentle",
+        "courtly"
+      ],
+      "genres": [
+        "classical",
+        "town"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "classical_03_hold",
+      "label": "Prinner Cadence — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "IV6",
+        "I6",
+        "ii6",
+        "V",
+        "I",
+        "I"
+      ],
+      "length": 6,
+      "moods": [
+        "gentle",
+        "courtly"
+      ],
+      "genres": [
+        "classical",
+        "town"
+      ],
+      "cadence": "authentic",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "classical_04_rot1",
+      "label": "Lament Bass — Rotation",
+      "mode": "minor",
+      "roman": [
+        "V6",
+        "VII",
+        "IV6",
+        "VI",
+        "III6",
+        "iv",
+        "V",
+        "i"
+      ],
+      "length": 8,
+      "moods": [
+        "tragic",
+        "baroque"
+      ],
+      "genres": [
+        "classical",
+        "horror"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "classical_04_hold",
+      "label": "Lament Bass — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "V6",
+        "VII",
+        "IV6",
+        "VI",
+        "III6",
+        "iv",
+        "V",
+        "V"
+      ],
+      "length": 9,
+      "moods": [
+        "tragic",
+        "baroque"
+      ],
+      "genres": [
+        "classical",
+        "horror"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "cinematic_01_rot1",
+      "label": "Heroic Expansion — Rotation",
+      "mode": "major",
+      "roman": [
+        "bVII",
+        "IV",
+        "vi",
+        "V",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "heroic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "cinematic_01_hold",
+      "label": "Heroic Expansion — Held Arrival",
+      "mode": "major",
+      "roman": [
+        "I",
+        "bVII",
+        "IV",
+        "vi",
+        "V",
+        "V"
+      ],
+      "length": 6,
+      "moods": [
+        "heroic",
+        "expansive"
+      ],
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "cinematic_02_rot1",
+      "label": "Ominous Rise — Rotation",
+      "mode": "minor",
+      "roman": [
+        "bII",
+        "bVI",
+        "V",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "ominous",
+        "foreboding"
+      ],
+      "genres": [
+        "horror",
+        "boss"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "cinematic_02_hold",
+      "label": "Ominous Rise — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bII",
+        "bVI",
+        "V",
+        "V"
+      ],
+      "length": 5,
+      "moods": [
+        "ominous",
+        "foreboding"
+      ],
+      "genres": [
+        "horror",
+        "boss"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "cinematic_03_rot1",
+      "label": "Celestial Float — Rotation",
+      "mode": "lydian",
+      "roman": [
+        "II",
+        "vi",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "celestial",
+        "floating"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "cinematic_03_hold",
+      "label": "Celestial Float — Held Arrival",
+      "mode": "lydian",
+      "roman": [
+        "I",
+        "II",
+        "vi",
+        "IV",
+        "IV"
+      ],
+      "length": 5,
+      "moods": [
+        "celestial",
+        "floating"
+      ],
+      "genres": [
+        "fantasy",
+        "sci-fi"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "electronic_01_rot1",
+      "label": "Minor Static Drive — Rotation",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bVI",
+        "bVII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "driving",
+        "dark"
+      ],
+      "genres": [
+        "techno",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "electronic_01_hold",
+      "label": "Minor Static Drive — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "i",
+        "bVI",
+        "bVII",
+        "bVII"
+      ],
+      "length": 5,
+      "moods": [
+        "driving",
+        "dark"
+      ],
+      "genres": [
+        "techno",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "electronic_02_rot1",
+      "label": "Neon Resolve — Rotation",
+      "mode": "minor",
+      "roman": [
+        "bVI",
+        "III",
+        "bVII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "neon",
+        "energetic"
+      ],
+      "genres": [
+        "synthwave",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": "Rotated phrase; verify the new tonal emphasis."
+    },
+    {
+      "id": "electronic_02_hold",
+      "label": "Neon Resolve — Held Arrival",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bVI",
+        "III",
+        "bVII",
+        "bVII"
+      ],
+      "length": 5,
+      "moods": [
+        "neon",
+        "energetic"
+      ],
+      "genres": [
+        "synthwave",
+        "electronic"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "variable",
+      "notes": "Extends the arrival chord by one harmonic unit."
+    },
+    {
+      "id": "shuttle_i_iv",
+      "label": "Minor Plagal Shuttle",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "iv"
+      ],
+      "length": 2,
+      "moods": [
+        "introspective"
+      ],
+      "genres": [
+        "ambient",
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "shuttle_i_bii",
+      "label": "Semitone Dread",
+      "mode": "phrygian",
+      "roman": [
+        "i",
+        "bII"
+      ],
+      "length": 2,
+      "moods": [
+        "dread"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "shuttle_i_iv_dor",
+      "label": "Dorian Open Door",
+      "mode": "dorian",
+      "roman": [
+        "i",
+        "IV"
+      ],
+      "length": 2,
+      "moods": [
+        "hopeful-minor"
+      ],
+      "genres": [
+        "adventure",
+        "funk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "shuttle_I_II",
+      "label": "Lydian Lift",
+      "mode": "lydian",
+      "roman": [
+        "I",
+        "II"
+      ],
+      "length": 2,
+      "moods": [
+        "wonder"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "sacred_01",
+      "label": "Sacred Plagal Chain",
+      "mode": "major",
+      "roman": [
+        "I",
+        "IV",
+        "ii6",
+        "V",
+        "I"
+      ],
+      "length": 5,
+      "moods": [
+        "sacred",
+        "serene"
+      ],
+      "genres": [
+        "fantasy",
+        "classical"
+      ],
+      "cadence": "plagal/authentic",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "boss_01",
+      "label": "Chromatic Mediant Boss",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "bVI",
+        "iii",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "epic",
+        "dangerous"
+      ],
+      "genres": [
+        "boss"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "boss_02",
+      "label": "Phrygian Dominant Gate",
+      "mode": "phrygian_dominant",
+      "roman": [
+        "i",
+        "bII",
+        "VII",
+        "i"
+      ],
+      "length": 4,
+      "moods": [
+        "regal",
+        "threatening"
+      ],
+      "genres": [
+        "boss",
+        "ritual"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "town_01",
+      "label": "Warm Secondary Dominant",
+      "mode": "major",
+      "roman": [
+        "I",
+        "VI7",
+        "ii",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "warm",
+        "social"
+      ],
+      "genres": [
+        "town",
+        "jazz"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "emotion_01",
+      "label": "Common-Tone Grief",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "VImaj7",
+        "iv6",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "grief",
+        "poignant"
+      ],
+      "genres": [
+        "emotion"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "mystery_01",
+      "label": "Diminished Neighbor",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "CT°7",
+        "i6",
+        "V"
+      ],
+      "length": 4,
+      "moods": [
+        "mysterious",
+        "anticipatory"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "funk_01",
+      "label": "Dominant Vamp",
+      "mode": "mixolydian",
+      "roman": [
+        "I7",
+        "IV7"
+      ],
+      "length": 2,
+      "moods": [
+        "confident",
+        "groovy"
+      ],
+      "genres": [
+        "funk"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "reggae_01",
+      "label": "One-Drop Major",
+      "mode": "major",
+      "roman": [
+        "I",
+        "V",
+        "IV",
+        "I"
+      ],
+      "length": 4,
+      "moods": [
+        "relaxed",
+        "warm"
+      ],
+      "genres": [
+        "reggae"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "bossa_01",
+      "label": "Bossa Turn",
+      "mode": "major",
+      "roman": [
+        "Imaj7",
+        "VI7",
+        "ii7",
+        "V7"
+      ],
+      "length": 4,
+      "moods": [
+        "intimate",
+        "warm"
+      ],
+      "genres": [
+        "bossa"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "tango_01",
+      "label": "Tango Minor",
+      "mode": "minor",
+      "roman": [
+        "i",
+        "V7",
+        "i",
+        "iv",
+        "V7",
+        "i"
+      ],
+      "length": 6,
+      "moods": [
+        "passionate",
+        "dramatic"
+      ],
+      "genres": [
+        "tango"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "whole_01",
+      "label": "Whole-Tone Drift",
+      "mode": "whole_tone",
+      "roman": [
+        "I+",
+        "II+",
+        "bIII+",
+        "I+"
+      ],
+      "length": 4,
+      "moods": [
+        "floating",
+        "uncertain"
+      ],
+      "genres": [
+        "dream",
+        "experimental"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    },
+    {
+      "id": "oct_01",
+      "label": "Octatonic Pursuit",
+      "mode": "octatonic",
+      "roman": [
+        "i",
+        "biii°",
+        "V",
+        "bII"
+      ],
+      "length": 4,
+      "moods": [
+        "kinetic",
+        "tense"
+      ],
+      "genres": [
+        "action",
+        "mystery"
+      ],
+      "cadence": "loop",
+      "harmonic_rhythm": "1 chord/bar",
+      "notes": ""
+    }
+  ]
+}

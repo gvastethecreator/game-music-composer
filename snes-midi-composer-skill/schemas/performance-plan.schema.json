@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expressive Performance Plan",
+  "type": "object",
+  "required": ["mode", "profile", "seed", "phrase_policy", "role_timing", "dynamics", "articulation"],
+  "properties": {
+    "mode": {"enum": ["strict_hardware", "expanded_web", "bounce_to_sample"]},
+    "profile": {"type": "string"},
+    "seed": {"type": "integer"},
+    "phrase_policy": {"type": "object"},
+    "role_timing": {"type": "object"},
+    "dynamics": {"type": "object"},
+    "articulation": {"type": "object"},
+    "ensemble_layers": {"type": "array"},
+    "negative_constraints": {"type": "array", "items": {"type": "string"}}
+  }
+}

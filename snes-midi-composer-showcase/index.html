@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neo-SPC Studio — Composer Workstation v4.1</title>
+  <meta name="description" content="A professional evolved-retro composition workstation integrating 100 reviewed cues, the Neo-SPC Factory Bank, a full generation harness and expressive live playback.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-rack hardware-panel">
+      <div class="brand-stack">
+        <div class="brand-badge"><span>N</span><b>4.1</b></div>
+        <div>
+          <span class="overline">NEO-SPC COMPOSER WORKSTATION</span>
+          <h1>Composer studio</h1>
+          <p>100 reviewed cues · Factory Bank live engine · complete recipe harness</p>
+        </div>
+      </div>
+      <nav class="app-tabs" id="appTabs" aria-label="Application views">
+        <button class="active" data-view="workstation">Workstation</button>
+        <button data-view="recipe">Recipe Builder</button>
+        <button data-view="soundbank">Factory Bank</button>
+        <button data-view="review">Professor Review</button>
+      </nav>
+      <div class="header-actions">
+        <a class="metal-button amber" href="downloads/neospc-skill-v3.1.zip">Skill v3</a>
+        <a class="metal-button" href="downloads/neospc100-midis-v4.zip">MIDI</a>
+        <a class="metal-button" href="downloads/neospc100-audio-v4.zip">Audio</a>
+      </div>
+      <i class="screw screw-a"></i><i class="screw screw-b"></i><i class="screw screw-c"></i><i class="screw screw-d"></i>
+    </header>
+
+    <section class="system-strip hardware-panel" aria-label="System status">
+      <div><span>ENGINE</span><strong>FACTORY LIVE</strong></div>
+      <div><span>BANK</span><strong>NEO-SPC v0.1</strong></div>
+      <div><span>LIVE PROFILE</span><strong>NEO-16</strong></div>
+      <div><span>PATCHES</span><strong>50</strong></div>
+      <div><span>EMBEDDED REGIONS</span><strong>176</strong></div>
+      <div><span>LICENSE</span><strong>CC0-1.0</strong></div>
+    </section>
+
+    <section id="view-workstation" class="app-view active">
+      <nav id="categoryTabs" class="category-tabs hardware-panel" aria-label="Composition categories"></nav>
+
+      <section class="main-rack hardware-panel">
+        <div class="track-header">
+          <div class="track-copy">
+            <span id="trackKicker" class="overline"></span>
+            <h2 id="trackTitle">Loading…</h2>
+            <p id="trackDescription"></p>
+          </div>
+          <div id="trackMeta" class="track-meta"></div>
+        </div>
+
+        <section class="compact-control-strip inset-panel" aria-label="Transport and global playback controls">
+          <div class="control-group transport-group">
+            <span class="mini-label">Transport</span>
+            <select id="playbackMode" aria-label="Playback mode"><option value="live">Factory Live</option><option value="mastered">Mastered</option></select>
+            <button id="playButton" class="compact-button amber" type="button">▶</button>
+            <button id="pauseButton" class="compact-button" type="button">Ⅱ</button>
+            <button id="stopButton" class="compact-button" type="button">■</button>
+            <a id="midiLink" class="compact-button" href="#" download>MIDI</a>
+          </div>
+          <label class="inline-control"><span>VOL</span><input id="volumeSlider" type="range" min="-36" max="6" value="-3" step="0.5"><output id="volumeValue">−3.0</output></label>
+          <label class="inline-control"><span>CEIL</span><input id="ceilingSlider" type="range" min="-12" max="0" value="-1" step="0.1"><output id="ceilingValue">−1.0</output></label>
+          <label class="inline-control tempo-control"><span>TEMPO</span><input id="tempoSlider" type="range" min="60" max="150" value="100" step="1"><output id="tempoValue">100%</output><b id="bpmValue">120</b></label>
+          <div class="pitch-control">
+            <span class="mini-label">Pitch / Key</span>
+            <button data-pitch="-12">−12</button><button data-pitch="-1">−1</button><button id="pitchReset">0</button><button data-pitch="1">+1</button><button data-pitch="12">+12</button>
+            <output id="pitchValue">0 st</output><b id="keyValue">C</b>
+          </div>
+          <div class="transport-readout"><span id="transportState">READY</span><strong id="transportTime">00:00 / 00:00</strong></div>
+        </section>
+
+        <div class="scrub-module inset-panel"><input id="scrubber" type="range" min="0" max="1000" value="0" aria-label="Seek through loop"></div>
+
+        <div class="workstation-grid">
+          <aside class="instrument-column inset-panel">
+            <div class="column-head"><span class="module-label">INSTRUMENT ACTIVITY</span><button id="resetInstruments" class="micro-button" type="button">Reset</button></div>
+            <div id="instrumentActivity" class="instrument-activity"></div>
+          </aside>
+
+          <section class="roll-column">
+            <div class="roll-frame">
+              <canvas id="pianoRoll" width="1800" height="690"></canvas>
+              <div class="roll-readout roll-left"><span>POSITION</span><strong id="positionReadout">BAR 01</strong></div>
+              <div class="roll-readout roll-right"><span>ACTIVE</span><strong id="activeReadout">00 VOICES</strong></div>
+            </div>
+            <div class="analysis-grid">
+              <article><span>FORM</span><p id="formText"></p></article>
+              <article><span>HARMONY</span><p id="harmonyText"></p></article>
+              <article><span>VOICE ARCHITECTURE</span><p id="voiceText"></p></article>
+              <article><span>DIRECTION</span><p id="directionText"></p></article>
+            </div>
+          </section>
+
+          <aside class="browser-rack inset-panel">
+            <div class="browser-head"><div><span class="overline">TRACK BROWSER</span><h3 id="categoryTitle">Category</h3></div><span id="categoryCount" class="count-badge">10</span></div>
+            <label class="field-label"><span>SEARCH</span><input id="searchInput" type="search" placeholder="title, style, meter…"></label>
+            <label class="field-label"><span>EDITORIAL STATE</span><select id="qualityFilter"><option value="all">All</option><option value="curated">Approved</option><option value="review">Review</option></select></label>
+            <div id="trackList" class="track-list"></div>
+          </aside>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-recipe" class="app-view">
+      <section class="harness-rack hardware-panel">
+        <div class="view-heading">
+          <div><span class="overline">FULL GENERATION HARNESS</span><h2>Recipe Builder</h2><p>Every compositional, performance, orchestration, mix, render and review parameter is exposed in its own module.</p></div>
+          <div class="heading-actions"><button id="resetHarness" class="metal-button">Reset</button><button id="downloadHarness" class="metal-button">Download JSON</button><button id="copyHarness" class="metal-button amber">Copy JSON</button></div>
+        </div>
+        <div class="recipe-layout">
+          <nav id="harnessSections" class="harness-sections"></nav>
+          <div class="recipe-center">
+            <div id="harnessPanel" class="harness-panel inset-panel"></div>
+          </div>
+          <pre id="harnessJson" class="harness-json inset-panel"></pre>
+        </div>
+      </section>
+    </section>
+
+
+    <section id="view-soundbank" class="app-view">
+      <section class="bank-rack hardware-panel">
+        <div class="view-heading bank-heading">
+          <div><span class="overline">NEO-SPC FACTORY BANK</span><h2>Patch laboratory</h2><p>Explore the original soundbank used by Live Mix. Neo-16 is embedded for local playback; Neo-32 metadata and representative previews are included for comparison.</p></div>
+          <div class="heading-actions"><a class="metal-button" href="FACTORY-BANK-INTEGRATION.md">Integration notes</a><a class="metal-button amber" href="FACTORY-BANK-INTEGRATION.md">Bank download info</a></div>
+        </div>
+        <div class="bank-layout">
+          <aside class="bank-browser inset-panel">
+            <div class="bank-browser-head"><span class="module-label">PATCH BROWSER</span><strong id="bankPatchCount">50</strong></div>
+            <label class="field-label"><span>SEARCH</span><input id="bankSearch" type="search" placeholder="bass, choir, glass…"></label>
+            <label class="field-label"><span>FAMILY</span><select id="bankFamily"><option value="all">All families</option></select></label>
+            <div id="bankPatchList" class="bank-patch-list"></div>
+          </aside>
+          <section class="bank-inspector">
+            <div class="bank-hero inset-panel">
+              <div><span id="bankFamilyLabel" class="overline">FAMILY</span><h3 id="bankTitle">Select a patch</h3><code id="bankId">—</code></div>
+              <div class="bank-profile-switch"><button class="active" data-bank-profile="neo16">Neo-16</button><button data-bank-profile="neo32">Neo-32</button></div>
+            </div>
+            <div class="bank-metrics">
+              <article class="inset-panel"><span>TYPE</span><strong id="bankType">—</strong></article>
+              <article class="inset-panel"><span>RANGE</span><strong id="bankRange">—</strong></article>
+              <article class="inset-panel"><span>ROOTS</span><strong id="bankRoots">—</strong></article>
+              <article class="inset-panel"><span>REGIONS</span><strong id="bankRegions">—</strong></article>
+            </div>
+            <div class="bank-tags inset-panel"><span class="module-label">CHARACTER</span><div id="bankTags"></div></div>
+            <div class="bank-keyboard inset-panel">
+              <div class="bank-keyboard-head"><div><span class="module-label">AUDITION</span><strong id="bankAuditionStatus">READY</strong></div><label><span>VELOCITY</span><input id="bankVelocity" type="range" min="1" max="127" value="96"><output id="bankVelocityValue">96</output></label></div>
+              <div id="bankKeys" class="bank-keys"></div>
+              <p id="bankProfileNote">Neo-16 uses the embedded multisample regions and works when the site is opened directly from disk.</p>
+            </div>
+            <div class="bank-region-panel inset-panel"><div class="section-line"><h3>Region map</h3><span id="bankProfileLabel">NEO-16</span></div><div id="bankRegionTable" class="bank-region-table"></div></div>
+          </section>
+          <aside class="bank-usage inset-panel">
+            <span class="module-label">CURRENT CUE ROUTING</span>
+            <h3 id="bankCueTitle">—</h3>
+            <p id="bankCoverageText">Select a composition in Workstation to inspect its Factory Bank assignments.</p>
+            <div id="bankCueMap" class="bank-cue-map"></div>
+            <div class="bank-license"><span>ORIGIN</span><p>100% procedurally synthesized. No game samples or third-party recordings.</p><span>LICENSE</span><strong>CC0-1.0</strong></div>
+          </aside>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-review" class="app-view">
+      <section class="review-rack hardware-panel">
+        <div class="view-heading">
+          <div><span class="overline">INDEPENDENT COMPOSITION CRITIQUE</span><h2>Professor Review</h2><p>The review ignores loudness and visual polish. It evaluates score, phrase, genre behavior, orchestration and expression before rendering.</p></div>
+          <div class="review-summary"><div><span>PASS 1</span><strong id="reviewPass1">—</strong></div><div><span>FINAL</span><strong id="reviewFinal">—</strong></div><div><span>AVG</span><strong id="reviewAverage">—</strong></div></div>
+        </div>
+        <div class="review-layout">
+          <aside class="review-track inset-panel"><span class="module-label">CURRENT COMPOSITION</span><h3 id="reviewTitle"></h3><p id="reviewSubtitle"></p><div id="reviewScore" class="big-score">—</div><span id="reviewStatus" class="review-status"></span></aside>
+          <section class="review-main">
+            <div id="dimensionGrid" class="dimension-grid"></div>
+            <div class="critique-grid"><article class="inset-panel"><span class="module-label">CRITIQUE</span><ul id="critiqueList"></ul></article><article class="inset-panel"><span class="module-label">PRESCRIBED ACTIONS</span><ul id="actionList"></ul></article></div>
+          </section>
+          <aside class="review-rubric inset-panel"><span class="module-label">RUBRIC</span><div id="rubricList"></div></aside>
+        </div>
+      </section>
+    </section>
+
+    <section class="download-rack hardware-panel">
+      <div><span class="overline">PROJECT FILES</span><h3>Neo-SPC Studio v4.1</h3></div>
+      <a href="downloads/neospc-skill-v3.1.zip">Skill v3.1</a>
+      <a href="downloads/neospc100-midis-v4.zip">100 rebuilt MIDI files</a>
+      <a href="README.md">Audio assets are embedded in the site</a>
+      <a href="downloads/neospc100-source-v4.zip">Catalog, review and source</a>
+      <a href="FACTORY-BANK-INTEGRATION.md">Factory Bank download info</a>
+    </section>
+    <footer>Neo-SPC Composer Workstation v4.1 · Factory Bank integrated · static GitHub Pages</footer>
+  </div>
+
+  <audio id="audioPlayer" preload="auto" loop></audio>
+  <script src="data/catalog.js"></script>
+  <script src="data/harness.js"></script>
+  <script src="data/reviews.js"></script>
+  <script src="data/sample-bank.js"></script>
+  <script src="data/factory-bank.js"></script>
+  <script src="data/factory-bank-previews.js"></script>
+  <script src="live-engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

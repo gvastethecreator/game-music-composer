@@ -1,0 +1,139 @@
+{
+  "version": "2.2.0",
+  "engine": "Neo-SPC Mix v3",
+  "sample_bank_version": "1.1.0",
+  "bus_order": [
+    "lead",
+    "bass",
+    "drums",
+    "rhythm",
+    "harmony",
+    "atmosphere",
+    "fx"
+  ],
+  "bus_targets_active_dbfs": {
+    "lead": -23.0,
+    "bass": -21.8,
+    "drums": -19.3,
+    "rhythm": -24.8,
+    "harmony": -26.7,
+    "atmosphere": -29.0,
+    "fx": -25.8
+  },
+  "bus_eq_hz": {
+    "lead": [
+      105,
+      10500
+    ],
+    "bass": [
+      24,
+      3400
+    ],
+    "drums": [
+      22,
+      13800
+    ],
+    "rhythm": [
+      115,
+      9400
+    ],
+    "harmony": [
+      155,
+      8000
+    ],
+    "atmosphere": [
+      190,
+      7200
+    ],
+    "fx": [
+      70,
+      10500
+    ]
+  },
+  "bus_compression": {
+    "lead": {
+      "threshold_db": -22,
+      "ratio": 1.8
+    },
+    "bass": {
+      "threshold_db": -23,
+      "ratio": 2.2
+    },
+    "drums": {
+      "threshold_db": -22,
+      "ratio": 4.2,
+      "parallel_body": 0.3,
+      "transient_layer": 0.16
+    },
+    "rhythm": {
+      "threshold_db": -24,
+      "ratio": 1.8
+    },
+    "harmony": {
+      "threshold_db": -26,
+      "ratio": 1.65
+    },
+    "atmosphere": {
+      "threshold_db": -28,
+      "ratio": 1.45
+    },
+    "fx": {
+      "threshold_db": -22,
+      "ratio": 2.2
+    }
+  },
+  "instrument_trim_db": {
+    "horn": -5,
+    "brass": -3.8,
+    "trumpet": -5.2,
+    "trombone": -3.5,
+    "muted_brass": -2.8,
+    "synth_lead": -4.2,
+    "pulse25": -2.6,
+    "pulse50": -3,
+    "bell": -3.5,
+    "kick": 2.4,
+    "snare": 2.8,
+    "tom": 1.7,
+    "bass": 1.2
+  },
+  "bass_routing": {
+    "adventure": "upright_bass_v2_A2",
+    "action": "picked_bass_A2",
+    "towns": "electric_finger_bass_A2",
+    "emotion": "upright_bass_v2_A2",
+    "electronic": "analog_bass_A2",
+    "urban_default": "electric_finger_bass_A2",
+    "urban_jazz": "upright_bass_v2_A2",
+    "classical_sustain": "bowed_contrabass_A1",
+    "horror_low": "sub_bass_C2"
+  },
+  "master": {
+    "category_lufs_targets": {
+      "action": -14.8,
+      "electronic": -14.8,
+      "urban": -15.5,
+      "adventure": -16,
+      "towns": -16,
+      "fantasy": -16.2,
+      "mystery": -16.5,
+      "emotion": -17,
+      "horror": -17,
+      "classical": -17
+    },
+    "true_peak_default_dbfs": -1.0,
+    "monitor_volume_default_db": -3.0,
+    "user_ceiling_range_dbfs": [
+      -12,
+      0
+    ]
+  },
+  "rules": [
+    "Source calibration occurs before event gain.",
+    "Instrument trims occur before bus processing.",
+    "Drums use parallel body and transient layers instead of only a louder fader.",
+    "Bass remains mono below the arrangement stage.",
+    "Lead priority may duck harmony, rhythm and atmosphere but must not erase them.",
+    "Master volume and monitor ceiling are playback controls, not rendered mix fixes."
+  ]
+}

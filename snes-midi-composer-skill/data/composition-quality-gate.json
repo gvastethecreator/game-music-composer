@@ -1,0 +1,9 @@
+{
+  "version": "2.1",
+  "statuses": {"curated": "Eligible for the main benchmark", "review": "Technically valid but requires listening review", "rebuild": "Must be recomposed before publication"},
+  "dimensions": [
+    "bar-level onset topology diversity", "adjacent repetition", "density variation", "section contrast",
+    "melodic interval variety", "phrase breathing", "register range", "exact doubling", "genre-adjusted purposeful repetition"
+  ],
+  "warning": "The score is a triage aid, not an artistic certification. Minimalism and motor genres require category-specific interpretation."
+}

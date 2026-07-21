@@ -1,0 +1,61 @@
+{
+  "styles": 100,
+  "categories": 10,
+  "per_category": {
+    "adventure": 10,
+    "action": 10,
+    "horror": 10,
+    "towns": 10,
+    "emotion": 10,
+    "mystery": 10,
+    "fantasy": 10,
+    "electronic": 10,
+    "urban": 10,
+    "classical": 10
+  },
+  "events": 29853,
+  "voice_budgets": {
+    "12": 9,
+    "16": 22,
+    "20": 16,
+    "18": 17,
+    "24": 13,
+    "32": 5,
+    "14": 11,
+    "28": 7
+  },
+  "peak_max": 32,
+  "harness_sections": 15,
+  "review_pass1": {
+    "approved": 70,
+    "revise": 30
+  },
+  "review_pass2": {
+    "approved": 85,
+    "revise": 15
+  },
+  "review_final": {
+    "approved": 98,
+    "revise": 2
+  },
+  "review_average": 89.01,
+  "composition_schema_errors": 0,
+  "review_schema_errors": 0,
+  "midi_count": 100,
+  "midi_notes": 29853,
+  "midi_types": {
+    "1": 100
+  },
+  "midi_ppq": {
+    "480": 100
+  },
+  "midi_errors": 0,
+  "ogg_count": 100,
+  "mp3_count": 100,
+  "audio_errors": 0,
+  "duration_errors": 0,
+  "quality_statuses": {
+    "curated": 98,
+    "review": 2
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "catalog": "/mnt/data/snes-midi-composer-skill-v3.1/data/neospc100-benchmark-v4.1.json",
+  "bank": "Neo-SPC Factory Bank",
+  "bank_version": "0.1.0",
+  "assignments": 866,
+  "factory_mapped": 792,
+  "coverage": 0.9145,
+  "errors": 0,
+  "warnings": 0,
+  "findings": [
+    {
+      "cue": "saffron_miles",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "iron_pulse",
+      "instrument": "dist_guitar_l",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "iron_pulse",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "crown_breaker",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "crown_breaker",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "redline_pursuit",
+      "instrument": "dist_guitar_l",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "slag_foundry",
+      "instrument": "dist_guitar_l",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "slag_foundry",
+      "instrument": "dist_guitar_r",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "slag_foundry",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "cloud_lancers",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "walls_of_bronze",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "vector_arena",
+      "instrument": "clav",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "footsteps_in_plaster",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "under_the_skin",
+      "instrument": "prepared_piano",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "under_the_skin",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "stars_without_distance",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "dont_look_back",
+      "instrument": "prepared_piano",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "music_box_teeth",
+      "instrument": "accordion",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "music_box_teeth",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "morning_bread",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "three_mugs_later",
+      "instrument": "accordion",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "three_mugs_later",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "copper_saffron",
+      "instrument": "accordion",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "copper_saffron",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "the_blue_stove",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "painted_wheels",
+      "instrument": "accordion",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "shift_change",
+      "instrument": "clav",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "tables_by_the_tide",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "tables_by_the_tide",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "postcard_in_june",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "flags_in_mud",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "ink_under_rain",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "ink_under_rain",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "velvet_entry",
+      "instrument": "muted_guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "redacted_pages",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "redacted_pages",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "minute_hand_zero",
+      "instrument": "prepared_piano",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "arches_of_mercy",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "arches_of_mercy",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "black_banner_kingdom",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "the_oracle_opens",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "the_oracle_opens",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "concrete_frequency",
+      "instrument": "clav",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "hangar_nine",
+      "instrument": "clav",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "hangar_nine",
+      "instrument": "dist_guitar_l",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "hangar_nine",
+      "instrument": "dist_guitar_r",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "hangar_nine",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "language_from_outside",
+      "instrument": "prepared_piano",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "language_from_outside",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "orbital_knives",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "core_temperature",
+      "instrument": "dist_guitar_l",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "cigarette_geometry",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "cigarette_geometry",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "swing_room_three",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "swing_room_three",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "stairs_two_at_once",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "stairs_two_at_once",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "assembly_line_soul",
+      "instrument": "clav",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "amber_booth",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "amber_booth",
+      "instrument": "ride",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "amber_booth",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "roof_tiles_after_rain",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "green_harbor",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "green_harbor",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "echo_alley",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "saturday_horns",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "underpass_tango",
+      "instrument": "accordion",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "underpass_tango",
+      "instrument": "guitar",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "winter_gallery",
+      "instrument": "brush",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "allegro_for_a_tyrant",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "allegro_for_a_tyrant",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "angles_in_the_dark",
+      "instrument": "prepared_piano",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "overture_for_new_worlds",
+      "instrument": "organ",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    },
+    {
+      "cue": "overture_for_new_worlds",
+      "instrument": "impact",
+      "severity": "info",
+      "issue": "compatibility_fallback"
+    }
+  ]
+}

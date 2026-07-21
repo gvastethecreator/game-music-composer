@@ -1,0 +1,68 @@
+{
+  "id": "new_cue",
+  "title": "New Cue",
+  "category": "adventure",
+  "subcategory": "custom",
+  "function": "exploration",
+  "voice_profile": "expanded_16",
+  "voice_budget": 16,
+  "musical_identity": {
+    "meter": "6/8",
+    "bpm": 96,
+    "key": "G",
+    "mode": "dorian",
+    "motif": "describe interval and rhythm identity",
+    "harmonic_language": "describe progression or modal field",
+    "bass_behavior": "describe direction",
+    "groove": "describe pulse and deviations"
+  },
+  "voice_architecture": {
+    "core": [
+      "lead",
+      "bass",
+      "harmonic support",
+      "primary percussion"
+    ],
+    "ensemble": [
+      "optional strings or choir"
+    ],
+    "ornament": [
+      "answers and fills"
+    ],
+    "texture": [
+      "environmental or sustained field"
+    ],
+    "effects": [
+      "transitions and stingers"
+    ]
+  },
+  "form": [
+    {
+      "name": "A",
+      "function": "establish",
+      "bars": 4
+    },
+    {
+      "name": "A2",
+      "function": "develop",
+      "bars": 4
+    },
+    {
+      "name": "B",
+      "function": "contrast",
+      "bars": 4
+    },
+    {
+      "name": "A3",
+      "function": "return and loop",
+      "bars": 4
+    }
+  ],
+  "quality_gates": {
+    "works_as_reduction": false,
+    "distinct_from_reference_set": false,
+    "peak_density_has_formal_reason": false,
+    "loop_is_motivated": false,
+    "timbre_roles_are_declared": false
+  }
+}

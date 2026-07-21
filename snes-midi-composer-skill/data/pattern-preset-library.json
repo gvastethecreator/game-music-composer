@@ -1,0 +1,1465 @@
+{
+  "version": "2.2.0",
+  "counts": {
+    "chord_rhythm": 17,
+    "arpeggio": 20,
+    "bassline": 15,
+    "humanize": 10,
+    "chop": 10,
+    "melody_motion": 15
+  },
+  "patterns": {
+    "chord_rhythm": [
+      {
+        "id": "whole",
+        "label": "Whole Notes",
+        "grid": [
+          0
+        ],
+        "params": {
+          "gate": 0.94
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "half",
+        "label": "Half Notes",
+        "grid": [
+          0,
+          0.5
+        ],
+        "params": {
+          "gate": 0.82
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "quarter",
+        "label": "Quarter Pulse",
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "gate": 0.62
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "shuffle1",
+        "label": "Shuffle 1",
+        "grid": [
+          0,
+          0.33,
+          0.5,
+          0.83
+        ],
+        "params": {
+          "swing": 0.66,
+          "gate": 0.48
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "shuffle2",
+        "label": "Shuffle 2",
+        "grid": [
+          0,
+          0.25,
+          0.66
+        ],
+        "params": {
+          "swing": 0.62,
+          "gate": 0.58
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "offbeat",
+        "label": "Off Beat",
+        "grid": [
+          0.125,
+          0.375,
+          0.625,
+          0.875
+        ],
+        "params": {
+          "gate": 0.42
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "push_pull",
+        "label": "Push / Pull",
+        "grid": [
+          0,
+          0.375,
+          0.625,
+          0.875
+        ],
+        "params": {
+          "offset_ms": [
+            0,
+            -12,
+            8,
+            -8
+          ]
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "push_drag",
+        "label": "Push / Drag",
+        "grid": [
+          0,
+          0.22,
+          0.52,
+          0.78
+        ],
+        "params": {
+          "offset_ms": [
+            -10,
+            5,
+            -7,
+            14
+          ]
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "cha_cha",
+        "label": "Cha Cha",
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.6875,
+          0.875
+        ],
+        "params": {
+          "gate": 0.46
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "bossa",
+        "label": "Bossa Two-Bar",
+        "grid": [
+          0,
+          0.375,
+          0.625,
+          1.0,
+          1.25,
+          1.625,
+          1.875
+        ],
+        "params": {
+          "cycle_bars": 2,
+          "gate": 0.44
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "reggae",
+        "label": "Reggae Skank",
+        "grid": [
+          0.25,
+          0.75
+        ],
+        "params": {
+          "gate": 0.32
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "tango",
+        "label": "Tango Habanera",
+        "grid": [
+          0,
+          0.375,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "gate": 0.5
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "waltz",
+        "label": "Waltz",
+        "grid": [
+          0,
+          0.333,
+          0.666
+        ],
+        "params": {
+          "gate": 0.58
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "sicilienne",
+        "label": "Sicilienne",
+        "grid": [
+          0,
+          0.375,
+          0.75
+        ],
+        "params": {
+          "meter": "6/8",
+          "gate": 0.64
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "cinematic",
+        "label": "Cinematic Breath",
+        "grid": [
+          0,
+          0.5,
+          0.875
+        ],
+        "params": {
+          "gate": [
+            0.8,
+            0.46,
+            0.3
+          ]
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "random1",
+        "label": "Seeded Sparse",
+        "grid": [
+          0,
+          0.3125,
+          0.8125
+        ],
+        "params": {
+          "seeded": true,
+          "density": 0.38
+        },
+        "tags": [
+          "comp"
+        ]
+      },
+      {
+        "id": "random2",
+        "label": "Seeded Busy",
+        "grid": [
+          0,
+          0.1875,
+          0.4375,
+          0.6875,
+          0.875
+        ],
+        "params": {
+          "seeded": true,
+          "density": 0.72
+        },
+        "tags": [
+          "comp"
+        ]
+      }
+    ],
+    "arpeggio": [
+      {
+        "id": "up3",
+        "label": "Up 3",
+        "grid": [
+          0,
+          1,
+          2
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "up4",
+        "label": "Up 4",
+        "grid": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "down3",
+        "label": "Down 3",
+        "grid": [
+          2,
+          1,
+          0
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "down4",
+        "label": "Down 4",
+        "grid": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "updown",
+        "label": "Up-Down",
+        "grid": [
+          0,
+          1,
+          2,
+          3,
+          2,
+          1
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "osc1",
+        "label": "Oscillate Wide",
+        "grid": [
+          0,
+          3,
+          1,
+          2
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "osc2",
+        "label": "Oscillate Inner",
+        "grid": [
+          1,
+          2,
+          0,
+          3
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "repeat1",
+        "label": "Repeat Crown",
+        "grid": [
+          0,
+          1,
+          3,
+          1,
+          2,
+          1
+        ],
+        "params": {
+          "repeats": 1
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "repeat2",
+        "label": "Repeat Root",
+        "grid": [
+          0,
+          2,
+          0,
+          3,
+          0,
+          1
+        ],
+        "params": {
+          "repeats": 2
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "rhythm1",
+        "label": "Rhythm 3-3-2",
+        "grid": [
+          0,
+          1,
+          2,
+          3,
+          1,
+          2,
+          3,
+          0
+        ],
+        "params": {
+          "accents": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "sync1",
+        "label": "Syncopated 1",
+        "grid": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "sync2",
+        "label": "Syncopated 2",
+        "grid": [
+          0,
+          3,
+          1,
+          2,
+          3
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "flourish1",
+        "label": "Flourish Rise",
+        "grid": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          3,
+          2,
+          1
+        ],
+        "params": {
+          "range": 2
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "supersaw1",
+        "label": "SuperSaw Gate",
+        "grid": [
+          0,
+          0,
+          2,
+          3,
+          2,
+          0,
+          3,
+          1
+        ],
+        "params": {
+          "retrigger": true
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "house1",
+        "label": "House Pulse",
+        "grid": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "params": {
+          "offbeat": true
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "morph1",
+        "label": "Morph Rotation",
+        "grid": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "params": {
+          "rotate_per_cycle": 1
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "morph2",
+        "label": "Morph Mirror",
+        "grid": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "params": {
+          "mirror_per_cycle": true
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "broken_9",
+        "label": "Broken Ninth",
+        "grid": [
+          0,
+          2,
+          1,
+          4,
+          3,
+          1
+        ],
+        "params": {
+          "extensions": true
+        },
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "pedal_top",
+        "label": "Top Pedal",
+        "grid": [
+          3,
+          0,
+          3,
+          1,
+          3,
+          2
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      },
+      {
+        "id": "pedal_root",
+        "label": "Root Pedal",
+        "grid": [
+          0,
+          2,
+          0,
+          3,
+          0,
+          1
+        ],
+        "params": {},
+        "tags": [
+          "arp"
+        ]
+      }
+    ],
+    "bassline": [
+      {
+        "id": "root",
+        "label": "Root Anchor",
+        "grid": [
+          0
+        ],
+        "params": {
+          "degrees": [
+            0
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "root5",
+        "label": "Root Fifth",
+        "grid": [
+          0,
+          0.5
+        ],
+        "params": {
+          "degrees": [
+            0,
+            4
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "octave",
+        "label": "Octave Pulse",
+        "grid": [
+          0,
+          0.5
+        ],
+        "params": {
+          "degrees": [
+            0,
+            7
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "walk4",
+        "label": "Walking Four",
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "approach": true
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "anticipate",
+        "label": "Anticipated Root",
+        "grid": [
+          0,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            "next_root"
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "dorian_funk",
+        "label": "Dorian Funk",
+        "grid": [
+          0,
+          0.1875,
+          0.5,
+          0.6875,
+          0.875
+        ],
+        "params": {
+          "degrees": [
+            0,
+            7,
+            9,
+            10,
+            7
+          ],
+          "ghosts": [
+            1,
+            3
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "reggae",
+        "label": "Reggae Space",
+        "grid": [
+          0,
+          0.375,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            4,
+            7
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "bossa",
+        "label": "Bossa Bass",
+        "grid": [
+          0,
+          0.5,
+          1.0,
+          1.5
+        ],
+        "params": {
+          "cycle_bars": 2,
+          "degrees": [
+            0,
+            4,
+            "next_root",
+            4
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "tango",
+        "label": "Tango Bass",
+        "grid": [
+          0,
+          0.375,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            7,
+            4,
+            7
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "pedal",
+        "label": "Pedal Tension",
+        "grid": [
+          0,
+          0.5
+        ],
+        "params": {
+          "degrees": [
+            0,
+            0
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "chromatic_pickup",
+        "label": "Chromatic Pickup",
+        "grid": [
+          0,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            4,
+            "approach_next"
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "breakbeat",
+        "label": "Breakbeat Sub",
+        "grid": [
+          0,
+          0.375,
+          0.875
+        ],
+        "params": {
+          "degrees": [
+            0,
+            7,
+            0
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "gallop",
+        "label": "Gallop Bass",
+        "grid": [
+          0,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            0,
+            7
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "odd_332",
+        "label": "Odd 3-3-2",
+        "grid": [
+          0,
+          0.375,
+          0.75
+        ],
+        "params": {
+          "degrees": [
+            0,
+            4,
+            7
+          ]
+        },
+        "tags": [
+          "bass"
+        ]
+      },
+      {
+        "id": "counter_bass",
+        "label": "Countermelodic",
+        "grid": [
+          0,
+          0.25,
+          0.625,
+          0.875
+        ],
+        "params": {
+          "voice_leading": true,
+          "non_roots": 0.48
+        },
+        "tags": [
+          "bass"
+        ]
+      }
+    ],
+    "humanize": [
+      {
+        "id": "tight",
+        "label": "Tight Machine",
+        "grid": [],
+        "params": {
+          "timing_ms": 3,
+          "dynamics": 0.08,
+          "phrase_rubato": 0.02,
+          "strum_ms": 4
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "natural",
+        "label": "Natural Ensemble",
+        "grid": [],
+        "params": {
+          "timing_ms": 11,
+          "dynamics": 0.22,
+          "phrase_rubato": 0.12,
+          "strum_ms": 18
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "laidback",
+        "label": "Laid Back",
+        "grid": [],
+        "params": {
+          "timing_ms": 16,
+          "role_offsets_ms": {
+            "snare": 12,
+            "comp": 9,
+            "bass": -3
+          },
+          "dynamics": 0.26,
+          "phrase_rubato": 0.1
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "driving",
+        "label": "Driving",
+        "grid": [],
+        "params": {
+          "timing_ms": 8,
+          "role_offsets_ms": {
+            "bass": -5,
+            "kick": -2,
+            "lead": 1
+          },
+          "dynamics": 0.2,
+          "phrase_rubato": 0.05
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "rubato",
+        "label": "Narrative Rubato",
+        "grid": [],
+        "params": {
+          "timing_ms": 14,
+          "dynamics": 0.34,
+          "phrase_rubato": 0.28,
+          "cadence_slowdown": 0.12
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "baroque",
+        "label": "Baroque Breath",
+        "grid": [],
+        "params": {
+          "timing_ms": 7,
+          "dynamics": 0.18,
+          "phrase_rubato": 0.08,
+          "articulation_variance": 0.16
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "jazz",
+        "label": "Jazz Pocket",
+        "grid": [],
+        "params": {
+          "timing_ms": 18,
+          "role_offsets_ms": {
+            "ride": -1,
+            "bass": -4,
+            "comp": 11,
+            "lead": 6
+          },
+          "dynamics": 0.32,
+          "swing": 0.64
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "folk",
+        "label": "Folk Push-Pull",
+        "grid": [],
+        "params": {
+          "timing_ms": 13,
+          "dynamics": 0.28,
+          "phrase_rubato": 0.14,
+          "strum_ms": 24
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "cinematic",
+        "label": "Cinematic Arc",
+        "grid": [],
+        "params": {
+          "timing_ms": 9,
+          "dynamics": 0.4,
+          "phrase_rubato": 0.18,
+          "strum_ms": 32
+        },
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "id": "uncanny",
+        "label": "Uncanny Instability",
+        "grid": [],
+        "params": {
+          "timing_ms": 20,
+          "dynamics": 0.18,
+          "correlated_drift": 0.14,
+          "detune_cents": 5
+        },
+        "tags": [
+          "performance"
+        ]
+      }
+    ],
+    "chop": [
+      {
+        "id": "eighth",
+        "label": "Eighth Gate",
+        "grid": [
+          0,
+          0.5
+        ],
+        "params": {
+          "gate": 0.42
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "sixteenth",
+        "label": "Sixteenth Gate",
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75
+        ],
+        "params": {
+          "gate": 0.18
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "three",
+        "label": "Three Cycle",
+        "grid": [
+          0,
+          0.333,
+          0.666
+        ],
+        "params": {
+          "gate": 0.26
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "five",
+        "label": "Five Cycle",
+        "grid": [
+          0,
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "params": {
+          "gate": 0.14
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "euclid3_8",
+        "label": "3 in 8",
+        "grid": [
+          0,
+          0.375,
+          0.75
+        ],
+        "params": {
+          "euclidean": [
+            3,
+            8
+          ]
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "euclid5_8",
+        "label": "5 in 8",
+        "grid": [
+          0,
+          0.25,
+          0.375,
+          0.625,
+          0.75
+        ],
+        "params": {
+          "euclidean": [
+            5,
+            8
+          ]
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "skew_left",
+        "label": "Onset Skew Left",
+        "grid": [
+          0,
+          0.21,
+          0.48,
+          0.72
+        ],
+        "params": {
+          "onset_skew": -0.18
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "skew_right",
+        "label": "Onset Skew Right",
+        "grid": [
+          0,
+          0.28,
+          0.55,
+          0.82
+        ],
+        "params": {
+          "onset_skew": 0.18
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "morph_gate",
+        "label": "Morph Gate",
+        "grid": [
+          0,
+          0.25,
+          0.625,
+          0.875
+        ],
+        "params": {
+          "rotate_per_cycle": 1
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      },
+      {
+        "id": "subcycle",
+        "label": "Sub-Cycle 3/4",
+        "grid": [
+          0,
+          0.1875,
+          0.375,
+          0.75
+        ],
+        "params": {
+          "sub_cycles": 3
+        },
+        "tags": [
+          "gate",
+          "rhythm"
+        ]
+      }
+    ],
+    "melody_motion": [
+      {
+        "id": "current",
+        "label": "Current Register",
+        "grid": [
+          0
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "up3",
+        "label": "Up a Third",
+        "grid": [
+          2
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "up4",
+        "label": "Up a Fourth",
+        "grid": [
+          3
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "down3",
+        "label": "Down a Third",
+        "grid": [
+          -2
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "down4",
+        "label": "Down a Fourth",
+        "grid": [
+          -3
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "updown",
+        "label": "Up-Down",
+        "grid": [
+          0,
+          2,
+          4,
+          2
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "osc1",
+        "label": "Oscillate Step",
+        "grid": [
+          0,
+          1,
+          0,
+          -1
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "osc2",
+        "label": "Oscillate Third",
+        "grid": [
+          0,
+          2,
+          -1,
+          1
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "repeat1",
+        "label": "Repeat-Answer",
+        "grid": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "params": {},
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "rhythm1",
+        "label": "Rhythm Displacement",
+        "grid": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "params": {
+          "rotate_rhythm": 1
+        },
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "sync1",
+        "label": "Syncopated Answer",
+        "grid": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "params": {
+          "pickup": true
+        },
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "flourish1",
+        "label": "Flourish",
+        "grid": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          2
+        ],
+        "params": {
+          "ornament": true
+        },
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "house1",
+        "label": "House Hook",
+        "grid": [
+          0,
+          2,
+          0,
+          4
+        ],
+        "params": {
+          "offbeat": true
+        },
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "slow",
+        "label": "Slow Arc",
+        "grid": [
+          0,
+          1,
+          3,
+          4,
+          2
+        ],
+        "params": {
+          "augmentation": 2
+        },
+        "tags": [
+          "melody"
+        ]
+      },
+      {
+        "id": "morph1",
+        "label": "Morph Contour",
+        "grid": [
+          0,
+          2,
+          1,
+          4,
+          3
+        ],
+        "params": {
+          "morph": 0.5
+        },
+        "tags": [
+          "melody"
+        ]
+      }
+    ]
+  }
+}

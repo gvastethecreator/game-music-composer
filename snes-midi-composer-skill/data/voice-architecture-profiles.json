@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "name": "Neo-SPC voice architecture profiles",
+  "recommended_profile": "expanded_16",
+  "principles": [
+    "A voice budget is a ceiling and orchestration plan, not a permanent density target.",
+    "Core identity must survive as melody, bass and harmony before ensemble layers are added.",
+    "Additional voices must have a declared role: core, ensemble, ornament, texture, percussion or effects.",
+    "Peak density should be section-dependent; 24-32 voices are reserved for formal arrivals, counterpoint or large ensembles."
+  ],
+  "profiles": [
+    {
+      "id": "legacy_8",
+      "max_voices": 8,
+      "recommended_core": 6,
+      "sfx_reserve": 1,
+      "use": "hardware-aware sketches and intentionally sparse retro cues"
+    },
+    {
+      "id": "compact_12",
+      "max_voices": 12,
+      "recommended_core": 7,
+      "use": "small ensembles, layered leads and richer percussion"
+    },
+    {
+      "id": "expanded_16",
+      "max_voices": 16,
+      "recommended_core": 8,
+      "use": "default evolved-SNES arrangement profile"
+    },
+    {
+      "id": "ensemble_24",
+      "max_voices": 24,
+      "recommended_core": 9,
+      "use": "orchestral, choral, dense action and multi-layer electronic cues"
+    },
+    {
+      "id": "symphonic_32",
+      "max_voices": 32,
+      "recommended_core": 10,
+      "use": "classical counterpoint, large choir/orchestra and exceptional climaxes"
+    }
+  ]
+}

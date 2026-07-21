@@ -1,0 +1,20 @@
+{
+  "bank": "neo-spc-factory-bank",
+  "version": "0.1.0",
+  "default_profile": "neo16",
+  "assignments": [
+    {
+      "instrument_id": "lead_1",
+      "role": "lead",
+      "patch_id": "winds.flute",
+      "profile": "neo16",
+      "range": [60, 84],
+      "velocity_range": [48, 112],
+      "articulation": "legato_phrase",
+      "gain_trim_db": -1.0,
+      "pan_policy": "phrase_balanced",
+      "fallback_patch": "winds.ocarina",
+      "selection_reason": "breath-like foreground color with a compact retro footprint"
+    }
+  ]
+}
