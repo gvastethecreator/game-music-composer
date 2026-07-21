@@ -1,39 +1,36 @@
-# Neo-SPC Composer Studio v4.1
+# Neo-SPC Composer Studio
 
-A static evolved-retro music workstation containing:
+A static, local-friendly showcase for the Neo-SPC composition skill.
 
-- 100 reviewed compositions;
-- Factory Live multisample playback;
-- the Neo-SPC Factory Bank browser;
-- mastered A/B previews;
-- per-instrument volume controls;
-- global tempo and transposition;
-- animated piano roll;
-- full Recipe Builder;
-- independent Professor Review;
-- MIDI, audio, skill and soundbank downloads.
+The first screen starts with sound. From there you can:
+
+- hear 100 complete game-music cues with Factory Live or mastered audio;
+- inspect form, harmony, voices, notes and patch routing;
+- shape and export a 15-part composition recipe;
+- browse and audition 50 original Factory Bank patches;
+- read a repeatable score review and download MIDI, source data or the full skill.
 
 ## Run locally
-
-Extract the ZIP before opening `index.html`.
-
-Factory Live and the embedded Neo-16 bank work from `file://`. For the most consistent browser behavior, run a local server:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`. Direct `file://` use remains supported for the core static flow.
 
-## GitHub Pages
+The app has no build step. It loads the cue index first, then fetches full cue data and the large sample bank only when playback or bank use needs them.
 
-The project is static and has no build step. Upload the folder contents to a repository and publish the repository root through GitHub Pages.
+## Checks
 
-## Soundbank
+```bash
+python scripts/audit_showcase.py
+node --check app.js
+```
 
-See `FACTORY-BANK-INTEGRATION.md`. The complete bank remains CC0-1.0 and contains no extracted game samples.
+The static audit checks markup links, JavaScript element hooks, all 100 lazy cue files, 300 cue media files, bank previews, downloads and key access styles.
 
+## Skill and bank
 
-## Lite package
-
-This package omits the duplicate full-bank ZIP and the duplicate audio-pack ZIP. Factory Live, all 100 browser previews and the embedded Neo-16 bank remain functional. Download the standalone Factory Bank separately when the complete SFZ/WAV library is needed.
+- `downloads/neospc-music-composer.zip` contains the full skill.
+- `FACTORY-BANK-INTEGRATION.md` covers bank layout, license and use.
+- The Factory Bank uses original CC0 material and contains no extracted game samples.
