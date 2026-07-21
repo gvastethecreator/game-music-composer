@@ -1,0 +1,4 @@
+interface:
+  display_name: "Neo-SPC Music Composer"
+  short_description: "Compose and audit expressive SNES-style game music"
+  default_prompt: "Use $neospc-music-composer to compose a loop-ready SNES-style game cue from a concrete scene brief."
