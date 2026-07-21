@@ -1,0 +1,702 @@
+[
+  {
+    "id": "fernway_crossing",
+    "bpm": 98,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "summit_lines",
+    "bpm": 116,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "emerald_canopy",
+    "bpm": 104,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "wake_of_amber",
+    "bpm": 92,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "isles_above",
+    "bpm": 110,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "saffron_miles",
+    "bpm": 106,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "under_ice_lantern",
+    "bpm": 76,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "archive_of_roots",
+    "bpm": 84,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "river_below",
+    "bpm": 88,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "lanterns_homeward",
+    "bpm": 102,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "iron_pulse",
+    "bpm": 154,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 9
+  },
+  {
+    "id": "crown_breaker",
+    "bpm": 132,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "redline_pursuit",
+    "bpm": 176,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "two_blades",
+    "bpm": 124,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "slag_foundry",
+    "bpm": 148,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "cloud_lancers",
+    "bpm": 162,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 3
+  },
+  {
+    "id": "last_heart",
+    "bpm": 138,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "victory_lap_zero",
+    "bpm": 188,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "walls_of_bronze",
+    "bpm": 110,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "vector_arena",
+    "bpm": 168,
+    "split_notes": 0,
+    "ghost_drums": 14,
+    "fills": 6
+  },
+  {
+    "id": "footsteps_in_plaster",
+    "bpm": 68,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "salt_circle",
+    "bpm": 76,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "under_the_skin",
+    "bpm": 82,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "stars_without_distance",
+    "bpm": 54,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "the_room_remembers",
+    "bpm": 64,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "lamp_behind_the_door",
+    "bpm": 72,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "dont_look_back",
+    "bpm": 190,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "music_box_teeth",
+    "bpm": 86,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "beneath_the_well",
+    "bpm": 58,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "the_shape_in_full",
+    "bpm": 96,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "morning_bread",
+    "bpm": 96,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "three_mugs_later",
+    "bpm": 118,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "paper_lantern_row",
+    "bpm": 112,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "white_stone_capital",
+    "bpm": 104,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "copper_saffron",
+    "bpm": 122,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "the_blue_stove",
+    "bpm": 78,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "painted_wheels",
+    "bpm": 136,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "shift_change",
+    "bpm": 126,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "tables_by_the_tide",
+    "bpm": 92,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "all_bells_open",
+    "bpm": 132,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "empty_chair",
+    "bpm": 62,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "first_light_after",
+    "bpm": 84,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "postcard_in_june",
+    "bpm": 76,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "at_the_station",
+    "bpm": 92,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "last_boat_west",
+    "bpm": 70,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "hands_in_winter",
+    "bpm": 68,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "flags_in_mud",
+    "bpm": 58,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "stand_again",
+    "bpm": 106,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "name_on_the_glass",
+    "bpm": 74,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "road_after_credits",
+    "bpm": 88,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "ink_under_rain",
+    "bpm": 88,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "gear_seven",
+    "bpm": 112,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "catalogue_of_mirrors",
+    "bpm": 72,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "clean_room_signal",
+    "bpm": 108,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "four_doors_one_key",
+    "bpm": 96,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "velvet_entry",
+    "bpm": 82,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "stone_answers",
+    "bpm": 90,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "rooms_that_fold",
+    "bpm": 66,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "redacted_pages",
+    "bpm": 98,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "minute_hand_zero",
+    "bpm": 126,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "arches_of_mercy",
+    "bpm": 72,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "moss_crown_dance",
+    "bpm": 104,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "sleeping_dragon_court",
+    "bpm": 84,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "palace_of_low_stars",
+    "bpm": 96,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "thirteen_candles",
+    "bpm": 92,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "court_of_thistledown",
+    "bpm": 128,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "pilgrims_of_gold",
+    "bpm": 88,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "black_banner_kingdom",
+    "bpm": 104,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "four_element_shrine",
+    "bpm": 108,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "the_oracle_opens",
+    "bpm": 68,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "night_rail_88",
+    "bpm": 118,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "concrete_frequency",
+    "bpm": 132,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "escape_velocity_red",
+    "bpm": 176,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "quiet_orbit",
+    "bpm": 62,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "rain_neon_block",
+    "bpm": 106,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "hangar_nine",
+    "bpm": 120,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "language_from_outside",
+    "bpm": 74,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "orbital_knives",
+    "bpm": 164,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "soft_reset_dream",
+    "bpm": 80,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "core_temperature",
+    "bpm": 150,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 9
+  },
+  {
+    "id": "cigarette_geometry",
+    "bpm": 86,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "swing_room_three",
+    "bpm": 132,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "stairs_two_at_once",
+    "bpm": 184,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "assembly_line_soul",
+    "bpm": 112,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "amber_booth",
+    "bpm": 72,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "roof_tiles_after_rain",
+    "bpm": 92,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "green_harbor",
+    "bpm": 82,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "echo_alley",
+    "bpm": 74,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "saturday_horns",
+    "bpm": 154,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 6
+  },
+  {
+    "id": "underpass_tango",
+    "bpm": 118,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "invention_in_copper",
+    "bpm": 112,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "fugue_of_small_machines",
+    "bpm": 104,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "winter_gallery",
+    "bpm": 84,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "marble_steps",
+    "bpm": 108,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "phase_garden",
+    "bpm": 126,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "quartet_at_dusk",
+    "bpm": 72,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "water_without_edges",
+    "bpm": 68,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "allegro_for_a_tyrant",
+    "bpm": 148,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "angles_in_the_dark",
+    "bpm": 76,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  },
+  {
+    "id": "overture_for_new_worlds",
+    "bpm": 96,
+    "split_notes": 0,
+    "ghost_drums": 0,
+    "fills": 0
+  }
+]

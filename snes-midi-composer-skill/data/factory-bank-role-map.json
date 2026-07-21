@@ -1,0 +1,52 @@
+{
+  "lead": [
+    "winds.flute",
+    "winds.ocarina",
+    "winds.clarinet",
+    "winds.oboe",
+    "brass.trumpet",
+    "brass.french_horn",
+    "synth.saw_lead",
+    "chip.pulse25"
+  ],
+  "bass": [
+    "bass.upright_soft",
+    "bass.electric_finger",
+    "bass.electric_pick",
+    "bass.analog_round",
+    "bass.sub_sine",
+    "bass.bowed_contrabass"
+  ],
+  "harmony": [
+    "strings.soft",
+    "strings.bright",
+    "choir.ah",
+    "choir.oo",
+    "keys.electric_piano",
+    "synth.glass_pad"
+  ],
+  "rhythm": [
+    "strings.pizzicato",
+    "keys.harpsichord",
+    "plucks.harp",
+    "plucks.dulcimer",
+    "chip.pulse50"
+  ],
+  "percussion": [
+    "drums.kick_deep",
+    "drums.kick_punch",
+    "drums.snare_body",
+    "drums.snare_crack",
+    "drums.hat_closed",
+    "drums.hat_open",
+    "drums.tom_low",
+    "drums.tom_high",
+    "drums.rim",
+    "drums.shaker"
+  ],
+  "fx": [
+    "texture.dark_drone",
+    "texture.wind",
+    "fx.shimmer"
+  ]
+}

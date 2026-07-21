@@ -1,0 +1,99 @@
+{
+  "version": "3.0.0",
+  "name": "Independent Music Professor Review",
+  "scale": "0-10 per dimension; weighted score 0-100",
+  "dimensions": {
+    "melodic_coherence": {
+      "weight": 1.3,
+      "questions": [
+        "Does the line have destination tones?",
+        "Are leaps motivated and balanced?",
+        "Does the motif govern more than one phrase?"
+      ]
+    },
+    "harmonic_logic": {
+      "weight": 1.4,
+      "questions": [
+        "Do structural notes clarify the harmony?",
+        "Are non-chord tones prepared or resolved?",
+        "Does the bass support function and inversion?"
+      ]
+    },
+    "phrase_and_form": {
+      "weight": 1.25,
+      "questions": [
+        "Are phrases differentiated by function?",
+        "Is there breath, continuation and arrival?",
+        "Does the climax have preparation?"
+      ]
+    },
+    "rhythm_and_groove": {
+      "weight": 1.1,
+      "questions": [
+        "Is repetition purposeful?",
+        "Does the groove fit the declared style?",
+        "Do sections change rhythmic behavior?"
+      ]
+    },
+    "counterpoint_voice_leading": {
+      "weight": 0.9,
+      "questions": [
+        "Are independent voices genuinely independent?",
+        "Are collisions and parallels controlled?",
+        "Do inner voices create smooth motion?"
+      ]
+    },
+    "orchestration": {
+      "weight": 1.0,
+      "questions": [
+        "Is foreground/background hierarchy clear?",
+        "Do timbres fit role and register?",
+        "Do extra voices enter for formal reasons?"
+      ]
+    },
+    "expression": {
+      "weight": 0.75,
+      "questions": [
+        "Do timing, velocity and articulation express phrase structure?",
+        "Are repeated notes varied?",
+        "Are breaths and strums intentional?"
+      ]
+    },
+    "idiomatic_character": {
+      "weight": 1.05,
+      "questions": [
+        "Does the piece behave like its genre, not merely use genre instruments?",
+        "Are bass, drums and comping idiomatic?"
+      ]
+    },
+    "loop_design": {
+      "weight": 0.65,
+      "questions": [
+        "Does the end motivate the beginning?",
+        "Is the seam harmonically and rhythmically coherent?"
+      ]
+    },
+    "identity": {
+      "weight": 0.9,
+      "questions": [
+        "Is there a memorable thesis?",
+        "Could the cue be confused with another benchmark cue?"
+      ]
+    }
+  },
+  "thresholds": {
+    "approved": 80,
+    "revise": 67,
+    "rebuild": 0
+  },
+  "review_sequence": [
+    "listen to core reduction",
+    "inspect score",
+    "evaluate form and phrase",
+    "evaluate genre behavior",
+    "evaluate orchestration",
+    "evaluate performance",
+    "prescribe minimum targeted changes",
+    "review again"
+  ]
+}

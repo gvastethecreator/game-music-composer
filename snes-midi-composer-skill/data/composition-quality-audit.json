@@ -1,0 +1,2266 @@
+{
+  "version": "2.1",
+  "summary": {
+    "counts": {
+      "rebuild": 2,
+      "review": 31,
+      "curated": 67
+    },
+    "mean_score": 81.16
+  },
+  "tracks": [
+    {
+      "id": "hangar_nine",
+      "title": "Hangar Nine",
+      "category": "electronic",
+      "score": 60.03,
+      "status": "rebuild",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.102,
+        "section_contrast": 0.035,
+        "interval_entropy": 0.678,
+        "step_ratio": 0.198,
+        "huge_leap_ratio": 0.452,
+        "breath_ratio": 0.152,
+        "exact_doubling_ratio": 0.005
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "clean_room_signal",
+      "title": "Clean Room Signal",
+      "category": "mystery",
+      "score": 64.76,
+      "status": "rebuild",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.067,
+        "section_contrast": 0.047,
+        "interval_entropy": 0.905,
+        "step_ratio": 0.333,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.821,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "minute_hand_zero",
+      "title": "Minute Hand Zero",
+      "category": "mystery",
+      "score": 65.62,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.113,
+        "section_contrast": 0.041,
+        "interval_entropy": 0.932,
+        "step_ratio": 0.493,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "concrete_frequency",
+      "title": "Concrete Frequency",
+      "category": "electronic",
+      "score": 66.19,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.053,
+        "section_contrast": 0.028,
+        "interval_entropy": 0.939,
+        "step_ratio": 0.462,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.821,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "dont_look_back",
+      "title": "Don\u2019t Look Back",
+      "category": "horror",
+      "score": 68.36,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.95,
+        "comp_topology_unique": 0.05,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.081,
+        "section_contrast": 0.049,
+        "interval_entropy": 0.922,
+        "step_ratio": 0.528,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.112,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "night_rail_88",
+      "title": "Night Rail 88",
+      "category": "electronic",
+      "score": 70.13,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.101,
+        "section_contrast": 0.038,
+        "interval_entropy": 0.865,
+        "step_ratio": 0.239,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.211,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "saturday_horns",
+      "title": "Saturday Horns",
+      "category": "urban",
+      "score": 72.1,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.086,
+        "section_contrast": 0.031,
+        "interval_entropy": 0.884,
+        "step_ratio": 0.429,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.27,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "beneath_the_well",
+      "title": "Beneath the Well",
+      "category": "horror",
+      "score": 72.25,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 0.188,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.127,
+        "section_contrast": 0.05,
+        "interval_entropy": 0.915,
+        "step_ratio": 0.603,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.667,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "three_mugs_later",
+      "title": "Three Mugs Later",
+      "category": "towns",
+      "score": 72.83,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.073,
+        "section_contrast": 0.026,
+        "interval_entropy": 0.827,
+        "step_ratio": 0.73,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "amber_booth",
+      "title": "Amber Booth",
+      "category": "urban",
+      "score": 73.31,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.072,
+        "section_contrast": 0.029,
+        "interval_entropy": 0.907,
+        "step_ratio": 0.587,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.492,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "assembly_line_soul",
+      "title": "Assembly Line Soul",
+      "category": "urban",
+      "score": 73.54,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.094,
+        "section_contrast": 0.019,
+        "interval_entropy": 0.907,
+        "step_ratio": 0.239,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.225,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "the_blue_stove",
+      "title": "The Blue Stove",
+      "category": "towns",
+      "score": 73.77,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.084,
+        "section_contrast": 0.034,
+        "interval_entropy": 0.89,
+        "step_ratio": 0.545,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.436,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "cigarette_geometry",
+      "title": "Cigarette Geometry",
+      "category": "urban",
+      "score": 73.98,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.091,
+        "section_contrast": 0.023,
+        "interval_entropy": 0.931,
+        "step_ratio": 0.319,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.511,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "copper_saffron",
+      "title": "Copper & Saffron",
+      "category": "towns",
+      "score": 74.01,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.08,
+        "section_contrast": 0.031,
+        "interval_entropy": 0.929,
+        "step_ratio": 0.397,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.571,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "slag_foundry",
+      "title": "Slag Foundry",
+      "category": "action",
+      "score": 74.12,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.25,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.091,
+        "section_contrast": 0.116,
+        "interval_entropy": 0.718,
+        "step_ratio": 0.285,
+        "huge_leap_ratio": 0.243,
+        "breath_ratio": 0.152,
+        "exact_doubling_ratio": 0.005
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "four_doors_one_key",
+      "title": "Four Doors, One Key",
+      "category": "mystery",
+      "score": 74.33,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.95,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.119,
+        "section_contrast": 0.019,
+        "interval_entropy": 0.878,
+        "step_ratio": 0.596,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.112,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "iron_pulse",
+      "title": "Iron Pulse",
+      "category": "action",
+      "score": 74.34,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.25,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.127,
+        "section_contrast": 0.092,
+        "interval_entropy": 0.698,
+        "step_ratio": 0.048,
+        "huge_leap_ratio": 0.665,
+        "breath_ratio": 0.144,
+        "exact_doubling_ratio": 0.006
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "rooms_that_fold",
+      "title": "Rooms That Fold",
+      "category": "mystery",
+      "score": 74.36,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.091,
+        "section_contrast": 0.036,
+        "interval_entropy": 0.914,
+        "step_ratio": 0.366,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.38,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "tables_by_the_tide",
+      "title": "Tables by the Tide",
+      "category": "towns",
+      "score": 74.41,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.096,
+        "section_contrast": 0.036,
+        "interval_entropy": 0.87,
+        "step_ratio": 0.545,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.436,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "shift_change",
+      "title": "Shift Change",
+      "category": "towns",
+      "score": 74.42,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.104,
+        "section_contrast": 0.036,
+        "interval_entropy": 0.911,
+        "step_ratio": 0.592,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "redacted_pages",
+      "title": "Redacted Pages",
+      "category": "mystery",
+      "score": 75.33,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.115,
+        "section_contrast": 0.051,
+        "interval_entropy": 0.883,
+        "step_ratio": 0.636,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.418,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "language_from_outside",
+      "title": "Language from Outside",
+      "category": "electronic",
+      "score": 75.5,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.221,
+        "section_contrast": 0.085,
+        "interval_entropy": 0.924,
+        "step_ratio": 0.413,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.762,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "swing_room_three",
+      "title": "Swing Room Three",
+      "category": "urban",
+      "score": 75.65,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.138,
+        "section_contrast": 0.043,
+        "interval_entropy": 0.953,
+        "step_ratio": 0.619,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "ink_under_rain",
+      "title": "Ink Under Rain",
+      "category": "mystery",
+      "score": 76.05,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.126,
+        "section_contrast": 0.05,
+        "interval_entropy": 0.912,
+        "step_ratio": 0.444,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "morning_bread",
+      "title": "Morning Bread",
+      "category": "towns",
+      "score": 76.24,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.152,
+        "section_contrast": 0.028,
+        "interval_entropy": 0.921,
+        "step_ratio": 0.408,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.127,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "underpass_tango",
+      "title": "Underpass Tango",
+      "category": "urban",
+      "score": 76.36,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.142,
+        "section_contrast": 0.049,
+        "interval_entropy": 0.935,
+        "step_ratio": 0.365,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.476,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "green_harbor",
+      "title": "Green Harbor",
+      "category": "urban",
+      "score": 76.42,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.161,
+        "section_contrast": 0.02,
+        "interval_entropy": 0.882,
+        "step_ratio": 0.451,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "the_room_remembers",
+      "title": "The Room Remembers",
+      "category": "horror",
+      "score": 76.44,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.944,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.119,
+        "section_contrast": 0.071,
+        "interval_entropy": 0.906,
+        "step_ratio": 0.532,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.403,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "stand_again",
+      "title": "Stand Again",
+      "category": "emotion",
+      "score": 77.01,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.081,
+        "section_contrast": 0.1,
+        "interval_entropy": 0.94,
+        "step_ratio": 0.27,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.27,
+        "exact_doubling_ratio": 0.001
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "music_box_teeth",
+      "title": "Music Box Teeth",
+      "category": "horror",
+      "score": 77.12,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.124,
+        "section_contrast": 0.091,
+        "interval_entropy": 0.923,
+        "step_ratio": 0.436,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.309,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "rain_neon_block",
+      "title": "Rain / Neon / Block",
+      "category": "electronic",
+      "score": 77.17,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.625,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.113,
+        "section_contrast": 0.028,
+        "interval_entropy": 0.883,
+        "step_ratio": 0.429,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "paper_lantern_row",
+      "title": "Paper Lantern Row",
+      "category": "towns",
+      "score": 77.28,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.147,
+        "section_contrast": 0.053,
+        "interval_entropy": 0.876,
+        "step_ratio": 0.282,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "stone_answers",
+      "title": "Stone Answers",
+      "category": "mystery",
+      "score": 77.51,
+      "status": "review",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.211,
+        "section_contrast": 0.033,
+        "interval_entropy": 0.943,
+        "step_ratio": 0.413,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.603,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "under_the_skin",
+      "title": "Under the Skin",
+      "category": "horror",
+      "score": 78.1,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.128,
+        "section_contrast": 0.113,
+        "interval_entropy": 0.915,
+        "step_ratio": 0.582,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.418,
+        "exact_doubling_ratio": 0.007
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "painted_wheels",
+      "title": "Painted Wheels",
+      "category": "towns",
+      "score": 78.12,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.172,
+        "section_contrast": 0.077,
+        "interval_entropy": 0.911,
+        "step_ratio": 0.418,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.345,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "echo_alley",
+      "title": "Echo Alley",
+      "category": "urban",
+      "score": 78.44,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.143,
+        "section_contrast": 0.083,
+        "interval_entropy": 0.946,
+        "step_ratio": 0.302,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.762,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "roof_tiles_after_rain",
+      "title": "Roof Tiles After Rain",
+      "category": "urban",
+      "score": 78.56,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.195,
+        "section_contrast": 0.056,
+        "interval_entropy": 0.904,
+        "step_ratio": 0.635,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.27,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "redline_pursuit",
+      "title": "Redline Pursuit",
+      "category": "action",
+      "score": 78.63,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 0.25,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.098,
+        "section_contrast": 0.053,
+        "interval_entropy": 0.92,
+        "step_ratio": 0.352,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.197,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "lamp_behind_the_door",
+      "title": "Lamp Behind the Door",
+      "category": "horror",
+      "score": 78.95,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.234,
+        "section_contrast": 0.043,
+        "interval_entropy": 0.918,
+        "step_ratio": 0.545,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.436,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "core_temperature",
+      "title": "Core Temperature",
+      "category": "electronic",
+      "score": 79.3,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 0.062,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.151,
+        "section_contrast": 0.151,
+        "interval_entropy": 0.899,
+        "step_ratio": 0.479,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "escape_velocity_red",
+      "title": "Escape Velocity Red",
+      "category": "electronic",
+      "score": 79.33,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 0.812,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.105,
+        "section_contrast": 0.058,
+        "interval_entropy": 0.906,
+        "step_ratio": 0.225,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.211,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "saffron_miles",
+      "title": "Saffron Miles",
+      "category": "adventure",
+      "score": 79.39,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.172,
+        "section_contrast": 0.083,
+        "interval_entropy": 0.924,
+        "step_ratio": 0.397,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.524,
+        "exact_doubling_ratio": 0.003
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "stairs_two_at_once",
+      "title": "Stairs Two at Once",
+      "category": "urban",
+      "score": 79.47,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.189,
+        "section_contrast": 0.029,
+        "interval_entropy": 0.89,
+        "step_ratio": 0.483,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.092,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "river_below",
+      "title": "River Below",
+      "category": "adventure",
+      "score": 79.71,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.089,
+        "section_contrast": 0.155,
+        "interval_entropy": 0.937,
+        "step_ratio": 0.34,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.872,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "gear_seven",
+      "title": "Gear Seven",
+      "category": "mystery",
+      "score": 79.89,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.257,
+        "section_contrast": 0.065,
+        "interval_entropy": 0.943,
+        "step_ratio": 0.465,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "summit_lines",
+      "title": "Summit Lines",
+      "category": "adventure",
+      "score": 79.91,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.178,
+        "section_contrast": 0.125,
+        "interval_entropy": 0.876,
+        "step_ratio": 0.365,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "postcard_in_june",
+      "title": "Postcard in June",
+      "category": "emotion",
+      "score": 80.36,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.102,
+        "section_contrast": 0.173,
+        "interval_entropy": 0.91,
+        "step_ratio": 0.426,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.468,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "fernway_crossing",
+      "title": "Fernway Crossing",
+      "category": "adventure",
+      "score": 80.43,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.118,
+        "section_contrast": 0.175,
+        "interval_entropy": 0.939,
+        "step_ratio": 0.468,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.511,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "quartet_at_dusk",
+      "title": "Quartet at Dusk",
+      "category": "classical",
+      "score": 80.68,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.95,
+        "comp_topology_unique": 0.35,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.397,
+        "section_contrast": 0.753,
+        "interval_entropy": 0.804,
+        "step_ratio": 0.225,
+        "huge_leap_ratio": 0.388,
+        "breath_ratio": 0.078,
+        "exact_doubling_ratio": 0.017
+      },
+      "reasons": []
+    },
+    {
+      "id": "empty_chair",
+      "title": "Empty Chair",
+      "category": "emotion",
+      "score": 80.76,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.722,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.129,
+        "section_contrast": 0.161,
+        "interval_entropy": 0.879,
+        "step_ratio": 0.548,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.774,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "catalogue_of_mirrors",
+      "title": "Catalogue of Mirrors",
+      "category": "mystery",
+      "score": 80.86,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.812,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.198,
+        "section_contrast": 0.094,
+        "interval_entropy": 0.95,
+        "step_ratio": 0.27,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.889,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "soft_reset_dream",
+      "title": "Soft Reset Dream",
+      "category": "electronic",
+      "score": 80.94,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.128,
+        "section_contrast": 0.062,
+        "interval_entropy": 0.928,
+        "step_ratio": 0.381,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.381,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "footsteps_in_plaster",
+      "title": "Footsteps in Plaster",
+      "category": "horror",
+      "score": 81.09,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.625,
+        "comp_topology_unique": 0.812,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.36,
+        "section_contrast": 0.09,
+        "interval_entropy": 0.921,
+        "step_ratio": 0.509,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.436,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "cloud_lancers",
+      "title": "Cloud Lancers",
+      "category": "action",
+      "score": 81.17,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.071,
+        "section_contrast": 0.116,
+        "interval_entropy": 0.949,
+        "step_ratio": 0.365,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.004
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "fugue_of_small_machines",
+      "title": "Fugue of Small Machines",
+      "category": "classical",
+      "score": 81.2,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.9,
+        "comp_topology_unique": 0.4,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.541,
+        "section_contrast": 0.604,
+        "interval_entropy": 0.902,
+        "step_ratio": 0.235,
+        "huge_leap_ratio": 0.17,
+        "breath_ratio": 0.065,
+        "exact_doubling_ratio": 0.014
+      },
+      "reasons": []
+    },
+    {
+      "id": "moss_crown_dance",
+      "title": "Moss-Crown Dance",
+      "category": "fantasy",
+      "score": 82.13,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.154,
+        "section_contrast": 0.169,
+        "interval_entropy": 0.87,
+        "step_ratio": 0.465,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.113,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve",
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "archive_of_roots",
+      "title": "Archive of Roots",
+      "category": "adventure",
+      "score": 83.33,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.875,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.212,
+        "section_contrast": 0.173,
+        "interval_entropy": 0.903,
+        "step_ratio": 0.603,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.667,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "orbital_knives",
+      "title": "Orbital Knives",
+      "category": "electronic",
+      "score": 83.55,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 0.833,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.104,
+        "section_contrast": 0.121,
+        "interval_entropy": 0.949,
+        "step_ratio": 0.255,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.277,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "emerald_canopy",
+      "title": "Emerald Canopy",
+      "category": "adventure",
+      "score": 83.91,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.229,
+        "section_contrast": 0.154,
+        "interval_entropy": 0.909,
+        "step_ratio": 0.365,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.524,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "thirteen_candles",
+      "title": "Thirteen Candles",
+      "category": "fantasy",
+      "score": 84.08,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.144,
+        "section_contrast": 0.235,
+        "interval_entropy": 0.876,
+        "step_ratio": 0.619,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.667,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "flat_density_curve"
+      ]
+    },
+    {
+      "id": "name_on_the_glass",
+      "title": "Name on the Glass",
+      "category": "emotion",
+      "score": 84.17,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.229,
+        "section_contrast": 0.173,
+        "interval_entropy": 0.925,
+        "step_ratio": 0.524,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "stars_without_distance",
+      "title": "Stars Without Distance",
+      "category": "horror",
+      "score": 84.36,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.9,
+        "comp_topology_unique": 0.25,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.195,
+        "section_contrast": 0.306,
+        "interval_entropy": 0.898,
+        "step_ratio": 0.418,
+        "huge_leap_ratio": 0.013,
+        "breath_ratio": 0.759,
+        "exact_doubling_ratio": 0.014
+      },
+      "reasons": []
+    },
+    {
+      "id": "quiet_orbit",
+      "title": "Quiet Orbit",
+      "category": "electronic",
+      "score": 84.38,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 0.9,
+        "lead_topology_unique": 0.25,
+        "comp_topology_unique": 0.1,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.25,
+        "section_contrast": 0.321,
+        "interval_entropy": 0.908,
+        "step_ratio": 0.327,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.816,
+        "exact_doubling_ratio": 0.006
+      },
+      "reasons": []
+    },
+    {
+      "id": "hands_in_winter",
+      "title": "Hands in Winter",
+      "category": "emotion",
+      "score": 84.77,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.219,
+        "section_contrast": 0.18,
+        "interval_entropy": 0.929,
+        "step_ratio": 0.527,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.436,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "velvet_entry",
+      "title": "Velvet Entry",
+      "category": "mystery",
+      "score": 84.9,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.306,
+        "section_contrast": 0.187,
+        "interval_entropy": 0.921,
+        "step_ratio": 0.444,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.008
+      },
+      "reasons": [
+        "weak_section_contrast"
+      ]
+    },
+    {
+      "id": "allegro_for_a_tyrant",
+      "title": "Allegro for a Tyrant",
+      "category": "classical",
+      "score": 86.69,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.166,
+        "section_contrast": 0.344,
+        "interval_entropy": 0.913,
+        "step_ratio": 0.381,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.175,
+        "exact_doubling_ratio": 0.004
+      },
+      "reasons": []
+    },
+    {
+      "id": "flags_in_mud",
+      "title": "Flags in Mud",
+      "category": "emotion",
+      "score": 86.92,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.199,
+        "section_contrast": 0.333,
+        "interval_entropy": 0.878,
+        "step_ratio": 0.527,
+        "huge_leap_ratio": 0.018,
+        "breath_ratio": 0.618,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "phase_garden",
+      "title": "Phase Garden",
+      "category": "classical",
+      "score": 87.02,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 0.35,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.174,
+        "section_contrast": 0.144,
+        "interval_entropy": 0.955,
+        "step_ratio": 0.408,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.796,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "court_of_thistledown",
+      "title": "Court of Thistledown",
+      "category": "fantasy",
+      "score": 87.31,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.177,
+        "section_contrast": 0.328,
+        "interval_entropy": 0.865,
+        "step_ratio": 0.683,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.286,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "last_boat_west",
+      "title": "Last Boat West",
+      "category": "emotion",
+      "score": 87.32,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.9,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.211,
+        "section_contrast": 0.245,
+        "interval_entropy": 0.931,
+        "step_ratio": 0.508,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.475,
+        "exact_doubling_ratio": 0.004
+      },
+      "reasons": []
+    },
+    {
+      "id": "at_the_station",
+      "title": "At the Station",
+      "category": "emotion",
+      "score": 87.57,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.207,
+        "section_contrast": 0.25,
+        "interval_entropy": 0.937,
+        "step_ratio": 0.508,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.222,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "vector_arena",
+      "title": "Vector Arena",
+      "category": "action",
+      "score": 87.81,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 0.5,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.128,
+        "section_contrast": 0.167,
+        "interval_entropy": 0.943,
+        "step_ratio": 0.338,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.169,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "first_light_after",
+      "title": "First Light After",
+      "category": "emotion",
+      "score": 87.84,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.215,
+        "section_contrast": 0.3,
+        "interval_entropy": 0.924,
+        "step_ratio": 0.426,
+        "huge_leap_ratio": 0.021,
+        "breath_ratio": 0.511,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "wake_of_amber",
+      "title": "Wake of Amber",
+      "category": "adventure",
+      "score": 88.07,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.179,
+        "section_contrast": 0.295,
+        "interval_entropy": 0.918,
+        "step_ratio": 0.38,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.342,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "marble_steps",
+      "title": "Marble Steps",
+      "category": "classical",
+      "score": 88.07,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.368,
+        "section_contrast": 0.85,
+        "interval_entropy": 0.862,
+        "step_ratio": 0.397,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.302,
+        "exact_doubling_ratio": 0.007
+      },
+      "reasons": []
+    },
+    {
+      "id": "salt_circle",
+      "title": "Salt Circle",
+      "category": "horror",
+      "score": 88.18,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.833,
+        "comp_topology_unique": 0.333,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.241,
+        "section_contrast": 0.428,
+        "interval_entropy": 0.915,
+        "step_ratio": 0.617,
+        "huge_leap_ratio": 0.021,
+        "breath_ratio": 0.383,
+        "exact_doubling_ratio": 0.013
+      },
+      "reasons": []
+    },
+    {
+      "id": "road_after_credits",
+      "title": "Road After Credits",
+      "category": "emotion",
+      "score": 88.28,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.95,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.24,
+        "section_contrast": 0.449,
+        "interval_entropy": 0.874,
+        "step_ratio": 0.544,
+        "huge_leap_ratio": 0.013,
+        "breath_ratio": 0.253,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "crown_breaker",
+      "title": "Crown Breaker",
+      "category": "action",
+      "score": 88.3,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.667,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.116,
+        "section_contrast": 0.281,
+        "interval_entropy": 0.945,
+        "step_ratio": 0.234,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.234,
+        "exact_doubling_ratio": 0.004
+      },
+      "reasons": []
+    },
+    {
+      "id": "lanterns_homeward",
+      "title": "Lanterns Homeward",
+      "category": "adventure",
+      "score": 88.31,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.23,
+        "section_contrast": 0.478,
+        "interval_entropy": 0.929,
+        "step_ratio": 0.39,
+        "huge_leap_ratio": 0.017,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "black_banner_kingdom",
+      "title": "Black-Banner Kingdom",
+      "category": "fantasy",
+      "score": 88.41,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.225,
+        "section_contrast": 0.505,
+        "interval_entropy": 0.931,
+        "step_ratio": 0.349,
+        "huge_leap_ratio": 0.016,
+        "breath_ratio": 0.238,
+        "exact_doubling_ratio": 0.013
+      },
+      "reasons": []
+    },
+    {
+      "id": "invention_in_copper",
+      "title": "Invention in Copper",
+      "category": "classical",
+      "score": 88.47,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.438,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.465,
+        "section_contrast": 0.308,
+        "interval_entropy": 0.956,
+        "step_ratio": 0.252,
+        "huge_leap_ratio": 0.019,
+        "breath_ratio": 0.075,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "arches_of_mercy",
+      "title": "Arches of Mercy",
+      "category": "fantasy",
+      "score": 88.64,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.9,
+        "comp_topology_unique": 0.75,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.483,
+        "section_contrast": 1.009,
+        "interval_entropy": 0.894,
+        "step_ratio": 0.646,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.456,
+        "exact_doubling_ratio": 0.031
+      },
+      "reasons": []
+    },
+    {
+      "id": "sleeping_dragon_court",
+      "title": "Sleeping Dragon Court",
+      "category": "fantasy",
+      "score": 88.78,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.667,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.362,
+        "section_contrast": 0.777,
+        "interval_entropy": 0.927,
+        "step_ratio": 0.319,
+        "huge_leap_ratio": 0.021,
+        "breath_ratio": 0.234,
+        "exact_doubling_ratio": 0.02
+      },
+      "reasons": []
+    },
+    {
+      "id": "winter_gallery",
+      "title": "Winter Gallery",
+      "category": "classical",
+      "score": 88.86,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.95,
+        "comp_topology_unique": 0.95,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.231,
+        "section_contrast": 0.31,
+        "interval_entropy": 0.927,
+        "step_ratio": 0.333,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.174,
+        "exact_doubling_ratio": 0.003
+      },
+      "reasons": []
+    },
+    {
+      "id": "isles_above",
+      "title": "Isles Above",
+      "category": "adventure",
+      "score": 88.87,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.286,
+        "section_contrast": 0.415,
+        "interval_entropy": 0.881,
+        "step_ratio": 0.508,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "two_blades",
+      "title": "Two Blades",
+      "category": "action",
+      "score": 88.87,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.192,
+        "section_contrast": 0.196,
+        "interval_entropy": 0.918,
+        "step_ratio": 0.492,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.508,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "pilgrims_of_gold",
+      "title": "Pilgrims of Gold",
+      "category": "fantasy",
+      "score": 88.92,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 0.9,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.352,
+        "section_contrast": 0.786,
+        "interval_entropy": 0.886,
+        "step_ratio": 0.544,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.304,
+        "exact_doubling_ratio": 0.02
+      },
+      "reasons": []
+    },
+    {
+      "id": "the_shape_in_full",
+      "title": "The Shape in Full",
+      "category": "horror",
+      "score": 89.09,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.875,
+        "comp_topology_unique": 0.688,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.306,
+        "section_contrast": 0.542,
+        "interval_entropy": 0.936,
+        "step_ratio": 0.444,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.222,
+        "exact_doubling_ratio": 0.026
+      },
+      "reasons": []
+    },
+    {
+      "id": "the_oracle_opens",
+      "title": "The Oracle Opens",
+      "category": "fantasy",
+      "score": 89.09,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.917,
+        "comp_topology_unique": 0.75,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.497,
+        "section_contrast": 1.191,
+        "interval_entropy": 0.926,
+        "step_ratio": 0.34,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.894,
+        "exact_doubling_ratio": 0.06
+      },
+      "reasons": []
+    },
+    {
+      "id": "angles_in_the_dark",
+      "title": "Angles in the Dark",
+      "category": "classical",
+      "score": 89.22,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.347,
+        "section_contrast": 0.421,
+        "interval_entropy": 0.929,
+        "step_ratio": 0.545,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.4,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "last_heart",
+      "title": "Last Heart",
+      "category": "action",
+      "score": 89.42,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.611,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.314,
+        "section_contrast": 0.224,
+        "interval_entropy": 0.889,
+        "step_ratio": 0.613,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.435,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "walls_of_bronze",
+      "title": "Walls of Bronze",
+      "category": "action",
+      "score": 89.43,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.812,
+        "comp_topology_unique": 0.938,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.267,
+        "section_contrast": 0.596,
+        "interval_entropy": 0.896,
+        "step_ratio": 0.381,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.222,
+        "exact_doubling_ratio": 0.02
+      },
+      "reasons": []
+    },
+    {
+      "id": "white_stone_capital",
+      "title": "White-Stone Capital",
+      "category": "towns",
+      "score": 89.43,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.222,
+        "section_contrast": 0.43,
+        "interval_entropy": 0.927,
+        "step_ratio": 0.333,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.27,
+        "exact_doubling_ratio": 0.012
+      },
+      "reasons": []
+    },
+    {
+      "id": "four_element_shrine",
+      "title": "Four-Element Shrine",
+      "category": "fantasy",
+      "score": 89.43,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.323,
+        "section_contrast": 0.676,
+        "interval_entropy": 0.942,
+        "step_ratio": 0.397,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.524,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "water_without_edges",
+      "title": "Water Without Edges",
+      "category": "classical",
+      "score": 89.43,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.938,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.327,
+        "section_contrast": 0.763,
+        "interval_entropy": 0.94,
+        "step_ratio": 0.238,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.889,
+        "exact_doubling_ratio": 0.011
+      },
+      "reasons": []
+    },
+    {
+      "id": "victory_lap_zero",
+      "title": "Victory Lap Zero",
+      "category": "action",
+      "score": 89.5,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.75,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.291,
+        "section_contrast": 0.24,
+        "interval_entropy": 0.88,
+        "step_ratio": 0.451,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.127,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "all_bells_open",
+      "title": "All Bells Open",
+      "category": "towns",
+      "score": 89.54,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.833,
+        "comp_topology_unique": 0.917,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.278,
+        "section_contrast": 0.375,
+        "interval_entropy": 0.913,
+        "step_ratio": 0.234,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.277,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    },
+    {
+      "id": "palace_of_low_stars",
+      "title": "Palace of Low Stars",
+      "category": "fantasy",
+      "score": 89.55,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 1.0,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.314,
+        "section_contrast": 0.707,
+        "interval_entropy": 0.94,
+        "step_ratio": 0.286,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.746,
+        "exact_doubling_ratio": 0.01
+      },
+      "reasons": []
+    },
+    {
+      "id": "overture_for_new_worlds",
+      "title": "Overture for New Worlds",
+      "category": "classical",
+      "score": 89.55,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.688,
+        "comp_topology_unique": 1.0,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.231,
+        "section_contrast": 0.531,
+        "interval_entropy": 0.9,
+        "step_ratio": 0.286,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.254,
+        "exact_doubling_ratio": 0.014
+      },
+      "reasons": []
+    },
+    {
+      "id": "under_ice_lantern",
+      "title": "Under-Ice Lantern",
+      "category": "adventure",
+      "score": 89.6,
+      "status": "curated",
+      "metrics": {
+        "bar_topology_unique": 1.0,
+        "lead_topology_unique": 0.889,
+        "comp_topology_unique": 0.833,
+        "adjacent_repetition": 0.0,
+        "density_cv": 0.237,
+        "section_contrast": 0.339,
+        "interval_entropy": 0.937,
+        "step_ratio": 0.324,
+        "huge_leap_ratio": 0.0,
+        "breath_ratio": 0.746,
+        "exact_doubling_ratio": 0.0
+      },
+      "reasons": []
+    }
+  ]
+}

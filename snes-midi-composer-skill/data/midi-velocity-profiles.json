@@ -1,0 +1,117 @@
+{
+  "version": "2.2.0",
+  "separation": "CC7 balances tracks; note velocity controls attack and intention; CC11 controls phrase and section expression.",
+  "role_ranges": {
+    "lead": [
+      55,
+      116
+    ],
+    "counter": [
+      48,
+      105
+    ],
+    "riff": [
+      62,
+      118
+    ],
+    "bass": [
+      55,
+      112
+    ],
+    "kick": [
+      82,
+      126
+    ],
+    "snare": [
+      72,
+      124
+    ],
+    "hat": [
+      36,
+      94
+    ],
+    "tom": [
+      64,
+      120
+    ],
+    "wood": [
+      48,
+      102
+    ],
+    "ride": [
+      42,
+      94
+    ],
+    "shaker": [
+      34,
+      84
+    ],
+    "brush": [
+      30,
+      78
+    ],
+    "rim": [
+      48,
+      108
+    ],
+    "impact": [
+      88,
+      127
+    ],
+    "comp": [
+      38,
+      92
+    ],
+    "arp": [
+      36,
+      92
+    ],
+    "motor": [
+      46,
+      104
+    ],
+    "ostinato": [
+      46,
+      104
+    ],
+    "pad": [
+      28,
+      76
+    ],
+    "support": [
+      34,
+      86
+    ],
+    "ensemble": [
+      24,
+      72
+    ],
+    "pulse": [
+      44,
+      102
+    ],
+    "texture": [
+      20,
+      66
+    ]
+  },
+  "contextual_factors": [
+    "metric accent",
+    "section energy",
+    "four-bar phrase arc",
+    "cadential arrival",
+    "repeated-note alternation",
+    "chord voice hierarchy",
+    "ghost-note status",
+    "instrument response curve"
+  ],
+  "cc11_resolution": "one event every half bar, plus form-boundary targets",
+  "release_velocity": "role-aware; shorter for pads/ensemble, stronger for struck instruments",
+  "hard_failures": [
+    "constant velocity",
+    "velocity derived only from audio gain",
+    "all chord voices at identical velocity",
+    "ghost percussion above primary backbeat",
+    "CC7 used as a substitute for note dynamics"
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "version": "2.0.0",
+  "categories": [
+    {
+      "id": "adventure",
+      "label": "Adventure & Exploration",
+      "required_examples": 10,
+      "subcategories": [
+        "Pastoral Overworld",
+        "Mountain Ascent",
+        "Jungle Exploration",
+        "Sea Voyage",
+        "Sky Islands",
+        "Desert Caravan",
+        "Frozen Cavern",
+        "Ancient Ruins",
+        "Underground River",
+        "Homecoming Journey"
+      ],
+      "meters": [
+        "12/8",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        12,
+        16,
+        18,
+        20,
+        24
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "action",
+      "label": "Action & Combat",
+      "required_examples": 10,
+      "subcategories": [
+        "Standard Battle",
+        "Boss Battle",
+        "Chase",
+        "Martial Duel",
+        "Industrial Assault",
+        "Aerial Combat",
+        "Desperate Survival",
+        "Arcade Sprint",
+        "Siege",
+        "Cyber Combat"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8"
+      ],
+      "voice_budgets": [
+        14,
+        16,
+        18,
+        20,
+        28,
+        32
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "horror",
+      "label": "Horror & Suspense",
+      "required_examples": 10,
+      "subcategories": [
+        "Stalking",
+        "Occult Ritual",
+        "Body Horror",
+        "Cosmic Horror",
+        "Psychological Horror",
+        "Unsafe Safe Room",
+        "Panic Chase",
+        "Haunted Childhood",
+        "Subterranean Dread",
+        "Revelation"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "5/8",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        24,
+        28
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "towns",
+      "label": "Towns & Social",
+      "required_examples": 10,
+      "subcategories": [
+        "Village Morning",
+        "Port Tavern",
+        "Night Market",
+        "Royal City",
+        "Desert Bazaar",
+        "Snow Inn",
+        "Carnival",
+        "Workshop District",
+        "Seaside Caf\u00e9",
+        "Festival Day"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        24
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "emotion",
+      "label": "Emotion & Narrative",
+      "required_examples": 10,
+      "subcategories": [
+        "Grief",
+        "Hope",
+        "Bittersweet Memory",
+        "Reunion",
+        "Farewell",
+        "Tenderness",
+        "Defeat",
+        "Resolve",
+        "Recalled Mystery",
+        "Epilogue"
+      ],
+      "meters": [
+        "3/4",
+        "4/4",
+        "5/4",
+        "6/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        24
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "mystery",
+      "label": "Mystery & Puzzle",
+      "required_examples": 10,
+      "subcategories": [
+        "Detective Noir",
+        "Clockwork Puzzle",
+        "Arcane Library",
+        "Science Lab",
+        "Logic Temple",
+        "Stealth Infiltration",
+        "Ancient Mechanism",
+        "Dream Puzzle",
+        "Conspiracy",
+        "Time Fracture"
+      ],
+      "meters": [
+        "3/4",
+        "4/4",
+        "5/4",
+        "5/8",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "fantasy",
+      "label": "Fantasy & Sacred",
+      "required_examples": 10,
+      "subcategories": [
+        "Cathedral",
+        "Forest Spirits",
+        "Dragon Sanctuary",
+        "Celestial Palace",
+        "Witch Coven",
+        "Fairy Court",
+        "Holy Pilgrimage",
+        "Dark Kingdom",
+        "Elemental Shrine",
+        "Prophecy"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        18,
+        20,
+        24,
+        28,
+        32
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "electronic",
+      "label": "Electronic & Sci-Fi",
+      "required_examples": 10,
+      "subcategories": [
+        "Synthwave Transit",
+        "Techno Factory",
+        "Drum & Bass Escape",
+        "Space Ambient",
+        "Cyberpunk City",
+        "Mech Hangar",
+        "Alien Signal",
+        "Orbital Battle",
+        "Digital Dream",
+        "Reactor Meltdown"
+      ],
+      "meters": [
+        "12/8",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8"
+      ],
+      "voice_budgets": [
+        16,
+        18,
+        20,
+        24
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "urban",
+      "label": "Jazz, Funk & Urban",
+      "required_examples": 10,
+      "subcategories": [
+        "Jazz Noir",
+        "Swing Club",
+        "Bebop Chase",
+        "Funk Factory",
+        "Soul Lounge",
+        "Bossa Rooftop",
+        "Reggae Harbor",
+        "Dub Alley",
+        "Ska Festival",
+        "Tango Undercity"
+      ],
+      "meters": [
+        "4/4",
+        "6/8"
+      ],
+      "voice_budgets": [
+        14,
+        16,
+        18
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "classical",
+      "label": "Classical & Experimental",
+      "required_examples": 10,
+      "subcategories": [
+        "Baroque Invention",
+        "Four-Part Fugue",
+        "Classical Waltz",
+        "Ceremonial March",
+        "Minimal Process",
+        "String Quartet",
+        "Impressionist Water",
+        "Neoclassical Boss",
+        "Atonal Suspense",
+        "Expanded Orchestral Overture"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "profiles": {
+    "lyrical_folk": {"rubato_ms": 24, "dynamic_arc": 0.14, "timing_noise_ms": 4, "dropout_rate": 0.035, "lead_delay_ms": 0, "bass_delay_ms": 2, "support_delay_ms": 7, "ensemble_strength": 0.65},
+    "laidback_noir": {"rubato_ms": 18, "dynamic_arc": 0.11, "timing_noise_ms": 3, "dropout_rate": 0.04, "lead_delay_ms": 7, "bass_delay_ms": -3, "support_delay_ms": 9, "snare_delay_ms": 11, "ensemble_strength": 0.3},
+    "articulate_baroque": {"rubato_ms": 12, "dynamic_arc": 0.09, "timing_noise_ms": 2, "dropout_rate": 0.015, "lead_delay_ms": 0, "bass_delay_ms": 0, "support_delay_ms": 0, "ensemble_strength": 0.0},
+    "tight_rock": {"rubato_ms": 4, "dynamic_arc": 0.08, "timing_noise_ms": 2, "dropout_rate": 0.01, "lead_delay_ms": -2, "bass_delay_ms": -5, "support_delay_ms": 0, "snare_delay_ms": 5, "ensemble_strength": 0.7},
+    "ritual_free": {"rubato_ms": 36, "dynamic_arc": 0.18, "timing_noise_ms": 7, "dropout_rate": 0.08, "lead_delay_ms": 5, "bass_delay_ms": 8, "support_delay_ms": 15, "ensemble_strength": 0.8},
+    "electronic_tight": {"rubato_ms": 0, "dynamic_arc": 0.06, "timing_noise_ms": 1, "dropout_rate": 0.01, "lead_delay_ms": 0, "bass_delay_ms": -3, "support_delay_ms": 0, "snare_delay_ms": 3, "ensemble_strength": 0.55},
+    "bossa_human": {"rubato_ms": 12, "dynamic_arc": 0.1, "timing_noise_ms": 3, "dropout_rate": 0.035, "lead_delay_ms": 5, "bass_delay_ms": -1, "support_delay_ms": 9, "snare_delay_ms": 7, "ensemble_strength": 0.25},
+    "lyrical_rubato": {"rubato_ms": 34, "dynamic_arc": 0.2, "timing_noise_ms": 5, "dropout_rate": 0.07, "lead_delay_ms": 1, "bass_delay_ms": 6, "support_delay_ms": 14, "ensemble_strength": 0.72},
+    "quirky_ensemble": {"rubato_ms": 7, "dynamic_arc": 0.12, "timing_noise_ms": 4, "dropout_rate": 0.055, "lead_delay_ms": -2, "bass_delay_ms": 0, "support_delay_ms": 6, "ensemble_strength": 0.38},
+    "ceremonial_broad": {"rubato_ms": 20, "dynamic_arc": 0.16, "timing_noise_ms": 3, "dropout_rate": 0.025, "lead_delay_ms": 0, "bass_delay_ms": 5, "support_delay_ms": 12, "snare_delay_ms": 4, "ensemble_strength": 0.9},
+    "folk_dance": {"rubato_ms": 8, "dynamic_arc": 0.12, "timing_noise_ms": 3, "dropout_rate": 0.045, "lead_delay_ms": -2, "bass_delay_ms": -2, "support_delay_ms": 5, "ensemble_strength": 0.38},
+    "ambient_modal": {"rubato_ms": 34, "dynamic_arc": 0.17, "timing_noise_ms": 7, "dropout_rate": 0.06, "lead_delay_ms": 8, "bass_delay_ms": 11, "support_delay_ms": 17, "ensemble_strength": 0.7}
+  },
+  "style_profile_map": {
+    "maplewind48": "lyrical_folk",
+    "rainline48": "laidback_noir",
+    "clockwork36": "articulate_baroque",
+    "rampart56": "tight_rock",
+    "ashchapel40": "ritual_free",
+    "switchback64": "electronic_tight",
+    "quay48": "bossa_human",
+    "snowletter48": "lyrical_rubato",
+    "goblin42": "quirky_ensemble",
+    "dawnbanner36": "ceremonial_broad",
+    "market48": "folk_dance",
+    "tideglass40": "ambient_modal"
+  }
+}

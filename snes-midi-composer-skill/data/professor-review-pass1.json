@@ -1,0 +1,5778 @@
+{
+  "version": "3.0.0",
+  "reviewer": "Independent Music Professor Pass",
+  "method": "symbolic score critique independent from renderer and mix",
+  "summary": {
+    "approved": 70,
+    "revise": 30
+  },
+  "average_score": 87.13,
+  "tracks": [
+    {
+      "id": "fernway_crossing",
+      "title": "Fernway Crossing",
+      "category": "adventure",
+      "status": "approved",
+      "score": 89.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.65,
+        "phrase_and_form": 8.28,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.53,
+        "orchestration": 9.5,
+        "expression": 7.14,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0425531914893617,
+          "repeat_ratio": 0.19148936170212766,
+          "range": 17,
+          "rests": 0.851063829787234,
+          "direction_changes": 0.32608695652173914,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.08854166666666667
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.484375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.3333333333333335,
+          "drum_ratio": 0.15789473684210525,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.0887242087457924,
+          "timing_std_ms": 3.9913398694386157,
+          "duration_cv": 1.093768530522362,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.193
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "summit_lines",
+      "title": "Summit Lines",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.19,
+        "phrase_and_form": 7.64,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.4,
+        "orchestration": 9.5,
+        "expression": 7.25,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.19047619047619047,
+          "range": 20,
+          "rests": 0.5873015873015873,
+          "direction_changes": 0.43548387096774194,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.20192307692307693
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.3348214285714284,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.1875,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.0932885819950097,
+          "timing_std_ms": 4.171366874426051,
+          "duration_cv": 1.1816103580100774,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1563
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "emerald_canopy",
+      "title": "Emerald Canopy",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.32,
+        "phrase_and_form": 8.15,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.12,
+        "orchestration": 9.5,
+        "expression": 7.26,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.09523809523809523,
+          "range": 17,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.532258064516129,
+          "phrase_variety": 0.875
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.16875
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.822916666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.0,
+          "drum_ratio": 0.23076923076923078,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10040802154457362,
+          "timing_std_ms": 3.49153985067091,
+          "duration_cv": 0.7700654905763924,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.25
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "wake_of_amber",
+      "title": "Wake of Amber",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.54,
+        "phrase_and_form": 8.13,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.28,
+        "orchestration": 9.5,
+        "expression": 7.16,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 80,
+          "leap_ratio": 0.12658227848101267,
+          "repeat_ratio": 0.06329113924050633,
+          "range": 19,
+          "rests": 0.6962025316455697,
+          "direction_changes": 0.7307692307692307,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.11428571428571428
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.5375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.13846153846153847,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.09072844900075631,
+          "timing_std_ms": 3.8727204390204957,
+          "duration_cv": 1.0639116925185272,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2462
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "isles_above",
+      "title": "Isles Above",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.01,
+        "phrase_and_form": 8.16,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.5,
+        "expression": 7.34,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 15,
+          "rests": 0.5714285714285714,
+          "direction_changes": 0.24193548387096775,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9488636363636364,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.21022727272727273
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 9,
+          "mean_polyphony": 5.7734375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.25,
+          "drum_ratio": 0.16981132075471697,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10287867401164215,
+          "timing_std_ms": 3.7525738109865237,
+          "duration_cv": 0.7203975196468212,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.3396
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "saffron_miles",
+      "title": "Saffron Miles",
+      "category": "adventure",
+      "status": "revise",
+      "score": 86.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.07,
+        "phrase_and_form": 8.03,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.5,
+        "expression": 8.3,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.06349206349206349,
+          "range": 12,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.5645161290322581,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9732142857142857,
+          "strong_chord_fit": 0.6774193548387096,
+          "weak_nonchord_ratio": 0.1488095238095238
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 7,
+          "mean_polyphony": 2.715625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 3.25,
+          "drum_ratio": 0.125,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08804981765761886,
+          "timing_std_ms": 10.993277645449824,
+          "duration_cv": 1.4519758534978295,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0833
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "under_ice_lantern",
+      "title": "Under-Ice Lantern",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.96,
+        "phrase_and_form": 8.66,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.92,
+        "orchestration": 9.0,
+        "expression": 7.36,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.09859154929577464,
+          "repeat_ratio": 0.056338028169014086,
+          "range": 15,
+          "rests": 0.7464788732394366,
+          "direction_changes": 0.7857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.25925925925925924
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 7,
+          "mean_polyphony": 5.006944444444445,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.0,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10782589398708319,
+          "timing_std_ms": 3.388599906571674,
+          "duration_cv": 0.6636165254951433,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.3885
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "archive_of_roots",
+      "title": "Archive of Roots",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.04,
+        "phrase_and_form": 8.07,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.45,
+        "orchestration": 9.5,
+        "expression": 7.38,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 16,
+          "rests": 0.746031746031746,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9375,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.19375
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.890625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.0,
+          "drum_ratio": 0.23076923076923078,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.10534289200285489,
+          "timing_std_ms": 3.7444901558645958,
+          "duration_cv": 0.7396017892214912,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1923
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "river_below",
+      "title": "River Below",
+      "category": "adventure",
+      "status": "revise",
+      "score": 85.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.38,
+        "phrase_and_form": 8.25,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.4,
+        "orchestration": 9.5,
+        "expression": 7.04,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0851063829787234,
+          "repeat_ratio": 0.02127659574468085,
+          "range": 13,
+          "rests": 0.8936170212765957,
+          "direction_changes": 0.8478260869565217,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.75,
+          "weak_nonchord_ratio": 0.21666666666666667
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.4340277777777777,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.75,
+          "drum_ratio": 0.13043478260869565,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08858854231709469,
+          "timing_std_ms": 3.3887194999760712,
+          "duration_cv": 1.2376271355940613,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1546
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "lanterns_homeward",
+      "title": "Lanterns Homeward",
+      "category": "adventure",
+      "status": "approved",
+      "score": 88.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.38,
+        "phrase_and_form": 9.06,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 6.16,
+        "orchestration": 9.5,
+        "expression": 7.25,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 60,
+          "leap_ratio": 0.03389830508474576,
+          "repeat_ratio": 0.15254237288135594,
+          "range": 19,
+          "rests": 0.8305084745762712,
+          "direction_changes": 0.4482758620689655,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.15436241610738255
+        },
+        "orchestration": {
+          "instrument_count": 12,
+          "max_polyphony": 13,
+          "mean_polyphony": 4.045833333333333,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.966666666666667,
+          "drum_ratio": 0.13119533527696792,
+          "register_collisions": 8
+        },
+        "expression": {
+          "gain_std": 0.09143006679866096,
+          "timing_std_ms": 4.335063859822017,
+          "duration_cv": 1.0759683952442658,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.4665
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "iron_pulse",
+      "title": "Iron Pulse",
+      "category": "action",
+      "status": "approved",
+      "score": 88.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.24,
+        "phrase_and_form": 7.65,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.18,
+        "orchestration": 9.5,
+        "expression": 6.82,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 14,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.4857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9785714285714285,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.175
+        },
+        "orchestration": {
+          "instrument_count": 10,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.52734375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.09523809523809523,
+          "drum_ratio": 0.4117647058823529,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08785347869289674,
+          "timing_std_ms": 2.1538361256987946,
+          "duration_cv": 1.607901673031279,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1008
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "crown_breaker",
+      "title": "Crown Breaker",
+      "category": "action",
+      "status": "approved",
+      "score": 86.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.45,
+        "phrase_and_form": 8.09,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.94,
+        "orchestration": 8.08,
+        "expression": 6.81,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.10638297872340426,
+          "repeat_ratio": 0.0425531914893617,
+          "range": 15,
+          "rests": 0.6170212765957447,
+          "direction_changes": 0.5869565217391305,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9972640218878249,
+          "strong_chord_fit": 0.9444444444444444,
+          "weak_nonchord_ratio": 0.038303693570451436
+        },
+        "orchestration": {
+          "instrument_count": 19,
+          "max_polyphony": 30,
+          "mean_polyphony": 9.98263888888889,
+          "saturation_ratio": 0.17708333333333334,
+          "support_to_lead": 13.729166666666666,
+          "drum_ratio": 0.21058315334773217,
+          "register_collisions": 8
+        },
+        "expression": {
+          "gain_std": 0.08512894878594209,
+          "timing_std_ms": 2.3514802854592562,
+          "duration_cv": 1.5940760681397939,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2851
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "redline_pursuit",
+      "title": "Redline Pursuit",
+      "category": "action",
+      "status": "revise",
+      "score": 88.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.35,
+        "phrase_and_form": 7.59,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.9,
+        "orchestration": 9.5,
+        "expression": 6.79,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 16,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.44285714285714284,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9848484848484849,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.15151515151515152
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 4,
+          "mean_polyphony": 2.10546875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.56,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.08777636096353049,
+          "timing_std_ms": 1.9675097772988746,
+          "duration_cv": 1.6989444028686997,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.08
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "two_blades",
+      "title": "Two Blades",
+      "category": "action",
+      "status": "approved",
+      "score": 88.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.73,
+        "phrase_and_form": 7.56,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.5,
+        "expression": 7.17,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 16,
+          "rests": 0.5396825396825397,
+          "direction_changes": 0.41935483870967744,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.3181818181818182
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.901785714285714,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.0,
+          "drum_ratio": 0.21428571428571427,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10329441719900366,
+          "timing_std_ms": 2.708554829768849,
+          "duration_cv": 0.826030549482475,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1607
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "slag_foundry",
+      "title": "Slag Foundry",
+      "category": "action",
+      "status": "approved",
+      "score": 87.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.42,
+        "phrase_and_form": 8.19,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.94,
+        "orchestration": 9.5,
+        "expression": 6.88,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.1267605633802817,
+          "range": 16,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.6,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9744897959183674,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.125
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 8,
+          "mean_polyphony": 3.415625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.12121212121212122,
+          "drum_ratio": 0.36774193548387096,
+          "register_collisions": 9
+        },
+        "expression": {
+          "gain_std": 0.08645931739426352,
+          "timing_std_ms": 2.6170471289490527,
+          "duration_cv": 1.8506647393527822,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.129
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "cloud_lancers",
+      "title": "Cloud Lancers",
+      "category": "action",
+      "status": "approved",
+      "score": 89.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.57,
+        "phrase_and_form": 7.51,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.12,
+        "orchestration": 9.5,
+        "expression": 6.81,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 15,
+          "rests": 0.5555555555555556,
+          "direction_changes": 0.532258064516129,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9981060606060606,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.10606060606060606
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 10,
+          "mean_polyphony": 6.067708333333333,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 6.5,
+          "drum_ratio": 0.23699421965317918,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08791374698685411,
+          "timing_std_ms": 2.06249926394069,
+          "duration_cv": 1.0528342029132502,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1329
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "last_heart",
+      "title": "Last Heart",
+      "category": "action",
+      "status": "approved",
+      "score": 87.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.01,
+        "phrase_and_form": 7.82,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.4,
+        "orchestration": 9.0,
+        "expression": 7.26,
+        "idiomatic_character": 7.2,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 63,
+          "leap_ratio": 0.03225806451612903,
+          "repeat_ratio": 0.08064516129032258,
+          "range": 15,
+          "rests": 0.6129032258064516,
+          "direction_changes": 0.5737704918032787,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9824561403508771,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.23391812865497075
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.798611111111111,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.1428571428571428,
+          "drum_ratio": 0.0,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.1103253406551307,
+          "timing_std_ms": 2.5102057767344985,
+          "duration_cv": 0.7254545496623833,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1982
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "victory_lap_zero",
+      "title": "Victory Lap Zero",
+      "category": "action",
+      "status": "revise",
+      "score": 81.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 4.82,
+        "phrase_and_form": 7.59,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.18,
+        "orchestration": 9.0,
+        "expression": 7.09,
+        "idiomatic_character": 7.2,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 14,
+          "rests": 0.49295774647887325,
+          "direction_changes": 0.4857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.44,
+          "weak_nonchord_ratio": 0.315
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.78125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8888888888888888,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10156422282354156,
+          "timing_std_ms": 2.4085652104728243,
+          "duration_cv": 0.9516232150842548,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "walls_of_bronze",
+      "title": "Walls of Bronze",
+      "category": "action",
+      "status": "approved",
+      "score": 86.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.77,
+        "phrase_and_form": 8.74,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.28,
+        "orchestration": 8.94,
+        "expression": 7.16,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.047619047619047616,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 16,
+          "rests": 0.5238095238095238,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.803347280334728,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.1589958158995816
+        },
+        "orchestration": {
+          "instrument_count": 18,
+          "max_polyphony": 23,
+          "mean_polyphony": 9.432291666666666,
+          "saturation_ratio": 0.140625,
+          "support_to_lead": 2.234375,
+          "drum_ratio": 0.40694789081885857,
+          "register_collisions": 11
+        },
+        "expression": {
+          "gain_std": 0.09913586778140704,
+          "timing_std_ms": 3.034291403336868,
+          "duration_cv": 0.5452143259082045,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.5658
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "vector_arena",
+      "title": "Vector Arena",
+      "category": "action",
+      "status": "approved",
+      "score": 88.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.92,
+        "phrase_and_form": 7.77,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.22,
+        "orchestration": 9.5,
+        "expression": 6.92,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.0,
+          "repeat_ratio": 0.08450704225352113,
+          "range": 15,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.44285714285714284,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9516129032258065,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.23387096774193547
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 7,
+          "mean_polyphony": 2.9910714285714284,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.45614035087719296,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09060234405966268,
+          "timing_std_ms": 2.4569297318554546,
+          "duration_cv": 1.5050622455420968,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1404
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "footsteps_in_plaster",
+      "title": "Footsteps in Plaster",
+      "category": "horror",
+      "status": "approved",
+      "score": 87.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.98,
+        "phrase_and_form": 7.63,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.45,
+        "orchestration": 8.75,
+        "expression": 7.37,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.10909090909090909,
+          "range": 17,
+          "rests": 0.6363636363636364,
+          "direction_changes": 0.5555555555555556,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9833333333333333,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.24166666666666667
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 5,
+          "mean_polyphony": 3.965625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8571428571428571,
+          "drum_ratio": 0.09774436090225563,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.1055501077132737,
+          "timing_std_ms": 3.644052871395642,
+          "duration_cv": 0.7815543799774048,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1203
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "salt_circle",
+      "title": "Salt Circle",
+      "category": "horror",
+      "status": "approved",
+      "score": 88.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.07,
+        "phrase_and_form": 8.51,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 6.76,
+        "orchestration": 9.5,
+        "expression": 7.66,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.02127659574468085,
+          "repeat_ratio": 0.1276595744680851,
+          "range": 19,
+          "rests": 0.7659574468085106,
+          "direction_changes": 0.41304347826086957,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9186991869918699,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.17073170731707318
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 11,
+          "mean_polyphony": 6.229166666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3125,
+          "drum_ratio": 0.22641509433962265,
+          "register_collisions": 6
+        },
+        "expression": {
+          "gain_std": 0.10437112347621669,
+          "timing_std_ms": 5.4931203504786215,
+          "duration_cv": 0.6579938239527466,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.327
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "under_the_skin",
+      "title": "Under the Skin",
+      "category": "horror",
+      "status": "approved",
+      "score": 87.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.61,
+        "phrase_and_form": 7.72,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.0,
+        "expression": 7.42,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.18181818181818182,
+          "range": 15,
+          "rests": 0.6909090909090909,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.921875,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2890625
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 4.303571428571429,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8571428571428571,
+          "drum_ratio": 0.09219858156028368,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10777813986717207,
+          "timing_std_ms": 3.7714145652455833,
+          "duration_cv": 0.748935703358056,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1135
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "stars_without_distance",
+      "title": "Stars Without Distance",
+      "category": "horror",
+      "status": "approved",
+      "score": 88.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.77,
+        "phrase_and_form": 8.38,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.8,
+        "orchestration": 9.5,
+        "expression": 7.53,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 80,
+          "leap_ratio": 0.13924050632911392,
+          "repeat_ratio": 0.13924050632911392,
+          "range": 27,
+          "rests": 0.759493670886076,
+          "direction_changes": 0.6794871794871795,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.848780487804878,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.1951219512195122
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 12,
+          "mean_polyphony": 6.165625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3125,
+          "drum_ratio": 0.07657657657657657,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10239896268737952,
+          "timing_std_ms": 4.918957288619201,
+          "duration_cv": 0.602668960744419,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2883
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "the_room_remembers",
+      "title": "The Room Remembers",
+      "category": "horror",
+      "status": "approved",
+      "score": 86.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.19,
+        "phrase_and_form": 7.34,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.03,
+        "orchestration": 8.25,
+        "expression": 7.66,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 8.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 63,
+          "leap_ratio": 0.06451612903225806,
+          "repeat_ratio": 0.12903225806451613,
+          "range": 12,
+          "rests": 0.5806451612903226,
+          "direction_changes": 0.4262295081967213,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9477124183006536,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.16339869281045752
+        },
+        "orchestration": {
+          "instrument_count": 3,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.7175925925925926,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8571428571428571,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09709823141353843,
+          "timing_std_ms": 6.246045377677872,
+          "duration_cv": 0.489402377785826,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0588
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "lamp_behind_the_door",
+      "title": "Lamp Behind the Door",
+      "category": "horror",
+      "status": "approved",
+      "score": 86.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.39,
+        "phrase_and_form": 7.44,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.11,
+        "orchestration": 8.25,
+        "expression": 7.53,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 8.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.03636363636363636,
+          "repeat_ratio": 0.12727272727272726,
+          "range": 14,
+          "rests": 0.6545454545454545,
+          "direction_changes": 0.46296296296296297,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.15217391304347827
+        },
+        "orchestration": {
+          "instrument_count": 3,
+          "max_polyphony": 6,
+          "mean_polyphony": 3.00390625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.7142857142857142,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0924842586089215,
+          "timing_std_ms": 7.37535796900458,
+          "duration_cv": 0.37829231715643025,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0435
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "dont_look_back",
+      "title": "Don\u2019t Look Back",
+      "category": "horror",
+      "status": "approved",
+      "score": 87.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.32,
+        "phrase_and_form": 7.88,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.19,
+        "orchestration": 9.0,
+        "expression": 6.84,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 90,
+          "leap_ratio": 0.011235955056179775,
+          "repeat_ratio": 0.12359550561797752,
+          "range": 16,
+          "rests": 0.898876404494382,
+          "direction_changes": 0.6022727272727273,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9838709677419355,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.15806451612903225
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.825,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5555555555555556,
+          "drum_ratio": 0.45614035087719296,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08779219715876622,
+          "timing_std_ms": 5.840025373541391,
+          "duration_cv": 0.2722387002924708,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0281
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "music_box_teeth",
+      "title": "Music Box Teeth",
+      "category": "horror",
+      "status": "approved",
+      "score": 88.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.23,
+        "phrase_and_form": 8.02,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.45,
+        "orchestration": 9.0,
+        "expression": 7.62,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.18181818181818182,
+          "range": 17,
+          "rests": 0.8727272727272727,
+          "direction_changes": 0.2777777777777778,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.921875,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.1328125
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.5885416666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.7142857142857143,
+          "drum_ratio": 0.2727272727272727,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.09050672153250268,
+          "timing_std_ms": 6.68060908362229,
+          "duration_cv": 0.4973419543929074,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0909
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "beneath_the_well",
+      "title": "Beneath the Well",
+      "category": "horror",
+      "status": "approved",
+      "score": 87.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.76,
+        "phrase_and_form": 7.3,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.45,
+        "orchestration": 9.25,
+        "expression": 7.59,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 16,
+          "rests": 0.7619047619047619,
+          "direction_changes": 0.5,
+          "phrase_variety": 0.875
+        },
+        "harmony": {
+          "scale_fit": 0.9910714285714286,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.30357142857142855
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 4,
+          "mean_polyphony": 3.236111111111111,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.5,
+          "drum_ratio": 0.3,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.103273516145764,
+          "timing_std_ms": 5.221425739441288,
+          "duration_cv": 0.8262737288976354,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.05
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "the_shape_in_full",
+      "title": "The Shape in Full",
+      "category": "horror",
+      "status": "approved",
+      "score": 87.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.48,
+        "phrase_and_form": 8.58,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 6.82,
+        "orchestration": 9.5,
+        "expression": 7.66,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.0,
+          "repeat_ratio": 0.12698412698412698,
+          "range": 14,
+          "rests": 0.5079365079365079,
+          "direction_changes": 0.25806451612903225,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.7291666666666666,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.17708333333333334
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 14,
+          "mean_polyphony": 6.49609375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.0,
+          "register_collisions": 6
+        },
+        "expression": {
+          "gain_std": 0.1027237546620262,
+          "timing_std_ms": 5.666951666524789,
+          "duration_cv": 0.6827467386582551,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.5208
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "morning_bread",
+      "title": "Morning Bread",
+      "category": "towns",
+      "status": "revise",
+      "score": 87.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.4,
+        "phrase_and_form": 6.86,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.18,
+        "orchestration": 9.25,
+        "expression": 8.35,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 16,
+          "rests": 0.36619718309859156,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.14919354838709678
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.359375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.1267605633802817,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09237368907243353,
+          "timing_std_ms": 10.843828922181979,
+          "duration_cv": 0.6787049323894453,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0423
+      },
+      "critique": [
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "three_mugs_later",
+      "title": "Three Mugs Later",
+      "category": "towns",
+      "status": "revise",
+      "score": 88.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.33,
+        "phrase_and_form": 7.16,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.45,
+        "orchestration": 9.25,
+        "expression": 8.29,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.12698412698412698,
+          "range": 15,
+          "rests": 0.5396825396825397,
+          "direction_changes": 0.41935483870967744,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.16796875
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.0416666666666665,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.25,
+          "drum_ratio": 0.1794871794871795,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.0919911635198844,
+          "timing_std_ms": 10.529902482849174,
+          "duration_cv": 0.4579335568078581,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0256
+      },
+      "critique": [
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "paper_lantern_row",
+      "title": "Paper Lantern Row",
+      "category": "towns",
+      "status": "revise",
+      "score": 86.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.15,
+        "phrase_and_form": 7.04,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.09,
+        "orchestration": 9.25,
+        "expression": 6.78,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.04225352112676056,
+          "repeat_ratio": 0.04225352112676056,
+          "range": 19,
+          "rests": 0.4788732394366197,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.8951612903225806,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.13306451612903225
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.015625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.18421052631578946,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09045427129510752,
+          "timing_std_ms": 3.290620642855996,
+          "duration_cv": 0.3671827368076064,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0263
+      },
+      "critique": [
+        "Phrases do not yet create enough question, consequence, breath and arrival.",
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "strengthen_phrase_architecture",
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "white_stone_capital",
+      "title": "White-Stone Capital",
+      "category": "towns",
+      "status": "approved",
+      "score": 88.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.03,
+        "phrase_and_form": 8.31,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.75,
+        "orchestration": 9.5,
+        "expression": 7.33,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.06349206349206349,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 21,
+          "rests": 0.6349206349206349,
+          "direction_changes": 0.4838709677419355,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2422680412371134
+        },
+        "orchestration": {
+          "instrument_count": 10,
+          "max_polyphony": 12,
+          "mean_polyphony": 6.026041666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.28125,
+          "drum_ratio": 0.19834710743801653,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.10299328019578427,
+          "timing_std_ms": 3.6542387307226263,
+          "duration_cv": 0.7391629793676141,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.3471
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "copper_saffron",
+      "title": "Copper & Saffron",
+      "category": "towns",
+      "status": "approved",
+      "score": 89.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.51,
+        "phrase_and_form": 7.84,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.25,
+        "expression": 8.1,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.031746031746031744,
+          "range": 17,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.5967741935483871,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9761904761904762,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.10416666666666667
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.7321428571428572,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 3.0,
+          "drum_ratio": 0.14285714285714285,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09173999913576768,
+          "timing_std_ms": 10.846410654226418,
+          "duration_cv": 0.3786200447947796,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0204
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "the_blue_stove",
+      "title": "The Blue Stove",
+      "category": "towns",
+      "status": "approved",
+      "score": 87.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.54,
+        "phrase_and_form": 7.27,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.06,
+        "orchestration": 8.75,
+        "expression": 7.47,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.05454545454545454,
+          "repeat_ratio": 0.10909090909090909,
+          "range": 15,
+          "rests": 0.5818181818181818,
+          "direction_changes": 0.48148148148148145,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.11413043478260869
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.9947916666666665,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.7142857142857142,
+          "drum_ratio": 0.20689655172413793,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09331011362711723,
+          "timing_std_ms": 8.363932383843345,
+          "duration_cv": 0.30485554715793367,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0345
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "painted_wheels",
+      "title": "Painted Wheels",
+      "category": "towns",
+      "status": "approved",
+      "score": 88.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.11,
+        "phrase_and_form": 8.03,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.25,
+        "expression": 7.23,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.2,
+          "range": 16,
+          "rests": 0.8727272727272727,
+          "direction_changes": 0.25925925925925924,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2236842105263158
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 4.041666666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8571428571428571,
+          "drum_ratio": 0.2692307692307692,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10204086971333917,
+          "timing_std_ms": 3.1936460596340317,
+          "duration_cv": 0.7973664688767701,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0962
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "shift_change",
+      "title": "Shift Change",
+      "category": "towns",
+      "status": "approved",
+      "score": 87.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.76,
+        "phrase_and_form": 7.88,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.46,
+        "orchestration": 8.25,
+        "expression": 7.26,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 8.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.1267605633802817,
+          "range": 16,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.6,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.05909090909090909
+        },
+        "orchestration": {
+          "instrument_count": 3,
+          "max_polyphony": 4,
+          "mean_polyphony": 1.040625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 4.0,
+          "drum_ratio": 0.0,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.0835345215914993,
+          "timing_std_ms": 7.162099773664754,
+          "duration_cv": 0.3508421824003234,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0273
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "tables_by_the_tide",
+      "title": "Tables by the Tide",
+      "category": "towns",
+      "status": "approved",
+      "score": 86.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.24,
+        "phrase_and_form": 7.36,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.0,
+        "orchestration": 9.25,
+        "expression": 8.1,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.07272727272727272,
+          "repeat_ratio": 0.09090909090909091,
+          "range": 16,
+          "rests": 0.6545454545454545,
+          "direction_changes": 0.5185185185185185,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9787234042553191,
+          "strong_chord_fit": 0.8125,
+          "weak_nonchord_ratio": 0.09574468085106383
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 6,
+          "mean_polyphony": 2.48046875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 4.571428571428571,
+          "drum_ratio": 0.14545454545454545,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08619885055338736,
+          "timing_std_ms": 10.950836244776806,
+          "duration_cv": 0.4004271748984079,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0182
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "all_bells_open",
+      "title": "All Bells Open",
+      "category": "towns",
+      "status": "approved",
+      "score": 87.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.79,
+        "phrase_and_form": 8.86,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.96,
+        "orchestration": 9.5,
+        "expression": 7.21,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0851063829787234,
+          "repeat_ratio": 0.06382978723404255,
+          "range": 17,
+          "rests": 0.6808510638297872,
+          "direction_changes": 0.5217391304347826,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.8333333333333334,
+          "weak_nonchord_ratio": 0.26
+        },
+        "orchestration": {
+          "instrument_count": 13,
+          "max_polyphony": 11,
+          "mean_polyphony": 5.131944444444445,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.125,
+          "drum_ratio": 0.21875,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09605494865763603,
+          "timing_std_ms": 3.683912141017113,
+          "duration_cv": 0.9260539481336536,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.5
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "empty_chair",
+      "title": "Empty Chair",
+      "category": "emotion",
+      "status": "revise",
+      "score": 85.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.04,
+        "phrase_and_form": 8.22,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.03,
+        "orchestration": 8.75,
+        "expression": 7.85,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 63,
+          "leap_ratio": 0.06451612903225806,
+          "repeat_ratio": 0.11290322580645161,
+          "range": 21,
+          "rests": 0.8709677419354839,
+          "direction_changes": 0.47540983606557374,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9348659003831418,
+          "strong_chord_fit": 0.7567567567567568,
+          "weak_nonchord_ratio": 0.26436781609195403
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.861111111111111,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0968517709220991,
+          "timing_std_ms": 7.439661076863284,
+          "duration_cv": 0.7122261737485797,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.161
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "first_light_after",
+      "title": "First Light After",
+      "category": "emotion",
+      "status": "approved",
+      "score": 88.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.1,
+        "phrase_and_form": 8.3,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.37,
+        "orchestration": 9.0,
+        "expression": 7.52,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0425531914893617,
+          "repeat_ratio": 0.1702127659574468,
+          "range": 19,
+          "rests": 0.851063829787234,
+          "direction_changes": 0.391304347826087,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.225
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 7,
+          "mean_polyphony": 4.994791666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.0,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.10354932677043041,
+          "timing_std_ms": 4.768435003210566,
+          "duration_cv": 0.7277292201169523,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "postcard_in_june",
+      "title": "Postcard in June",
+      "category": "emotion",
+      "status": "approved",
+      "score": 88.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.1,
+        "phrase_and_form": 7.98,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.96,
+        "orchestration": 9.25,
+        "expression": 7.59,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0851063829787234,
+          "repeat_ratio": 0.10638297872340426,
+          "range": 15,
+          "rests": 0.7021276595744681,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.225
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.5364583333333335,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.23076923076923078,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08976605561621341,
+          "timing_std_ms": 6.57097680080031,
+          "duration_cv": 0.8993396612138107,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1923
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "at_the_station",
+      "title": "At the Station",
+      "category": "emotion",
+      "status": "revise",
+      "score": 84.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.05,
+        "phrase_and_form": 7.8,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 6.21,
+        "orchestration": 9.5,
+        "expression": 7.48,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.09523809523809523,
+          "range": 17,
+          "rests": 0.47619047619047616,
+          "direction_changes": 0.2903225806451613,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.6875,
+          "weak_nonchord_ratio": 0.19140625
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.51953125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.0,
+          "register_collisions": 8
+        },
+        "expression": {
+          "gain_std": 0.08935827693247868,
+          "timing_std_ms": 5.944904716448068,
+          "duration_cv": 1.2597128929029724,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2812
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "last_boat_west",
+      "title": "Last Boat West",
+      "category": "emotion",
+      "status": "approved",
+      "score": 88.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.22,
+        "phrase_and_form": 8.21,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.3,
+        "orchestration": 9.5,
+        "expression": 7.49,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 60,
+          "leap_ratio": 0.06779661016949153,
+          "repeat_ratio": 0.11864406779661017,
+          "range": 17,
+          "rests": 0.711864406779661,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.935,
+          "strong_chord_fit": 0.9473684210526315,
+          "weak_nonchord_ratio": 0.305
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 7,
+          "mean_polyphony": 5.05,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.1836734693877551,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.09952624660492983,
+          "timing_std_ms": 4.984913809792709,
+          "duration_cv": 0.7294146464860604,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2612
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "hands_in_winter",
+      "title": "Hands in Winter",
+      "category": "emotion",
+      "status": "approved",
+      "score": 87.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.46,
+        "phrase_and_form": 7.87,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.06,
+        "orchestration": 8.75,
+        "expression": 7.78,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.05454545454545454,
+          "repeat_ratio": 0.12727272727272726,
+          "range": 15,
+          "rests": 0.6363636363636364,
+          "direction_changes": 0.48148148148148145,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.135
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 8,
+          "mean_polyphony": 3.91015625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09356711393967435,
+          "timing_std_ms": 7.313292003441405,
+          "duration_cv": 0.6597204701865622,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "flags_in_mud",
+      "title": "Flags in Mud",
+      "category": "emotion",
+      "status": "approved",
+      "score": 87.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.1,
+        "phrase_and_form": 8.29,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.0,
+        "orchestration": 9.5,
+        "expression": 7.49,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.07272727272727272,
+          "repeat_ratio": 0.23636363636363636,
+          "range": 17,
+          "rests": 0.7272727272727273,
+          "direction_changes": 0.3333333333333333,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9347826086956522,
+          "strong_chord_fit": 0.9090909090909091,
+          "weak_nonchord_ratio": 0.266304347826087
+        },
+        "orchestration": {
+          "instrument_count": 10,
+          "max_polyphony": 9,
+          "mean_polyphony": 6.041666666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.4285714285714286,
+          "drum_ratio": 0.14814814814814814,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10245436240185904,
+          "timing_std_ms": 4.715405532004038,
+          "duration_cv": 0.6825090363188374,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2778
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "stand_again",
+      "title": "Stand Again",
+      "category": "emotion",
+      "status": "approved",
+      "score": 87.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.23,
+        "phrase_and_form": 7.54,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.22,
+        "orchestration": 9.5,
+        "expression": 7.47,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.0,
+          "repeat_ratio": 0.031746031746031744,
+          "range": 19,
+          "rests": 0.6190476190476191,
+          "direction_changes": 0.532258064516129,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.7948717948717948,
+          "weak_nonchord_ratio": 0.08333333333333333
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 10,
+          "mean_polyphony": 6.1015625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 8.5,
+          "drum_ratio": 0.06666666666666667,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08562334673980662,
+          "timing_std_ms": 6.243173153928262,
+          "duration_cv": 1.2692307062273278,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "name_on_the_glass",
+      "title": "Name on the Glass",
+      "category": "emotion",
+      "status": "approved",
+      "score": 87.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.07,
+        "phrase_and_form": 7.77,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.61,
+        "orchestration": 9.0,
+        "expression": 7.69,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.1746031746031746,
+          "range": 14,
+          "rests": 0.6825396825396826,
+          "direction_changes": 0.41935483870967744,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9326923076923077,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.18269230769230768
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.740625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.75,
+          "drum_ratio": 0.0,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.09283145601029187,
+          "timing_std_ms": 6.8346311790686265,
+          "duration_cv": 0.7310141269831679,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1346
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "road_after_credits",
+      "title": "Road After Credits",
+      "category": "emotion",
+      "status": "approved",
+      "score": 88.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.13,
+        "phrase_and_form": 8.73,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.02,
+        "orchestration": 9.5,
+        "expression": 7.53,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 80,
+          "leap_ratio": 0.02531645569620253,
+          "repeat_ratio": 0.17721518987341772,
+          "range": 20,
+          "rests": 0.5316455696202531,
+          "direction_changes": 0.3076923076923077,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.21705426356589147
+        },
+        "orchestration": {
+          "instrument_count": 12,
+          "max_polyphony": 15,
+          "mean_polyphony": 6.754166666666666,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.475,
+          "drum_ratio": 0.1485148514851485,
+          "register_collisions": 5
+        },
+        "expression": {
+          "gain_std": 0.10083181169876275,
+          "timing_std_ms": 5.089928589408577,
+          "duration_cv": 0.7157167870774208,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.5545
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "ink_under_rain",
+      "title": "Ink Under Rain",
+      "category": "mystery",
+      "status": "revise",
+      "score": 84.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.32,
+        "phrase_and_form": 7.62,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.61,
+        "orchestration": 9.0,
+        "expression": 7.05,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.09523809523809523,
+          "range": 15,
+          "rests": 0.7142857142857143,
+          "direction_changes": 0.45161290322580644,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9241071428571429,
+          "strong_chord_fit": 0.7333333333333333,
+          "weak_nonchord_ratio": 0.14732142857142858
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.69921875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.3,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08842178242341417,
+          "timing_std_ms": 6.715513030662661,
+          "duration_cv": 0.2881340002871015,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0625
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "gear_seven",
+      "title": "Gear Seven",
+      "category": "mystery",
+      "status": "approved",
+      "score": 85.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.58,
+        "phrase_and_form": 7.93,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.14,
+        "orchestration": 8.25,
+        "expression": 6.95,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 8.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.028169014084507043,
+          "repeat_ratio": 0.1267605633802817,
+          "range": 15,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.5857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9510869565217391,
+          "strong_chord_fit": 0.9428571428571428,
+          "weak_nonchord_ratio": 0.21739130434782608
+        },
+        "orchestration": {
+          "instrument_count": 3,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.3616071428571428,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.1111111111111112,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0923206432348518,
+          "timing_std_ms": 2.4538423476040765,
+          "duration_cv": 0.9036747241876404,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0435
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "catalogue_of_mirrors",
+      "title": "Catalogue of Mirrors",
+      "category": "mystery",
+      "status": "approved",
+      "score": 86.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.04,
+        "phrase_and_form": 8.15,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.03,
+        "orchestration": 8.5,
+        "expression": 7.18,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.0
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.06349206349206349,
+          "repeat_ratio": 0.047619047619047616,
+          "range": 18,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.7903225806451613,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9609375,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2109375
+        },
+        "orchestration": {
+          "instrument_count": 4,
+          "max_polyphony": 5,
+          "mean_polyphony": 4.04375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.75,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10985511640771288,
+          "timing_std_ms": 2.071958037316016,
+          "duration_cv": 0.7662195690242778,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.125
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "clean_room_signal",
+      "title": "Clean Room Signal",
+      "category": "mystery",
+      "status": "revise",
+      "score": 86.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.0,
+        "phrase_and_form": 7.73,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.99,
+        "orchestration": 9.0,
+        "expression": 5.99,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 40,
+          "leap_ratio": 0.07692307692307693,
+          "repeat_ratio": 0.05128205128205128,
+          "range": 15,
+          "rests": 0.8205128205128205,
+          "direction_changes": 0.7631578947368421,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.885,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.165
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 2,
+          "mean_polyphony": 0.765625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.6,
+          "drum_ratio": 0.5283018867924528,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08334015956848527,
+          "timing_std_ms": 2.3366558078690107,
+          "duration_cv": 0.21427932686265133,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0283
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "four_doors_one_key",
+      "title": "Four Doors, One Key",
+      "category": "mystery",
+      "status": "approved",
+      "score": 86.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.28,
+        "phrase_and_form": 7.97,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.22,
+        "orchestration": 8.25,
+        "expression": 7.04,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 8.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 90,
+          "leap_ratio": 0.0,
+          "repeat_ratio": 0.11235955056179775,
+          "range": 13,
+          "rests": 0.898876404494382,
+          "direction_changes": 0.6136363636363636,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.18095238095238095
+        },
+        "orchestration": {
+          "instrument_count": 3,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.6,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.8888888888888888,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09146191309344026,
+          "timing_std_ms": 3.111963948579134,
+          "duration_cv": 0.6869893543223533,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0571
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "velvet_entry",
+      "title": "Velvet Entry",
+      "category": "mystery",
+      "status": "approved",
+      "score": 86.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.11,
+        "phrase_and_form": 7.8,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.56,
+        "orchestration": 8.5,
+        "expression": 7.26,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.0
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 15,
+          "rests": 0.7142857142857143,
+          "direction_changes": 0.43548387096774194,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.984375,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2109375
+        },
+        "orchestration": {
+          "instrument_count": 4,
+          "max_polyphony": 5,
+          "mean_polyphony": 4.00390625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.75,
+          "drum_ratio": 0.0,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.11281278758782162,
+          "timing_std_ms": 2.2698240473643883,
+          "duration_cv": 0.7910745475454835,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.125
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "stone_answers",
+      "title": "Stone Answers",
+      "category": "mystery",
+      "status": "approved",
+      "score": 87.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.33,
+        "phrase_and_form": 8.03,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.0,
+        "expression": 6.88,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.14285714285714285,
+          "range": 22,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.16666666666666666
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.2777777777777777,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.2,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09085179408734254,
+          "timing_std_ms": 2.183689313218954,
+          "duration_cv": 0.9711797328499995,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0833
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "rooms_that_fold",
+      "title": "Rooms That Fold",
+      "category": "mystery",
+      "status": "approved",
+      "score": 85.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.48,
+        "phrase_and_form": 7.67,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.48,
+        "orchestration": 8.5,
+        "expression": 7.83,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.0
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.15492957746478872,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 19,
+          "rests": 0.7464788732394366,
+          "direction_changes": 0.7,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.7373737373737373,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.18181818181818182
+        },
+        "orchestration": {
+          "instrument_count": 4,
+          "max_polyphony": 5,
+          "mean_polyphony": 3.087962962962963,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.0,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.10043495992118462,
+          "timing_std_ms": 6.923291810736241,
+          "duration_cv": 0.5798039991710785,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.059
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "redacted_pages",
+      "title": "Redacted Pages",
+      "category": "mystery",
+      "status": "revise",
+      "score": 84.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.17,
+        "phrase_and_form": 7.39,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.0,
+        "expression": 7.05,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.16363636363636364,
+          "range": 18,
+          "rests": 0.6363636363636364,
+          "direction_changes": 0.5370370370370371,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9166666666666666,
+          "strong_chord_fit": 0.7272727272727273,
+          "weak_nonchord_ratio": 0.16666666666666666
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.58203125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.7142857142857142,
+          "drum_ratio": 0.3076923076923077,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0892616490825634,
+          "timing_std_ms": 6.734345218914824,
+          "duration_cv": 0.2821394893313111,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0385
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "minute_hand_zero",
+      "title": "Minute Hand Zero",
+      "category": "mystery",
+      "status": "revise",
+      "score": 85.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.44,
+        "phrase_and_form": 8.01,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.9,
+        "orchestration": 9.0,
+        "expression": 6.23,
+        "idiomatic_character": 7.4,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.1267605633802817,
+          "range": 15,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.5571428571428572,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.7540322580645161,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2056451612903226
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.1160714285714286,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.3333333333333333,
+          "drum_ratio": 0.16216216216216217,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.08948361238007375,
+          "timing_std_ms": 2.323586149986553,
+          "duration_cv": 0.2554935818439597,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0676
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "arches_of_mercy",
+      "title": "Arches of Mercy",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 88.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.56,
+        "phrase_and_form": 10,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.1,
+        "orchestration": 9.04,
+        "expression": 7.48,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 80,
+          "leap_ratio": 0.012658227848101266,
+          "repeat_ratio": 0.189873417721519,
+          "range": 17,
+          "rests": 0.759493670886076,
+          "direction_changes": 0.4230769230769231,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9929577464788732,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.1056338028169014
+        },
+        "orchestration": {
+          "instrument_count": 17,
+          "max_polyphony": 32,
+          "mean_polyphony": 9.7,
+          "saturation_ratio": 0.115625,
+          "support_to_lead": 2.3,
+          "drum_ratio": 0.12345679012345678,
+          "register_collisions": 12
+        },
+        "expression": {
+          "gain_std": 0.10176438736624557,
+          "timing_std_ms": 4.7256075511212146,
+          "duration_cv": 0.4890314619266518,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.9753
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "moss_crown_dance",
+      "title": "Moss-Crown Dance",
+      "category": "fantasy",
+      "status": "revise",
+      "score": 84.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.17,
+        "phrase_and_form": 7.25,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.62,
+        "orchestration": 9.5,
+        "expression": 7.52,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.09859154929577464,
+          "range": 16,
+          "rests": 0.39436619718309857,
+          "direction_changes": 0.45714285714285713,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.7058823529411765,
+          "weak_nonchord_ratio": 0.1935483870967742
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.6180555555555554,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5555555555555556,
+          "drum_ratio": 0.1267605633802817,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.09190629657484925,
+          "timing_std_ms": 5.921547555590675,
+          "duration_cv": 1.27596955107353,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1549
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "sleeping_dragon_court",
+      "title": "Sleeping Dragon Court",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 86.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.14,
+        "phrase_and_form": 9.73,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 4.52,
+        "orchestration": 8.72,
+        "expression": 7.48,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.02127659574468085,
+          "repeat_ratio": 0.06382978723404255,
+          "range": 20,
+          "rests": 0.5531914893617021,
+          "direction_changes": 0.5652173913043478,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9146919431279621,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.15165876777251186
+        },
+        "orchestration": {
+          "instrument_count": 16,
+          "max_polyphony": 25,
+          "mean_polyphony": 11.20138888888889,
+          "saturation_ratio": 0.19444444444444445,
+          "support_to_lead": 2.8958333333333335,
+          "drum_ratio": 0.145748987854251,
+          "register_collisions": 14
+        },
+        "expression": {
+          "gain_std": 0.09627422295031954,
+          "timing_std_ms": 5.260581539361933,
+          "duration_cv": 0.5490380168402725,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.8745
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "palace_of_low_stars",
+      "title": "Palace of Low Stars",
+      "category": "fantasy",
+      "status": "revise",
+      "score": 84.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.01,
+        "phrase_and_form": 9.53,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 4.34,
+        "orchestration": 9.5,
+        "expression": 7.59,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.07936507936507936,
+          "repeat_ratio": 0.06349206349206349,
+          "range": 18,
+          "rests": 0.746031746031746,
+          "direction_changes": 0.7580645161290323,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9523809523809523,
+          "strong_chord_fit": 0.6829268292682927,
+          "weak_nonchord_ratio": 0.1564625850340136
+        },
+        "orchestration": {
+          "instrument_count": 13,
+          "max_polyphony": 17,
+          "mean_polyphony": 5.640625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.59375,
+          "drum_ratio": 0.0,
+          "register_collisions": 14
+        },
+        "expression": {
+          "gain_std": 0.09486383778894465,
+          "timing_std_ms": 6.034327377975806,
+          "duration_cv": 1.0640165081252213,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.6803
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "thirteen_candles",
+      "title": "Thirteen Candles",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 89.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.45,
+        "phrase_and_form": 8.24,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.5,
+        "expression": 7.51,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 19,
+          "rests": 0.746031746031746,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.13839285714285715
+        },
+        "orchestration": {
+          "instrument_count": 10,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.196875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.0,
+          "drum_ratio": 0.17647058823529413,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09176094765632589,
+          "timing_std_ms": 5.90947814867895,
+          "duration_cv": 1.2557857745633119,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.25
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "court_of_thistledown",
+      "title": "Court of Thistledown",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 87.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.98,
+        "phrase_and_form": 7.85,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.28,
+        "orchestration": 9.5,
+        "expression": 7.6,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.06349206349206349,
+          "range": 21,
+          "rests": 0.5079365079365079,
+          "direction_changes": 0.5161290322580645,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2548076923076923
+        },
+        "orchestration": {
+          "instrument_count": 10,
+          "max_polyphony": 7,
+          "mean_polyphony": 3.25,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.14754098360655737,
+          "register_collisions": 4
+        },
+        "expression": {
+          "gain_std": 0.09612410795742164,
+          "timing_std_ms": 5.967469347434799,
+          "duration_cv": 1.1063297012732374,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2787
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "pilgrims_of_gold",
+      "title": "Pilgrims of Gold",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 90.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.42,
+        "phrase_and_form": 9.67,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.66,
+        "orchestration": 9.05,
+        "expression": 7.43,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 80,
+          "leap_ratio": 0.0,
+          "repeat_ratio": 0.1518987341772152,
+          "range": 16,
+          "rests": 0.620253164556962,
+          "direction_changes": 0.47435897435897434,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9725085910652921,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.12371134020618557
+        },
+        "orchestration": {
+          "instrument_count": 16,
+          "max_polyphony": 23,
+          "mean_polyphony": 9.1375,
+          "saturation_ratio": 0.1125,
+          "support_to_lead": 2.1375,
+          "drum_ratio": 0.17094017094017094,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.0987518787790385,
+          "timing_std_ms": 4.722206075316702,
+          "duration_cv": 0.5171147346456785,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.8091
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "black_banner_kingdom",
+      "title": "Black-Banner Kingdom",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 88.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.04,
+        "phrase_and_form": 8.57,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.56,
+        "orchestration": 8.94,
+        "expression": 7.58,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.14285714285714285,
+          "range": 24,
+          "rests": 0.5396825396825397,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.985239852398524,
+          "strong_chord_fit": 0.9473684210526315,
+          "weak_nonchord_ratio": 0.13653136531365315
+        },
+        "orchestration": {
+          "instrument_count": 19,
+          "max_polyphony": 25,
+          "mean_polyphony": 10.96875,
+          "saturation_ratio": 0.140625,
+          "support_to_lead": 2.734375,
+          "drum_ratio": 0.4197002141327623,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.0995145511732225,
+          "timing_std_ms": 5.5352216360207604,
+          "duration_cv": 0.5327734316804653,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.4968
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "four_element_shrine",
+      "title": "Four-Element Shrine",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 88.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.18,
+        "phrase_and_form": 9.89,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.09,
+        "orchestration": 9.0,
+        "expression": 7.59,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 12,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.532258064516129,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.20434782608695654
+        },
+        "orchestration": {
+          "instrument_count": 16,
+          "max_polyphony": 19,
+          "mean_polyphony": 7.977678571428571,
+          "saturation_ratio": 0.125,
+          "support_to_lead": 1.84375,
+          "drum_ratio": 0.17266187050359713,
+          "register_collisions": 12
+        },
+        "expression": {
+          "gain_std": 0.10042252748099675,
+          "timing_std_ms": 5.484224643430677,
+          "duration_cv": 0.6675777484415634,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.705
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "the_oracle_opens",
+      "title": "The Oracle Opens",
+      "category": "fantasy",
+      "status": "approved",
+      "score": 86.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.06,
+        "phrase_and_form": 10,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 4.17,
+        "orchestration": 8.72,
+        "expression": 7.42,
+        "idiomatic_character": 7.3,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0425531914893617,
+          "repeat_ratio": 0.1276595744680851,
+          "range": 13,
+          "rests": 0.8936170212765957,
+          "direction_changes": 0.6739130434782609,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9166666666666666,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.171875
+        },
+        "orchestration": {
+          "instrument_count": 18,
+          "max_polyphony": 32,
+          "mean_polyphony": 11.10763888888889,
+          "saturation_ratio": 0.19444444444444445,
+          "support_to_lead": 2.75,
+          "drum_ratio": 0.1111111111111111,
+          "register_collisions": 15
+        },
+        "expression": {
+          "gain_std": 0.09817032877316728,
+          "timing_std_ms": 4.711002903922707,
+          "duration_cv": 0.49639418102987765,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 1.2963
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "night_rail_88",
+      "title": "Night Rail 88",
+      "category": "electronic",
+      "status": "revise",
+      "score": 88.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.47,
+        "phrase_and_form": 7.44,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.18,
+        "orchestration": 9.25,
+        "expression": 6.28,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.056338028169014086,
+          "range": 16,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9797297297297297,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.11824324324324324
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 3,
+          "mean_polyphony": 0.93359375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.7777777777777777,
+          "drum_ratio": 0.4307692307692308,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08679988789343918,
+          "timing_std_ms": 1.5539835381192306,
+          "duration_cv": 0.322935597376256,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0308
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "concrete_frequency",
+      "title": "Concrete Frequency",
+      "category": "electronic",
+      "status": "revise",
+      "score": 87.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.57,
+        "phrase_and_form": 7.35,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.99,
+        "orchestration": 9.0,
+        "expression": 5.88,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 40,
+          "leap_ratio": 0.07692307692307693,
+          "repeat_ratio": 0.1282051282051282,
+          "range": 13,
+          "rests": 0.8205128205128205,
+          "direction_changes": 0.6842105263157895,
+          "phrase_variety": 0.875
+        },
+        "harmony": {
+          "scale_fit": 0.975,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.09
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 2,
+          "mean_polyphony": 0.71484375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.6,
+          "drum_ratio": 0.5283018867924528,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08326354340639565,
+          "timing_std_ms": 1.679425202512963,
+          "duration_cv": 0.21334353085916935,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0283
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "escape_velocity_red",
+      "title": "Escape Velocity Red",
+      "category": "electronic",
+      "status": "revise",
+      "score": 88.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.25,
+        "phrase_and_form": 7.44,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.14,
+        "orchestration": 9.25,
+        "expression": 6.71,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.028169014084507043,
+          "repeat_ratio": 0.07042253521126761,
+          "range": 17,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.42857142857142855,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9861111111111112,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.17592592592592593
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 3.44140625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.6666666666666666,
+          "drum_ratio": 0.6086956521739131,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08761898194530476,
+          "timing_std_ms": 1.493297218469949,
+          "duration_cv": 1.3271848334976668,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.029
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "quiet_orbit",
+      "title": "Quiet Orbit",
+      "category": "electronic",
+      "status": "approved",
+      "score": 85.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.28,
+        "phrase_and_form": 7.7,
+        "rhythm_and_groove": 9.25,
+        "counterpoint_voice_leading": 7.14,
+        "orchestration": 9.5,
+        "expression": 7.19,
+        "idiomatic_character": 7.2,
+        "loop_design": 8.5,
+        "identity": 9.1
+      },
+      "metrics": {
+        "melody": {
+          "notes": 50,
+          "leap_ratio": 0.08163265306122448,
+          "repeat_ratio": 0.04081632653061224,
+          "range": 15,
+          "rests": 0.8163265306122449,
+          "direction_changes": 0.7708333333333334,
+          "phrase_variety": 0.7
+        },
+        "harmony": {
+          "scale_fit": 0.9320987654320988,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.12962962962962962
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 10,
+          "mean_polyphony": 5.15,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.84,
+          "drum_ratio": 0.0,
+          "register_collisions": 4
+        },
+        "expression": {
+          "gain_std": 0.1017406543089663,
+          "timing_std_ms": 2.953450346997482,
+          "duration_cv": 0.5801630612788119,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 0.85,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.321
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "rain_neon_block",
+      "title": "Rain / Neon / Block",
+      "category": "electronic",
+      "status": "revise",
+      "score": 86.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.0,
+        "phrase_and_form": 7.51,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.56,
+        "orchestration": 9.25,
+        "expression": 6.65,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.15873015873015872,
+          "range": 17,
+          "rests": 0.7142857142857143,
+          "direction_changes": 0.43548387096774194,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.8526785714285714,
+          "strong_chord_fit": 0.8545454545454545,
+          "weak_nonchord_ratio": 0.13392857142857142
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.5390625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.2222222222222222,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.09101851030834332,
+          "timing_std_ms": 4.0240205253398,
+          "duration_cv": 0.2881340002871015,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0278
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "hangar_nine",
+      "title": "Hangar Nine",
+      "category": "electronic",
+      "status": "revise",
+      "score": 88.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.64,
+        "phrase_and_form": 7.91,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.3,
+        "orchestration": 9.5,
+        "expression": 5.78,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.028169014084507043,
+          "repeat_ratio": 0.11267605633802817,
+          "range": 17,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.5857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.09011627906976744
+        },
+        "orchestration": {
+          "instrument_count": 9,
+          "max_polyphony": 4,
+          "mean_polyphony": 1.16875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.0,
+          "drum_ratio": 0.3986013986013986,
+          "register_collisions": 4
+        },
+        "expression": {
+          "gain_std": 0.08525261377322406,
+          "timing_std_ms": 1.4728357409384825,
+          "duration_cv": 0.1846940115513907,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.035
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "language_from_outside",
+      "title": "Language from Outside",
+      "category": "electronic",
+      "status": "approved",
+      "score": 85.5,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.45,
+        "phrase_and_form": 7.78,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.03,
+        "orchestration": 8.75,
+        "expression": 6.83,
+        "idiomatic_character": 7.2,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.06349206349206349,
+          "repeat_ratio": 0.047619047619047616,
+          "range": 14,
+          "rests": 0.7619047619047619,
+          "direction_changes": 0.7580645161290323,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.796875,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.234375
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.5133928571428572,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.75,
+          "drum_ratio": 0.09219858156028368,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09392547860624348,
+          "timing_std_ms": 1.5834890835691946,
+          "duration_cv": 1.1944470822124396,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0851
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "orbital_knives",
+      "title": "Orbital Knives",
+      "category": "electronic",
+      "status": "revise",
+      "score": 88.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.43,
+        "phrase_and_form": 7.65,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.68,
+        "orchestration": 9.5,
+        "expression": 6.8,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.0851063829787234,
+          "repeat_ratio": 0.06382978723404255,
+          "range": 15,
+          "rests": 0.6595744680851063,
+          "direction_changes": 0.5434782608695652,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9940476190476191,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.13690476190476192
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 9,
+          "mean_polyphony": 4.100694444444445,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.0,
+          "drum_ratio": 0.5371900826446281,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.08870173173278195,
+          "timing_std_ms": 1.9287688590586012,
+          "duration_cv": 1.2748373673387963,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.1102
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "soft_reset_dream",
+      "title": "Soft Reset Dream",
+      "category": "electronic",
+      "status": "revise",
+      "score": 85.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.39,
+        "phrase_and_form": 7.65,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.33,
+        "orchestration": 8.5,
+        "expression": 6.69,
+        "idiomatic_character": 7.2,
+        "loop_design": 8.5,
+        "identity": 9.0
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.1111111111111111,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 15,
+          "rests": 0.7619047619047619,
+          "direction_changes": 0.6935483870967742,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.96875,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.13020833333333334
+        },
+        "orchestration": {
+          "instrument_count": 4,
+          "max_polyphony": 3,
+          "mean_polyphony": 1.6354166666666667,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.0,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.0887548142751727,
+          "timing_std_ms": 1.2605225269659002,
+          "duration_cv": 0.6889501087955708,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0417
+      },
+      "critique": [
+        "Timing, dynamics and articulation remain too uniform."
+      ],
+      "required_actions": [
+        "deepen_expression"
+      ]
+    },
+    {
+      "id": "core_temperature",
+      "title": "Core Temperature",
+      "category": "electronic",
+      "status": "approved",
+      "score": 88.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.4,
+        "phrase_and_form": 8.09,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.58,
+        "orchestration": 9.25,
+        "expression": 6.81,
+        "idiomatic_character": 8.2,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.028169014084507043,
+          "repeat_ratio": 0.1267605633802817,
+          "range": 14,
+          "rests": 0.9014084507042254,
+          "direction_changes": 0.5857142857142857,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9730769230769231,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.13076923076923078
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 7,
+          "mean_polyphony": 1.5982142857142858,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.3010752688172043,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08913182765492395,
+          "timing_std_ms": 1.958278840835267,
+          "duration_cv": 1.3906248164412562,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0968
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "cigarette_geometry",
+      "title": "Cigarette Geometry",
+      "category": "urban",
+      "status": "revise",
+      "score": 83.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.33,
+        "phrase_and_form": 7.51,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.34,
+        "orchestration": 9.0,
+        "expression": 6.96,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 48,
+          "leap_ratio": 0.10638297872340426,
+          "repeat_ratio": 0.0425531914893617,
+          "range": 17,
+          "rests": 0.723404255319149,
+          "direction_changes": 0.5217391304347826,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.86328125,
+          "strong_chord_fit": 0.7647058823529411,
+          "weak_nonchord_ratio": 0.15234375
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.109375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 3.0,
+          "drum_ratio": 0.2727272727272727,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08617751664255109,
+          "timing_std_ms": 7.269884376016083,
+          "duration_cv": 0.24366727976923172,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0227
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "swing_room_three",
+      "title": "Swing Room Three",
+      "category": "urban",
+      "status": "revise",
+      "score": 81.6,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 5.35,
+        "phrase_and_form": 7.18,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.0,
+        "expression": 6.97,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.1746031746031746,
+          "range": 15,
+          "rests": 0.5396825396825397,
+          "direction_changes": 0.22580645161290322,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9522058823529411,
+          "strong_chord_fit": 0.46153846153846156,
+          "weak_nonchord_ratio": 0.18382352941176472
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.22265625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.25,
+          "drum_ratio": 0.2608695652173913,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08466762581263552,
+          "timing_std_ms": 6.955664851806179,
+          "duration_cv": 0.270563701229628,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0326
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony.",
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "repair_structural_harmony",
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "stairs_two_at_once",
+      "title": "Stairs Two at Once",
+      "category": "urban",
+      "status": "revise",
+      "score": 83.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.97,
+        "phrase_and_form": 6.27,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.59,
+        "orchestration": 9.25,
+        "expression": 7.33,
+        "idiomatic_character": 7.0,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 88,
+          "leap_ratio": 0.022988505747126436,
+          "repeat_ratio": 0.06896551724137931,
+          "range": 17,
+          "rests": 0.09195402298850575,
+          "direction_changes": 0.38372093023255816,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9594594594594594,
+          "strong_chord_fit": 0.8235294117647058,
+          "weak_nonchord_ratio": 0.16891891891891891
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.19921875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.6363636363636365,
+          "drum_ratio": 0.27450980392156865,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08488489881393939,
+          "timing_std_ms": 7.032679363509644,
+          "duration_cv": 0.37267454364399594,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0294
+      },
+      "critique": [
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "assembly_line_soul",
+      "title": "Assembly Line Soul",
+      "category": "urban",
+      "status": "approved",
+      "score": 88.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.72,
+        "phrase_and_form": 7.41,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.14,
+        "orchestration": 9.0,
+        "expression": 7.39,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.028169014084507043,
+          "repeat_ratio": 0.09859154929577464,
+          "range": 17,
+          "rests": 0.676056338028169,
+          "direction_changes": 0.4142857142857143,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9681818181818181,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.045454545454545456
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 4,
+          "mean_polyphony": 1.23828125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 4.0,
+          "drum_ratio": 0.3037974683544304,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08763200526073944,
+          "timing_std_ms": 6.238695815907049,
+          "duration_cv": 0.4159413608705237,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.019
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "amber_booth",
+      "title": "Amber Booth",
+      "category": "urban",
+      "status": "approved",
+      "score": 86.4,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.98,
+        "phrase_and_form": 7.45,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.61,
+        "orchestration": 9.0,
+        "expression": 7.02,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.5
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.015873015873015872,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 13,
+          "rests": 0.6825396825396826,
+          "direction_changes": 0.4838709677419355,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.2548076923076923
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.203125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.23529411764705882,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.0890027932354919,
+          "timing_std_ms": 6.420936213114651,
+          "duration_cv": 0.28871978000005377,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0294
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "roof_tiles_after_rain",
+      "title": "Roof Tiles After Rain",
+      "category": "urban",
+      "status": "approved",
+      "score": 86.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.77,
+        "phrase_and_form": 7.25,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.12,
+        "orchestration": 9.5,
+        "expression": 7.24,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.12698412698412698,
+          "range": 17,
+          "rests": 0.5396825396825397,
+          "direction_changes": 0.46774193548387094,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9776785714285714,
+          "strong_chord_fit": 0.7777777777777778,
+          "weak_nonchord_ratio": 0.15178571428571427
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.7265625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.5,
+          "drum_ratio": 0.2222222222222222,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09135583714793066,
+          "timing_std_ms": 7.646436439075459,
+          "duration_cv": 0.28375762397105275,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0556
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "green_harbor",
+      "title": "Green Harbor",
+      "category": "urban",
+      "status": "revise",
+      "score": 85.0,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 6.71,
+        "phrase_and_form": 6.96,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.18,
+        "orchestration": 9.5,
+        "expression": 8.25,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.014084507042253521,
+          "repeat_ratio": 0.04225352112676056,
+          "range": 19,
+          "rests": 0.4507042253521127,
+          "direction_changes": 0.5285714285714286,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9725609756097561,
+          "strong_chord_fit": 0.6521739130434783,
+          "weak_nonchord_ratio": 0.19207317073170732
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 5,
+          "mean_polyphony": 1.640625,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.6666666666666665,
+          "drum_ratio": 0.16326530612244897,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.08626512867939437,
+          "timing_std_ms": 10.89414655352642,
+          "duration_cv": 0.6891274268103924,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0204
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony.",
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "repair_structural_harmony",
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "echo_alley",
+      "title": "Echo Alley",
+      "category": "urban",
+      "status": "revise",
+      "score": 83.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 5.93,
+        "phrase_and_form": 7.72,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.65,
+        "orchestration": 9.5,
+        "expression": 7.27,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.09523809523809523,
+          "repeat_ratio": 0.047619047619047616,
+          "range": 17,
+          "rests": 0.7619047619047619,
+          "direction_changes": 0.7580645161290323,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.875,
+          "strong_chord_fit": 0.6764705882352942,
+          "weak_nonchord_ratio": 0.35795454545454547
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 5,
+          "mean_polyphony": 3.99609375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.75,
+          "drum_ratio": 0.26666666666666666,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.09548082391735788,
+          "timing_std_ms": 4.062939263583197,
+          "duration_cv": 0.9124965795299659,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0667
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "saturday_horns",
+      "title": "Saturday Horns",
+      "category": "urban",
+      "status": "approved",
+      "score": 86.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.61,
+        "phrase_and_form": 7.32,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.36,
+        "orchestration": 9.25,
+        "expression": 8.05,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.047619047619047616,
+          "repeat_ratio": 0.25396825396825395,
+          "range": 21,
+          "rests": 0.6349206349206349,
+          "direction_changes": 0.3709677419354839,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.7222222222222222,
+          "weak_nonchord_ratio": 0.1125
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 4,
+          "mean_polyphony": 1.59375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 3.0,
+          "drum_ratio": 0.375,
+          "register_collisions": 0
+        },
+        "expression": {
+          "gain_std": 0.08618488132451596,
+          "timing_std_ms": 9.68351792324663,
+          "duration_cv": 0.6996278002460968,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0156
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "underpass_tango",
+      "title": "Underpass Tango",
+      "category": "urban",
+      "status": "revise",
+      "score": 84.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.69,
+        "phrase_and_form": 6.82,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.12,
+        "orchestration": 9.0,
+        "expression": 8.2,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.12698412698412698,
+          "range": 18,
+          "rests": 0.5555555555555556,
+          "direction_changes": 0.43548387096774194,
+          "phrase_variety": 0.875
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 0.7575757575757576,
+          "weak_nonchord_ratio": 0.15406976744186046
+        },
+        "orchestration": {
+          "instrument_count": 6,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.171875,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 3.375,
+          "drum_ratio": 0.1568627450980392,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0848103668945765,
+          "timing_std_ms": 10.727909374867188,
+          "duration_cv": 0.47486093852024347,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.0294
+      },
+      "critique": [
+        "Phrases do not yet create enough question, consequence, breath and arrival."
+      ],
+      "required_actions": [
+        "strengthen_phrase_architecture"
+      ]
+    },
+    {
+      "id": "invention_in_copper",
+      "title": "Invention in Copper",
+      "category": "classical",
+      "status": "approved",
+      "score": 85.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.79,
+        "phrase_and_form": 7.53,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.09,
+        "orchestration": 8.75,
+        "expression": 7.59,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.25
+      },
+      "metrics": {
+        "melody": {
+          "notes": 72,
+          "leap_ratio": 0.04225352112676056,
+          "repeat_ratio": 0.11267605633802817,
+          "range": 17,
+          "rests": 0.38028169014084506,
+          "direction_changes": 0.6428571428571429,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9551282051282052,
+          "strong_chord_fit": 0.8936170212765957,
+          "weak_nonchord_ratio": 0.3333333333333333
+        },
+        "orchestration": {
+          "instrument_count": 5,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.4609375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.14814814814814814,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.09713339149299936,
+          "timing_std_ms": 5.818264579011004,
+          "duration_cv": 1.0629433433093867,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2564
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "fugue_of_small_machines",
+      "title": "Fugue of Small Machines",
+      "category": "classical",
+      "status": "approved",
+      "score": 87.2,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.96,
+        "phrase_and_form": 8.48,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.28,
+        "orchestration": 9.5,
+        "expression": 7.55,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 90,
+          "leap_ratio": 0.033707865168539325,
+          "repeat_ratio": 0.0898876404494382,
+          "range": 16,
+          "rests": 0.33707865168539325,
+          "direction_changes": 0.6136363636363636,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9333333333333333,
+          "strong_chord_fit": 0.8888888888888888,
+          "weak_nonchord_ratio": 0.26666666666666666
+        },
+        "orchestration": {
+          "instrument_count": 15,
+          "max_polyphony": 19,
+          "mean_polyphony": 5.725,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 0.5909090909090909,
+          "drum_ratio": 0.0,
+          "register_collisions": 4
+        },
+        "expression": {
+          "gain_std": 0.09474961055864925,
+          "timing_std_ms": 5.816570370863922,
+          "duration_cv": 0.8982048367676174,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.6035
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "winter_gallery",
+      "title": "Winter Gallery",
+      "category": "classical",
+      "status": "approved",
+      "score": 88.9,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.26,
+        "phrase_and_form": 8.21,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.9,
+        "orchestration": 9.5,
+        "expression": 7.61,
+        "idiomatic_character": 7.1,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 70,
+          "leap_ratio": 0.014492753623188406,
+          "repeat_ratio": 0.15942028985507245,
+          "range": 15,
+          "rests": 0.6811594202898551,
+          "direction_changes": 0.3382352941176471,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.184
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 10,
+          "mean_polyphony": 7.0125,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.7142857142857142,
+          "drum_ratio": 0.1935483870967742,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.10052903380865431,
+          "timing_std_ms": 5.620579866878361,
+          "duration_cv": 0.6604160568484367,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.2839
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "marble_steps",
+      "title": "Marble Steps",
+      "category": "classical",
+      "status": "approved",
+      "score": 90.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.77,
+        "phrase_and_form": 9.76,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.28,
+        "orchestration": 8.94,
+        "expression": 7.55,
+        "idiomatic_character": 7.1,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.2857142857142857,
+          "range": 16,
+          "rests": 0.6031746031746031,
+          "direction_changes": 0.3387096774193548,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.058577405857740586
+        },
+        "orchestration": {
+          "instrument_count": 16,
+          "max_polyphony": 23,
+          "mean_polyphony": 9.5078125,
+          "saturation_ratio": 0.140625,
+          "support_to_lead": 2.234375,
+          "drum_ratio": 0.1672473867595819,
+          "register_collisions": 4
+        },
+        "expression": {
+          "gain_std": 0.10121537630128442,
+          "timing_std_ms": 5.196794860017424,
+          "duration_cv": 0.5791902210888171,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.8502
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "phase_garden",
+      "title": "Phase Garden",
+      "category": "classical",
+      "status": "approved",
+      "score": 89.3,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.49,
+        "phrase_and_form": 8.4,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.98,
+        "orchestration": 9.5,
+        "expression": 7.39,
+        "idiomatic_character": 7.1,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 50,
+          "leap_ratio": 0.08163265306122448,
+          "repeat_ratio": 0.08163265306122448,
+          "range": 14,
+          "rests": 0.8163265306122449,
+          "direction_changes": 0.7291666666666666,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 1.0,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.12857142857142856
+        },
+        "orchestration": {
+          "instrument_count": 8,
+          "max_polyphony": 5,
+          "mean_polyphony": 2.0725,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 2.8,
+          "drum_ratio": 0.16,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.0877721095792963,
+          "timing_std_ms": 5.588846435537122,
+          "duration_cv": 1.5629447054267591,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.256
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "quartet_at_dusk",
+      "title": "Quartet at Dusk",
+      "category": "classical",
+      "status": "revise",
+      "score": 87.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 7.17,
+        "phrase_and_form": 9.21,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.72,
+        "orchestration": 9.16,
+        "expression": 7.49,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 70,
+          "leap_ratio": 0.07246376811594203,
+          "repeat_ratio": 0.08695652173913043,
+          "range": 31,
+          "rests": 0.43478260869565216,
+          "direction_changes": 0.5441176470588235,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9143835616438356,
+          "strong_chord_fit": 0.8059701492537313,
+          "weak_nonchord_ratio": 0.3047945205479452
+        },
+        "orchestration": {
+          "instrument_count": 11,
+          "max_polyphony": 20,
+          "mean_polyphony": 7.60625,
+          "saturation_ratio": 0.084375,
+          "support_to_lead": 0.6307692307692307,
+          "drum_ratio": 0.0,
+          "register_collisions": 2
+        },
+        "expression": {
+          "gain_std": 0.09678153861381375,
+          "timing_std_ms": 5.282540740924273,
+          "duration_cv": 0.7165713131910874,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.7808
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    },
+    {
+      "id": "water_without_edges",
+      "title": "Water Without Edges",
+      "category": "classical",
+      "status": "approved",
+      "score": 91.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.39,
+        "phrase_and_form": 10,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.47,
+        "orchestration": 9.12,
+        "expression": 7.87,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.06349206349206349,
+          "repeat_ratio": 0.07936507936507936,
+          "range": 18,
+          "rests": 0.8888888888888888,
+          "direction_changes": 0.7258064516129032,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9351145038167938,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.10305343511450382
+        },
+        "orchestration": {
+          "instrument_count": 13,
+          "max_polyphony": 19,
+          "mean_polyphony": 7.045138888888889,
+          "saturation_ratio": 0.09375,
+          "support_to_lead": 2.59375,
+          "drum_ratio": 0.0,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.09805814734367732,
+          "timing_std_ms": 7.4299471074628665,
+          "duration_cv": 0.6947306494361436,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.7939
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "allegro_for_a_tyrant",
+      "title": "Allegro for a Tyrant",
+      "category": "classical",
+      "status": "approved",
+      "score": 87.8,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 9.41,
+        "phrase_and_form": 7.99,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 7.47,
+        "orchestration": 8.96,
+        "expression": 7.51,
+        "idiomatic_character": 7.1,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.06349206349206349,
+          "repeat_ratio": 0.19047619047619047,
+          "range": 15,
+          "rests": 0.4444444444444444,
+          "direction_changes": 0.45161290322580644,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9905511811023622,
+          "strong_chord_fit": 0.9428571428571428,
+          "weak_nonchord_ratio": 0.04094488188976378
+        },
+        "orchestration": {
+          "instrument_count": 20,
+          "max_polyphony": 30,
+          "mean_polyphony": 9.196428571428571,
+          "saturation_ratio": 0.13392857142857142,
+          "support_to_lead": 8.421875,
+          "drum_ratio": 0.22085889570552147,
+          "register_collisions": 3
+        },
+        "expression": {
+          "gain_std": 0.08870919865121972,
+          "timing_std_ms": 6.1796417473942595,
+          "duration_cv": 1.1785795847782277,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.3681
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "angles_in_the_dark",
+      "title": "Angles in the Dark",
+      "category": "classical",
+      "status": "approved",
+      "score": 88.7,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 8.7,
+        "phrase_and_form": 8.62,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 8.17,
+        "orchestration": 9.25,
+        "expression": 7.5,
+        "idiomatic_character": 7.5,
+        "loop_design": 8.5,
+        "identity": 9.75
+      },
+      "metrics": {
+        "melody": {
+          "notes": 56,
+          "leap_ratio": 0.01818181818181818,
+          "repeat_ratio": 0.10909090909090909,
+          "range": 17,
+          "rests": 0.6,
+          "direction_changes": 0.5370370370370371,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.7960526315789473,
+          "strong_chord_fit": 1.0,
+          "weak_nonchord_ratio": 0.17105263157894737
+        },
+        "orchestration": {
+          "instrument_count": 7,
+          "max_polyphony": 9,
+          "mean_polyphony": 5.759375,
+          "saturation_ratio": 0.0,
+          "support_to_lead": 1.4285714285714286,
+          "drum_ratio": 0.0,
+          "register_collisions": 1
+        },
+        "expression": {
+          "gain_std": 0.10118666111389786,
+          "timing_std_ms": 4.893036234493056,
+          "duration_cv": 0.6529966878234373,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.4737
+      },
+      "critique": [
+        "The composition is coherent; revisions should focus on refinement rather than repair."
+      ],
+      "required_actions": []
+    },
+    {
+      "id": "overture_for_new_worlds",
+      "title": "Overture for New Worlds",
+      "category": "classical",
+      "status": "revise",
+      "score": 83.1,
+      "dimension_scores": {
+        "melodic_coherence": 10,
+        "harmonic_logic": 6.78,
+        "phrase_and_form": 8.65,
+        "rhythm_and_groove": 10,
+        "counterpoint_voice_leading": 5.32,
+        "orchestration": 8.92,
+        "expression": 7.53,
+        "idiomatic_character": 7.1,
+        "loop_design": 8.5,
+        "identity": 10
+      },
+      "metrics": {
+        "melody": {
+          "notes": 64,
+          "leap_ratio": 0.031746031746031744,
+          "repeat_ratio": 0.06349206349206349,
+          "range": 15,
+          "rests": 0.6190476190476191,
+          "direction_changes": 0.5,
+          "phrase_variety": 1.0
+        },
+        "harmony": {
+          "scale_fit": 0.9967845659163987,
+          "strong_chord_fit": 0.6363636363636364,
+          "weak_nonchord_ratio": 0.16720257234726688
+        },
+        "orchestration": {
+          "instrument_count": 18,
+          "max_polyphony": 30,
+          "mean_polyphony": 11.0859375,
+          "saturation_ratio": 0.14583333333333334,
+          "support_to_lead": 2.859375,
+          "drum_ratio": 0.4553415061295972,
+          "register_collisions": 11
+        },
+        "expression": {
+          "gain_std": 0.09350966713956793,
+          "timing_std_ms": 5.821936781666865,
+          "duration_cv": 0.6623784702974747,
+          "velocity_std": 0
+        },
+        "topology_unique_ratio": 1.0,
+        "adjacent_repeat_ratio": 0.0,
+        "section_density_contrast": 0.4694
+      },
+      "critique": [
+        "Structural notes do not consistently clarify the active harmony."
+      ],
+      "required_actions": [
+        "repair_structural_harmony"
+      ]
+    }
+  ]
+}

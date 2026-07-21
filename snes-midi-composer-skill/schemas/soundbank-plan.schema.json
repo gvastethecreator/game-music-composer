@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Neo-SPC Soundbank Plan",
+  "type": "object",
+  "required": ["bank", "version", "default_profile", "assignments"],
+  "properties": {
+    "bank": {"const": "neo-spc-factory-bank"},
+    "version": {"type": "string"},
+    "default_profile": {"enum": ["neo16", "neo32"]},
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["instrument_id", "role", "patch_id", "profile", "range", "velocity_range", "selection_reason"],
+        "properties": {
+          "instrument_id": {"type": "string"},
+          "role": {"type": "string"},
+          "patch_id": {"type": "string"},
+          "profile": {"enum": ["neo16", "neo32"]},
+          "range": {"type": "array", "prefixItems": [{"type": "integer"}, {"type": "integer"}], "minItems": 2, "maxItems": 2},
+          "velocity_range": {"type": "array", "prefixItems": [{"type": "integer", "minimum": 1, "maximum": 127}, {"type": "integer", "minimum": 1, "maximum": 127}], "minItems": 2, "maxItems": 2},
+          "articulation": {"type": "string"},
+          "gain_trim_db": {"type": "number"},
+          "pan_policy": {"type": "string"},
+          "fallback_patch": {"type": "string"},
+          "selection_reason": {"type": "string", "minLength": 8}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

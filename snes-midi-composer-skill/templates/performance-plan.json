@@ -1,0 +1,33 @@
+{
+  "mode": "expanded_web",
+  "profile": "lyrical_folk",
+  "seed": 104729,
+  "phrase_policy": {
+    "phrase_length_beats": 8,
+    "rubato_shape": "push_then_release",
+    "phrase_end_tenuto": 1.12,
+    "boundary_return_to_grid": true
+  },
+  "role_timing": {
+    "lead_ms": 0,
+    "bass_ms": 2,
+    "support_ms": 8,
+    "snare_ms": 7
+  },
+  "dynamics": {
+    "section_curve": [0.9, 1.0, 1.08, 0.94],
+    "phrase_arc_depth": 0.14,
+    "repeat_variation": 0.06
+  },
+  "articulation": {
+    "passing_note_scale": 0.78,
+    "phrase_end_scale": 1.12,
+    "repeated_note_alternation": [0.88, 1.02]
+  },
+  "ensemble_layers": [],
+  "negative_constraints": [
+    "Do not apply independent random jitter to every note.",
+    "Do not double every voice continuously.",
+    "Do not humanize kick, bass, lead and accompaniment with the same timing distribution."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": "2.2.0",
+  "activation_bpm": 140,
+  "principle": "Fast tempo does not mean every layer must double its note count.",
+  "eligible_roles": [
+    "arp",
+    "motor",
+    "ostinato",
+    "pulse",
+    "hat",
+    "shaker",
+    "tom",
+    "snare"
+  ],
+  "operations": {
+    "retrigger": {
+      "max_probability": 0.34,
+      "duration_min_beats": 0.48
+    },
+    "ratchet": {
+      "minimum_bpm": 165,
+      "maximum_subdivisions": 4
+    },
+    "ghost_subdivision": {
+      "categories": [
+        "action",
+        "electronic",
+        "urban"
+      ],
+      "velocity_range": [
+        36,
+        52
+      ]
+    },
+    "phrase_fill": {
+      "max_events": 3,
+      "location": "final half beat before selected form boundary"
+    }
+  },
+  "density_guard": "Reduce split probability when event density exceeds 7 events per beat.",
+  "forbidden": [
+    "Adding fast notes to every role",
+    "Random chromatic ornaments",
+    "Permanent 16th-note hats in genres without that groove",
+    "Increasing density without velocity hierarchy or rests"
+  ]
+}

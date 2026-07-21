@@ -1,0 +1,3034 @@
+{
+  "version": "2.2",
+  "tracks": 100,
+  "missing_files": [],
+  "lufs": {
+    "min": -17.06,
+    "max": -14.77,
+    "mean": -16.11,
+    "stdev": 0.78
+  },
+  "peak_dbfs": {
+    "max": -1.03,
+    "mean": -3.23
+  },
+  "duration_error_ms": {
+    "max_abs": 0.0,
+    "mean_abs": 0.0
+  },
+  "midi": {
+    "note_ons": 31546,
+    "velocity_min": 31,
+    "velocity_max": 127,
+    "velocity_mean": 78.45,
+    "velocity_stdev_mean": 15.19,
+    "cc7_total": 866,
+    "cc11_total": 29082,
+    "cc10_total": 866,
+    "cc91_total": 866
+  },
+  "mix_tracks": [
+    {
+      "id": "fernway_crossing",
+      "title": "Fernway Crossing",
+      "category": "adventure",
+      "lufs": -15.99,
+      "peak_dbfs": -2.04,
+      "duration_s": 29.388,
+      "expected_duration_s": 29.388,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.43,
+        -17.93
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "summit_lines",
+      "title": "Summit Lines",
+      "category": "adventure",
+      "lufs": -16.04,
+      "peak_dbfs": -2.32,
+      "duration_s": 28.965,
+      "expected_duration_s": 28.966,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.76,
+        -18.2
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "emerald_canopy",
+      "title": "Emerald Canopy",
+      "category": "adventure",
+      "lufs": -15.98,
+      "peak_dbfs": -3.0,
+      "duration_s": 41.538,
+      "expected_duration_s": 41.538,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.12,
+        -17.9
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "wake_of_amber",
+      "title": "Wake of Amber",
+      "category": "adventure",
+      "lufs": -15.99,
+      "peak_dbfs": -2.63,
+      "duration_s": 39.13,
+      "expected_duration_s": 39.13,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.69,
+        -18.11
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "isles_above",
+      "title": "Isles Above",
+      "category": "adventure",
+      "lufs": -15.99,
+      "peak_dbfs": -3.52,
+      "duration_s": 34.909,
+      "expected_duration_s": 34.909,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.11,
+        -17.63
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "saffron_miles",
+      "title": "Saffron Miles",
+      "category": "adventure",
+      "lufs": -16.0,
+      "peak_dbfs": -2.24,
+      "duration_s": 45.283,
+      "expected_duration_s": 45.283,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.94,
+        -17.72
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "under_ice_lantern",
+      "title": "Under-Ice Lantern",
+      "category": "adventure",
+      "lufs": -15.98,
+      "peak_dbfs": -1.83,
+      "duration_s": 56.842,
+      "expected_duration_s": 56.842,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.06,
+        -18.54
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "archive_of_roots",
+      "title": "Archive of Roots",
+      "category": "adventure",
+      "lufs": -15.99,
+      "peak_dbfs": -1.67,
+      "duration_s": 57.143,
+      "expected_duration_s": 57.143,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.15,
+        -17.86
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "river_below",
+      "title": "River Below",
+      "category": "adventure",
+      "lufs": -15.98,
+      "peak_dbfs": -1.06,
+      "duration_s": 49.091,
+      "expected_duration_s": 49.091,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.39,
+        -17.97
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "lanterns_homeward",
+      "title": "Lanterns Homeward",
+      "category": "adventure",
+      "lufs": -15.99,
+      "peak_dbfs": -2.75,
+      "duration_s": 35.294,
+      "expected_duration_s": 35.294,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.5,
+        -18.02
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "iron_pulse",
+      "title": "Iron Pulse",
+      "category": "action",
+      "lufs": -14.87,
+      "peak_dbfs": -4.81,
+      "duration_s": 24.935,
+      "expected_duration_s": 24.935,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.04,
+        -17.07
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "crown_breaker",
+      "title": "Crown Breaker",
+      "category": "action",
+      "lufs": -14.87,
+      "peak_dbfs": -2.54,
+      "duration_s": 32.727,
+      "expected_duration_s": 32.727,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.17,
+        -16.93
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "redline_pursuit",
+      "title": "Redline Pursuit",
+      "category": "action",
+      "lufs": -14.85,
+      "peak_dbfs": -4.63,
+      "duration_s": 21.818,
+      "expected_duration_s": 21.818,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.7,
+        -16.47
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "two_blades",
+      "title": "Two Blades",
+      "category": "action",
+      "lufs": -14.9,
+      "peak_dbfs": -2.94,
+      "duration_s": 27.097,
+      "expected_duration_s": 27.097,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.34,
+        -17.87
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "slag_foundry",
+      "title": "Slag Foundry",
+      "category": "action",
+      "lufs": -14.88,
+      "peak_dbfs": -2.67,
+      "duration_s": 32.432,
+      "expected_duration_s": 32.432,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.31,
+        -17.12
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "cloud_lancers",
+      "title": "Cloud Lancers",
+      "category": "action",
+      "lufs": -14.87,
+      "peak_dbfs": -4.97,
+      "duration_s": 17.778,
+      "expected_duration_s": 17.778,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.04,
+        -16.74
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "last_heart",
+      "title": "Last Heart",
+      "category": "action",
+      "lufs": -14.78,
+      "peak_dbfs": -2.01,
+      "duration_s": 31.304,
+      "expected_duration_s": 31.304,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.65,
+        -16.34
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "victory_lap_zero",
+      "title": "Victory Lap Zero",
+      "category": "action",
+      "lufs": -14.78,
+      "peak_dbfs": -4.92,
+      "duration_s": 20.426,
+      "expected_duration_s": 20.426,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.58,
+        -16.22
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "walls_of_bronze",
+      "title": "Walls of Bronze",
+      "category": "action",
+      "lufs": -14.87,
+      "peak_dbfs": -3.14,
+      "duration_s": 26.182,
+      "expected_duration_s": 26.182,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.29,
+        -16.92
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "vector_arena",
+      "title": "Vector Arena",
+      "category": "action",
+      "lufs": -14.81,
+      "peak_dbfs": -3.4,
+      "duration_s": 20.0,
+      "expected_duration_s": 20.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -16.06,
+        -15.87
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "footsteps_in_plaster",
+      "title": "Footsteps in Plaster",
+      "category": "horror",
+      "lufs": -16.98,
+      "peak_dbfs": -3.87,
+      "duration_s": 70.588,
+      "expected_duration_s": 70.588,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.71,
+        -18.42
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "salt_circle",
+      "title": "Salt Circle",
+      "category": "horror",
+      "lufs": -16.97,
+      "peak_dbfs": -4.46,
+      "duration_s": 56.842,
+      "expected_duration_s": 56.842,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.98,
+        -18.7
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "under_the_skin",
+      "title": "Under the Skin",
+      "category": "horror",
+      "lufs": -16.99,
+      "peak_dbfs": -3.82,
+      "duration_s": 40.976,
+      "expected_duration_s": 40.976,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.59,
+        -18.21
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "stars_without_distance",
+      "title": "Stars Without Distance",
+      "category": "horror",
+      "lufs": -16.97,
+      "peak_dbfs": -6.49,
+      "duration_s": 88.889,
+      "expected_duration_s": 88.889,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -20.12,
+        -19.58
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "the_room_remembers",
+      "title": "The Room Remembers",
+      "category": "horror",
+      "lufs": -16.96,
+      "peak_dbfs": -5.42,
+      "duration_s": 50.625,
+      "expected_duration_s": 50.625,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -18.96,
+        -18.48
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "lamp_behind_the_door",
+      "title": "Lamp Behind the Door",
+      "category": "horror",
+      "lufs": -16.96,
+      "peak_dbfs": -5.12,
+      "duration_s": 53.333,
+      "expected_duration_s": 53.333,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.82,
+        -18.41
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "dont_look_back",
+      "title": "Don’t Look Back",
+      "category": "horror",
+      "lufs": -17.0,
+      "peak_dbfs": -4.47,
+      "duration_s": 15.789,
+      "expected_duration_s": 15.789,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.99,
+        -18.65
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "music_box_teeth",
+      "title": "Music Box Teeth",
+      "category": "horror",
+      "lufs": -16.97,
+      "peak_dbfs": -4.29,
+      "duration_s": 33.488,
+      "expected_duration_s": 33.488,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.79,
+        -19.35
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "beneath_the_well",
+      "title": "Beneath the Well",
+      "category": "horror",
+      "lufs": -16.97,
+      "peak_dbfs": -3.25,
+      "duration_s": 74.483,
+      "expected_duration_s": 74.483,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.43,
+        -18.36
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "the_shape_in_full",
+      "title": "The Shape in Full",
+      "category": "horror",
+      "lufs": -16.99,
+      "peak_dbfs": -4.42,
+      "duration_s": 40.0,
+      "expected_duration_s": 40.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.44,
+        -19.1
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "morning_bread",
+      "title": "Morning Bread",
+      "category": "towns",
+      "lufs": -15.98,
+      "peak_dbfs": -3.08,
+      "duration_s": 30.0,
+      "expected_duration_s": 30.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -18.15,
+        -17.57
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "three_mugs_later",
+      "title": "Three Mugs Later",
+      "category": "towns",
+      "lufs": -15.99,
+      "peak_dbfs": -3.01,
+      "duration_s": 24.407,
+      "expected_duration_s": 24.407,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.12,
+        -17.57
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "paper_lantern_row",
+      "title": "Paper Lantern Row",
+      "category": "towns",
+      "lufs": -15.99,
+      "peak_dbfs": -2.14,
+      "duration_s": 34.286,
+      "expected_duration_s": 34.286,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.77,
+        -18.28
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "white_stone_capital",
+      "title": "White-Stone Capital",
+      "category": "towns",
+      "lufs": -16.03,
+      "peak_dbfs": -2.65,
+      "duration_s": 27.692,
+      "expected_duration_s": 27.692,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.6,
+        -17.91
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "copper_saffron",
+      "title": "Copper & Saffron",
+      "category": "towns",
+      "lufs": -15.99,
+      "peak_dbfs": -2.43,
+      "duration_s": 27.541,
+      "expected_duration_s": 27.541,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.4,
+        -17.79
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "the_blue_stove",
+      "title": "The Blue Stove",
+      "category": "towns",
+      "lufs": -15.97,
+      "peak_dbfs": -4.07,
+      "duration_s": 36.923,
+      "expected_duration_s": 36.923,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.86,
+        -17.35
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "painted_wheels",
+      "title": "Painted Wheels",
+      "category": "towns",
+      "lufs": -15.99,
+      "peak_dbfs": -4.16,
+      "duration_s": 21.176,
+      "expected_duration_s": 21.176,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.29,
+        -17.73
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "shift_change",
+      "title": "Shift Change",
+      "category": "towns",
+      "lufs": -17.06,
+      "peak_dbfs": -1.43,
+      "duration_s": 38.095,
+      "expected_duration_s": 38.095,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.51,
+        -19.23
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "tables_by_the_tide",
+      "title": "Tables by the Tide",
+      "category": "towns",
+      "lufs": -16.0,
+      "peak_dbfs": -1.7,
+      "duration_s": 41.739,
+      "expected_duration_s": 41.739,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.31,
+        -18.13
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "all_bells_open",
+      "title": "All Bells Open",
+      "category": "towns",
+      "lufs": -15.99,
+      "peak_dbfs": -4.01,
+      "duration_s": 32.727,
+      "expected_duration_s": 32.727,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.7,
+        -17.36
+      ],
+      "target_lufs": -16.0
+    },
+    {
+      "id": "empty_chair",
+      "title": "Empty Chair",
+      "category": "emotion",
+      "lufs": -16.98,
+      "peak_dbfs": -2.98,
+      "duration_s": 69.677,
+      "expected_duration_s": 69.677,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.73,
+        -18.22
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "first_light_after",
+      "title": "First Light After",
+      "category": "emotion",
+      "lufs": -16.98,
+      "peak_dbfs": -5.26,
+      "duration_s": 34.286,
+      "expected_duration_s": 34.286,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.19,
+        -18.76
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "postcard_in_june",
+      "title": "Postcard in June",
+      "category": "emotion",
+      "lufs": -16.98,
+      "peak_dbfs": -4.22,
+      "duration_s": 37.895,
+      "expected_duration_s": 37.895,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.03,
+        -18.51
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "at_the_station",
+      "title": "At the Station",
+      "category": "emotion",
+      "lufs": -16.99,
+      "peak_dbfs": -3.6,
+      "duration_s": 41.739,
+      "expected_duration_s": 41.739,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.35,
+        -18.91
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "last_boat_west",
+      "title": "Last Boat West",
+      "category": "emotion",
+      "lufs": -17.0,
+      "peak_dbfs": -3.88,
+      "duration_s": 51.429,
+      "expected_duration_s": 51.429,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.14,
+        -18.64
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "hands_in_winter",
+      "title": "Hands in Winter",
+      "category": "emotion",
+      "lufs": -16.97,
+      "peak_dbfs": -3.75,
+      "duration_s": 56.471,
+      "expected_duration_s": 56.471,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.14,
+        -18.78
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "flags_in_mud",
+      "title": "Flags in Mud",
+      "category": "emotion",
+      "lufs": -17.0,
+      "peak_dbfs": -3.8,
+      "duration_s": 49.655,
+      "expected_duration_s": 49.655,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.93,
+        -18.7
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "stand_again",
+      "title": "Stand Again",
+      "category": "emotion",
+      "lufs": -17.03,
+      "peak_dbfs": -2.92,
+      "duration_s": 36.226,
+      "expected_duration_s": 36.226,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.46,
+        -18.98
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "name_on_the_glass",
+      "title": "Name on the Glass",
+      "category": "emotion",
+      "lufs": -16.98,
+      "peak_dbfs": -2.95,
+      "duration_s": 64.865,
+      "expected_duration_s": 64.865,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.96,
+        -19.61
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "road_after_credits",
+      "title": "Road After Credits",
+      "category": "emotion",
+      "lufs": -16.99,
+      "peak_dbfs": -4.04,
+      "duration_s": 40.909,
+      "expected_duration_s": 40.909,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.21,
+        -18.67
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "ink_under_rain",
+      "title": "Ink Under Rain",
+      "category": "mystery",
+      "lufs": -16.5,
+      "peak_dbfs": -2.26,
+      "duration_s": 43.636,
+      "expected_duration_s": 43.636,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.03,
+        -18.46
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "gear_seven",
+      "title": "Gear Seven",
+      "category": "mystery",
+      "lufs": -16.95,
+      "peak_dbfs": -1.03,
+      "duration_s": 30.0,
+      "expected_duration_s": 30.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.49,
+        -19.28
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "catalogue_of_mirrors",
+      "title": "Catalogue of Mirrors",
+      "category": "mystery",
+      "lufs": -16.62,
+      "peak_dbfs": -1.18,
+      "duration_s": 66.667,
+      "expected_duration_s": 66.667,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.59,
+        -19.07
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "clean_room_signal",
+      "title": "Clean Room Signal",
+      "category": "mystery",
+      "lufs": -16.47,
+      "peak_dbfs": -3.63,
+      "duration_s": 35.556,
+      "expected_duration_s": 35.556,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.26,
+        -18.07
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "four_doors_one_key",
+      "title": "Four Doors, One Key",
+      "category": "mystery",
+      "lufs": -16.52,
+      "peak_dbfs": -1.35,
+      "duration_s": 31.25,
+      "expected_duration_s": 31.25,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.38,
+        -18.96
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "velvet_entry",
+      "title": "Velvet Entry",
+      "category": "mystery",
+      "lufs": -16.5,
+      "peak_dbfs": -1.7,
+      "duration_s": 46.829,
+      "expected_duration_s": 46.829,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.83,
+        -18.45
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "stone_answers",
+      "title": "Stone Answers",
+      "category": "mystery",
+      "lufs": -16.49,
+      "peak_dbfs": -1.34,
+      "duration_s": 48.0,
+      "expected_duration_s": 48.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -18.74,
+        -18.49
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "rooms_that_fold",
+      "title": "Rooms That Fold",
+      "category": "mystery",
+      "lufs": -16.48,
+      "peak_dbfs": -2.91,
+      "duration_s": 49.091,
+      "expected_duration_s": 49.091,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.68,
+        -19.17
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "redacted_pages",
+      "title": "Redacted Pages",
+      "category": "mystery",
+      "lufs": -16.5,
+      "peak_dbfs": -1.79,
+      "duration_s": 39.184,
+      "expected_duration_s": 39.184,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.74,
+        -18.25
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "minute_hand_zero",
+      "title": "Minute Hand Zero",
+      "category": "mystery",
+      "lufs": -16.49,
+      "peak_dbfs": -3.16,
+      "duration_s": 26.667,
+      "expected_duration_s": 26.667,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.33,
+        -18.08
+      ],
+      "target_lufs": -16.5
+    },
+    {
+      "id": "arches_of_mercy",
+      "title": "Arches of Mercy",
+      "category": "fantasy",
+      "lufs": -16.18,
+      "peak_dbfs": -5.22,
+      "duration_s": 66.667,
+      "expected_duration_s": 66.667,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.12,
+        -18.75
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "moss_crown_dance",
+      "title": "Moss-Crown Dance",
+      "category": "fantasy",
+      "lufs": -16.19,
+      "peak_dbfs": -1.79,
+      "duration_s": 41.538,
+      "expected_duration_s": 41.538,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.42,
+        -18.03
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "sleeping_dragon_court",
+      "title": "Sleeping Dragon Court",
+      "category": "fantasy",
+      "lufs": -16.18,
+      "peak_dbfs": -3.48,
+      "duration_s": 51.429,
+      "expected_duration_s": 51.429,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.41,
+        -18.19
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "palace_of_low_stars",
+      "title": "Palace of Low Stars",
+      "category": "fantasy",
+      "lufs": -16.19,
+      "peak_dbfs": -2.61,
+      "duration_s": 40.0,
+      "expected_duration_s": 40.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.97,
+        -19.31
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "thirteen_candles",
+      "title": "Thirteen Candles",
+      "category": "fantasy",
+      "lufs": -16.18,
+      "peak_dbfs": -2.97,
+      "duration_s": 52.174,
+      "expected_duration_s": 52.174,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.67,
+        -18.38
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "court_of_thistledown",
+      "title": "Court of Thistledown",
+      "category": "fantasy",
+      "lufs": -16.21,
+      "peak_dbfs": -3.11,
+      "duration_s": 22.5,
+      "expected_duration_s": 22.5,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.02,
+        -18.55
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "pilgrims_of_gold",
+      "title": "Pilgrims of Gold",
+      "category": "fantasy",
+      "lufs": -16.22,
+      "peak_dbfs": -3.08,
+      "duration_s": 40.909,
+      "expected_duration_s": 40.909,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.14,
+        -18.37
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "black_banner_kingdom",
+      "title": "Black-Banner Kingdom",
+      "category": "fantasy",
+      "lufs": -16.21,
+      "peak_dbfs": -3.87,
+      "duration_s": 36.923,
+      "expected_duration_s": 36.923,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.36,
+        -18.09
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "four_element_shrine",
+      "title": "Four-Element Shrine",
+      "category": "fantasy",
+      "lufs": -16.19,
+      "peak_dbfs": -3.36,
+      "duration_s": 31.111,
+      "expected_duration_s": 31.111,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.48,
+        -18.19
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "the_oracle_opens",
+      "title": "The Oracle Opens",
+      "category": "fantasy",
+      "lufs": -16.18,
+      "peak_dbfs": -4.22,
+      "duration_s": 63.529,
+      "expected_duration_s": 63.529,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.97,
+        -18.72
+      ],
+      "target_lufs": -16.2
+    },
+    {
+      "id": "night_rail_88",
+      "title": "Night Rail 88",
+      "category": "electronic",
+      "lufs": -14.8,
+      "peak_dbfs": -3.12,
+      "duration_s": 32.542,
+      "expected_duration_s": 32.542,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -15.77,
+        -15.62
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "concrete_frequency",
+      "title": "Concrete Frequency",
+      "category": "electronic",
+      "lufs": -14.8,
+      "peak_dbfs": -3.79,
+      "duration_s": 29.091,
+      "expected_duration_s": 29.091,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -15.69,
+        -15.56
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "escape_velocity_red",
+      "title": "Escape Velocity Red",
+      "category": "electronic",
+      "lufs": -14.86,
+      "peak_dbfs": -4.6,
+      "duration_s": 21.818,
+      "expected_duration_s": 21.818,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.73,
+        -16.49
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "quiet_orbit",
+      "title": "Quiet Orbit",
+      "category": "electronic",
+      "lufs": -14.77,
+      "peak_dbfs": -1.24,
+      "duration_s": 77.419,
+      "expected_duration_s": 77.419,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.44,
+        -17.13
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "rain_neon_block",
+      "title": "Rain / Neon / Block",
+      "category": "electronic",
+      "lufs": -14.82,
+      "peak_dbfs": -2.49,
+      "duration_s": 36.226,
+      "expected_duration_s": 36.226,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.58,
+        -16.28
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "hangar_nine",
+      "title": "Hangar Nine",
+      "category": "electronic",
+      "lufs": -14.88,
+      "peak_dbfs": -3.66,
+      "duration_s": 40.0,
+      "expected_duration_s": 40.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -17.44,
+        -17.32
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "language_from_outside",
+      "title": "Language from Outside",
+      "category": "electronic",
+      "lufs": -15.61,
+      "peak_dbfs": -1.34,
+      "duration_s": 45.405,
+      "expected_duration_s": 45.405,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.33,
+        -17.11
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "orbital_knives",
+      "title": "Orbital Knives",
+      "category": "electronic",
+      "lufs": -14.88,
+      "peak_dbfs": -3.92,
+      "duration_s": 26.341,
+      "expected_duration_s": 26.341,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.25,
+        -16.99
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "soft_reset_dream",
+      "title": "Soft Reset Dream",
+      "category": "electronic",
+      "lufs": -14.77,
+      "peak_dbfs": -2.28,
+      "duration_s": 36.0,
+      "expected_duration_s": 36.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -17.51,
+        -17.03
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "core_temperature",
+      "title": "Core Temperature",
+      "category": "electronic",
+      "lufs": -14.83,
+      "peak_dbfs": -3.91,
+      "duration_s": 22.4,
+      "expected_duration_s": 22.4,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -16.53,
+        -16.27
+      ],
+      "target_lufs": -14.8
+    },
+    {
+      "id": "cigarette_geometry",
+      "title": "Cigarette Geometry",
+      "category": "urban",
+      "lufs": -15.57,
+      "peak_dbfs": -1.4,
+      "duration_s": 44.651,
+      "expected_duration_s": 44.651,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.98,
+        -17.5
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "swing_room_three",
+      "title": "Swing Room Three",
+      "category": "urban",
+      "lufs": -15.51,
+      "peak_dbfs": -2.82,
+      "duration_s": 29.091,
+      "expected_duration_s": 29.091,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.67,
+        -17.25
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "stairs_two_at_once",
+      "title": "Stairs Two at Once",
+      "category": "urban",
+      "lufs": -15.59,
+      "peak_dbfs": -1.94,
+      "duration_s": 20.87,
+      "expected_duration_s": 20.87,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.92,
+        -18.26
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "assembly_line_soul",
+      "title": "Assembly Line Soul",
+      "category": "urban",
+      "lufs": -15.59,
+      "peak_dbfs": -2.93,
+      "duration_s": 34.286,
+      "expected_duration_s": 34.286,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.34,
+        -18.03
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "amber_booth",
+      "title": "Amber Booth",
+      "category": "urban",
+      "lufs": -15.47,
+      "peak_dbfs": -2.16,
+      "duration_s": 40.0,
+      "expected_duration_s": 40.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -17.5,
+        -16.98
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "roof_tiles_after_rain",
+      "title": "Roof Tiles After Rain",
+      "category": "urban",
+      "lufs": -15.47,
+      "peak_dbfs": -1.34,
+      "duration_s": 41.739,
+      "expected_duration_s": 41.739,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.95,
+        -16.82
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "green_harbor",
+      "title": "Green Harbor",
+      "category": "urban",
+      "lufs": -15.5,
+      "peak_dbfs": -1.47,
+      "duration_s": 46.829,
+      "expected_duration_s": 46.829,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.93,
+        -16.61
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "echo_alley",
+      "title": "Echo Alley",
+      "category": "urban",
+      "lufs": -15.5,
+      "peak_dbfs": -1.31,
+      "duration_s": 51.892,
+      "expected_duration_s": 51.892,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.11,
+        -16.75
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "saturday_horns",
+      "title": "Saturday Horns",
+      "category": "urban",
+      "lufs": -15.57,
+      "peak_dbfs": -5.37,
+      "duration_s": 24.935,
+      "expected_duration_s": 24.935,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -17.66,
+        -17.38
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "underpass_tango",
+      "title": "Underpass Tango",
+      "category": "urban",
+      "lufs": -15.5,
+      "peak_dbfs": -2.84,
+      "duration_s": 32.542,
+      "expected_duration_s": 32.542,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -16.73,
+        -16.53
+      ],
+      "target_lufs": -15.5
+    },
+    {
+      "id": "invention_in_copper",
+      "title": "Invention in Copper",
+      "category": "classical",
+      "lufs": -16.99,
+      "peak_dbfs": -2.65,
+      "duration_s": 34.286,
+      "expected_duration_s": 34.286,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.14,
+        -18.99
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "fugue_of_small_machines",
+      "title": "Fugue of Small Machines",
+      "category": "classical",
+      "lufs": -16.98,
+      "peak_dbfs": -4.69,
+      "duration_s": 46.154,
+      "expected_duration_s": 46.154,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.23,
+        -18.89
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "winter_gallery",
+      "title": "Winter Gallery",
+      "category": "classical",
+      "lufs": -16.99,
+      "peak_dbfs": -6.31,
+      "duration_s": 42.857,
+      "expected_duration_s": 42.857,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -20.04,
+        -19.42
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "marble_steps",
+      "title": "Marble Steps",
+      "category": "classical",
+      "lufs": -17.02,
+      "peak_dbfs": -3.66,
+      "duration_s": 35.556,
+      "expected_duration_s": 35.556,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.83,
+        -19.27
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "phase_garden",
+      "title": "Phase Garden",
+      "category": "classical",
+      "lufs": -16.98,
+      "peak_dbfs": -5.86,
+      "duration_s": 47.619,
+      "expected_duration_s": 47.619,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.7,
+        -18.41
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "quartet_at_dusk",
+      "title": "Quartet at Dusk",
+      "category": "classical",
+      "lufs": -16.99,
+      "peak_dbfs": -4.59,
+      "duration_s": 66.667,
+      "expected_duration_s": 66.667,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.48,
+        -19.1
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "water_without_edges",
+      "title": "Water Without Edges",
+      "category": "classical",
+      "lufs": -16.97,
+      "peak_dbfs": -5.25,
+      "duration_s": 63.529,
+      "expected_duration_s": 63.529,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.07,
+        -18.51
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "allegro_for_a_tyrant",
+      "title": "Allegro for a Tyrant",
+      "category": "classical",
+      "lufs": -17.02,
+      "peak_dbfs": -5.37,
+      "duration_s": 22.703,
+      "expected_duration_s": 22.703,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -19.5,
+        -19.2
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "angles_in_the_dark",
+      "title": "Angles in the Dark",
+      "category": "classical",
+      "lufs": -16.99,
+      "peak_dbfs": -2.16,
+      "duration_s": 63.158,
+      "expected_duration_s": 63.158,
+      "duration_error_ms": -0.0,
+      "stereo_rms_db": [
+        -18.99,
+        -18.69
+      ],
+      "target_lufs": -17.0
+    },
+    {
+      "id": "overture_for_new_worlds",
+      "title": "Overture for New Worlds",
+      "category": "classical",
+      "lufs": -17.01,
+      "peak_dbfs": -3.27,
+      "duration_s": 60.0,
+      "expected_duration_s": 60.0,
+      "duration_error_ms": 0.0,
+      "stereo_rms_db": [
+        -19.26,
+        -18.95
+      ],
+      "target_lufs": -17.0
+    }
+  ],
+  "midi_tracks": [
+    {
+      "id": "fernway_crossing",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 228,
+      "velocity_min": 43,
+      "velocity_max": 110,
+      "velocity_mean": 74.64,
+      "velocity_stdev": 17.14,
+      "velocity_unique": 59,
+      "cc7_count": 9,
+      "cc11_count": 297,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "summit_lines",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 256,
+      "velocity_min": 55,
+      "velocity_max": 118,
+      "velocity_mean": 84.0,
+      "velocity_stdev": 15.02,
+      "velocity_unique": 59,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "emerald_canopy",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 208,
+      "velocity_min": 47,
+      "velocity_max": 122,
+      "velocity_mean": 83.19,
+      "velocity_stdev": 15.75,
+      "velocity_unique": 61,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "wake_of_amber",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 325,
+      "velocity_min": 43,
+      "velocity_max": 109,
+      "velocity_mean": 74.75,
+      "velocity_stdev": 16.93,
+      "velocity_unique": 61,
+      "cc7_count": 11,
+      "cc11_count": 451,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "isles_above",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 212,
+      "velocity_min": 52,
+      "velocity_max": 109,
+      "velocity_mean": 79.06,
+      "velocity_stdev": 14.38,
+      "velocity_unique": 52,
+      "cc7_count": 11,
+      "cc11_count": 363,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "saffron_miles",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 384,
+      "velocity_min": 54,
+      "velocity_max": 122,
+      "velocity_mean": 77.5,
+      "velocity_stdev": 12.65,
+      "velocity_unique": 59,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "under_ice_lantern",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 162,
+      "velocity_min": 43,
+      "velocity_max": 107,
+      "velocity_mean": 80.49,
+      "velocity_stdev": 14.67,
+      "velocity_unique": 49,
+      "cc7_count": 6,
+      "cc11_count": 222,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "archive_of_roots",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 208,
+      "velocity_min": 45,
+      "velocity_max": 122,
+      "velocity_mean": 82.88,
+      "velocity_stdev": 15.89,
+      "velocity_unique": 60,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "river_below",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 207,
+      "velocity_min": 51,
+      "velocity_max": 109,
+      "velocity_mean": 77.04,
+      "velocity_stdev": 14.68,
+      "velocity_unique": 54,
+      "cc7_count": 9,
+      "cc11_count": 225,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "lanterns_homeward",
+      "tracks": 13,
+      "ticks_per_beat": 480,
+      "note_ons": 343,
+      "velocity_min": 43,
+      "velocity_max": 110,
+      "velocity_mean": 72.8,
+      "velocity_stdev": 15.38,
+      "velocity_unique": 61,
+      "cc7_count": 12,
+      "cc11_count": 492,
+      "cc10_count": 12,
+      "cc91_count": 12
+    },
+    {
+      "id": "iron_pulse",
+      "tracks": 11,
+      "ticks_per_beat": 480,
+      "note_ons": 485,
+      "velocity_min": 37,
+      "velocity_max": 127,
+      "velocity_mean": 80.54,
+      "velocity_stdev": 19.1,
+      "velocity_unique": 85,
+      "cc7_count": 10,
+      "cc11_count": 330,
+      "cc10_count": 10,
+      "cc91_count": 10
+    },
+    {
+      "id": "crown_breaker",
+      "tracks": 20,
+      "ticks_per_beat": 480,
+      "note_ons": 924,
+      "velocity_min": 45,
+      "velocity_max": 127,
+      "velocity_mean": 71.53,
+      "velocity_stdev": 14.14,
+      "velocity_unique": 78,
+      "cc7_count": 19,
+      "cc11_count": 475,
+      "cc10_count": 19,
+      "cc91_count": 19
+    },
+    {
+      "id": "redline_pursuit",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 606,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 70.55,
+      "velocity_stdev": 22.53,
+      "velocity_unique": 87,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "two_blades",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 224,
+      "velocity_min": 54,
+      "velocity_max": 118,
+      "velocity_mean": 84.27,
+      "velocity_stdev": 15.56,
+      "velocity_unique": 59,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "slag_foundry",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 626,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 78.46,
+      "velocity_stdev": 17.91,
+      "velocity_unique": 85,
+      "cc7_count": 11,
+      "cc11_count": 363,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "cloud_lancers",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 695,
+      "velocity_min": 43,
+      "velocity_max": 126,
+      "velocity_mean": 75.43,
+      "velocity_stdev": 16.25,
+      "velocity_unique": 76,
+      "cc7_count": 11,
+      "cc11_count": 363,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "last_heart",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 171,
+      "velocity_min": 50,
+      "velocity_max": 110,
+      "velocity_mean": 79.27,
+      "velocity_stdev": 13.68,
+      "velocity_unique": 49,
+      "cc7_count": 6,
+      "cc11_count": 222,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "victory_lap_zero",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 200,
+      "velocity_min": 45,
+      "velocity_max": 107,
+      "velocity_mean": 77.89,
+      "velocity_stdev": 11.0,
+      "velocity_unique": 47,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "walls_of_bronze",
+      "tracks": 19,
+      "ticks_per_beat": 480,
+      "note_ons": 403,
+      "velocity_min": 41,
+      "velocity_max": 126,
+      "velocity_mean": 76.77,
+      "velocity_stdev": 19.99,
+      "velocity_unique": 73,
+      "cc7_count": 18,
+      "cc11_count": 594,
+      "cc10_count": 18,
+      "cc91_count": 18
+    },
+    {
+      "id": "vector_arena",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 476,
+      "velocity_min": 38,
+      "velocity_max": 127,
+      "velocity_mean": 77.7,
+      "velocity_stdev": 21.81,
+      "velocity_unique": 83,
+      "cc7_count": 11,
+      "cc11_count": 363,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "footsteps_in_plaster",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 133,
+      "velocity_min": 46,
+      "velocity_max": 121,
+      "velocity_mean": 83.4,
+      "velocity_stdev": 15.66,
+      "velocity_unique": 53,
+      "cc7_count": 5,
+      "cc11_count": 165,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "salt_circle",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 159,
+      "velocity_min": 60,
+      "velocity_max": 119,
+      "velocity_mean": 82.56,
+      "velocity_stdev": 15.41,
+      "velocity_unique": 47,
+      "cc7_count": 9,
+      "cc11_count": 225,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "under_the_skin",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 141,
+      "velocity_min": 53,
+      "velocity_max": 112,
+      "velocity_mean": 82.78,
+      "velocity_stdev": 15.51,
+      "velocity_unique": 53,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "stars_without_distance",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 222,
+      "velocity_min": 32,
+      "velocity_max": 121,
+      "velocity_mean": 79.86,
+      "velocity_stdev": 16.23,
+      "velocity_unique": 58,
+      "cc7_count": 9,
+      "cc11_count": 369,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "the_room_remembers",
+      "tracks": 4,
+      "ticks_per_beat": 480,
+      "note_ons": 153,
+      "velocity_min": 48,
+      "velocity_max": 113,
+      "velocity_mean": 82.88,
+      "velocity_stdev": 14.76,
+      "velocity_unique": 54,
+      "cc7_count": 3,
+      "cc11_count": 111,
+      "cc10_count": 3,
+      "cc91_count": 3
+    },
+    {
+      "id": "lamp_behind_the_door",
+      "tracks": 4,
+      "ticks_per_beat": 480,
+      "note_ons": 184,
+      "velocity_min": 56,
+      "velocity_max": 107,
+      "velocity_mean": 82.02,
+      "velocity_stdev": 11.5,
+      "velocity_unique": 48,
+      "cc7_count": 3,
+      "cc11_count": 99,
+      "cc10_count": 3,
+      "cc91_count": 3
+    },
+    {
+      "id": "dont_look_back",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 570,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 71.43,
+      "velocity_stdev": 21.42,
+      "velocity_unique": 87,
+      "cc7_count": 6,
+      "cc11_count": 246,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "music_box_teeth",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 176,
+      "velocity_min": 49,
+      "velocity_max": 109,
+      "velocity_mean": 79.49,
+      "velocity_stdev": 14.6,
+      "velocity_unique": 51,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "beneath_the_well",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 160,
+      "velocity_min": 55,
+      "velocity_max": 122,
+      "velocity_mean": 87.79,
+      "velocity_stdev": 14.56,
+      "velocity_unique": 52,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "the_shape_in_full",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 192,
+      "velocity_min": 32,
+      "velocity_max": 107,
+      "velocity_mean": 77.21,
+      "velocity_stdev": 13.89,
+      "velocity_unique": 46,
+      "cc7_count": 11,
+      "cc11_count": 363,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "morning_bread",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 284,
+      "velocity_min": 44,
+      "velocity_max": 110,
+      "velocity_mean": 79.22,
+      "velocity_stdev": 13.08,
+      "velocity_unique": 58,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "three_mugs_later",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 312,
+      "velocity_min": 49,
+      "velocity_max": 110,
+      "velocity_mean": 77.14,
+      "velocity_stdev": 11.93,
+      "velocity_unique": 54,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "paper_lantern_row",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 304,
+      "velocity_min": 41,
+      "velocity_max": 110,
+      "velocity_mean": 78.18,
+      "velocity_stdev": 13.77,
+      "velocity_unique": 63,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "white_stone_capital",
+      "tracks": 11,
+      "ticks_per_beat": 480,
+      "note_ons": 242,
+      "velocity_min": 59,
+      "velocity_max": 117,
+      "velocity_mean": 84.02,
+      "velocity_stdev": 14.71,
+      "velocity_unique": 54,
+      "cc7_count": 10,
+      "cc11_count": 330,
+      "cc10_count": 10,
+      "cc91_count": 10
+    },
+    {
+      "id": "copper_saffron",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 392,
+      "velocity_min": 41,
+      "velocity_max": 105,
+      "velocity_mean": 76.37,
+      "velocity_stdev": 12.94,
+      "velocity_unique": 61,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "the_blue_stove",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 232,
+      "velocity_min": 50,
+      "velocity_max": 113,
+      "velocity_mean": 78.68,
+      "velocity_stdev": 12.68,
+      "velocity_unique": 54,
+      "cc7_count": 5,
+      "cc11_count": 165,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "painted_wheels",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 208,
+      "velocity_min": 48,
+      "velocity_max": 108,
+      "velocity_mean": 78.88,
+      "velocity_stdev": 14.11,
+      "velocity_unique": 54,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "shift_change",
+      "tracks": 4,
+      "ticks_per_beat": 480,
+      "note_ons": 440,
+      "velocity_min": 51,
+      "velocity_max": 110,
+      "velocity_mean": 74.55,
+      "velocity_stdev": 11.31,
+      "velocity_unique": 52,
+      "cc7_count": 3,
+      "cc11_count": 99,
+      "cc10_count": 3,
+      "cc91_count": 3
+    },
+    {
+      "id": "tables_by_the_tide",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 440,
+      "velocity_min": 31,
+      "velocity_max": 114,
+      "velocity_mean": 74.08,
+      "velocity_stdev": 13.72,
+      "velocity_unique": 70,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "all_bells_open",
+      "tracks": 14,
+      "ticks_per_beat": 480,
+      "note_ons": 192,
+      "velocity_min": 49,
+      "velocity_max": 109,
+      "velocity_mean": 77.4,
+      "velocity_stdev": 13.41,
+      "velocity_unique": 52,
+      "cc7_count": 13,
+      "cc11_count": 325,
+      "cc10_count": 13,
+      "cc91_count": 13
+    },
+    {
+      "id": "empty_chair",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 261,
+      "velocity_min": 55,
+      "velocity_max": 114,
+      "velocity_mean": 78.72,
+      "velocity_stdev": 11.18,
+      "velocity_unique": 50,
+      "cc7_count": 5,
+      "cc11_count": 185,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "first_light_after",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 160,
+      "velocity_min": 48,
+      "velocity_max": 109,
+      "velocity_mean": 79.37,
+      "velocity_stdev": 13.77,
+      "velocity_unique": 49,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "postcard_in_june",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 208,
+      "velocity_min": 47,
+      "velocity_max": 113,
+      "velocity_mean": 76.39,
+      "velocity_stdev": 14.31,
+      "velocity_unique": 54,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "at_the_station",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 256,
+      "velocity_min": 46,
+      "velocity_max": 109,
+      "velocity_mean": 73.77,
+      "velocity_stdev": 14.28,
+      "velocity_unique": 55,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "last_boat_west",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 245,
+      "velocity_min": 43,
+      "velocity_max": 109,
+      "velocity_mean": 78.42,
+      "velocity_stdev": 15.37,
+      "velocity_unique": 60,
+      "cc7_count": 9,
+      "cc11_count": 369,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "hands_in_winter",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 200,
+      "velocity_min": 55,
+      "velocity_max": 111,
+      "velocity_mean": 80.37,
+      "velocity_stdev": 12.44,
+      "velocity_unique": 50,
+      "cc7_count": 5,
+      "cc11_count": 165,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "flags_in_mud",
+      "tracks": 11,
+      "ticks_per_beat": 480,
+      "note_ons": 216,
+      "velocity_min": 51,
+      "velocity_max": 107,
+      "velocity_mean": 79.37,
+      "velocity_stdev": 13.66,
+      "velocity_unique": 52,
+      "cc7_count": 10,
+      "cc11_count": 330,
+      "cc10_count": 10,
+      "cc91_count": 10
+    },
+    {
+      "id": "stand_again",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 720,
+      "velocity_min": 51,
+      "velocity_max": 123,
+      "velocity_mean": 73.94,
+      "velocity_stdev": 13.48,
+      "velocity_unique": 69,
+      "cc7_count": 9,
+      "cc11_count": 297,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "name_on_the_glass",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 208,
+      "velocity_min": 55,
+      "velocity_max": 107,
+      "velocity_mean": 80.01,
+      "velocity_stdev": 12.15,
+      "velocity_unique": 50,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "road_after_credits",
+      "tracks": 13,
+      "ticks_per_beat": 480,
+      "note_ons": 303,
+      "velocity_min": 43,
+      "velocity_max": 109,
+      "velocity_mean": 76.82,
+      "velocity_stdev": 15.0,
+      "velocity_unique": 57,
+      "cc7_count": 12,
+      "cc11_count": 492,
+      "cc10_count": 12,
+      "cc91_count": 12
+    },
+    {
+      "id": "ink_under_rain",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 320,
+      "velocity_min": 45,
+      "velocity_max": 109,
+      "velocity_mean": 76.0,
+      "velocity_stdev": 13.37,
+      "velocity_unique": 60,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "gear_seven",
+      "tracks": 4,
+      "ticks_per_beat": 480,
+      "note_ons": 184,
+      "velocity_min": 57,
+      "velocity_max": 109,
+      "velocity_mean": 84.27,
+      "velocity_stdev": 12.65,
+      "velocity_unique": 47,
+      "cc7_count": 3,
+      "cc11_count": 99,
+      "cc10_count": 3,
+      "cc91_count": 3
+    },
+    {
+      "id": "catalogue_of_mirrors",
+      "tracks": 5,
+      "ticks_per_beat": 480,
+      "note_ons": 128,
+      "velocity_min": 51,
+      "velocity_max": 109,
+      "velocity_mean": 83.79,
+      "velocity_stdev": 14.15,
+      "velocity_unique": 50,
+      "cc7_count": 4,
+      "cc11_count": 132,
+      "cc10_count": 4,
+      "cc91_count": 4
+    },
+    {
+      "id": "clean_room_signal",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 424,
+      "velocity_min": 39,
+      "velocity_max": 127,
+      "velocity_mean": 77.24,
+      "velocity_stdev": 22.33,
+      "velocity_unique": 86,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "four_doors_one_key",
+      "tracks": 4,
+      "ticks_per_beat": 480,
+      "note_ons": 210,
+      "velocity_min": 55,
+      "velocity_max": 114,
+      "velocity_mean": 85.36,
+      "velocity_stdev": 12.65,
+      "velocity_unique": 53,
+      "cc7_count": 3,
+      "cc11_count": 123,
+      "cc10_count": 3,
+      "cc91_count": 3
+    },
+    {
+      "id": "velvet_entry",
+      "tracks": 5,
+      "ticks_per_beat": 480,
+      "note_ons": 128,
+      "velocity_min": 51,
+      "velocity_max": 110,
+      "velocity_mean": 83.58,
+      "velocity_stdev": 13.88,
+      "velocity_unique": 43,
+      "cc7_count": 4,
+      "cc11_count": 132,
+      "cc10_count": 4,
+      "cc91_count": 4
+    },
+    {
+      "id": "stone_answers",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 240,
+      "velocity_min": 55,
+      "velocity_max": 122,
+      "velocity_mean": 83.37,
+      "velocity_stdev": 14.05,
+      "velocity_unique": 57,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "rooms_that_fold",
+      "tracks": 5,
+      "ticks_per_beat": 480,
+      "note_ons": 198,
+      "velocity_min": 56,
+      "velocity_max": 110,
+      "velocity_mean": 82.14,
+      "velocity_stdev": 13.09,
+      "velocity_unique": 48,
+      "cc7_count": 4,
+      "cc11_count": 148,
+      "cc10_count": 4,
+      "cc91_count": 4
+    },
+    {
+      "id": "redacted_pages",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 312,
+      "velocity_min": 45,
+      "velocity_max": 105,
+      "velocity_mean": 74.93,
+      "velocity_stdev": 12.28,
+      "velocity_unique": 58,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "minute_hand_zero",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 296,
+      "velocity_min": 48,
+      "velocity_max": 127,
+      "velocity_mean": 82.17,
+      "velocity_stdev": 15.99,
+      "velocity_unique": 66,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "arches_of_mercy",
+      "tracks": 18,
+      "ticks_per_beat": 480,
+      "note_ons": 325,
+      "velocity_min": 43,
+      "velocity_max": 112,
+      "velocity_mean": 77.5,
+      "velocity_stdev": 15.67,
+      "velocity_unique": 58,
+      "cc7_count": 17,
+      "cc11_count": 697,
+      "cc10_count": 17,
+      "cc91_count": 17
+    },
+    {
+      "id": "moss_crown_dance",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 284,
+      "velocity_min": 41,
+      "velocity_max": 110,
+      "velocity_mean": 74.83,
+      "velocity_stdev": 15.55,
+      "velocity_unique": 61,
+      "cc7_count": 9,
+      "cc11_count": 297,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "sleeping_dragon_court",
+      "tracks": 17,
+      "ticks_per_beat": 480,
+      "note_ons": 247,
+      "velocity_min": 50,
+      "velocity_max": 122,
+      "velocity_mean": 76.71,
+      "velocity_stdev": 15.19,
+      "velocity_unique": 60,
+      "cc7_count": 16,
+      "cc11_count": 400,
+      "cc10_count": 16,
+      "cc91_count": 16
+    },
+    {
+      "id": "palace_of_low_stars",
+      "tracks": 14,
+      "ticks_per_beat": 480,
+      "note_ons": 294,
+      "velocity_min": 46,
+      "velocity_max": 105,
+      "velocity_mean": 72.37,
+      "velocity_stdev": 14.45,
+      "velocity_unique": 55,
+      "cc7_count": 13,
+      "cc11_count": 429,
+      "cc10_count": 13,
+      "cc91_count": 13
+    },
+    {
+      "id": "thirteen_candles",
+      "tracks": 11,
+      "ticks_per_beat": 480,
+      "note_ons": 272,
+      "velocity_min": 55,
+      "velocity_max": 122,
+      "velocity_mean": 80.0,
+      "velocity_stdev": 15.04,
+      "velocity_unique": 59,
+      "cc7_count": 10,
+      "cc11_count": 330,
+      "cc10_count": 10,
+      "cc91_count": 10
+    },
+    {
+      "id": "court_of_thistledown",
+      "tracks": 11,
+      "ticks_per_beat": 480,
+      "note_ons": 244,
+      "velocity_min": 42,
+      "velocity_max": 109,
+      "velocity_mean": 77.98,
+      "velocity_stdev": 14.36,
+      "velocity_unique": 58,
+      "cc7_count": 10,
+      "cc11_count": 330,
+      "cc10_count": 10,
+      "cc91_count": 10
+    },
+    {
+      "id": "pilgrims_of_gold",
+      "tracks": 17,
+      "ticks_per_beat": 480,
+      "note_ons": 351,
+      "velocity_min": 55,
+      "velocity_max": 117,
+      "velocity_mean": 81.18,
+      "velocity_stdev": 17.36,
+      "velocity_unique": 60,
+      "cc7_count": 16,
+      "cc11_count": 656,
+      "cc10_count": 16,
+      "cc91_count": 16
+    },
+    {
+      "id": "black_banner_kingdom",
+      "tracks": 20,
+      "ticks_per_beat": 480,
+      "note_ons": 467,
+      "velocity_min": 37,
+      "velocity_max": 127,
+      "velocity_mean": 76.07,
+      "velocity_stdev": 20.66,
+      "velocity_unique": 88,
+      "cc7_count": 19,
+      "cc11_count": 627,
+      "cc10_count": 19,
+      "cc91_count": 19
+    },
+    {
+      "id": "four_element_shrine",
+      "tracks": 17,
+      "ticks_per_beat": 480,
+      "note_ons": 278,
+      "velocity_min": 52,
+      "velocity_max": 122,
+      "velocity_mean": 77.63,
+      "velocity_stdev": 15.71,
+      "velocity_unique": 59,
+      "cc7_count": 16,
+      "cc11_count": 528,
+      "cc10_count": 16,
+      "cc91_count": 16
+    },
+    {
+      "id": "the_oracle_opens",
+      "tracks": 19,
+      "ticks_per_beat": 480,
+      "note_ons": 215,
+      "velocity_min": 40,
+      "velocity_max": 110,
+      "velocity_mean": 75.75,
+      "velocity_stdev": 15.83,
+      "velocity_unique": 56,
+      "cc7_count": 18,
+      "cc11_count": 450,
+      "cc10_count": 18,
+      "cc91_count": 18
+    },
+    {
+      "id": "night_rail_88",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 520,
+      "velocity_min": 39,
+      "velocity_max": 127,
+      "velocity_mean": 76.35,
+      "velocity_stdev": 20.94,
+      "velocity_unique": 82,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "concrete_frequency",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 424,
+      "velocity_min": 39,
+      "velocity_max": 127,
+      "velocity_mean": 77.77,
+      "velocity_stdev": 22.14,
+      "velocity_unique": 87,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "escape_velocity_red",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 558,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 71.39,
+      "velocity_stdev": 23.32,
+      "velocity_unique": 85,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "quiet_orbit",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 162,
+      "velocity_min": 60,
+      "velocity_max": 110,
+      "velocity_mean": 79.85,
+      "velocity_stdev": 13.34,
+      "velocity_unique": 42,
+      "cc7_count": 9,
+      "cc11_count": 369,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "rain_neon_block",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 288,
+      "velocity_min": 38,
+      "velocity_max": 125,
+      "velocity_mean": 84.3,
+      "velocity_stdev": 15.56,
+      "velocity_unique": 69,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "hangar_nine",
+      "tracks": 10,
+      "ticks_per_beat": 480,
+      "note_ons": 572,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 80.31,
+      "velocity_stdev": 18.24,
+      "velocity_unique": 84,
+      "cc7_count": 9,
+      "cc11_count": 297,
+      "cc10_count": 9,
+      "cc91_count": 9
+    },
+    {
+      "id": "language_from_outside",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 141,
+      "velocity_min": 51,
+      "velocity_max": 115,
+      "velocity_mean": 83.78,
+      "velocity_stdev": 15.02,
+      "velocity_unique": 52,
+      "cc7_count": 5,
+      "cc11_count": 165,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "orbital_knives",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 369,
+      "velocity_min": 44,
+      "velocity_max": 127,
+      "velocity_mean": 76.56,
+      "velocity_stdev": 19.41,
+      "velocity_unique": 76,
+      "cc7_count": 11,
+      "cc11_count": 275,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "soft_reset_dream",
+      "tracks": 5,
+      "ticks_per_beat": 480,
+      "note_ons": 192,
+      "velocity_min": 48,
+      "velocity_max": 107,
+      "velocity_mean": 76.75,
+      "velocity_stdev": 16.04,
+      "velocity_unique": 52,
+      "cc7_count": 4,
+      "cc11_count": 132,
+      "cc10_count": 4,
+      "cc91_count": 4
+    },
+    {
+      "id": "core_temperature",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 381,
+      "velocity_min": 50,
+      "velocity_max": 126,
+      "velocity_mean": 85.99,
+      "velocity_stdev": 17.51,
+      "velocity_unique": 73,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "cigarette_geometry",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 352,
+      "velocity_min": 45,
+      "velocity_max": 104,
+      "velocity_mean": 74.26,
+      "velocity_stdev": 11.67,
+      "velocity_unique": 58,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "swing_room_three",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 368,
+      "velocity_min": 44,
+      "velocity_max": 103,
+      "velocity_mean": 74.02,
+      "velocity_stdev": 10.5,
+      "velocity_unique": 52,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "stairs_two_at_once",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 414,
+      "velocity_min": 44,
+      "velocity_max": 109,
+      "velocity_mean": 75.69,
+      "velocity_stdev": 11.95,
+      "velocity_unique": 60,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "assembly_line_soul",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 632,
+      "velocity_min": 37,
+      "velocity_max": 127,
+      "velocity_mean": 74.29,
+      "velocity_stdev": 16.92,
+      "velocity_unique": 85,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "amber_booth",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 272,
+      "velocity_min": 47,
+      "velocity_max": 109,
+      "velocity_mean": 77.64,
+      "velocity_stdev": 12.28,
+      "velocity_unique": 54,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "roof_tiles_after_rain",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 288,
+      "velocity_min": 31,
+      "velocity_max": 114,
+      "velocity_mean": 78.48,
+      "velocity_stdev": 15.67,
+      "velocity_unique": 70,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "green_harbor",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 392,
+      "velocity_min": 38,
+      "velocity_max": 120,
+      "velocity_mean": 77.68,
+      "velocity_stdev": 14.42,
+      "velocity_unique": 66,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "echo_alley",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 240,
+      "velocity_min": 38,
+      "velocity_max": 120,
+      "velocity_mean": 82.25,
+      "velocity_stdev": 16.39,
+      "velocity_unique": 64,
+      "cc7_count": 8,
+      "cc11_count": 264,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "saturday_horns",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 518,
+      "velocity_min": 36,
+      "velocity_max": 127,
+      "velocity_mean": 74.4,
+      "velocity_stdev": 18.49,
+      "velocity_unique": 86,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "underpass_tango",
+      "tracks": 7,
+      "ticks_per_beat": 480,
+      "note_ons": 408,
+      "velocity_min": 56,
+      "velocity_max": 124,
+      "velocity_mean": 80.38,
+      "velocity_stdev": 12.03,
+      "velocity_unique": 60,
+      "cc7_count": 6,
+      "cc11_count": 198,
+      "cc10_count": 6,
+      "cc91_count": 6
+    },
+    {
+      "id": "invention_in_copper",
+      "tracks": 6,
+      "ticks_per_beat": 480,
+      "note_ons": 156,
+      "velocity_min": 55,
+      "velocity_max": 113,
+      "velocity_mean": 86.87,
+      "velocity_stdev": 11.49,
+      "velocity_unique": 42,
+      "cc7_count": 5,
+      "cc11_count": 165,
+      "cc10_count": 5,
+      "cc91_count": 5
+    },
+    {
+      "id": "fugue_of_small_machines",
+      "tracks": 16,
+      "ticks_per_beat": 480,
+      "note_ons": 285,
+      "velocity_min": 54,
+      "velocity_max": 109,
+      "velocity_mean": 78.68,
+      "velocity_stdev": 14.36,
+      "velocity_unique": 52,
+      "cc7_count": 15,
+      "cc11_count": 615,
+      "cc10_count": 15,
+      "cc91_count": 15
+    },
+    {
+      "id": "winter_gallery",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 310,
+      "velocity_min": 49,
+      "velocity_max": 113,
+      "velocity_mean": 77.32,
+      "velocity_stdev": 13.04,
+      "velocity_unique": 57,
+      "cc7_count": 8,
+      "cc11_count": 328,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "marble_steps",
+      "tracks": 17,
+      "ticks_per_beat": 480,
+      "note_ons": 287,
+      "velocity_min": 52,
+      "velocity_max": 123,
+      "velocity_mean": 79.91,
+      "velocity_stdev": 17.66,
+      "velocity_unique": 65,
+      "cc7_count": 16,
+      "cc11_count": 528,
+      "cc10_count": 16,
+      "cc91_count": 16
+    },
+    {
+      "id": "phase_garden",
+      "tracks": 9,
+      "ticks_per_beat": 480,
+      "note_ons": 250,
+      "velocity_min": 49,
+      "velocity_max": 110,
+      "velocity_mean": 72.2,
+      "velocity_stdev": 14.33,
+      "velocity_unique": 51,
+      "cc7_count": 8,
+      "cc11_count": 328,
+      "cc10_count": 8,
+      "cc91_count": 8
+    },
+    {
+      "id": "quartet_at_dusk",
+      "tracks": 12,
+      "ticks_per_beat": 480,
+      "note_ons": 292,
+      "velocity_min": 54,
+      "velocity_max": 107,
+      "velocity_mean": 78.33,
+      "velocity_stdev": 13.25,
+      "velocity_unique": 52,
+      "cc7_count": 11,
+      "cc11_count": 451,
+      "cc10_count": 11,
+      "cc91_count": 11
+    },
+    {
+      "id": "water_without_edges",
+      "tracks": 14,
+      "ticks_per_beat": 480,
+      "note_ons": 262,
+      "velocity_min": 54,
+      "velocity_max": 110,
+      "velocity_mean": 76.78,
+      "velocity_stdev": 13.88,
+      "velocity_unique": 53,
+      "cc7_count": 13,
+      "cc11_count": 429,
+      "cc10_count": 13,
+      "cc91_count": 13
+    },
+    {
+      "id": "allegro_for_a_tyrant",
+      "tracks": 21,
+      "ticks_per_beat": 480,
+      "note_ons": 815,
+      "velocity_min": 40,
+      "velocity_max": 127,
+      "velocity_mean": 73.72,
+      "velocity_stdev": 15.94,
+      "velocity_unique": 80,
+      "cc7_count": 20,
+      "cc11_count": 660,
+      "cc10_count": 20,
+      "cc91_count": 20
+    },
+    {
+      "id": "angles_in_the_dark",
+      "tracks": 8,
+      "ticks_per_beat": 480,
+      "note_ons": 152,
+      "velocity_min": 45,
+      "velocity_max": 107,
+      "velocity_mean": 77.67,
+      "velocity_stdev": 15.16,
+      "velocity_unique": 46,
+      "cc7_count": 7,
+      "cc11_count": 231,
+      "cc10_count": 7,
+      "cc91_count": 7
+    },
+    {
+      "id": "overture_for_new_worlds",
+      "tracks": 19,
+      "ticks_per_beat": 480,
+      "note_ons": 573,
+      "velocity_min": 42,
+      "velocity_max": 127,
+      "velocity_mean": 74.33,
+      "velocity_stdev": 18.58,
+      "velocity_unique": 79,
+      "cc7_count": 18,
+      "cc11_count": 594,
+      "cc10_count": 18,
+      "cc91_count": 18
+    }
+  ]
+}

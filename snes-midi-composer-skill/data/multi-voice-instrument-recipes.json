@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "principle": "Use extra voices to model an ensemble or performance gesture, never as a full-time copy of every note.",
+  "recipes": {
+    "winds": {
+      "instruments": ["flute", "ocarina", "muted_brass", "brass"],
+      "expanded_layers": 1,
+      "conditions": ["duration >= 0.6 beats", "accent >= 0.78", "phrase entry or local peak"],
+      "layer": {"delay_ms": [8, 18], "detune_cents": [-9, -4], "gain_ratio": [0.14, 0.24], "pan_offset": [0.08, 0.2]},
+      "avoid": ["doubling short passing notes", "constant chorus on intimate solos"]
+    },
+    "strings_and_choir": {
+      "instruments": ["strings", "choir", "drone"],
+      "expanded_layers": 2,
+      "conditions": ["sustained notes", "section support or climax"],
+      "layers": [
+        {"delay_ms": [7, 15], "detune_cents": [-8, -3], "gain_ratio": [0.22, 0.34], "pan_offset": [-0.24, -0.12]},
+        {"delay_ms": [12, 24], "detune_cents": [3, 8], "gain_ratio": [0.18, 0.3], "pan_offset": [0.12, 0.26]}
+      ],
+      "avoid": ["three identical attacks", "wide layers on every section"]
+    },
+    "electronic_unison": {
+      "instruments": ["pulse25", "pulse50"],
+      "expanded_layers": 1,
+      "conditions": ["lead or hook role", "section peak"],
+      "layer": {"delay_ms": [2, 7], "detune_cents": [-6, 6], "gain_ratio": [0.18, 0.3], "pan_offset": [0.08, 0.18]}
+    },
+    "keyboards": {
+      "instruments": ["piano", "harpsichord", "vibes"],
+      "expanded_layers": 0,
+      "performance": ["chord-note asynchrony", "hand-dependent timing", "voicing-dependent velocity", "phrase-level duration shaping"],
+      "avoid": ["detuned piano copies", "equal velocity across chord tones"]
+    },
+    "plucked_ensembles": {
+      "instruments": ["guitar", "harp", "pizz", "accordion"],
+      "expanded_layers": 0,
+      "performance": ["directional strum or roll", "alternate attack order", "selective omissions", "note-length variation"]
+    },
+    "bass": {
+      "instruments": ["bass", "synth_bass", "triangle_bass"],
+      "expanded_layers": 0,
+      "performance": ["directed microtiming", "variable note overlap", "attack emphasis at structural points"],
+      "avoid": ["full-time stereo double", "independent random timing"]
+    },
+    "drums": {
+      "instruments": ["kick", "snare", "hat", "open_hat", "tom", "rim", "wood", "shaker", "brush"],
+      "expanded_layers": 0,
+      "performance": ["role-specific placement", "ghost-note dynamics", "round-robin pitch and gain", "pattern-level variation"]
+    }
+  }
+}

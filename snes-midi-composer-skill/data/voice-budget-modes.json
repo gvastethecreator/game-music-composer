@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "modes": [
+    {
+      "id": "strict_hardware",
+      "music_voice_limit": 7,
+      "sfx_reserve": 1,
+      "description": "Seven music voices plus one reserved SFX voice. Humanization uses timing, articulation, dynamics, pan, ADSR and timbre changes without permanent unison doubling."
+    },
+    {
+      "id": "expanded_web",
+      "music_voice_soft_limit": 16,
+      "description": "Web-first rendering. Selective ensemble layers, transient layers and unison doubles may exceed the physical SNES voice count."
+    },
+    {
+      "id": "bounce_to_sample",
+      "music_voice_limit": 7,
+      "sfx_reserve": 1,
+      "description": "Render an expanded ensemble or chord articulation into a compact sample, then sequence the bounced result as one hardware voice."
+    }
+  ]
+}

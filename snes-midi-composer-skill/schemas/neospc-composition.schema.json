@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/neospc-composition.schema.json",
+  "title": "Neo-SPC composition",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "subcategory",
+    "bpm",
+    "meter",
+    "beats",
+    "voice_budget",
+    "measured_peak_voices",
+    "form",
+    "chord_plan",
+    "events",
+    "instrument_map"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "bpm": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 260
+    },
+    "meter": {
+      "type": "string"
+    },
+    "beats": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "voice_budget": {
+      "type": "integer",
+      "minimum": 8,
+      "maximum": 32
+    },
+    "measured_peak_voices": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 32
+    },
+    "form": {
+      "type": "array",
+      "minItems": 2
+    },
+    "chord_plan": {
+      "type": "array"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1
+    },
+    "instrument_map": {
+      "type": "object"
+    }
+  }
+}

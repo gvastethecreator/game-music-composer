@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://blackflagworks.dev/schemas/neospc-professor-review-v3.json",
+  "title":"Independent Music Professor Review",
+  "type":"object",
+  "required":["id","status","score","dimension_scores","critique","required_actions"],
+  "properties":{
+    "id":{"type":"string"},"status":{"enum":["approved","revise","rebuild"]},"score":{"type":"number","minimum":0,"maximum":100},
+    "dimension_scores":{"type":"object"},"metrics":{"type":"object"},"critique":{"type":"array","items":{"type":"string"}},"required_actions":{"type":"array","items":{"type":"string"}}
+  }
+}

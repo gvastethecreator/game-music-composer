@@ -1,0 +1,43 @@
+{
+  "track_count": 100,
+  "category_counts": {
+    "adventure": 10,
+    "action": 10,
+    "horror": 10,
+    "towns": 10,
+    "emotion": 10,
+    "mystery": 10,
+    "fantasy": 10,
+    "electronic": 10,
+    "urban": 10,
+    "classical": 10
+  },
+  "voice_budget_distribution": {
+    "12": 9,
+    "16": 22,
+    "20": 16,
+    "18": 17,
+    "24": 13,
+    "32": 5,
+    "14": 11,
+    "28": 7
+  },
+  "meter_distribution": {
+    "6/8": 13,
+    "7/8": 11,
+    "9/8": 5,
+    "4/4": 40,
+    "5/4": 11,
+    "12/8": 8,
+    "3/4": 10,
+    "5/8": 2
+  },
+  "errors": [],
+  "warnings": [],
+  "exact_melody_duplicate_groups": [],
+  "exact_topology_duplicate_groups": [],
+  "status": "PASS",
+  "total_events": 31469,
+  "max_measured_peak": 32,
+  "avg_measured_peak": 9.93
+}

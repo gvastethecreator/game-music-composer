@@ -1,0 +1,1262 @@
+{
+  "version": "2.2.0",
+  "count": 60,
+  "scales": [
+    {
+      "id": "ionian",
+      "label": "Ionian / Major",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "hopeful",
+        "bright",
+        "stable"
+      ],
+      "usage": "town, victory, pastoral, pop",
+      "avoid": ""
+    },
+    {
+      "id": "dorian",
+      "label": "Dorian",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "adventurous",
+        "reflective",
+        "heroic-minor"
+      ],
+      "usage": "modal travel, funk, folk, ruins",
+      "avoid": ""
+    },
+    {
+      "id": "phrygian",
+      "label": "Phrygian",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "tense",
+        "ancient",
+        "threatening"
+      ],
+      "usage": "ritual, desert, dark fantasy",
+      "avoid": ""
+    },
+    {
+      "id": "lydian",
+      "label": "Lydian",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "wonder",
+        "floating",
+        "celestial"
+      ],
+      "usage": "sky, magic, discovery",
+      "avoid": ""
+    },
+    {
+      "id": "mixolydian",
+      "label": "Mixolydian",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "open",
+        "folk",
+        "triumphant"
+      ],
+      "usage": "overworld, rock, festival",
+      "avoid": ""
+    },
+    {
+      "id": "aeolian",
+      "label": "Aeolian / Natural Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "sad",
+        "dramatic",
+        "dark"
+      ],
+      "usage": "emotion, battle, dungeon",
+      "avoid": ""
+    },
+    {
+      "id": "locrian",
+      "label": "Locrian",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "diatonic",
+      "moods": [
+        "unstable",
+        "hostile",
+        "fragile"
+      ],
+      "usage": "short tension fields, horror",
+      "avoid": "Avoid long tonic affirmation unless instability is intended."
+    },
+    {
+      "id": "harmonic_minor",
+      "label": "Harmonic Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "dramatic",
+        "gothic"
+      ],
+      "usage": "boss, lament, occult",
+      "avoid": ""
+    },
+    {
+      "id": "locrian_nat6",
+      "label": "Locrian natural 6",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "alien",
+        "tense"
+      ],
+      "usage": "experimental suspense",
+      "avoid": ""
+    },
+    {
+      "id": "ionian_augmented",
+      "label": "Ionian #5",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "radiant",
+        "uncanny"
+      ],
+      "usage": "celestial, uncanny triumph",
+      "avoid": ""
+    },
+    {
+      "id": "dorian_sharp4",
+      "label": "Dorian #4",
+      "intervals": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "mysterious",
+        "driving"
+      ],
+      "usage": "ritual action",
+      "avoid": ""
+    },
+    {
+      "id": "phrygian_dominant",
+      "label": "Phrygian Dominant",
+      "intervals": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "exotic",
+        "regal",
+        "dangerous"
+      ],
+      "usage": "desert, villain, metal",
+      "avoid": ""
+    },
+    {
+      "id": "lydian_sharp2",
+      "label": "Lydian #2",
+      "intervals": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "enigmatic",
+        "bright-dark"
+      ],
+      "usage": "oracle, alien fantasy",
+      "avoid": ""
+    },
+    {
+      "id": "ultralocrian",
+      "label": "Ultra Locrian",
+      "intervals": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_minor_modes",
+      "moods": [
+        "extreme",
+        "dissonant"
+      ],
+      "usage": "brief altered dominant color",
+      "avoid": ""
+    },
+    {
+      "id": "melodic_minor",
+      "label": "Melodic Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "poignant",
+        "refined"
+      ],
+      "usage": "noir, modern minor",
+      "avoid": ""
+    },
+    {
+      "id": "dorian_b2",
+      "label": "Dorian b2",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "shadowed",
+        "ritual"
+      ],
+      "usage": "dark modal",
+      "avoid": ""
+    },
+    {
+      "id": "lydian_augmented",
+      "label": "Lydian Augmented",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "luminous",
+        "surreal"
+      ],
+      "usage": "celestial sci-fi",
+      "avoid": ""
+    },
+    {
+      "id": "lydian_dominant",
+      "label": "Lydian Dominant",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "bold",
+        "sophisticated"
+      ],
+      "usage": "jazz, fusion, urban",
+      "avoid": ""
+    },
+    {
+      "id": "mixolydian_b6",
+      "label": "Mixolydian b6",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "bittersweet",
+        "cinematic"
+      ],
+      "usage": "heroic melancholy",
+      "avoid": ""
+    },
+    {
+      "id": "locrian_nat2",
+      "label": "Locrian natural 2",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "dark",
+        "modern"
+      ],
+      "usage": "half-diminished harmony",
+      "avoid": ""
+    },
+    {
+      "id": "altered",
+      "label": "Altered / Super Locrian",
+      "intervals": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "melodic_minor_modes",
+      "moods": [
+        "volatile",
+        "jazz-tension"
+      ],
+      "usage": "altered dominant resolution",
+      "avoid": ""
+    },
+    {
+      "id": "harmonic_major",
+      "label": "Harmonic Major",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "noble",
+        "wistful"
+      ],
+      "usage": "fantasy major with dark color",
+      "avoid": ""
+    },
+    {
+      "id": "dorian_b5",
+      "label": "Dorian b5",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "mysterious",
+        "lean"
+      ],
+      "usage": "puzzle",
+      "avoid": ""
+    },
+    {
+      "id": "phrygian_b4",
+      "label": "Phrygian b4",
+      "intervals": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "archaic",
+        "somber"
+      ],
+      "usage": "ritual",
+      "avoid": ""
+    },
+    {
+      "id": "lydian_b3",
+      "label": "Lydian b3",
+      "intervals": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "dreamlike",
+        "ambiguous"
+      ],
+      "usage": "magic",
+      "avoid": ""
+    },
+    {
+      "id": "mixolydian_b2",
+      "label": "Mixolydian b2",
+      "intervals": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "regal",
+        "strange"
+      ],
+      "usage": "villain march",
+      "avoid": ""
+    },
+    {
+      "id": "lydian_augmented_sharp2",
+      "label": "Lydian Augmented #2",
+      "intervals": [
+        0,
+        3,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "exotic",
+        "radiant"
+      ],
+      "usage": "oracle",
+      "avoid": ""
+    },
+    {
+      "id": "locrian_bb7",
+      "label": "Locrian bb7",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "collapsed",
+        "dark"
+      ],
+      "usage": "brief horror field",
+      "avoid": ""
+    },
+    {
+      "id": "double_harmonic",
+      "label": "Double Harmonic / Byzantine",
+      "intervals": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "ceremonial",
+        "intense"
+      ],
+      "usage": "ritual, empire, boss",
+      "avoid": ""
+    },
+    {
+      "id": "hungarian_minor",
+      "label": "Hungarian Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "dramatic",
+        "virtuosic"
+      ],
+      "usage": "dark classical, boss",
+      "avoid": ""
+    },
+    {
+      "id": "romanian_minor",
+      "label": "Romanian Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "folk-dark",
+        "driving"
+      ],
+      "usage": "folk combat",
+      "avoid": ""
+    },
+    {
+      "id": "ukrainian_dorian",
+      "label": "Ukrainian Dorian",
+      "intervals": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "folk",
+        "restless"
+      ],
+      "usage": "dance, caravan",
+      "avoid": ""
+    },
+    {
+      "id": "neapolitan_minor",
+      "label": "Neapolitan Minor",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "tragic",
+        "operatic"
+      ],
+      "usage": "gothic narrative",
+      "avoid": ""
+    },
+    {
+      "id": "neapolitan_major",
+      "label": "Neapolitan Major",
+      "intervals": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "regal",
+        "unusual"
+      ],
+      "usage": "fantasy court",
+      "avoid": ""
+    },
+    {
+      "id": "persian",
+      "label": "Persian",
+      "intervals": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "ominous",
+        "exotic"
+      ],
+      "usage": "villain, ritual",
+      "avoid": ""
+    },
+    {
+      "id": "enigmatic",
+      "label": "Enigmatic",
+      "intervals": [
+        0,
+        1,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "pitch_count": 7,
+      "family": "harmonic_exotic",
+      "moods": [
+        "mysterious",
+        "chromatic"
+      ],
+      "usage": "experimental puzzle",
+      "avoid": ""
+    },
+    {
+      "id": "major_pentatonic",
+      "label": "Major Pentatonic",
+      "intervals": [
+        0,
+        2,
+        4,
+        7,
+        9
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "warm",
+        "open"
+      ],
+      "usage": "folk, town, adventure",
+      "avoid": ""
+    },
+    {
+      "id": "minor_pentatonic",
+      "label": "Minor Pentatonic",
+      "intervals": [
+        0,
+        3,
+        5,
+        7,
+        10
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "earthy",
+        "confident"
+      ],
+      "usage": "rock, funk, battle",
+      "avoid": ""
+    },
+    {
+      "id": "blues",
+      "label": "Blues",
+      "intervals": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "pitch_count": 6,
+      "family": "pentatonic_folk",
+      "moods": [
+        "gritty",
+        "urban"
+      ],
+      "usage": "blues, funk, noir",
+      "avoid": ""
+    },
+    {
+      "id": "suspended_pentatonic",
+      "label": "Suspended Pentatonic",
+      "intervals": [
+        0,
+        2,
+        5,
+        7,
+        10
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "open",
+        "floating"
+      ],
+      "usage": "ambient, water",
+      "avoid": ""
+    },
+    {
+      "id": "hirajoshi",
+      "label": "Hirajoshi",
+      "intervals": [
+        0,
+        2,
+        3,
+        7,
+        8
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "delicate",
+        "melancholic"
+      ],
+      "usage": "minimal folk color",
+      "avoid": ""
+    },
+    {
+      "id": "insen",
+      "label": "Insen",
+      "intervals": [
+        0,
+        1,
+        5,
+        7,
+        10
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "sparse",
+        "mysterious"
+      ],
+      "usage": "stealth, temple",
+      "avoid": ""
+    },
+    {
+      "id": "iwato",
+      "label": "Iwato",
+      "intervals": [
+        0,
+        1,
+        5,
+        6,
+        10
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "severe",
+        "empty"
+      ],
+      "usage": "horror, ritual",
+      "avoid": ""
+    },
+    {
+      "id": "yo",
+      "label": "Yo",
+      "intervals": [
+        0,
+        2,
+        5,
+        7,
+        9
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "bright",
+        "folk"
+      ],
+      "usage": "celebration, village",
+      "avoid": ""
+    },
+    {
+      "id": "kumoi",
+      "label": "Kumoi",
+      "intervals": [
+        0,
+        2,
+        3,
+        7,
+        9
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "wistful",
+        "folk"
+      ],
+      "usage": "memory, landscape",
+      "avoid": ""
+    },
+    {
+      "id": "pelog",
+      "label": "Pelog Approximation",
+      "intervals": [
+        0,
+        1,
+        3,
+        7,
+        8
+      ],
+      "pitch_count": 5,
+      "family": "pentatonic_folk",
+      "moods": [
+        "ritual",
+        "percussive"
+      ],
+      "usage": "mallet and gong textures",
+      "avoid": ""
+    },
+    {
+      "id": "whole_tone",
+      "label": "Whole Tone",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "pitch_count": 6,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "floating",
+        "uncertain"
+      ],
+      "usage": "dream, transition",
+      "avoid": ""
+    },
+    {
+      "id": "octatonic_wh",
+      "label": "Octatonic W-H",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "tense",
+        "kinetic"
+      ],
+      "usage": "boss, chase, mystery",
+      "avoid": ""
+    },
+    {
+      "id": "octatonic_hw",
+      "label": "Octatonic H-W",
+      "intervals": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "tense",
+        "mechanical"
+      ],
+      "usage": "industrial, suspense",
+      "avoid": ""
+    },
+    {
+      "id": "augmented",
+      "label": "Augmented Hexatonic",
+      "intervals": [
+        0,
+        3,
+        4,
+        7,
+        8,
+        11
+      ],
+      "pitch_count": 6,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "uncanny",
+        "symmetric"
+      ],
+      "usage": "sci-fi, magic",
+      "avoid": ""
+    },
+    {
+      "id": "prometheus",
+      "label": "Prometheus",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        9,
+        10
+      ],
+      "pitch_count": 6,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "futuristic",
+        "open"
+      ],
+      "usage": "sci-fi, experimental",
+      "avoid": ""
+    },
+    {
+      "id": "tritone_hexatonic",
+      "label": "Tritone Hexatonic",
+      "intervals": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        10
+      ],
+      "pitch_count": 6,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "alien",
+        "angular"
+      ],
+      "usage": "experimental action",
+      "avoid": ""
+    },
+    {
+      "id": "bebop_dominant",
+      "label": "Bebop Dominant",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "swinging",
+        "forward"
+      ],
+      "usage": "dominant jazz lines",
+      "avoid": ""
+    },
+    {
+      "id": "bebop_major",
+      "label": "Bebop Major",
+      "intervals": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "bright",
+        "jazz"
+      ],
+      "usage": "major jazz lines",
+      "avoid": ""
+    },
+    {
+      "id": "bebop_dorian",
+      "label": "Bebop Dorian",
+      "intervals": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "urban",
+        "fluid"
+      ],
+      "usage": "minor jazz lines",
+      "avoid": ""
+    },
+    {
+      "id": "bebop_melodic_minor",
+      "label": "Bebop Melodic Minor",
+      "intervals": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "poignant",
+        "modern"
+      ],
+      "usage": "minor jazz",
+      "avoid": ""
+    },
+    {
+      "id": "major_blues",
+      "label": "Major Blues",
+      "intervals": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        9
+      ],
+      "pitch_count": 6,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "playful",
+        "soulful"
+      ],
+      "usage": "soul, town, swing",
+      "avoid": ""
+    },
+    {
+      "id": "acoustic",
+      "label": "Acoustic / Lydian Dominant",
+      "intervals": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "pitch_count": 7,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "bright",
+        "modern"
+      ],
+      "usage": "fusion, sci-fi",
+      "avoid": ""
+    },
+    {
+      "id": "spanish_8",
+      "label": "Spanish Eight-Tone",
+      "intervals": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "pitch_count": 8,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "heated",
+        "dramatic"
+      ],
+      "usage": "tango, villain, action",
+      "avoid": ""
+    },
+    {
+      "id": "chromatic",
+      "label": "Chromatic",
+      "intervals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "pitch_count": 12,
+      "family": "symmetric_jazz_synthetic",
+      "moods": [
+        "unbounded",
+        "atonal"
+      ],
+      "usage": "controlled passing tones and post-tonal writing",
+      "avoid": "Never use as a random note pool."
+    }
+  ]
+}

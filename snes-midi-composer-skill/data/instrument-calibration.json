@@ -1,0 +1,420 @@
+{
+  "version": "2.2.0",
+  "method": "Source-level calibration using active RMS for pitched samples and peak for percussion; dedicated bass targets preserve low-frequency headroom.",
+  "samples": {
+    "wood_flute_A4": {
+      "trim_db": -7.846,
+      "linear_gain": 0.405206,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -6.154,
+      "target_value_db": -14.0,
+      "centroid_hz": 443.6,
+      "crest_db": 5.04
+    },
+    "ocarina_A4": {
+      "trim_db": -6.882,
+      "linear_gain": 0.452796,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -7.118,
+      "target_value_db": -14.0,
+      "centroid_hz": 455.9,
+      "crest_db": 6.01
+    },
+    "dark_reed_A3": {
+      "trim_db": -0.325,
+      "linear_gain": 0.963272,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -13.675,
+      "target_value_db": -14.0,
+      "centroid_hz": 439.4,
+      "crest_db": 12.56
+    },
+    "snes_brass_A3": {
+      "trim_db": -3.961,
+      "linear_gain": 0.633807,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -10.039,
+      "target_value_db": -14.0,
+      "centroid_hz": 489.4,
+      "crest_db": 8.93
+    },
+    "string_ensemble_A3": {
+      "trim_db": -3.381,
+      "linear_gain": 0.677543,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -11.619,
+      "target_value_db": -15.0,
+      "centroid_hz": 504.0,
+      "crest_db": 10.51
+    },
+    "choir_ah_A3": {
+      "trim_db": -2.404,
+      "linear_gain": 0.758218,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -12.596,
+      "target_value_db": -15.0,
+      "centroid_hz": 698.5,
+      "crest_db": 11.49
+    },
+    "low_drone_A3": {
+      "trim_db": -6.212,
+      "linear_gain": 0.489102,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -8.788,
+      "target_value_db": -15.0,
+      "centroid_hz": 216.7,
+      "crest_db": 7.68
+    },
+    "small_organ_A3": {
+      "trim_db": -6.273,
+      "linear_gain": 0.485706,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -7.727,
+      "target_value_db": -14.0,
+      "centroid_hz": 256.5,
+      "crest_db": 6.62
+    },
+    "accordion_A3": {
+      "trim_db": -3.14,
+      "linear_gain": 0.696623,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -10.86,
+      "target_value_db": -14.0,
+      "centroid_hz": 523.4,
+      "crest_db": 9.75
+    },
+    "pulse25_A3": {
+      "trim_db": -9.108,
+      "linear_gain": 0.350416,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -4.392,
+      "target_value_db": -13.5,
+      "centroid_hz": 351.9,
+      "crest_db": 3.28
+    },
+    "pulse50_A3": {
+      "trim_db": -9.762,
+      "linear_gain": 0.325013,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -3.738,
+      "target_value_db": -13.5,
+      "centroid_hz": 374.6,
+      "crest_db": 2.63
+    },
+    "triangle_bass_A3": {
+      "trim_db": -6.729,
+      "linear_gain": 0.460837,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -5.771,
+      "target_value_db": -12.5,
+      "centroid_hz": 227.0,
+      "crest_db": 4.66
+    },
+    "harp_A4": {
+      "trim_db": 6.055,
+      "linear_gain": 2.008031,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -24.055,
+      "target_value_db": -18.0,
+      "centroid_hz": 1459.9,
+      "crest_db": 22.94
+    },
+    "pizz_string_A3": {
+      "trim_db": 4.341,
+      "linear_gain": 1.648365,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -22.341,
+      "target_value_db": -18.0,
+      "centroid_hz": 1301.2,
+      "crest_db": 21.23
+    },
+    "small_piano_A4": {
+      "trim_db": -1.645,
+      "linear_gain": 0.827463,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -16.355,
+      "target_value_db": -18.0,
+      "centroid_hz": 450.7,
+      "crest_db": 15.24
+    },
+    "harpsichord_A4": {
+      "trim_db": 4.663,
+      "linear_gain": 1.710555,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -22.663,
+      "target_value_db": -18.0,
+      "centroid_hz": 976.3,
+      "crest_db": 21.55
+    },
+    "vibraphone_A4": {
+      "trim_db": 1.481,
+      "linear_gain": 1.185958,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -19.481,
+      "target_value_db": -18.0,
+      "centroid_hz": 1688.8,
+      "crest_db": 18.37
+    },
+    "ritual_bell_A4": {
+      "trim_db": 3.271,
+      "linear_gain": 1.457265,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -21.271,
+      "target_value_db": -18.0,
+      "centroid_hz": 1678.0,
+      "crest_db": 20.16
+    },
+    "muted_guitar_A3": {
+      "trim_db": 2.614,
+      "linear_gain": 1.351084,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -20.614,
+      "target_value_db": -18.0,
+      "centroid_hz": 1234.4,
+      "crest_db": 19.5
+    },
+    "distorted_guitar_A2": {
+      "trim_db": -0.602,
+      "linear_gain": 0.933003,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -17.398,
+      "target_value_db": -18.0,
+      "centroid_hz": 895.3,
+      "crest_db": 16.29
+    },
+    "upright_bass_A2": {
+      "trim_db": 0.37,
+      "linear_gain": 1.043474,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -18.37,
+      "target_value_db": -18.0,
+      "centroid_hz": 617.8,
+      "crest_db": 17.26
+    },
+    "synth_bass_A2": {
+      "trim_db": -7.635,
+      "linear_gain": 0.415189,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -10.365,
+      "target_value_db": -18.0,
+      "centroid_hz": 196.4,
+      "crest_db": 9.25
+    },
+    "clav_A4": {
+      "trim_db": 2.82,
+      "linear_gain": 1.383565,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -20.82,
+      "target_value_db": -18.0,
+      "centroid_hz": 2111.6,
+      "crest_db": 19.71
+    },
+    "muted_brass_A3": {
+      "trim_db": -5.077,
+      "linear_gain": 0.557376,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -8.923,
+      "target_value_db": -14.0,
+      "centroid_hz": 368.2,
+      "crest_db": 7.81
+    },
+    "nylon_guitar_A3": {
+      "trim_db": 5.712,
+      "linear_gain": 1.930084,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -23.712,
+      "target_value_db": -18.0,
+      "centroid_hz": 1005.9,
+      "crest_db": 22.6
+    },
+    "slap_bass_A2": {
+      "trim_db": 4.974,
+      "linear_gain": 1.772985,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -22.974,
+      "target_value_db": -18.0,
+      "centroid_hz": 795.6,
+      "crest_db": 21.86
+    },
+    "prepared_piano_A3": {
+      "trim_db": 5.463,
+      "linear_gain": 1.8756,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -23.463,
+      "target_value_db": -18.0,
+      "centroid_hz": 802.8,
+      "crest_db": 22.35
+    },
+    "kick_deep": {
+      "trim_db": -3.39,
+      "linear_gain": 0.676885,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.11,
+      "target_value_db": -4.5,
+      "centroid_hz": 103.7,
+      "crest_db": 13.88
+    },
+    "snare_crisp": {
+      "trim_db": -4.889,
+      "linear_gain": 0.569548,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -6.0,
+      "centroid_hz": 1877.4,
+      "crest_db": 20.09
+    },
+    "hat_short": {
+      "trim_db": -8.89,
+      "linear_gain": 0.359348,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.11,
+      "target_value_db": -10.0,
+      "centroid_hz": 3863.4,
+      "crest_db": 19.47
+    },
+    "hat_open": {
+      "trim_db": -8.889,
+      "linear_gain": 0.35936,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -10.0,
+      "centroid_hz": 3548.8,
+      "crest_db": 18.56
+    },
+    "frame_tom": {
+      "trim_db": -4.889,
+      "linear_gain": 0.569548,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -6.0,
+      "centroid_hz": 229.6,
+      "crest_db": 11.91
+    },
+    "wood_block": {
+      "trim_db": -6.889,
+      "linear_gain": 0.452408,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -8.0,
+      "centroid_hz": 1686.0,
+      "crest_db": 18.59
+    },
+    "rim_click": {
+      "trim_db": -6.89,
+      "linear_gain": 0.452392,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.11,
+      "target_value_db": -8.0,
+      "centroid_hz": 2618.8,
+      "crest_db": 18.89
+    },
+    "shaker_soft": {
+      "trim_db": -9.889,
+      "linear_gain": 0.32028,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -11.0,
+      "centroid_hz": 3810.5,
+      "crest_db": 19.28
+    },
+    "ride_dark": {
+      "trim_db": -9.889,
+      "linear_gain": 0.32028,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -11.0,
+      "centroid_hz": 2672.2,
+      "crest_db": 20.79
+    },
+    "impact_low": {
+      "trim_db": -4.889,
+      "linear_gain": 0.569548,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -6.0,
+      "centroid_hz": 969.3,
+      "crest_db": 20.55
+    },
+    "brush_swirl": {
+      "trim_db": -8.889,
+      "linear_gain": 0.35936,
+      "metric": "peak_dbfs",
+      "source_value_db": -1.111,
+      "target_value_db": -10.0,
+      "centroid_hz": 1807.8,
+      "crest_db": 21.44
+    },
+    "upright_bass_v2_A2": {
+      "trim_db": 2.131,
+      "linear_gain": 1.278124,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -20.131,
+      "target_value_db": -18.0,
+      "centroid_hz": 848.7,
+      "crest_db": 19.96
+    },
+    "electric_finger_bass_A2": {
+      "trim_db": -9.932,
+      "linear_gain": 0.318715,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -7.068,
+      "target_value_db": -17.0,
+      "centroid_hz": 218.9,
+      "crest_db": 10.13
+    },
+    "picked_bass_A2": {
+      "trim_db": -10.041,
+      "linear_gain": 0.314726,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -7.459,
+      "target_value_db": -17.5,
+      "centroid_hz": 269.7,
+      "crest_db": 10.56
+    },
+    "analog_bass_A2": {
+      "trim_db": -7.371,
+      "linear_gain": 0.428027,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -8.129,
+      "target_value_db": -15.5,
+      "centroid_hz": 675.7,
+      "crest_db": 7.92
+    },
+    "sub_bass_C2": {
+      "trim_db": -13.011,
+      "linear_gain": 0.223594,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -2.989,
+      "target_value_db": -16.0,
+      "centroid_hz": 107.4,
+      "crest_db": 2.44
+    },
+    "bowed_contrabass_A1": {
+      "trim_db": -12.552,
+      "linear_gain": 0.235713,
+      "metric": "active_rms_dbfs",
+      "source_value_db": -4.948,
+      "target_value_db": -17.5,
+      "centroid_hz": 862.1,
+      "crest_db": 4.69
+    },
+    "kick_punch": {
+      "trim_db": -3.276,
+      "linear_gain": 0.685836,
+      "metric": "peak_dbfs",
+      "source_value_db": -0.724,
+      "target_value_db": -4.0,
+      "centroid_hz": 129.4,
+      "crest_db": 11.28
+    },
+    "snare_body": {
+      "trim_db": -4.276,
+      "linear_gain": 0.611252,
+      "metric": "peak_dbfs",
+      "source_value_db": -0.724,
+      "target_value_db": -5.0,
+      "centroid_hz": 6010.3,
+      "crest_db": 15.01
+    }
+  }
+}
