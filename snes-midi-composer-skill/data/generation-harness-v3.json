@@ -373,7 +373,7 @@
       "motif_preset": {
         "type": "enum",
         "source": "pattern-preset-library.json#melody",
-        "default": "arch"
+        "default": "current"
       },
       "contour": {
         "type": "enum",

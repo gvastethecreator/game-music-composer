@@ -2,7 +2,10 @@
 from __future__ import annotations
 import argparse,json,math,collections
 from pathlib import Path
-import mido
+try:
+    import mido
+except ImportError:
+    import midi_compat as mido
 PPQ=480
 DRUM_MAP={'kick':36,'snare':38,'hat':42,'open_hat':46,'tom':45,'wood':76,'shaker':82,'rim':37,'ride':51,'impact':41,'brush':40,'clap':39}
 PROGRAMS={'bass':33,'sub':38,'contrabass':43,'slap_bass':36,'strings':48,'violin1':40,'violin2':40,'viola':41,'cello':42,'choir_a':52,'choir_b':52,'choir_s':53,'choir_t':52,'organ':19,'accordion':21,'piano':0,'harpsichord':6,'vibes':11,'bell':14,'harp':46,'guitar':24,'muted_guitar':28,'dist_guitar_l':30,'dist_guitar_r':30,'clav':7,'flute':73,'piccolo':72,'ocarina':79,'reed':65,'clarinet':71,'bassoon':70,'horn':60,'trumpet':56,'trombone':57,'brass':61,'muted_brass':59,'pulse25':80,'pulse50':80,'synth_lead':81,'synth_pad':88,'drone':89,'prepared_piano':2,'pizz':45}

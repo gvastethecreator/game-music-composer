@@ -3,7 +3,8 @@
   "title": "New Cue",
   "category": "adventure",
   "subcategory": "custom",
-  "function": "exploration",
+  "game_function": "exploration",
+  "emotional_thesis": "Move from curiosity to earned confidence without losing forward motion.",
   "voice_profile": "expanded_16",
   "voice_budget": 16,
   "musical_identity": {
@@ -14,7 +15,9 @@
     "motif": "describe interval and rhythm identity",
     "harmonic_language": "describe progression or modal field",
     "bass_behavior": "describe direction",
-    "groove": "describe pulse and deviations"
+    "groove": "describe pulse and deviations",
+    "silence_budget": "name where the arrangement must breathe",
+    "loop_strategy": "describe pickup, cadence and seam behavior"
   },
   "voice_architecture": {
     "core": [
@@ -63,6 +66,8 @@
     "distinct_from_reference_set": false,
     "peak_density_has_formal_reason": false,
     "loop_is_motivated": false,
-    "timbre_roles_are_declared": false
+    "timbre_roles_are_declared": false,
+    "factory_bank_ranges_are_valid": false,
+    "midi_expression_is_role_aware": false
   }
 }

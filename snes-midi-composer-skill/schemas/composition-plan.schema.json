@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blackflagworks.dev/schemas/neospc-composition-plan.json",
+  "title": "Neo-SPC composition plan",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "subcategory",
+    "game_function",
+    "emotional_thesis",
+    "voice_profile",
+    "voice_budget",
+    "musical_identity",
+    "voice_architecture",
+    "form",
+    "quality_gates"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "category": { "type": "string" },
+    "subcategory": { "type": "string", "minLength": 1 },
+    "game_function": { "type": "string", "minLength": 1 },
+    "emotional_thesis": { "type": "string", "minLength": 1 },
+    "voice_profile": {
+      "enum": ["legacy_8", "compact_12", "expanded_16", "ensemble_24", "symphonic_32"]
+    },
+    "voice_budget": { "enum": [8, 12, 16, 24, 32] },
+    "musical_identity": {
+      "type": "object",
+      "required": ["meter", "bpm", "key", "mode", "motif", "harmonic_language", "bass_behavior", "groove", "silence_budget", "loop_strategy"],
+      "properties": {
+        "meter": { "type": "string" },
+        "bpm": { "type": "number", "minimum": 30, "maximum": 260 },
+        "key": { "type": "string" },
+        "mode": { "type": "string" },
+        "motif": { "type": "string" },
+        "harmonic_language": { "type": "string" },
+        "bass_behavior": { "type": "string" },
+        "groove": { "type": "string" },
+        "silence_budget": { "type": "string" },
+        "loop_strategy": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "voice_architecture": { "type": "object" },
+    "form": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["name", "function", "bars"],
+        "properties": {
+          "name": { "type": "string" },
+          "function": { "type": "string" },
+          "bars": { "type": "integer", "minimum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "quality_gates": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    }
+  },
+  "additionalProperties": false
+}
