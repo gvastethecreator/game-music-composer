@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "reviewer": "Independent Music Professor Pass",
-  "method": "symbolic score critique independent from renderer and mix",
+  "reviewer": "Neo-SPC Symbolic Review",
+  "method": "deterministic symbolic score critique; renderer, mix and human listening excluded",
   "summary": {
     "approved": 85,
     "revise": 15

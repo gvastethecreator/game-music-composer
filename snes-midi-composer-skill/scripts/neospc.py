@@ -52,6 +52,18 @@ HARNESS_SECTIONS = (
     "render",
     "review",
 )
+CATEGORY_PRESETS = {
+    "adventure": ("folk_ensemble", "flute", "guitar", "floating", "acoustic"),
+    "action": ("hybrid", "brass", "strings", "motor", "orchestral"),
+    "horror": ("choir_orchestra", "reed", "strings", "ritual", "minimal"),
+    "towns": ("folk_ensemble", "ocarina", "flute", "bossa", "acoustic"),
+    "emotion": ("chamber", "piano", "strings", "floating", "brush"),
+    "mystery": ("chamber", "vibes", "reed", "motor", "minimal"),
+    "fantasy": ("choir_orchestra", "flute", "brass", "ritual", "orchestral"),
+    "electronic": ("electronic_stack", "synth_lead", "vibes", "motor", "electronic"),
+    "urban": ("jazz_combo", "reed", "vibes", "funk", "brush"),
+    "classical": ("chamber", "strings", "flute", "floating", "orchestral"),
+}
 
 
 @dataclass(frozen=True)
@@ -94,6 +106,53 @@ def harness_defaults() -> dict[str, dict[str, Any]]:
         section: {name: copy.deepcopy(control.get("default")) for name, control in controls.items()}
         for section, controls in spec["sections"].items()
     }
+
+
+def recommended_progression(mode: str, category: str, game_context: str, mood: str) -> str:
+    target_mode = {
+        "ionian": "major", "major": "major", "aeolian": "minor", "minor": "minor",
+        "harmonic_minor": "minor", "melodic_minor": "minor",
+    }.get(mode, mode)
+    progressions = load_json(DATA / "chord-progression-library.json")["progressions"]
+    scored: list[tuple[int, str]] = []
+    for item in progressions:
+        genres = set(item.get("genres", []))
+        moods = set(item.get("moods", []))
+        score = 8 if item.get("mode") == target_mode else 0
+        score += 7 if game_context in genres else 0
+        score += 5 if category in genres else 0
+        score += 4 if mood in moods else 0
+        score -= 1 if item["id"].endswith(("_rot1", "_hold")) else 0
+        scored.append((score, item["id"]))
+    return min((item for item in scored if item[0] == max(score for score, _ in scored)), key=lambda item: item[1])[1]
+
+
+def apply_brief_presets(plan: dict[str, Any], harness: dict[str, Any], args: argparse.Namespace) -> None:
+    ensemble, lead, secondary, groove, kit = CATEGORY_PRESETS[args.category]
+    if args.game_context in {"combat", "boss"}:
+        ensemble, lead, secondary, groove = "hybrid", "brass", "strings", "motor"
+        kit = "orchestral" if args.game_context == "boss" else "acoustic"
+    elif args.game_context == "chase":
+        ensemble, lead, secondary, groove, kit = "electronic_stack", "synth_lead", "brass", "breakbeat", "electronic"
+    elif args.game_context == "stealth":
+        ensemble, lead, secondary, groove, kit = "compact_band", "reed", "vibes", "floating", "minimal"
+    elif args.game_context == "safe_room":
+        ensemble, lead, secondary, groove, kit = "chamber", "piano", "strings", "floating", "minimal"
+    harness["orchestration"].update({"ensemble_profile": ensemble, "primary_lead": lead, "secondary_lead": secondary})
+    harness["rhythm"]["groove_template"] = groove
+    harness["drums"]["kit"] = kit
+    harness["form"]["architecture"] = "layered_build" if args.game_context in {"combat", "boss", "chase"} else "period"
+    harness["harmony"]["progression_id"] = recommended_progression(harness["harmony"]["scale_id"], args.category, args.game_context, args.mood)
+    plan["musical_identity"].update(
+        {
+            "motif": f"{args.mood} {harness['melody']['contour']} contour",
+            "harmonic_language": f"{harness['harmony']['scale_id']} · {harness['harmony']['progression_id']}",
+            "bass_behavior": harness["bassline"]["preset"],
+            "groove": groove,
+            "silence_budget": "Leave a short breath before each phrase return and keep the loop pickup clear.",
+            "loop_strategy": f"Use the active cadence in {harness['harmony']['progression_id']} to lead back into the opening pickup.",
+        }
+    )
 
 
 def add_issue(issues: list[Issue], level: str, code: str, path: str, message: str) -> None:
@@ -145,6 +204,15 @@ def validate_plan(plan: Any, base: str = "$") -> list[Issue]:
             add_issue(issues, "error", "invalid_bpm", f"{base}.musical_identity.bpm", "BPM must be between 30 and 260.")
         if identity.get("key") not in KEYS:
             add_issue(issues, "error", "invalid_key", f"{base}.musical_identity.key", f"Use one of: {', '.join(KEYS)}.")
+        descriptive = {
+            f"{base}.emotional_thesis": plan.get("emotional_thesis"),
+            **{f"{base}.musical_identity.{field}": identity.get(field) for field in ("motif", "harmonic_language", "bass_behavior", "groove", "silence_budget", "loop_strategy")},
+        }
+        placeholder_markers = ("describe ", "state the ", "replace ", "name where", "todo", "<")
+        for path, value in descriptive.items():
+            text = str(value or "").strip().lower()
+            if not text or any(marker in text for marker in placeholder_markers):
+                add_issue(issues, "error", "placeholder_text", path, "Replace template wording with a concrete musical decision.")
     form = plan.get("form")
     if not isinstance(form, list) or len(form) < 2:
         add_issue(issues, "error", "weak_form", f"{base}.form", "Declare at least two sections.")
@@ -368,7 +436,7 @@ def cmd_init(args: argparse.Namespace) -> int:
     plan["category"] = args.category
     plan["subcategory"] = args.subcategory
     plan["game_function"] = args.game_function or args.game_context
-    plan["emotional_thesis"] = args.thesis
+    plan["emotional_thesis"] = args.thesis or f"Turn {args.mood} pressure into a clear {args.game_context.replace('_', ' ')} outcome across the loop."
     plan["voice_budget"] = args.voices
     plan["voice_profile"] = VOICE_PROFILES[args.voices]
     identity = plan["musical_identity"]
@@ -393,6 +461,7 @@ def cmd_init(args: argparse.Namespace) -> int:
     scale_ids = library_values("scale-library.json")
     harness["harmony"]["scale_id"] = args.mode if args.mode in scale_ids else "ionian"
     harness["rhythm"]["meter"] = args.meter
+    apply_brief_presets(plan, harness, args)
     issues = validate_plan(plan) + validate_harness(harness)
     if any(issue.level == "error" for issue in issues):
         print_report("generated project", issues)
@@ -402,6 +471,47 @@ def cmd_init(args: argparse.Namespace) -> int:
     print(f"Created {plan_path}")
     print(f"Created {harness_path}")
     print(f'Next: "{sys.executable}" "{Path(__file__).resolve()}" validate "{plan_path}" "{harness_path}" --strict')
+    print(f'Then: "{sys.executable}" "{Path(__file__).resolve()}" compose "{output}"')
+    return 0
+
+
+def cmd_compose(args: argparse.Namespace) -> int:
+    project = args.project.resolve()
+    plan_path = project / "composition-plan.json"
+    harness_path = project / "generation-harness.json"
+    composition_path = project / "composition.json"
+    catalog_path = project / "catalog.json"
+    occupied = [path for path in (composition_path, catalog_path) if path.exists()]
+    if occupied and not args.force:
+        print(f"Refusing to overwrite {', '.join(str(path) for path in occupied)}. Pass --force to replace them.", file=sys.stderr)
+        return 2
+    try:
+        plan = load_json(plan_path)
+        harness = load_json(harness_path)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    issues = validate_plan(plan, "composition-plan.json") + validate_harness(harness, "generation-harness.json")
+    if any(issue.level == "error" for issue in issues):
+        print_report(str(project), issues)
+        return 1
+    try:
+        from compose_from_plan import compose_project
+
+        composition, catalog = compose_project(plan, harness)
+    except (KeyError, StopIteration, TypeError, ValueError) as exc:
+        print(f"Could not compose project: {exc}", file=sys.stderr)
+        return 1
+    output_issues = validate_composition(composition, "composition.json") + validate_catalog(catalog, "catalog.json")
+    if any(issue.level == "error" for issue in output_issues):
+        print_report("generated composition", output_issues)
+        return 1
+    atomic_json_write(composition_path, composition)
+    atomic_json_write(catalog_path, catalog)
+    print(f"Created {composition_path}")
+    print(f"Created {catalog_path}")
+    print(f"  READY   {len(composition['events'])} events, {len(composition['instrument_map'])} instruments, peak {composition['measured_peak_voices']}/{composition['voice_budget']} voices")
+    print(f'Next: "{sys.executable}" "{Path(__file__).resolve()}" export-midi "{catalog_path}" "{project / "midi"}"')
     return 0
 
 
@@ -433,6 +543,7 @@ def doctor_issues() -> list[Issue]:
         SCRIPTS / "professor_review.py",
         SCRIPTS / "export_midis_v4.py",
         SCRIPTS / "audit_soundbank_assignments.py",
+        SCRIPTS / "compose_from_plan.py",
     )
     for path in required_paths:
         if not path.is_file():
@@ -520,7 +631,13 @@ def cmd_audit_bank(args: argparse.Namespace) -> int:
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         command.extend(["--output", str(args.output)])
-    return run_script("audit_soundbank_assignments.py", command)
+    code = run_script("audit_soundbank_assignments.py", command)
+    if code == 0 and args.output and args.output.is_file():
+        report = load_json(args.output)
+        mapped = report.get("factory_mapped", "?")
+        total = report.get("assignments", "?")
+        print(f"READY Factory Bank audit: {mapped}/{total} assignments mapped, {report.get('warnings', '?')} warnings -> {args.output.resolve()}")
+    return code
 
 
 def cmd_render(args: argparse.Namespace) -> int:
@@ -543,7 +660,7 @@ def build_parser() -> argparse.ArgumentParser:
     brief_spec = load_json(HARNESS_SPEC_PATH)["sections"]["brief"]
     parser = argparse.ArgumentParser(
         prog="neospc",
-        description="Initialize, validate, review and export Neo-SPC composition projects.",
+        description="Initialize, compose, validate, review and export Neo-SPC composition projects.",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -561,7 +678,7 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--game-function", help="Free-text scene or gameplay use. Defaults to the game context.")
     init.add_argument("--game-context", choices=brief_spec["game_context"]["values"], default="exploration")
     init.add_argument("--mood", choices=brief_spec["mood_primary"]["values"], default="hopeful")
-    init.add_argument("--thesis", default="State the emotional change the cue must support.")
+    init.add_argument("--thesis", help="Emotional change the cue must support. A concrete default is built from the brief.")
     init.add_argument("--bpm", type=int, default=96)
     init.add_argument("--meter", choices=("4/4", "3/4", "6/8", "9/8", "12/8", "5/4", "7/8", "5/8", "7/4"), default="6/8")
     init.add_argument("--key", choices=KEYS, default="G")
@@ -573,6 +690,11 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--seed", type=int, default=2207)
     init.add_argument("--force", action="store_true", help="Replace existing generated plan and harness files.")
     init.set_defaults(func=cmd_init)
+
+    compose = sub.add_parser("compose", help="Create a deterministic score and one-cue catalog from a project plan and harness.")
+    compose.add_argument("project", type=Path, help="Project directory containing composition-plan.json and generation-harness.json.")
+    compose.add_argument("--force", action="store_true", help="Replace existing composition.json and catalog.json files.")
+    compose.set_defaults(func=cmd_compose)
 
     validate = sub.add_parser("validate", help="Validate plans, harnesses, compositions or catalogs.")
     validate.add_argument("paths", nargs="+", type=Path)

@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "name": "Independent Music Professor Review",
+  "name": "Neo-SPC Symbolic Review",
   "scale": "0-10 per dimension; weighted score 0-100",
   "dimensions": {
     "melodic_coherence": {

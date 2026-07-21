@@ -9,6 +9,12 @@ MODES={
  'harmonic_minor':[0,2,3,5,7,8,11], 'melodic_minor':[0,2,3,5,7,9,11],
  'whole_tone':[0,2,4,6,8,10], 'octatonic':[0,2,3,5,6,8,9,11], 'pentatonic_major':[0,2,4,7,9], 'pentatonic_minor':[0,3,5,7,10]
 }
+try:
+    scale_library=json.loads((Path(__file__).resolve().parents[1]/'data'/'scale-library.json').read_text(encoding='utf-8'))
+    MODES.update({str(scale['id']):[int(interval) for interval in scale['intervals']] for scale in scale_library['scales']})
+except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+    pass
+MODES.setdefault('ionian',MODES['major']);MODES.setdefault('aeolian',MODES['minor'])
 PCS={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 MELODIC_ROLES={'lead','counter','riff'}
 STRUCTURAL_ROLES={'lead','counter','riff','bass'}
@@ -171,6 +177,6 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('output',type=Path);args=ap.parse_args()
     d=json.loads(args.catalog.read_text());tracks=[review(s) for s in d['styles']]
     summary=collections.Counter(t['status'] for t in tracks)
-    out={'version':'3.0.0','reviewer':'Independent Music Professor Pass','method':'symbolic score critique independent from renderer and mix','summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),'tracks':tracks}
+    out={'version':'3.0.0','reviewer':'Neo-SPC Symbolic Review','method':'deterministic symbolic score critique; renderer, mix and human listening excluded','summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),'tracks':tracks}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(out,indent=2));print(json.dumps({'summary':dict(summary),'average':out['average_score']},indent=2))
 if __name__=='__main__':main()

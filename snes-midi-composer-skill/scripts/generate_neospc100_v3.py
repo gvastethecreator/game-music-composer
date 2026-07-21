@@ -5,7 +5,6 @@ from pathlib import Path
 from collections import defaultdict
 
 OUT = Path('/mnt/data/neospc_v4_work/base')
-OUT.mkdir(parents=True, exist_ok=True)
 
 NOTE_PC={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 MODES={
@@ -287,7 +286,15 @@ def nearest_allowed(target,allowed,prefer=None):
     return ties[len(ties)//2]
 
 def form_sections(spec):
-    bars=spec['bars']; labels=spec['form'].split()
+    bars=spec['bars']; declared=spec['form']
+    if isinstance(declared,list):
+        out=[];pos=0
+        for section in declared:
+            length=int(section['bars']); item={'name':section['name'],'start_bar':pos,'bars':length}
+            if section.get('function'):item['function']=section['function']
+            out.append(item);pos+=length
+        return out
+    labels=declared.split()
     count=len(labels); base=bars//count; rem=bars%count; out=[]; pos=0
     for i,l in enumerate(labels):
         length=base+(1 if i<rem else 0);out.append({'name':l,'start_bar':pos,'bars':length});pos+=length
@@ -622,7 +629,7 @@ def add_drums(events,spec,bar_len):
             hit('tom',0,.026,-.12,.65);hit('impact',bar_len-.2,.022,.12,.45)
 
 def humanize(events,spec,bar_len):
-    rng=random.Random(seed_for('human',spec['slug']))
+    rng=random.Random(seed_for('human',spec['slug'],spec.get('seed','')))
     total=spec['bars']*bar_len
     for i,e in enumerate(events):
         beat=e['beat']; phrase=(beat%(bar_len*2))/(bar_len*2)
@@ -637,7 +644,7 @@ def humanize(events,spec,bar_len):
         elif role=='bass':placement=-1.5 if spec['category'] in ('urban','action') else 1
         if e['inst'] in ('snare','rim','brush'):placement+=5
         if e['inst']=='kick':placement=0
-        bar=int(beat/bar_len); local_rng=random.Random(seed_for(spec['slug'],bar,i%7)); noise=local_rng.uniform(-3.5,3.5)
+        bar=int(beat/bar_len); local_rng=random.Random(seed_for(spec['slug'],spec.get('seed',''),bar,i%7)); noise=local_rng.uniform(-3.5,3.5)
         if spec['category'] in ('electronic','action') and spec['drums'] not in ('brush_jazz','bossa'):noise*=.45
         offset_ms=rubato+placement+noise
         e['start_offset_ms']=round(offset_ms,3);e['performance_beat']=round((beat+offset_ms*spec['bpm']/60000)%total,5)
@@ -666,6 +673,32 @@ def humanize(events,spec,bar_len):
         for i,e in enumerate(grp):
             e['start_offset_ms']=round(e.get('start_offset_ms',0)+(i-center)*spread,3);e['performance_beat']=round((e['beat']+e['start_offset_ms']*spec['bpm']/60000)%total,5)
 
+def apply_velocity_expression(events,spec,bar_len):
+    """Give every exported lane deterministic, role-aware MIDI dynamics."""
+    role_base={
+      'lead':92,'counter':80,'riff':88,'bass':84,'kick':108,'snare':100,'hat':61,'tom':90,
+      'wood':78,'ride':66,'shaker':58,'brush':55,'rim':74,'impact':112,'comp':70,'arp':68,
+      'motor':74,'ostinato':76,'pad':54,'support':64,'ensemble':50,'pulse':72,'texture':46,
+    }
+    role_limits={
+      'lead':(54,118),'counter':(46,108),'riff':(58,120),'bass':(52,114),'kick':(80,124),
+      'snare':(62,121),'hat':(30,88),'tom':(54,116),'pad':(26,78),'support':(32,88),
+      'ensemble':(24,74),'texture':(20,70),
+    }
+    total=max(.001,spec['bars']*bar_len)
+    for i,e in enumerate(events):
+        role=e.get('role','support');base=role_base.get(role,68);lo,hi=role_limits.get(role,(30,112))
+        beat=float(e.get('performance_beat',e['beat']));position=beat%bar_len
+        accent=max(.35,min(1.2,float(e.get('accent',1))))
+        performance=max(.62,min(1.35,float(e.get('performance_gain',1))))
+        phrase=.9+.12*math.sin(math.pi*((beat%(bar_len*4))/(bar_len*4)))
+        section=.92+.12*min(1,beat/total)
+        metric=1.08 if position<.06 else 1.025 if abs(position-bar_len/2)<.06 else .96
+        repeat=((-1,1,0)[i%3])/base
+        velocity=round(base*(.66+.34*accent)*(.78+.22*performance)*phrase*section*metric*(1+repeat))
+        velocity=int(max(lo,min(hi,velocity)))
+        e['velocity']=velocity;e['velocity_norm']=round(velocity/127,4);e['velocity_gain']=round(velocity/max(1,base),4)
+
 def peak_polyphony(events,total_beats):
     points=[]
     for e in events:
@@ -681,7 +714,7 @@ def compose(spec,category,label):
     spec=dict(spec);spec['category']=category;spec['category_label']=label
     bar_len=METERS[spec['meter']];total=bar_len*spec['bars'];chords=chord_plan(spec);sections=form_sections(spec);events=[]
     melody=motif_events(spec,bar_len,chords,sections);events.extend(melody)
-    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len);humanize(events,spec,bar_len)
+    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len);humanize(events,spec,bar_len);apply_velocity_expression(events,spec,bar_len)
     # Ensure budget is a declared target, not a constant fill requirement. The actual peak may be lower.
     peak=peak_polyphony(events,total)
     if peak>32:
@@ -700,7 +733,7 @@ def compose(spec,category,label):
       'bpm':spec['bpm'],'beats':round(total,3),'bars':spec['bars'],'meter':spec['meter'],'barLength':bar_len,'key':spec['key'],'mode':spec['mode'],
       'voice_budget':spec['budget'],'measured_peak_voices':peak,'form':sections,'chord_plan':chord_data,'events':sorted(events,key=lambda e:(e.get('performance_beat',e['beat']),e.get('midi',0))),
       'instrument_map':imap,'tags':list(spec['tags'])+[spec['subcategory'].lower().replace(' ','-')],
-      'dna':{'form':spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
+      'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
       'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':'Final cadence and pickup are designed around the first harmony rather than a hard audio cut.'},
       'metrics':{'energy':spec['energy'],'tension':spec['tension']},
       'mix':{'echo_time':.18 if category in ('action','electronic') else .28 if category in ('horror','fantasy','classical') else .22,'echo_feedback':.14 if category in ('action','electronic') else .22,'preview_rms_db':-14.5 if spec['energy']>.75 else -15.5,'drive':.08 if category=='action' else .03 if category=='electronic' else 0}
@@ -741,6 +774,7 @@ def audit(styles):
     return report
 
 def main():
+    OUT.mkdir(parents=True, exist_ok=True)
     styles=[]
     for category,label in CATEGORY_DEFS:
         for spec in SPECS[category]:styles.append(compose(spec,category,label))
