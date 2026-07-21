@@ -10,6 +10,7 @@
   };
   const DRUM_ROLES = new Set(['kick','snare','hat','tom','wood','ride','shaker','brush','rim','impact']);
   const SUSTAIN_FAMILIES = new Set(['strings','choir','texture','wind','brass']);
+  const BANK_MODES = new Set(['factory','original','chip']);
   const dbToGain = db => Math.pow(10, db / 20);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -45,6 +46,8 @@
       this.transpose = 0;
       this.masterDb = -3;
       this.ceilingDb = -1;
+      this.bankMode = 'factory';
+      this.noiseBuffer = null;
       this.lookAheadSeconds = .24;
       this.schedulerIntervalMs = 42;
       this.onReadyState = null;
@@ -125,8 +128,11 @@
     }
 
     resolveSample(info, event) {
-      const region = this.resolveFactoryRegion(info, event);
-      if (region) return { source: 'factory', file: region.file, root: Number(region.root ?? info.root_midi ?? 60), loop: region.loop, region };
+      if (this.bankMode === 'chip') return null;
+      if (this.bankMode === 'factory') {
+        const region = this.resolveFactoryRegion(info, event);
+        if (region) return { source: 'factory', file: region.file, root: Number(region.root ?? info.root_midi ?? 60), loop: region.loop, region };
+      }
       if (!info?.file) return null;
       const legacy = window.NEOSPC_SAMPLE_BANK?.samples?.[info.file];
       if (!legacy) return null;
@@ -147,14 +153,34 @@
 
     async prepareStyle(style) {
       await this.ensureContext();
+      if (this.bankMode === 'chip') {
+        if (this.style !== style) this.setStyle(style);
+        if (typeof this.onReadyState === 'function') this.onReadyState('CHIP CORE READY');
+        return;
+      }
       const uniqueFiles = [...new Set(style.events.map(event => this.resolveSample(style.instrument_map?.[event.inst], event)?.file).filter(Boolean))];
-      if (typeof this.onReadyState === 'function') this.onReadyState(`LOADING ${uniqueFiles.length} FACTORY SAMPLES`);
+      const label = this.bankMode === 'original' ? 'ORIGINAL' : 'FACTORY';
+      if (typeof this.onReadyState === 'function') this.onReadyState(`LOADING ${uniqueFiles.length} ${label} SAMPLES`);
       await Promise.all(uniqueFiles.map(file => this.decodeFile(file)));
       if (this.style !== style) this.setStyle(style);
-      if (typeof this.onReadyState === 'function') this.onReadyState('FACTORY BANK READY');
+      if (typeof this.onReadyState === 'function') this.onReadyState(`${label} BANK READY`);
     }
 
+    setBankMode(mode) {
+      if (!BANK_MODES.has(mode)) throw new Error(`Unknown soundbank mode: ${mode}`);
+      if (mode === this.bankMode) return;
+      const beat = this.getBeat();
+      const resume = this.playing;
+      this.pause(false);
+      this.bankMode = mode;
+      this.offsetBeat = beat;
+      if (resume) this.play(beat);
+    }
+
+    getBankMode() { return this.bankMode; }
+
     setStyle(style) {
+      if (this.style === style) return;
       const wasPlaying = this.playing;
       const beat = this.getBeat();
       this.pause(false);
@@ -309,6 +335,10 @@
     scheduleEvent(event, absoluteBeat, currentAbs) {
       const info = this.style.instrument_map[event.inst];
       if (!info) return;
+      if (this.bankMode === 'chip') {
+        this.scheduleChipEvent(event, info, absoluteBeat, currentAbs);
+        return;
+      }
       const resolved = this.resolveSample(info, event);
       if (!resolved) return;
       const buffer = this.buffers.get(resolved.file);
@@ -371,10 +401,109 @@
       source.stop(when + durationSeconds + release + .05);
     }
 
+    getNoiseBuffer() {
+      if (this.noiseBuffer) return this.noiseBuffer;
+      const length = this.ctx.sampleRate;
+      const buffer = this.ctx.createBuffer(1, length, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      let seed = 0x7f4a7c15;
+      for (let i = 0; i < length; i++) {
+        seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+        data[i] = (seed / 0xffffffff) * 2 - 1;
+      }
+      this.noiseBuffer = buffer;
+      return buffer;
+    }
+
+    scheduleChipEvent(event, info, absoluteBeat, currentAbs) {
+      const bps = this.beatsPerSecond();
+      const when = Math.max(this.ctx.currentTime + .003, this.ctx.currentTime + (absoluteBeat - currentAbs) / bps);
+      const role = event.role || (event.kind === 'drum' ? event.inst : 'support');
+      const family = info.family || '';
+      const isDrum = event.kind === 'drum' || family === 'drum';
+      const durationBeats = isDrum ? .16 : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2));
+      const baseDuration = durationBeats / bps;
+      const velocityGain = Number(event.velocity_gain || 1) * Number(event.performance_gain || 1);
+      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * (isDrum ? .55 : .48), .004, .34);
+      const noteGain = this.ctx.createGain();
+      const filter = this.ctx.createBiquadFilter();
+      const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
+      const instNode = this.ensureInstrumentNode(event.inst);
+      let source;
+      let release = isDrum ? .08 : (SUSTAIN_FAMILIES.has(family) ? .22 : .1);
+      let duration = baseDuration;
+
+      if (isDrum && !['kick','tom','impact'].includes(event.inst)) {
+        source = this.ctx.createBufferSource();
+        source.buffer = this.getNoiseBuffer();
+        const noiseShape = {
+          snare: ['bandpass', 1800, .14], hat: ['highpass', 6500, .045], open_hat: ['highpass', 5200, .18],
+          shaker: ['highpass', 4800, .09], ride: ['highpass', 7200, .22], brush: ['bandpass', 2600, .2],
+          rim: ['bandpass', 3400, .04], wood: ['bandpass', 1200, .055],
+        }[event.inst] || ['highpass', 4200, .08];
+        filter.type = noiseShape[0];
+        filter.frequency.value = noiseShape[1];
+        filter.Q.value = event.inst === 'rim' || event.inst === 'wood' ? 7 : 1.1;
+        duration = noiseShape[2];
+        release = .025;
+      } else {
+        source = this.ctx.createOscillator();
+        const midi = Number(event.midi ?? info.root_midi ?? (event.inst === 'kick' ? 36 : 48));
+        if (isDrum) {
+          const drumHz = event.inst === 'kick' ? [118, 46] : event.inst === 'impact' ? [72, 31] : [165, 72];
+          source.type = 'sine';
+          source.frequency.setValueAtTime(drumHz[0], when);
+          source.frequency.exponentialRampToValueAtTime(drumHz[1], when + (event.inst === 'impact' ? .23 : .1));
+          filter.type = 'lowpass';
+          filter.frequency.value = event.inst === 'impact' ? 520 : 900;
+          duration = event.inst === 'impact' ? .28 : .16;
+          release = .08;
+        } else {
+          const transpose = this.transpose;
+          const cents = Number(event.tuning_cents || 0);
+          const hz = 440 * Math.pow(2, ((midi + transpose - 69) + cents / 100) / 12);
+          source.type = family === 'bass' ? 'triangle' : ['lead','riff','pulse'].includes(role) ? 'square' : SUSTAIN_FAMILIES.has(family) ? 'sawtooth' : 'triangle';
+          source.frequency.value = hz;
+          source.detune.value += source.type === 'sawtooth' ? -3 : 0;
+          filter.type = 'lowpass';
+          filter.frequency.value = family === 'bass' ? 1100 : SUSTAIN_FAMILIES.has(family) ? 2800 : 4600;
+          filter.Q.value = source.type === 'square' ? 1.4 : .55;
+        }
+      }
+
+      const attack = isDrum ? .001 : Number(event.attack ?? (SUSTAIN_FAMILIES.has(family) ? .045 : .008));
+      noteGain.gain.setValueAtTime(.0001, when);
+      noteGain.gain.linearRampToValueAtTime(amp, when + Math.min(attack, duration * .4));
+      const releaseStart = Math.max(when + .004, when + duration - Math.min(release, duration * .4));
+      noteGain.gain.setValueAtTime(amp, releaseStart);
+      noteGain.gain.exponentialRampToValueAtTime(.0001, when + duration + release);
+      source.connect(filter);
+      filter.connect(noteGain);
+      if (pan) {
+        pan.pan.value = clamp(Number(event.performance_pan ?? event.pan ?? 0), -1, 1);
+        noteGain.connect(pan);
+        pan.connect(instNode);
+        const send = clamp(Number(event.send || 0), 0, .3);
+        if (send > .001) {
+          const sendGain = this.ctx.createGain();
+          sendGain.gain.value = send * .22;
+          pan.connect(sendGain);
+          sendGain.connect(this.delay);
+        }
+      } else {
+        noteGain.connect(instNode);
+      }
+      source.onended = () => this.sources.delete(source);
+      this.sources.add(source);
+      source.start(when);
+      source.stop(when + duration + release + .03);
+    }
+
     destroy() {
       this.pause(false);
       if (this.ctx) this.ctx.close();
       this.ctx = null;
+      this.noiseBuffer = null;
     }
   }
 

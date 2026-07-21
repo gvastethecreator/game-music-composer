@@ -68,10 +68,24 @@ def main() -> int:
             errors.append(f"missing {kind}: {reference}")
 
     app_source = (ROOT / "app.js").read_text(encoding="utf-8")
+    engine_source = (ROOT / "live-engine.js").read_text(encoding="utf-8")
+    html_source = (ROOT / "index.html").read_text(encoding="utf-8")
     dom_ids = set(re.findall(r"(?<!\$)\$\('([^']+)'\)", app_source))
     missing_dom = sorted(dom_ids - set(parser.ids))
     if missing_dom:
         errors.append(f"JavaScript references missing HTML ids: {', '.join(missing_dom)}")
+    required_ui = {"soundbankMode", "loadCompositionButton", "compositionFileInput", "localImportStatus", "studioMain"}
+    if required_ui - set(parser.ids):
+        errors.append(f"missing composition/soundbank UI: {', '.join(sorted(required_ui - set(parser.ids)))}")
+    for bank_mode in ("factory", "original", "chip"):
+        if f'value="{bank_mode}"' not in html_source or f"'{bank_mode}'" not in engine_source:
+            errors.append(f"missing live soundbank contract: {bank_mode}")
+    for token in ("importLimits", "validateImportedStyle", "importCompositionFiles", "source_type==='local_import'"):
+        if token not in app_source:
+            errors.append(f"missing local composition guard: {token}")
+    for token in ("setBankMode", "scheduleChipEvent", "getNoiseBuffer"):
+        if token not in engine_source:
+            errors.append(f"missing live engine bank feature: {token}")
 
     catalog = load_assignment(ROOT / "data" / "catalog.js")
     styles = catalog.get("styles", []) if isinstance(catalog, dict) else []
