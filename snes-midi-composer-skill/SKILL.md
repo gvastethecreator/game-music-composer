@@ -33,7 +33,7 @@ python scripts/neospc.py init ./my-cue \
   --bars 16
 ```
 
-3. Replace every descriptive placeholder in `composition-plan.json`. Keep every quality gate `false` until evidence supports it.
+3. Review every descriptive field in `composition-plan.json` and edit any wording that misses the scene. Keep every quality gate `false` until evidence supports it.
 
 4. Tune `generation-harness.json` only after the plan states the scene, emotional change, form, motif, bass behavior, groove, silence budget and loop strategy.
 
@@ -42,6 +42,15 @@ python scripts/neospc.py init ./my-cue \
 ```bash
 python scripts/neospc.py validate ./my-cue/composition-plan.json ./my-cue/generation-harness.json --strict
 ```
+
+6. Create the first complete score draft:
+
+```bash
+python scripts/neospc.py compose ./my-cue
+python scripts/neospc.py validate ./my-cue/composition.json ./my-cue/catalog.json --strict
+```
+
+`compose` uses the plan, all harness controls and the declared seed. It writes a single composition plus a one-cue catalog for the review, bank, MIDI and render commands. It refuses to replace either output unless you pass `--force`. Treat the result as a scored draft: inspect the reduction, form, ranges, density and loop before approval.
 
 ## Route the request
 
@@ -184,16 +193,16 @@ Keep MIDI duties separate:
 
 ## Validate and export
 
-Put one or more complete compositions under a catalog `styles` array. Each composition must match `schemas/neospc-composition.schema.json` and declare form, chords, events and instruments.
+`compose` creates `catalog.json` with the new cue under `styles`. Add other complete compositions to that array when you need a batch. Each composition must match `schemas/neospc-composition.schema.json` and declare form, chords, events and instruments.
 
 Run the gates in this order:
 
 ```bash
-python scripts/neospc.py validate ./catalog.json --kind catalog --strict
-python scripts/neospc.py review ./catalog.json ./review.json
-python scripts/neospc.py audit-bank ./catalog.json --output ./bank-audit.json
-python scripts/neospc.py export-midi ./catalog.json ./midi
-python scripts/neospc.py render ./catalog.json ./audio
+python scripts/neospc.py validate ./my-cue/catalog.json --kind catalog --strict
+python scripts/neospc.py review ./my-cue/catalog.json ./my-cue/review.json
+python scripts/neospc.py audit-bank ./my-cue/catalog.json --output ./my-cue/bank-audit.json
+python scripts/neospc.py export-midi ./my-cue/catalog.json ./my-cue/midi
+python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio
 ```
 
 `review` runs a deterministic symbolic rubric. It checks score structure, phrase behavior, genre signals, orchestration and expression. It does not provide human judgment or a fresh independent review. Use a separate reviewer when the user needs independent artistic judgment.

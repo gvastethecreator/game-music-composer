@@ -12,12 +12,12 @@
     "bpm": 96,
     "key": "G",
     "mode": "dorian",
-    "motif": "describe interval and rhythm identity",
-    "harmonic_language": "describe progression or modal field",
-    "bass_behavior": "describe direction",
-    "groove": "describe pulse and deviations",
-    "silence_budget": "name where the arrangement must breathe",
-    "loop_strategy": "describe pickup, cadence and seam behavior"
+    "motif": "Rising fourth answered by two short descending steps",
+    "harmonic_language": "Dorian field with a clear i-IV modal turn",
+    "bass_behavior": "Root-led motion that opens into stepwise links at phrase ends",
+    "groove": "Two broad 6/8 pulses with a light push into each second bar",
+    "silence_budget": "Leave the final eighth of each two-bar phrase open for the answer",
+    "loop_strategy": "Hold the last dominant color under a pickup that resolves on the first downbeat"
   },
   "voice_architecture": {
     "core": [
