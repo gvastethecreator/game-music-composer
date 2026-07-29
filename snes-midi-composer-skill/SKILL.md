@@ -1,6 +1,6 @@
 ---
 name: neospc-music-composer
-description: Compose, arrange, humanize, review, render and export original SNES-inspired game music with semantic JSON, expressive Type-1 MIDI, loop-aware form, 8-32 voice plans and the Neo-SPC Factory Bank. Use when a user asks for a new game cue, a reusable composition brief, a soundtrack arrangement, a MIDI or sample-based render, a composition audit, a stronger loop, SNES-era musical character, or a deterministic benchmark of generated music.
+description: "Compose, arrange, review, render, and export original SNES-inspired game music. Use for game-cue briefs, loop-ready scores, MIDI, soundbank planning, or composition audits."
 ---
 
 # Neo-SPC Music Composer
@@ -207,7 +207,7 @@ python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio
 
 `review` runs a deterministic symbolic rubric. It checks score structure, phrase behavior, genre signals, orchestration and expression. It does not provide human judgment or a fresh independent review. Use a separate reviewer when the user needs independent artistic judgment.
 
-`render` needs `numpy`, `soundfile` and an available FFmpeg command. The other canonical commands use the Python standard library. If render dependencies are missing, deliver valid JSON and MIDI, name the blocked audio formats and give the exact retry command.
+`render` needs `numpy`, `soundfile`, `pyloudnorm`, `scipy` and an available FFmpeg command. Install the Python extras with `python -m pip install -r requirements-render.txt`. The other canonical commands use the Python standard library. If render dependencies are missing, deliver valid JSON and MIDI, name the blocked audio formats and give the exact retry command.
 
 Preserve every review report. Revise only the dimensions named by the report. Re-run validation and review after each revision. Keep `approved`, `revise` and `rebuild` labels honest.
 

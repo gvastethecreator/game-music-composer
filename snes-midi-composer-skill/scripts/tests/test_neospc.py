@@ -17,6 +17,7 @@ sys.path.insert(0, str(SCRIPTS))
 import neospc  # noqa: E402
 import package_skill  # noqa: E402
 import professor_review  # noqa: E402
+import release_gate  # noqa: E402
 
 
 class NeoSpcCliTests(unittest.TestCase):
@@ -25,6 +26,10 @@ class NeoSpcCliTests(unittest.TestCase):
         benchmark = neospc.load_json(neospc.BENCHMARK_PATH)
         self.assertEqual(neospc.validate_catalog(benchmark), [])
         self.assertEqual(len(benchmark["styles"]), 100)
+
+    def test_release_boundary_is_portable_and_archived(self) -> None:
+        self.assertEqual(release_gate.path_lint_issues(), [])
+        self.assertEqual(release_gate.archive_issues(), [])
 
     def test_init_creates_valid_plan_and_harness(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -203,14 +208,20 @@ class NeoSpcCliTests(unittest.TestCase):
             second = Path(temp) / "second.zip"
             count_a, digest_a = package_skill.build(first)
             count_b, digest_b = package_skill.build(second)
-            self.assertGreater(count_a, 100)
+            self.assertGreater(count_a, 60)
+            self.assertLess(count_a, 100)
             self.assertEqual(count_a, count_b)
             self.assertEqual(digest_a, digest_b)
             with zipfile.ZipFile(first) as archive:
                 names = archive.namelist()
+                unpacked_bytes = sum(info.file_size for info in archive.infolist())
             self.assertIn("neospc-music-composer/SKILL.md", names)
+            self.assertIn("neospc-music-composer/LICENSE", names)
             self.assertIn("neospc-music-composer/agents/openai.yaml", names)
             self.assertFalse(any("__pycache__" in name or name.endswith(".pyc") for name in names))
+            self.assertNotIn("neospc-music-composer/data/neospc100-benchmark-v3.json", names)
+            self.assertNotIn("neospc-music-composer/data/neospc100-benchmark.json", names)
+            self.assertLess(unpacked_bytes, 25 * 1024 * 1024)
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ import argparse
 import copy
 import json
 import re
+import shutil
 import subprocess
 import sys
 import unicodedata
@@ -26,6 +27,27 @@ BENCHMARK_PATH = DATA / "neospc100-benchmark-v4.1.json"
 FACTORY_MANIFEST_PATH = DATA / "factory-bank-manifest.json"
 CALIBRATION_PATH = DATA / "instrument-calibration.json"
 SAMPLE_DIR = ROOT / "resources" / "original-sample-bank"
+
+RUNTIME_JSON_PATHS = (
+    DATA / "category-benchmark-contracts.json",
+    DATA / "chord-progression-library.json",
+    DATA / "factory-bank-manifest.json",
+    DATA / "factory-bank-role-map.json",
+    DATA / "fast-tempo-detail-rules.json",
+    DATA / "generation-harness-v3.json",
+    DATA / "instrument-calibration.json",
+    DATA / "mix-audit-v2.2.json",
+    DATA / "mix-bus-profiles.json",
+    DATA / "neospc100-benchmark-v4.1.json",
+    DATA / "pattern-preset-library.json",
+    DATA / "scale-library.json",
+    DATA / "voice-architecture-profiles.json",
+    DATA / "voice-budget-modes.json",
+    SCHEMAS / "composition-plan.schema.json",
+    SCHEMAS / "generation-harness-v3.schema.json",
+    SCHEMAS / "neospc-composition.schema.json",
+    PLAN_TEMPLATE_PATH,
+)
 
 VOICE_PROFILES = {
     8: "legacy_8",
@@ -533,6 +555,7 @@ def doctor_issues() -> list[Issue]:
     issues: list[Issue] = []
     required_paths = (
         ROOT / "SKILL.md",
+        ROOT / "LICENSE",
         PLAN_TEMPLATE_PATH,
         HARNESS_SPEC_PATH,
         SCHEMAS / "composition-plan.schema.json",
@@ -550,7 +573,7 @@ def doctor_issues() -> list[Issue]:
             add_issue(issues, "error", "missing_resource", str(path.relative_to(ROOT)), "Required skill resource is missing.")
     if issues:
         return issues
-    for path in sorted((*DATA.glob("*.json"), *SCHEMAS.glob("*.json"), *TEMPLATES.glob("*.json"))):
+    for path in RUNTIME_JSON_PATHS:
         try:
             load_json(path)
         except ValueError as exc:
@@ -643,17 +666,31 @@ def cmd_audit_bank(args: argparse.Namespace) -> int:
 def cmd_render(args: argparse.Namespace) -> int:
     if not validate_catalog_path(args.catalog):
         return 1
-    try:
-        __import__("numpy")
-        __import__("soundfile")
-    except ImportError:
-        print("Rendering needs numpy and soundfile. Install them in the active Python environment, then retry.", file=sys.stderr)
+    missing = render_dependency_issues()
+    if missing:
+        print(
+            "Rendering is unavailable: " + "; ".join(missing)
+            + ". Install Python extras with `python -m pip install -r requirements-render.txt` and make ffmpeg available on PATH, then retry.",
+            file=sys.stderr,
+        )
         return 2
     args.output.mkdir(parents=True, exist_ok=True)
     return run_script(
         "render_mix_v4.py",
         [str(args.catalog), str(args.sample_dir), str(args.calibration), str(args.output), "--workers", str(args.workers)],
     )
+
+
+def render_dependency_issues() -> list[str]:
+    missing: list[str] = []
+    for module in ("numpy", "soundfile", "pyloudnorm", "scipy"):
+        try:
+            __import__(module)
+        except ImportError:
+            missing.append(f"missing Python module {module}")
+    if shutil.which("ffmpeg") is None:
+        missing.append("ffmpeg is not on PATH")
+    return missing
 
 
 def build_parser() -> argparse.ArgumentParser:
