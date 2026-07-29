@@ -1,0 +1,34 @@
+name: Neo-SPC release gates
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: ${{ matrix.os }} · Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.12']
+    defaults:
+      run:
+        working-directory: snes-midi-composer-skill
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Strict doctor
+        run: python scripts/neospc.py doctor --strict
+      - name: Unit suite
+        run: python -m unittest discover -s scripts/tests -v
+      - name: Package and relocated smoke
+        run: python scripts/package_skill.py --output ../.scratch/release/neospc-music-composer.zip --smoke
+      - name: Runtime boundary, manifest and clean tree
+        run: python scripts/release_gate.py --check-tree

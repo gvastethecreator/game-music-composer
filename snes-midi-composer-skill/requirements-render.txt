@@ -1,0 +1,5 @@
+# Optional dependencies for `python scripts/neospc.py render`.
+numpy
+soundfile
+pyloudnorm
+scipy

@@ -31,11 +31,16 @@ Read `SKILL.md` for the full writing path. Keep `composition-plan.json`, the har
 
 ## Proof and samples
 
-`data/neospc100-benchmark-v4.1.json` is a 100-cue test corpus and structure reference. It is not a phrase source. `data/snes-original-samples/` and the Factory Bank hold original or cleared sample material; see `LICENSE-NOTES.md` and `SOURCES.md`.
+`data/neospc100-benchmark-v4.1.json` is a 100-cue test corpus and structure reference. It is not a phrase source. `resources/original-sample-bank/` and the Factory Bank hold original or cleared sample material; see `LICENSE-NOTES.md` and `SOURCES.md`.
+
+The runtime package contains only the current v4.1 corpus and canonical tools. Historical v3/legacy rebuild material is kept separately for maintainers and is not required to use the skill.
 
 Run focused checks with:
 
 ```bash
 python -m unittest discover -s scripts/tests -v
-python scripts/package_skill.py
+python scripts/package_skill.py --smoke
+python scripts/release_gate.py
 ```
+
+`render` is optional. Install its local dependencies with `python -m pip install -r requirements-render.txt` and make `ffmpeg` available on `PATH` before requesting WAV, OGG or MP3 output.

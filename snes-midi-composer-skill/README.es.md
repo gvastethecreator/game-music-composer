@@ -30,7 +30,12 @@ Lee `SKILL.md` para seguir el flujo completo. Conserva `composition-plan.json`, 
 
 `data/neospc100-benchmark-v4.1.json` sirve como corpus de prueba y guía de estructura. No debe usarse como fuente de frases. Consulta `LICENSE-NOTES.md` y `SOURCES.md` antes de distribuir samples.
 
+El paquete runtime sólo contiene el corpus v4.1 y las herramientas canónicas. El material histórico de reconstrucción v3/legacy se conserva aparte para mantenimiento y no hace falta para usar la skill.
+
 ```bash
 python -m unittest discover -s scripts/tests -v
-python scripts/package_skill.py
+python scripts/package_skill.py --smoke
+python scripts/release_gate.py
 ```
+
+`render` es opcional. Instala sus dependencias locales con `python -m pip install -r requirements-render.txt` y deja `ffmpeg` disponible en `PATH` antes de pedir WAV, OGG o MP3.

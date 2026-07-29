@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
-"""Build a reproducible Neo-SPC skill ZIP for the static showcase."""
+"""Build and relocate-smoke the portable Neo-SPC skill ZIP."""
 from __future__ import annotations
 
 import argparse
 import hashlib
+import subprocess
+import sys
+import tempfile
 import zipfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT.parent / "snes-midi-composer-showcase" / "downloads" / "neospc-music-composer.zip"
+DEFAULT_OUTPUT = ROOT / "dist" / "neospc-music-composer.zip"
 MANIFEST = ROOT / "MANIFEST.sha256"
 ARCHIVE_ROOT = "neospc-music-composer"
-SKIP_DIRS = {"__pycache__", ".git", ".scratch"}
+SKIP_DIRS = {"__pycache__", ".git", ".scratch", "dist", "work"}
 SKIP_SUFFIXES = {".pyc", ".pyo"}
+TEXT_SUFFIXES = {".json", ".md", ".py", ".sha256", ".txt", ".yaml", ".yml"}
+FORBIDDEN_PATH = b"/mnt" + b"/data"
 
 
 def source_files() -> list[Path]:
@@ -26,7 +31,27 @@ def source_files() -> list[Path]:
     ]
 
 
+def package_hygiene_issues() -> list[str]:
+    issues: list[str] = []
+    for required in (ROOT / "SKILL.md", ROOT / "LICENSE", ROOT / "agents" / "openai.yaml"):
+        if not required.is_file():
+            issues.append(f"missing required distributable file: {required.relative_to(ROOT).as_posix()}")
+    for path in source_files():
+        if path.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        if FORBIDDEN_PATH in path.read_bytes():
+            issues.append(f"non-portable Linux mount path in {path.relative_to(ROOT).as_posix()}")
+    return issues
+
+
+def assert_package_hygiene() -> None:
+    issues = package_hygiene_issues()
+    if issues:
+        raise ValueError("Package hygiene failed:\n- " + "\n- ".join(issues))
+
+
 def build_manifest() -> tuple[int, str]:
+    assert_package_hygiene()
     files = [path for path in source_files() if path != MANIFEST]
     lines = [f"{hashlib.sha256(path.read_bytes()).hexdigest()}  ./{path.relative_to(ROOT).as_posix()}" for path in files]
     content = "\n".join(lines) + "\n"
@@ -37,6 +62,7 @@ def build_manifest() -> tuple[int, str]:
 
 
 def build(output: Path) -> tuple[int, str]:
+    assert_package_hygiene()
     files = source_files()
     output.parent.mkdir(parents=True, exist_ok=True)
     staging = output.with_name(f".{output.name}.tmp")
@@ -52,15 +78,41 @@ def build(output: Path) -> tuple[int, str]:
     return len(files), digest
 
 
+def run_relocation_smoke(archive_path: Path) -> None:
+    with tempfile.TemporaryDirectory(prefix="neospc-relocation-") as temp:
+        destination = Path(temp)
+        with zipfile.ZipFile(archive_path) as archive:
+            names = archive.namelist()
+            if not names or any(not name.startswith(f"{ARCHIVE_ROOT}/") or ".." in Path(name).parts for name in names):
+                raise ValueError("Archive contains an unsafe or malformed member path.")
+            if any("__pycache__" in name or name.endswith((".pyc", ".pyo")) for name in names):
+                raise ValueError("Archive contains generated Python bytecode.")
+            archive.extractall(destination)
+        relocated = destination / ARCHIVE_ROOT
+        commands = (
+            [sys.executable, "scripts/neospc.py", "doctor", "--strict"],
+            [sys.executable, "-m", "unittest", "discover", "-s", "scripts/tests", "-v"],
+        )
+        for command in commands:
+            result = subprocess.run(command, cwd=relocated, check=False)
+            if result.returncode:
+                raise RuntimeError(f"Relocation smoke failed ({result.returncode}): {' '.join(command)}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--smoke", action="store_true", help="Extract the ZIP into a temporary directory and run doctor plus the unit suite there.")
     args = parser.parse_args()
+    output = args.output.resolve()
     manifest_count, manifest_digest = build_manifest()
-    count, digest = build(args.output.resolve())
+    count, digest = build(output)
     print(f"manifest {manifest_count} files · sha256 {manifest_digest}")
-    print(f"packed {count} files -> {args.output.resolve()}")
+    print(f"packed {count} files -> {output}")
     print(f"sha256 {digest}")
+    if args.smoke:
+        run_relocation_smoke(output)
+        print("relocation smoke: PASS")
     return 0
 
 
