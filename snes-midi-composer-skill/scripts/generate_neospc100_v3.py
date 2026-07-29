@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import argparse
 import json, math, random, hashlib, itertools
 from pathlib import Path
 from collections import defaultdict
-
-OUT = Path('/mnt/data/neospc_v4_work/base')
 
 NOTE_PC={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 MODES={
@@ -773,15 +772,19 @@ def audit(styles):
     report['avg_measured_peak']=round(sum(s['measured_peak_voices'] for s in styles)/len(styles),2)
     return report
 
-def main():
-    OUT.mkdir(parents=True, exist_ok=True)
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Rebuild the deterministic Neo-SPC v4 benchmark into an explicit output directory.')
+    parser.add_argument('--output', type=Path, required=True, help='Directory that receives neospc100.json and qa-symbolic.json.')
+    args = parser.parse_args(argv)
+    output = args.output.resolve()
+    output.mkdir(parents=True, exist_ok=True)
     styles=[]
     for category,label in CATEGORY_DEFS:
         for spec in SPECS[category]:styles.append(compose(spec,category,label))
     report=audit(styles)
     catalog={'version':'4.0.0-base','project':'Neo-SPC 100 / Full Rebuild Base','voice_model':{'recommended':16,'profiles':[8,12,16,24,32],'benchmark_max':32,'hard_hardware_limit_removed':True},'categories':[{'id':c,'label':l,'count':10} for c,l in CATEGORY_DEFS],'styles':styles}
-    (OUT/'neospc100.json').write_text(json.dumps(catalog,indent=2))
-    (OUT/'qa-symbolic.json').write_text(json.dumps(report,indent=2))
+    (output/'neospc100.json').write_text(json.dumps(catalog,indent=2))
+    (output/'qa-symbolic.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2))
 
 if __name__=='__main__':main()
