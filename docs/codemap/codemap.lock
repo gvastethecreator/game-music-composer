@@ -1,0 +1,68 @@
+{
+  "current_commit": "2cb9c6a4b4432be1bb05ccef2559d4c5e151a943",
+  "working_tree_dirty": true,
+  "generated_at": "2026-08-08T09:52:35Z",
+  "scanned_scope": [
+    "."
+  ],
+  "excluded_directories": [
+    ".cache",
+    ".git",
+    ".hg",
+    ".next",
+    ".nuxt",
+    ".svn",
+    ".turbo",
+    ".venv",
+    "__pycache__",
+    "build",
+    "coverage",
+    "dist",
+    "docs/codemap",
+    "generated",
+    "node_modules",
+    "out",
+    "target",
+    "vendor",
+    "venv"
+  ],
+  "fingerprint_algorithm": "sha256-path-content-v1",
+  "modules": [
+    {
+      "id": ".",
+      "path": ".",
+      "file_count": 3,
+      "fingerprint": "4c29c750ec5992c2fa0200e878adc34c70310fbda40a164d5554a00bc96a3e7c"
+    },
+    {
+      "id": ".github",
+      "path": ".github",
+      "file_count": 1,
+      "fingerprint": "29e603c2ed6468437f236edda527df57ca1064f81759db34b092054e5d202384"
+    },
+    {
+      "id": ".vscode",
+      "path": ".vscode",
+      "file_count": 1,
+      "fingerprint": "bbf1e76a58dd4db85797ed4a074b0bcff268803ac17afbab1f2d26b6372f429a"
+    },
+    {
+      "id": "snes-midi-composer-maintainer",
+      "path": "snes-midi-composer-maintainer",
+      "file_count": 59,
+      "fingerprint": "a8c706ad658c782b091d0158f08dee822d34046c6702dd845d3cff5314fe710d"
+    },
+    {
+      "id": "snes-midi-composer-showcase",
+      "path": "snes-midi-composer-showcase",
+      "file_count": 476,
+      "fingerprint": "84bfc8402f9925df69a3a1986da02a249af90bcb87bcf29472445429f7482e57"
+    },
+    {
+      "id": "snes-midi-composer-skill",
+      "path": "snes-midi-composer-skill",
+      "file_count": 86,
+      "fingerprint": "cb029b85f35a23799fd4a2f2b5ced926e3ea206832b4efdc6b2e7a285eec108c"
+    }
+  ]
+}
