@@ -14,7 +14,7 @@ b452af6cd70c8a8a97a15b0534dcc168f0e2b57b3e3322bae2f00d8eeb5b04df  ./data/generat
 7ca5f7f94a5edefd978fa5df37b43714fa9530bb3dc4bf5cfe4168f2cea499f3  ./data/instrument-calibration.json
 c21f614503533f677e31ab0b5499db04c078d01fe21d03a5f24072b353115873  ./data/mix-audit-v2.2.json
 7e145e78837db3ea360246f5c8560c6346fbdb08de4a4fc6893a859cc6f36f0f  ./data/mix-bus-profiles.json
-0b336908be212966fe7cc3a5df019cdbfeb7d25491bec2a541742ce90a211f45  ./data/neospc100-benchmark-v4.1.json
+6bc4d14c58bf26a20f6c2cd80aa20c7f75fa0378a063a34c016f805d3415aa8f  ./data/neospc100-benchmark-v4.1.json
 5319f609dc7000f613bbdaceb13df34bd015855e5ae6ceed0f2a5e2669f227e5  ./data/pattern-preset-library.json
 49d6f5c5f12661115989cb4745838b750a4ef8aeb14dc679b80e693fad12d5b5  ./data/scale-library.json
 8e767a44370a332c26969e7ad3bbe53c19eac31871d14b6a5b96c570e644a925  ./data/voice-architecture-profiles.json
@@ -74,7 +74,7 @@ d394ed9857d5c98bb1bd27f23c285904ff3a47aa48ee8449e5193786e9661eb2  ./schemas/neos
 cc0002b3d68354385c5eead1604db612e741b850313f540d0948f6a2da11fa89  ./scripts/audit_soundbank_assignments.py
 8d2a98754e84a0df5fd9468f5310330b609516fd6385dae5231e17a7632ddef7  ./scripts/compose_from_plan.py
 044b700193fcaa567cb3003bb5ad09b54713f45e39f798be6a9424c6f6e4e121  ./scripts/export_midis_v4.py
-b4b386760222d58a7a6358f9a07d9291b444e35fadcf47f5bcbbd09bb091af5f  ./scripts/generate_neospc100_v3.py
+b58098c293d489b86682415607b484e4df2c037952de5bc035cf850b0de06fb9  ./scripts/generate_neospc100_v3.py
 49ed34ab4c0841493e44f76f6692b28cfae2bdcf82fd2db9db5f8baf6e337b24  ./scripts/midi_compat.py
 de1b51296c821c7cdd3628f03c161914b6fef2d7470a76bc1c6c1a2849d543e8  ./scripts/neospc.py
 6781fccd4157bea3424c756f7e4d506f6dee2486218d0753e75feb1a93b6d634  ./scripts/package_skill.py

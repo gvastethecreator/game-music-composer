@@ -1,7 +1,9 @@
 # QA Report — Neo-SPC Composer Studio
 
-Date: 2026-07-21
-Status: PASS for the tested static and browser paths
+Date: 2026-08-13
+Status: PASS for the tested static paths after the musical-engine rebuild
+
+The 100 showcase cues were regenerated with the current composition engine, then reviewed, exported to MIDI and rendered to OGG/MP3. Symbolic review: 93 approved, 7 revise, average 89.23.
 
 ## Static proof
 
