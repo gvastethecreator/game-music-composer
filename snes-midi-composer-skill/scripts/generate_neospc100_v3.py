@@ -57,6 +57,111 @@ CATEGORY_DEFS = [
 ]
 
 METERS={'4/4':4.0,'3/4':3.0,'6/8':3.0,'9/8':4.5,'12/8':6.0,'5/4':5.0,'7/8':3.5,'5/8':2.5,'7/4':7.0}
+COMPOUND={'6/8','9/8','12/8'}
+# Real metric grids: where the felt pulses and strong beats live inside each bar.
+METER_GRIDS={
+ '4/4':{'pulses':[0,1,2,3],'strong':[0,2],'sub':.5},
+ '3/4':{'pulses':[0,1,2],'strong':[0],'sub':.5},
+ '6/8':{'pulses':[0,1.5],'strong':[0,1.5],'sub':.5},
+ '9/8':{'pulses':[0,1.5,3.0],'strong':[0,3.0],'sub':.5},
+ '12/8':{'pulses':[0,1.5,3.0,4.5],'strong':[0,3.0],'sub':.5},
+ '5/4':{'pulses':[0,1,2,3,4],'strong':[0,2.5,3],'sub':.5},
+ '7/8':{'pulses':[0,1,2],'strong':[0,2],'sub':.5},
+ '5/8':{'pulses':[0,1],'strong':[0],'sub':.5},
+ '7/4':{'pulses':[0,1,2,3,4,5,6],'strong':[0,4],'sub':.5},
+}
+
+def meter_grid(meter):
+    return METER_GRIDS.get(meter,{'pulses':[0,1,2,3],'strong':[0,2],'sub':.5})
+
+def bar_grid(off,bar_len,meter,base=4.0):
+    """Map a pattern offset designed on a 4-beat bar onto this meter's real grid.
+    Identity for 4/4; other meters rescale proportionally and snap to the felt
+    subdivision so nothing lands between the cracks of the bar."""
+    if abs(bar_len-base)<1e-6:
+        return off if off<bar_len-1e-6 else None
+    sub=.5 if meter in COMPOUND else .25
+    pos=round((off/base)*bar_len/sub)*sub
+    return pos if pos<bar_len-1e-6 else None
+
+def snap_pos(pos,bar_len,meter):
+    """Snap an arbitrary in-bar position to the meter's felt subdivision (identity in 4/4)."""
+    if meter=='4/4':
+        return pos if pos<bar_len-1e-6 else None
+    sub=.5 if meter in COMPOUND else .25
+    p=round(pos/sub)*sub
+    return p if p<bar_len-1e-6 else None
+
+def meter_sub(meter):
+    return .5 if meter in COMPOUND else .25
+
+def motif_cell(motif,meter,bar_len):
+    """The motif's own rhythm is its identity, so it is quantized onto the meter grid
+    rather than replaced by a generic pulse skeleton. Degrees are normalized so the
+    cell begins on the structural (guide) tone.
+    Returns (degrees, onsets, cell_bars)."""
+    ints,offs,durs=MOTIFS[motif]
+    sub=meter_sub(meter)
+    span=max(offs)+max(.25,durs[-1])
+    cell_bars=max(1,int(math.ceil(span/4.0-1e-6)))
+    native=4.0*cell_bars; target=bar_len*cell_bars
+    degs=[];ons=[];seen=set()
+    for iv,off in zip(ints,offs):
+        pos=off if abs(bar_len-4.0)<1e-6 else round(off/native*target/sub)*sub
+        if pos>target-1e-6 or pos in seen:continue
+        seen.add(pos);degs.append(iv-ints[0]);ons.append(pos)
+    if not ons:degs=[0];ons=[0.0]
+    order=sorted(range(len(ons)),key=lambda i:ons[i])
+    return [degs[i] for i in order],[ons[i] for i in order],cell_bars
+
+def cell_variant(degs,ons,vi,span,sub,rng):
+    """Deterministic development of the rhythmic cell: sequence, fragment-and-echo,
+    syncopation, or thinning. The cell's profile stays recognizable."""
+    d=list(degs);o=list(ons)
+    if vi==1:
+        d=[x+1 for x in d]
+        if len(o)>3:d=d[:-1];o=o[:-1]
+    elif vi==2 and len(o)>3:
+        k=max(2,len(o)//2);d=d[:k];o=o[:k]
+        anchor=o[-1]+sub*2
+        for i in range(min(2,k)):
+            p=anchor+i*sub
+            if p<span-sub*.5:o.append(p);d.append(d[i]+1)
+    elif vi==3 and len(o)>2:
+        i=1+rng.randrange(len(o)-2)
+        if o[i]+sub<o[i+1]-1e-6:o[i]=o[i]+sub
+        d=[x-1 if j%2 else x for j,x in enumerate(d)]
+    order=sorted(range(len(o)),key=lambda i:o[i])
+    d=[d[i] for i in order];o=[o[i] for i in order]
+    # Developing the cell must not collapse two neighbours onto the same degree.
+    for i in range(1,len(d)):
+        if d[i]==d[i-1]:d[i]+=1
+    return d,o
+
+def degree_scale(mode):
+    """Wide-step scales need fewer degrees to travel the same distance: a leap of four
+    degrees is a sixth in a major scale but an octave in whole tone."""
+    avg=12.0/len(MODES[mode])
+    return min(1.0,1.714/avg)
+
+def scale_step(scale,note,k):
+    """Move k scale degrees from the nearest scale member to note."""
+    if not scale:return note
+    idx=min(range(len(scale)),key=lambda i:(abs(scale[i]-note),i))
+    return scale[max(0,min(len(scale)-1,idx+k))]
+
+def guide_tones(chords,lo,hi,center,bar_reg):
+    """One structural chord tone per bar, chosen for smooth motion between chords while
+    following the register arc. This is what makes the tune follow the harmony."""
+    guides=[];prev=None
+    for b,c in enumerate(chords):
+        aim=center+bar_reg[min(b,len(bar_reg)-1)]
+        cands=[m for m in range(lo,hi+1) if m%12 in c['pcs']]
+        if not cands:cands=[max(lo,min(hi,int(aim)))]
+        if prev is None:g=nearest_allowed(aim,cands)
+        else:g=min(cands,key=lambda m:(abs(m-prev)+.7*abs(m-aim),m))
+        guides.append(g);prev=g
+    return guides
 
 MOTIFS={
  'rising_fourth':([0,3,4,2,1],[0,.75,1.5,2.25,3.0],[.55,.45,.55,.45,.85]),
@@ -299,56 +404,311 @@ def form_sections(spec):
         length=base+(1 if i<rem else 0);out.append({'name':l,'start_bar':pos,'bars':length});pos+=length
     return out
 
+def section_intensity(spec,sections):
+    """Per-bar arrangement intensity (0..1) derived from form functions and brief energy."""
+    bars=spec['bars'];n=len(sections);out=[ .8 ]*bars
+    for si,s in enumerate(sections):
+        name=str(s.get('name','')).upper();func=str(s.get('function','')).lower()
+        if si==0 or any(k in func for k in ('establish','intro','statement')):base=.58
+        elif si==n-1 or any(k in func for k in ('return','loop','climax','resolution','final')):base=1.0
+        elif 'B' in name or any(k in func for k in ('contrast','bridge','episode')):base=.72
+        else:base=.85
+        length=max(1,int(s['bars']))
+        for k in range(length):
+            b=s['start_bar']+k
+            if b>=bars:break
+            ramp=.92+.08*(k/max(1,length-1)) if length>1 else 1.0
+            out[b]=min(1.0,base*ramp)
+    energy=float(spec.get('energy',.5))
+    return [min(1.0,v*(.82+.36*energy)) for v in out]
+
+def relative_intensity(intensity):
+    """Normalize intensity to each piece's own range so every cue keeps section contrast."""
+    lo=min(intensity);hi=max(intensity)
+    if hi-lo<1e-6:return [ .5 ]*len(intensity)
+    return [(v-lo)/(hi-lo) for v in intensity]
+
+def phrase_register_offsets(count):
+    """Scale-degree register plan with a single melodic climax around 70% of the loop."""
+    if count<=1:return [0]*max(1,count)
+    peak=max(1,min(count-1,int(round(count*.7))))
+    out=[]
+    for p in range(count):
+        x=p/peak if p<=peak else (count-1-p)/max(1,count-1-peak)
+        out.append(int(round(x*6)))
+    return out
+
+def fit_range(note,lo,hi):
+    while note<lo:note+=12
+    while note>hi:note-=12
+    return max(lo,min(hi,note))
+
+def lead_pool(scale_all,lane,center=None):
+    """Singable working range for a melodic voice: about two octaves around its center,
+    clipped to the instrument. Without this the line drifts across the whole compass."""
+    llo,lhi=INSTRUMENTS[lane][3]
+    c=center if center is not None else (llo+lhi)//2
+    pool=[m for m in scale_all if max(llo,c-12)<=m<=min(lhi,c+14)]
+    return pool or [m for m in scale_all if llo<=m<=lhi] or [max(llo,min(lhi,c))]
+
+def polish_melody(notes,chords,scale,lo,hi):
+    """Apply the rules that separate a melodic line from a random walk: consonance on
+    accented notes, dissonances left by step, no two same-direction leaps in a row and
+    no third repetition of a pitch."""
+    pool_all=[m for m in scale if lo<=m<=hi]
+    if not pool_all:return notes
+    for i,n in enumerate(notes):
+        pcs=chords[min(n['bar'],len(chords)-1)]['pcs']
+        strong=n['strong'] or n['kind']=='cadence'
+        pool=[m for m in pool_all if m%12 in pcs] if strong else pool_all
+        if not pool:pool=pool_all
+        prev=notes[i-1] if i else None
+        target=n['note']
+        if prev is not None:
+            iv=n['note']-prev['note'];piv=prev.get('iv',0)
+            if abs(piv)>=7:
+                target=prev['note']-2 if piv>0 else prev['note']+2
+            elif abs(piv)>=5 and abs(iv)>=5 and (iv>0)==(piv>0):
+                target=prev['note']-1 if piv>0 else prev['note']+1
+            elif prev.get('nct') and abs(iv)>=5:
+                target=prev['note']-2 if iv<0 else prev['note']+2
+            elif iv==0 and i>=2 and notes[i-2]['note']==prev['note']:
+                target=prev['note']+2
+        note=n['note'] if (target==n['note'] and n['note'] in pool) else nearest_allowed(target,pool)
+        n['note']=note
+        n['iv']=note-prev['note'] if prev else 0
+        n['nct']=note%12 not in pcs
+    # A dissonance that is left by step reads as a passing or leaning tone; one that is
+    # left by leap just sounds like a wrong note.
+    for i in range(len(notes)-1):
+        n=notes[i];nx=notes[i+1]
+        if not n.get('nct') or abs(nx['note']-n['note'])<=2:continue
+        pcs=chords[min(nx['bar'],len(chords)-1)]['pcs']
+        strong=nx['strong'] or nx['kind']=='cadence'
+        pool=[m for m in pool_all if m%12 in pcs] if strong else pool_all
+        cands=[m for m in pool if 0<abs(m-n['note'])<=2]
+        if cands:
+            nx['note']=min(cands,key=lambda m:(abs(m-nx['note']),m))
+            nx['iv']=nx['note']-n['note'];nx['nct']=nx['note']%12 not in pcs
+    return notes
+
+def voice_led_voicing(prev,c,lane,register=4,count=3,spread=False,hi_cap=None):
+    """Move each previous voice to its nearest chord tone; fall back to a fresh stack."""
+    if not prev:return chord_voicing(c,lane,register,count,spread,hi_cap)
+    lo,_=INSTRUMENTS[lane][3];hi=capped_hi(lane,hi_cap);prev=[p for p in prev if p<=hi] or prev
+    notes=[]
+    for p in prev[:count]:
+        cands=[m for m in range(max(lo,p-7),min(hi,p+8)+1) if m%12 in c['pcs']]
+        if not cands:cands=[m for m in range(lo,hi+1) if m%12 in c['pcs']]
+        if not cands:cands=[p]
+        notes.append(min(cands,key=lambda m:(abs(m-p),m)))
+    notes=sorted(set(notes))
+    want=min(count,len(c['pcs']))
+    pool=[m for m in range(lo,hi+1) if m%12 in c['pcs'] and m not in notes]
+    while pool and len(notes)<want:
+        center=notes[len(notes)//2]
+        extra=min(pool,key=lambda m:abs(m-center))
+        pool.remove(extra);notes=sorted(set(notes+[extra]))
+    return notes[:count] if notes else chord_voicing(c,lane,register,count,spread)
+
+def cadence_chord(spec,key_pc):
+    """Strongest fully-diatonic cadence available in the current mode, or None."""
+    ints=set(MODES[spec['mode']])
+    for sym in ('V','bVII','bII','iv','v'):
+        c=parse_chord(sym,key_pc,3)
+        if {(pc-key_pc)%12 for pc in c['pcs']}<=ints:return c
+    return None
+
+def harmonic_rhythm(spec):
+    """Bars per chord. A chord change every single bar is a treadmill: slow and quiet
+    cues need the harmony to sit still long enough to be heard as a place."""
+    bpm=float(spec['bpm']);energy=float(spec.get('energy',.5))
+    seconds_per_bar=METERS[spec['meter']]*60.0/bpm
+    if seconds_per_bar>=3.2 or bpm<=76 or energy<=.3:return 2
+    return 1
+
 def chord_plan(spec):
     prog=PROGRESSIONS[spec['prog']]
     key_pc=NOTE_PC[spec['key']]
-    chords=[]
-    for b in range(spec['bars']): chords.append(parse_chord(prog[b%len(prog)],key_pc,3))
+    span=harmonic_rhythm(spec)
+    chords=[parse_chord(prog[(b//span)%len(prog)],key_pc,3) for b in range(spec['bars'])]
+    # Functional punctuation: every four-bar sentence ends on a chord that either asks
+    # (dominant) or answers (tonic), so the phrase boundaries are audible in the harmony.
+    cad=cadence_chord(spec,key_pc)
+    tonic=parse_chord(prog[0],key_pc,3)
+    sentences=phrase_starts(spec['bars'])
+    for pi,(pstart,plen) in enumerate(sentences):
+        last=pstart+plen-1
+        if last>=spec['bars'] or plen<3:continue
+        closing=pi%2==1
+        want=tonic if closing else cad
+        if want and want['root_pc']!=chords[max(0,last-1)]['root_pc']:chords[last]=want
+    # Loop seam: when the progression parks on the opening harmony, close on an active
+    # cadence so the restart resolves instead of restating the same chord twice.
+    if spec['bars']>=4 and chords[-1]['root_pc']==chords[0]['root_pc']:
+        if cad and cad['root_pc']!=chords[0]['root_pc']:chords[-1]=cad
     return chords
 
+def section_roles(sections):
+    """Classify each section: is it the contrast episode, and which pitch transform fits."""
+    contrast={};transform={}
+    for si,s in enumerate(sections):
+        func=str(s.get('function','')).lower();name=str(s.get('name','')).upper()
+        contrast[si]=0<si<len(sections)-1 and ('contrast' in func or 'bridge' in func or 'episode' in func or name.startswith('B'))
+        if si==0:transform[si]=0            # statement
+        elif contrast[si]:transform[si]=2   # inversion for the episode
+        elif si==len(sections)-1:transform[si]=4  # lifted return
+        else:transform[si]=1 if si%2 else 3       # stepwise sequence
+    return contrast,transform
+
+def phrase_starts(bars,length=4):
+    """Four-bar sentences; the final phrase absorbs any remainder."""
+    out=[];pos=0
+    while pos<bars:
+        remain=bars-pos
+        take=remain if remain<length+2 else length
+        out.append((pos,take));pos+=take
+    return out
+
 def motif_events(spec,bar_len,chords,sections):
-    ints,offs,durs=MOTIFS[spec['motif']]
-    scale=scale_midis(spec,36,96); scale_pcl=set(scale_pcs(spec))
+    degs0,ons0,cell_bars=motif_cell(spec['motif'],spec['meter'],bar_len)
+    dscale=degree_scale(spec['mode'])
+    if dscale<1.0:degs0=[int(round(x*dscale)) for x in degs0]
+    scale_all=scale_midis(spec,36,96)
     lead=spec['lead']; secondary=spec.get('secondary')
     lo,hi=INSTRUMENTS[lead][3]; center=(lo+hi)//2
-    events=[]
+    # Only hand the tune to the second voice if they inhabit comparable registers;
+    # otherwise the "contrast" is just a three-octave jump.
+    if secondary and secondary in INSTRUMENTS:
+        slo,shi=INSTRUMENTS[secondary][3]
+        if abs((slo+shi)//2-center)>12 or INSTRUMENTS[secondary][4]=='texture':secondary=None
+    grid=meter_grid(spec['meter']);strong_pos=[float(p) for p in grid['strong']];sub=meter_sub(spec['meter'])
+    pulses=[float(p) for p in grid['pulses']]
     section_map={}
     for si,s in enumerate(sections):
         for b in range(s['start_bar'],s['start_bar']+s['bars']):section_map[b]=si
-    phrase_bars=2
-    for pstart in range(0,spec['bars'],phrase_bars):
-        si=section_map.get(pstart,0); section=sections[si]
-        lane=lead if not secondary or si%3!=1 else secondary
+    contrast,transforms=section_roles(sections)
+    rel_int=relative_intensity(section_intensity(spec,sections))
+    energy=float(spec.get('energy',.5))
+    lyrical=spec['category'] in ('adventure','towns','emotion','fantasy','mystery','classical','horror')
+    legato=.94 if lyrical else .68
+    total=spec['bars']*bar_len
+    starts=phrase_starts(spec['bars'])
+    reg_plan=phrase_register_offsets(len(starts))
+    reg_peak=max(reg_plan) if reg_plan else 0
+    bar_reg=[0]*spec['bars']
+    for pi,(pstart,plen) in enumerate(starts):
+        for k in range(plen):
+            if pstart+k<spec['bars']:bar_reg[pstart+k]=reg_plan[pi]
+    guides=guide_tones(chords,lo,hi,center,bar_reg)
+    raw=[];handoff=None
+    for pi,(pstart,plen) in enumerate(starts):
+        rng=random.Random(seed_for('melody',spec['slug'],spec.get('seed',''),pi))
+        si=section_map.get(pstart,0)
+        # One clean handoff: the secondary voice owns the contrast episode only.
+        lane=secondary if secondary and contrast.get(si) else lead
         llo,lhi=INSTRUMENTS[lane][3]
-        phrase_center=max(llo+5,min(lhi-6,center + [0,2,5,-1,7][si%5]))
-        transform=si%5
-        base_scale_index=min(range(len(scale)),key=lambda i:abs(scale[i]-phrase_center))
-        phrase_span=bar_len*phrase_bars
-        for j,(iv,off,dur) in enumerate(zip(ints,offs,durs)):
-            local=off
-            if max(offs) > phrase_span-.2:
-                local=off*(phrase_span-.35)/max(offs)
-            idx=iv
-            if transform==1: idx=iv+1
-            elif transform==2: idx=-iv+3
-            elif transform==3 and j%2: idx=iv-1
-            elif transform==4: idx=iv+(1 if j>=len(ints)//2 else 0)
-            target_index=max(0,min(len(scale)-1,base_scale_index+idx))
-            target=scale[target_index]
-            beat=pstart*bar_len+local
-            bar=min(spec['bars']-1,int(beat/bar_len)); rel=beat-bar*bar_len
-            chord=chords[bar]
-            strong = abs(rel-0)<.12 or abs(rel-bar_len/2)<.12
-            allowed=[m for m in range(llo,lhi+1) if m%12 in (chord['pcs'] if strong else scale_pcl)]
-            note=nearest_allowed(target,allowed,'up' if j<len(ints)//2 else 'down')
-            accent=1.0 if j==0 else .9 if strong else .76
-            events.append(event_note(lane,note,beat,min(dur,phrase_span-local-.04),.045 if lane not in ('trumpet','brass') else .038,.15,.16,'lead',accent,vibrato=.12 if dur>.55 and lane in ('flute','ocarina','reed','violin1') else 0,phrase=si))
-        # phrase cadence / breath; a structural chord tone on final half-beat
-        endbeat=min(spec['bars']*bar_len-.25,(pstart+phrase_bars)*bar_len-.4)
-        c=chords[min(spec['bars']-1,int(endbeat/bar_len))]
-        allowed=[m for m in range(llo,lhi+1) if m%12 in c['pcs']]
-        cadence=nearest_allowed(phrase_center-2 if si%2 else phrase_center,allowed,'down')
-        events.append(event_note(lane,cadence,endbeat,.32,.044,.15,.16,'lead',1.0,phrase=si,cadence=True))
+        scale=lead_pool(scale_all,lane)
+        transform=transforms.get(si,0)
+        heat=rel_int[min(spec['bars']-1,pstart)]
+        density=max(.2,min(1,.35+.45*energy+.3*heat))
+        cad_bar=pstart+plen-1
+        b=pstart;vi=0
+        # Passing the tune to another instrument should sound like a handoff, not a jump:
+        # the new voice enters in the octave closest to where the previous one stopped.
+        prev_note=fit_range(handoff,scale[0],scale[-1]) if handoff is not None else None
+        while b<=cad_bar-1:
+            avail=max(1,min(cell_bars,cad_bar-b));span=avail*bar_len
+            if vi==0:d,o=list(degs0),list(ons0)
+            else:d,o=cell_variant(degs0,ons0,((vi-1+transform)%3)+1,span,sub,rng)
+            if transform==2:d=[-x for x in d]
+            elif transform==4:d=[x+1 for x in d]
+            keep=max(2,int(round(len(o)*density)))
+            pairs=[(off,deg) for off,deg in zip(o,d) if off<span-1e-6][:keep]
+            # Thinning must not leave a cell that just restates one pitch.
+            if len(pairs)>1 and len({deg for _,deg in pairs})==1:
+                pairs=[pairs[0],(pairs[1][0],pairs[1][1]+1)]
+            # Anchor the cell where the previous one left off, held near the register arc.
+            # Re-anchoring on each bar's guide tone would reset the line every bar.
+            c0=chords[min(spec['bars']-1,b)]
+            gtone=fit_range(guides[min(spec['bars']-1,b)],scale[0],scale[-1])
+            ctones=[m for m in scale if m%12 in c0['pcs']] or [gtone]
+            # The whole cell has to fit in the working range, otherwise the degrees above
+            # the ceiling all collapse onto the top note and the line flatlines.
+            dmin=min(deg for _,deg in pairs);dmax=max(deg for _,deg in pairs)
+            def sidx(m):return min(range(len(scale)),key=lambda i:(abs(scale[i]-m),i))
+            fits=[m for m in ctones if -dmin<=sidx(m)<=len(scale)-1-dmax]
+            ctones=fits or ctones
+            if prev_note is None:anchor=nearest_allowed(gtone,ctones)
+            else:
+                # Continue the line, but never by restating the note it just ended on.
+                near=[m for m in ctones if abs(m-gtone)<=7 and m!=prev_note] or [m for m in ctones if m!=prev_note] or ctones
+                anchor=min(near,key=lambda m:(abs(m-prev_note),abs(m-gtone),m))
+            for k,(off,deg) in enumerate(pairs):
+                beat=b*bar_len+off
+                bar=min(spec['bars']-1,int(beat/bar_len+1e-6));rel_pos=beat-bar*bar_len
+                nxt=pairs[k+1][0] if k+1<len(pairs) else span
+                strong=any(abs(rel_pos-sp)<.12 for sp in strong_pos)
+                note=scale_step(scale,anchor,deg)
+                prev_note=note
+                raw.append({'lane':lane,'note':note,'beat':beat,'bar':bar,'strong':strong,
+                            'dur':max(.16,(nxt-off)*legato),'kind':'cell','phrase':si,
+                            'accent':1.0 if k==0 and off<1e-6 else .92 if strong else .78})
+            b+=avail;vi+=1
+        # The phrase lands on the cadence bar's downbeat and holds: that hold is the breath
+        # that turns a stream of notes into a sentence.
+        cad_beat=cad_bar*bar_len
+        c=chords[min(spec['bars']-1,cad_bar)]
+        closing=pi%2==1 or pi==len(starts)-1
+        prefer=[c['root_pc']] if closing else ([pc for pc in c['pcs'] if pc!=c['root_pc']] or sorted(c['pcs']))
+        pool=[m for m in scale if m%12 in prefer] or [m for m in scale if m%12 in c['pcs']] or scale
+        aim=fit_range(guides[min(spec['bars']-1,cad_bar)],scale[0],scale[-1])
+        if prev_note is not None:
+            near=[m for m in pool if abs(m-prev_note)<=9] or pool
+            cadence=min(near,key=lambda m:(abs(m-(aim if closing else aim+2)),abs(m-prev_note),m))
+        else:
+            cadence=nearest_allowed(aim if closing else aim+2,pool,'down' if closing else 'up')
+        handoff=cadence
+        hold=bar_len*(.72 if pi<len(starts)-1 else .9)
+        raw.append({'lane':lane,'note':cadence,'beat':cad_beat,'bar':cad_bar,'strong':True,
+                    'dur':max(.4,min(hold,total-cad_beat-.05)),'kind':'cadence','phrase':si,'accent':1.0})
+        if density>.82 and len(pulses)>1 and plen>=3:
+            mid=pulses[len(pulses)//2]
+            echo=scale_step(scale,cadence,-2)
+            raw.append({'lane':lane,'note':echo,'beat':cad_beat+mid,'bar':cad_bar,'strong':False,
+                        'dur':max(.2,(bar_len-mid)*.5),'kind':'cell','phrase':si,'accent':.7})
+    raw.sort(key=lambda n:(n['beat'],n['note']))
+    # Anacrusis: a short pickup lifts each new phrase out of the previous breath.
+    picks=[]
+    for pi,(pstart,plen) in enumerate(starts):
+        if pi==0:continue
+        edge=pstart*bar_len
+        after=[n for n in raw if n['beat']>=edge-1e-6]
+        before=[n for n in raw if n['beat']<edge-1e-6]
+        if not after or not before:continue
+        first=after[0];last=max(before,key=lambda n:n['beat'])
+        if first['lane']!=last['lane']:continue
+        p=edge-sub
+        if p<=last['beat']+last['dur']-1e-6 or p<=last['beat']+1e-6:continue
+        scale=lead_pool(scale_all,first['lane'])
+        step=scale_step(scale,first['note'],-1 if first['note']>=last['note'] else 1)
+        picks.append({'lane':first['lane'],'note':step,'beat':p,'bar':max(0,pstart-1),'strong':False,
+                      'dur':sub*.85,'kind':'pickup','phrase':first['phrase'],'accent':.66})
+    raw=sorted(raw+picks,key=lambda n:(n['beat'],n['note']))
+    by_lane=defaultdict(list)
+    for n in raw:by_lane[n['lane']].append(n)
+    for lane,group in by_lane.items():
+        pool=lead_pool(scale_all,lane)
+        polish_melody(group,chords,pool,pool[0],pool[-1])
+    events=[]
+    for n in raw:
+        lane=n['lane']
+        vib=.13 if n['dur']>.55 and lane in ('flute','ocarina','reed','violin1','strings') else 0
+        accent=n['accent']
+        if bar_reg[min(n['bar'],spec['bars']-1)]==reg_peak and n['note']>=center:accent=min(1.12,accent+.1)
+        events.append(event_note(lane,n['note'],n['beat'],n['dur'],
+                                 .045 if lane not in ('trumpet','brass') else .038,.15,.16,'lead',accent,
+                                 vibrato=vib,phrase=n['phrase'],**({'cadence':True} if n['kind']=='cadence' else {})))
     return events
 
 def add_bass(events,spec,bar_len,chords):
@@ -359,118 +719,180 @@ def add_bass(events,spec,bar_len,chords):
         t=b*bar_len; root=nearest_allowed(c['root']-12,[m for m in range(lo,hi+1) if m%12==c['root_pc']],'down')
         fifth_pc=(c['root_pc']+7)%12; fifth=nearest_allowed(root+7,[m for m in range(lo,hi+1) if m%12==fifth_pc])
         nextc=chords[(b+1)%len(chords)]; nextroot=nearest_allowed(nextc['root']-12,[m for m in range(lo,hi+1) if m%12==nextc['root_pc']])
+        # When the harmony is held across two bars the bass has to supply the motion,
+        # otherwise the second bar is a literal repeat of the first.
+        sustained=b>0 and chords[b-1]['symbol']==c['symbol']
         if style in ('pedal','chromatic_pedal'):
-            events.append(event_note(lane,root,t,bar_len*.88,.045,-.08,.03,'bass',1))
+            events.append(event_note(lane,root,t,bar_len*(.55 if sustained else .88),.045,-.08,.03,'bass',1))
+            if sustained:events.append(event_note(lane,fifth,t+bar_len*.6,bar_len*.32,.034,-.08,.03,'bass',.7))
             if style=='chromatic_pedal' and b%2: events.append(event_note(lane,root+1,t+bar_len*.65,bar_len*.18,.026,-.08,.03,'bass',.55))
         elif style in ('root_fifth','pedal_walk'):
-            events.append(event_note(lane,root,t,bar_len*.43,.044,-.08,.025,'bass',1));events.append(event_note(lane,fifth,t+bar_len*.5,bar_len*.38,.038,-.08,.025,'bass',.78))
+            second=nearest_allowed(root+12,[m for m in range(lo,hi+1) if m%12==c['root_pc']]) if sustained else fifth
+            events.append(event_note(lane,root,t,bar_len*.43,.044,-.08,.025,'bass',1));events.append(event_note(lane,second,t+bar_len*.5,bar_len*.38,.038,-.08,.025,'bass',.78))
         elif style in ('walking','melodic','descending'):
-            steps=4 if bar_len>=4 else 3
+            # Walk on the meter's felt pulses: chord tones anchor the strong ones,
+            # scale tones connect them toward the next root.
+            grid=meter_grid(spec['meter']);pulses=[float(p) for p in grid['pulses']]
+            strong_set=[float(p) for p in grid['strong']]
             candidates=scale_midis(spec,lo,hi)
-            for i in range(steps):
-                frac=i/steps; target=root+(nextroot-root)*frac
+            chord_candidates=[m for m in range(lo,hi+1) if m%12 in c['pcs']]
+            for i,pos in enumerate(pulses):
+                frac=pos/bar_len; target=root+(nextroot-root)*frac
                 if style=='descending':target=root-i*2
-                n=nearest_allowed(target,candidates,'down' if style=='descending' else None)
-                events.append(event_note(lane,n,t+i*bar_len/steps,bar_len/steps*.78,.036,-.08,.025,'bass',1 if i==0 else .72))
+                strong=any(abs(pos-sp)<.1 for sp in strong_set)
+                pool=chord_candidates if strong and chord_candidates else candidates
+                n=nearest_allowed(target,pool,'down' if style=='descending' else None)
+                gap=(pulses[i+1]-pos) if i+1<len(pulses) else (bar_len-pos)
+                events.append(event_note(lane,n,t+pos,max(.2,gap*.78),.036,-.08,.025,'bass',1 if i==0 else .72))
         elif style in ('syncopated','slap'):
             pattern=[(0,.34,1),(.75,.2,.72),(1.5,.3,.82),(2.5,.23,.68),(3.25,.38,.9)]
             for i,(off,dur,acc) in enumerate(pattern):
-                if off>=bar_len:continue
+                pos=bar_grid(off,bar_len,spec['meter'])
+                if pos is None:continue
                 n=root if i%3!=1 else fifth
-                events.append(event_note(lane,n,t+off,min(dur,bar_len-off-.02),.039 if style!='slap' else .043,-.06,.02,'bass',acc))
+                events.append(event_note(lane,n,t+pos,min(dur,bar_len-pos-.02),.039 if style!='slap' else .043,-.06,.02,'bass',acc))
         elif style in ('ostinato','synth_ostinato'):
+            seen=set()
             for i,off in enumerate([0,.5,1.25,2,2.75,3.5]):
-                if off>=bar_len:continue
+                pos=bar_grid(off,bar_len,spec['meter'])
+                if pos is None or pos in seen:continue
+                seen.add(pos)
                 n=[root,root,fifth,root,root+12,fifth][i]
-                events.append(event_note(lane,n,t+off,min(.32,bar_len-off-.02),.037,-.06,.02,'bass',1 if off==0 else .7))
+                events.append(event_note(lane,n,t+pos,min(.32,bar_len-pos-.02),.037,-.06,.02,'bass',1 if pos==0 else .7))
         else:
             events.append(event_note(lane,root,t,bar_len*.8,.042,-.08,.025,'bass',1))
+        # Stepwise approach into the next bar's root so harmonic motion is prepared
+        # instead of restated. Chord-tone approaches are preferred; plain scale steps
+        # only appear once per four bars.
+        if spec.get('energy',.5)>=.4 and b%2==1 and bar_len>=3 and nextroot!=root and style in ('pedal','pedal_walk','root_fifth'):
+            span=[m for m in scale_midis(spec,lo,hi) if nextroot-3<=m<nextroot] if nextroot>root else [m for m in scale_midis(spec,lo,hi) if nextroot<m<=nextroot+3]
+            harmonic=[m for m in span if m%12 in c['pcs'] or m%12 in nextc['pcs']]
+            pool=harmonic or (span if b%4==3 else [])
+            if pool:
+                appr=max(pool) if nextroot>root else min(pool)
+                events.append(event_note(lane,appr,t+bar_len-.5,.4,.032,-.08,.02,'bass',.62))
 
-def chord_voicing(c,lane,register=4,count=3,spread=False):
-    lo,hi=INSTRUMENTS[lane][3]; base=12*(register+1)+c['root_pc']; pcs=list(c['pcs']); notes=[]
+def chord_voicing(c,lane,register=4,count=3,spread=False,hi_cap=None):
+    lo,_=INSTRUMENTS[lane][3]; hi=capped_hi(lane,hi_cap)
+    base=12*(register+1)+c['root_pc']; pcs=list(c['pcs']); notes=[]
     for pc in sorted(pcs,key=lambda p:(p-c['root_pc'])%12):
         n=base+((pc-c['root_pc'])%12)
         while n<lo:n+=12
         while n>hi:n-=12
         notes.append(n)
     notes=sorted(set(notes))
-    if spread and len(notes)>=3:notes[-1]+=12
+    if spread and len(notes)>=3 and notes[-1]+12<=hi:notes[-1]+=12
     return [max(lo,min(hi,n)) for n in notes[:count]]
 
 def add_chord(events,lane,notes,beat,dur,gain=.015,pan=.0,send=.12,role='support',strum=0):
     center=(len(notes)-1)/2
     for i,n in enumerate(notes):events.append(event_note(lane,n,beat+i*strum,dur,gain,pan+(i-center)*.08,send,role,1 if i==0 else .82))
 
-def add_accompaniment(events,spec,bar_len,chords):
+def add_accompaniment(events,spec,bar_len,chords,intensity=None,floor=None):
     comp=spec['comp']; budget=spec['budget']
+    intensity=intensity or [ .85 ]*len(chords)
+    rel_int=relative_intensity(intensity)
+    voicings={};ceiling=[None]
+    def led(lane,c,reg,count,spread=False):
+        notes=voice_led_voicing(voicings.get(lane),c,lane,reg,count,spread,ceiling[0])
+        voicings[lane]=notes
+        return notes
     for b,c in enumerate(chords):
-        t=b*bar_len
+        t=b*bar_len;heat=rel_int[min(b,len(rel_int)-1)]
+        # Inner voices stay under the tune so the melody is never masked.
+        ceiling[0]=(floor[b]-2) if floor and floor[b] else None
+        # In the quietest section the texture itself thins to a single sustained chord.
+        # Contrast has to be structural; riding the faders is not an arrangement.
+        if heat<.18 and b%2==0:
+            lane={'chorale':'choir_t','processional':'choir_t'}.get(comp)
+            lane=lane or ('piano' if comp in ('sparse_chords','memory_arpeggio','broken_memory','floating_chords','impressionist','damaged_waltz','jazz_shells','soul_chords') else 'strings')
+            add_chord(events,lane,led(lane,c,3,3),t,bar_len*(1.8 if b+1<len(chords) else .9),.009,0,.2,'support',strum=.02)
+            continue
+        # Re-anchor voicings at each 4-bar group so voice leading stays smooth without
+        # letting the registers drift together over the whole loop.
+        if b%4==0:voicings.clear()
         if comp in ('harp_broken','orchestral_broken','harp_wave','celestial_arps','dream_arps'):
-            lane='harp'; notes=chord_voicing(c,lane,4,4,True); pattern=[0,1,2,1,3,2]
+            lane='harp'; notes=led(lane,c,4,4,True); pattern=[0,1,2,1,3,2]
             steps=6 if bar_len>=3 else 4
+            seen=set()
             for i in range(steps):
-                off=i*bar_len/steps; idx=pattern[(i+b)%len(pattern)]%len(notes)
-                if comp=='harp_sparse' and i%2:continue
+                off=snap_pos(i*bar_len/steps,bar_len,spec['meter']); idx=pattern[(i+b)%len(pattern)]%len(notes)
+                if off is None or off in seen:continue
+                seen.add(off)
+                if heat<.34 and i%2:continue
                 events.append(event_note(lane,notes[idx],t+off,bar_len/steps*.5,.018,-.14+.28*(i%2),.17,'arp',1 if i==0 else .64))
         elif comp in ('pizz_ostinato','counter_ostinato','ritual_ostinato','pattern_shifts'):
-            lane='pizz';notes=chord_voicing(c,lane,3,3); offs=[0,.75,1.5,2.25,3.0,3.75]
-            rot=b%3
+            lane='pizz';notes=led(lane,c,3,3); offs=[0,.75,1.5,2.25,3.0,3.75]
+            rot=b%3;seen=set()
             for i,off in enumerate(offs):
-                if off>=bar_len:continue
+                off=bar_grid(off,bar_len,spec['meter'])
+                if off is None or off in seen:continue
+                seen.add(off)
+                if heat<.34 and i%2:continue
                 idx=(i+rot)%len(notes);events.append(event_note(lane,notes[idx],t+off,min(.24,bar_len-off-.02),.022,.18 if i%2 else -.18,.09,'ostinato',1 if off==0 else .68))
         elif comp in ('guitar_pattern','guitar_strum','bossa_comp','reggae_skank','ska_skank','tango_comp'):
-            lane='guitar';notes=chord_voicing(c,lane,3,4)
+            lane='guitar';notes=led(lane,c,3,4)
             if comp=='bossa_comp': offs=[.5,1.5,2.25,3.25];durs=[.28,.45,.28,.42]
             elif comp in ('reggae_skank','ska_skank'): offs=[.5,1.5,2.5,3.5];durs=[.18]*4
             elif comp=='tango_comp':offs=[0,1.5,2.0,3.25];durs=[.28,.25,.35,.3]
             else:offs=[0,1.5,2.5,3.25];durs=[.35,.25,.3,.3]
+            seen=set()
             for j,off in enumerate(offs):
-                if off>=bar_len:continue
+                off=bar_grid(off,bar_len,spec['meter'])
+                if off is None or off in seen:continue
+                seen.add(off)
+                if heat<.25 and j==len(offs)-1:continue
                 add_chord(events,lane,notes,t+off,min(durs[j],bar_len-off-.02),.011,.0,.08,'comp',strum=.012*(-1 if (b+j)%2 else 1))
         elif comp in ('jazz_shells','swing_comp','bebop_comp','soul_chords','electro_noir'):
-            lane='piano' if comp not in ('electro_noir',) else 'vibes';notes=chord_voicing(c,lane,4,4,True)
-            offs=[0,2.5] if bar_len>=4 else [0,bar_len*.55]
-            if comp in ('swing_comp','bebop_comp'):offs=[.67,2.0,3.33]
+            lane='piano' if comp not in ('electro_noir',) else 'vibes';notes=led(lane,c,4,4,True)
+            if comp in ('swing_comp','bebop_comp'):offs=[bar_grid(o,bar_len,spec['meter']) for o in (.67,2.0,3.33)]
+            elif bar_len>=4:offs=[bar_grid(o,bar_len,spec['meter']) for o in (0,2.5)]
+            else:offs=[0,snap_pos(bar_len*.55,bar_len,spec['meter'])]
             for j,off in enumerate(offs):
-                if off>=bar_len:continue
+                if off is None:continue
                 add_chord(events,lane,notes[-3:],t+off,min(.5,bar_len-off-.03),.012,.08,.12,'comp',strum=.008)
         elif comp in ('orchestral_tremolo','strings_motor','orchestral_swell','dark_orchestra','full_orchestra','neoclassical_motor','orchestral_march','orchestral_waltz'):
             # Core string choir with dynamic activation according to voice budget.
             lanes=['cello','viola','violin2','violin1']; regs=[2,3,4,5]
             for lane,reg in zip(lanes,regs):
-                notes=chord_voicing(c,lane,reg,1); n=notes[0]
+                notes=led(lane,c,reg,1); n=notes[0]
                 if comp in ('orchestral_tremolo','strings_motor','neoclassical_motor'):
                     for off in [0,.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5]:
                         if off>=bar_len:continue
+                        if heat<.4 and off%1:continue
                         events.append(event_note(lane,n,t+off,min(.35,bar_len-off-.02),.012,-.25+.16*lanes.index(lane),.09,'motor',1 if off==0 else .64))
                 else:
                     events.append(event_note(lane,n,t,bar_len*.92,.013,-.28+.18*lanes.index(lane),.14,'support',1,attack=.08,release=.3))
             if budget>=24 and comp in ('full_orchestra','dark_orchestra','orchestral_swell'):
-                hornnotes=chord_voicing(c,'horn',3,2);add_chord(events,'horn',hornnotes,t,bar_len*.82,.011,.05,.12,'support')
+                hornnotes=led('horn',c,3,2);add_chord(events,'horn',hornnotes,t,bar_len*.82,.011,.05,.12,'support')
         elif comp in ('chorale','processional','prophecy_fields','cluster_fields','reveal_clusters','ritual_drones','low_fields','space_fields'):
             lanes=['choir_b','choir_t','choir_a','choir_s'] if spec['budget']>=24 else ['choir_t','choir_a']
             for i,lane in enumerate(lanes):
-                notes=chord_voicing(c,lane,2+i,1);events.append(event_note(lane,notes[0],t,bar_len*.93,.009,-.24+i*.16,.26,'pad',1,attack=.18,release=.6))
+                notes=led(lane,c,2+i,1);events.append(event_note(lane,notes[0],t,bar_len*.93,.009,-.24+i*.16,.26,'pad',1,attack=.18,release=.6))
             if comp in ('cluster_fields','reveal_clusters') and b%2:events.append(event_note('drone',c['root']+1,t+bar_len*.25,bar_len*.55,.008,.1,.3,'texture',.55,attack=.2,release=.7))
         elif comp in ('minimal_phase','minimal_pulse','techno_stabs','electro_stabs','synth_arp','breakbeat_pulse','panic_ostinato','fracture_patterns','signal_pulses','meltdown_layers'):
-            lane='pulse25' if comp not in ('techno_stabs','electro_stabs') else 'clav';notes=chord_voicing(c,lane,3,4)
+            lane='pulse25' if comp not in ('techno_stabs','electro_stabs') else 'clav';notes=led(lane,c,3,4)
             patterns={
              'minimal_phase':[0,.75,1.5,2.25,3.25,4.0], 'minimal_pulse':[0,1.25,2.5,3.25], 'techno_stabs':[.5,1.5,2.5,3.5],
              'electro_stabs':[0,.75,2,2.75], 'synth_arp':[0,.5,1,1.5,2,2.5,3,3.5], 'breakbeat_pulse':[0,.75,1.75,2.5,3.25],
              'panic_ostinato':[0,.375,.75,1.125,1.5,1.875,2.25], 'fracture_patterns':[0,.5,1.25,2,2.5,3.25],
              'signal_pulses':[0,1.5,2.25,3.75], 'meltdown_layers':[0,.5,1,1.75,2.25,3,3.5]
             }
+            seen=set()
             for i,off in enumerate(patterns.get(comp,[0,1,2,3])):
-                if off>=bar_len:continue
+                off=bar_grid(off,bar_len,spec['meter'])
+                if off is None or off in seen:continue
+                seen.add(off)
+                if heat<.34 and i%2:continue
                 events.append(event_note(lane,notes[(i+b)%len(notes)],t+off,min(.22,bar_len-off-.02),.017,-.18+.36*(i%2),.08,'pulse',1 if i==0 else .65))
         elif comp in ('two_voice_counterpoint','four_voice_fugue','string_quartet'):
             # Dedicated counterpoint is added separately after melody; here only bass/cadential support.
             pass
         elif comp in ('sparse_chords','memory_arpeggio','broken_memory','floating_chords','impressionist','damaged_waltz'):
-            lane='piano';notes=chord_voicing(c,lane,3,4,True)
-            if comp in ('memory_arpeggio','broken_memory'):offs=[0,1,2.5,3.25]
+            lane='piano';notes=led(lane,c,3,4,True)
+            if comp in ('memory_arpeggio','broken_memory'):offs=[o for o in (bar_grid(x,bar_len,spec['meter']) for x in (0,1,2.5,3.25)) if o is not None]
             elif comp=='damaged_waltz':offs=[0,1,2] if b%2==0 else [0,2]
-            else:offs=[0,bar_len*.6]
+            else:offs=[0,snap_pos(bar_len*.6,bar_len,spec['meter']) or bar_len*.6]
             for j,off in enumerate(offs):
                 if off>=bar_len:continue
                 if comp in ('sparse_chords','floating_chords','impressionist'):
@@ -478,32 +900,103 @@ def add_accompaniment(events,spec,bar_len,chords):
                 else:
                     events.append(event_note(lane,notes[(j+b)%len(notes)],t+off,min(.45,bar_len-off-.02),.019,.0,.16,'arp',1 if j==0 else .68))
         elif comp in ('funk_comp','mechanical_comp'):
-            lane='clav';notes=chord_voicing(c,lane,3,3);offs=[0,.75,1.5,2.25,3.0,3.5]
-            for j,off in enumerate(offs):
-                if off>=bar_len:continue
+            lane='clav';notes=led(lane,c,3,3)
+            offs=[o for o in (bar_grid(x,bar_len,spec['meter']) for x in (0,.75,1.5,2.25,3.0,3.5)) if o is not None]
+            for j,off in enumerate(dict.fromkeys(offs)):
+                if heat<.3 and off%1:continue
                 add_chord(events,lane,notes,t+off,min(.18,bar_len-off-.02),.009,.08,.04,'comp',strum=.003)
         elif comp in ('industrial_riff','guitar_riff'):
-            lane='dist_guitar_l';notes=chord_voicing(c,lane,2,3);offs=[0,.5,1.25,2,2.75,3.25]
+            lane='dist_guitar_l';notes=chord_voicing(c,lane,2,3)
+            offs=list(dict.fromkeys(o for o in (bar_grid(x,bar_len,spec['meter']) for x in (0,.5,1.25,2,2.75,3.25)) if o is not None))
             for j,off in enumerate(offs):
-                if off>=bar_len:continue
                 n=notes[j%len(notes)];events.append(event_note(lane,n,t+off,min(.3,bar_len-off-.02),.029,-.22,.035,'riff',1 if off==0 else .72))
             if spec['budget']>=20:
                 for j,off in enumerate(offs):
-                    if off>=bar_len:continue
                     events.append(event_note('dist_guitar_r',notes[j%len(notes)]+(12 if j%3==2 else 0),t+off+.012,min(.3,bar_len-off-.02),.021,.22,.035,'riff',.68,tuning_cents=4))
         else:
-            lane='strings';notes=chord_voicing(c,lane,3,3);add_chord(events,lane,notes,t,bar_len*.9,.011,0,.14,'support')
+            lane='strings';notes=led(lane,c,3,3);add_chord(events,lane,notes,t,bar_len*.9,.011,0,.14,'support')
+
+def melody_floor(melody,spec,bar_len):
+    """Lowest melodic pitch sounding in each bar, used to keep inner voices out of the way."""
+    floor=[None]*spec['bars']
+    for e in melody:
+        if e['kind']!='note':continue
+        b=min(spec['bars']-1,int(e['beat']/bar_len+1e-6))
+        floor[b]=e['midi'] if floor[b] is None else min(floor[b],e['midi'])
+    last=None
+    for b in range(spec['bars']):
+        if floor[b] is None:floor[b]=last
+        else:last=floor[b]
+    return floor
+
+def capped_hi(lane,ceiling):
+    """Top of the usable range for an inner voice: under the melody, but never squeezed
+    into less than an octave, which would just pile every part into the same band."""
+    lo,hi=INSTRUMENTS[lane][3]
+    if ceiling is None:return hi
+    return max(min(hi,int(ceiling)),lo+12)
+
+COUNTERPOINT_COMPS={'two_voice_counterpoint','four_voice_fugue','string_quartet'}
+
+def add_countermelody(events,spec,bar_len,chords,melody,sections,intensity):
+    """Answer the tune where it stops to breathe. Call and response is what makes an
+    arrangement sound written instead of merely layered. Pieces that already run strict
+    counterpoint are left alone."""
+    if spec['budget']<14 or spec['comp'] in COUNTERPOINT_COMPS:return
+    mel=sorted([e for e in melody if e['kind']=='note'],key=lambda e:e['beat'])
+    if len(mel)<4:return
+    used={e['inst'] for e in mel}
+    prefs=[spec.get('secondary'),'horn','viola','clarinet','muted_brass','vibes','cello','pizz','harp','guitar']
+    lane=next((c for c in prefs if c and c in INSTRUMENTS and c not in used and c not in DRUMS),None)
+    if not lane:return
+    scale_all=scale_midis(spec,36,96);pool=lead_pool(scale_all,lane)
+    if not pool:return
+    rel=relative_intensity(intensity)
+    grid=meter_grid(spec['meter']);pulses=[float(p) for p in grid['pulses']];sub=meter_sub(spec['meter'])
+    contrast,_=section_roles(sections)
+    contrast_bars=set()
+    for si,s in enumerate(sections):
+        if contrast.get(si):contrast_bars.update(range(s['start_bar'],s['start_bar']+s['bars']))
+    first_phrase=phrase_starts(spec['bars'])[0][1]
+    prev=None
+    for e in mel:
+        if not e.get('cadence'):continue
+        bar=min(spec['bars']-1,int(e['beat']/bar_len+1e-6))
+        # The opening statement is left unaccompanied by design.
+        if bar<first_phrase:continue
+        if rel[bar]<.3 and bar not in contrast_bars:continue
+        bar_t=bar*bar_len;c=chords[bar]
+        slots=[bar_t+p for p in pulses if p>=bar_len*.4 and p<bar_len-sub*.5][:2]
+        if not slots:continue
+        ceiling=e['midi']-3
+        for j,pos in enumerate(slots):
+            allowed=[m for m in pool if m%12 in c['pcs'] and m<=ceiling] or [m for m in pool if m<=ceiling] or pool
+            want=nearest_allowed(ceiling-2,allowed) if prev is None or j==0 else scale_step(pool,prev,1)
+            n=nearest_allowed(want,allowed)
+            end=slots[j+1] if j+1<len(slots) else bar_t+bar_len-sub*.6
+            dur=max(.22,(end-pos)*.85)
+            events.append(event_note(lane,n,pos,dur,.026,-.2,.14,'counter',.72 if j==0 else .6,phrase=-1))
+            prev=n
 
 def add_counterpoint(events,spec,bar_len,chords,melody):
     comp=spec['comp']
     if comp not in ('two_voice_counterpoint','four_voice_fugue','string_quartet'):return
     source=[e for e in melody if e['kind']=='note']
     if not source:return
+    scale_pcl=set(scale_pcs(spec))
+    def snap(midi,beat,lane):
+        # Keep transposed answers diatonic; anchor strong beats to the active harmony.
+        llo,lhi=INSTRUMENTS[lane][3]
+        bar=min(spec['bars']-1,int((beat%(spec['bars']*bar_len))/bar_len));rel=(beat%(spec['bars']*bar_len))-bar*bar_len
+        strong=rel<.1 or abs(rel-bar_len/2)<.1
+        pcs=chords[bar]['pcs'] if strong else scale_pcl
+        allowed=[m for m in range(llo,lhi+1) if m%12 in pcs]
+        return nearest_allowed(midi,allowed) if allowed else midi
     if comp=='two_voice_counterpoint':
         for i,e in enumerate(source):
             if i%2:continue
             beat=(e['beat']+bar_len*2)%(spec['bars']*bar_len); interval=-7 if i%4 else -5
-            events.append(event_note('harpsichord',e['midi']+interval,beat,e['duration']*.9,.022,-.18,.08,'counter',.8))
+            events.append(event_note('harpsichord',snap(e['midi']+interval,beat,'harpsichord'),beat,e['duration']*.9,.022,-.18,.08,'counter',.8))
     elif comp=='four_voice_fugue':
         entries=[('violin1',0,0),('violin2',bar_len*2,-7),('viola',bar_len*4,-12),('cello',bar_len*6,-19)]
         base=source[:min(16,len(source))]
@@ -511,32 +1004,43 @@ def add_counterpoint(events,spec,bar_len,chords,melody):
             for e in base:
                 beat=e['beat']+delay
                 if beat>=spec['bars']*bar_len:continue
-                events.append(event_note(lane,e['midi']+trans,beat,e['duration']*.9,.018,[-.26,-.08,.09,.25][entries.index((lane,delay,trans))],.12,'counter',.78))
+                events.append(event_note(lane,snap(e['midi']+trans,beat,lane),beat,e['duration']*.9,.018,[-.26,-.08,.09,.25][entries.index((lane,delay,trans))],.12,'counter',.78))
     else: # string quartet
         # Use melody as violin I; add slower contrary-motion parts derived from chord tones.
+        voicings={}
         for b,c in enumerate(chords):
             t=b*bar_len
+            if b%4==0:voicings.clear()
             for lane,reg,idx,pan in [('violin2',4,1,-.08),('viola',3,1,.08),('cello',2,0,.22)]:
-                notes=chord_voicing(c,lane,reg,3);n=notes[min(idx,len(notes)-1)]
+                notes=voice_led_voicing(voicings.get(lane),c,lane,reg,3);voicings[lane]=notes
+                n=notes[min(idx,len(notes)-1)]
                 events.append(event_note(lane,n,t,bar_len*.88,.014,pan,.12,'counter',.82,attack=.06,release=.28))
 
-def add_pad_layers(events,spec,bar_len,chords):
+def add_pad_layers(events,spec,bar_len,chords,floor=None):
     budget=spec['budget'];
     if budget<12:return
-    # Do not fill every track. Extra voices enter in later half and only for selected categories.
-    category=spec['category']; start_bar=spec['bars']//2
+    # Extra voices enter at a section boundary (the contrast episode if there is one)
+    # so their arrival reads as an arrangement event, not an accident.
+    category=spec['category']
+    sections=form_sections(spec)
+    contrast,_=section_roles(sections)
+    start_bar=next((sections[si]['start_bar'] for si in sorted(contrast) if contrast[si]),spec['bars']//2)
+    voicings={};ceiling=[None]
+    def led(lane,c,reg):
+        notes=voice_led_voicing(voicings.get(lane),c,lane,reg,1,False,ceiling[0]);voicings[lane]=notes
+        return notes[0]
     if category in ('action','fantasy','classical','emotion','adventure'):
         lanes=['viola','violin2'] if budget<20 else ['cello','viola','violin2','violin1']
         for b in range(start_bar,spec['bars']):
-            c=chords[b];t=b*bar_len
+            c=chords[b];t=b*bar_len;ceiling[0]=(floor[b]-2) if floor and floor[b] else None
             for i,lane in enumerate(lanes):
-                notes=chord_voicing(c,lane,2+i,1);events.append(event_note(lane,notes[0],t,bar_len*.9,.0075,-.25+i*(.5/max(1,len(lanes)-1)),.16,'pad',.7,attack=.11,release=.4))
+                events.append(event_note(lane,led(lane,c,2+i),t,bar_len*.9,.0075,-.25+i*(.5/max(1,len(lanes)-1)),.16,'pad',.7,attack=.11,release=.4))
     if budget>=24 and category in ('fantasy','classical','action'):
         choir=['choir_b','choir_t','choir_a','choir_s']
         for b in range(int(spec['bars']*.7),spec['bars']):
-            c=chords[b];t=b*bar_len
+            c=chords[b];t=b*bar_len;ceiling[0]=(floor[b]-2) if floor and floor[b] else None
             for i,lane in enumerate(choir):
-                n=chord_voicing(c,lane,2+i,1)[0];events.append(event_note(lane,n,t,bar_len*.88,.0055,-.3+i*.2,.24,'ensemble',.62,attack=.2,release=.6))
+                events.append(event_note(lane,led(lane,c,2+i),t,bar_len*.88,.0055,-.3+i*.2,.24,'ensemble',.62,attack=.2,release=.6))
 
 def add_expanded_ensemble(events,spec,bar_len,chords):
     budget=spec['budget']
@@ -566,70 +1070,122 @@ def add_expanded_ensemble(events,spec,bar_len,chords):
                 notes=chord_voicing(c,lane,5,3,True)
                 for n in notes[-2:]:events.append(event_note(lane,n,t+bar_len*.25,bar_len*.55,.0048,pan,.22,'ensemble',.55,attack=.16,release=.55,tuning_cents=(-4 if pan<0 else 4)))
 
-def add_drums(events,spec,bar_len):
+FILL_HEAVY={'rock','boss','industrial','air_combat','siege','martial_dark','space_battle','orchestral','dnb','panic','techno','synthwave','electro_battle','electronic_light','meltdown','ska','funk'}
+FILL_BRUSH={'brush_jazz','tight_jazz','slow_groove','swing','bebop','bossa'}
+FILL_SOFT={'folk_light','sea','water','air','orchestral_light','fairy','market','festival','carnival','bazaar','tavern','martial_light','duel','march','city_march','procession'}
+FILL_TOM={'tribal','frame','ritual','ritual_light','cave','elemental','mechanism'}
+
+def add_drum_fill(events,t,bar_len,flavor,heat,meter='4/4'):
+    def put(inst,off,g,pan,send,acc):
+        pos=snap_pos(off,bar_len,meter)
+        if pos is not None:events.append(event_drum(inst,t+pos,g,pan,send,acc))
+    if flavor=='tom':
+        offs=(bar_len-.75,bar_len-.5,bar_len-.25) if heat>=.75 else (bar_len-.5,bar_len-.25)
+        for k,off in enumerate(offs):
+            put('tom',off,.024+.007*k,-.12+.12*k,.03,.68+.14*k)
+    elif flavor=='snare':
+        offs=(bar_len-1,bar_len-.5,bar_len-.25) if heat>=.75 else (bar_len-.5,bar_len-.25)
+        for k,off in enumerate(offs):
+            put('snare',off,.018+.008*k,.06,.03,.5+.16*k)
+    elif flavor=='brush':
+        put('brush',bar_len-.66,.016,-.1,.05,.6);put('ride',bar_len-.33,.012,.16,.05,.5)
+    elif flavor=='soft':
+        put('shaker',bar_len-.5,.013,.2,.04,.5);put('tom',bar_len-.25,.022,.08,.04,.6)
+
+def add_drums(events,spec,bar_len,sections=None,intensity=None):
     d=spec['drums']
+    if d in ('none',):return
+    sections=sections or form_sections(spec)
+    intensity=intensity or section_intensity(spec,sections)
+    rel_int=relative_intensity(intensity)
+    section_last={s['start_bar']+s['bars']-1 for s in sections}
     for b in range(spec['bars']):
-        t=b*bar_len
-        def hit(inst,off,g=.035,pan=0,acc=1):
-            if off<bar_len:events.append(event_drum(inst,t+off,g,pan,.035,acc))
-        if d in ('none',):continue
+        t=b*bar_len;heat=rel_int[min(b,len(rel_int)-1)]
+        rng=random.Random(seed_for('drums',spec['slug'],spec.get('seed',''),b))
+        # Two-bar breathing: the answering bar of each pair is not an exact repeat.
+        answer_bar=b%2==1
+        def hit(inst,off,g=.035,pan=0,acc=1,lvl=0):
+            # lvl 0 = backbone, 1 = groove color, 2 = decoration; quiet sections shed layers.
+            if lvl==1 and heat<.2:return
+            if lvl==2 and heat<.45:return
+            # Drop one decoration on answering bars so the pattern breathes in pairs.
+            if lvl==2 and answer_bar and heat<.8 and inst in ('hat','shaker','ride'):return
+            off=snap_pos(off,bar_len,spec['meter'])
+            if off is not None:events.append(event_drum(inst,t+off,g,pan,.035,acc*(1.06 if not answer_bar and off==0 else 1)))
         if d in ('folk_light','sea','water','air','orchestral_light','fairy'):
-            hit('wood',0,.026,-.15,1);hit('shaker',bar_len*.5,.014,.24,.55)
-            if b%4==3:hit('tom',bar_len-.35,.03,.15,.8)
+            hit('wood',0,.026,-.15,1);hit('shaker',bar_len*.5,.014,.24,.55,1)
+            if heat>=.72 and b%2:hit('shaker',bar_len*.75,.011,.24,.42,2)
         elif d in ('martial_light','duel','march','city_march','procession'):
-            hit('snare',0,.03,-.05,.8);hit('snare',bar_len*.5,.035,.08,1);hit('tom',bar_len-.4,.028,.15,.65)
+            hit('snare',0,.03,-.05,.8);hit('snare',bar_len*.5,.035,.08,1);hit('tom',bar_len-.4,.028,.15,.65,1)
+            if heat>=.72:hit('snare',bar_len*.5+.25,.02,.08,.5,2)
         elif d in ('rock','boss','industrial','air_combat','siege','martial_dark','space_battle','orchestral'):
             for off in [0,bar_len*.5]:hit('kick',off,.048,0,1)
+            if heat>=.8 and b%2:hit('kick',bar_len*.5+.75,.036,0,.7,2)
             hit('snare',bar_len*.25,.041,.06,.88);hit('snare',bar_len*.75,.045,.06,1)
-            for i in range(max(2,int(bar_len*2))):hit('hat',i*.5,.011,.2,.42 if i%2 else .58)
+            for i in range(max(2,int(bar_len*2))):hit('hat',i*.5,.011,.2,.42 if i%2 else .58,2 if i%2 else 1)
             if b%4==3:hit('impact',bar_len-.25,.045,0,.9)
         elif d in ('dnb','panic'):
             for off in [0,1.5,2.75]:hit('kick',off,.046,0,1)
             for off in [1,3]:hit('snare',off,.043,.06,1)
-            for i in range(int(bar_len*4)):hit('hat',i*.25,.009,.22,.34 if i%2 else .48)
+            if heat>=.8:hit('snare',3.75,.02,.06,.5,2)
+            for i in range(int(bar_len*4)):hit('hat',i*.25,.009,.22,.34 if i%2 else .48,2 if i%2 else 1)
         elif d in ('tribal','frame','ritual','ritual_light','cave','elemental','mechanism'):
-            hit('tom',0,.038,-.18,1);hit('tom',bar_len*.4,.03,.18,.72);hit('wood',bar_len*.7,.022,.1,.58)
+            hit('tom',0,.038,-.18,1);hit('tom',bar_len*.4,.03,.18,.72,1);hit('wood',bar_len*.7,.022,.1,.58,1)
+            if heat>=.75 and b%2:hit('tom',bar_len*.85,.026,-.08,.6,2)
         elif d in ('stalking','body_horror','cosmic','glitch_sparse'):
             if b%2==0:hit('impact',0,.026,-.08,.7)
             if b%3==1:hit('wood',bar_len*.72,.018,.22,.45)
         elif d in ('toy','brush_waltz','waltz'):
-            hit('brush',0,.014,-.1,.55);hit('rim',bar_len/3,.018,.12,.65);hit('rim',2*bar_len/3,.017,.12,.58)
+            hit('brush',0,.014,-.1,.55);hit('rim',bar_len/3,.018,.12,.65);hit('rim',2*bar_len/3,.017,.12,.58,1)
         elif d in ('market','festival','carnival','bazaar','tavern'):
-            hit('wood',0,.025,-.12,1);hit('shaker',bar_len*.33,.014,.22,.55);hit('shaker',bar_len*.66,.016,.22,.65)
-            if b%2:hit('tom',bar_len-.25,.026,.1,.7)
+            hit('wood',0,.025,-.12,1);hit('shaker',bar_len*.33,.014,.22,.55,1);hit('shaker',bar_len*.66,.016,.22,.65,1)
+            if b%2:hit('tom',bar_len-.25,.026,.1,.7,1)
         elif d in ('bossa',):
-            hit('kick',0,.022,-.05,.7);hit('rim',1,.025,.1,.85);hit('brush',2.5,.013,-.1,.48);hit('shaker',3,.012,.22,.45)
+            hit('kick',0,.022,-.05,.7);hit('rim',1,.025,.1,.85);hit('brush',2.5,.013,-.1,.48,1);hit('shaker',3,.012,.22,.45,1)
         elif d in ('brush_jazz','tight_jazz','slow_groove','swing','bebop'):
             for off in [0,1,2,3]:hit('ride',off,.012,.18,.45 if off%2==0 else .58)
-            hit('brush',1,.018,-.12,.56);hit('brush',3,.02,-.12,.68)
+            hit('brush',1,.018,-.12,.56,1);hit('brush',3,.02,-.12,.68,1)
             if d=='bebop':hit('snare',2.67,.018,.12,.45)
+            if heat>=.72 and b%2:hit('snare',1.5+rng.choice((0,.5,1)),.013,.12,.38,2)
         elif d in ('funk',):
             hit('kick',0,.043,0,1);hit('snare',1,.038,.08,.9);hit('kick',2.5,.034,0,.7);hit('snare',3,.043,.08,1)
-            for i in range(8):hit('hat',i*.5,.01,.22,.35 if i%2 else .52)
+            hit('snare',1.75 if b%2 else 3.75,.012,.08,.35,2)
+            for i in range(8):hit('hat',i*.5,.01,.22,.35 if i%2 else .52,2 if i%2 else 1)
         elif d in ('one_drop','dub'):
-            hit('rim',1,.022,.1,.65);hit('kick',2,.034,0,.85);hit('snare',2,.026,.08,.7);hit('hat',3.5,.01,.22,.4)
+            hit('rim',1,.022,.1,.65);hit('kick',2,.034,0,.85);hit('snare',2,.026,.08,.7);hit('hat',3.5,.01,.22,.4,1)
         elif d in ('ska',):
             hit('kick',0,.04,0,1);hit('snare',1,.038,.08,.9);hit('kick',2,.038,0,.86);hit('snare',3,.042,.08,1)
-            for i in range(8):hit('hat',i*.5,.01,.2,.4)
+            for i in range(8):hit('hat',i*.5,.01,.2,.4,2 if i%2 else 1)
         elif d in ('tango',):
             hit('kick',0,.033,0,.85);hit('rim',1.5,.024,.1,.7);hit('kick',2,.029,0,.68);hit('rim',3.25,.028,.1,.85)
         elif d in ('techno','synthwave','electro_battle','electronic_light'):
             for off in [0,1,2,3]:hit('kick',off,.044,0,1)
             hit('snare',1,.032,.07,.72);hit('snare',3,.039,.07,.9)
-            for i in range(8):hit('hat',i*.5,.009,.22,.35 if i%2==0 else .45)
+            for i in range(8):hit('hat',i*.5,.009,.22,.35 if i%2==0 else .45,2 if i%2 else 1)
+            if heat>=.8:hit('open_hat',3.5,.011,.24,.5,2)
         elif d in ('electro_jazz','glitch'):
-            hit('kick',0,.037,0,.85);hit('snare',1.5,.034,.08,.8);hit('kick',2.75,.031,0,.65);hit('hat',3.5,.01,.22,.4)
+            hit('kick',0,.037,0,.85);hit('snare',1.5,.034,.08,.8);hit('kick',2.75,.031,0,.65);hit('hat',3.5,.01,.22,.4,1)
         elif d in ('meltdown',):
             for off in [0,.75,1.5,2.25,3]:hit('kick',off,.043,0,1 if off==0 else .65)
             hit('snare',1,.04,.08,.9);hit('snare',3,.045,.08,1)
         elif d in ('minimal',):
-            hit('wood',0,.018,-.1,.55);hit('rim',bar_len*.6,.015,.15,.45)
+            hit('wood',0,.018,-.1,.55);hit('rim',bar_len*.6,.015,.15,.45,1)
         elif d in ('funeral','sacred'):
             hit('tom',0,.026,-.12,.65);hit('impact',bar_len-.2,.022,.12,.45)
+        # Fills mark 4-bar groups and section ends so the form is audible in the kit.
+        # A section-end fill anticipates the arriving section's weight.
+        is_section_end=b in section_last
+        heat_next=rel_int[(b+1)%len(rel_int)]
+        if (is_section_end and max(heat,heat_next)>=.3) or (b%4==3 and d in FILL_HEAVY and heat>=.5):
+            if d in FILL_HEAVY:add_drum_fill(events,t,bar_len,'tom' if rng.random()<.5 else 'snare',max(heat,heat_next),spec['meter'])
+            elif d in FILL_BRUSH and is_section_end:add_drum_fill(events,t,bar_len,'brush',max(heat,heat_next),spec['meter'])
+            elif d in FILL_SOFT and is_section_end:add_drum_fill(events,t,bar_len,'soft',max(heat,heat_next),spec['meter'])
+            elif d in FILL_TOM and is_section_end:add_drum_fill(events,t,bar_len,'tom',min(max(heat,heat_next),.7),spec['meter'])
 
-def humanize(events,spec,bar_len):
+def humanize(events,spec,bar_len,intensity=None):
     rng=random.Random(seed_for('human',spec['slug'],spec.get('seed','')))
     total=spec['bars']*bar_len
+    intensity=intensity or section_intensity(spec,form_sections(spec))
     for i,e in enumerate(events):
         beat=e['beat']; phrase=(beat%(bar_len*2))/(bar_len*2)
         role=e.get('role',''); family=INSTRUMENTS[e['inst']][4]
@@ -643,18 +1199,22 @@ def humanize(events,spec,bar_len):
         elif role=='bass':placement=-1.5 if spec['category'] in ('urban','action') else 1
         if e['inst'] in ('snare','rim','brush'):placement+=5
         if e['inst']=='kick':placement=0
+        # Machine grooves still breathe: off-beat pattern steps get a light push.
+        if spec['category'] in ('electronic','urban') and role in ('pulse','arp','motor','ostinato','comp') and abs(beat%1-.5)<.13:placement+=6
         bar=int(beat/bar_len); local_rng=random.Random(seed_for(spec['slug'],spec.get('seed',''),bar,i%7)); noise=local_rng.uniform(-3.5,3.5)
         if spec['category'] in ('electronic','action') and spec['drums'] not in ('brush_jazz','bossa'):noise*=.45
         offset_ms=rubato+placement+noise
         e['start_offset_ms']=round(offset_ms,3);e['performance_beat']=round((beat+offset_ms*spec['bpm']/60000)%total,5)
-        section_index=min(3,int((beat/total)*4));section_curve=[.9,1.0,1.08,.96][section_index]
-        phr_curve=.9+.16*math.sin(math.pi*phrase)
+        section_curve=.86+.22*intensity[min(spec['bars']-1,max(0,int(beat/bar_len)))]
+        phr_curve=.9+.18*math.sin(math.pi*phrase)
         role_curve=1.05 if role=='lead' else .94 if role in ('pad','support','ensemble') else 1
-        e['performance_gain']=round(max(.62,min(1.35,section_curve*phr_curve*role_curve*(1+rng.uniform(-.035,.035)))),4)
+        accent_curve=.94+.1*max(.35,min(1.2,float(e.get('accent',1))))
+        e['performance_gain']=round(max(.62,min(1.35,section_curve*phr_curve*role_curve*accent_curve*(1+rng.uniform(-.04,.04)))),4)
         e['performance_pan']=round(max(-1,min(1,e.get('pan',0)+rng.uniform(-.018,.018))),4)
         if e['kind']=='note':
             dur=e['duration'];dscale=.91+.1*(phrase**2)
             if family in ('strings','choir','texture'):dscale=1.04
+            if role in ('pulse','arp','motor','ostinato'):dscale*=.72+.4*max(.35,min(1.2,float(e.get('accent',1))))
             e['performance_duration']=round(max(.04,dur*dscale),4)
             e['tuning_cents']=round(rng.uniform(-1.8,1.8),3)
             if family in ('wind','strings') and dur>.55:
@@ -711,9 +1271,10 @@ def peak_polyphony(events,total_beats):
 
 def compose(spec,category,label):
     spec=dict(spec);spec['category']=category;spec['category_label']=label
-    bar_len=METERS[spec['meter']];total=bar_len*spec['bars'];chords=chord_plan(spec);sections=form_sections(spec);events=[]
+    bar_len=METERS[spec['meter']];total=bar_len*spec['bars'];chords=chord_plan(spec);sections=form_sections(spec);intensity=section_intensity(spec,sections);events=[]
     melody=motif_events(spec,bar_len,chords,sections);events.extend(melody)
-    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len);humanize(events,spec,bar_len);apply_velocity_expression(events,spec,bar_len)
+    floor=melody_floor(melody,spec,bar_len)
+    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords,intensity,floor);add_countermelody(events,spec,bar_len,chords,melody,sections,intensity);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords,floor);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len,sections,intensity);humanize(events,spec,bar_len,intensity);apply_velocity_expression(events,spec,bar_len)
     # Ensure budget is a declared target, not a constant fill requirement. The actual peak may be lower.
     peak=peak_polyphony(events,total)
     if peak>32:
@@ -735,7 +1296,8 @@ def compose(spec,category,label):
       'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
       'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':'Final cadence and pickup are designed around the first harmony rather than a hard audio cut.'},
       'metrics':{'energy':spec['energy'],'tension':spec['tension']},
-      'mix':{'echo_time':.18 if category in ('action','electronic') else .28 if category in ('horror','fantasy','classical') else .22,'echo_feedback':.14 if category in ('action','electronic') else .22,'preview_rms_db':-14.5 if spec['energy']>.75 else -15.5,'drive':.08 if category=='action' else .03 if category=='electronic' else 0}
+      # Echo locked to the tempo (dotted eighth) so repeats reinforce the groove instead of smearing it.
+      'mix':{'echo_time':round(min(.42,max(.12,(60/spec['bpm'])*(.5 if category in ('action','electronic') else .75))),3),'echo_feedback':.14 if category in ('action','electronic') else .22,'preview_rms_db':-14.5 if spec['energy']>.75 else -15.5,'drive':.08 if category=='action' else .03 if category=='electronic' else 0}
     }
 
 def topology_signature(style):
