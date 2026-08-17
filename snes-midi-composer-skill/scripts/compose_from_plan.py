@@ -101,6 +101,16 @@ def choose(options: tuple[str, ...], seed: int, slot: str) -> str:
     return options[int.from_bytes(digest[:4], "big") % len(options)]
 
 
+def choose_comp_b(comp: str, seed: int, ensemble_profile: str) -> str:
+    alt = engine.COMP_ANSWER.get(comp)
+    if alt and alt != comp:
+        return alt
+    options = tuple(item for item in ENSEMBLE_COMP.get(ensemble_profile, ()) if item != comp)
+    if options:
+        return choose(options, seed, "comp_b")
+    return comp
+
+
 def category_labels() -> dict[str, str]:
     data = load_json(DATA / "category-benchmark-contracts.json")
     return {item["id"]: item["label"] for item in data["categories"]}
@@ -228,8 +238,21 @@ def build_spec(plan: dict[str, Any], harness: dict[str, Any]) -> dict[str, Any]:
         "key": identity["key"], "mode": scale["id"], "budget": plan["voice_budget"],
         "prog": progression["id"], "motif": motif, "lead": orchestration["primary_lead"],
         "secondary": SECONDARY.get(orchestration["secondary_lead"], orchestration["secondary_lead"]) if orchestration["secondary_lead"] != "none" else None,
-        "comp": comp, "bass": bass, "drums": drums, "form": copy.deepcopy(plan["form"]),
+        "comp": comp, "comp_b": choose_comp_b(comp, seed, orchestration["ensemble_profile"]),
+        "bass": bass, "drums": drums, "form": copy.deepcopy(plan["form"]),
         "energy": harness["brief"]["energy"], "tension": harness["brief"]["tension"],
+        "architecture": harness["form"]["architecture"],
+        "rest_ratio": melody.get("rest_ratio", 0.22),
+        "contour": melody.get("contour", "arch"),
+        "tessitura": melody.get("tessitura", 0.55),
+        "range_semitones": melody.get("range_semitones", 16),
+        "melody_density": melody.get("density", 0.46),
+        "max_leap": melody.get("max_leap", 9),
+        "stepwise_weight": melody.get("stepwise_weight", 0.66),
+        "chord_tone_weight": melody.get("chord_tone_weight", 0.74),
+        "pickup_probability": melody.get("pickup_probability", 0.38),
+        "sequence_rate": melody.get("sequence_rate", 0.22),
+        "motif_transformation": melody.get("motif_transformation", 0.48),
         "tags": ["from-scratch", harness["brief"]["game_context"], harness["brief"]["mood_primary"]],
         "notes": plan["emotional_thesis"], "seed": seed,
     }
@@ -248,7 +271,9 @@ def compose_project(plan: dict[str, Any], harness: dict[str, Any]) -> tuple[dict
     style["generation"] = {
         "workflow": "plan+harness-v1", "engine": "neospc-v3", "seed": spec["seed"],
         "scale_id": spec["mode"], "progression_id": spec["prog"], "motif": spec["motif"],
-        "texture": spec["comp"], "bass": spec["bass"], "drums": spec["drums"],
+        "texture": spec["comp"], "texture_b": spec.get("comp_b"), "bass": spec["bass"], "drums": spec["drums"],
+        "architecture": spec.get("architecture"), "contour": spec.get("contour"),
+        "tessitura": spec.get("tessitura"), "max_leap": spec.get("max_leap"),
         "trimmed_events_for_voice_budget": removed,
     }
     catalog = {

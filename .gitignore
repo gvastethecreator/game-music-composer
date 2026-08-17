@@ -2,3 +2,5 @@
 __pycache__/
 *.py[cod]
 snes-midi-composer-skill/dist/
+**/__pycache__/
+*.py[cod]

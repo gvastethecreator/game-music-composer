@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json, math, random, hashlib, itertools
 from pathlib import Path
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 
 NOTE_PC={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 MODES={
@@ -185,6 +185,38 @@ MOTIFS={
  'bebop':([0,2,4,3,5,6,4,2,1,0],[0,.33,.67,1.0,1.33,1.67,2.0,2.33,2.67,3.0],[.25,.25,.25,.25,.25,.25,.25,.25,.25,.7]),
  'lament':([5,4,2,3,1,0],[0,1,1.75,2.75,3.5,4.5],[.7,.45,.6,.45,.6,1.0])
 }
+# Contrast-section answers: a related cell, not an inversion of the same one.
+MOTIF_ANSWER={
+ 'rising_fourth':'falling_third','falling_third':'rising_fourth','arch':'sigh','heroic':'arch',
+ 'sigh':'chant','chromatic_warning':'mechanical','sync_hook':'minimal_cell','waltz_line':'sigh',
+ 'modal_call':'chant','noir':'lament','mechanical':'chromatic_warning','chant':'modal_call',
+ 'floating':'arch','fugue_subject':'step_answer','minimal_cell':'sync_hook','pentatonic':'rising_fourth',
+ 'tango':'noir','bebop':'sync_hook','lament':'sigh','step_answer':'arch'
+}
+# Contrast texture: a different accompaniment family, not a quieter copy of A.
+COMP_ANSWER={
+ 'harp_broken':'sparse_chords','orchestral_broken':'chorale','harp_wave':'floating_chords',
+ 'celestial_arps':'sparse_chords','dream_arps':'floating_chords','pizz_ostinato':'harp_broken',
+ 'counter_ostinato':'sparse_chords','ritual_ostinato':'chorale','pattern_shifts':'pizz_ostinato',
+ 'guitar_pattern':'floating_chords','guitar_strum':'sparse_chords','bossa_comp':'jazz_shells',
+ 'reggae_skank':'guitar_pattern','ska_skank':'sparse_chords','tango_comp':'sparse_chords',
+ 'jazz_shells':'bossa_comp','swing_comp':'jazz_shells','bebop_comp':'swing_comp','soul_chords':'jazz_shells',
+ 'electro_noir':'sparse_chords','orchestral_tremolo':'chorale','strings_motor':'pizz_ostinato',
+ 'orchestral_swell':'chorale','dark_orchestra':'cluster_fields','full_orchestra':'chorale',
+ 'neoclassical_motor':'pizz_ostinato','orchestral_march':'chorale','orchestral_waltz':'damaged_waltz',
+ 'chorale':'harp_broken','processional':'harp_broken','prophecy_fields':'harp_broken',
+ 'cluster_fields':'sparse_chords','reveal_clusters':'cluster_fields','ritual_drones':'chorale',
+ 'low_fields':'sparse_chords','space_fields':'cluster_fields','minimal_phase':'sparse_chords',
+ 'minimal_pulse':'synth_arp','techno_stabs':'minimal_phase','electro_stabs':'minimal_phase',
+ 'synth_arp':'electro_stabs','breakbeat_pulse':'minimal_pulse','panic_ostinato':'fracture_patterns',
+ 'fracture_patterns':'signal_pulses','signal_pulses':'sparse_chords','meltdown_layers':'electro_stabs',
+ 'two_voice_counterpoint':'sparse_chords','four_voice_fugue':'two_voice_counterpoint','string_quartet':'chorale',
+ 'sparse_chords':'harp_broken','memory_arpeggio':'sparse_chords','broken_memory':'memory_arpeggio',
+ 'floating_chords':'pizz_ostinato','impressionist':'harp_broken','damaged_waltz':'sparse_chords',
+ 'funk_comp':'sparse_chords','mechanical_comp':'pizz_ostinato','industrial_riff':'sparse_chords',
+ 'guitar_riff':'pizz_ostinato'
+}
+Phrase=namedtuple('Phrase','start bars kind closing')
 
 PROGRESSIONS={
  'home':['I','V','vi','IV','I','ii','V','I'], 'journey':['I','IV','vi','V','ii','IV','V','I'],
@@ -443,26 +475,42 @@ def fit_range(note,lo,hi):
     while note>hi:note-=12
     return max(lo,min(hi,note))
 
-def lead_pool(scale_all,lane,center=None):
-    """Singable working range for a melodic voice: about two octaves around its center,
-    clipped to the instrument. Without this the line drifts across the whole compass."""
+def lead_pool(scale_all,lane,center=None,width=26):
+    """Singable working range for a melodic voice, clipped to the instrument."""
     llo,lhi=INSTRUMENTS[lane][3]
     c=center if center is not None else (llo+lhi)//2
-    pool=[m for m in scale_all if max(llo,c-12)<=m<=min(lhi,c+14)]
+    half=max(4,int(width)//2)
+    pool=[m for m in scale_all if max(llo,c-half)<=m<=min(lhi,c+half)]
     return pool or [m for m in scale_all if llo<=m<=lhi] or [max(llo,min(lhi,c))]
 
-def polish_melody(notes,chords,scale,lo,hi):
+def preserve_pc(note,pool):
+    """Keep the pitch class; only the octave may move. Used for motif skeleton tones."""
+    same=[m for m in pool if m%12==note%12]
+    if same:return min(same,key=lambda m:(abs(m-note),m))
+    return note
+
+def polish_melody(notes,chords,scale,lo,hi,max_leap=9):
     """Apply the rules that separate a melodic line from a random walk: consonance on
     accented notes, dissonances left by step, no two same-direction leaps in a row and
-    no third repetition of a pitch."""
+    no third repetition of a pitch. Skeleton tones keep their pitch class."""
     pool_all=[m for m in scale if lo<=m<=hi]
     if not pool_all:return notes
+    leap=max(2,int(max_leap))
     for i,n in enumerate(notes):
         pcs=chords[min(n['bar'],len(chords)-1)]['pcs']
+        prev=notes[i-1] if i else None
+        if n.get('skeleton'):
+            note=preserve_pc(n['note'],pool_all)
+            if prev is not None and abs(note-prev['note'])>leap:
+                closer=preserve_pc(prev['note']+(12 if note>prev['note'] else -12),pool_all)
+                if abs(closer-prev['note'])<=leap:note=closer
+            n['note']=note
+            n['iv']=note-prev['note'] if prev else 0
+            n['nct']=note%12 not in pcs
+            continue
         strong=n['strong'] or n['kind']=='cadence'
         pool=[m for m in pool_all if m%12 in pcs] if strong else pool_all
         if not pool:pool=pool_all
-        prev=notes[i-1] if i else None
         target=n['note']
         if prev is not None:
             iv=n['note']-prev['note'];piv=prev.get('iv',0)
@@ -475,13 +523,16 @@ def polish_melody(notes,chords,scale,lo,hi):
             elif iv==0 and i>=2 and notes[i-2]['note']==prev['note']:
                 target=prev['note']+2
         note=n['note'] if (target==n['note'] and n['note'] in pool) else nearest_allowed(target,pool)
+        if prev is not None and abs(note-prev['note'])>leap:
+            note=nearest_allowed(prev['note']+(leap if note>prev['note'] else -leap),pool)
         n['note']=note
         n['iv']=note-prev['note'] if prev else 0
         n['nct']=note%12 not in pcs
     # A dissonance that is left by step reads as a passing or leaning tone; one that is
-    # left by leap just sounds like a wrong note.
+    # left by leap just sounds like a wrong note. Do not drag skeleton tones to repair it.
     for i in range(len(notes)-1):
         n=notes[i];nx=notes[i+1]
+        if nx.get('skeleton'):continue
         if not n.get('nct') or abs(nx['note']-n['note'])<=2:continue
         pcs=chords[min(nx['bar'],len(chords)-1)]['pcs']
         strong=nx['strong'] or nx['kind']=='cadence'
@@ -511,13 +562,17 @@ def voice_led_voicing(prev,c,lane,register=4,count=3,spread=False,hi_cap=None):
         pool.remove(extra);notes=sorted(set(notes+[extra]))
     return notes[:count] if notes else chord_voicing(c,lane,register,count,spread)
 
-def cadence_chord(spec,key_pc):
-    """Strongest fully-diatonic cadence available in the current mode, or None."""
+def cadence_symbol(spec,key_pc):
+    """Strongest fully-diatonic cadence symbol in the current mode, or None."""
     ints=set(MODES[spec['mode']])
     for sym in ('V','bVII','bII','iv','v'):
         c=parse_chord(sym,key_pc,3)
-        if {(pc-key_pc)%12 for pc in c['pcs']}<=ints:return c
+        if {(pc-key_pc)%12 for pc in c['pcs']}<=ints:return sym
     return None
+
+def cadence_chord(spec,key_pc):
+    sym=cadence_symbol(spec,key_pc)
+    return parse_chord(sym,key_pc,3) if sym else None
 
 def harmonic_rhythm(spec):
     """Bars per chord. A chord change every single bar is a treadmill: slow and quiet
@@ -527,24 +582,70 @@ def harmonic_rhythm(spec):
     if seconds_per_bar>=3.2 or bpm<=76 or energy<=.3:return 2
     return 1
 
+def phrase_architecture(spec):
+    arch=str(spec.get('architecture') or spec.get('phrase_grammar') or '')
+    if arch in {'sentence','layered_build','process','fugue'}:return 'sentence'
+    if arch in {'period','binary','rounded_binary','ternary','rondo','variation','through_composed','ambient_field'}:
+        return 'period'
+    return 'sentence' if spec.get('category') in {'action','electronic'} else 'period'
+
+def phrase_plan(spec):
+    """Period: antecedent asks, consequent answers. Sentence: 2+2+4 idea, sequenced idea, continuation."""
+    bars=int(spec['bars']); out=[]; pos=0
+    if bars<=0:return out
+    if phrase_architecture(spec)=='sentence':
+        while pos<bars:
+            remain=bars-pos
+            if remain>=8:
+                out.extend((Phrase(pos,2,'presentation',False),Phrase(pos+2,2,'presentation',False),Phrase(pos+4,4,'continuation',True))); pos+=8
+            elif remain>=6:
+                out.extend((Phrase(pos,2,'presentation',False),Phrase(pos+2,remain-2,'continuation',True))); pos=bars
+            elif remain>=4:
+                out.append(Phrase(pos,remain,'continuation',True)); pos=bars
+            else:
+                if out:
+                    last=out[-1]; out[-1]=Phrase(last.start,last.bars+remain,last.kind,True)
+                else:
+                    out.append(Phrase(pos,remain,'continuation',True))
+                pos=bars
+    else:
+        while pos<bars:
+            remain=bars-pos
+            if remain>=8:
+                out.extend((Phrase(pos,4,'antecedent',False),Phrase(pos+4,4,'consequent',True))); pos+=8
+            elif remain>=6:
+                a=remain//2
+                out.extend((Phrase(pos,a,'antecedent',False),Phrase(pos+a,remain-a,'consequent',True))); pos=bars
+            elif remain>=3:
+                out.append(Phrase(pos,remain,'consequent' if out else 'antecedent',True)); pos=bars
+            else:
+                if out:
+                    last=out[-1]; out[-1]=Phrase(last.start,last.bars+remain,last.kind,True)
+                else:
+                    out.append(Phrase(0,remain,'consequent',True))
+                pos=bars
+    if out and not out[-1].closing:
+        last=out[-1]; out[-1]=Phrase(last.start,last.bars,last.kind,True)
+    return out
+
+def phrase_starts(bars,length=4):
+    return [(p.start,p.bars) for p in phrase_plan({'bars':bars,'architecture':'period'})]
+
 def chord_plan(spec):
-    prog=PROGRESSIONS[spec['prog']]
-    key_pc=NOTE_PC[spec['key']]
-    span=harmonic_rhythm(spec)
-    chords=[parse_chord(prog[(b//span)%len(prog)],key_pc,3) for b in range(spec['bars'])]
-    # Functional punctuation: every four-bar sentence ends on a chord that either asks
-    # (dominant) or answers (tonic), so the phrase boundaries are audible in the harmony.
+    """One harmonic sentence per phrase group: ask on open phrases, tonic on closing ones.
+    The loop seam still turns a final tonic into an active cadence so the restart resolves."""
+    prog=PROGRESSIONS[spec['prog']]; key_pc=NOTE_PC[spec['key']]; span=harmonic_rhythm(spec)
+    cad_sym=cadence_symbol(spec,key_pc); tonic_sym=prog[0]; chords=[None]*spec['bars']
+    for phrase in phrase_plan(spec):
+        n_slots=max(1,(phrase.bars+span-1)//span)
+        if phrase.closing:
+            start=len(prog)//2; seq=[prog[(start+i)%len(prog)] for i in range(max(0,n_slots-1))]+[tonic_sym]
+        else:
+            seq=[prog[i%len(prog)] for i in range(n_slots)]
+            if cad_sym:seq[-1]=cad_sym
+        for k in range(phrase.bars):
+            chords[phrase.start+k]=parse_chord(seq[min(n_slots-1,k//span)],key_pc,3)
     cad=cadence_chord(spec,key_pc)
-    tonic=parse_chord(prog[0],key_pc,3)
-    sentences=phrase_starts(spec['bars'])
-    for pi,(pstart,plen) in enumerate(sentences):
-        last=pstart+plen-1
-        if last>=spec['bars'] or plen<3:continue
-        closing=pi%2==1
-        want=tonic if closing else cad
-        if want and want['root_pc']!=chords[max(0,last-1)]['root_pc']:chords[last]=want
-    # Loop seam: when the progression parks on the opening harmony, close on an active
-    # cadence so the restart resolves instead of restating the same chord twice.
     if spec['bars']>=4 and chords[-1]['root_pc']==chords[0]['root_pc']:
         if cad and cad['root_pc']!=chords[0]['root_pc']:chords[-1]=cad
     return chords
@@ -555,30 +656,112 @@ def section_roles(sections):
     for si,s in enumerate(sections):
         func=str(s.get('function','')).lower();name=str(s.get('name','')).upper()
         contrast[si]=0<si<len(sections)-1 and ('contrast' in func or 'bridge' in func or 'episode' in func or name.startswith('B'))
-        if si==0:transform[si]=0            # statement
-        elif contrast[si]:transform[si]=2   # inversion for the episode
-        elif si==len(sections)-1:transform[si]=4  # lifted return
-        else:transform[si]=1 if si%2 else 3       # stepwise sequence
+        if si==0:transform[si]=0
+        elif contrast[si]:transform[si]=2
+        elif si==len(sections)-1:transform[si]=4
+        else:transform[si]=1 if si%2 else 3
     return contrast,transform
 
-def phrase_starts(bars,length=4):
-    """Four-bar sentences; the final phrase absorbs any remainder."""
-    out=[];pos=0
-    while pos<bars:
-        remain=bars-pos
-        take=remain if remain<length+2 else length
-        out.append((pos,take));pos+=take
-    return out
+def theme_cell(spec,motif_name,bar_len):
+    degs,ons,cell_bars=motif_cell(motif_name,spec['meter'],bar_len)
+    dscale=degree_scale(spec['mode'])
+    if dscale<1.0:degs=[int(round(x*dscale)) for x in degs]
+    return degs,ons,cell_bars
+
+def skeleton_indices(degs,ons,bar_len):
+    n=len(degs)
+    if n==0:return set()
+    idx={0,n-1}; half=bar_len*0.5
+    for i,off in enumerate(ons):
+        rel=off%bar_len if bar_len else off
+        if rel<.12 or abs(rel-half)<.12:idx.add(i)
+    idx.add(min(range(n),key=lambda i:(degs[i],i)))
+    idx.add(max(range(n),key=lambda i:(degs[i],i)))
+    return idx
+
+def melody_controls(spec):
+    """Harness knobs with corpus-safe defaults. Missing keys keep the 100-cue engine path working."""
+    density=spec.get('melody_density')
+    return {
+        'contour':spec.get('contour') or 'arch',
+        'tessitura':float(spec.get('tessitura',.55)),
+        'range_semitones':int(spec.get('range_semitones',26)),
+        'max_leap':int(spec.get('max_leap',9)),
+        'stepwise_weight':float(spec.get('stepwise_weight',.66)),
+        'chord_tone_weight':float(spec.get('chord_tone_weight',.74)),
+        'pickup_probability':float(spec.get('pickup_probability',1.0)),
+        'sequence_rate':float(spec.get('sequence_rate',.22)),
+        'motif_transformation':float(spec.get('motif_transformation',.48)),
+        'melody_density':None if density is None else float(density),
+    }
+
+def tessitura_center(lane,tessitura):
+    llo,lhi=INSTRUMENTS[lane][3]
+    return int(round(llo+(lhi-llo)*float(tessitura)))
+
+def apply_contour(degs,contour):
+    """Bias cell degrees without replacing the motif. Degree 0 (the first note) stays put."""
+    d=list(degs)
+    if not d:return d
+    n=max(1,len(d)-1)
+    c=str(contour or 'arch')
+    if c=='ascending':
+        return [x+(0 if i==0 else int(round(3*i/n))) for i,x in enumerate(d)]
+    if c=='descending':
+        return [x-(0 if i==0 else int(round(3*i/n))) for i,x in enumerate(d)]
+    if c=='narrow':
+        return [0 if i==0 else int(round(x*.45)) for i,x in enumerate(d)]
+    if c=='angular':
+        return [x if i==0 or abs(x)<2 else x+(2 if x>0 else -2) for i,x in enumerate(d)]
+    if c=='wave':
+        return [x if i==0 else x+(1 if i%2 else -1) for i,x in enumerate(d)]
+    if c=='terrace':
+        return [x if i==0 else int(round(x/2.0)*2) for i,x in enumerate(d)]
+    if c=='call_response' and len(d)>2:
+        mid=len(d)//2
+        return d[:mid]+[-x for x in d[mid:]]
+    if c=='arch' and len(d)>=3:
+        peak=max(range(len(d)),key=lambda i:d[i]); out=list(d)
+        if peak:out[peak]=out[peak]+1
+        return out
+    return d
+
+def clamp_leap(note,prev_note,scale,max_leap,preserve=False):
+    if prev_note is None or abs(note-prev_note)<=max_leap:return note
+    if preserve:
+        pc=note%12
+        cands=[m for m in scale if m%12==pc and abs(m-prev_note)<=max_leap]
+        return min(cands,key=lambda m:abs(m-prev_note)) if cands else note
+    cands=[m for m in scale if abs(m-prev_note)<=max_leap]
+    return min(cands,key=lambda m:(abs(m-note),abs(m-prev_note))) if cands else note
+
+def contrast_bar_set(spec,sections=None):
+    sections=sections or form_sections(spec)
+    contrast,_=section_roles(sections)
+    bars=set()
+    for si,s in enumerate(sections):
+        if contrast.get(si):
+            bars.update(range(s['start_bar'],s['start_bar']+s['bars']))
+    return bars
+
+def texture_for_bar(spec,bar,contrast_bars):
+    if bar in contrast_bars:
+        alt=spec.get('comp_b')
+        if alt and alt!=spec['comp']:return alt
+        return COMP_ANSWER.get(spec['comp'],spec['comp'])
+    return spec['comp']
 
 def motif_events(spec,bar_len,chords,sections):
-    degs0,ons0,cell_bars=motif_cell(spec['motif'],spec['meter'],bar_len)
-    dscale=degree_scale(spec['mode'])
-    if dscale<1.0:degs0=[int(round(x*dscale)) for x in degs0]
     scale_all=scale_midis(spec,36,96)
     lead=spec['lead']; secondary=spec.get('secondary')
-    lo,hi=INSTRUMENTS[lead][3]; center=(lo+hi)//2
-    # Only hand the tune to the second voice if they inhabit comparable registers;
-    # otherwise the "contrast" is just a three-octave jump.
+    lo,hi=INSTRUMENTS[lead][3]
+    ctrl=melody_controls(spec)
+    center=tessitura_center(lead,ctrl['tessitura'])
+    width=int(ctrl['range_semitones'])
+    half=max(4,width//2)
+    tlo=max(lo,center-half); thi=min(hi,center+half)
+    def pool_for(lane):
+        return lead_pool(scale_all,lane,center=tessitura_center(lane,ctrl['tessitura']),width=width)
     if secondary and secondary in INSTRUMENTS:
         slo,shi=INSTRUMENTS[secondary][3]
         if abs((slo+shi)//2-center)>12 or INSTRUMENTS[secondary][4]=='texture':secondary=None
@@ -589,100 +772,121 @@ def motif_events(spec,bar_len,chords,sections):
         for b in range(s['start_bar'],s['start_bar']+s['bars']):section_map[b]=si
     contrast,transforms=section_roles(sections)
     rel_int=relative_intensity(section_intensity(spec,sections))
-    energy=float(spec.get('energy',.5))
+    energy=float(spec.get('energy',.5)); rest=float(spec.get('rest_ratio',.22))
     lyrical=spec['category'] in ('adventure','towns','emotion','fantasy','mystery','classical','horror')
     legato=.94 if lyrical else .68
-    total=spec['bars']*bar_len
-    starts=phrase_starts(spec['bars'])
-    reg_plan=phrase_register_offsets(len(starts))
+    total=spec['bars']*bar_len; key_pc=NOTE_PC[spec['key']]
+    phrases=phrase_plan(spec)
+    reg_plan=phrase_register_offsets(len(phrases))
     reg_peak=max(reg_plan) if reg_plan else 0
     bar_reg=[0]*spec['bars']
-    for pi,(pstart,plen) in enumerate(starts):
-        for k in range(plen):
-            if pstart+k<spec['bars']:bar_reg[pstart+k]=reg_plan[pi]
-    guides=guide_tones(chords,lo,hi,center,bar_reg)
+    for pi,ph in enumerate(phrases):
+        for k in range(ph.bars):
+            if ph.start+k<spec['bars']:bar_reg[ph.start+k]=reg_plan[pi]
+    guides=guide_tones(chords,tlo,thi,center,bar_reg)
     raw=[];handoff=None
-    for pi,(pstart,plen) in enumerate(starts):
+    home_theme=spec['motif']; answer_theme=MOTIF_ANSWER.get(home_theme,home_theme)
+    leap=max(2,int(ctrl['max_leap']))
+    seq=0 if ctrl['sequence_rate']<.12 else (2 if ctrl['sequence_rate']>=.7 else 1)
+    for pi,ph in enumerate(phrases):
         rng=random.Random(seed_for('melody',spec['slug'],spec.get('seed',''),pi))
-        si=section_map.get(pstart,0)
-        # One clean handoff: the secondary voice owns the contrast episode only.
+        si=section_map.get(ph.start,0)
         lane=secondary if secondary and contrast.get(si) else lead
-        llo,lhi=INSTRUMENTS[lane][3]
-        scale=lead_pool(scale_all,lane)
+        scale=pool_for(lane)
         transform=transforms.get(si,0)
-        heat=rel_int[min(spec['bars']-1,pstart)]
-        density=max(.2,min(1,.35+.45*energy+.3*heat))
-        cad_bar=pstart+plen-1
-        b=pstart;vi=0
-        # Passing the tune to another instrument should sound like a handoff, not a jump:
-        # the new voice enters in the octave closest to where the previous one stopped.
+        heat=rel_int[min(spec['bars']-1,ph.start)]
+        if ctrl['melody_density'] is not None:
+            density=max(.2,min(1,(.2+.8*ctrl['melody_density'])*(1-.45*rest)))
+        else:
+            density=max(.2,min(1,(.35+.45*energy+.3*heat)*(1-.45*rest)))
+        uses_cadence=ph.kind in ('antecedent','consequent','continuation') and ph.bars>=2
+        cad_bar=ph.start+ph.bars-1
+        cell_end=cad_bar-1 if uses_cadence else cad_bar
+        theme=answer_theme if contrast.get(si) else home_theme
+        degs0,ons0,cell_bars=theme_cell(spec,theme,bar_len)
+        degs0=apply_contour(degs0,ctrl['contour'])
+        if contrast.get(si) and theme==home_theme:degs0=[-x for x in degs0]
+        elif transform==4:degs0=[x+1 for x in degs0]
+        skel0=skeleton_indices(degs0,ons0,bar_len)
+        repeat_idea=ph.kind=='presentation' and pi>0 and phrases[pi-1].kind=='presentation'
+        b=ph.start;vi=0
         prev_note=fit_range(handoff,scale[0],scale[-1]) if handoff is not None else None
-        while b<=cad_bar-1:
-            avail=max(1,min(cell_bars,cad_bar-b));span=avail*bar_len
-            if vi==0:d,o=list(degs0),list(ons0)
-            else:d,o=cell_variant(degs0,ons0,((vi-1+transform)%3)+1,span,sub,rng)
-            if transform==2:d=[-x for x in d]
-            elif transform==4:d=[x+1 for x in d]
-            keep=max(2,int(round(len(o)*density)))
-            pairs=[(off,deg) for off,deg in zip(o,d) if off<span-1e-6][:keep]
-            # Thinning must not leave a cell that just restates one pitch.
-            if len(pairs)>1 and len({deg for _,deg in pairs})==1:
-                pairs=[pairs[0],(pairs[1][0],pairs[1][1]+1)]
-            # Anchor the cell where the previous one left off, held near the register arc.
-            # Re-anchoring on each bar's guide tone would reset the line every bar.
-            c0=chords[min(spec['bars']-1,b)]
-            gtone=fit_range(guides[min(spec['bars']-1,b)],scale[0],scale[-1])
-            ctones=[m for m in scale if m%12 in c0['pcs']] or [gtone]
-            # The whole cell has to fit in the working range, otherwise the degrees above
-            # the ceiling all collapse onto the top note and the line flatlines.
-            dmin=min(deg for _,deg in pairs);dmax=max(deg for _,deg in pairs)
-            def sidx(m):return min(range(len(scale)),key=lambda i:(abs(scale[i]-m),i))
-            fits=[m for m in ctones if -dmin<=sidx(m)<=len(scale)-1-dmax]
-            ctones=fits or ctones
-            if prev_note is None:anchor=nearest_allowed(gtone,ctones)
+        tonic_pool=[m for m in scale if m%12==key_pc] or scale
+        while b<=cell_end:
+            avail=max(1,min(cell_bars,cell_end-b+1));span=avail*bar_len
+            if repeat_idea:d=[x+seq for x in degs0];o=list(ons0)
+            elif ph.kind in ('continuation','consequent') and vi>0 and ctrl['motif_transformation']>=.2:
+                d,o=cell_variant(degs0,ons0,((vi-1)%3)+1,span,sub,rng)
             else:
-                # Continue the line, but never by restating the note it just ended on.
-                near=[m for m in ctones if abs(m-gtone)<=7 and m!=prev_note] or [m for m in ctones if m!=prev_note] or ctones
-                anchor=min(near,key=lambda m:(abs(m-prev_note),abs(m-gtone),m))
-            for k,(off,deg) in enumerate(pairs):
+                d,o=list(degs0),list(ons0)
+            ranked=[(off,deg) for off,deg in zip(o,d) if off<span-1e-6]
+            if not ranked:ranked=[(0,0)]
+            skel_ons={ons0[i] for i in skel0 if i<len(ons0)}
+            tagged=[]
+            for i,(off,deg) in enumerate(ranked):
+                is_skel=i==0 or i==len(ranked)-1 or any(abs(off-so)<sub*.51 for so in skel_ons)
+                tagged.append((off,deg,is_skel))
+            skeleton_pairs=[p for p in tagged if p[2]]; passing_pairs=[p for p in tagged if not p[2]]
+            keep=max(len(skeleton_pairs),max(2,int(round(len(tagged)*density))))
+            pairs=sorted((skeleton_pairs+passing_pairs)[:keep],key=lambda p:p[0])
+            if len(pairs)>1 and len({deg for _,deg,_ in pairs})==1:
+                pairs=[pairs[0],(pairs[1][0],pairs[1][1]+1,False)]
+            gtone=fit_range(guides[min(spec['bars']-1,b)],scale[0],scale[-1])
+            aim=gtone if prev_note is None else (int(round(.35*gtone+.65*prev_note)) if vi==0 else prev_note)
+            home=nearest_allowed(aim,tonic_pool)
+            c0=chords[min(spec['bars']-1,b)]
+            for k,(off,deg,is_skel) in enumerate(pairs):
                 beat=b*bar_len+off
                 bar=min(spec['bars']-1,int(beat/bar_len+1e-6));rel_pos=beat-bar*bar_len
                 nxt=pairs[k+1][0] if k+1<len(pairs) else span
                 strong=any(abs(rel_pos-sp)<.12 for sp in strong_pos)
-                note=scale_step(scale,anchor,deg)
+                note=scale_step(scale,home,deg)
+                if not is_skel and ctrl['chord_tone_weight']>=.4:
+                    near=[m for m in scale if m%12 in c0['pcs'] and abs(m-note)<=2]
+                    if near:note=min(near,key=lambda m:(abs(m-note),m))
+                if not is_skel and prev_note is not None and ctrl['stepwise_weight']>=.5 and abs(note-prev_note)>2:
+                    step_cands=[m for m in scale if 0<abs(m-prev_note)<=2]
+                    if step_cands:note=min(step_cands,key=lambda m:abs(m-note))
+                note=clamp_leap(note,prev_note,scale,leap,preserve=is_skel)
                 prev_note=note
-                raw.append({'lane':lane,'note':note,'beat':beat,'bar':bar,'strong':strong,
+                raw.append({'lane':lane,'note':note,'beat':beat,'bar':bar,'strong':strong or is_skel,
                             'dur':max(.16,(nxt-off)*legato),'kind':'cell','phrase':si,
-                            'accent':1.0 if k==0 and off<1e-6 else .92 if strong else .78})
+                            'accent':1.0 if k==0 and off<1e-6 else .92 if strong else .78,'skeleton':is_skel})
             b+=avail;vi+=1
-        # The phrase lands on the cadence bar's downbeat and holds: that hold is the breath
-        # that turns a stream of notes into a sentence.
-        cad_beat=cad_bar*bar_len
-        c=chords[min(spec['bars']-1,cad_bar)]
-        closing=pi%2==1 or pi==len(starts)-1
-        prefer=[c['root_pc']] if closing else ([pc for pc in c['pcs'] if pc!=c['root_pc']] or sorted(c['pcs']))
-        pool=[m for m in scale if m%12 in prefer] or [m for m in scale if m%12 in c['pcs']] or scale
-        aim=fit_range(guides[min(spec['bars']-1,cad_bar)],scale[0],scale[-1])
-        if prev_note is not None:
-            near=[m for m in pool if abs(m-prev_note)<=9] or pool
-            cadence=min(near,key=lambda m:(abs(m-(aim if closing else aim+2)),abs(m-prev_note),m))
+        if uses_cadence:
+            cad_beat=cad_bar*bar_len; c=chords[min(spec['bars']-1,cad_bar)]; closing=ph.closing
+            if closing:
+                pool=tonic_pool
+            else:
+                prefer=[pc for pc in c['pcs'] if pc!=c['root_pc']] or sorted(c['pcs'])
+                pool=[m for m in scale if m%12 in prefer] or [m for m in scale if m%12 in c['pcs']] or scale
+            aim=fit_range(guides[min(spec['bars']-1,cad_bar)],scale[0],scale[-1])
+            if prev_note is not None:
+                near=[m for m in pool if abs(m-prev_note)<=leap] or pool
+                cadence=min(near,key=lambda m:(abs(m-aim),abs(m-prev_note),m))
+            else:
+                cadence=nearest_allowed(aim,pool,'down' if closing else 'up')
+            if closing:cadence=nearest_allowed(cadence,tonic_pool)
+            cadence=clamp_leap(cadence,prev_note,scale,leap,preserve=True)
+            handoff=cadence
+            hold=bar_len*(.55 if ph.kind=='antecedent' else .72 if pi<len(phrases)-1 else .9)
+            raw.append({'lane':lane,'note':cadence,'beat':cad_beat,'bar':cad_bar,'strong':True,
+                        'dur':max(.4,min(hold,total-cad_beat-.05)),'kind':'cadence','phrase':si,'accent':1.0,'skeleton':True})
+            if density>.82 and len(pulses)>1 and ph.bars>=3 and ph.kind=='continuation':
+                mid=pulses[len(pulses)//2]
+                echo=scale_step(scale,cadence,-2)
+                echo=clamp_leap(echo,cadence,scale,leap,preserve=False)
+                raw.append({'lane':lane,'note':echo,'beat':cad_beat+mid,'bar':cad_bar,'strong':False,
+                            'dur':max(.2,(bar_len-mid)*.5),'kind':'cell','phrase':si,'accent':.7,'skeleton':False})
         else:
-            cadence=nearest_allowed(aim if closing else aim+2,pool,'down' if closing else 'up')
-        handoff=cadence
-        hold=bar_len*(.72 if pi<len(starts)-1 else .9)
-        raw.append({'lane':lane,'note':cadence,'beat':cad_beat,'bar':cad_bar,'strong':True,
-                    'dur':max(.4,min(hold,total-cad_beat-.05)),'kind':'cadence','phrase':si,'accent':1.0})
-        if density>.82 and len(pulses)>1 and plen>=3:
-            mid=pulses[len(pulses)//2]
-            echo=scale_step(scale,cadence,-2)
-            raw.append({'lane':lane,'note':echo,'beat':cad_beat+mid,'bar':cad_bar,'strong':False,
-                        'dur':max(.2,(bar_len-mid)*.5),'kind':'cell','phrase':si,'accent':.7})
+            handoff=prev_note
     raw.sort(key=lambda n:(n['beat'],n['note']))
-    # Anacrusis: a short pickup lifts each new phrase out of the previous breath.
     picks=[]
-    for pi,(pstart,plen) in enumerate(starts):
+    for pi,ph in enumerate(phrases):
         if pi==0:continue
-        edge=pstart*bar_len
+        rng_p=random.Random(seed_for('pickup',spec['slug'],spec.get('seed',''),pi))
+        if rng_p.random()>ctrl['pickup_probability']:continue
+        edge=ph.start*bar_len
         after=[n for n in raw if n['beat']>=edge-1e-6]
         before=[n for n in raw if n['beat']<edge-1e-6]
         if not after or not before:continue
@@ -690,16 +894,16 @@ def motif_events(spec,bar_len,chords,sections):
         if first['lane']!=last['lane']:continue
         p=edge-sub
         if p<=last['beat']+last['dur']-1e-6 or p<=last['beat']+1e-6:continue
-        scale=lead_pool(scale_all,first['lane'])
-        step=scale_step(scale,first['note'],-1 if first['note']>=last['note'] else 1)
-        picks.append({'lane':first['lane'],'note':step,'beat':p,'bar':max(0,pstart-1),'strong':False,
-                      'dur':sub*.85,'kind':'pickup','phrase':first['phrase'],'accent':.66})
+        lane_scale=pool_for(first['lane'])
+        step=scale_step(lane_scale,first['note'],-1 if first['note']>=last['note'] else 1)
+        picks.append({'lane':first['lane'],'note':step,'beat':p,'bar':max(0,ph.start-1),'strong':False,
+                      'dur':sub*.85,'kind':'pickup','phrase':first['phrase'],'accent':.66,'skeleton':False})
     raw=sorted(raw+picks,key=lambda n:(n['beat'],n['note']))
     by_lane=defaultdict(list)
     for n in raw:by_lane[n['lane']].append(n)
     for lane,group in by_lane.items():
-        pool=lead_pool(scale_all,lane)
-        polish_melody(group,chords,pool,pool[0],pool[-1])
+        pool=pool_for(lane)
+        polish_melody(group,chords,pool,pool[0],pool[-1],max_leap=leap)
     events=[]
     for n in raw:
         lane=n['lane']
@@ -789,16 +993,19 @@ def add_chord(events,lane,notes,beat,dur,gain=.015,pan=.0,send=.12,role='support
     for i,n in enumerate(notes):events.append(event_note(lane,n,beat+i*strum,dur,gain,pan+(i-center)*.08,send,role,1 if i==0 else .82))
 
 def add_accompaniment(events,spec,bar_len,chords,intensity=None,floor=None):
-    comp=spec['comp']; budget=spec['budget']
+    budget=spec['budget']
     intensity=intensity or [ .85 ]*len(chords)
     rel_int=relative_intensity(intensity)
     voicings={};ceiling=[None]
+    c_bars=contrast_bar_set(spec)
     def led(lane,c,reg,count,spread=False):
         notes=voice_led_voicing(voicings.get(lane),c,lane,reg,count,spread,ceiling[0])
         voicings[lane]=notes
         return notes
     for b,c in enumerate(chords):
         t=b*bar_len;heat=rel_int[min(b,len(rel_int)-1)]
+        comp=texture_for_bar(spec,b,c_bars)
+        if b>0 and texture_for_bar(spec,b-1,c_bars)!=comp:voicings.clear()
         # Inner voices stay under the tune so the melody is never masked.
         ceiling[0]=(floor[b]-2) if floor and floor[b] else None
         # In the quietest section the texture itself thins to a single sustained chord.
@@ -953,11 +1160,8 @@ def add_countermelody(events,spec,bar_len,chords,melody,sections,intensity):
     if not pool:return
     rel=relative_intensity(intensity)
     grid=meter_grid(spec['meter']);pulses=[float(p) for p in grid['pulses']];sub=meter_sub(spec['meter'])
-    contrast,_=section_roles(sections)
-    contrast_bars=set()
-    for si,s in enumerate(sections):
-        if contrast.get(si):contrast_bars.update(range(s['start_bar'],s['start_bar']+s['bars']))
-    first_phrase=phrase_starts(spec['bars'])[0][1]
+    contrast_bars=contrast_bar_set(spec,sections)
+    first_phrase=phrase_plan(spec)[0].bars
     prev=None
     for e in mel:
         if not e.get('cadence'):continue
@@ -1293,7 +1497,7 @@ def compose(spec,category,label):
       'bpm':spec['bpm'],'beats':round(total,3),'bars':spec['bars'],'meter':spec['meter'],'barLength':bar_len,'key':spec['key'],'mode':spec['mode'],
       'voice_budget':spec['budget'],'measured_peak_voices':peak,'form':sections,'chord_plan':chord_data,'events':sorted(events,key=lambda e:(e.get('performance_beat',e['beat']),e.get('midi',0))),
       'instrument_map':imap,'tags':list(spec['tags'])+[spec['subcategory'].lower().replace(' ','-')],
-      'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
+      'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'texture_b':str(spec.get('comp_b') or COMP_ANSWER.get(spec['comp'],spec['comp'])).replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
       'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':'Final cadence and pickup are designed around the first harmony rather than a hard audio cut.'},
       'metrics':{'energy':spec['energy'],'tension':spec['tension']},
       # Echo locked to the tempo (dotted eighth) so repeats reinforce the groove instead of smearing it.

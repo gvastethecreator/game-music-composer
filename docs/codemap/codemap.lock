@@ -1,7 +1,7 @@
 {
-  "current_commit": "2cb9c6a4b4432be1bb05ccef2559d4c5e151a943",
+  "current_commit": "72b8535c02d05696dd154b3fc4c9e99e3a2446b6",
   "working_tree_dirty": true,
-  "generated_at": "2026-08-08T09:52:35Z",
+  "generated_at": "2026-08-12T06:45:34Z",
   "scanned_scope": [
     "."
   ],
@@ -11,6 +11,7 @@
     ".hg",
     ".next",
     ".nuxt",
+    ".scratch",
     ".svn",
     ".turbo",
     ".venv",
@@ -32,7 +33,7 @@
       "id": ".",
       "path": ".",
       "file_count": 3,
-      "fingerprint": "4c29c750ec5992c2fa0200e878adc34c70310fbda40a164d5554a00bc96a3e7c"
+      "fingerprint": "cac68b0a9c805f1c627bc92b54f10fced20a7bd36763dabb3122e6913c3a61e7"
     },
     {
       "id": ".github",
@@ -62,7 +63,7 @@
       "id": "snes-midi-composer-skill",
       "path": "snes-midi-composer-skill",
       "file_count": 86,
-      "fingerprint": "cb029b85f35a23799fd4a2f2b5ced926e3ea206832b4efdc6b2e7a285eec108c"
+      "fingerprint": "1114e45dfafe2e9d23e6ac76dd605b83731bc9f5455bd378ed89093079c45ff8"
     }
   ]
 }

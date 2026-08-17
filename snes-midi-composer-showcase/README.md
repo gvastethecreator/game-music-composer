@@ -34,6 +34,6 @@ The static audit checks markup links, JavaScript element hooks, all 100 lazy cue
 
 ## Skill and bank
 
-- `downloads/neospc-music-composer.zip` contains the full skill.
+- `downloads/game-music-composer.zip` contains the full skill.
 - `FACTORY-BANK-INTEGRATION.md` covers bank layout, license and use.
 - The Factory Bank uses original CC0 material and contains no extracted game samples.

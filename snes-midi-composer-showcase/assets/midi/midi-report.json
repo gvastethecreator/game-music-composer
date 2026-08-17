@@ -1,0 +1,8702 @@
+[
+  {
+    "id": "fernway_crossing",
+    "tracks": 10,
+    "bytes": 3750,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 96,
+        "velocity_mean": 78.95
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 101,
+        "velocity_mean": 85.4
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 71,
+        "velocity_mean": 58.71
+      },
+      {
+        "inst": "ocarina",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 87.5
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 53,
+        "velocity_mean": 47.5
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 54,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 64,
+        "velocity_max": 87,
+        "velocity_mean": 76.19
+      }
+    ]
+  },
+  {
+    "id": "summit_lines",
+    "tracks": 11,
+    "bytes": 4372,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 95,
+        "velocity_mean": 75.75
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 84.14
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 65,
+        "velocity_max": 70,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 57,
+        "velocity_max": 87,
+        "velocity_mean": 66.4
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 44,
+        "velocity_mean": 41.75
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 74,
+        "velocity_max": 111,
+        "velocity_mean": 96.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 62,
+        "velocity_max": 81,
+        "velocity_mean": 72.69
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "emerald_canopy",
+    "tracks": 10,
+    "bytes": 3698,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 98,
+        "velocity_mean": 77.85
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 112,
+        "velocity_mean": 84.59
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 68,
+        "velocity_mean": 65.67
+      },
+      {
+        "inst": "ocarina",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.27
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 70,
+        "velocity_mean": 58.73
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 105,
+        "velocity_mean": 80.74
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 59,
+        "velocity_max": 68,
+        "velocity_mean": 63.5
+      }
+    ]
+  },
+  {
+    "id": "wake_of_amber",
+    "tracks": 12,
+    "bytes": 5032,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 97,
+        "velocity_mean": 78.79
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.1
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 105,
+        "velocity_mean": 87.12
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 77,
+        "velocity_mean": 59.54
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 69,
+        "velocity_max": 74,
+        "velocity_mean": 71.75
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 43,
+        "velocity_max": 54,
+        "velocity_mean": 48.23
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 97,
+        "velocity_mean": 68.53
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 51.6
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.2
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.5
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 64,
+        "velocity_max": 89,
+        "velocity_mean": 79.0
+      }
+    ]
+  },
+  {
+    "id": "isles_above",
+    "tracks": 13,
+    "bytes": 4348,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 93,
+        "velocity_mean": 78.9
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.62
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 65,
+        "velocity_max": 113,
+        "velocity_mean": 83.76
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 76,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 38,
+        "velocity_max": 54,
+        "velocity_mean": 47.5
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 59.31
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 64,
+        "velocity_max": 69,
+        "velocity_mean": 66.5
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 74,
+        "velocity_max": 103,
+        "velocity_mean": 83.73
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 65,
+        "velocity_max": 89,
+        "velocity_mean": 77.38
+      }
+    ]
+  },
+  {
+    "id": "saffron_miles",
+    "tracks": 11,
+    "bytes": 5317,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 98,
+        "velocity_mean": 73.49
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 84.27
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 56,
+        "velocity_max": 75,
+        "velocity_mean": 64.19
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 71,
+        "velocity_mean": 65.83
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 65,
+        "velocity_max": 111,
+        "velocity_mean": 84.66
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 103,
+        "velocity_mean": 81.29
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 69,
+        "velocity_mean": 63.42
+      }
+    ]
+  },
+  {
+    "id": "under_ice_lantern",
+    "tracks": 8,
+    "bytes": 2819,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 97,
+        "velocity_mean": 80.85
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 77,
+        "velocity_max": 93,
+        "velocity_mean": 84.8
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 58,
+        "velocity_max": 79,
+        "velocity_mean": 68.12
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 70,
+        "velocity_mean": 58.35
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 102,
+        "velocity_mean": 81.41
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 54,
+        "velocity_mean": 51.38
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      }
+    ]
+  },
+  {
+    "id": "archive_of_roots",
+    "tracks": 10,
+    "bytes": 3621,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 70,
+        "velocity_max": 97,
+        "velocity_mean": 80.44
+      },
+      {
+        "inst": "choir_a",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 76,
+        "velocity_max": 102,
+        "velocity_mean": 88.44
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 72,
+        "velocity_mean": 65.67
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 109,
+        "velocity_mean": 88.04
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 70,
+        "velocity_mean": 59.79
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 102,
+        "velocity_mean": 81.63
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.75
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 57,
+        "velocity_max": 68,
+        "velocity_mean": 63.17
+      }
+    ]
+  },
+  {
+    "id": "river_below",
+    "tracks": 11,
+    "bytes": 3324,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 96,
+        "velocity_mean": 75.27
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 101,
+        "velocity_mean": 80.08
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 76,
+        "velocity_mean": 58.9
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 74,
+        "velocity_mean": 67.25
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 43,
+        "velocity_max": 53,
+        "velocity_mean": 47.4
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 78,
+        "velocity_max": 98,
+        "velocity_mean": 84.67
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 54,
+        "velocity_mean": 51.67
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 51.5
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 69,
+        "velocity_max": 90,
+        "velocity_mean": 76.33
+      }
+    ]
+  },
+  {
+    "id": "lanterns_homeward",
+    "tracks": 13,
+    "bytes": 5717,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 94,
+        "velocity_mean": 79.62
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.08
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 47,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 114,
+        "velocity_mean": 87.3
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 79,
+        "velocity_mean": 59.51
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 75,
+        "velocity_mean": 61.71
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 42,
+        "velocity_max": 55,
+        "velocity_mean": 48.36
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 59,
+        "velocity_mean": 55.67
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.77
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.08
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 50.77
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 64,
+        "velocity_max": 88,
+        "velocity_mean": 76.6
+      }
+    ]
+  },
+  {
+    "id": "iron_pulse",
+    "tracks": 14,
+    "bytes": 6633,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 86,
+        "velocity_mean": 72.66
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 72,
+        "velocity_max": 105,
+        "velocity_mean": 85.56
+      },
+      {
+        "inst": "dist_guitar_l",
+        "role": "riff",
+        "cc7": 96,
+        "velocity_min": 65,
+        "velocity_max": 97,
+        "velocity_mean": 77.64
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 60,
+        "velocity_mean": 49.44
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 75,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 88,
+        "velocity_max": 100,
+        "velocity_mean": 93.5
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 87,
+        "velocity_max": 120,
+        "velocity_mean": 106.09
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 90.63
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 85.24
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 67,
+        "velocity_max": 82,
+        "velocity_mean": 73.88
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.38
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 51.38
+      }
+    ]
+  },
+  {
+    "id": "crown_breaker",
+    "tracks": 21,
+    "bytes": 10000,
+    "lanes": [
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 68,
+        "velocity_max": 101,
+        "velocity_mean": 83.12
+      },
+      {
+        "inst": "cello",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 46,
+        "velocity_max": 85,
+        "velocity_mean": 62.08
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.75
+      },
+      {
+        "inst": "choir_s",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 47,
+        "velocity_max": 112,
+        "velocity_mean": 81.71
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 50,
+        "velocity_mean": 48.6
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "bass",
+        "cc7": 96,
+        "velocity_min": 47,
+        "velocity_max": 90,
+        "velocity_mean": 74.09
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 56,
+        "velocity_mean": 48.87
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 76,
+        "velocity_mean": 59.29
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 124,
+        "velocity_mean": 107.67
+      },
+      {
+        "inst": "organ",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 70,
+        "velocity_max": 102,
+        "velocity_mean": 88.88
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 74,
+        "velocity_max": 77,
+        "velocity_mean": 75.5
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "viola",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 84,
+        "velocity_mean": 62.2
+      },
+      {
+        "inst": "violin1",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 46,
+        "velocity_max": 83,
+        "velocity_mean": 61.97
+      },
+      {
+        "inst": "violin2",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 47,
+        "velocity_max": 85,
+        "velocity_mean": 62.34
+      }
+    ]
+  },
+  {
+    "id": "redline_pursuit",
+    "tracks": 12,
+    "bytes": 6799,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 86,
+        "velocity_mean": 72.71
+      },
+      {
+        "inst": "dist_guitar_l",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 104,
+        "velocity_mean": 85.5
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 39,
+        "velocity_max": 58,
+        "velocity_mean": 47.08
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 67.33
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 124,
+        "velocity_mean": 103.69
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 53,
+        "velocity_max": 111,
+        "velocity_mean": 71.69
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 70,
+        "velocity_max": 104,
+        "velocity_mean": 90.02
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 69,
+        "velocity_max": 81,
+        "velocity_mean": 75.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 51.5
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "two_blades",
+    "tracks": 10,
+    "bytes": 3847,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 86,
+        "velocity_mean": 73.5
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.91
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 112,
+        "velocity_mean": 85.65
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 43,
+        "velocity_mean": 41.25
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 73,
+        "velocity_max": 111,
+        "velocity_mean": 96.08
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 72,
+        "velocity_mean": 60.04
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 64,
+        "velocity_max": 80,
+        "velocity_mean": 73.38
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 70,
+        "velocity_mean": 55.36
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 54,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "slag_foundry",
+    "tracks": 15,
+    "bytes": 7977,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 87,
+        "velocity_mean": 72.57
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "dist_guitar_l",
+        "role": "riff",
+        "cc7": 96,
+        "velocity_min": 65,
+        "velocity_max": 111,
+        "velocity_mean": 80.45
+      },
+      {
+        "inst": "dist_guitar_r",
+        "role": "riff",
+        "cc7": 96,
+        "velocity_min": 64,
+        "velocity_max": 103,
+        "velocity_mean": 77.57
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 60,
+        "velocity_mean": 48.86
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 70,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 88,
+        "velocity_max": 97,
+        "velocity_mean": 92.5
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 86,
+        "velocity_max": 121,
+        "velocity_mean": 107.25
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 89.87
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 66,
+        "velocity_max": 75,
+        "velocity_mean": 71.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.38
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 56,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "cloud_lancers",
+    "tracks": 14,
+    "bytes": 7713,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 85,
+        "velocity_mean": 77.22
+      },
+      {
+        "inst": "cello",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 85,
+        "velocity_mean": 63.59
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 86.36
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 59,
+        "velocity_mean": 49.16
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 70,
+        "velocity_max": 76,
+        "velocity_mean": 72.67
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 85,
+        "velocity_max": 121,
+        "velocity_mean": 105.44
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 69,
+        "velocity_max": 103,
+        "velocity_mean": 90.05
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 64,
+        "velocity_mean": 57.5
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 70,
+        "velocity_max": 74,
+        "velocity_mean": 72.0
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 67,
+        "velocity_max": 108,
+        "velocity_mean": 86.15
+      },
+      {
+        "inst": "viola",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 79,
+        "velocity_mean": 62.71
+      },
+      {
+        "inst": "violin1",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 86,
+        "velocity_mean": 63.33
+      },
+      {
+        "inst": "violin2",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 46,
+        "velocity_max": 85,
+        "velocity_mean": 63.24
+      }
+    ]
+  },
+  {
+    "id": "last_heart",
+    "tracks": 8,
+    "bytes": 3187,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 87,
+        "velocity_mean": 76.83
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 77,
+        "velocity_max": 105,
+        "velocity_mean": 87.58
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 81,
+        "velocity_mean": 68.88
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 113,
+        "velocity_mean": 83.98
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 72,
+        "velocity_mean": 59.76
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 55,
+        "velocity_mean": 51.5
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 54,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "victory_lap_zero",
+    "tracks": 8,
+    "bytes": 3272,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 97,
+        "velocity_mean": 74.38
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 84.44
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 76,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 68,
+        "velocity_max": 110,
+        "velocity_mean": 84.2
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 71,
+        "velocity_mean": 59.54
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 54,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      }
+    ]
+  },
+  {
+    "id": "walls_of_bronze",
+    "tracks": 21,
+    "bytes": 7497,
+    "lanes": [
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 85.23
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 72,
+        "velocity_mean": 56.96
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.6
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_t",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 42,
+        "velocity_max": 104,
+        "velocity_mean": 75.37
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "contrabass",
+        "role": "bass",
+        "cc7": 96,
+        "velocity_min": 48,
+        "velocity_max": 87,
+        "velocity_mean": 74.55
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 59,
+        "velocity_mean": 49.17
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 68,
+        "velocity_mean": 57.83
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 87,
+        "velocity_max": 98,
+        "velocity_mean": 93.0
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 84,
+        "velocity_max": 124,
+        "velocity_mean": 106.89
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 69,
+        "velocity_max": 104,
+        "velocity_mean": 89.78
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 70,
+        "velocity_max": 80,
+        "velocity_mean": 75.67
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 49,
+        "velocity_max": 49,
+        "velocity_mean": 49.0
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 74,
+        "velocity_mean": 57.68
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 72,
+        "velocity_mean": 56.6
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 44,
+        "velocity_max": 73,
+        "velocity_mean": 57.8
+      }
+    ]
+  },
+  {
+    "id": "vector_arena",
+    "tracks": 15,
+    "bytes": 6745,
+    "lanes": [
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "clav",
+        "role": "pulse",
+        "cc7": 82,
+        "velocity_min": 53,
+        "velocity_max": 82,
+        "velocity_mean": 64.12
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 54,
+        "velocity_mean": 46.08
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 66,
+        "velocity_max": 70,
+        "velocity_mean": 67.33
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 88,
+        "velocity_max": 124,
+        "velocity_mean": 103.59
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 73,
+        "velocity_max": 104,
+        "velocity_mean": 84.88
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 73,
+        "velocity_max": 100,
+        "velocity_mean": 86.13
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.5
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 60,
+        "velocity_max": 87,
+        "velocity_mean": 72.61
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 84.71
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 68,
+        "velocity_max": 78,
+        "velocity_mean": 72.5
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 56,
+        "velocity_mean": 51.38
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.38
+      }
+    ]
+  },
+  {
+    "id": "footsteps_in_plaster",
+    "tracks": 6,
+    "bytes": 2161,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 65,
+        "velocity_max": 95,
+        "velocity_mean": 79.96
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 84,
+        "velocity_max": 112,
+        "velocity_mean": 98.12
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 112,
+        "velocity_mean": 82.69
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 68,
+        "velocity_mean": 59.04
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 56,
+        "velocity_max": 63,
+        "velocity_mean": 59.0
+      }
+    ]
+  },
+  {
+    "id": "salt_circle",
+    "tracks": 11,
+    "bytes": 3028,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 66,
+        "velocity_max": 97,
+        "velocity_mean": 81.12
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 62,
+        "velocity_mean": 54.38
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 107,
+        "velocity_mean": 69.5
+      },
+      {
+        "inst": "choir_s",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.3
+      },
+      {
+        "inst": "choir_t",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 47,
+        "velocity_max": 100,
+        "velocity_mean": 71.55
+      },
+      {
+        "inst": "drone",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 74,
+        "velocity_mean": 67.25
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 63,
+        "velocity_mean": 54.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 71,
+        "velocity_max": 103,
+        "velocity_mean": 82.04
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 69,
+        "velocity_mean": 63.0
+      }
+    ]
+  },
+  {
+    "id": "under_the_skin",
+    "tracks": 8,
+    "bytes": 2631,
+    "lanes": [
+      {
+        "inst": "bassoon",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 84.92
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 63,
+        "velocity_max": 70,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 82,
+        "velocity_max": 112,
+        "velocity_mean": 95.88
+      },
+      {
+        "inst": "prepared_piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 101,
+        "velocity_mean": 85.67
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 59.35
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 61,
+        "velocity_max": 94,
+        "velocity_mean": 77.6
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 55,
+        "velocity_max": 64,
+        "velocity_mean": 59.2
+      }
+    ]
+  },
+  {
+    "id": "stars_without_distance",
+    "tracks": 10,
+    "bytes": 3929,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 78.87
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 62,
+        "velocity_mean": 54.9
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 61,
+        "velocity_mean": 55.35
+      },
+      {
+        "inst": "choir_s",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 51,
+        "velocity_max": 103,
+        "velocity_mean": 71.96
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 60,
+        "velocity_mean": 54.65
+      },
+      {
+        "inst": "drone",
+        "role": "texture",
+        "cc7": 58,
+        "velocity_min": 35,
+        "velocity_max": 76,
+        "velocity_mean": 49.52
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 87,
+        "velocity_max": 105,
+        "velocity_mean": 95.3
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 62,
+        "velocity_mean": 54.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 54,
+        "velocity_max": 62,
+        "velocity_mean": 58.57
+      }
+    ]
+  },
+  {
+    "id": "the_room_remembers",
+    "tracks": 4,
+    "bytes": 2030,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 70,
+        "velocity_max": 96,
+        "velocity_mean": 80.22
+      },
+      {
+        "inst": "piano",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 109,
+        "velocity_mean": 65.76
+      },
+      {
+        "inst": "strings",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 106,
+        "velocity_mean": 89.0
+      }
+    ]
+  },
+  {
+    "id": "lamp_behind_the_door",
+    "tracks": 4,
+    "bytes": 2055,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 94,
+        "velocity_mean": 79.97
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 111,
+        "velocity_mean": 68.94
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 101,
+        "velocity_mean": 85.0
+      }
+    ]
+  },
+  {
+    "id": "dont_look_back",
+    "tracks": 10,
+    "bytes": 6637,
+    "lanes": [
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 58,
+        "velocity_mean": 47.2
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 66,
+        "velocity_max": 72,
+        "velocity_mean": 68.25
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 89,
+        "velocity_max": 124,
+        "velocity_mean": 105.15
+      },
+      {
+        "inst": "prepared_piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 104,
+        "velocity_mean": 85.44
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 53,
+        "velocity_max": 108,
+        "velocity_mean": 69.87
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 90.76
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 59,
+        "velocity_max": 97,
+        "velocity_mean": 73.62
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 70,
+        "velocity_max": 88,
+        "velocity_mean": 77.78
+      }
+    ]
+  },
+  {
+    "id": "music_box_teeth",
+    "tracks": 8,
+    "bytes": 2905,
+    "lanes": [
+      {
+        "inst": "accordion",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 101,
+        "velocity_mean": 84.71
+      },
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 67,
+        "velocity_max": 92,
+        "velocity_mean": 80.62
+      },
+      {
+        "inst": "bell",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 66,
+        "velocity_max": 109,
+        "velocity_mean": 83.33
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 42,
+        "velocity_max": 52,
+        "velocity_mean": 47.31
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 67,
+        "velocity_mean": 65.33
+      },
+      {
+        "inst": "piano",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 78,
+        "velocity_mean": 60.42
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 53,
+        "velocity_max": 67,
+        "velocity_mean": 60.64
+      }
+    ]
+  },
+  {
+    "id": "beneath_the_well",
+    "tracks": 10,
+    "bytes": 3212,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 79.26
+      },
+      {
+        "inst": "bassoon",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 106,
+        "velocity_mean": 84.4
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 61,
+        "velocity_mean": 55.71
+      },
+      {
+        "inst": "choir_b",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 101,
+        "velocity_mean": 86.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 49,
+        "velocity_max": 61,
+        "velocity_mean": 55.71
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 68,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 64,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 100,
+        "velocity_mean": 80.03
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 68,
+        "velocity_mean": 63.0
+      }
+    ]
+  },
+  {
+    "id": "the_shape_in_full",
+    "tracks": 13,
+    "bytes": 4227,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 95,
+        "velocity_mean": 78.62
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 83.75
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 62,
+        "velocity_mean": 54.94
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 61,
+        "velocity_mean": 55.12
+      },
+      {
+        "inst": "choir_s",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 50,
+        "velocity_max": 102,
+        "velocity_mean": 68.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 60,
+        "velocity_mean": 54.24
+      },
+      {
+        "inst": "drone",
+        "role": "texture",
+        "cc7": 58,
+        "velocity_min": 34,
+        "velocity_max": 49,
+        "velocity_mean": 39.73
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "pulse50",
+        "role": "ensemble",
+        "cc7": 57,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 61,
+        "velocity_mean": 53.33
+      },
+      {
+        "inst": "synth_pad",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "vibes",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      }
+    ]
+  },
+  {
+    "id": "morning_bread",
+    "tracks": 8,
+    "bytes": 3891,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 96,
+        "velocity_mean": 78.54
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 97,
+        "velocity_mean": 85.33
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 55,
+        "velocity_max": 76,
+        "velocity_mean": 64.1
+      },
+      {
+        "inst": "ocarina",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 113,
+        "velocity_mean": 85.52
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 54,
+        "velocity_mean": 47.33
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 65,
+        "velocity_max": 90,
+        "velocity_mean": 76.69
+      }
+    ]
+  },
+  {
+    "id": "three_mugs_later",
+    "tracks": 9,
+    "bytes": 4230,
+    "lanes": [
+      {
+        "inst": "accordion",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 85.79
+      },
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 67,
+        "velocity_max": 97,
+        "velocity_mean": 80.75
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 53,
+        "velocity_max": 74,
+        "velocity_mean": 64.17
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 71,
+        "velocity_max": 74,
+        "velocity_mean": 72.33
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.36
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 53,
+        "velocity_mean": 46.57
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 65,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 67,
+        "velocity_max": 89,
+        "velocity_mean": 77.56
+      }
+    ]
+  },
+  {
+    "id": "paper_lantern_row",
+    "tracks": 10,
+    "bytes": 4352,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 96,
+        "velocity_mean": 74.66
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 83.3
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 75,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 56,
+        "velocity_max": 88,
+        "velocity_mean": 66.09
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 52,
+        "velocity_mean": 46.68
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 63,
+        "velocity_max": 80,
+        "velocity_mean": 71.3
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 72,
+        "velocity_max": 102,
+        "velocity_mean": 85.23
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 69,
+        "velocity_max": 91,
+        "velocity_mean": 78.25
+      }
+    ]
+  },
+  {
+    "id": "white_stone_capital",
+    "tracks": 13,
+    "bytes": 4595,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 94,
+        "velocity_mean": 75.62
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 74,
+        "velocity_mean": 60.24
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "flute",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 64,
+        "velocity_max": 69,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 49,
+        "velocity_max": 113,
+        "velocity_mean": 82.08
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 44,
+        "velocity_mean": 41.75
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 79,
+        "velocity_max": 112,
+        "velocity_mean": 96.89
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 65,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 63,
+        "velocity_max": 81,
+        "velocity_mean": 73.0
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 73,
+        "velocity_mean": 60.82
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 74,
+        "velocity_mean": 60.18
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 69,
+        "velocity_mean": 59.71
+      }
+    ]
+  },
+  {
+    "id": "copper_saffron",
+    "tracks": 10,
+    "bytes": 4978,
+    "lanes": [
+      {
+        "inst": "accordion",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 84.73
+      },
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 94,
+        "velocity_mean": 74.85
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 76,
+        "velocity_mean": 64.18
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 65,
+        "velocity_max": 69,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 101,
+        "velocity_mean": 85.09
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 53,
+        "velocity_mean": 46.86
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 63,
+        "velocity_max": 80,
+        "velocity_mean": 71.5
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 68,
+        "velocity_max": 88,
+        "velocity_mean": 76.69
+      }
+    ]
+  },
+  {
+    "id": "the_blue_stove",
+    "tracks": 6,
+    "bytes": 2817,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 70,
+        "velocity_max": 94,
+        "velocity_mean": 80.97
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 40,
+        "velocity_max": 52,
+        "velocity_mean": 48.06
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 100,
+        "velocity_mean": 84.57
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 52,
+        "velocity_max": 109,
+        "velocity_mean": 69.0
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 54,
+        "velocity_max": 65,
+        "velocity_mean": 60.11
+      }
+    ]
+  },
+  {
+    "id": "painted_wheels",
+    "tracks": 8,
+    "bytes": 3077,
+    "lanes": [
+      {
+        "inst": "accordion",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 109,
+        "velocity_mean": 85.47
+      },
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 96,
+        "velocity_mean": 81.19
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 70,
+        "velocity_max": 75,
+        "velocity_mean": 72.0
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 52,
+        "velocity_mean": 46.93
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 60.02
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.83
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 69,
+        "velocity_max": 88,
+        "velocity_mean": 78.12
+      }
+    ]
+  },
+  {
+    "id": "shift_change",
+    "tracks": 6,
+    "bytes": 4389,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 97,
+        "velocity_mean": 74.71
+      },
+      {
+        "inst": "clav",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 56,
+        "velocity_max": 111,
+        "velocity_mean": 67.57
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 71,
+        "velocity_mean": 65.67
+      },
+      {
+        "inst": "pizz",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 72,
+        "velocity_max": 102,
+        "velocity_mean": 86.69
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.33
+      }
+    ]
+  },
+  {
+    "id": "tables_by_the_tide",
+    "tracks": 11,
+    "bytes": 5446,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 93,
+        "velocity_mean": 74.94
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 40,
+        "velocity_max": 47,
+        "velocity_mean": 42.56
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 103,
+        "velocity_mean": 65.38
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 73,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 84,
+        "velocity_max": 110,
+        "velocity_mean": 94.12
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 49,
+        "velocity_mean": 46.75
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 56,
+        "velocity_max": 72,
+        "velocity_mean": 65.5
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 48,
+        "velocity_mean": 44.17
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 55.83
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 90,
+        "velocity_mean": 83.22
+      }
+    ]
+  },
+  {
+    "id": "all_bells_open",
+    "tracks": 13,
+    "bytes": 3750,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 75.4
+      },
+      {
+        "inst": "cello",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 48,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 69,
+        "velocity_max": 98,
+        "velocity_mean": 82.4
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 74,
+        "velocity_mean": 58.71
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 42,
+        "velocity_max": 51,
+        "velocity_mean": 47.09
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 59.56
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 76,
+        "velocity_max": 104,
+        "velocity_mean": 89.21
+      },
+      {
+        "inst": "viola",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.33
+      },
+      {
+        "inst": "violin1",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "violin2",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 50,
+        "velocity_mean": 49.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 66,
+        "velocity_max": 90,
+        "velocity_mean": 77.75
+      }
+    ]
+  },
+  {
+    "id": "empty_chair",
+    "tracks": 5,
+    "bytes": 2941,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 94,
+        "velocity_mean": 74.62
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 50,
+        "velocity_max": 110,
+        "velocity_mean": 69.84
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 54,
+        "velocity_mean": 51.0
+      }
+    ]
+  },
+  {
+    "id": "first_light_after",
+    "tracks": 7,
+    "bytes": 2569,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 94,
+        "velocity_mean": 80.03
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 111,
+        "velocity_mean": 86.55
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 69,
+        "velocity_max": 75,
+        "velocity_mean": 71.67
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 60.52
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 54,
+        "velocity_mean": 50.88
+      }
+    ]
+  },
+  {
+    "id": "postcard_in_june",
+    "tracks": 9,
+    "bytes": 3614,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 75.06
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 40,
+        "velocity_max": 53,
+        "velocity_mean": 48.06
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 69,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "piano",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 109,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 54,
+        "velocity_max": 66,
+        "velocity_mean": 60.21
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin1",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 100,
+        "velocity_mean": 86.67
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      }
+    ]
+  },
+  {
+    "id": "at_the_station",
+    "tracks": 10,
+    "bytes": 4005,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 99,
+        "velocity_mean": 75.06
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 83.56
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 49,
+        "velocity_max": 78,
+        "velocity_mean": 59.01
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "strings",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 51,
+        "velocity_max": 103,
+        "velocity_mean": 75.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      }
+    ]
+  },
+  {
+    "id": "last_boat_west",
+    "tracks": 9,
+    "bytes": 3911,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 66,
+        "velocity_max": 91,
+        "velocity_mean": 79.65
+      },
+      {
+        "inst": "cello",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 69,
+        "velocity_max": 74,
+        "velocity_mean": 71.25
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 105,
+        "velocity_mean": 86.84
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 42,
+        "velocity_max": 52,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 71,
+        "velocity_mean": 58.73
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.2
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 56,
+        "velocity_mean": 51.5
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 66,
+        "velocity_max": 90,
+        "velocity_mean": 77.0
+      }
+    ]
+  },
+  {
+    "id": "hands_in_winter",
+    "tracks": 6,
+    "bytes": 2594,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 70,
+        "velocity_max": 95,
+        "velocity_mean": 80.06
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.14
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 107,
+        "velocity_mean": 68.73
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 54,
+        "velocity_mean": 50.62
+      }
+    ]
+  },
+  {
+    "id": "flags_in_mud",
+    "tracks": 11,
+    "bytes": 3811,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 97,
+        "velocity_mean": 75.1
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "choir_t",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 90,
+        "velocity_mean": 83.86
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 66,
+        "velocity_max": 110,
+        "velocity_mean": 84.75
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 75,
+        "velocity_max": 92,
+        "velocity_mean": 83.75
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 74,
+        "velocity_mean": 59.23
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 67,
+        "velocity_max": 88,
+        "velocity_mean": 77.69
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 67,
+        "velocity_mean": 54.73
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 56,
+        "velocity_mean": 50.88
+      }
+    ]
+  },
+  {
+    "id": "stand_again",
+    "tracks": 12,
+    "bytes": 7613,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 93,
+        "velocity_mean": 75.23
+      },
+      {
+        "inst": "cello",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 46,
+        "velocity_max": 84,
+        "velocity_mean": 62.91
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 84.84
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 44,
+        "velocity_mean": 41.25
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 74,
+        "velocity_max": 112,
+        "velocity_mean": 96.11
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 65,
+        "velocity_mean": 57.67
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 62,
+        "velocity_max": 81,
+        "velocity_mean": 72.88
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 73,
+        "velocity_max": 97,
+        "velocity_mean": 84.09
+      },
+      {
+        "inst": "viola",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 83,
+        "velocity_mean": 63.04
+      },
+      {
+        "inst": "violin1",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 84,
+        "velocity_mean": 62.81
+      },
+      {
+        "inst": "violin2",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 82,
+        "velocity_mean": 62.59
+      }
+    ]
+  },
+  {
+    "id": "name_on_the_glass",
+    "tracks": 8,
+    "bytes": 3135,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 69,
+        "velocity_max": 96,
+        "velocity_mean": 80.38
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 70,
+        "velocity_mean": 65.67
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 74,
+        "velocity_mean": 64.83
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 87.67
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 85.96
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 51.0
+      }
+    ]
+  },
+  {
+    "id": "road_after_credits",
+    "tracks": 12,
+    "bytes": 4977,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 67,
+        "velocity_max": 96,
+        "velocity_mean": 79.95
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.46
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 111,
+        "velocity_mean": 84.18
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 75,
+        "velocity_mean": 61.29
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 42,
+        "velocity_max": 53,
+        "velocity_mean": 48.18
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 59.08
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 56,
+        "velocity_mean": 50.62
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.62
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 67,
+        "velocity_max": 89,
+        "velocity_mean": 77.3
+      }
+    ]
+  },
+  {
+    "id": "ink_under_rain",
+    "tracks": 9,
+    "bytes": 4338,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 95,
+        "velocity_mean": 75.22
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 38,
+        "velocity_max": 49,
+        "velocity_mean": 44.46
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 66.83
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 77,
+        "velocity_mean": 64.83
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 109,
+        "velocity_mean": 84.89
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 61,
+        "velocity_mean": 52.25
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 78,
+        "velocity_mean": 76.5
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 86.78
+      }
+    ]
+  },
+  {
+    "id": "gear_seven",
+    "tracks": 6,
+    "bytes": 2598,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 96,
+        "velocity_mean": 78.1
+      },
+      {
+        "inst": "harpsichord",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 99,
+        "velocity_mean": 83.64
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 70,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 56,
+        "velocity_max": 102,
+        "velocity_mean": 68.71
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      }
+    ]
+  },
+  {
+    "id": "catalogue_of_mirrors",
+    "tracks": 6,
+    "bytes": 1999,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 97,
+        "velocity_mean": 81.57
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 76,
+        "velocity_max": 102,
+        "velocity_mean": 83.4
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 71,
+        "velocity_mean": 65.5
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 68,
+        "velocity_mean": 59.46
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 84.25
+      }
+    ]
+  },
+  {
+    "id": "clean_room_signal",
+    "tracks": 11,
+    "bytes": 5495,
+    "lanes": [
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 38,
+        "velocity_max": 53,
+        "velocity_mean": 46.51
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 75,
+        "velocity_mean": 67.17
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 88,
+        "velocity_max": 118,
+        "velocity_mean": 104.0
+      },
+      {
+        "inst": "open_hat",
+        "role": "open_hat",
+        "cc7": 82,
+        "velocity_min": 52,
+        "velocity_max": 57,
+        "velocity_mean": 55.0
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 54,
+        "velocity_max": 111,
+        "velocity_mean": 71.86
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 68,
+        "velocity_max": 99,
+        "velocity_mean": 85.54
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.5
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 59,
+        "velocity_max": 97,
+        "velocity_mean": 73.25
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 68,
+        "velocity_max": 80,
+        "velocity_mean": 74.2
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 99,
+        "velocity_mean": 84.0
+      }
+    ]
+  },
+  {
+    "id": "four_doors_one_key",
+    "tracks": 6,
+    "bytes": 2987,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 70,
+        "velocity_max": 97,
+        "velocity_mean": 80.95
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 102,
+        "velocity_mean": 85.18
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 65,
+        "velocity_max": 71,
+        "velocity_mean": 67.75
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 56,
+        "velocity_max": 112,
+        "velocity_mean": 72.01
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 64,
+        "velocity_mean": 55.67
+      }
+    ]
+  },
+  {
+    "id": "velvet_entry",
+    "tracks": 5,
+    "bytes": 1858,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 66,
+        "velocity_max": 95,
+        "velocity_mean": 81.23
+      },
+      {
+        "inst": "muted_guitar",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 85.63
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 87.67
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 73,
+        "velocity_mean": 59.33
+      }
+    ]
+  },
+  {
+    "id": "stone_answers",
+    "tracks": 8,
+    "bytes": 3382,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 95,
+        "velocity_mean": 78.54
+      },
+      {
+        "inst": "bassoon",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 109,
+        "velocity_mean": 83.85
+      },
+      {
+        "inst": "bell",
+        "role": "counter",
+        "cc7": 80,
+        "velocity_min": 65,
+        "velocity_max": 68,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 56,
+        "velocity_max": 88,
+        "velocity_mean": 66.43
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 65,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 102,
+        "velocity_mean": 82.37
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 68,
+        "velocity_mean": 63.17
+      }
+    ]
+  },
+  {
+    "id": "rooms_that_fold",
+    "tracks": 6,
+    "bytes": 2565,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 64,
+        "velocity_max": 96,
+        "velocity_mean": 78.96
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 78,
+        "velocity_max": 107,
+        "velocity_mean": 87.0
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 75,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 75,
+        "velocity_mean": 64.68
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 101,
+        "velocity_mean": 81.5
+      }
+    ]
+  },
+  {
+    "id": "redacted_pages",
+    "tracks": 9,
+    "bytes": 4357,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 97,
+        "velocity_mean": 75.14
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 40,
+        "velocity_max": 51,
+        "velocity_mean": 44.75
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 75,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "muted_brass",
+        "role": "lead",
+        "cc7": 95,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 86.0
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 52,
+        "velocity_max": 76,
+        "velocity_mean": 64.9
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 85.45
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 61,
+        "velocity_mean": 52.03
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 86,
+        "velocity_mean": 80.5
+      }
+    ]
+  },
+  {
+    "id": "minute_hand_zero",
+    "tracks": 9,
+    "bytes": 4257,
+    "lanes": [
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 65,
+        "velocity_max": 68,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 80,
+        "velocity_max": 114,
+        "velocity_mean": 95.22
+      },
+      {
+        "inst": "prepared_piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 92,
+        "velocity_mean": 83.62
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 53,
+        "velocity_max": 84,
+        "velocity_mean": 62.75
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 84.07
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 78,
+        "velocity_max": 95,
+        "velocity_mean": 87.38
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 61,
+        "velocity_max": 95,
+        "velocity_mean": 73.56
+      }
+    ]
+  },
+  {
+    "id": "arches_of_mercy",
+    "tracks": 18,
+    "bytes": 6897,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 97,
+        "velocity_mean": 78.4
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.62
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 62,
+        "velocity_mean": 54.22
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 42,
+        "velocity_max": 62,
+        "velocity_mean": 53.79
+      },
+      {
+        "inst": "choir_s",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 41,
+        "velocity_max": 113,
+        "velocity_mean": 76.38
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 61,
+        "velocity_mean": 54.18
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "horn",
+        "role": "ensemble",
+        "cc7": 54,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 72,
+        "velocity_max": 91,
+        "velocity_mean": 83.75
+      },
+      {
+        "inst": "organ",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 47,
+        "velocity_max": 74,
+        "velocity_mean": 61.45
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 91,
+        "velocity_mean": 78.45
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.62
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 41,
+        "velocity_max": 55,
+        "velocity_mean": 50.07
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.77
+      }
+    ]
+  },
+  {
+    "id": "moss_crown_dance",
+    "tracks": 12,
+    "bytes": 4473,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 74.46
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 113,
+        "velocity_mean": 83.92
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 51,
+        "velocity_max": 77,
+        "velocity_mean": 58.43
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 64,
+        "velocity_max": 69,
+        "velocity_mean": 66.33
+      },
+      {
+        "inst": "pizz",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 83.73
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 39,
+        "velocity_max": 49,
+        "velocity_mean": 45.17
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 63,
+        "velocity_max": 71,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 66,
+        "velocity_max": 91,
+        "velocity_mean": 77.0
+      }
+    ]
+  },
+  {
+    "id": "sleeping_dragon_court",
+    "tracks": 18,
+    "bytes": 5009,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 95,
+        "velocity_mean": 78.31
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 72,
+        "velocity_mean": 55.95
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 40,
+        "velocity_max": 48,
+        "velocity_mean": 46.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 42,
+        "velocity_max": 74,
+        "velocity_mean": 56.88
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 46.5
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.5
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 46,
+        "velocity_max": 48,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 48,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 49,
+        "velocity_max": 109,
+        "velocity_mean": 73.85
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 62,
+        "velocity_mean": 56.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 70,
+        "velocity_max": 103,
+        "velocity_mean": 80.81
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 74,
+        "velocity_mean": 57.84
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 71,
+        "velocity_mean": 55.21
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 68,
+        "velocity_mean": 56.37
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 57,
+        "velocity_max": 68,
+        "velocity_mean": 62.89
+      }
+    ]
+  },
+  {
+    "id": "palace_of_low_stars",
+    "tracks": 15,
+    "bytes": 5234,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 92,
+        "velocity_mean": 75.14
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.18
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.4
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_s",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 43,
+        "velocity_max": 91,
+        "velocity_mean": 64.6
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 50,
+        "velocity_max": 75,
+        "velocity_mean": 58.85
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 75,
+        "velocity_mean": 61.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 65,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 102,
+        "velocity_mean": 83.84
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.27
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 50.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 56,
+        "velocity_mean": 50.27
+      }
+    ]
+  },
+  {
+    "id": "thirteen_candles",
+    "tracks": 13,
+    "bytes": 4709,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 94,
+        "velocity_mean": 78.45
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "choir_a",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 100,
+        "velocity_mean": 86.89
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 70,
+        "velocity_mean": 65.67
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 56,
+        "velocity_max": 88,
+        "velocity_mean": 66.06
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 87.73
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 66,
+        "velocity_max": 103,
+        "velocity_mean": 81.21
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 69,
+        "velocity_mean": 63.25
+      }
+    ]
+  },
+  {
+    "id": "court_of_thistledown",
+    "tracks": 11,
+    "bytes": 4046,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 98,
+        "velocity_mean": 80.53
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "piccolo",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 84.57
+      },
+      {
+        "inst": "pizz",
+        "role": "ostinato",
+        "cc7": 88,
+        "velocity_min": 57,
+        "velocity_max": 88,
+        "velocity_mean": 67.54
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 52,
+        "velocity_mean": 47.11
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 53,
+        "velocity_max": 61,
+        "velocity_mean": 56.33
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.88
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.38
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.12
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 66,
+        "velocity_max": 91,
+        "velocity_mean": 76.81
+      }
+    ]
+  },
+  {
+    "id": "pilgrims_of_gold",
+    "tracks": 18,
+    "bytes": 7176,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 96,
+        "velocity_mean": 78.79
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.85
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 43,
+        "velocity_max": 62,
+        "velocity_mean": 53.91
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 42,
+        "velocity_max": 61,
+        "velocity_mean": 53.96
+      },
+      {
+        "inst": "choir_s",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 42,
+        "velocity_max": 62,
+        "velocity_mean": 54.04
+      },
+      {
+        "inst": "choir_t",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 41,
+        "velocity_max": 109,
+        "velocity_mean": 72.71
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.67
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 48,
+        "velocity_max": 105,
+        "velocity_mean": 78.38
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 43,
+        "velocity_max": 47,
+        "velocity_mean": 44.75
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 78,
+        "velocity_max": 111,
+        "velocity_mean": 96.73
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 67,
+        "velocity_max": 79,
+        "velocity_mean": 74.58
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 70,
+        "velocity_mean": 54.29
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.85
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 50.62
+      }
+    ]
+  },
+  {
+    "id": "black_banner_kingdom",
+    "tracks": 22,
+    "bytes": 8117,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 98,
+        "velocity_mean": 78.69
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 85.48
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 74,
+        "velocity_mean": 57.6
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.6
+      },
+      {
+        "inst": "choir_b",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 43,
+        "velocity_max": 74,
+        "velocity_mean": 58.0
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 46.5
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 61,
+        "velocity_mean": 49.54
+      },
+      {
+        "inst": "horn",
+        "role": "support",
+        "cc7": 68,
+        "velocity_min": 49,
+        "velocity_max": 72,
+        "velocity_mean": 59.03
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 88,
+        "velocity_max": 97,
+        "velocity_mean": 92.75
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 87,
+        "velocity_max": 124,
+        "velocity_mean": 106.14
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 69,
+        "velocity_max": 104,
+        "velocity_mean": 88.5
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 75,
+        "velocity_max": 79,
+        "velocity_mean": 77.0
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 72,
+        "velocity_mean": 56.84
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 73,
+        "velocity_mean": 58.8
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 44,
+        "velocity_max": 71,
+        "velocity_mean": 56.92
+      }
+    ]
+  },
+  {
+    "id": "four_element_shrine",
+    "tracks": 17,
+    "bytes": 5706,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 94,
+        "velocity_mean": 74.54
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.45
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.4
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 113,
+        "velocity_mean": 86.32
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 69,
+        "velocity_mean": 57.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 71,
+        "velocity_mean": 59.62
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 103,
+        "velocity_mean": 81.39
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 92,
+        "velocity_mean": 83.18
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.18
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.45
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.36
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 58,
+        "velocity_max": 68,
+        "velocity_mean": 63.33
+      }
+    ]
+  },
+  {
+    "id": "the_oracle_opens",
+    "tracks": 19,
+    "bytes": 4680,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 98,
+        "velocity_mean": 77.48
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 79,
+        "velocity_max": 110,
+        "velocity_mean": 89.5
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 55,
+        "velocity_mean": 50.44
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 61,
+        "velocity_mean": 54.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 61,
+        "velocity_mean": 53.4
+      },
+      {
+        "inst": "choir_s",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 46,
+        "velocity_max": 99,
+        "velocity_mean": 65.26
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 47,
+        "velocity_max": 63,
+        "velocity_mean": 53.6
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 46,
+        "velocity_max": 50,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 74,
+        "velocity_mean": 59.29
+      },
+      {
+        "inst": "organ",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 60,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 88,
+        "velocity_mean": 76.0
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.33
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 40,
+        "velocity_max": 56,
+        "velocity_mean": 48.08
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.33
+      }
+    ]
+  },
+  {
+    "id": "night_rail_88",
+    "tracks": 12,
+    "bytes": 6370,
+    "lanes": [
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 54,
+        "velocity_mean": 46.53
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 73,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 87,
+        "velocity_max": 124,
+        "velocity_mean": 105.45
+      },
+      {
+        "inst": "open_hat",
+        "role": "open_hat",
+        "cc7": 82,
+        "velocity_min": 48,
+        "velocity_max": 57,
+        "velocity_mean": 53.2
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 53,
+        "velocity_max": 82,
+        "velocity_mean": 62.27
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 85.62
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 71,
+        "velocity_max": 99,
+        "velocity_mean": 85.87
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 59,
+        "velocity_max": 98,
+        "velocity_mean": 73.72
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 67,
+        "velocity_max": 111,
+        "velocity_mean": 85.38
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 77,
+        "velocity_mean": 71.4
+      }
+    ]
+  },
+  {
+    "id": "concrete_frequency",
+    "tracks": 11,
+    "bytes": 5771,
+    "lanes": [
+      {
+        "inst": "clav",
+        "role": "pulse",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 101,
+        "velocity_mean": 66.71
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 39,
+        "velocity_max": 52,
+        "velocity_mean": 46.62
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 67.17
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 87,
+        "velocity_max": 123,
+        "velocity_mean": 104.2
+      },
+      {
+        "inst": "open_hat",
+        "role": "open_hat",
+        "cc7": 82,
+        "velocity_min": 48,
+        "velocity_max": 57,
+        "velocity_mean": 53.5
+      },
+      {
+        "inst": "pulse25",
+        "role": "lead",
+        "cc7": 95,
+        "velocity_min": 66,
+        "velocity_max": 110,
+        "velocity_mean": 86.74
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 73,
+        "velocity_max": 100,
+        "velocity_mean": 87.03
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 63,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 60,
+        "velocity_max": 98,
+        "velocity_mean": 73.77
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 66,
+        "velocity_max": 77,
+        "velocity_mean": 71.88
+      }
+    ]
+  },
+  {
+    "id": "escape_velocity_red",
+    "tracks": 10,
+    "bytes": 6054,
+    "lanes": [
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 39,
+        "velocity_max": 57,
+        "velocity_mean": 46.85
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 67.17
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 90,
+        "velocity_max": 117,
+        "velocity_mean": 102.85
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 74,
+        "velocity_max": 104,
+        "velocity_mean": 85.19
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 70,
+        "velocity_max": 105,
+        "velocity_mean": 88.69
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 49,
+        "velocity_max": 73,
+        "velocity_mean": 60.08
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 59,
+        "velocity_max": 96,
+        "velocity_mean": 74.05
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 68,
+        "velocity_max": 109,
+        "velocity_mean": 84.93
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 72,
+        "velocity_max": 77,
+        "velocity_mean": 74.33
+      }
+    ]
+  },
+  {
+    "id": "quiet_orbit",
+    "tracks": 12,
+    "bytes": 4290,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 66,
+        "velocity_max": 98,
+        "velocity_mean": 80.32
+      },
+      {
+        "inst": "choir_a",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 49,
+        "velocity_max": 62,
+        "velocity_mean": 56.24
+      },
+      {
+        "inst": "choir_b",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 51,
+        "velocity_max": 62,
+        "velocity_mean": 56.24
+      },
+      {
+        "inst": "choir_s",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 50,
+        "velocity_max": 103,
+        "velocity_mean": 66.38
+      },
+      {
+        "inst": "choir_t",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 50,
+        "velocity_max": 62,
+        "velocity_mean": 56.18
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 76,
+        "velocity_mean": 66.5
+      },
+      {
+        "inst": "pulse25",
+        "role": "ensemble",
+        "cc7": 58,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "pulse50",
+        "role": "ensemble",
+        "cc7": 57,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 54.78
+      },
+      {
+        "inst": "synth_pad",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 110,
+        "velocity_mean": 87.67
+      }
+    ]
+  },
+  {
+    "id": "rain_neon_block",
+    "tracks": 10,
+    "bytes": 4301,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 97,
+        "velocity_mean": 75.92
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 45.75
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 80,
+        "velocity_max": 120,
+        "velocity_mean": 95.09
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 86.91
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 77,
+        "velocity_max": 97,
+        "velocity_mean": 86.94
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 55.83
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 87.09
+      },
+      {
+        "inst": "vibes",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 55,
+        "velocity_max": 76,
+        "velocity_mean": 65.7
+      }
+    ]
+  },
+  {
+    "id": "hangar_nine",
+    "tracks": 13,
+    "bytes": 6998,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 96,
+        "velocity_mean": 75.39
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 72,
+        "velocity_max": 102,
+        "velocity_mean": 86.46
+      },
+      {
+        "inst": "clav",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 111,
+        "velocity_mean": 85.48
+      },
+      {
+        "inst": "dist_guitar_l",
+        "role": "riff",
+        "cc7": 96,
+        "velocity_min": 66,
+        "velocity_max": 99,
+        "velocity_mean": 78.02
+      },
+      {
+        "inst": "dist_guitar_r",
+        "role": "riff",
+        "cc7": 96,
+        "velocity_min": 65,
+        "velocity_max": 88,
+        "velocity_mean": 75.9
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 60,
+        "velocity_mean": 49.28
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 72,
+        "velocity_mean": 66.17
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 88,
+        "velocity_max": 98,
+        "velocity_mean": 92.75
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 124,
+        "velocity_mean": 108.12
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 76,
+        "velocity_max": 103,
+        "velocity_mean": 90.66
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 65,
+        "velocity_max": 77,
+        "velocity_mean": 71.38
+      }
+    ]
+  },
+  {
+    "id": "language_from_outside",
+    "tracks": 8,
+    "bytes": 2571,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 67,
+        "velocity_max": 97,
+        "velocity_mean": 80.64
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 65,
+        "velocity_max": 70,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 83,
+        "velocity_max": 109,
+        "velocity_mean": 97.0
+      },
+      {
+        "inst": "prepared_piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 110,
+        "velocity_mean": 85.06
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 53,
+        "velocity_max": 102,
+        "velocity_mean": 65.53
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 55.83
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 55,
+        "velocity_max": 65,
+        "velocity_mean": 58.6
+      }
+    ]
+  },
+  {
+    "id": "orbital_knives",
+    "tracks": 13,
+    "bytes": 4992,
+    "lanes": [
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 75,
+        "velocity_max": 109,
+        "velocity_mean": 90.06
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 60,
+        "velocity_mean": 49.03
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 62,
+        "velocity_max": 75,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 90,
+        "velocity_max": 121,
+        "velocity_mean": 106.04
+      },
+      {
+        "inst": "pulse25",
+        "role": "ensemble",
+        "cc7": 58,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "pulse50",
+        "role": "ensemble",
+        "cc7": 57,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 77,
+        "velocity_max": 102,
+        "velocity_mean": 90.75
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 68,
+        "velocity_mean": 60.22
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 61,
+        "velocity_max": 95,
+        "velocity_mean": 73.94
+      },
+      {
+        "inst": "synth_lead",
+        "role": "lead",
+        "cc7": 92,
+        "velocity_min": 69,
+        "velocity_max": 100,
+        "velocity_mean": 82.85
+      },
+      {
+        "inst": "synth_pad",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 68,
+        "velocity_max": 82,
+        "velocity_mean": 74.67
+      }
+    ]
+  },
+  {
+    "id": "soft_reset_dream",
+    "tracks": 7,
+    "bytes": 2522,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 96,
+        "velocity_mean": 81.59
+      },
+      {
+        "inst": "harp",
+        "role": "arp",
+        "cc7": 80,
+        "velocity_min": 49,
+        "velocity_max": 79,
+        "velocity_mean": 58.85
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 70,
+        "velocity_max": 75,
+        "velocity_mean": 71.67
+      },
+      {
+        "inst": "pulse50",
+        "role": "lead",
+        "cc7": 94,
+        "velocity_min": 68,
+        "velocity_max": 110,
+        "velocity_mean": 87.5
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 55.83
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 76,
+        "velocity_max": 101,
+        "velocity_mean": 90.2
+      }
+    ]
+  },
+  {
+    "id": "core_temperature",
+    "tracks": 11,
+    "bytes": 5630,
+    "lanes": [
+      {
+        "inst": "dist_guitar_l",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 111,
+        "velocity_mean": 84.72
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 66,
+        "velocity_max": 68,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 80,
+        "velocity_max": 124,
+        "velocity_mean": 92.95
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 47,
+        "velocity_max": 104,
+        "velocity_mean": 65.19
+      },
+      {
+        "inst": "pulse50",
+        "role": "ensemble",
+        "cc7": 57,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 102,
+        "velocity_mean": 90.42
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.5
+      },
+      {
+        "inst": "sub",
+        "role": "bass",
+        "cc7": 98,
+        "velocity_min": 60,
+        "velocity_max": 92,
+        "velocity_mean": 73.72
+      },
+      {
+        "inst": "synth_pad",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 67,
+        "velocity_max": 76,
+        "velocity_mean": 71.33
+      }
+    ]
+  },
+  {
+    "id": "cigarette_geometry",
+    "tracks": 10,
+    "bytes": 4951,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 91,
+        "velocity_mean": 74.52
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 38,
+        "velocity_max": 49,
+        "velocity_mean": 44.46
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "muted_brass",
+        "role": "lead",
+        "cc7": 95,
+        "velocity_min": 66,
+        "velocity_max": 109,
+        "velocity_mean": 85.39
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 77,
+        "velocity_mean": 64.55
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 59,
+        "velocity_mean": 52.38
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 79,
+        "velocity_mean": 77.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 86.56
+      }
+    ]
+  },
+  {
+    "id": "swing_room_three",
+    "tracks": 10,
+    "bytes": 5014,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 63,
+        "velocity_max": 96,
+        "velocity_mean": 74.66
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 39,
+        "velocity_max": 49,
+        "velocity_mean": 44.68
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 66.83
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 53,
+        "velocity_max": 78,
+        "velocity_mean": 64.75
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 72,
+        "velocity_max": 97,
+        "velocity_mean": 83.82
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 59,
+        "velocity_mean": 52.46
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 70,
+        "velocity_max": 84,
+        "velocity_mean": 78.33
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 60,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 68,
+        "velocity_max": 109,
+        "velocity_mean": 83.81
+      }
+    ]
+  },
+  {
+    "id": "stairs_two_at_once",
+    "tracks": 10,
+    "bytes": 5619,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 96,
+        "velocity_mean": 74.98
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 39,
+        "velocity_max": 50,
+        "velocity_mean": 44.79
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 60,
+        "velocity_max": 75,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 77,
+        "velocity_mean": 64.66
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 110,
+        "velocity_mean": 84.22
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 61,
+        "velocity_mean": 52.37
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 69,
+        "velocity_max": 83,
+        "velocity_mean": 75.9
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 60,
+        "velocity_mean": 56.33
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 73,
+        "velocity_max": 103,
+        "velocity_mean": 84.79
+      }
+    ]
+  },
+  {
+    "id": "assembly_line_soul",
+    "tracks": 10,
+    "bytes": 6604,
+    "lanes": [
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 73,
+        "velocity_max": 101,
+        "velocity_mean": 84.75
+      },
+      {
+        "inst": "clav",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 53,
+        "velocity_max": 112,
+        "velocity_mean": 67.8
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 39,
+        "velocity_max": 58,
+        "velocity_mean": 48.04
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 67.17
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 83,
+        "velocity_max": 124,
+        "velocity_mean": 99.94
+      },
+      {
+        "inst": "slap_bass",
+        "role": "bass",
+        "cc7": 96,
+        "velocity_min": 62,
+        "velocity_max": 96,
+        "velocity_mean": 74.31
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 68,
+        "velocity_max": 102,
+        "velocity_mean": 86.96
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 65,
+        "velocity_mean": 57.5
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 69,
+        "velocity_max": 77,
+        "velocity_mean": 73.5
+      }
+    ]
+  },
+  {
+    "id": "amber_booth",
+    "tracks": 9,
+    "bytes": 3758,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 95,
+        "velocity_mean": 78.19
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 39,
+        "velocity_max": 48,
+        "velocity_mean": 43.44
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 69,
+        "velocity_max": 75,
+        "velocity_mean": 71.33
+      },
+      {
+        "inst": "organ",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 87.67
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 77,
+        "velocity_mean": 66.83
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 69,
+        "velocity_max": 110,
+        "velocity_mean": 84.52
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 60,
+        "velocity_mean": 51.27
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 80,
+        "velocity_max": 83,
+        "velocity_mean": 81.5
+      }
+    ]
+  },
+  {
+    "id": "roof_tiles_after_rain",
+    "tracks": 11,
+    "bytes": 4477,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 98,
+        "velocity_mean": 74.34
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 39,
+        "velocity_max": 47,
+        "velocity_mean": 42.56
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 110,
+        "velocity_mean": 85.29
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 74,
+        "velocity_mean": 67.17
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 85,
+        "velocity_max": 110,
+        "velocity_mean": 94.69
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 77,
+        "velocity_mean": 64.89
+      },
+      {
+        "inst": "ride",
+        "role": "ride",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 49,
+        "velocity_mean": 46.5
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 57,
+        "velocity_max": 71,
+        "velocity_mean": 65.5
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 48,
+        "velocity_mean": 44.25
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 102,
+        "velocity_mean": 85.22
+      }
+    ]
+  },
+  {
+    "id": "green_harbor",
+    "tracks": 10,
+    "bytes": 4936,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 96,
+        "velocity_mean": 74.83
+      },
+      {
+        "inst": "flute",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 60,
+        "velocity_max": 74,
+        "velocity_mean": 67.0
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 54,
+        "velocity_max": 73,
+        "velocity_mean": 63.44
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 45.75
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 114,
+        "velocity_mean": 102.19
+      },
+      {
+        "inst": "organ",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 83.2
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 52,
+        "velocity_max": 66,
+        "velocity_mean": 60.62
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 82,
+        "velocity_max": 98,
+        "velocity_mean": 89.62
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 64,
+        "velocity_mean": 57.33
+      }
+    ]
+  },
+  {
+    "id": "echo_alley",
+    "tracks": 10,
+    "bytes": 3696,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 94,
+        "velocity_mean": 74.53
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 45.58
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 59,
+        "velocity_max": 73,
+        "velocity_mean": 66.67
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 113,
+        "velocity_mean": 102.25
+      },
+      {
+        "inst": "organ",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 68,
+        "velocity_max": 98,
+        "velocity_mean": 83.12
+      },
+      {
+        "inst": "reed",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 100,
+        "velocity_mean": 84.6
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 53,
+        "velocity_max": 66,
+        "velocity_mean": 60.19
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 81,
+        "velocity_max": 99,
+        "velocity_mean": 89.56
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 47,
+        "velocity_max": 70,
+        "velocity_mean": 59.1
+      }
+    ]
+  },
+  {
+    "id": "saturday_horns",
+    "tracks": 10,
+    "bytes": 5882,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 95,
+        "velocity_mean": 74.73
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 55,
+        "velocity_max": 71,
+        "velocity_mean": 63.65
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 39,
+        "velocity_max": 55,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 91,
+        "velocity_max": 124,
+        "velocity_mean": 104.88
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 69,
+        "velocity_max": 105,
+        "velocity_mean": 89.32
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 61,
+        "velocity_mean": 56.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 70,
+        "velocity_max": 75,
+        "velocity_mean": 72.67
+      },
+      {
+        "inst": "trombone",
+        "role": "counter",
+        "cc7": 81,
+        "velocity_min": 61,
+        "velocity_max": 76,
+        "velocity_mean": 67.5
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 67,
+        "velocity_max": 109,
+        "velocity_mean": 85.04
+      }
+    ]
+  },
+  {
+    "id": "underpass_tango",
+    "tracks": 8,
+    "bytes": 4810,
+    "lanes": [
+      {
+        "inst": "accordion",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 84.8
+      },
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 97,
+        "velocity_mean": 74.8
+      },
+      {
+        "inst": "guitar",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 56,
+        "velocity_max": 77,
+        "velocity_mean": 65.29
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 85,
+        "velocity_max": 113,
+        "velocity_mean": 98.72
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 56,
+        "velocity_max": 72,
+        "velocity_mean": 64.0
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "violin1",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 61,
+        "velocity_max": 76,
+        "velocity_mean": 67.17
+      }
+    ]
+  },
+  {
+    "id": "invention_in_copper",
+    "tracks": 7,
+    "bytes": 2526,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 60,
+        "velocity_max": 97,
+        "velocity_mean": 78.74
+      },
+      {
+        "inst": "harpsichord",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 60,
+        "velocity_max": 110,
+        "velocity_mean": 79.12
+      },
+      {
+        "inst": "pizz",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 73,
+        "velocity_max": 102,
+        "velocity_mean": 85.27
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 56,
+        "velocity_mean": 51.25
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.38
+      }
+    ]
+  },
+  {
+    "id": "fugue_of_small_machines",
+    "tracks": 16,
+    "bytes": 6310,
+    "lanes": [
+      {
+        "inst": "cello",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 45,
+        "velocity_max": 79,
+        "velocity_mean": 61.83
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.17
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.83
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 49,
+        "velocity_mean": 46.83
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "contrabass",
+        "role": "bass",
+        "cc7": 96,
+        "velocity_min": 49,
+        "velocity_max": 95,
+        "velocity_mean": 76.08
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "harpsichord",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 110,
+        "velocity_mean": 84.02
+      },
+      {
+        "inst": "horn",
+        "role": "ensemble",
+        "cc7": 54,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.33
+      },
+      {
+        "inst": "strings",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 51,
+        "velocity_max": 105,
+        "velocity_mean": 73.41
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "viola",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 45,
+        "velocity_max": 72,
+        "velocity_mean": 58.86
+      },
+      {
+        "inst": "violin1",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 45,
+        "velocity_max": 76,
+        "velocity_mean": 58.55
+      },
+      {
+        "inst": "violin2",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 46,
+        "velocity_max": 74,
+        "velocity_mean": 60.14
+      }
+    ]
+  },
+  {
+    "id": "winter_gallery",
+    "tracks": 11,
+    "bytes": 4978,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 62,
+        "velocity_max": 97,
+        "velocity_mean": 75.5
+      },
+      {
+        "inst": "brush",
+        "role": "brush",
+        "cc7": 78,
+        "velocity_min": 40,
+        "velocity_max": 54,
+        "velocity_mean": 48.9
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 72,
+        "velocity_mean": 59.37
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 74,
+        "velocity_max": 104,
+        "velocity_mean": 86.44
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 63,
+        "velocity_max": 69,
+        "velocity_mean": 65.25
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 54,
+        "velocity_max": 66,
+        "velocity_mean": 59.97
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 63,
+        "velocity_mean": 55.56
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 71,
+        "velocity_mean": 57.89
+      },
+      {
+        "inst": "violin1",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 46,
+        "velocity_max": 113,
+        "velocity_mean": 73.58
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 44,
+        "velocity_max": 72,
+        "velocity_mean": 58.78
+      }
+    ]
+  },
+  {
+    "id": "marble_steps",
+    "tracks": 19,
+    "bytes": 6351,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 96,
+        "velocity_mean": 78.69
+      },
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 74,
+        "velocity_mean": 57.72
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 50,
+        "velocity_mean": 49.33
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.67
+      },
+      {
+        "inst": "horn",
+        "role": "lead",
+        "cc7": 91,
+        "velocity_min": 48,
+        "velocity_max": 102,
+        "velocity_mean": 78.07
+      },
+      {
+        "inst": "shaker",
+        "role": "shaker",
+        "cc7": 82,
+        "velocity_min": 40,
+        "velocity_max": 43,
+        "velocity_mean": 41.5
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 74,
+        "velocity_max": 112,
+        "velocity_mean": 96.08
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 60,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 62,
+        "velocity_max": 81,
+        "velocity_mean": 72.94
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 48,
+        "velocity_max": 109,
+        "velocity_mean": 83.17
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 44,
+        "velocity_max": 73,
+        "velocity_mean": 59.77
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 74,
+        "velocity_mean": 58.76
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 72,
+        "velocity_mean": 56.32
+      }
+    ]
+  },
+  {
+    "id": "phase_garden",
+    "tracks": 11,
+    "bytes": 4542,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 99,
+        "velocity_mean": 77.77
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 69,
+        "velocity_mean": 65.12
+      },
+      {
+        "inst": "piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 67,
+        "velocity_max": 112,
+        "velocity_mean": 87.06
+      },
+      {
+        "inst": "pulse25",
+        "role": "pulse",
+        "cc7": 76,
+        "velocity_min": 52,
+        "velocity_max": 82,
+        "velocity_mean": 62.2
+      },
+      {
+        "inst": "rim",
+        "role": "rim",
+        "cc7": 92,
+        "velocity_min": 52,
+        "velocity_max": 62,
+        "velocity_mean": 56.8
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 63,
+        "velocity_mean": 56.0
+      },
+      {
+        "inst": "vibes",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 75,
+        "velocity_max": 106,
+        "velocity_mean": 88.33
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 51.3
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 51.3
+      },
+      {
+        "inst": "wood",
+        "role": "wood",
+        "cc7": 90,
+        "velocity_min": 55,
+        "velocity_max": 76,
+        "velocity_mean": 65.45
+      }
+    ]
+  },
+  {
+    "id": "quartet_at_dusk",
+    "tracks": 13,
+    "bytes": 5514,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 61,
+        "velocity_max": 96,
+        "velocity_mean": 75.39
+      },
+      {
+        "inst": "cello",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 45,
+        "velocity_max": 86,
+        "velocity_mean": 65.21
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 46.83
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.83
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 49,
+        "velocity_max": 49,
+        "velocity_mean": 49.0
+      },
+      {
+        "inst": "horn",
+        "role": "ensemble",
+        "cc7": 54,
+        "velocity_min": 47,
+        "velocity_max": 48,
+        "velocity_mean": 47.33
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 50,
+        "velocity_max": 63,
+        "velocity_mean": 55.56
+      },
+      {
+        "inst": "viola",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 44,
+        "velocity_max": 86,
+        "velocity_mean": 65.88
+      },
+      {
+        "inst": "violin1",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 45,
+        "velocity_max": 109,
+        "velocity_mean": 75.88
+      },
+      {
+        "inst": "violin2",
+        "role": "counter",
+        "cc7": 88,
+        "velocity_min": 46,
+        "velocity_max": 84,
+        "velocity_mean": 65.12
+      }
+    ]
+  },
+  {
+    "id": "water_without_edges",
+    "tracks": 14,
+    "bytes": 4718,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 68,
+        "velocity_max": 95,
+        "velocity_mean": 79.38
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 54,
+        "velocity_mean": 50.36
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 43,
+        "velocity_max": 50,
+        "velocity_mean": 46.8
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 42,
+        "velocity_max": 49,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 41,
+        "velocity_max": 48,
+        "velocity_mean": 46.4
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 46,
+        "velocity_max": 48,
+        "velocity_mean": 47.0
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 76,
+        "velocity_max": 91,
+        "velocity_mean": 80.8
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 69,
+        "velocity_mean": 57.17
+      },
+      {
+        "inst": "piano",
+        "role": "comp",
+        "cc7": 82,
+        "velocity_min": 51,
+        "velocity_max": 109,
+        "velocity_mean": 67.61
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.0
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.18
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 46,
+        "velocity_max": 55,
+        "velocity_mean": 50.0
+      }
+    ]
+  },
+  {
+    "id": "allegro_for_a_tyrant",
+    "tracks": 23,
+    "bytes": 10697,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 59,
+        "velocity_max": 96,
+        "velocity_mean": 78.82
+      },
+      {
+        "inst": "brass",
+        "role": "lead",
+        "cc7": 93,
+        "velocity_min": 74,
+        "velocity_max": 102,
+        "velocity_mean": 85.36
+      },
+      {
+        "inst": "cello",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 87,
+        "velocity_mean": 62.17
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 46,
+        "velocity_max": 50,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.4
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.2
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.4
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "contrabass",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "flute",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 58,
+        "velocity_mean": 48.85
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 48,
+        "velocity_max": 70,
+        "velocity_mean": 57.67
+      },
+      {
+        "inst": "impact",
+        "role": "impact",
+        "cc7": 100,
+        "velocity_min": 88,
+        "velocity_max": 99,
+        "velocity_mean": 93.75
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 86,
+        "velocity_max": 121,
+        "velocity_mean": 107.03
+      },
+      {
+        "inst": "organ",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 70,
+        "velocity_max": 104,
+        "velocity_mean": 89.26
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 52,
+        "velocity_max": 65,
+        "velocity_mean": 57.33
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 71,
+        "velocity_max": 81,
+        "velocity_mean": 76.33
+      },
+      {
+        "inst": "trumpet",
+        "role": "ensemble",
+        "cc7": 53,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.33
+      },
+      {
+        "inst": "viola",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 44,
+        "velocity_max": 86,
+        "velocity_mean": 62.1
+      },
+      {
+        "inst": "violin1",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 45,
+        "velocity_max": 109,
+        "velocity_mean": 68.76
+      },
+      {
+        "inst": "violin2",
+        "role": "motor",
+        "cc7": 86,
+        "velocity_min": 46,
+        "velocity_max": 84,
+        "velocity_mean": 62.08
+      }
+    ]
+  },
+  {
+    "id": "angles_in_the_dark",
+    "tracks": 9,
+    "bytes": 3015,
+    "lanes": [
+      {
+        "inst": "bass",
+        "role": "bass",
+        "cc7": 99,
+        "velocity_min": 67,
+        "velocity_max": 92,
+        "velocity_mean": 79.32
+      },
+      {
+        "inst": "cello",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 54,
+        "velocity_mean": 50.75
+      },
+      {
+        "inst": "horn",
+        "role": "counter",
+        "cc7": 78,
+        "velocity_min": 61,
+        "velocity_max": 70,
+        "velocity_mean": 66.0
+      },
+      {
+        "inst": "prepared_piano",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 66,
+        "velocity_max": 108,
+        "velocity_mean": 86.29
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 101,
+        "velocity_mean": 63.49
+      },
+      {
+        "inst": "viola",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 44,
+        "velocity_max": 55,
+        "velocity_mean": 50.75
+      },
+      {
+        "inst": "violin1",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      },
+      {
+        "inst": "violin2",
+        "role": "pad",
+        "cc7": 68,
+        "velocity_min": 45,
+        "velocity_max": 55,
+        "velocity_mean": 51.0
+      }
+    ]
+  },
+  {
+    "id": "overture_for_new_worlds",
+    "tracks": 20,
+    "bytes": 8235,
+    "lanes": [
+      {
+        "inst": "cello",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 73,
+        "velocity_mean": 58.12
+      },
+      {
+        "inst": "choir_a",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 48,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "choir_b",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.0
+      },
+      {
+        "inst": "choir_s",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 50,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "choir_t",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 47,
+        "velocity_max": 49,
+        "velocity_mean": 48.25
+      },
+      {
+        "inst": "clarinet",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "contrabass",
+        "role": "bass",
+        "cc7": 96,
+        "velocity_min": 47,
+        "velocity_max": 91,
+        "velocity_mean": 74.1
+      },
+      {
+        "inst": "flute",
+        "role": "lead",
+        "cc7": 101,
+        "velocity_min": 47,
+        "velocity_max": 101,
+        "velocity_mean": 78.76
+      },
+      {
+        "inst": "hat",
+        "role": "hat",
+        "cc7": 88,
+        "velocity_min": 40,
+        "velocity_max": 59,
+        "velocity_mean": 48.88
+      },
+      {
+        "inst": "horn",
+        "role": "support",
+        "cc7": 68,
+        "velocity_min": 48,
+        "velocity_max": 74,
+        "velocity_mean": 60.27
+      },
+      {
+        "inst": "kick",
+        "role": "kick",
+        "cc7": 118,
+        "velocity_min": 84,
+        "velocity_max": 124,
+        "velocity_mean": 106.89
+      },
+      {
+        "inst": "organ",
+        "role": "ensemble",
+        "cc7": 64,
+        "velocity_min": 48,
+        "velocity_max": 49,
+        "velocity_mean": 48.67
+      },
+      {
+        "inst": "snare",
+        "role": "snare",
+        "cc7": 116,
+        "velocity_min": 75,
+        "velocity_max": 103,
+        "velocity_mean": 91.26
+      },
+      {
+        "inst": "strings",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 51,
+        "velocity_max": 61,
+        "velocity_mean": 56.17
+      },
+      {
+        "inst": "tom",
+        "role": "tom",
+        "cc7": 107,
+        "velocity_min": 64,
+        "velocity_max": 75,
+        "velocity_mean": 70.0
+      },
+      {
+        "inst": "trumpet",
+        "role": "lead",
+        "cc7": 90,
+        "velocity_min": 48,
+        "velocity_max": 111,
+        "velocity_mean": 83.34
+      },
+      {
+        "inst": "viola",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 44,
+        "velocity_max": 72,
+        "velocity_mean": 57.29
+      },
+      {
+        "inst": "violin1",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 45,
+        "velocity_max": 71,
+        "velocity_mean": 57.96
+      },
+      {
+        "inst": "violin2",
+        "role": "support",
+        "cc7": 78,
+        "velocity_min": 46,
+        "velocity_max": 73,
+        "velocity_mean": 58.08
+      }
+    ]
+  }
+]

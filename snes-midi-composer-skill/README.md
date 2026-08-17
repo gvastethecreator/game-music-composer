@@ -1,4 +1,4 @@
-# Neo-SPC Music Composer
+# Game Music Composer
 
 A reusable skill for writing expressive, loop-ready SNES-style game music. It turns a concrete scene brief into a composition plan, full recipe, score data, Type-1 MIDI and optional rendered previews.
 
@@ -43,4 +43,4 @@ python scripts/package_skill.py --smoke
 python scripts/release_gate.py
 ```
 
-`render` is optional. Install its local dependencies with `python -m pip install -r requirements-render.txt` and make `ffmpeg` available on `PATH` before requesting WAV, OGG or MP3 output.
+`render` is optional. Install the pinned local dependencies with `python -m pip install -r requirements-render.txt` and make `ffmpeg` available on `PATH` before requesting WAV, OGG or MP3 output.
