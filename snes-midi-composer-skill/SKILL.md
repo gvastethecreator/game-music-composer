@@ -1,11 +1,13 @@
 ---
-name: neospc-music-composer
-description: "Compose, arrange, review, render, and export original SNES-inspired game music. Use for game-cue briefs, loop-ready scores, MIDI, soundbank planning, or composition audits."
+name: game-music-composer
+description: "Compose, arrange, review, render, and export original SNES-inspired game music. Use for game music, SNES or 16-bit cues, loop-ready scores, MIDI, soundbank planning, composition audits, or $game-music-composer."
 ---
 
-# Neo-SPC Music Composer
+# Game Music Composer
 
 Create original game music with clear roles, short sample identities, memorable motifs and useful loop behavior. Choose a voice ceiling from 8 to 32. Use `legacy_8` for hardware-style limits. Use the expanded profiles for modern browser and production work.
+
+The engine CLI is still `neospc.py`. The current composer writes one 8–32 bar loop-ready cue per seed. Long ambient fields, polyrhythmic processes and variation banks are not wired yet: say that limit if asked, then write the strongest short identity unless the user only wants a plan.
 
 Run commands from this skill directory. Keep generated project files outside the skill folder.
 
@@ -129,6 +131,8 @@ Read these sources only when the current step needs them:
 - full controls: `data/generation-harness-v3.json`.
 
 Use seeded values as constraints. Preserve phrase purpose, harmonic targets and genre identity across variants.
+
+`period` writes antecedent/consequent: the same idea, a weak cadence, then a tonic close. `sentence` writes 2+2+4: idea, sequenced idea, continuation. Skeleton tones of the motif stay on the home pitch class; only passing tones follow the chord. A contrast section uses a related answer motif and a different accompaniment texture, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review splits legality from identity: tiling the same cell or sitting too close to another catalog cue fails identity even if the writing is legal.
 
 ### 5. Assign instruments by role
 

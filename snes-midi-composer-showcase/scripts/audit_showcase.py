@@ -119,7 +119,7 @@ def main() -> int:
     for path in (ROOT / "downloads").glob("*.zip"):
         if path.stat().st_size == 0:
             errors.append(f"empty download: {path.name}")
-    if not (ROOT / "downloads" / "neospc-music-composer.zip").is_file():
+    if not (ROOT / "downloads" / "game-music-composer.zip").is_file():
         errors.append("missing packaged composer skill")
     for relative in ("data/sample-bank.js", "data/factory-bank.js"):
         if not (ROOT / relative).is_file():

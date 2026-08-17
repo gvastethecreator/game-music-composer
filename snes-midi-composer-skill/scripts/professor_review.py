@@ -141,10 +141,62 @@ def idiom_score(style,top_unique,mel,orch):
         if orch['support_to_lead']<8:score+=.3
     return clamp(score,0,10),reasons
 
-def review(style):
+def lead_interval_sig(style,start_beat=0,end_beat=None,limit=12):
+    end_beat=style['beats'] if end_beat is None else end_beat
+    lead=sorted([e for e in style['events'] if e.get('kind')=='note' and role(e)=='lead' and start_beat<=onset(e)<end_beat],key=onset)
+    if len(lead)<2:return ()
+    return tuple(lead[i+1]['midi']-lead[i]['midi'] for i in range(min(limit,len(lead)-1)))
+
+def phrase_interval_sigs(style):
+    bl=style['barLength']; windows=[]
+    forms=style.get('form') or []
+    if len(forms)>=2:
+        for f in forms:
+            st=float(f.get('start_bar',0))*bl
+            en=st+float(f.get('bars',1))*bl
+            windows.append(lead_interval_sig(style,st,en,8))
+    else:
+        bars=max(1,int(round(style['beats']/bl)))
+        step=4 if bars>=8 else max(2,bars//2 or 1)
+        for start in range(0,bars,step):
+            windows.append(lead_interval_sig(style,start*bl,min(bars,start+step)*bl,8))
+    return [w for w in windows if w]
+
+def interval_match(a,b):
+    n=min(len(a),len(b))
+    if n<4:return 0.0
+    return sum(a[i]==b[i] for i in range(n))/n
+
+def identity_metrics(style,siblings=()):
+    phrases=phrase_interval_sigs(style)
+    tile_hits=0
+    if len(phrases)>=2:
+        tile_hits=sum(interval_match(phrases[i],phrases[i-1])>=.88 for i in range(1,len(phrases)))
+        tile_ratio=tile_hits/max(1,len(phrases)-1)
+    else:
+        tile_ratio=0.0
+    sig=lead_interval_sig(style,limit=12)
+    corpus=0; closest=0.0
+    for other in siblings:
+        if other.get('id')==style.get('id'):continue
+        m=interval_match(sig,lead_interval_sig(other,limit=12))
+        if m>closest:closest=m
+        if m>=.75:corpus+=1
+    contrast_diff=0.0
+    if len(phrases)>=2:
+        contrast_diff=1-interval_match(phrases[0],phrases[min(1,len(phrases)-1)])
+    return {'phrase_tile_ratio':tile_ratio,'corpus_hits':corpus,'closest_corpus_match':closest,'contrast_diff':contrast_diff}
+
+def identity_score(ident,dens_contrast):
+    score=8.5 - ident['phrase_tile_ratio']*4 - min(3,ident['corpus_hits'])*1.5 - max(0,ident['closest_corpus_match']-.55)*4
+    score += min(1,dens_contrast)*1.2 + ident['contrast_diff']*.8
+    return clamp(score,0,10)
+
+def review(style,siblings=()):
     mel=melodic_metrics(style); harm=harmonic_metrics(style); orch=orchestration_metrics(style); expr=expressive_metrics(style)
     tops=topology_by_bar(style); top_unique=len(set(tops))/max(1,len(tops)); adjacent=sum(tops[i]==tops[i-1] for i in range(1,len(tops)))/max(1,len(tops)-1)
     dens=section_densities(style); contrast=(max(dens)-min(dens))/max(.1,safe_mean(dens,1)) if len(dens)>1 else 0
+    ident=identity_metrics(style,siblings)
     scores={}
     scores['melodic_coherence']=clamp(10 - mel['leap_ratio']*11 - max(0,mel['repeat_ratio']-.28)*9 + mel['direction_changes']*2 + mel['rests']*1.5,0,10)
     scores['harmonic_logic']=clamp(harm['strong_chord_fit']*7 + harm['scale_fit']*3 - harm['weak_nonchord_ratio']*4,0,10)
@@ -155,9 +207,11 @@ def review(style):
     scores['expression']=clamp(3.5 + min(expr['gain_std']/.12,1)*2 + min(expr['timing_std_ms']/12,1)*2 + min(expr['duration_cv']/.45,1)*1.5 + min(expr['velocity_std']/16,1)*1,0,10)
     idiom,idiom_reasons=idiom_score(style,top_unique,mel,orch);scores['idiomatic_character']=idiom
     scores['loop_design']=clamp(6.5 + (1 if style.get('musical_direction',{}).get('loop_strategy') else 0) + (1 if style.get('chord_plan') else 0) - (1.2 if adjacent>.75 else 0),0,10)
-    scores['identity']=clamp(4 + mel['phrase_variety']*2 + top_unique*2 + min(1,orch['instrument_count']/8)*2,0,10)
-    weights={'melodic_coherence':1.3,'harmonic_logic':1.4,'phrase_and_form':1.25,'rhythm_and_groove':1.1,'counterpoint_voice_leading':.9,'orchestration':1,'expression':.75,'idiomatic_character':1.05,'loop_design':.65,'identity':.9}
+    scores['identity']=identity_score(ident,contrast)
+    weights={'melodic_coherence':1.3,'harmonic_logic':1.4,'phrase_and_form':1.25,'rhythm_and_groove':1.1,'counterpoint_voice_leading':.9,'orchestration':1,'expression':.75,'idiomatic_character':1.05,'loop_design':.65,'identity':1.1}
     weighted=sum(scores[k]*weights[k] for k in scores)/sum(weights.values())
+    legality_dims=('harmonic_logic','melodic_coherence','counterpoint_voice_leading','orchestration','loop_design')
+    legality=safe_mean([scores[k] for k in legality_dims])
     actions=[];critic=[]
     if scores['harmonic_logic']<7.6:actions.append('repair_structural_harmony');critic.append('Structural notes do not consistently clarify the active harmony.')
     if scores['melodic_coherence']<7.2:actions.append('reshape_melodic_line');critic.append('The melodic line needs fewer arbitrary leaps and clearer destination tones.')
@@ -166,17 +220,22 @@ def review(style):
     if scores['orchestration']<7.1:actions.append('rebalance_orchestration');critic.append('The arrangement needs clearer foreground/background hierarchy and more intentional density.')
     if scores['expression']<6.8:actions.append('deepen_expression');critic.append('Timing, dynamics and articulation remain too uniform.')
     if scores['idiomatic_character']<7:actions.append('reinforce_genre_idiom');critic.extend(idiom_reasons or ['The musical behavior is not yet specific enough to its declared style.'])
+    if scores['identity']<6.8:
+        actions.append('strengthen_identity')
+        critic.append('The cue tiles the same cell or sits too close to another score in the catalog.')
     status='approved' if weighted>=8.0 and not actions else 'revise' if weighted>=6.7 else 'rebuild'
     return {
       'id':style['id'],'title':style['title'],'category':style['category'],'status':status,'score':round(weighted*10,1),
-      'dimension_scores':{k:round(v,2) for k,v in scores.items()},'metrics':{'melody':mel,'harmony':harm,'orchestration':orch,'expression':expr,'topology_unique_ratio':round(top_unique,4),'adjacent_repeat_ratio':round(adjacent,4),'section_density_contrast':round(contrast,4)},
+      'legality_score':round(legality,2),'identity_score':round(scores['identity'],2),
+      'dimension_scores':{k:round(v,2) for k,v in scores.items()},
+      'metrics':{'melody':mel,'harmony':harm,'orchestration':orch,'expression':expr,'identity':ident,'topology_unique_ratio':round(top_unique,4),'adjacent_repeat_ratio':round(adjacent,4),'section_density_contrast':round(contrast,4)},
       'critique':critic or ['The composition is coherent; revisions should focus on refinement rather than repair.'],'required_actions':actions
     }
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('output',type=Path);args=ap.parse_args()
-    d=json.loads(args.catalog.read_text());tracks=[review(s) for s in d['styles']]
+    d=json.loads(args.catalog.read_text());tracks=[review(s, siblings=d['styles']) for s in d['styles']]
     summary=collections.Counter(t['status'] for t in tracks)
-    out={'version':'3.0.0','reviewer':'Neo-SPC Symbolic Review','method':'deterministic symbolic score critique; renderer, mix and human listening excluded','summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),'tracks':tracks}
+    out={'version':'3.0.0','reviewer':'Neo-SPC Symbolic Review','method':'deterministic symbolic score critique split into legality and identity; renderer, mix and human listening excluded','summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),'tracks':tracks}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(out,indent=2));print(json.dumps({'summary':dict(summary),'average':out['average_score']},indent=2))
 if __name__=='__main__':main()

@@ -12,9 +12,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "dist" / "neospc-music-composer.zip"
+DEFAULT_OUTPUT = ROOT / "dist" / "game-music-composer.zip"
 MANIFEST = ROOT / "MANIFEST.sha256"
-ARCHIVE_ROOT = "neospc-music-composer"
+ARCHIVE_ROOT = "game-music-composer"
 SKIP_DIRS = {"__pycache__", ".git", ".scratch", "dist", "work"}
 SKIP_SUFFIXES = {".pyc", ".pyo"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".sha256", ".txt", ".yaml", ".yml"}
