@@ -1,10 +1,10 @@
 # Game Music Composer
 
-- `snes-midi-composer-skill/` is the portable, Skills-CLI distributable runtime.
-- `snes-midi-composer-showcase/` is the static demonstration site.
-- `snes-midi-composer-maintainer/` preserves historical rebuild tooling and corpus material outside the installed skill package.
+- `game-music-composer/` is the portable, Skills-CLI distributable runtime.
+- `game-music-composer-showcase/` is the static demonstration site.
+- `game-music-composer-maintainer/` preserves historical rebuild tooling and corpus material outside the installed skill package.
 
-Run release checks from `snes-midi-composer-skill/`:
+Run release checks from `game-music-composer/`:
 
 ```bash
 python scripts/neospc.py doctor --strict
@@ -14,7 +14,7 @@ python scripts/release_gate.py
 ```
 
 The root repository has no Node/Bun package graph. The runtime is Python; optional render extras
-are pinned in `snes-midi-composer-skill/requirements-render.txt` and are not needed for the JSON
+are pinned in `game-music-composer/requirements-render.txt` and are not needed for the JSON
 and MIDI gates.
 
 The repository and the distributed skill both include the full CC0-1.0 legal code in `LICENSE`.

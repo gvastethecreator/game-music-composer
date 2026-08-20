@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source_root": "snes-midi-composer-skill",
+  "source_root": "game-music-composer",
   "archive_root": "historical/skill-package",
   "preserved_paths": [
     {"source": "data/browser-qa-v3.2.json", "archive": "data/browser-qa-v3.2.json"},

@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 SHOWCASE = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = SHOWCASE.parent / "snes-midi-composer-skill" / "data" / "neospc100-benchmark-v4.1.json"
+DEFAULT_SOURCE = SHOWCASE.parent / "game-music-composer" / "data" / "neospc100-benchmark-v4.1.json"
 INDEX_PATH = SHOWCASE / "data" / "catalog.js"
 CUE_DIR = SHOWCASE / "data" / "cues"
 SUMMARY_FIELDS = (

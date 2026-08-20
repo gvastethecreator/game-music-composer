@@ -1,0 +1,50 @@
+# Sources
+
+## SNES audio architecture
+
+- SNESdev Wiki — S-DSP registers: https://snes.nesdev.org/wiki/S-DSP_registers
+- SNESdev Wiki — S-SMP: https://snes.nesdev.org/wiki/S-SMP
+- SNESdev Wiki — BRR samples: https://snes.nesdev.org/wiki/BRR_samples
+
+## Browser audio
+
+- W3C Web Audio API: https://www.w3.org/TR/webaudio/
+- MDN AudioWorklet: https://developer.mozilla.org/docs/Web/API/AudioWorklet
+
+## MIDI
+
+- MIDI Association — MIDI 2.0: https://midi.org/midi-2-0
+
+## Trackers and expanded retro workflows
+
+- Furnace Tracker: https://github.com/tildearrow/furnace
+
+## Structured and multitrack generation research
+
+- MusicFrameworks: hierarchical structure for music generation, ICLR 2024.
+- Structure-informed generation via section and phrase hierarchy.
+- Multitrack arrangement with explicit track and orchestration representations.
+
+Sources inform architecture. Benchmark: no extracted commercial SNES melodies or samples.
+
+## Workstation pattern and performance workflows
+
+- FL Studio — Riff Machine: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/pianoroll_riff.htm
+- FL Studio — Piano roll tools: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/pianoroll_menu.htm
+- FL Studio — Arpeggiator: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/pianoroll_arpeggiate.htm
+- FL Studio — Randomizer: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/pianoroll_random.htm
+- FL Studio — Note properties: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/pianoroll.htm
+- FL Studio — Mixer and routing: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/mixer.htm
+- FL Studio — Levels and mixing: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/mixer_levelsandmixing.htm
+- FL Studio — Fruity Limiter: https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Limiter.htm
+
+## Symbolic music representation and evaluation
+
+- MusPy: A Toolkit for Symbolic Music Generation — arXiv: https://arxiv.org/abs/2008.01951
+- musicaiz: A Python Library for Symbolic Music Generation, Analysis and Visualization — arXiv: https://arxiv.org/abs/2209.07984
+- MusicFrameworks: hierarchical music structure — ICLR 2024 proceedings.
+- Open Music Theory — jazz voicings: https://viva.pressbooks.pub/openmusictheory/chapter/jazz-voicings/
+- Open Music Theory — chord-scale theory: https://viva.pressbooks.pub/openmusictheory/chapter/chord-scale-theory/
+- Open Music Theory — modal schemas: https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/
+
+Workstation refs mark separations: harmony, progression, arpeggiation, note properties, groove, routing, master controls. Neo-SPC: original data model and interface; no copied application code, presets or proprietary assets.

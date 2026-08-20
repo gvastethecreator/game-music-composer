@@ -2,7 +2,7 @@
 
 - Root runtime is Python and has no Node/Bun package graph; pnpm migration is not applicable.
 - Optional render dependencies are now pinned to current PyPI releases in
-  `snes-midi-composer-skill/requirements-render.txt`: NumPy 2.5.2, SoundFile 0.14.0,
+  `game-music-composer/requirements-render.txt`: NumPy 2.5.2, SoundFile 0.14.0,
   pyloudnorm 0.2.0, and SciPy 1.18.0.
 - The canonical JSON/MIDI path remains standard-library-only. FFmpeg remains an external executable.
 

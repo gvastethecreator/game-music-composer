@@ -1,4 +1,4 @@
-name: Neo-SPC release gates
+name: Game Music Composer release gates
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         python: ['3.12']
     defaults:
       run:
-        working-directory: snes-midi-composer-skill
+        working-directory: game-music-composer
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,6 +29,6 @@ jobs:
       - name: Unit suite
         run: python -m unittest discover -s scripts/tests -v
       - name: Package and relocated smoke
-        run: python scripts/package_skill.py --output ../.scratch/release/neospc-music-composer.zip --smoke
+        run: python scripts/package_skill.py --output ../.scratch/release/game-music-composer.zip --smoke
       - name: Runtime boundary, manifest and clean tree
         run: python scripts/release_gate.py --check-tree

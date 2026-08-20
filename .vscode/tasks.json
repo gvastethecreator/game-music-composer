@@ -1,9 +1,9 @@
 {
   "version": "2.0.0",
   "tasks": [
-    { "label": "🩺 Doctor", "type": "shell", "command": "python scripts\\neospc.py doctor --strict", "options": { "cwd": "${workspaceFolder}\\snes-midi-composer-skill" }, "problemMatcher": [] },
-    { "label": "🧪 Tests", "type": "shell", "command": "python -m unittest discover -s scripts\\tests -v", "options": { "cwd": "${workspaceFolder}\\snes-midi-composer-skill" }, "problemMatcher": [] },
-    { "label": "📦 Package", "type": "shell", "command": "python scripts\\package_skill.py --smoke", "options": { "cwd": "${workspaceFolder}\\snes-midi-composer-skill" }, "problemMatcher": [] },
-    { "label": "🚦 Release", "type": "shell", "command": "python scripts\\release_gate.py", "options": { "cwd": "${workspaceFolder}\\snes-midi-composer-skill" }, "problemMatcher": [] }
+    { "label": "🩺 Doctor", "type": "shell", "command": "python scripts\\neospc.py doctor --strict", "options": { "cwd": "${workspaceFolder}\\game-music-composer" }, "problemMatcher": [] },
+    { "label": "🧪 Tests", "type": "shell", "command": "python -m unittest discover -s scripts\\tests -v", "options": { "cwd": "${workspaceFolder}\\game-music-composer" }, "problemMatcher": [] },
+    { "label": "📦 Package", "type": "shell", "command": "python scripts\\package_skill.py --smoke", "options": { "cwd": "${workspaceFolder}\\game-music-composer" }, "problemMatcher": [] },
+    { "label": "🚦 Release", "type": "shell", "command": "python scripts\\release_gate.py", "options": { "cwd": "${workspaceFolder}\\game-music-composer" }, "problemMatcher": [] }
   ]
 }

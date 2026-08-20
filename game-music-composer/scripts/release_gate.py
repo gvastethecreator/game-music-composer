@@ -13,7 +13,7 @@ import package_skill
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_ROOT.parent
-ARCHIVE_ROOT = REPO_ROOT / "snes-midi-composer-maintainer"
+ARCHIVE_ROOT = REPO_ROOT / "game-music-composer-maintainer"
 ARCHIVE_MANIFEST = ARCHIVE_ROOT / "archive-manifest.json"
 TEXT_SUFFIXES = {".json", ".md", ".py", ".sha256", ".txt", ".yaml", ".yml"}
 FORBIDDEN_PATH = b"/mnt" + b"/data"
@@ -40,8 +40,8 @@ def archive_issues() -> list[str]:
         manifest = json.loads(ARCHIVE_MANIFEST.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         return [f"invalid archive manifest JSON: {exc}"]
-    if manifest.get("source_root") != "snes-midi-composer-skill":
-        issues.append("archive manifest source_root must be snes-midi-composer-skill")
+    if manifest.get("source_root") != "game-music-composer":
+        issues.append("archive manifest source_root must be game-music-composer")
     if manifest.get("archive_root") != "historical/skill-package":
         issues.append("archive manifest archive_root must be historical/skill-package")
     entries = manifest.get("preserved_paths")

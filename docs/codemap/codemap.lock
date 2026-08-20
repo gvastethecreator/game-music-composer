@@ -1,20 +1,22 @@
 {
-  "current_commit": "72b8535c02d05696dd154b3fc4c9e99e3a2446b6",
+  "source_commit": "68d50f305eee25c3ab53a8feb5121ff91bb9fde5",
   "working_tree_dirty": true,
-  "generated_at": "2026-08-12T06:45:34Z",
+  "generated_at": "2026-08-20T03:20:01Z",
   "scanned_scope": [
     "."
   ],
   "excluded_directories": [
+    ".agents",
     ".cache",
     ".git",
     ".hg",
     ".next",
     ".nuxt",
-    ".scratch",
+    ".obsidian",
     ".svn",
     ".turbo",
     ".venv",
+    ".vscode",
     "__pycache__",
     "build",
     "coverage",
@@ -27,43 +29,43 @@
     "vendor",
     "venv"
   ],
-  "fingerprint_algorithm": "sha256-path-content-v1",
+  "fingerprint_algorithm": "sha256-path-content-v2",
   "modules": [
     {
       "id": ".",
       "path": ".",
       "file_count": 3,
-      "fingerprint": "cac68b0a9c805f1c627bc92b54f10fced20a7bd36763dabb3122e6913c3a61e7"
+      "fingerprint": "1ad11308f126064febd08fcf8945bced55a599e0d5ab2836fe5e6bbdd135d8c6"
     },
     {
       "id": ".github",
       "path": ".github",
       "file_count": 1,
-      "fingerprint": "29e603c2ed6468437f236edda527df57ca1064f81759db34b092054e5d202384"
+      "fingerprint": "06699950f41890c03e3dfe6094561ec768ecc438825701f456d8bd25f8442427"
     },
     {
-      "id": ".vscode",
-      "path": ".vscode",
-      "file_count": 1,
-      "fingerprint": "bbf1e76a58dd4db85797ed4a074b0bcff268803ac17afbab1f2d26b6372f429a"
+      "id": "docs",
+      "path": "docs",
+      "file_count": 4,
+      "fingerprint": "6a5db59b69ae502cc3776deab448103b250776e972d74164d2afeeedec0c477e"
     },
     {
-      "id": "snes-midi-composer-maintainer",
-      "path": "snes-midi-composer-maintainer",
-      "file_count": 59,
-      "fingerprint": "a8c706ad658c782b091d0158f08dee822d34046c6702dd845d3cff5314fe710d"
-    },
-    {
-      "id": "snes-midi-composer-showcase",
-      "path": "snes-midi-composer-showcase",
-      "file_count": 476,
-      "fingerprint": "84bfc8402f9925df69a3a1986da02a249af90bcb87bcf29472445429f7482e57"
-    },
-    {
-      "id": "snes-midi-composer-skill",
-      "path": "snes-midi-composer-skill",
+      "id": "game-music-composer",
+      "path": "game-music-composer",
       "file_count": 86,
-      "fingerprint": "1114e45dfafe2e9d23e6ac76dd605b83731bc9f5455bd378ed89093079c45ff8"
+      "fingerprint": "a6ebeb86428b16f53d94bdfe63ddc4312a13cd8bb1ea6003050e32e0dd32a16a"
+    },
+    {
+      "id": "game-music-composer-maintainer",
+      "path": "game-music-composer-maintainer",
+      "file_count": 59,
+      "fingerprint": "eac9d94047e7d4b03627470b7c3dd36bacce30bdb6d6ca6ac12a3e30e29e6d02"
+    },
+    {
+      "id": "game-music-composer-showcase",
+      "path": "game-music-composer-showcase",
+      "file_count": 478,
+      "fingerprint": "75a1bb29e719cd780d44a6175ec2037e9ef307a34fe926006b49014ef14a3160"
     }
   ]
 }

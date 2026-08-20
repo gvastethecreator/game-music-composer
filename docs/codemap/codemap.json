@@ -1,121 +1,160 @@
 {
-  "generated_at": "2026-08-12T06:45:34Z",
-  "generated_from_commit": "72b8535c02d05696dd154b3fc4c9e99e3a2446b6",
+  "generated_at": "2026-08-20T03:20:01Z",
+  "generated_from_commit": "68d50f305eee25c3ab53a8feb5121ff91bb9fde5",
   "scope": [
     "."
   ],
   "nodes": [
     {
       "id": "external-dependencies",
-      "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
-      "role": "Represents external packages referenced by tracked source files.",
+      "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
       "type": "external",
       "boundary": "External",
       "entrypoints": [
-        "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py:__future__"
+        "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py:__future__"
       ],
       "tests": [],
-      "constraints": [
-        "Only dependencies with literal tracked-source references appear here."
+      "callers": [
+        {
+          "id": "game-music-composer-maintainer",
+          "type": "imports"
+        },
+        {
+          "id": "game-music-composer-scripts",
+          "type": "imports"
+        },
+        {
+          "id": "game-music-composer-showcase-scripts",
+          "type": "imports"
+        }
       ],
+      "callees": [],
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
+            "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
             "symbol": "__future__"
           }
         ]
       }
     },
     {
-      "id": "snes-midi-composer-maintainer",
-      "path": "snes-midi-composer-maintainer",
-      "role": "Owns the tracked files for the snes-midi-composer-maintainer module.",
+      "id": "game-music-composer",
+      "path": "game-music-composer",
       "type": "module",
-      "boundary": "Snes Midi Composer Maintainer",
+      "boundary": "Game Music Composer",
       "entrypoints": [
-        "snes-midi-composer-maintainer/README.md:Neo-SPC maintainer archive"
+        "game-music-composer/SKILL.md:Game Music Composer"
       ],
       "tests": [],
-      "constraints": [
-        "This baseline uses tracked source and explicit dependency references only."
-      ],
+      "callers": [],
+      "callees": [],
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-maintainer/README.md",
-            "symbol": "Neo-SPC maintainer archive"
+            "path": "game-music-composer/SKILL.md",
+            "symbol": "Game Music Composer"
           }
         ]
       }
     },
     {
-      "id": "snes-midi-composer-showcase",
-      "path": "snes-midi-composer-showcase",
-      "role": "Owns the tracked files for the snes-midi-composer-showcase module.",
+      "id": "game-music-composer-maintainer",
+      "path": "game-music-composer-maintainer",
       "type": "module",
-      "boundary": "Snes Midi Composer Showcase",
+      "boundary": "Game Music Composer Maintainer",
       "entrypoints": [
-        "snes-midi-composer-showcase/app.js:loadScript"
+        "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py:seed_for"
       ],
       "tests": [],
-      "constraints": [
-        "This baseline uses tracked source and explicit dependency references only."
+      "callers": [],
+      "callees": [
+        {
+          "id": "external-dependencies",
+          "type": "imports"
+        }
       ],
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-showcase/app.js",
+            "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
+            "symbol": "seed_for"
+          }
+        ]
+      }
+    },
+    {
+      "id": "game-music-composer-scripts",
+      "path": "game-music-composer/scripts",
+      "type": "service",
+      "boundary": "Game Music Composer",
+      "entrypoints": [
+        "game-music-composer/scripts/audit_soundbank_assignments.py:main"
+      ],
+      "tests": [],
+      "callers": [],
+      "callees": [
+        {
+          "id": "external-dependencies",
+          "type": "imports"
+        }
+      ],
+      "evidence": {
+        "status": "verified",
+        "locations": [
+          {
+            "path": "game-music-composer/scripts/audit_soundbank_assignments.py",
+            "symbol": "main"
+          }
+        ]
+      }
+    },
+    {
+      "id": "game-music-composer-showcase",
+      "path": "game-music-composer-showcase",
+      "type": "module",
+      "boundary": "Game Music Composer Showcase",
+      "entrypoints": [
+        "game-music-composer-showcase/app.js:loadScript"
+      ],
+      "tests": [],
+      "callers": [],
+      "callees": [],
+      "evidence": {
+        "status": "verified",
+        "locations": [
+          {
+            "path": "game-music-composer-showcase/app.js",
             "symbol": "loadScript"
           }
         ]
       }
     },
     {
-      "id": "snes-midi-composer-showcase-scripts",
-      "path": "snes-midi-composer-showcase/scripts",
-      "role": "Owns the tracked files for the snes-midi-composer-showcase / scripts module.",
+      "id": "game-music-composer-showcase-scripts",
+      "path": "game-music-composer-showcase/scripts",
       "type": "service",
-      "boundary": "Snes Midi Composer Showcase",
+      "boundary": "Game Music Composer Showcase",
       "entrypoints": [
-        "snes-midi-composer-showcase/scripts/audit_showcase.py:MarkupAudit"
+        "game-music-composer-showcase/scripts/audit_showcase.py:MarkupAudit"
       ],
       "tests": [],
-      "constraints": [
-        "This baseline uses tracked source and explicit dependency references only."
+      "callers": [],
+      "callees": [
+        {
+          "id": "external-dependencies",
+          "type": "imports"
+        }
       ],
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
+            "path": "game-music-composer-showcase/scripts/audit_showcase.py",
             "symbol": "MarkupAudit"
-          }
-        ]
-      }
-    },
-    {
-      "id": "snes-midi-composer-skill-scripts",
-      "path": "snes-midi-composer-skill/scripts",
-      "role": "Owns the tracked files for the snes-midi-composer-skill / scripts module.",
-      "type": "service",
-      "boundary": "Snes Midi Composer Skill",
-      "entrypoints": [
-        "snes-midi-composer-skill/scripts/audit_soundbank_assignments.py:main"
-      ],
-      "tests": [],
-      "constraints": [
-        "This baseline uses tracked source and explicit dependency references only."
-      ],
-      "evidence": {
-        "status": "verified",
-        "locations": [
-          {
-            "path": "snes-midi-composer-skill/scripts/audit_soundbank_assignments.py",
-            "symbol": "main"
           }
         ]
       }
@@ -123,187 +162,71 @@
   ],
   "edges": [
     {
-      "from": "snes-midi-composer-maintainer",
+      "from": "game-music-composer-maintainer",
       "to": "external-dependencies",
       "type": "imports",
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
+            "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
             "symbol": "__future__"
           },
           {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
+            "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
             "symbol": "pathlib"
           },
           {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
+            "path": "game-music-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py",
             "symbol": "argparse"
-          },
-          {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_mix_velocity_pass.py",
-            "symbol": "__future__"
-          },
-          {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_mix_velocity_pass.py",
-            "symbol": "json"
-          },
-          {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_mix_velocity_v3.py",
-            "symbol": "__future__"
-          },
-          {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_mix_velocity_v3.py",
-            "symbol": "json"
-          },
-          {
-            "path": "snes-midi-composer-maintainer/historical/skill-package/scripts/apply_performance_workstation_pass.py",
-            "symbol": "__future__"
           }
         ]
       }
     },
     {
-      "from": "snes-midi-composer-maintainer",
-      "to": "snes-midi-composer-skill-scripts",
-      "type": "reads",
-      "evidence": {
-        "status": "verified",
-        "locations": [
-          {
-            "path": "snes-midi-composer-maintainer/README.md",
-            "symbol": "snes-midi-composer-skill/scripts/release_gate.py"
-          }
-        ]
-      }
-    },
-    {
-      "from": "snes-midi-composer-showcase-scripts",
+      "from": "game-music-composer-scripts",
       "to": "external-dependencies",
       "type": "imports",
       "evidence": {
         "status": "verified",
         "locations": [
           {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
+            "path": "game-music-composer/scripts/audit_soundbank_assignments.py",
             "symbol": "__future__"
           },
           {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
+            "path": "game-music-composer/scripts/audit_soundbank_assignments.py",
+            "symbol": "pathlib"
+          },
+          {
+            "path": "game-music-composer/scripts/audit_soundbank_assignments.py",
+            "symbol": "argparse"
+          }
+        ]
+      }
+    },
+    {
+      "from": "game-music-composer-showcase-scripts",
+      "to": "external-dependencies",
+      "type": "imports",
+      "evidence": {
+        "status": "verified",
+        "locations": [
+          {
+            "path": "game-music-composer-showcase/scripts/audit_showcase.py",
+            "symbol": "__future__"
+          },
+          {
+            "path": "game-music-composer-showcase/scripts/audit_showcase.py",
             "symbol": "html.parser"
           },
           {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
+            "path": "game-music-composer-showcase/scripts/audit_showcase.py",
             "symbol": "pathlib"
-          },
-          {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
-            "symbol": "json"
-          },
-          {
-            "path": "snes-midi-composer-showcase/scripts/audit_showcase.py",
-            "symbol": "re"
-          },
-          {
-            "path": "snes-midi-composer-showcase/scripts/split_catalog.py",
-            "symbol": "__future__"
-          },
-          {
-            "path": "snes-midi-composer-showcase/scripts/split_catalog.py",
-            "symbol": "pathlib"
-          },
-          {
-            "path": "snes-midi-composer-showcase/scripts/split_catalog.py",
-            "symbol": "argparse"
-          }
-        ]
-      }
-    },
-    {
-      "from": "snes-midi-composer-skill-scripts",
-      "to": "external-dependencies",
-      "type": "imports",
-      "evidence": {
-        "status": "verified",
-        "locations": [
-          {
-            "path": "snes-midi-composer-skill/scripts/audit_soundbank_assignments.py",
-            "symbol": "__future__"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/audit_soundbank_assignments.py",
-            "symbol": "pathlib"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/audit_soundbank_assignments.py",
-            "symbol": "argparse"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/compose_from_plan.py",
-            "symbol": "__future__"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/compose_from_plan.py",
-            "symbol": "collections"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/compose_from_plan.py",
-            "symbol": "pathlib"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/compose_from_plan.py",
-            "symbol": "typing"
-          },
-          {
-            "path": "snes-midi-composer-skill/scripts/compose_from_plan.py",
-            "symbol": "copy"
           }
         ]
       }
     }
   ],
-  "flows": [
-    {
-      "trigger": "Tracked reference snes-midi-composer-maintainer/README.md:snes-midi-composer-skill/scripts/release_gate.py",
-      "steps": [
-        "snes-midi-composer-maintainer",
-        "snes-midi-composer-skill-scripts",
-        "external-dependencies"
-      ],
-      "outcome": "The verified dependency path reaches external-dependencies through 2 step(s)."
-    },
-    {
-      "trigger": "Tracked reference snes-midi-composer-maintainer/historical/skill-package/scripts/apply_human_performance.py:__future__",
-      "steps": [
-        "snes-midi-composer-maintainer",
-        "external-dependencies"
-      ],
-      "outcome": "The verified dependency path reaches external-dependencies through 1 step(s)."
-    },
-    {
-      "trigger": "Tracked reference snes-midi-composer-maintainer/README.md:snes-midi-composer-skill/scripts/release_gate.py to snes-midi-composer-skill-scripts",
-      "steps": [
-        "snes-midi-composer-maintainer",
-        "snes-midi-composer-skill-scripts"
-      ],
-      "outcome": "The verified dependency path reaches snes-midi-composer-skill-scripts through 1 step(s)."
-    },
-    {
-      "trigger": "Tracked reference snes-midi-composer-showcase/scripts/audit_showcase.py:__future__",
-      "steps": [
-        "snes-midi-composer-showcase-scripts",
-        "external-dependencies"
-      ],
-      "outcome": "The verified dependency path reaches external-dependencies through 1 step(s)."
-    },
-    {
-      "trigger": "Tracked reference snes-midi-composer-skill/scripts/audit_soundbank_assignments.py:__future__",
-      "steps": [
-        "snes-midi-composer-skill-scripts",
-        "external-dependencies"
-      ],
-      "outcome": "The verified dependency path reaches external-dependencies through 1 step(s)."
-    }
-  ]
+  "flows": []
 }

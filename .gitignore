@@ -1,6 +1,6 @@
 .scratch/
 __pycache__/
 *.py[cod]
-snes-midi-composer-skill/dist/
+game-music-composer/dist/
 **/__pycache__/
 *.py[cod]
