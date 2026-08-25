@@ -31,6 +31,7 @@ class NeoSpcCliTests(unittest.TestCase):
     def test_release_boundary_is_portable_and_archived(self) -> None:
         self.assertEqual(release_gate.path_lint_issues(), [])
         self.assertEqual(release_gate.archive_issues(), [])
+        self.assertEqual(release_gate.manifest_issues(), [])
 
     def test_init_creates_valid_plan_and_harness(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -219,7 +220,7 @@ class NeoSpcCliTests(unittest.TestCase):
             self.assertIn("game-music-composer/SKILL.md", names)
             self.assertIn("game-music-composer/LICENSE", names)
             self.assertIn("game-music-composer/agents/openai.yaml", names)
-            self.assertFalse(any("__pycache__" in name or name.endswith(".pyc") for name in names))
+            self.assertFalse(any("__pycache__" in name or ".pytest_cache" in name or name.endswith(".pyc") for name in names))
             self.assertNotIn("game-music-composer/data/neospc100-benchmark-v3.json", names)
             self.assertNotIn("game-music-composer/data/neospc100-benchmark.json", names)
             self.assertLess(unpacked_bytes, 25 * 1024 * 1024)

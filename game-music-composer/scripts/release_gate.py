@@ -122,7 +122,8 @@ def tree_issues() -> list[str]:
     if status.returncode:
         issues.append(f"could not inspect git status: {status.stderr.strip()}")
     elif status.stdout.strip():
-        issues.append("working tree is not clean after release checks")
+        dirty = ", ".join(status.stdout.splitlines())
+        issues.append(f"working tree is not clean after release checks: {dirty}")
     return issues
 
 

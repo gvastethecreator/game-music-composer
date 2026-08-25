@@ -1,6 +1,8 @@
 .scratch/
+.pytest_cache/
 __pycache__/
 *.py[cod]
 game-music-composer/dist/
+**/.pytest_cache/
 **/__pycache__/
 *.py[cod]
