@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 ## 2026-08-20 — rename to game-music-composer
 
@@ -9,4 +9,4 @@
 
 - Pinned optional render extras to current NumPy, SoundFile, pyloudnorm, and SciPy releases.
 - Refreshed the portable manifest after documentation and dependency changes.
-- Added concise doctor/test/package/release tasks and maintenance evidence.
+- Added concise doctor/test/package/release tasks.
