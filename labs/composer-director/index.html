@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer Director · laboratorio musical</title>
+<style>
+:root{color-scheme:dark;--bg:#141412;--panel:#1e1e1b;--line:#424239;--ink:#eeede4;--dim:#b5b5a6;--accent:#d5ad72}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui, sans-serif}main{max-width:1260px;margin:auto;padding:34px 28px 48px}header{display:flex;gap:20px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.brand,.eyebrow,code{font:12px ui-monospace,monospace;letter-spacing:.08em}.tag{border:1px solid var(--line);padding:6px 10px;border-radius:5px;color:var(--dim);font-size:12px}.hero{display:flex;justify-content:space-between;gap:32px;align-items:end;padding:34px 0}h1{font-size:clamp(32px,5vw,62px);line-height:1.08;letter-spacing:-.05em;margin:8px 0}h2{font-size:18px;margin:0 0 14px}.hero p{max-width:435px;color:var(--dim);margin-bottom:5px}.eyebrow{color:var(--accent)}.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}button,select,input{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:7px;padding:9px 14px;transition:background .12s}button:hover:not(:disabled){background:#33332c}button:disabled{opacity:.48;cursor:not-allowed}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.choice{display:block;width:100%;text-align:left;padding:15px;margin:10px 0}.choice b{display:block;margin-bottom:5px}.choice small{display:block;color:var(--dim);font-size:12px;line-height:1.5}button[aria-pressed="true"]{border-color:var(--accent);background:#393329}.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.between{justify-content:space-between}.states{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}.states button{padding:10px 5px;font-size:13px}.hint{font-size:12px;color:var(--dim)}.primary{background:var(--ink);border-color:var(--ink);color:#191916;font-weight:650;min-width:120px}.primary:hover:not(:disabled){background:#cfcec3}.transport{margin:20px 0 12px;gap:12px}label{display:flex;align-items:center;gap:9px;font-size:13px}input[type=range]{width:100px;accent-color:var(--accent)}input[type=checkbox]{accent-color:var(--accent)}#roll{width:100%;height:auto;display:block;background:#171714;border:1px solid var(--line);border-radius:8px}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin:10px 0}.legend span:before{content:'— ';color:var(--accent)}.muted{color:var(--dim)}.box{padding:15px;border:1px solid var(--line);border-radius:7px;margin-top:14px}.box b{font-size:13px}.box p{font-size:13px;margin:6px 0 0;color:var(--dim)}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}.bottom p{font-size:13px;color:var(--dim)}#status{min-height:24px;font-size:13px;color:var(--accent)}#evidence{font:12px/1.7 ui-monospace,monospace;word-break:break-word;color:var(--dim)}footer{font-size:12px;color:var(--dim);padding-top:25px}a{color:var(--accent)}.screen-reader{position:absolute;left:-9999px}#lock{width:100%;margin-top:9px}#section-label{font:12px ui-monospace,monospace;color:var(--accent)}@media(max-width:850px){.layout{grid-template-columns:1fr}.hero{display:block}.hero p{max-width:none}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choice{padding:12px}.choice small{font-size:11px}.bottom{grid-template-columns:1fr}main{padding:20px 16px}.panel{padding:17px}}@media(max-width:450px){header{align-items:start}.tag{max-width:140px}.choices{display:block}.choice{margin:8px 0}.states{grid-template-columns:1fr 1fr}.transport{align-items:start}h1{font-size:42px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body><main>
+<header><span class="brand">GAME MUSIC COMPOSER<br><strong>DIRECTOR / LAB 01</strong></span><span class="tag">Prototipo audible · sin servidor ni API</span></header>
+<section class="hero"><div><span class="eyebrow">IDENTIDAD ANTES QUE DENSIDAD</span><h1>Un motivo.<br>Cuatro destinos.</h1></div><p>Elegí una dirección, escuchala sin adornos y llevála de la exploración al duelo. Después cambiá sólo la respuesta B: el motivo A y su retorno permanecen intactos.</p></section>
+<div class="layout">
+<aside class="panel"><h2>01 / Elegí el gesto</h2><div class="choices" id="themes"></div><button id="lock" aria-pressed="false">Fijar selección de motivo</button><div class="box"><b>No es un generador infinito.</b><p>Tres ideas originales y cinco respuestas B por idea. Sirve para evaluar el flujo de dirección musical, no la calidad del renderer Neo-SPC.</p></div></aside>
+<section class="panel"><div class="row between"><h2>02 / Escuchá la transformación</h2><span id="section-label">8 compases · 4/4</span></div><div class="states" id="states"></div><p id="transformation" class="hint"></p>
+<div class="row transport"><button class="primary" id="play">▶ Escuchar</button><button id="stop" disabled>Detener</button><label><input id="reduction" type="checkbox" checked> Sólo melodía + bajo</label></div>
+<div class="row between"><label>Tempo <input id="tempo" type="range" min="60" max="160" value="96"><output id="tempo-value">96</output></label><label>Volumen <input id="volume" type="range" min="0" max="80" value="30"></label></div>
+<p id="status" role="status" aria-live="polite">Listo. Empezá con volumen bajo.</p>
+<svg id="roll" viewBox="0 0 760 224" role="img" aria-label="Piano roll del boceto seleccionado; eje horizontal: ocho compases, eje vertical: notas MIDI"></svg>
+<div class="legend"><span>Melodía</span><span>Bajo</span><span>Armonía</span><span>Pulso sintético</span></div>
+<div class="row between"><button id="vary">Variar sólo B</button><span class="hint">Los cambios durante playback entran en el próximo compás no programado.</span></div>
+<div id="evidence" class="box"></div></section>
+</div>
+<div class="bottom"><section class="panel"><h2>03 / Entregá decisiones, no adjetivos</h2><p>El archivo guarda motivo, estado, eventos, semilla de B y límites de revisión. Es un contrato de intención para el agente, no un catálogo compatible con el motor actual.</p><button id="export">Descargar sesión JSON</button></section><section class="panel"><h2>Qué estamos comprobando</h2><p>Identidad reconocible, contraste y conservación de A al revisar B. La reproducción utiliza osciladores sencillos; no Factory Bank. No hay normalización perceptual entre estados, stems, MIDI, integración de juego ni aprobación artística automática.</p><p>Para comparar el motor real: <code>tools/composition_probe.py</code>. Revisá la arquitectura y los tickets en <code>docs/composer-director/</code>.</p></section></div>
+<footer>Audio iniciado únicamente al pulsar Escuchar. Sin uploads, trackers, CDN ni modelos externos. Al ocultar la pestaña se detiene el transporte. Las colas breves pueden solaparse en los cambios de estado.</footer>
+</main><script src="director.js"></script><script>
+'use strict';
+const D = window.ComposerDirector, $ = id => document.getElementById(id);
+const options = { theme: 'pilgrim', state: 'explore', answerSeed: 0, bpm: 96 };
+const descriptions = {
+ explore: 'Llamada modal, bajo espaciado y una respiración al final de cada frase.',
+ danger: 'Pedal de tónica, segundo grado rebajado y pulso desplazado: tensión sin acelerar.',
+ battle: 'Bajo en corcheas y ataques más activos; el contorno del motivo se mantiene.',
+ grief: 'Registro una octava más bajo, color menor, notas alargadas y ausencia de pulso.'
+};
+let locked = false, score = D.compose(options), context = null, master = null, timer = null;
+let playing = false, starting = false, nextTime = 0, nextBar = 0, selectedVersion = 0, scheduledVersion = -1;
+const voices = new Set();
+function update() {
+ score = D.compose(options); selectedVersion++;
+ document.querySelectorAll('[data-theme]').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.theme === options.theme)); b.disabled = locked; });
+ document.querySelectorAll('[data-state]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.state === options.state)));
+ $('transformation').textContent = descriptions[options.state];
+ const original = D.compose({ ...options, answerSeed: 0 });
+ const preserved = D.sectionSignature(original, 'A') === D.sectionSignature(score, 'A') && D.sectionSignature(original, 'A-return') === D.sectionSignature(score, 'A-return');
+ $('evidence').textContent = `B = ${options.answerSeed % 5 + 1}/5 · A y retorno conservados respecto a B=1: ${preserved ? 'sí' : 'NO'} · ${score.events.length} eventos · aprobación auditiva: pendiente`;
+ draw();
+ if (playing) $('status').textContent = 'Cambio pendiente del próximo compás no programado.';
+}
+function draw() {
+ const svg = $('roll'); svg.replaceChildren();
+ const add = (type, attrs, text) => { const n = document.createElementNS('http://www.w3.org/2000/svg', type); for (const [k,v] of Object.entries(attrs)) n.setAttribute(k, v); if (text) n.textContent = text; svg.appendChild(n); };
+ for (let b=0;b<=8;b++) { const x=12+b*92; add('line',{x1:x,x2:x,y1:24,y2:208,stroke:'#34342e'}); if(b<8) add('text',{x:x+4,y:16,fill:'#b5b5a6','font-size':11},String(b+1)); }
+ const colors = {lead:'#dab57e',bass:'#a4ad96',harmony:'#666c61',pulse:'#837966'};
+ for (const e of score.events) {
+   if ($('reduction').checked && !['lead','bass'].includes(e.role)) continue;
+   const y=200-(e.midi-24)*2.6;
+   add('rect',{x:12+e.beat*23,y,width:Math.max(2,e.duration*23-1),height:4,rx:1,fill:colors[e.role]});
+ }
+}
+function sound(e, time, duration) {
+ const oscillator = context.createOscillator(), envelope = context.createGain(), filter = context.createBiquadFilter();
+ oscillator.type = e.role === 'lead' ? D.THEMES[options.theme].wave : e.role === 'bass' ? 'triangle' : 'sine';
+ oscillator.frequency.setValueAtTime(440 * Math.pow(2,(e.midi-69)/12),time);
+ filter.type='lowpass'; filter.frequency.value=e.role==='bass'?850:4200;
+ envelope.gain.setValueAtTime(0,time); envelope.gain.linearRampToValueAtTime(e.amplitude,time+.012);
+ envelope.gain.setValueAtTime(e.amplitude, time+Math.max(.015,duration-.025));
+ envelope.gain.linearRampToValueAtTime(0,time+duration+.035);
+ oscillator.connect(filter);filter.connect(envelope);envelope.connect(master);
+ voices.add(oscillator);oscillator.onended=()=>{voices.delete(oscillator);oscillator.disconnect();filter.disconnect();envelope.disconnect();};
+ oscillator.start(time);oscillator.stop(time+duration+.04);
+}
+function schedule() {
+ if (!playing) return;
+ if (context.state !== 'running' || context.currentTime-nextTime > .35) { stop(); $('status').textContent='Pausa de audio: pulsá Escuchar para reiniciar sin ráfagas atrasadas.'; return; }
+ if (nextTime < context.currentTime+.13) {
+   const seconds=60/options.bpm, start=nextBar*4;
+   const events=$('reduction').checked?D.reduction(score).events:score.events;
+   for (const e of events) if(e.beat>=start && e.beat<start+4) sound(e,nextTime+(e.beat-start)*seconds,e.duration*seconds);
+   scheduledVersion=selectedVersion;
+   $('section-label').textContent=`Compás ${nextBar+1}/8 · ${D.STATES[options.state]}`;
+   $('status').textContent='Reproduciendo · cambios cuantizados por compás';
+   nextTime+=4*seconds;nextBar=(nextBar+1)%8;
+ }
+ timer=setTimeout(schedule,25);
+}
+async function play() {
+ if(playing || starting) return;
+ starting=true;$('play').disabled=true;
+ try {
+   const AudioContext=window.AudioContext||window.webkitAudioContext;
+   if(!AudioContext) throw new Error('Este navegador no ofrece Web Audio');
+   if(!context){context=new AudioContext();master=context.createGain();master.connect(context.destination);}
+   await context.resume();
+   if(context.state!=='running') throw new Error('El navegador no habilitó el audio');
+   master.gain.cancelScheduledValues(context.currentTime);master.gain.setValueAtTime(Number($('volume').value)/100,context.currentTime);
+   playing=true;nextBar=0;nextTime=context.currentTime+.07;$('stop').disabled=false;$('tempo').disabled=true;schedule();
+ } catch(error){$('status').textContent=`No se pudo iniciar: ${error.message}`;playing=false;}
+ finally{starting=false;$('play').disabled=playing;}
+}
+function stop() {
+ playing=false;clearTimeout(timer);timer=null;
+ if(context){master.gain.cancelScheduledValues(context.currentTime);master.gain.setTargetAtTime(0,context.currentTime,.008);for(const oscillator of voices){try{oscillator.stop(context.currentTime+.04);}catch{}}}
+ $('play').disabled=false;$('stop').disabled=true;$('tempo').disabled=false;$('section-label').textContent='8 compases · 4/4';$('status').textContent='Detenido.';
+}
+for(const [id,t] of Object.entries(D.THEMES)) {
+ const button=document.createElement('button');button.className='choice';button.dataset.theme=id;
+ const b=document.createElement('b');b.textContent=t.name;const s=document.createElement('small');s.textContent=t.premise;button.append(b,s);
+ button.onclick=()=>{if(locked)return;options.theme=id;options.answerSeed=0;update();};$('themes').append(button);
+}
+for(const [id,name] of Object.entries(D.STATES)){const b=document.createElement('button');b.dataset.state=id;b.textContent=name;b.onclick=()=>{options.state=id;update();};$('states').append(b);}
+$('lock').onclick=()=>{locked=!locked;$('lock').setAttribute('aria-pressed',String(locked));$('lock').textContent=locked?'Desbloquear selección':'Fijar selección de motivo';update();};
+$('play').onclick=play;$('stop').onclick=stop;
+$('vary').onclick=()=>{options.answerSeed=(options.answerSeed+1)%5;update();};
+$('reduction').onchange=update;
+$('tempo').oninput=()=>{options.bpm=Number($('tempo').value);$('tempo-value').textContent=String(options.bpm);};
+$('volume').oninput=()=>{if(context&&playing) master.gain.setTargetAtTime(Number($('volume').value)/100,context.currentTime,.025);};
+$('export').onclick=()=>{
+ const data=D.session(options), blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}), url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download=`director-${options.theme}-${options.state}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){stop();$('status').textContent='Detenido al ocultar la pestaña.';}});
+window.addEventListener('pagehide',()=>{stop();if(context)context.close();});
+update();
+</script></body></html>
