@@ -1,0 +1,211 @@
+{
+  "S01": {
+    "short": "Swing sistemático",
+    "title": "Downbeat delays are a key component of swing in jazz",
+    "author": "Nelias, Sturm, Albrecht, Hagmayer y Geisel",
+    "url": "https://www.nature.com/articles/s42005-022-00995-z",
+    "year": 2022,
+    "kind": "investigación original",
+    "finding": "Retrasos pequeños de downbeats respecto de la sección rítmica, con offbeats sincronizados, mejoraron swing en las condiciones estudiadas. No implica retrasar todo ni aplicar una cifra universal.",
+    "consulted": "2026-09-08"
+  },
+  "S02": {
+    "short": "No basta con jitter",
+    "title": "Does it Swing? Microtiming Deviations and Swing Feeling in Jazz",
+    "author": "Datseris y colaboradores",
+    "url": "https://arxiv.org/abs/1904.03442",
+    "year": 2019,
+    "kind": "investigación original",
+    "finding": "En 12 interpretaciones de piano, expandir desviaciones temporales redujo valoraciones de swing; las versiones cuantizadas recibieron valoraciones ligeramente superiores. El grid conservaba el swing promedio.",
+    "consulted": "2026-09-08"
+  },
+  "S03": {
+    "short": "cnstruct / UK beats",
+    "title": "Freshly Chopped: Program Modern UK Beats in Live",
+    "author": "cnstruct / Ableton",
+    "url": "https://www.ableton.com/en/blog/freshly-chopped-program-modern-uk-beats-in-live/",
+    "year": 2023,
+    "kind": "tutorial de autor",
+    "finding": "Programación de UK techno, garage y breaks; groove y choke de hats. Los patrones exactos del laboratorio son originales, no transcripciones de este tutorial.",
+    "consulted": "2026-09-08"
+  },
+  "S04": {
+    "short": "Dub y realimentación",
+    "title": "Tutorial: Ableton audio feedback, part 1",
+    "author": "Angstrom",
+    "url": "https://angstromnoises.com/tutorial-ableton-audio-feedback-part-1/",
+    "kind": "tutorial de autor",
+    "finding": "Uso compositivo de rutas de feedback y envíos. El prototipo escribe repeticiones de notas atenuadas; no implementa realimentación de audio.",
+    "consulted": "2026-09-08"
+  },
+  "S05": {
+    "short": "Heavee / footwork",
+    "title": "Heavee: Note To Self",
+    "author": "Heavee, entrevista de Danny Turner / Ableton",
+    "url": "https://www.ableton.com/en/blog/heavee-note-to-self/",
+    "year": 2024,
+    "kind": "entrevista original",
+    "finding": "Conexiones directas entre creación footwork y música de videojuegos; templates rápidos, micro-ritmos, tresillos, capas y secciones de menor actividad. No existe una receta única.",
+    "consulted": "2026-09-08"
+  },
+  "S06": {
+    "short": "Gamelan / UNESCO",
+    "title": "Gamelan",
+    "author": "UNESCO / nominación de Indonesia",
+    "url": "https://ich.unesco.org/en/RL/gamelan-01607",
+    "year": 2021,
+    "kind": "documentación de patrimonio vivo",
+    "finding": "Partes entrelazadas de un conjunto. La fuente da contexto, no una receta de kotekan ni autorización para llamar gamelan a cualquier pentatónica.",
+    "consulted": "2026-09-08"
+  },
+  "S07": {
+    "short": "Reich / proceso",
+    "title": "Steve Reich: An Interview",
+    "author": "Steve Reich / Tape Op",
+    "url": "https://tapeop.com/interviews/15/steve-reich",
+    "kind": "entrevista original",
+    "finding": "Proceso y descubrimiento de desfase. Nuestro generador usa adición y ciclos discretos originales, no reproduce composiciones ni phasing continuo.",
+    "consulted": "2026-09-08"
+  },
+  "S08": {
+    "short": "Afriqua / polirritmos",
+    "title": "Principles of Black Music: Polyrhythms",
+    "author": "Afriqua / Ableton",
+    "url": "https://www.ableton.com/fr/blog/afriqua-presents-principles-of-black-music-polyrhythms/",
+    "kind": "ensayo de artista",
+    "finding": "Relaciones entre capas rítmicas; atender al contexto cultural y a cómo se escuchan juntas, no a una colección de números.",
+    "consulted": "2026-09-08"
+  },
+  "S09": {
+    "short": "Tango / UNESCO",
+    "title": "Tango",
+    "author": "UNESCO / Argentina y Uruguay",
+    "url": "https://ich.unesco.org/en/RL/tango-00258",
+    "year": 2009,
+    "kind": "documentación cultural",
+    "finding": "Contexto cultural rioplatense. Esta fuente no prescribe los patrones de staccato, anticipaciones o voicings de nuestra propuesta.",
+    "consulted": "2026-09-08"
+  },
+  "S10": {
+    "short": "Akimbo / espacio",
+    "title": "Akimbo: Minimalist Korean Instrumentation",
+    "author": "Akimbo / Ableton",
+    "url": "https://www.ableton.com/fr/blog/akimbo-minimalist-korean-instrumentation/",
+    "kind": "entrevista original",
+    "finding": "Exploración minimalista de instrumentación y espacio. No se pretende sintetizar instrumentos tradicionales coreanos en esta entrega.",
+    "consulted": "2026-09-08"
+  },
+  "S11": {
+    "short": "Yushh / broken rhythm",
+    "title": "Yushh: The Sound of Forward Pressure",
+    "author": "Yushh / Ableton",
+    "url": "https://www.ableton.com/en/blog/yushh-the-sound-of-forward-pressure/",
+    "kind": "entrevista original",
+    "finding": "Relaciones entre ritmo roto, atmósfera y producción. La etiqueta broken beat del boceto es una hipótesis amplia, no una transcripción ni taxonomía certificada.",
+    "consulted": "2026-09-08"
+  },
+  "S12": {
+    "short": "Konnakol / patrones",
+    "title": "Patterns in Konnakol",
+    "author": "Alex McLean / ALPACA",
+    "url": "https://algorithmicpattern.org/patterns-in-konnakol/",
+    "kind": "exploración original de practicante/autor de live coding",
+    "finding": "Introducción informal a patrones recitados y tala, con representaciones algorítmicas. No reducir konnakol a Euclidean hits ni mezclar Carnatic e Hindustani.",
+    "consulted": "2026-09-08"
+  },
+  "S13": {
+    "short": "Candombe / comunidad",
+    "title": "Candombe and its socio-cultural space: a community practice",
+    "author": "UNESCO / Uruguay",
+    "url": "https://ich.unesco.org/en/RL/candombe-and-its-socio-cultural-space-a-community-practice-00182",
+    "year": 2009,
+    "kind": "documentación cultural",
+    "finding": "Tradición situada y práctica colectiva. Para implementar toque, respuestas y familias de tambor hacen falta recursos interpretativos adicionales y validación de practicantes.",
+    "consulted": "2026-09-08"
+  },
+  "S14": {
+    "short": "Flamenco / contexto",
+    "title": "Flamenco",
+    "author": "UNESCO / España",
+    "url": "https://ich.unesco.org/en/RL/flamenco-00363",
+    "year": 2010,
+    "kind": "documentación cultural",
+    "finding": "Interacción de cante, baile y toque. No da una licencia para universalizar compás de 12 tiempos a todos los palos.",
+    "consulted": "2026-09-08"
+  },
+  "S15": {
+    "short": "Son de Madera",
+    "title": "Son Jarocho",
+    "author": "Son de Madera / Smithsonian Folkways",
+    "url": "https://folkways.si.edu/son-jarocho/latin-spoken-word-world/music/video/smithsonian",
+    "kind": "entrevista y demostración de músicos",
+    "finding": "Son jarocho, cuerdas y práctica musical. Las futuras gramáticas requerirían formas, repertorio y ejemplos autorizados, no una reducción automática a 3/4.",
+    "consulted": "2026-09-08"
+  },
+  "S16": {
+    "short": "Brasil / música y movimiento",
+    "title": "Dança: Movement from Brazil",
+    "author": "Smithsonian Folkways",
+    "url": "https://folkways.si.edu/danca-movement-brazil/samba/music/tools-for-teaching/smithsonian",
+    "kind": "material educativo institucional",
+    "finding": "Música, movimiento y fragmentos rítmico-melódicos en Brasil. Es contexto de investigación; no evidencia suficiente para certificar el patrón bossa del prototipo.",
+    "consulted": "2026-09-08"
+  },
+  "S17": {
+    "short": "Web Audio / reloj",
+    "title": "Web Audio API 1.1",
+    "author": "W3C",
+    "url": "https://www.w3.org/TR/webaudio-1.1/",
+    "kind": "especificación",
+    "finding": "Programación de audio con reloj de AudioContext y render offline. Las vistas leen el mismo tiempo y eventos; eso no certifica latencia de hardware.",
+    "consulted": "2026-09-08"
+  },
+  "S18": {
+    "short": "Tabla / Mayur Narvekar",
+    "title": "Mayur Narvekar: Tabla and Live",
+    "author": "Mayur Narvekar / Ableton",
+    "url": "https://www.ableton.com/es/blog/Mayur-Narvekar-tabla-and-live/",
+    "kind": "entrevista de músico",
+    "finding": "Interacción de tabla y producción electrónica. Una línea futura distinta de Konnakol: no asumir que ambos sistemas son intercambiables.",
+    "consulted": "2026-09-08"
+  },
+  "S19": {
+    "short": "Swing / Max Planck",
+    "title": "The secret of swing – addressed in the lab",
+    "author": "Max Planck Institute for Dynamics and Self-Organization",
+    "url": "https://www.ds.mpg.de/3975086/221006_swing",
+    "year": 2022,
+    "kind": "explicación institucional del equipo investigador",
+    "finding": "Explica S01. No es un estudio independiente adicional.",
+    "consulted": "2026-09-08"
+  },
+  "S20": {
+    "short": "Bossa / Daniel Ward",
+    "title": "Learn Basic Bossa Nova Patterns, Inside and Out",
+    "author": "Daniel Ward / Acoustic Guitar",
+    "url": "https://acousticguitar.com/video-lesson-learn-basic-bossa-nova-patterns-inside-and-out/",
+    "year": 2019,
+    "kind": "lección original de músico",
+    "finding": "Independencia del bajo y acordes sincopados; patrones, anticipaciones y límites de actividad. No se transcriben sus ejemplos ni su étude.",
+    "consulted": "2026-09-08"
+  },
+  "S21": {
+    "short": "Cloudchord / desarrollo",
+    "title": "Cloudchord: Tending the Bloom Bap Garden",
+    "author": "Cloudchord / entrevista de David Abravanel, Ableton",
+    "url": "https://www.ableton.com/en/blog/cloudchord-tending-the-bloom-bap-garden/",
+    "year": 2023,
+    "kind": "entrevista original de músico",
+    "finding": "Transformar material de loops a lo largo de una pieza, dejando espacio a la interpretación. Los acordes neo-soul del laboratorio son elecciones propias, no extracción de esta entrevista.",
+    "consulted": "2026-09-08"
+  },
+  "S22": {
+    "short": "Steve Roach / secuencias",
+    "title": "Steve Roach: Ambient Pioneer’s Studio Secrets",
+    "author": "Steve Roach / Tape Op",
+    "url": "https://tapeop.com/interviews/161/steve-roach",
+    "kind": "entrevista original de músico",
+    "finding": "Combinar secuencias de distintas longitudes y explorar relaciones de fase en creación ambiental. Se distingue de un preset genérico de reverb.",
+    "consulted": "2026-09-08"
+  }
+}

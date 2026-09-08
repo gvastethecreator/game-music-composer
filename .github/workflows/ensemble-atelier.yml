@@ -1,0 +1,44 @@
+name: Ensemble Atelier extension
+on:
+  pull_request:
+    paths:
+      - 'game-music-composer/resources/ensemble-atelier/**'
+      - 'game-music-composer/scripts/visualize_score.py'
+      - 'game-music-composer/scripts/refine_performance.py'
+      - 'game-music-composer/scripts/tests/**'
+      - 'tests/ensemble-atelier/**'
+      - 'tools/build_ensemble_atelier.py'
+      - '.github/workflows/ensemble-atelier.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ensemble-atelier-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  extension:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Portable Python extension tests
+        run: |
+          python -m unittest discover -s game-music-composer/scripts/tests -p test_visualize_score.py -v
+          python -m unittest discover -s game-music-composer/scripts/tests -p test_refine_performance.py -v
+      - name: Generate standalone labs
+        run: python tools/build_ensemble_atelier.py
+      - name: Deterministic music, synthesis and generated HTML
+        run: node --test tests/ensemble-atelier/music.test.cjs

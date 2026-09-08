@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "dist" / "game-music-composer.zip"
 MANIFEST = ROOT / "MANIFEST.sha256"
 ARCHIVE_ROOT = "game-music-composer"
-SKIP_DIRS = {"__pycache__", ".git", ".scratch", "dist", "work"}
+SKIP_DIRS = {"__pycache__", ".git", ".pytest_cache", ".scratch", "dist", "work"}
 SKIP_SUFFIXES = {".pyc", ".pyo"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".sha256", ".txt", ".yaml", ".yml"}
 FORBIDDEN_PATH = b"/mnt" + b"/data"
@@ -55,9 +55,10 @@ def build_manifest() -> tuple[int, str]:
     files = [path for path in source_files() if path != MANIFEST]
     lines = [f"{hashlib.sha256(path.read_bytes()).hexdigest()}  ./{path.relative_to(ROOT).as_posix()}" for path in files]
     content = "\n".join(lines) + "\n"
-    staging = MANIFEST.with_name(f".{MANIFEST.name}.tmp")
-    staging.write_text(content, encoding="utf-8", newline="\n")
-    staging.replace(MANIFEST)
+    if not (MANIFEST.is_file() and MANIFEST.read_text(encoding="utf-8") == content):
+        staging = MANIFEST.with_name(f".{MANIFEST.name}.tmp")
+        staging.write_text(content, encoding="utf-8", newline="\n")
+        staging.replace(MANIFEST)
     return len(files), hashlib.sha256(content.encode("utf-8")).hexdigest()
 
 

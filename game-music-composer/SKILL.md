@@ -1,259 +1,96 @@
 ---
 name: game-music-composer
-description: "SNES game music: compose, arrange, review, render, export; 16-bit cues, loop-ready scores, MIDI, soundbank planning, composition audits, $game-music-composer."
+description: "Compose, arrange, inspect and refine original game music. Neo-SPC scores, MIDI and audio; playable instrument viewers, phrase/role performance, genre research and independent composition labs. Use for memorable motifs, loops, soundtrack direction and $game-music-composer."
 ---
 
 # Game Music Composer
 
-Original game music: clear roles, short sample IDs, memorable motifs, useful loops. Voice ceiling 8–32. `legacy_8` for hardware-style limits; expanded profiles for browser/production.
+Compose original music with a recognizable identity, purposeful form, instrumental roles and useful loops. Preserve a good idea while revising a named dimension. Clear writing comes before density, humanization or mastering.
 
-Engine CLI: `neospc.py`. One 8–32 bar loop-ready cue per seed. Ambient fields, polyrhythmic processes, variation banks are unwired; say so if asked, then write a strong short identity unless they only want a plan.
+Run commands from this skill directory and keep generated projects outside it. All JSON, MIDI and viewer helpers use Python's standard library; native audio rendering needs the optional extras and FFmpeg. The browser viewer needs Web Audio and Workers, not an API, account or Node installation.
 
-Run commands from this skill directory; keep generated files outside.
+## Capabilities: distinguish production from exploration
 
-## Start with a real brief
+| Path | Implemented | Do not claim |
+|---|---|---|
+| `scripts/neospc.py` | Existing init/compose/validate/review/audit-bank/export-midi/render. One 8–32-bar cue per seed, 8/12/16/24/32 voice profiles. | General ambient-process engine, arbitrary localized recompose, or fully wired harness controls. |
+| `scripts/visualize_score.py` | Standalone instrument + piano-roll viewer from a composition/catalog; five independent demo generators. | Native/Factory Bank audio parity, physical fingering, DAW editing or production stems. |
+| `scripts/refine_performance.py` | Opt-in phrase/role timing, gate and velocity changes on native composition/catalog JSON; written event structure preserved and hashed. | New melody/harmony/form, universal humanization, authenticity or automatic artistic approval. |
 
-1. Check the bundled system:
+Full canonical composing, bank assignment, mix and export procedure: read [canonical-compose-workflow.md](references/canonical-compose-workflow.md) when composing or delivering. Its original ambient/variation limitations refer to the native engine, not to the separate browser experiments. Viewer and interpretation details: [49-ensemble-atelier.md](references/49-ensemble-atelier.md). Research and anti-rigidity method: [50-composition-direction.md](references/50-composition-direction.md).
+
+## Begin with musical decisions
+
+Clarify game function, foreground versus background, emotional change, intended repetition, dialogue/SFX space and target backend. Ask only when the answer changes the music or delivery. Record assumptions; do not block exploration on plugin choices.
+
+An open-ended request starts with three genuinely different reductions when practical. Change at least two structural dimensions: rhythmic cell, intervals/contour, phrase syntax, harmonic behavior or silence. Three seeds, keys or timbres alone are not three directions. Never borrow benchmark phrases or copyrighted recordings as original work.
+
+After selection, record the protected core: notes/degrees, rhythm, accents, breath, anchor and destination. State which representation is locked; preserving scale-degree contour is not preserving absolute pitches. Revising one region does not authorize regenerating another. Current native compose has no universal lock/revise transaction; use explicit score edits and compare protected events.
+
+## Native workflow
 
 ```bash
 python scripts/neospc.py doctor --strict
+python scripts/neospc.py init ../my-cue --title "Glass Harbor" --category mystery --game-context puzzle --mood mysterious --bpm 88 --meter 5/4 --key D --mode dorian --voices 12 --bars 16
+python scripts/neospc.py validate ../my-cue/composition-plan.json ../my-cue/generation-harness.json --strict
+python scripts/neospc.py compose ../my-cue
+python scripts/neospc.py validate ../my-cue/composition.json ../my-cue/catalog.json --strict
 ```
 
-2. Create a composition plan and full harness:
+Inspect the plan before composing. A scale, BPM and arpeggiator are not a sufficient brief. Specify phrase purpose, cadence, bass behavior, groove, silence, section functions and return. Follow macroform → phrase → rhythm/rests → structural pitches → bass/harmony → counterlines → performance → mix.
+
+Use voice budgets as ceilings, never constant fill targets. A 32-voice score does not imply 32 MIDI channels. Prefer fewer independent roles over unison padding. Preserve intentional dissonance, pedal and recurrence rather than optimizing every note to a heuristic.
+
+## Make the score visible and playable
 
 ```bash
-python scripts/neospc.py init ./my-cue \
-  --title "Glass Harbor" \
-  --category mystery \
-  --game-context puzzle \
-  --mood mysterious \
-  --bpm 88 \
-  --meter 5/4 \
-  --key D \
-  --mode dorian \
-  --voices 12 \
-  --bars 16
+python scripts/visualize_score.py --input ../my-cue/composition.json --output ../my-cue/atelier.html
+python scripts/visualize_score.py --input ../my-cue/catalog.json --cue-index 0 --output ../my-cue/catalog-preview.html
 ```
 
-3. Review descriptive fields in `composition-plan.json`; edit wording that misses the scene. Quality gates stay `false` until evidence supports them.
+Every track receives an instrument surface, exact note pads, mute/solo, attack history and piano-roll events. The enlarged view improves inspection. The illustration is schematic: breath/valve/bow motion is explanatory, not physically valid fingering. Track VEL displays note velocity; the separate master scope reads actual synthetic audio samples. Never present either as measured LUFS/true peak.
 
-4. Tune `generation-harness.json` only after the plan states scene, emotional change, form, motif, bass behavior, groove, silence budget, loop strategy.
+The HTML re-synthesizes original sketch timbres. It does not carry samples, CC/bus routing or all Neo-SPC performance data; import reports state losses/fallbacks. Browser session JSON is not a canonical Neo-SPC composition. Keep the original file authoritative. A screenshot or passing browser test is not a listening approval.
 
-5. Validate both files before writing notes:
+## Diagnose rigidity at the correct layer
+
+First hear reduction, then arrangement, then game context. Separate repeated phrase topology, continuous accompaniment, inappropriate harmonic rhythm, identical entries and lifeless articulation. Do not fix weak composition by adding random timing errors or more notes.
+
+Use the five optional experiments separately:
 
 ```bash
-python scripts/neospc.py validate ./my-cue/composition-plan.json ./my-cue/generation-harness.json --strict
+python scripts/visualize_score.py --demo instrumentarium --output ../labs/instrumentarium.html
+python scripts/visualize_score.py --demo pocket --output ../labs/pocket.html
+python scripts/visualize_score.py --demo conversation --output ../labs/conversation.html
+python scripts/visualize_score.py --demo atlas --output ../labs/atlas.html
+python scripts/visualize_score.py --demo cycles --output ../labs/cycles.html
 ```
 
-6. Write the first complete score draft:
+Pocket compares identical written material. Conversation changes phrase/turn-taking and real rests. Atlas changes rhythm, accompaniment and melodic grammar independently. Cycles uses a verified common return period. These generators are implemented in browser code; they do not silently extend `neospc compose`. Explore/review does not imply user approval to alter production defaults.
+
+## Refine interpretation without changing the written score
 
 ```bash
-python scripts/neospc.py compose ./my-cue
-python scripts/neospc.py validate ./my-cue/composition.json ./my-cue/catalog.json --strict
+python scripts/refine_performance.py ../my-cue/catalog.json ../my-cue/catalog-performed.json --profile chamber --amount 0.5 --seed 2207
+python scripts/neospc.py validate ../my-cue/catalog-performed.json --strict
+python scripts/visualize_score.py --input ../my-cue/catalog-performed.json --output ../my-cue/performed-preview.html
 ```
 
-`compose` uses plan, harness and declared seed. Writes one composition plus one-cue catalog for review, bank, MIDI, render. Won't replace either output without `--force`. Inspect reduction, form, ranges, density, loop before approval.
+Profiles are `chamber`, `pocket`, `ritual`: conservative design hypotheses, not simulations of all musicians. Always start from the original; cumulative refinement is rejected. `--amount 0` is a no-op. The report records a structural hash, boundary adjustments and pending listening. Overflow is an error, never silent deletion. Symbolic polyphony uses the existing .12-beat drum approximation and excludes release/sample tails.
 
-## Route the request
+This changes actual native performance fields, not just descriptive metadata. Validate/review the output and audition the real backend before approval. Do not substitute the synthetic preview for native render evidence.
 
-- **Compose an original cue:** workflow below.
-- **Arrange supplied material:** keep requested identity; declare every changed dimension; re-run range, voice, loop, expression checks.
-- **Audit existing JSON or MIDI:** diagnose composition, performance, production separately. Rewrite only if asked.
-- **Target strict hardware character:** `legacy_8`; measured peak eight; limit samples and effects; label hardware-inspired unless an SPC toolchain proves stricter claims.
-- **Create an expanded web cue:** prefer `expanded_16`; add voices only when each has a section or phrase function.
-- **Build or test a corpus:** seeded harness files; preserve inputs/outputs; compare every revision on the same fixtures.
-
-## Compose in this order
-
-### 1. Write the contract
-
-Declare:
-
-- game function and scene;
-- category, subgenre and emotional change;
-- meter, tempo center and phrase grid;
-- scale or pitch collection;
-- harmonic language and cadence plan;
-- formal sections and loop seam;
-- rhythmic identity and silence budget;
-- bass family and behavior;
-- voice ceiling and role architecture;
-- timbre palette and render target.
-
-Reject a brief that is only scale, tempo, arpeggiator.
-
-### 2. Prove the core reduction
-
-Inspect first:
-
-1. identity gesture or melody;
-2. bass or harmonic foundation;
-3. essential harmony or counterpoint;
-4. core rhythmic identity.
-
-Reduction must work without pads, ensemble doubling, reverb, chorus, limiting.
-
-### 3. Choose a voice architecture
-
-Read `data/voice-architecture-profiles.json`.
-
-- `legacy_8`: sparse hardware-style writing.
-- `compact_12`: chamber and intimate cues.
-- `expanded_16`: default for most work.
-- `ensemble_24`: layered action, choir or orchestra.
-- `symphonic_32`: dense counterpoint and rare climaxes.
-
-Budget is a ceiling. State every extra voice's job.
-
-### 4. Build hierarchy before detail
-
-Sequence:
-
-```text
-macroform
-→ section purpose
-→ phrase and cadence
-→ rhythm and rests
-→ structural melody notes
-→ bass direction
-→ harmony and voice leading
-→ counterlines and texture states
-→ expressive performance
-→ mix and master
-```
-
-Read when the current step needs them:
-
-- harmony: `data/scale-library.json` and `data/chord-progression-library.json`;
-- patterns: `data/pattern-preset-library.json`;
-- category behavior: `data/category-benchmark-contracts.json`;
-- fast cues: `data/fast-tempo-detail-rules.json`;
-- full controls: `data/generation-harness-v3.json`.
-
-Seeded values are constraints: keep phrase purpose, harmonic targets, genre identity across variants.
-
-`period`: antecedent/consequent — same idea, weak cadence, tonic close. `sentence`: 2+2+4 — idea, sequenced idea, continuation. Motif skeleton stays on home pitch class; only passing tones follow the chord. Contrast: related answer motif + different accompaniment, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review splits legality from identity: tiling the same cell or sitting too close to another catalog cue fails identity even if writing is legal.
-
-### 5. Assign instruments by role
-
-Read:
-
-- `data/factory-bank-manifest.json`;
-- `data/factory-bank-role-map.json`;
-- `data/voice-budget-modes.json`;
-- `references/48-factory-bank-integration.md`.
-
-Patches by role, register, velocity response, articulation, era profile. `neo16` for browser playback; `neo32` for expanded renders. Declare assignment before rendering.
-
-Bass:
-
-- upright: jazz, folk, intimate adventure;
-- electric finger: towns, soul, funk;
-- picked: rock, combat, hard rhythmic work;
-- analog: electronic, science fiction;
-- sub: pressure, horror, selected electronic cues;
-- bowed contrabass: tragic, sacred, orchestral writing.
-
-Notes stay inside patch ranges; use bank multisample zones and velocity layers when provided.
-
-### 6. Humanize musical behavior
-
-Phrase and role behavior:
-
-- phrase push and cadence relaxation;
-- role-specific timing placement;
-- velocity arcs and repeated-note variation;
-- breathing gaps;
-- alternating articulation;
-- chord staggering and strum direction;
-- selective detune for ensembles;
-- instrument-specific vibrato and release;
-- ghost notes that support the groove.
-
-Fast tempos: add detail to selected motors, percussion and phrase endings. Keep rests and velocity order; do not raise every track's note rate.
-
-### 7. Mix by function
-
-Order:
-
-1. calibrate sources;
-2. route `lead`, `bass`, `drums`, `rhythm`, `harmony`, `atmosphere` and `fx`;
-3. apply instrument trim;
-4. shape each bus;
-5. protect foreground priority;
-6. leave kick and bass space where needed;
-7. measure loudness and peak headroom;
-8. apply the output ceiling.
-
-Read `data/instrument-calibration.json`, `data/mix-bus-profiles.json` and `data/mix-audit-v2.2.json`.
-
-MIDI duties:
-
-- CC7: track balance;
-- velocity: attack weight and articulation;
-- CC11: phrase and section expression;
-- CC10: pan;
-- CC91: spatial send.
-
-## Validate and export
-
-`compose` writes `catalog.json` with the new cue under `styles`. Add other complete compositions to batch. Each must match `schemas/neospc-composition.schema.json` and declare form, chords, events, instruments.
-
-Gates:
+## Review and deliver honestly
 
 ```bash
-python scripts/neospc.py validate ./my-cue/catalog.json --kind catalog --strict
-python scripts/neospc.py review ./my-cue/catalog.json ./my-cue/review.json
-python scripts/neospc.py audit-bank ./my-cue/catalog.json --output ./my-cue/bank-audit.json
-python scripts/neospc.py export-midi ./my-cue/catalog.json ./my-cue/midi
-python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio
+python scripts/neospc.py review ../my-cue/catalog-performed.json ../my-cue/review-performed.json
+python scripts/neospc.py audit-bank ../my-cue/catalog-performed.json --output ../my-cue/bank-audit.json
+python scripts/neospc.py export-midi ../my-cue/catalog-performed.json ../my-cue/midi-performed
+python scripts/neospc.py render ../my-cue/catalog-performed.json ../my-cue/audio-performed-new
 ```
 
-`review`: deterministic symbolic rubric — score structure, phrase behavior, genre signals, orchestration, expression. Not human judgment or independent artistic review; use a separate reviewer.
+Use a NEW native-render output directory for each revision: the existing renderer can reuse stale OGG/MP3 by file existence. Its source bank is not made equivalent to Factory Live by a `factory_patch` label. MIDI channel/retrigger limitations also remain tracked. Do not call those production defects solved by this viewer/refinement increment.
 
-`render` needs `numpy`, `soundfile`, `pyloudnorm`, `scipy`, FFmpeg. Install extras: `python -m pip install -r requirements-render.txt`. Other commands use the stdlib. Missing render deps: valid JSON and MIDI, name blocked audio formats, give the exact retry command.
+Required delivery: concrete plan, harness, canonical score/catalog, exact engine/seed/backend, Type-1 MIDI when valid, WAV/OGG/MP3 when available, symbolic and bank reports, provenance/licensing, and optionally the HTML viewer plus refinement report. Name blocked formats/dependencies and exact retry commands. Keep approval false until supported; distinguish technical validation, independent listening and game integration.
 
-Keep every review report. Revise only named dimensions; re-run validation and review after each revision. Keep `approved`, `revise`, `rebuild` labels honest.
-
-## Required output
-
-Complete cue:
-
-- composition plan;
-- full harness instance;
-- semantic composition JSON;
-- Type-1 MIDI;
-- WAV/OGG preview plus MP3 browser fallback when rendering is available;
-- symbolic review report;
-- Factory Bank assignment audit;
-- sample provenance and license note.
-
-JSON is the main source; MIDI cannot retain every sample, envelope, role, bus, performance detail.
-
-## Final checks
-
-Composition:
-
-- harmonic intent and pitch legality;
-- melodic continuity and motif change;
-- voice leading and role independence;
-- rhythmic purpose and repetition;
-- category identity;
-- form and section contrast;
-- instrumental range;
-- measured voice peak;
-- loop seam;
-- novelty vs the benchmark without copying it.
-
-Production:
-
-- source calibration and provenance;
-- bus routing, masking and foreground order;
-- loudness and peak ceiling;
-- MIDI velocity range and expression data;
-- missing or corrupt assets;
-- playable Factory Bank ranges.
-
-Reject generic bass substitution, uniform gain, constant arpeggiation, copied benchmark phrases, identical doubled voices, permanent max density, accidental chromatic notes, mixes that hide a weak reduction via mastering.
-
-Use `data/neospc100-benchmark-v4.1.json` only as an evaluation corpus and structure reference — never as a phrase source.
+Compare the same fixtures with fresh outputs and level-controlled listening. Keep failures, intentional repetitions and genre exceptions visible. A single 0–100 symbolic score is diagnostic, not a composer, originality certificate or listener preference.
