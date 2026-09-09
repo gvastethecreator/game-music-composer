@@ -58,6 +58,12 @@ class MetaMessage(Message):
             denominator = int(self.values["denominator"])
             power = int(math.log2(denominator)) if denominator > 0 and denominator & (denominator - 1) == 0 else 2
             payload = bytes((numerator & 0xFF, power & 0xFF, 24, 8))
+        elif self.type == "midi_port":
+            meta_type = 0x21
+            port = int(self.values['port'])
+            if not 0 <= port <= 127:
+                raise ValueError('MIDI port must be between 0 and 127')
+            payload = bytes((port,))
         else:
             raise ValueError(f"Unsupported MIDI meta message type: {self.type}")
         return bytes((0xFF, meta_type)) + variable_length(len(payload)) + payload

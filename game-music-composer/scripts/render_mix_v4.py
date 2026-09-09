@@ -4,11 +4,14 @@ import argparse,json,math,subprocess,collections,os
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor,as_completed
 import numpy as np,soundfile as sf,pyloudnorm as pyln
-from scipy.signal import butter,sosfiltfilt
+from scipy.signal import butter,sosfiltfilt,resample_poly
+from fractions import Fraction
 from scipy.ndimage import uniform_filter1d
 
 SR=32000
 SAMPLES=None;METAS=None;CAL=None;NOTE_CACHE=None;DRUM_CACHE=None
+PALETTES=None;FACTORY_DIR=None
+LEVELS=json.loads((Path(__file__).resolve().parents[1]/'data/soundbank-levels.json').read_text())['gain_db']
 BUS_ORDER=['lead','bass','drums','rhythm','harmony','atmosphere','fx']
 ROLE_BUS={'lead':'lead','counter':'lead','riff':'lead','bass':'bass','kick':'drums','snare':'drums','hat':'drums','tom':'drums','wood':'drums','ride':'drums','shaker':'drums','brush':'drums','rim':'drums','impact':'fx','comp':'harmony','arp':'rhythm','motor':'rhythm','ostinato':'rhythm','pad':'atmosphere','support':'harmony','ensemble':'atmosphere','pulse':'rhythm','texture':'atmosphere'}
 ROLE_AMP={'lead':.245,'counter':.18,'riff':.235,'bass':.285,'kick':.52,'snare':.43,'hat':.20,'tom':.36,'wood':.27,'ride':.17,'shaker':.16,'brush':.16,'rim':.22,'impact':.31,'comp':.155,'arp':.15,'motor':.17,'ostinato':.18,'pad':.105,'support':.145,'ensemble':.082,'pulse':.15,'texture':.07}
@@ -27,8 +30,9 @@ def dbamp(db):return 10**(db/20)
 def clamp(x,a,b):return max(a,min(b,x))
 def resample_rate(x,rate):
  if abs(rate-1)<1e-7:return x.copy()
- n=max(1,int(len(x)/rate));idx=np.arange(n)*rate
- return np.interp(idx,np.arange(len(x)),x).astype(np.float32)
+ n=max(1,int(len(x)/rate));ratio=Fraction(1/float(rate)).limit_denominator(512)
+ y=resample_poly(x,ratio.numerator,ratio.denominator)
+ return np.pad(y,(0,max(0,n-len(y))))[:n].astype(np.float32)
 def envelope(n,attack,release,sustain=.98):
  y=np.ones(n,dtype=np.float32)*sustain;a=min(n,max(1,int(attack*SR)));r=min(n,max(1,int(release*SR)))
  y[:a]=np.linspace(0,sustain,a,endpoint=False)
@@ -83,12 +87,34 @@ def load_samples(sample_dir,cal_path):
  for sid,meta in metas.items():
   x,sr=sf.read(Path(sample_dir)/Path(meta['file']).name,dtype='float32');x=x.mean(axis=1) if x.ndim>1 else x
   if sr!=SR:raise RuntimeError((sid,sr))
-  x=x*cal[sid]['linear_gain'];samples[sid]=x.astype(np.float32)
+  x=x*dbamp(LEVELS[Path(meta['file']).name]);samples[sid]=x.astype(np.float32)
  return samples,metas,cal
 
-def init_worker(sample_dir,cal_path):
- global SAMPLES,METAS,CAL,NOTE_CACHE,DRUM_CACHE
+def init_worker(sample_dir,cal_path,factory_dir=None):
+ global SAMPLES,METAS,CAL,NOTE_CACHE,DRUM_CACHE,PALETTES,FACTORY_DIR
+ FACTORY_DIR=Path(factory_dir) if factory_dir else None
+ if FACTORY_DIR:
+  factory=json.loads((FACTORY_DIR/"factory-bank-manifest.json").read_text())
+  PALETTES={"factory":{"patches":{p["id"]:p for p in factory["patches"]}}}
+  PALETTES.update(json.loads((FACTORY_DIR/"data/studio-palettes.js").read_text().split("=",1)[1].rstrip(";\n")))
  SAMPLES,METAS,CAL=load_samples(sample_dir,cal_path);NOTE_CACHE={};DRUM_CACHE={}
+
+def palette_sample(style, info, event):
+ palette=style.get("sound_palette","factory")
+ patch=PALETTES[palette]["patches"][info["factory_patch"]]
+ regions=patch["profiles"]["neo16"]["regions"]
+ midi=patch.get("note",info["root_midi"]) if event["kind"]=="drum" or patch["type"] in ("drum","fx") else event["midi"]
+ velocity=max(1,min(127,round(event.get("velocity",event.get("velocity_norm",.66)*127))))
+ matches=[r for r in regions if r["lokey"]<=midi<=r["hikey"] and r["lovel"]<=velocity<=r["hivel"]]
+ if not matches:matches=[r for r in regions if r["lokey"]<=midi<=r["hikey"]]
+ if not matches:matches=[min(regions,key=lambda r:abs(r["root"]-midi))]
+ count=max(r.get("rr_count",1) for r in matches)
+ rr=int(abs(math.floor(event.get("performance_beat",event["beat"])*97+midi*13+velocity*3+.5)))%count+1
+ region=next((r for r in matches if r.get("rr",1)==rr),matches[0]);sid=region["file"]
+ if sid not in SAMPLES:
+  y,rate=sf.read(FACTORY_DIR/sid,dtype="float32");assert rate==SR
+  SAMPLES[sid]=y*dbamp(LEVELS[sid]);METAS[sid]={"root_midi":region["root"],"loop":region.get("loop")}
+ return sid,METAS[sid],SAMPLES[sid]
 
 def make_note(src,meta,midi,duration,attack,release,cents=0):
  rate=2**(((midi+cents/100)-meta['root_midi'])/12);loop=meta.get('loop');target=max(1,int((duration+release)*SR))
@@ -114,7 +140,10 @@ def render_style(style,outdir):
   return {'id':style['id'],'category':style['category'],'target_lufs':style.get('mix_v3',style.get('mix_v2',{})).get('target_lufs',-16),'integrated_lufs':round(lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'skipped':True}
  buses={b:np.zeros((n,2),np.float32) for b in BUS_ORDER};kick_starts=[]
  for ev in style['events']:
-  info=style['instrument_map'][ev['inst']];sid=info['sample'];meta=METAS[sid];src=SAMPLES[sid];role=ev.get('role','support');bus=bus_for(ev)
+  info=style['instrument_map'][ev['inst']]
+  if PALETTES:sid,meta,src=palette_sample(style,info,ev)
+  else:sid=info['sample'];meta=METAS[sid];src=SAMPLES[sid]
+  role=ev.get('role','support');bus=bus_for(ev)
   start_beat=float(ev.get('performance_beat',ev['beat']));start=int(start_beat*beat_sec*SR)%n;cutoff=int(ev.get('brightness_cutoff') or 0)
   if ev['kind']=='drum':
    offset=int(max(0,ev.get('sample_offset_ms',0))*SR/1000);cents=round(float(ev.get('tuning_cents',0))/2.5)*2.5;key=(sid,offset,cents,cutoff);y=DRUM_CACHE.get(key)
@@ -177,11 +206,11 @@ def render_style(style,outdir):
  for i in range(0,max(1,n-win),hop):vals.append(20*math.log10(math.sqrt(float(np.mean(mono[i:i+win]**2))+1e-12)+1e-12))
  dyn=float(np.percentile(vals,95)-np.percentile(vals,10)) if vals else 0
  sf.write(wav,mix.astype(np.float32),SR,subtype='PCM_16');subprocess.run(['ffmpeg','-y','-loglevel','error','-i',str(wav),'-c:a','libvorbis','-q:a','5',str(ogg)],check=True);subprocess.run(['ffmpeg','-y','-loglevel','error','-i',str(wav),'-c:a','libmp3lame','-q:a','4',str(mp3)],check=True);wav.unlink(missing_ok=True)
- return {'id':style['id'],'category':style['category'],'target_lufs':target,'integrated_lufs':round(final_lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events'])}
+ return {'id':style['id'],'category':style['category'],'target_lufs':target,'integrated_lufs':round(final_lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'sound_palette':style.get('sound_palette','factory') if PALETTES else 'original','sample_backend':'multisample' if PALETTES else 'compact'}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('sample_dir',type=Path);ap.add_argument('calibration',type=Path);ap.add_argument('outdir',type=Path);ap.add_argument('--workers',type=int,default=4);args=ap.parse_args();cat=json.loads(args.catalog.read_text());args.outdir.mkdir(parents=True,exist_ok=True);reports=[]
- with ProcessPoolExecutor(max_workers=args.workers,initializer=init_worker,initargs=(str(args.sample_dir),str(args.calibration))) as ex:
+ ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('sample_dir',type=Path);ap.add_argument('calibration',type=Path);ap.add_argument('outdir',type=Path);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--factory-dir',type=Path);args=ap.parse_args();cat=json.loads(args.catalog.read_text());args.outdir.mkdir(parents=True,exist_ok=True);reports=[]
+ with ProcessPoolExecutor(max_workers=args.workers,initializer=init_worker,initargs=(str(args.sample_dir),str(args.calibration),str(args.factory_dir) if args.factory_dir else None)) as ex:
   futs={ex.submit(render_style,s,args.outdir):s['id'] for s in cat['styles']}
   for fut in as_completed(futs):
    r=fut.result();reports.append(r);print(r['id'],r['integrated_lufs'],r['peak_dbfs'],flush=True)

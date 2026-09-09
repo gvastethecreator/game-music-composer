@@ -1,0 +1,72 @@
+[
+  [
+    "I001",
+    "instrumentarium",
+    "Instrumentarium",
+    "Una partitura que se puede tocar.",
+    "Cada pista se convierte en un pequeño instrumento: teclas, cuerdas, viento, metal, voz o percusión. Escuchá el score, tocá encima y llevá tus notas al piano roll.",
+    "Miniinstrumentos como interfaz de composición, no ilustraciones. El mismo evento alimenta audio, superficie y roll. Importá un score existente para verlo con este contrato.",
+    "Las 56 identidades del motor se agrupan en 13 superficies esquemáticas. Hay 3 timbres adicionales. La tira inferior muestra alturas reales incluso fuera del dibujo. No simula anatomía ni digitación acústica.",
+    [
+      "Elegir una pista, tocar su superficie y activar grabación por pasos.",
+      "Cargar JSON de composición o catálogo y seleccionar un cue.",
+      "Editar una nota del roll: su nueva altura también suena en el instrumento."
+    ]
+  ],
+  [
+    "I002",
+    "pocket",
+    "Pocket",
+    "El groove vive entre las voces.",
+    "Compará la misma partitura recta, con colocación por rol y con desviaciones aleatorias. Mirá qué llega antes, qué se recuesta y qué no cambia.",
+    "Un laboratorio causal: notas, armonía y forma idénticas. Diferenciar microtiming organizado de azar permite decidir qué interpretación sirve al material.",
+    "Este pocket es una hipótesis de diseño inspirada en investigación, no un modelo validado de todos los estilos. No hay compensación LUFS ni test ciego de preferencia.",
+    [
+      "Alternar Recta, Pocket y Azar sin cambiar el material.",
+      "Mover sólo el bajo o el lead en milisegundos.",
+      "Escuchar solo teclas, bajo o batería y después el conjunto."
+    ]
+  ],
+  [
+    "I003",
+    "conversation",
+    "Conversación",
+    "Dejar hueco también es componer.",
+    "La flauta pregunta; el clarinete puede contestar. Cambiá la sintaxis y escuchá cómo se retiran el arpa y los acordes en vez de rellenar siempre.",
+    "Explora rigidez estructural: turnos del primer plano, frases asimétricas y un silencio real. No intenta solucionar la forma agregando jitter.",
+    "Formas originales acotadas. No es contrapunto general ni un motor de fuga. Las semillas conservan el núcleo inicial y retorno dentro de una misma sintaxis, no entre modos.",
+    [
+      "Comparar Copiada con Conversación.",
+      "Probar frases de 3 + 2 + 3 compases.",
+      "Elegir Respiración para que desaparezca una región del acompañamiento."
+    ]
+  ],
+  [
+    "I004",
+    "atlas",
+    "Atlas de gramáticas",
+    "Tomar una idea, no un disfraz.",
+    "Diez familias de escritura para separar ritmo, armonía, frase y silencio. Cruzá la base de una con el gesto de otra y escuchá qué relación aparece.",
+    "No es un menú de BPM + timbre. Un cruce cambia ataques, duración, comportamiento del bajo, acompañamiento y frase, conservando una colección de alturas compatible.",
+    "Son interpretaciones originales y sintéticas; no certifican autenticidad. Gamelan no equivale a pentatónica temperada; acordeón no equivale a bandoneón. Los enlaces dan contexto con alcances declarados.",
+    [
+      "Elegir una gramática y leer sus cuatro decisiones musicales.",
+      "Cruzar una base dub con frase ambient o un gesto breve de footwork.",
+      "Ver qué pasa cuando la densidad disminuye, no sólo cuando aumenta."
+    ]
+  ],
+  [
+    "I005",
+    "cycles",
+    "Ciclos entrelazados",
+    "Tres relojes. Una conversación.",
+    "Kalimba, vibráfono y arpa recorren ciclos diferentes. Editá sus longitudes y rotaciones; el loop encuentra su cierre común sin cortar la música a ocho compases.",
+    "Explora memoria temporal y complementariedad: entrelazado, hoquetus y adición progresiva. Un generador perfectamente cuantizado también puede dejar de sonar como una grilla rellenada.",
+    "Máximo 192 pasos de MCM; 12-TET y patrones originales. Los círculos muestran la máscara base; la partitura muestra los ataques tras aplicar la operación. No emula procesos tradicionales completos.",
+    [
+      "Cambiar 8 / 12 / 16 pasos y observar el encuentro común.",
+      "Aplicar hoquetus para repartir turnos de ataque.",
+      "Comparar Adición con el patrón completo."
+    ]
+  ]
+]

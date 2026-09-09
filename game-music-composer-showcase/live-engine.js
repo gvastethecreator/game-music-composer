@@ -10,7 +10,24 @@
   };
   const DRUM_ROLES = new Set(['kick','snare','hat','tom','wood','ride','shaker','brush','rim','impact']);
   const SUSTAIN_FAMILIES = new Set(['strings','choir','texture','wind','brass']);
-  const BANK_MODES = new Set(['factory','original','chip']);
+  const BANK_MODES = new Set(['factory','original','chip','velvet','circuit','timber','prism','voltage','megadrive','snes']);
+  const factoryChunks = new Map();
+
+  function loadFactorySamples(file) {
+    const chunk = [window.NEOSPC_FACTORY_BANK, ...Object.values(window.NEOSPC_PALETTES || {})].map(bank => bank?.sample_sources?.[file]).find(Boolean);
+    if (!chunk) return Promise.resolve();
+    if (!factoryChunks.has(chunk)) {
+      const pending = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = new URL(chunk, document.baseURI).href;
+        script.onload = () => { script.remove(); resolve(); };
+        script.onerror = () => { script.remove(); reject(new Error(`Cannot load soundbank: ${chunk}`)); };
+        document.head.append(script);
+      }).catch(error => { factoryChunks.delete(chunk); throw error; });
+      factoryChunks.set(chunk, pending);
+    }
+    return factoryChunks.get(chunk);
+  }
   const dbToGain = db => Math.pow(10, db / 20);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -51,6 +68,7 @@
       this.lookAheadSeconds = .24;
       this.schedulerIntervalMs = 42;
       this.onReadyState = null;
+      this.playRequest = 0;
     }
 
     async ensureContext() {
@@ -61,6 +79,12 @@
       const AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) throw new Error('Web Audio is not available in this browser.');
       const ctx = new AC({ latencyHint: 'interactive' });
+      this.createGraph(ctx);
+      await ctx.resume();
+      return ctx;
+    }
+
+    createGraph(ctx) {
       const master = ctx.createGain();
       const limiter = ctx.createDynamicsCompressor();
       limiter.knee.value = 0;
@@ -98,12 +122,11 @@
       this.analyserR = analyserR;
       this.applyMaster();
       this.applyCeiling();
-      await ctx.resume();
-      return ctx;
     }
 
     factoryPatch(info) {
-      return info?.factory_patch ? window.NEOSPC_FACTORY_BANK?.patches?.[info.factory_patch] : null;
+      const bank = window.NEOSPC_PALETTES?.[this.bankMode] || window.NEOSPC_FACTORY_BANK;
+      return info?.factory_patch ? bank?.patches?.[info.factory_patch] : null;
     }
 
     resolveFactoryRegion(info, event) {
@@ -114,7 +137,7 @@
       if (!regions.length) return null;
       const midi = event.kind === 'drum' || patch.type === 'drum' || patch.type === 'fx'
         ? Number(patch.note ?? info.root_midi ?? event.midi ?? 60)
-        : Number(event.midi ?? info.root_midi ?? 60);
+        : Number(event.midi ?? info.root_midi ?? 60) + this.transpose;
       const velocity = clamp(Math.round(Number(event.velocity ?? ((event.velocity_norm || .66) * 127))), 1, 127);
       let matches = regions.filter(r => midi >= Number(r.lokey ?? midi) && midi <= Number(r.hikey ?? midi) && velocity >= Number(r.lovel ?? 1) && velocity <= Number(r.hivel ?? 127));
       if (!matches.length) matches = regions.filter(r => midi >= Number(r.lokey ?? midi) && midi <= Number(r.hikey ?? midi));
@@ -129,7 +152,7 @@
 
     resolveSample(info, event) {
       if (this.bankMode === 'chip') return null;
-      if (this.bankMode === 'factory') {
+      if (this.bankMode !== 'original') {
         const region = this.resolveFactoryRegion(info, event);
         if (region) return { source: 'factory', file: region.file, root: Number(region.root ?? info.root_midi ?? 60), loop: region.loop, region };
       }
@@ -139,9 +162,16 @@
       return { source: 'legacy', file: info.file, root: Number(info.root_midi ?? legacy.root_midi ?? 60), loop: legacy.loop, legacy };
     }
 
+    sampleGain(file) {
+      const gain = window.NEOSPC_LEVELS?.gain_db?.[file];
+      if (!Number.isFinite(gain)) throw new Error(`Missing level calibration: ${file}`);
+      return dbToGain(gain);
+    }
+
     async decodeFile(file) {
       if (this.buffers.has(file)) return this.buffers.get(file);
-      const factoryData = window.NEOSPC_FACTORY_BANK?.samples?.[file];
+      await loadFactorySamples(file);
+      const factoryData = [window.NEOSPC_FACTORY_BANK, ...Object.values(window.NEOSPC_PALETTES || {})].map(bank => bank?.samples?.[file]).find(Boolean);
       const legacy = window.NEOSPC_SAMPLE_BANK?.samples?.[file];
       const uri = factoryData || legacy?.data;
       if (!uri) throw new Error(`Missing embedded sample: ${file}`);
@@ -154,15 +184,13 @@
     async prepareStyle(style) {
       await this.ensureContext();
       if (this.bankMode === 'chip') {
-        if (this.style !== style) this.setStyle(style);
         if (typeof this.onReadyState === 'function') this.onReadyState('CHIP CORE READY');
         return;
       }
       const uniqueFiles = [...new Set(style.events.map(event => this.resolveSample(style.instrument_map?.[event.inst], event)?.file).filter(Boolean))];
-      const label = this.bankMode === 'original' ? 'ORIGINAL' : 'FACTORY';
+      const label = ({factory:'Chamber',original:'Compact',velvet:'Velvet',circuit:'Circuit',timber:'Timber',prism:'Prism',voltage:'Voltage',megadrive:'Mega Drive · sampled',snes:'SNES · sampled'})[this.bankMode].toUpperCase();
       if (typeof this.onReadyState === 'function') this.onReadyState(`LOADING ${uniqueFiles.length} ${label} SAMPLES`);
       await Promise.all(uniqueFiles.map(file => this.decodeFile(file)));
-      if (this.style !== style) this.setStyle(style);
       if (typeof this.onReadyState === 'function') this.onReadyState(`${label} BANK READY`);
     }
 
@@ -281,10 +309,12 @@
     isPlaying() { return this.playing; }
 
     async play(startBeat = this.offsetBeat) {
-      if (!this.style) return;
-      await this.prepareStyle(this.style);
-      if (this.playing) return;
+      if (!this.style || this.playing) return;
+      const style = this.style, request = ++this.playRequest;
+      await this.prepareStyle(style);
+      if (request !== this.playRequest || this.style !== style) return;
       await this.ctx.resume();
+      if (request !== this.playRequest || this.style !== style) return;
       this.offsetBeat = ((Number(startBeat) % this.style.beats) + this.style.beats) % this.style.beats;
       this.startTime = this.ctx.currentTime;
       this.lastScheduledBeat = this.offsetBeat - .03;
@@ -294,6 +324,7 @@
     }
 
     pause(preserveBeat = true) {
+      this.playRequest++;
       if (preserveBeat && this.style) this.offsetBeat = this.getBeat();
       this.playing = false;
       if (this.timer) clearInterval(this.timer);
@@ -302,6 +333,30 @@
         try { source.stop(); } catch (_) {}
       }
       this.sources.clear();
+    }
+
+    async renderWav(style = this.style, settings = this) {
+      if (!style) throw new Error('Load a score first.');
+      const renderer = new NeoSpcLiveEngine();
+      renderer.style = JSON.parse(JSON.stringify(style));
+      for (const key of ['bankMode', 'tempoPct', 'transpose', 'masterDb', 'ceilingDb']) renderer[key] = settings[key];
+      renderer.instrumentVolumes = new Map(settings.instrumentVolumes);
+      const seconds = renderer.getDuration(), sampleRate = 32000, length = Math.round(seconds * sampleRate);
+      if (seconds > 120) throw new Error('Browser WAV export supports loops up to 2 minutes. Export longer scores with the skill.');
+      if (renderer.bankMode !== 'chip') {
+        const files = [...new Set(style.events.map(e => renderer.resolveSample(style.instrument_map[e.inst], e)?.file).filter(Boolean))];
+        await Promise.all(files.map(async file => renderer.buffers.set(file, await this.decodeFile(file))));
+      }
+      const ctx = new OfflineAudioContext(2, length * 2, sampleRate);
+      renderer.createGraph(ctx);
+      // A warm-up loop carries sample releases and echo across the exported seam.
+      for (let loop = 0; loop < 2; loop++) for (const event of renderer.style.events) renderer.scheduleEvent(event, loop * style.beats + Number(event.performance_beat ?? event.beat), 0);
+      const audio = await ctx.startRendering(), bytes = new ArrayBuffer(44 + length * 4), view = new DataView(bytes);
+      const text = (offset, value) => [...value].forEach((c, i) => view.setUint8(offset + i, c.charCodeAt(0)));
+      text(0, 'RIFF');view.setUint32(4, bytes.byteLength - 8, true);text(8, 'WAVE');text(12, 'fmt ');view.setUint32(16, 16, true);view.setUint16(20, 1, true);view.setUint16(22, 2, true);view.setUint32(24, sampleRate, true);view.setUint32(28, sampleRate * 4, true);view.setUint16(32, 4, true);view.setUint16(34, 16, true);text(36, 'data');view.setUint32(40, length * 4, true);
+      const channels = [audio.getChannelData(0), audio.getChannelData(1)];
+      for (let i = 0; i < length; i++) for (let c = 0; c < 2; c++) view.setInt16(44 + i * 4 + c * 2, Math.round(clamp(channels[c][length + i], -1, 1) * 32767), true);
+      return new Blob([bytes], { type: 'audio/wav' });
     }
 
     seekBeat(beat) {
@@ -354,7 +409,7 @@
       source.buffer = buffer;
       const transpose = event.kind === 'drum' || family === 'drum' ? 0 : this.transpose;
       const cents = Number(event.tuning_cents || 0);
-      const midi = Number(event.midi ?? resolved.root ?? info.root_midi ?? 60);
+      const midi = Number(event.kind === 'drum' ? (resolved.root ?? info.root_midi ?? 60) : (event.midi ?? resolved.root ?? info.root_midi ?? 60));
       source.playbackRate.value = Math.pow(2, ((midi + transpose - Number(resolved.root ?? info.root_midi ?? 60)) + cents / 100) / 12);
       const loop = resolved.loop;
       if (event.kind !== 'drum' && loop && durationSeconds > .22) {
@@ -366,10 +421,10 @@
       const noteGain = this.ctx.createGain();
       const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
       const instNode = this.ensureInstrumentNode(event.inst);
-      const calibration = Number(legacy?.linear_gain || 1);
+      const calibration = this.sampleGain(resolved.file);
       const sourceTrim = dbToGain(Number(info.mix_trim_db || 0));
       const velocityGain = Number(event.velocity_gain || 1);
-      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * sourceTrim * calibration, 0, 1.2);
+      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * sourceTrim, 0, 1.2) * calibration;
       const attack = Number(event.attack ?? (event.kind === 'drum' ? .001 : (SUSTAIN_FAMILIES.has(family) ? .065 : .012)));
       const release = Number(event.release ?? (event.kind === 'drum' ? .12 : (SUSTAIN_FAMILIES.has(family) ? .34 : .16)));
       noteGain.gain.setValueAtTime(.0001, when);
@@ -424,7 +479,7 @@
       const durationBeats = isDrum ? .16 : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2));
       const baseDuration = durationBeats / bps;
       const velocityGain = Number(event.velocity_gain || 1) * Number(event.performance_gain || 1);
-      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * (isDrum ? .55 : .48), .004, .34);
+      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * (isDrum ? .55 : .48), .004, .34) * dbToGain(window.NEOSPC_LEVELS.chip_gain_db);
       const noteGain = this.ctx.createGain();
       const filter = this.ctx.createBiquadFilter();
       const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
@@ -503,6 +558,7 @@
       this.pause(false);
       if (this.ctx) this.ctx.close();
       this.ctx = null;
+      this.instrumentNodes.clear();
       this.noiseBuffer = null;
     }
   }

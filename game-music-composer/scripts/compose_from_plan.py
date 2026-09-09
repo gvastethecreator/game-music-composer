@@ -258,18 +258,29 @@ def build_spec(plan: dict[str, Any], harness: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def compose_project(plan: dict[str, Any], harness: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+def compose_project(plan: dict[str, Any], harness: dict[str, Any], blueprint: dict[str, Any] | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
     mismatches = input_mismatches(plan, harness)
     if mismatches:
         raise ValueError("Project inputs disagree: " + "; ".join(mismatches) + ". Update one source, then validate and compose again.")
     spec = build_spec(plan, harness)
+    if blueprint is not None:
+        spec["writing"] = copy.deepcopy(blueprint)
+        spec["comp"] = blueprint["grammar"]
+        spec["comp_b"] = blueprint["grammar"] + "_reduced"
+        spec["loop_strategy"] = "Resolve the final phrase and leave a written breath into the opening."
+        spec["role_rests"] = []
     labels = category_labels()
     style = engine.compose(spec, plan["category"], labels[plan["category"]])
     removed = enforce_voice_budget(style, int(plan["voice_budget"]))
     apply_factory_assignments(style)
+    if blueprint and blueprint.get("patch_overrides"):
+        patches = {p["id"]: p for p in json.loads((DATA / "factory-bank-manifest.json").read_text(encoding="utf-8"))["patches"]}
+        for inst, patch in blueprint["patch_overrides"].items():
+            if inst in style["instrument_map"]:
+                style["instrument_map"][inst].update(factory_patch=patch, factory_label=patches[patch]["label"], factory_profile="neo16", factory_source="genre_blueprint")
     style["source_type"] = "generated_local"
     style["generation"] = {
-        "workflow": "plan+harness-v1", "engine": "neospc-v3", "seed": spec["seed"],
+        "workflow": "plan+harness+score-blueprint" if blueprint else "plan+harness-v1", "engine": style.get("writing_evidence", {}).get("engine", "neospc-v3"), "seed": spec["seed"],
         "scale_id": spec["mode"], "progression_id": spec["prog"], "motif": spec["motif"],
         "texture": spec["comp"], "texture_b": spec.get("comp_b"), "bass": spec["bass"], "drums": spec["drums"],
         "architecture": spec.get("architecture"), "contour": spec.get("contour"),

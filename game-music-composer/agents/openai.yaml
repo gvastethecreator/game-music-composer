@@ -1,4 +1,4 @@
 interface:
   display_name: "Game Music Composer"
-  short_description: "Compose and audit original SNES-style game music"
-  default_prompt: "Use $game-music-composer to turn a concrete game scene brief into an original, loop-ready score, audited Factory Bank map and Type-1 MIDI."
+  short_description: "Compose, inspect and refine original game music"
+  default_prompt: "Use $game-music-composer to turn a game scene brief into an original loop-ready score, inspect it with Ensemble Atelier, and refine its performance while preserving the written notes. Validate the native catalog, bank map and Type-1 MIDI before delivery."

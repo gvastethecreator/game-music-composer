@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "categories": [
     {
       "id": "adventure",
@@ -140,7 +140,7 @@
         "Snow Inn",
         "Carnival",
         "Workshop District",
-        "Seaside Caf\u00e9",
+        "Seaside Café",
         "Festival Day"
       ],
       "meters": [
@@ -404,6 +404,126 @@
         "section-level density contrast",
         "loop-aware ending",
         "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "bachata",
+      "label": "Bachata",
+      "required_examples": 10,
+      "subcategories": [
+        "Guitar conversation",
+        "Minor serenade",
+        "Bright street dance",
+        "Quiet courtyard",
+        "Driving requinto",
+        "Open-air romance",
+        "Muted guitar pocket",
+        "Major-key return",
+        "Sparse bolero color",
+        "Mambo lift"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "trip_hop",
+      "label": "Trip hop",
+      "required_examples": 10,
+      "subcategories": [
+        "Dusty keys",
+        "Noir vibraphone",
+        "Dub-weight bass",
+        "Sparse cinematic beat",
+        "Suspended harmony",
+        "Muted guitar haze",
+        "Broken beat",
+        "Warm tape piano",
+        "Floating reed",
+        "Half-lit organ"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "trap",
+      "label": "Trap",
+      "required_examples": 10,
+      "subcategories": [
+        "Bell hook",
+        "Dark piano",
+        "Minimal sub-bass",
+        "Tight synth stabs",
+        "Wide pad space",
+        "Triplet hat pocket",
+        "Picked motif",
+        "Low-register keys",
+        "Glass counterline",
+        "Sparse melodic trap"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "reggaeton",
+      "label": "Reguetón",
+      "required_examples": 10,
+      "subcategories": [
+        "Bright pluck",
+        "Minor guitar",
+        "Club dembow",
+        "Percussion dialogue",
+        "Warm melodic hook",
+        "Sparse night groove",
+        "Synth response",
+        "Muted-key pocket",
+        "Slow dembow",
+        "Open-air lift"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
       ]
     }
   ]

@@ -31,6 +31,8 @@ def expression_value(style,beat,role):
  elif any(k in name for k in ('climax','full','stretto','boss','return','a3','seal')):section=116
  elif any(k in name for k in ('bridge','episode','b')):section=101
  elif any(k in name for k in ('outro','release','coda')):section=90
+ forms=style.get('form') or []
+ if i<len(forms) and 'intensity' in forms[i]:section=round(70+40*float(forms[i]['intensity']))
  phrase=(beat%(style['barLength']*4))/(style['barLength']*4)
  arc=7*math.sin(math.pi*phrase)-3*(phrase>.9)
  role_adj={'lead':3,'counter':0,'riff':2,'bass':0,'kick':4,'snare':3,'pad':-5,'ensemble':-6,'texture':-8,'support':-3,'arp':-2}.get(role,0)
@@ -43,10 +45,11 @@ def export(style,outdir):
  for e in style['events']:lanes[e['inst']].append(e)
  melodic=[0,1,2,3,4,5,6,7,8,10,11,12,13,14,15];ci=0;report=[]
  for inst,events in sorted(lanes.items()):
-  is_drum=all(e['kind']=='drum' for e in events);ch=9 if is_drum else melodic[ci%len(melodic)];ci+=0 if is_drum else 1
+  is_drum=all(e['kind']=='drum' for e in events);port=0 if is_drum else ci//len(melodic);ch=9 if is_drum else melodic[ci%len(melodic)];ci+=0 if is_drum else 1
   role=collections.Counter(e.get('role','support') for e in events).most_common(1)[0][0]
   info=style.get('instrument_map',{}).get(inst,{})
   tr=mido.MidiTrack();mid.tracks.append(tr);tr.append(mido.MetaMessage('track_name',name=safe(f"{inst} [{role}]"),time=0))
+  tr.append(mido.MetaMessage('midi_port',port=port,time=0))
   if not is_drum:tr.append(mido.Message('program_change',program=PROGRAMS.get(inst,PROGRAMS.get(info.get('family',''),0)),channel=ch,time=0))
   base=ROLE_CC7.get(role,82)+INST_CC7.get(inst,0)
   tm=style.get('track_mix',{}).get(inst,{})
@@ -61,12 +64,12 @@ def export(style,outdir):
   velocities=[]
   for e in events:
    start=float(e.get('performance_beat',e['beat']));dur=float(e.get('performance_duration',e.get('duration',.15 if e['kind']=='drum' else .3)));end=start+max(.035,dur)
-   note=DRUM_MAP.get(inst,60) if e['kind']=='drum' else int(clamp(e['midi'],0,127));vel=int(clamp(e.get('velocity',80),1,127));velocities.append(vel)
+   note=int(e.get('midi',DRUM_MAP.get(inst,60))) if e['kind']=='drum' else int(clamp(e['midi'],0,127));vel=int(clamp(e.get('velocity',80),1,127));velocities.append(vel)
    rel=int(clamp(round(vel*(.22 if e.get('role') in ('pad','ensemble','texture') else .38)),1,100))
-   msgs.append((round(start*PPQ),0,mido.Message('note_on',note=note,velocity=vel,channel=ch,time=0)));msgs.append((round(end*PPQ),1,mido.Message('note_off',note=note,velocity=rel,channel=ch,time=0)))
+   msgs.append((round(start*PPQ),0,mido.Message('note_on',note=note,velocity=vel,channel=ch,time=0)));msgs.append((round(end*PPQ),-1,mido.Message('note_off',note=note,velocity=rel,channel=ch,time=0)))
   msgs.sort(key=lambda x:(x[0],x[1]));last=0
   for tick,_,msg in msgs:msg.time=max(0,tick-last);tr.append(msg);last=tick
-  report.append({'inst':inst,'role':role,'cc7':cc7,'velocity_min':min(velocities),'velocity_max':max(velocities),'velocity_mean':round(sum(velocities)/len(velocities),2)})
+  report.append({'inst':inst,'role':role,'port':port,'channel':ch,'cc7':cc7,'velocity_min':min(velocities),'velocity_max':max(velocities),'velocity_mean':round(sum(velocities)/len(velocities),2)})
  outdir.mkdir(parents=True,exist_ok=True);path=outdir/f"{style['id']}.mid";mid.save(path)
  return {'id':style['id'],'tracks':len(mid.tracks),'bytes':path.stat().st_size,'lanes':report}
 

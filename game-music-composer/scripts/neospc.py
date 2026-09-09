@@ -75,6 +75,10 @@ HARNESS_SECTIONS = (
     "review",
 )
 CATEGORY_PRESETS = {
+    "bachata": ("folk_ensemble", "guitar", "guitar", "bossa", "acoustic"),
+    "trip_hop": ("jazz_combo", "piano", "vibes", "funk", "brush"),
+    "trap": ("electronic_stack", "bell", "synth_lead", "motor", "electronic"),
+    "reggaeton": ("hybrid", "synth_lead", "guitar", "motor", "electronic"),
     "adventure": ("folk_ensemble", "flute", "guitar", "floating", "acoustic"),
     "action": ("hybrid", "brass", "strings", "motor", "orchestral"),
     "horror": ("choir_orchestra", "reed", "strings", "ritual", "minimal"),
@@ -445,10 +449,16 @@ def print_report(label: str, issues: list[Issue], as_json: bool = False) -> None
 
 
 def cmd_init(args: argparse.Namespace) -> int:
+    genre_tempos = {"bachata": 122, "trip_hop": 78, "trap": 144, "reggaeton": 94}
+    args.meter = args.meter or ("4/4" if args.category in genre_tempos else "6/8")
+    args.bpm = args.bpm if args.bpm is not None else genre_tempos.get(args.category, 96)
+    if args.category in genre_tempos and args.meter != "4/4":
+        print("These genre blueprints require 4/4. Choose --meter 4/4.", file=sys.stderr)
+        return 2
     output = args.output.resolve()
     plan_path = output / "composition-plan.json"
     harness_path = output / "generation-harness.json"
-    occupied = [path for path in (plan_path, harness_path) if path.exists()]
+    occupied = [path for path in (plan_path, harness_path, output / "score-blueprint.json") if path.exists()]
     if occupied and not args.force:
         print(f"Refusing to overwrite {', '.join(str(path) for path in occupied)}. Pass --force to replace them.", file=sys.stderr)
         return 2
@@ -492,6 +502,15 @@ def cmd_init(args: argparse.Namespace) -> int:
     atomic_json_write(harness_path, harness)
     print(f"Created {plan_path}")
     print(f"Created {harness_path}")
+    if args.category in {"bachata", "trip_hop", "trap", "reggaeton"}:
+        records = [r for r in load_json(DATA / "genre-expansion-contracts.json")["contracts"] if r["category"] == args.category]
+        record = records[args.seed % len(records)]
+        blueprint = copy.deepcopy(record["native_engine_contract"]["writing"])
+        contrast_start = next(i * section_bars for i, section in enumerate(plan["form"]) if section["name"] == "B")
+        blueprint["drop_bars"] = [contrast_start] + ([contrast_start + 2] if section_bars >= 4 else [])
+        blueprint["patch_overrides"] = record["patch_overrides"]
+        atomic_json_write(output / "score-blueprint.json", blueprint)
+        print(f"Created {output / 'score-blueprint.json'}")
     print(f'Next: "{sys.executable}" "{Path(__file__).resolve()}" validate "{plan_path}" "{harness_path}" --strict')
     print(f'Then: "{sys.executable}" "{Path(__file__).resolve()}" compose "{output}"')
     return 0
@@ -520,7 +539,9 @@ def cmd_compose(args: argparse.Namespace) -> int:
     try:
         from compose_from_plan import compose_project
 
-        composition, catalog = compose_project(plan, harness)
+        blueprint_path = project / "score-blueprint.json"
+        blueprint = load_json(blueprint_path) if blueprint_path.exists() else None
+        composition, catalog = compose_project(plan, harness, blueprint)
     except (KeyError, StopIteration, TypeError, ValueError) as exc:
         print(f"Could not compose project: {exc}", file=sys.stderr)
         return 1
@@ -588,8 +609,9 @@ def doctor_issues() -> list[Issue]:
     benchmark_issues = validate_catalog(benchmark, "benchmark")
     issues.extend(benchmark_issues)
     styles = benchmark.get("styles", [])
-    if len(styles) != 100:
-        add_issue(issues, "warning", "benchmark_size", "benchmark.styles", f"Expected 100 benchmark cues; found {len(styles)}.")
+    expected = sum(c["required_examples"] for c in load_json(DATA / "category-benchmark-contracts.json")["categories"])
+    if len(styles) != expected:
+        add_issue(issues, "warning", "benchmark_size", "benchmark.styles", f"Expected {expected} benchmark cues; found {len(styles)}.")
     categories = {style.get("category") for style in styles if isinstance(style, dict)}
     missing_categories = category_ids() - categories
     if missing_categories:
@@ -677,7 +699,8 @@ def cmd_render(args: argparse.Namespace) -> int:
     args.output.mkdir(parents=True, exist_ok=True)
     return run_script(
         "render_mix_v4.py",
-        [str(args.catalog), str(args.sample_dir), str(args.calibration), str(args.output), "--workers", str(args.workers)],
+        [str(args.catalog), str(args.sample_dir), str(args.calibration), str(args.output), "--workers", str(args.workers)]
+        + (["--factory-dir", str(args.factory_dir)] if args.factory_dir else []),
     )
 
 
@@ -716,8 +739,8 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--game-context", choices=brief_spec["game_context"]["values"], default="exploration")
     init.add_argument("--mood", choices=brief_spec["mood_primary"]["values"], default="hopeful")
     init.add_argument("--thesis", help="Emotional change the cue must support. A concrete default is built from the brief.")
-    init.add_argument("--bpm", type=int, default=96)
-    init.add_argument("--meter", choices=("4/4", "3/4", "6/8", "9/8", "12/8", "5/4", "7/8", "5/8", "7/4"), default="6/8")
+    init.add_argument("--bpm", type=int, default=None)
+    init.add_argument("--meter", choices=("4/4", "3/4", "6/8", "9/8", "12/8", "5/4", "7/8", "5/8", "7/4"), default=None)
     init.add_argument("--key", choices=KEYS, default="G")
     init.add_argument("--mode", default="dorian")
     init.add_argument("--voices", type=int, choices=sorted(VOICE_PROFILES), default=16)
@@ -762,6 +785,7 @@ def build_parser() -> argparse.ArgumentParser:
     render.add_argument("--sample-dir", type=Path, default=SAMPLE_DIR)
     render.add_argument("--calibration", type=Path, default=CALIBRATION_PATH)
     render.add_argument("--workers", type=int, default=4)
+    render.add_argument("--factory-dir", type=Path, help="Complete multisample build directory; respects each score sound_palette.")
     render.set_defaults(func=cmd_render)
 
     return parser

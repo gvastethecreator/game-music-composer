@@ -3,74 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Neo-SPC Studio — Hear, inspect and compose game music</title>
-  <meta name="description" content="Hear 100 reviewed SNES-inspired cues, load your own score and compare three live soundbanks before exporting a complete composition recipe.">
+  <title>Game Music Composer — Hear, inspect and compose game music</title>
+  <meta name="description" content="Hear 140 instrumental cues across 14 categories, load your own score and compare recorded and synthesized sound palettes before exporting a complete composition recipe.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="studio.css">
 </head>
 <body>
   <a class="skip-link" href="#studioMain">Skip to studio</a>
   <div class="app-shell">
     <header class="top-rack hardware-panel">
       <div class="brand-stack">
-        <div class="brand-badge"><span>N</span><b>SPC</b></div>
+        <div class="brand-badge"><span>G</span><b>MC</b></div>
         <div>
-          <span class="overline">NEO-SPC MUSIC SYSTEM</span>
-          <h1>Composer Studio</h1>
-          <p>Hear a cue, compare soundbanks, then shape and load your own score.</p>
+
+          <h1>Game Music Composer</h1>
+
         </div>
       </div>
       <nav class="app-tabs" id="appTabs" aria-label="Studio views" role="tablist">
-        <button id="tab-workstation" class="active" type="button" role="tab" aria-selected="true" aria-controls="view-workstation" data-view="workstation">Listen</button>
+        <button id="tab-workstation" class="active" type="button" role="tab" aria-selected="true" aria-controls="view-workstation" data-view="workstation">Studio</button>
         <button id="tab-recipe" type="button" role="tab" aria-selected="false" aria-controls="view-recipe" data-view="recipe">Compose</button>
         <button id="tab-soundbank" type="button" role="tab" aria-selected="false" aria-controls="view-soundbank" data-view="soundbank">Soundbank</button>
         <button id="tab-review" type="button" role="tab" aria-selected="false" aria-controls="view-review" data-view="review">Review</button>
       </nav>
-      <div class="header-actions">
-        <a class="metal-button amber" href="downloads/game-music-composer.zip" download>Get the skill</a>
-        <a class="metal-button" href="downloads/neospc100-midis-v4.zip" download>MIDI pack</a>
-        <a class="metal-button" href="downloads/neospc100-source-v4.zip" download>Source</a>
-      </div>
+      <details class="file-menu"><summary>Files</summary><div class="file-menu-content">      <a href="downloads/game-music-composer.zip" download>Composer skill</a>
+      <a href="downloads/neospc100-midis-v4.zip" download>140 Type-1 MIDI files</a>
+      <a id="audioDownloadLink" href="assets/audio/fernway_crossing.mp3" download>Current cue MP3</a>
+      <a href="downloads/neospc100-source-v4.zip" download>Catalog, review and source</a>
+      <a href="FACTORY-BANK-INTEGRATION.md">Factory Bank details</a>
+</div></details>
       <i class="screw screw-a"></i><i class="screw screw-b"></i><i class="screw screw-c"></i><i class="screw screw-d"></i>
     </header>
 
     <main id="studioMain" tabindex="-1">
 
-    <section id="startPanel" class="start-rack hardware-panel" aria-labelledby="startTitle">
-      <div class="start-copy">
-        <span class="overline">START WITH SOUND</span>
-        <h2 id="startTitle">Hear what the composer can build.</h2>
-        <p>Start with one reviewed loop or load a score from the skill. The workstation keeps the notes fixed while you compare three live soundbanks.</p>
-        <div class="start-actions">
-          <button id="quickPlayButton" class="metal-button amber" type="button">▶ Play Fernway Crossing</button>
-          <button class="metal-button" type="button" data-open-view="recipe">Shape a recipe</button>
-          <a class="text-action" href="downloads/game-music-composer.zip" download>Download the skill <span aria-hidden="true">↓</span></a>
-        </div>
-        <p id="quickPlayHint" class="start-hint">29-second loop · Factory Live · headphones recommended</p>
-      </div>
-      <div class="start-path" aria-label="Product path">
-        <article><span>01</span><strong>Listen</strong><p>Audition one of 100 complete cues.</p></article>
-        <article><span>02</span><strong>Inspect</strong><p>Read form, harmony, voices and patch choices.</p></article>
-        <article><span>03</span><strong>Compose</strong><p>Build a score with the skill, then load its JSON here.</p></article>
-      </div>
-      <div class="start-proof" aria-label="Included material">
-        <div><strong>100</strong><span>cues</span></div>
-        <div><strong>3</strong><span>live banks</span></div>
-        <div><strong>15</strong><span>recipe modules</span></div>
-        <div><strong>CC0</strong><span>sample bank</span></div>
-      </div>
-    </section>
-
     <section id="view-workstation" class="app-view active" role="tabpanel" aria-labelledby="tab-workstation">
-      <nav id="categoryTabs" class="category-tabs hardware-panel" aria-label="Composition categories"></nav>
+
 
       <section class="main-rack hardware-panel">
         <div class="track-header">
-          <div class="track-copy">
+          <div class="track-copy"><span class="project-mark" aria-hidden="true">◈</span>
             <span id="trackKicker" class="overline"></span>
             <h2 id="trackTitle" aria-live="polite">Loading…</h2>
-            <p id="trackDescription"></p>
+
           </div>
           <div id="trackMeta" class="track-meta"></div>
         </div>
@@ -79,51 +56,87 @@
           <div class="control-group transport-group">
             <span class="mini-label">Transport</span>
             <select id="playbackMode" aria-label="Playback source"><option value="live">Live score</option><option value="mastered">Mastered</option></select>
-            <select id="soundbankMode" aria-label="Live soundbank"><option value="factory">Factory Neo-16</option><option value="original">Original Mono</option><option value="chip">Chip Core</option></select>
+            <select id="soundbankMode" aria-label="Live soundbank"><option value="megadrive">Mega Drive · sampled</option><option value="snes">SNES · sampled</option><option value="timber">Timber</option><option value="prism">Prism</option><option value="voltage">Voltage</option><option value="factory">Chamber</option><option value="velvet">Velvet</option><option value="circuit">Circuit</option><option value="original">Studio Compact</option><option value="chip">Chip Core</option></select>
             <button id="playButton" class="compact-button amber" type="button" aria-label="Play current cue">▶ <span>Play</span></button>
             <button id="pauseButton" class="compact-button" type="button" aria-label="Pause current cue">Ⅱ <span>Pause</span></button>
             <button id="stopButton" class="compact-button" type="button" aria-label="Stop current cue">■ <span>Stop</span></button>
             <a id="midiLink" class="compact-button" href="#" download>MIDI</a>
           </div>
           <label class="inline-control"><span>VOL</span><input id="volumeSlider" type="range" min="-36" max="6" value="-3" step="0.5"><output id="volumeValue">−3.0</output></label>
-          <label class="inline-control"><span>CEIL</span><input id="ceilingSlider" type="range" min="-12" max="0" value="-1" step="0.1"><output id="ceilingValue">−1.0</output></label>
+
           <label class="inline-control tempo-control"><span>TEMPO</span><input id="tempoSlider" type="range" min="60" max="150" value="100" step="1"><output id="tempoValue">100%</output><b id="bpmValue">120</b></label>
-          <div class="pitch-control">
+
+<details class="desk-disclosure playback-settings"><summary>Settings</summary><div class="advanced-playback">          <label class="inline-control"><span>CEIL</span><input id="ceilingSlider" type="range" min="-12" max="0" value="-1" step="0.1"><output id="ceilingValue">−1.0</output></label>          <div class="pitch-control">
             <span class="mini-label">Pitch / Key</span>
             <button data-pitch="-12">−12</button><button data-pitch="-1">−1</button><button id="pitchReset">0</button><button data-pitch="1">+1</button><button data-pitch="12">+12</button>
             <output id="pitchValue">0 st</output><b id="keyValue">C</b>
-          </div>
-          <div class="transport-readout" role="status" aria-live="polite"><span id="transportState">READY</span><strong id="transportTime">00:00 / 00:00</strong></div>
+          </div></div></details>          <div class="transport-readout" role="status" aria-live="polite"><span id="transportState">READY</span><strong id="transportTime">00:00 / 00:00</strong></div>
         </section>
+
 
         <div class="scrub-module inset-panel"><input id="scrubber" type="range" min="0" max="1000" value="0" aria-label="Seek through loop"></div>
 
         <div class="workstation-grid">
-          <aside class="instrument-column inset-panel">
-            <div class="column-head"><span class="module-label">INSTRUMENT ACTIVITY</span><button id="resetInstruments" class="micro-button" type="button">Reset</button></div>
-            <div id="instrumentActivity" class="instrument-activity"></div>
-          </aside>
+
 
           <section class="roll-column">
+            <div class="studio-tools">
+              <span id="studioDraftLabel" class="module-label">CATALOG SCORE</span>
+              <button id="studioCreateToggle" type="button" aria-expanded="false" aria-controls="studiocreatePanel">New idea</button>
+              <button id="studioPerformanceToggle" type="button" aria-expanded="false" aria-controls="studioperformancePanel">Performance</button>
+              <div class="studio-history"><button id="studioUndo" type="button" disabled>Undo</button><button id="studioRestore" type="button" disabled>Restore source</button><button id="studioExport" type="button">JSON ↓</button><button id="studioWav" type="button">WAV ↓</button></div>
+            </div>
+            <section id="studiocreatePanel" class="studio-tool-panel" aria-label="Create a sketch" hidden>
+              <div class="studio-control-row">
+                <label>Idea engine<select id="studioGenerator"><option value="instrumentarium">Ensemble</option><option value="pocket">Pocket groove</option><option value="conversation">Phrase conversation</option><option value="atlas">Genre atlas</option><option value="cycles">Interlocking cycles</option></select></label>
+                <label>Style<select id="studioVariant"></select></label>
+                <label>Seed<input id="studioSeed" type="number" min="0" max="99999" step="1" value="7"></label>
+                <button id="studioCreate" class="studio-primary" type="button">Create sketch</button>
+              </div>
+              <div id="studioAtlasControls" class="studio-control-row" hidden><label>Melody grammar<select id="studioMelodyGenre"></select></label><label>Density <output id="studioDensityValue">52%</output><input id="studioDensity" type="range" min="10" max="95" value="52"></label></div>
+              <div id="studioPhraseControls" class="studio-control-row" hidden><label>Space<input id="studioSpace" type="range" min="0" max="100" value="50"></label><label>Answer strength<input id="studioAnswer" type="range" min="0" max="100" value="60"></label></div>
+              <div id="studioCycleControls" class="studio-control-row" hidden>
+                <label>Cycle 1 · steps / hits<span><input id="studioPeriod1" aria-label="Cycle 1 steps" type="number" min="1" max="32" value="8"><input id="studioHits1" aria-label="Cycle 1 hits" type="number" min="0" max="32" value="3"></span></label>
+                <label>Cycle 2 · steps / hits<span><input id="studioPeriod2" aria-label="Cycle 2 steps" type="number" min="1" max="32" value="12"><input id="studioHits2" aria-label="Cycle 2 hits" type="number" min="0" max="32" value="5"></span></label>
+                <label>Cycle 3 · steps / hits<span><input id="studioPeriod3" aria-label="Cycle 3 steps" type="number" min="1" max="32" value="16"><input id="studioHits3" aria-label="Cycle 3 hits" type="number" min="0" max="32" value="5"></span></label>
+                <label>Step length<select id="studioSpacing"><option value="0.25">¼ beat</option><option value="0.5" selected>½ beat</option><option value="1">1 beat</option></select></label>
+              </div>
+              <p>Create a separate local sketch. Your current score stays in the browser list.</p>
+            </section>
+            <section id="studioperformancePanel" class="studio-tool-panel" aria-label="Shape performance" hidden>
+              <div class="studio-control-row"><label>Feel<select id="studioFeel"><option value="pocket">Pocket</option><option value="grid">Straight</option><option value="jitter">Loose</option></select></label><label>Amount <output id="studioAmountValue">65%</output><input id="studioAmount" type="range" min="0" max="100" value="65"></label><label>Swing %<input id="studioSwing" type="number" min="0" max="60" value="12"></label><button id="studioApplyPerformance" type="button">Apply performance</button></div>
+              <p>Shape timing, note length and dynamics. Pitches and written onsets stay in place.</p>
+            </section>
             <div class="roll-frame">
-              <canvas id="pianoRoll" width="1800" height="690"></canvas>
+              <canvas id="pianoRoll" width="1800" height="690" aria-label="Piano roll. Click a note to edit, or use the note selector below."></canvas>
               <div class="roll-readout roll-left"><span>POSITION</span><strong id="positionReadout">BAR 01</strong></div>
               <div class="roll-readout roll-right"><span>ACTIVE</span><strong id="activeReadout">00 VOICES</strong></div>
             </div>
-            <div class="analysis-grid">
+            <form id="studioEdit" class="studio-note-editor" aria-label="Edit selected note">
+              <label>Instrument<select id="studioTrack"></select></label><label>Note<select id="studioNote"></select></label>
+              <label>MIDI<input id="studioPitch" type="number" min="0" max="127" step="1" required></label><label>Beat<input id="studioBeat" type="number" min="0" step="any" required></label><label>Length<input id="studioDuration" type="number" min="0.001" step="any" required></label><label>Velocity<input id="studioVelocity" type="number" min="1" max="127" step="1" required></label><button id="studioApplyEdit" type="submit">Apply</button>
+            </form>
+            <p id="studioStatus" class="studio-status" role="status" aria-live="polite"></p>
+<div class="studio-dock"><div class="dock-tabs" role="tablist" aria-label="Studio panels"><button id="dock-tab-instruments" role="tab" aria-selected="true" aria-controls="dock-instruments" data-dock="instruments">Instruments</button><button id="dock-tab-mixer" role="tab" aria-selected="false" aria-controls="dock-mixer" tabindex="-1" data-dock="mixer">Mixer</button><button id="dock-tab-notes" role="tab" aria-selected="false" aria-controls="dock-notes" tabindex="-1" data-dock="notes">Score notes</button><span class="dock-caption">CURRENT COMPOSITION</span></div>            <section id="dock-instruments" class="studio-ensemble dock-panel" role="tabpanel" aria-labelledby="dock-tab-instruments"><div id="studioInstruments"></div></section><section id="dock-mixer" class="instrument-column dock-panel" role="tabpanel" aria-labelledby="dock-tab-mixer" hidden>
+            <div class="column-head"><span class="module-label">TRACK MIXER</span><button id="resetInstruments" class="micro-button" type="button">Reset</button></div>
+            <div id="instrumentActivity" class="instrument-activity"></div>
+          </section><section id="dock-notes" class="score-notes dock-panel" role="tabpanel" aria-labelledby="dock-tab-notes" hidden><p id="trackDescription"></p><div class="analysis-grid">
               <article><span>FORM</span><p id="formText"></p></article>
               <article><span>HARMONY</span><p id="harmonyText"></p></article>
               <article><span>VOICE ARCHITECTURE</span><p id="voiceText"></p></article>
               <article><span>DIRECTION</span><p id="directionText"></p></article>
             </div>
+            </section>
+</div>
           </section>
 
           <aside class="browser-rack inset-panel">
             <div class="browser-head"><div><span class="overline">TRACK BROWSER</span><h3 id="categoryTitle">Category</h3></div><div class="browser-head-actions"><button id="loadCompositionButton" class="micro-button" type="button">Load JSON</button><span id="categoryCount" class="count-badge">10</span></div></div>
             <input id="compositionFileInput" type="file" accept="application/json,.json" aria-label="Composition JSON files" multiple hidden>
-            <p id="localImportStatus" class="local-import-status" role="status" aria-live="polite">Load <code>composition.json</code> or <code>catalog.json</code> from the skill.</p>
-            <label class="field-label"><span>SEARCH</span><input id="searchInput" type="search" aria-label="Search compositions" placeholder="title, style, meter…"></label>
-            <label class="field-label"><span>EDITORIAL STATE</span><select id="qualityFilter"><option value="all">All</option><option value="curated">Approved</option><option value="review">Review</option></select></label>
+            <p id="localImportStatus" class="local-import-status" role="status" aria-live="polite">140 compositions · local library</p>
+      <details class="category-picker"><summary>Browse categories</summary><nav id="categoryTabs" class="category-tabs" aria-label="Composition categories"></nav></details>
+            <label class="field-label"><span>SEARCH</span><input id="searchInput" type="search" aria-label="Search compositions" placeholder="Search compositions…"></label>
+            <details class="catalog-filters desk-disclosure"><summary>Filters</summary><label class="field-label"><span>EDITORIAL STATE</span><select id="qualityFilter"><option value="all">All</option><option value="curated">Approved</option><option value="review">Review</option></select></label></details>
             <div id="trackList" class="track-list"></div>
             <div id="trackEmpty" class="empty-state" hidden><strong>No cues match.</strong><p>Clear the search or editorial filter.</p><button id="clearTrackFilters" class="micro-button" type="button">Clear filters</button></div>
           </aside>
@@ -134,7 +147,7 @@
     <section id="view-recipe" class="app-view" role="tabpanel" aria-labelledby="tab-recipe" hidden>
       <section class="harness-rack hardware-panel">
         <div class="view-heading">
-          <div><span class="overline">FULL GENERATION HARNESS</span><h2>Shape a composition recipe</h2><p>Set musical intent and production limits, then export JSON for the Neo-SPC skill.</p></div>
+          <div><span class="overline">FULL GENERATION HARNESS</span><h2>Shape a composition recipe</h2><p>Set musical intent and production limits, then export JSON for the Game Music Composer skill.</p></div>
           <div class="heading-actions"><button id="resetHarness" class="metal-button">Reset</button><button id="downloadHarness" class="metal-button">Download JSON</button><button id="copyHarness" class="metal-button amber">Copy JSON</button></div>
         </div>
         <div class="recipe-guide" role="note">
@@ -157,17 +170,32 @@
     <section id="view-soundbank" class="app-view" role="tabpanel" aria-labelledby="tab-soundbank" hidden>
       <section class="bank-rack hardware-panel">
         <div class="view-heading bank-heading">
-          <div><span class="overline">LIVE SOUNDBANKS + FACTORY LAB</span><h2>Compare one score across three banks</h2><p>Switch the workstation between the multisample Factory bank, the compact original samples and a generated chip voice set. The notes, tempo and position stay in place.</p></div>
-          <div class="heading-actions"><a class="metal-button" href="FACTORY-BANK-INTEGRATION.md">Integration notes</a><a class="metal-button amber" href="FACTORY-BANK-INTEGRATION.md">Bank download info</a></div>
+          <div><span class="overline">SYNTHESIS + MULTISAMPLES</span><h2>Choose a sound palette</h2><p>Choose a palette and audition a patch. Sample levels are matched while soft and hard attacks keep their dynamics.</p></div>
+          <div class="heading-actions"><select id="bankPaletteSelect" aria-label="Soundbank palette"></select><a class="metal-button" href="FACTORY-BANK-INTEGRATION.md">Integration notes</a><a class="metal-button amber" href="FACTORY-BANK-INTEGRATION.md">Bank download info</a></div>
         </div>
+        <details class="bank-palette-overview"><summary>Palettes, native demos and downloads</summary>
+        <details class="bank-console-packs bank-previous-palettes" open><summary>Console soundpacks · Mega Drive / SNES</summary>
+          <p>Emulator-derived samples for the piano roll. Native demos below use console voice limits; Studio mixing and WAV export remain multisample previews.</p>
+          <div class="soundbank-compare console-palette-grid">
+            <article data-soundbank-card="megadrive"><span>YM2612 + PSG · NATIVE VGM</span><strong>Mega Drive</strong><p>12 original four-operator FM patches, square tone and noise. Six FM voices plus three PSG tones and noise in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="megadrive">Use sampled bank</button><a class="micro-button" href="downloads/megadrive-soundpack.zip" download>Download VGM pack</a><audio controls preload="none" aria-label="Mega Drive native emulator demo" src="assets/console-packs/megadrive-demo.wav"></audio></article>
+            <article data-soundbank-card="snes"><span>BRR + S-DSP · NATIVE SPC</span><strong>SNES</strong><p>16 original BRR instruments. Eight voices, DSP envelopes, interpolation and hardware echo in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="snes">Use sampled bank</button><a class="micro-button" href="downloads/snes-soundpack.zip" download>Download SPC pack</a><audio controls preload="none" aria-label="SNES native emulator demo" src="assets/console-packs/snes-demo.wav"></audio></article>
+          </div>
+        </details>
         <div class="soundbank-compare" aria-label="Live soundbank choices">
-          <article data-soundbank-card="factory"><span>01 · MULTISAMPLE</span><strong>Factory Neo-16</strong><p>50 CC0 patches with range, velocity and round-robin regions.</p><button class="micro-button" type="button" data-use-soundbank="factory">Use Factory</button></article>
-          <article data-soundbank-card="original"><span>02 · COMPACT</span><strong>Original Mono</strong><p>The early single-sample palette. Direct, light and easy to compare.</p><button class="micro-button" type="button" data-use-soundbank="original">Use Original</button></article>
+          <article data-soundbank-card="timber"><span>MODAL · BODY + EXCITATION</span><strong>Timber</strong><p>Plucked strings, felt hammers, resonant wood and breath. Separate models for guitars, keys, winds and percussion.</p><button class="micro-button" type="button" data-use-soundbank="timber">Use Timber</button></article>
+          <article data-soundbank-card="prism"><span>FM · TINES + GLASS</span><strong>Prism</strong><p>Velocity-shaped operators, struck metal and round electric bass. Bright attacks settle into quieter bodies.</p><button class="micro-button" type="button" data-use-soundbank="prism">Use Prism</button></article>
+          <article data-soundbank-card="voltage"><span>SUBTRACTIVE · PULSE + DRIVE</span><strong>Voltage</strong><p>Band-limited oscillators, moving spectra, controlled detune and punchy drums. Oversampled nonlinear stages.</p><button class="micro-button" type="button" data-use-soundbank="voltage">Use Voltage</button></article>
+        </div>
+        <details class="bank-previous-palettes"><summary>Earlier palettes · Chamber, Velvet, Circuit, Compact and Chip</summary><div class="soundbank-compare">
+          <article data-soundbank-card="factory"><span>01 · MULTISAMPLE</span><strong>Chamber</strong><p>Recorded CC0 chamber instruments and original synthesis. Multiple registers and intensity layers; alternate recorded attacks where available.</p><button class="micro-button" type="button" data-use-soundbank="factory">Use Chamber</button></article>
+          <article data-soundbank-card="velvet"><span>02 · MAGNETIC</span><strong>Velvet</strong><p>Tine and reed synthesis, soft transients and shallow tape motion.</p><button class="micro-button" type="button" data-use-soundbank="velvet">Use Velvet</button></article><article data-soundbank-card="circuit"><span>03 · ELECTRONIC</span><strong>Circuit</strong><p>Dual oscillators, closing spectral envelopes and firm bass attacks.</p><button class="micro-button" type="button" data-use-soundbank="circuit">Use Circuit</button></article><article data-soundbank-card="original"><span>02 · COMPACT</span><strong>Studio Compact</strong><p>46 rebuilt instruments with body resonances, natural attacks and smooth sustain loops.</p><button class="micro-button" type="button" data-use-soundbank="original">Use Compact</button></article>
           <article data-soundbank-card="chip"><span>03 · SYNTH</span><strong>Chip Core</strong><p>Pulse, triangle, noise and drum synthesis generated in Web Audio.</p><button class="micro-button" type="button" data-use-soundbank="chip">Use Chip Core</button></article>
         </div>
+        </details>
+        </details>
         <div class="bank-layout">
           <aside class="bank-browser inset-panel">
-            <div class="bank-browser-head"><span class="module-label">PATCH BROWSER</span><strong id="bankPatchCount">50</strong></div>
+            <div class="bank-browser-head"><span class="module-label">PATCH BROWSER</span><strong id="bankPatchCount">54</strong></div>
             <label class="field-label"><span>SEARCH</span><input id="bankSearch" type="search" aria-label="Search soundbank patches" placeholder="bass, choir, glass…"></label>
             <label class="field-label"><span>FAMILY</span><select id="bankFamily"><option value="all">All families</option></select></label>
             <div id="bankPatchList" class="bank-patch-list"></div>
@@ -176,7 +204,7 @@
           <section class="bank-inspector">
             <div class="bank-hero inset-panel">
               <div><span id="bankFamilyLabel" class="overline">FAMILY</span><h3 id="bankTitle">Select a patch</h3><code id="bankId">—</code></div>
-              <div class="bank-profile-switch"><button class="active" data-bank-profile="neo16">Neo-16</button><button data-bank-profile="neo32">Neo-32</button></div>
+              <div class="bank-profile-switch"><button class="active" data-bank-profile="neo16">Multisample</button><button data-bank-profile="neo32">44.1 kHz preview</button></div>
             </div>
             <div class="bank-metrics">
               <article class="inset-panel"><span>TYPE</span><strong id="bankType">—</strong></article>
@@ -197,7 +225,7 @@
             <h3 id="bankCueTitle">—</h3>
             <p id="bankCoverageText">Select a composition in Workstation to inspect its Factory Bank assignments.</p>
             <div id="bankCueMap" class="bank-cue-map"></div>
-            <div class="bank-license"><span>ORIGIN</span><p>100% procedurally synthesized. No game samples or third-party recordings.</p><span>LICENSE</span><strong>CC0-1.0</strong></div>
+            <div class="bank-license"><span>ORIGIN</span><p>Recorded Chamber sources, original synthesis and emulator-derived console samples. Console hardware comparison remains pending. Source credits and fidelity limits are bundled with the skill.</p><span>LICENSE</span><strong>CC0-1.0</strong></div>
           </aside>
         </div>
       </section>
@@ -207,7 +235,7 @@
       <section class="review-rack hardware-panel">
         <div class="view-heading">
           <div><span class="overline">DETERMINISTIC SYMBOLIC CRITIQUE</span><h2>Composition review</h2><p>The bundled rubric checks score, phrase, genre behavior, orchestration and expression before rendering. It records repeatable signals and leaves artistic judgment open.</p></div>
-          <div class="review-summary"><div><span>PASS 1</span><strong id="reviewPass1">—</strong></div><div><span>FINAL</span><strong id="reviewFinal">—</strong></div><div><span>AVG</span><strong id="reviewAverage">—</strong></div></div>
+          <div class="review-summary"><div><span>COMPOSED</span><strong id="reviewPass1">—</strong></div><div><span>PERFORMED</span><strong id="reviewFinal">—</strong></div><div><span>AVG</span><strong id="reviewAverage">—</strong></div></div>
         </div>
         <div class="review-layout">
           <aside class="review-track inset-panel"><span class="module-label">CURRENT COMPOSITION</span><h3 id="reviewTitle"></h3><p id="reviewSubtitle"></p><div id="reviewScore" class="big-score">—</div><span id="reviewStatus" class="review-status"></span></aside>
@@ -221,15 +249,8 @@
     </section>
     </main>
 
-    <section class="download-rack hardware-panel">
-      <div><span class="overline">TAKE THE SYSTEM WITH YOU</span><h3>Project files</h3></div>
-      <a href="downloads/game-music-composer.zip" download>Composer skill</a>
-      <a href="downloads/neospc100-midis-v4.zip" download>100 Type-1 MIDI files</a>
-      <a id="audioDownloadLink" href="assets/audio/fernway_crossing.mp3" download>Current cue MP3</a>
-      <a href="downloads/neospc100-source-v4.zip" download>Catalog, review and source</a>
-      <a href="FACTORY-BANK-INTEGRATION.md">Factory Bank details</a>
-    </section>
-    <footer>Neo-SPC Composer Studio · Original CC0 Factory Bank · Static and local-first</footer>
+
+
   </div>
 
   <div id="appNotice" class="app-notice" role="status" aria-live="polite" hidden></div>
@@ -239,7 +260,14 @@
   <script src="data/harness.js"></script>
   <script src="data/reviews.js"></script>
   <script src="data/factory-bank-previews.js"></script>
+  <script src="data/soundbank-levels.js"></script>
   <script src="live-engine.js"></script>
+  <script src="atelier/music.js"></script>
+  <script src="atelier/visuals.js"></script>
+  <script src="atelier/atelier.js"></script>
+  <script src="atelier/instruments.js"></script>
+  <script src="studio-score.js"></script>
+  <script src="studio-atelier.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

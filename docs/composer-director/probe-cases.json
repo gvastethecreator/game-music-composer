@@ -1,0 +1,16 @@
+[
+  {"control":"harmony.harmonic_rhythm_bars","value":2},
+  {"control":"melody.rest_ratio","value":0.4},
+  {"control":"melody.contour","value":"descending"},
+  {"control":"melody.max_leap","value":5},
+  {"control":"melody.tessitura","value":0.3},
+  {"control":"bassline.family","value":"bowed"},
+  {"control":"drums.enabled","value":false},
+  {"control":"drums.fill_rate","value":0.8},
+  {"control":"orchestration.density_curve","value":"flat"},
+  {"control":"texture.pad_density","value":0},
+  {"control":"humanize.timing_depth","value":0},
+  {"control":"brief.energy","value":0.2},
+  {"control":"brief.tension","value":0.9},
+  {"control":"brief.seed","value":9127}
+]

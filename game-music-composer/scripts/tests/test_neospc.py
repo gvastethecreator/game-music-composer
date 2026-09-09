@@ -19,18 +19,199 @@ import neospc  # noqa: E402
 import package_skill  # noqa: E402
 import professor_review  # noqa: E402
 import release_gate  # noqa: E402
+import export_midis_v4  # noqa: E402
+import midi_compat  # noqa: E402
+
+
+class AudioSynthesisTests(unittest.TestCase):
+    def test_console_voice_overflow_is_rejected_without_dropping_notes(self):
+        try:
+            import console_soundpack as console
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        for system,preset,voices in [('megadrive','organ',6),('snes','flute',8)]:
+            with self.subTest(system=system):
+                notes=[dict(preset=preset,midi=60+i,time=0,duration=.5,velocity=90) for i in range(voices)]
+                self.assertEqual(len(console.timeline(notes,system)),voices*2)
+                with self.assertRaisesRegex(ValueError,'voice budget exceeded'):
+                    console.timeline(notes+[dict(notes[0])],system)
+
+    def test_native_console_files_decode_at_written_pitch_and_release(self):
+        try:
+            import numpy as np
+            import soundfile as sf
+            import console_soundpack as console
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        import shutil,subprocess
+        if not shutil.which('ffmpeg'):
+            self.skipTest('FFmpeg is not installed')
+        if 'libgme' not in subprocess.check_output(['ffmpeg','-hide_banner','-formats'],text=True,stderr=subprocess.STDOUT):
+            self.skipTest('FFmpeg has no libgme demuxer')
+        with tempfile.TemporaryDirectory() as temp:
+            for system,preset,extension in [('megadrive','organ','.vgm'),('snes','flute','.spc')]:
+                with self.subTest(system=system):
+                    note=[dict(preset=preset,midi=60,time=0,duration=.6,velocity=96)]
+                    path=Path(temp)/(system+extension)
+                    path.write_bytes(console.vgm(note) if system=='megadrive' else console.spc(note,False))
+                    wav=path.with_suffix('.wav');console.render_native(path,wav,1.6)
+                    x,sr=sf.read(wav);self.assertEqual(x.shape,(51200,2))
+                    self.assertTrue(np.isfinite(x).all());self.assertGreater(float(np.max(abs(x))),.005)
+                    self.assertLess(float(np.max(abs(x))),.98)
+                    segment=x[3200:12800,0];spectrum=np.abs(np.fft.rfft(segment*np.hanning(len(segment))))
+                    frequency=np.fft.rfftfreq(len(segment),1/sr)[np.argmax(spectrum)]
+                    self.assertAlmostEqual(float(frequency),261.625565,delta=4)
+                    self.assertLess(float(np.sqrt(np.mean(x[-3200:]**2))),.001)
+
+    def test_modal_guitar_velocity_changes_spectrum_after_level_matching(self):
+        try:
+            import numpy as np
+            from resonant_timbres import render
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        spectra=[]
+        for velocity in (42,115):
+            x,_=render('guitar.requinto',60,velocity,1,32000,False,'timber')
+            spectrum=np.abs(np.fft.rfft(x[:8192]*np.hanning(8192)))
+            spectra.append(spectrum/np.linalg.norm(spectrum))
+        self.assertLess(float(np.dot(*spectra)),.98)
+        frequencies=np.fft.rfftfreq(8192,1/32000)
+        centroids=[float(np.sum(s*frequencies)/np.sum(s)) for s in spectra]
+        self.assertGreater(centroids[1],centroids[0]*1.15)
+
+    def test_sustained_sample_wraps_at_the_original_waveform_slope(self):
+        try:
+            import numpy as np
+            from synthesize_soundbanks import synthesize
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        x, loop = synthesize('winds.flute', 72, sample_rate=16000, looped=True)
+        a, b = [round(loop[k]*16000) for k in ['start_sec','end_sec']]
+        self.assertAlmostEqual(float(x[b-1]), float(x[a-1]), places=6)
+        self.assertTrue(np.isfinite(x).all())
+        self.assertGreater(float(np.sqrt(np.mean(x[a:b]**2))), .01)
+
+    def test_alternate_attacks_are_distinct_and_repeatable(self):
+        try:
+            import numpy as np
+            from synthesize_soundbanks import synthesize
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        a, _ = synthesize('bass.sub_sine', 36, variation=1, sample_rate=16000)
+        b, _ = synthesize('bass.sub_sine', 36, variation=2, sample_rate=16000)
+        c, _ = synthesize('bass.sub_sine', 36, variation=1, sample_rate=16000)
+        self.assertFalse(np.array_equal(a,b))
+        self.assertTrue(np.array_equal(a,c))
+
+    def test_pitch_resampling_suppresses_out_of_band_aliases(self):
+        try:
+            import numpy as np
+            from render_mix_v4 import resample_rate
+        except ImportError:
+            self.skipTest('Optional audio dependencies are not installed')
+        t=np.arange(32000)/32000
+        y=resample_rate(np.sin(2*np.pi*12000*t),2)
+        self.assertEqual(len(y),16000)
+        self.assertLess(float(np.sqrt(np.mean(y[100:-100]**2))), .003)
 
 
 class NeoSpcCliTests(unittest.TestCase):
+    def test_midi_routes_sixteenth_melodic_lane_to_second_port(self) -> None:
+        style = {'id':'many_lanes','title':'Many Lanes','category':'classical','bpm':120,'meter':'4/4','barLength':4,'beats':4,
+                 'events':[{'inst':f'lane_{i:02}','role':'lead','kind':'note','midi':60+i,'beat':0,'duration':1,'velocity':90} for i in range(16)]}
+        with tempfile.TemporaryDirectory() as temp:
+            report = export_midis_v4.export(style, Path(temp))
+            self.assertEqual(len({(lane['port'],lane['channel']) for lane in report['lanes']}), 16)
+            self.assertEqual((report['lanes'][-1]['port'],report['lanes'][-1]['channel']), (1,0))
+            self.assertIn(b'\xff\x21\x01\x01', (Path(temp)/'many_lanes.mid').read_bytes())
+        self.assertEqual(midi_compat.MetaMessage('midi_port', port=1).encode(), b'\xff\x21\x01\x01')
+
+    def test_midi_expression_respects_declared_quiet_return(self) -> None:
+        style = {'barLength':4,'form':[{'name':'A','start_bar':0,'bars':4,'intensity':.8},{'name':'A3','start_bar':4,'bars':4,'intensity':.3}]}
+        self.assertLess(export_midis_v4.expression_value(style,16,'lead'), export_midis_v4.expression_value(style,0,'lead'))
+
+    def test_midi_releases_before_retrigger_on_same_tick(self) -> None:
+        style = {'id':'retrigger','title':'Retrigger','category':'classical','bpm':120,'meter':'4/4','barLength':4,'beats':4,
+                 'events':[{'inst':'piano','role':'lead','kind':'note','midi':60,'beat':beat,'duration':1,'velocity':90} for beat in [0,1]]}
+        with tempfile.TemporaryDirectory() as temp:
+            export_midis_v4.export(style, Path(temp))
+            data = (Path(temp)/'retrigger.mid').read_bytes()
+            self.assertLess(data.index(b'\x80\x3c'), data.rindex(b'\x90\x3c'))
+
+    def test_midi_preserves_explicit_bongo_keys(self):
+        style={'id':'bongos','title':'Bongos','category':'bachata','bpm':122,'meter':'4/4','barLength':4,'beats':4,
+               'events':[{'inst':'tom','role':'tom','kind':'drum','midi':pitch,'beat':beat,'velocity':80} for beat,pitch in enumerate((60,61))]}
+        with tempfile.TemporaryDirectory() as temp:
+            export_midis_v4.export(style,Path(temp));data=(Path(temp)/'bongos.mid').read_bytes()
+            self.assertIn(b'\x99\x3c\x50',data)
+            self.assertIn(b'\x99\x3d\x50',data)
+
+    def test_native_humanizer_keeps_rounded_loop_onsets_inside_cue(self) -> None:
+        spec = copy.deepcopy(next(s for s in engine.SPECS['fantasy'] if s['slug'] == 'sleeping_dragon_court'))
+        spec.update(seed=1121634134, architecture='period', contour='ascending', rest_ratio=.27, max_leap=7, tessitura=.5800000000000001)
+        score = engine.compose(spec, 'fantasy', 'Fantasy')
+        self.assertTrue(all(0 <= event['performance_beat'] < score['beats'] for event in score['events']))
+
+    def test_written_role_rest_cuts_crossing_notes_and_preserves_other_roles(self) -> None:
+        lead = {'kind':'note','role':'lead','beat':0,'duration':3}
+        bass = {'kind':'note','role':'bass','beat':1,'duration':3}
+        events = [lead, {'kind':'note','role':'lead','beat':1.5,'duration':.3}, bass]
+        report = engine.apply_written_rests(events, {'bars':4,'role_rests':[{'start_bar':1,'end_bar':2,'roles':['lead']}]}, 1)
+        self.assertEqual(events, [lead, bass])
+        self.assertEqual(lead['duration'], 1)
+        self.assertEqual(bass['duration'], 3)
+        self.assertEqual(report, {'declared_windows':1,'events_removed':1,'notes_shortened':1})
+
+    def test_authored_contract_drives_phrase_spans_and_harmonic_holds(self) -> None:
+        records = engine.load_catalog_contracts()
+        spec = copy.deepcopy(next(r['native_engine_contract'] for r in records if r['id'] == 'stars_without_distance'))
+        # Explicit fixture: the catalog is allowed to change its authored form.
+        spec['bars'] = 20
+        spec['phrases'] = [{'bars':b,'kind':'consequent' if i==3 else 'antecedent','closing':i==3} for i,b in enumerate((5,2,8,5))]
+        self.assertEqual([(p.start,p.bars) for p in engine.phrase_plan(spec)], [(0,5),(5,2),(7,8),(15,5)])
+        chords = engine.chord_plan(spec)
+        self.assertEqual(chords[0], chords[1])
+        invalid = copy.deepcopy(spec)
+        invalid['phrases'][0]['bars'] += 1
+        with self.assertRaisesRegex(ValueError, 'fill the cue'):
+            engine.phrase_plan(invalid)
+
+    def test_low_choir_stays_within_factory_extension(self) -> None:
+        spec = copy.deepcopy(next(s for s in engine.SPECS['classical'] if s['slug'] == 'marble_steps'))
+        score = engine.compose(spec, 'classical', 'Classical & Experimental')
+        choir = [e['midi'] for e in score['events'] if e['inst'] == 'choir_b']
+        self.assertTrue(choir)
+        self.assertGreaterEqual(min(choir), 36)
+
+    def test_blueprint_subject_and_answer_are_consumed(self):
+        record=engine.load_catalog_contracts()[0]
+        spec=copy.deepcopy(record['native_engine_contract'])
+        before=engine.compose(spec,record['category'],record['category_label'])
+        spec['writing']['degrees'][1]+=2
+        after=engine.compose(spec,record['category'],record['category_label'])
+        a=[(e['beat'],e.get('midi')) for e in before['events'] if e['role']=='lead']
+        b=[(e['beat'],e.get('midi')) for e in after['events'] if e['role']=='lead']
+        self.assertNotEqual(a,b)
+        self.assertEqual(before['sound_palette'],spec['writing']['palette'])
+        self.assertEqual(before['writing_evidence']['answer'],spec['writing']['answer'])
+        self.assertTrue(all(e['role'] not in ('pad','ensemble') for e in before['events']))
+
+    def test_unknown_blueprint_grammar_is_rejected(self):
+        record=engine.load_catalog_contracts()[0]
+        spec=copy.deepcopy(record['native_engine_contract']);spec['writing']['grammar']='invented_style'
+        with self.assertRaisesRegex(ValueError,'Unknown writing grammar'):
+            engine.compose(spec,record['category'],record['category_label'])
+
     def test_doctor_and_benchmark_pass(self) -> None:
         self.assertEqual(neospc.doctor_issues(), [])
         benchmark = neospc.load_json(neospc.BENCHMARK_PATH)
         self.assertEqual(neospc.validate_catalog(benchmark), [])
-        self.assertEqual(len(benchmark["styles"]), 100)
+        self.assertEqual(len(benchmark["styles"]), sum(c['required_examples'] for c in neospc.load_json(neospc.DATA / 'category-benchmark-contracts.json')['categories']))
 
     def test_release_boundary_is_portable_and_archived(self) -> None:
         self.assertEqual(release_gate.path_lint_issues(), [])
         self.assertEqual(release_gate.archive_issues(), [])
+        self.assertEqual(release_gate.manifest_issues(), [])
 
     def test_init_creates_valid_plan_and_harness(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -91,6 +272,35 @@ class NeoSpcCliTests(unittest.TestCase):
         issues = neospc.validate_plan(plan)
         self.assertIn("placeholder_text", {issue.code for issue in issues})
         self.assertIn("$.musical_identity.loop_strategy", {issue.path for issue in issues})
+
+    def test_genre_init_composes_its_groove_and_keeps_breakdown_in_contrast(self):
+        import compose_from_plan
+        for genre in ('bachata','trip_hop','trap','reggaeton'):
+            with self.subTest(genre=genre), tempfile.TemporaryDirectory() as temp:
+                project=Path(temp)/genre
+                self.assertEqual(neospc.main(['init',str(project),'--title','New groove','--category',genre,'--bars','8','--seed','4']),0)
+                plan=neospc.load_json(project/'composition-plan.json');harness=neospc.load_json(project/'generation-harness.json');blueprint=neospc.load_json(project/'score-blueprint.json')
+                score,_=compose_from_plan.compose_project(plan,harness,blueprint)
+                self.assertEqual(score['meter'],'4/4')
+                self.assertEqual(blueprint['drop_bars'],[4])
+                self.assertTrue(any(e['role']=='lead' and 20<=e['beat']<24 for e in score['events']))
+                def onsets(inst):return {e['beat'] for e in score['events'] if e['inst']==inst and e['beat']<4}
+                if genre=='bachata':
+                    self.assertEqual(score['instrument_map']['guitar']['factory_label'],'Requinto Guitar')
+                    self.assertEqual({e['midi'] for e in score['events'] if e['inst']=='tom'},{60,61})
+                elif genre=='trip_hop':
+                    self.assertTrue(any(e['inst']=='hat' and e['performance_beat']>e['beat']+.04 for e in score['events']))
+                    self.assertTrue({1,3}<=onsets('snare'))
+                elif genre=='trap':
+                    self.assertEqual(onsets('snare'),{2})
+                    self.assertEqual(score['instrument_map']['sub']['factory_patch'],'bass.sub_sine')
+                else:self.assertEqual(onsets('snare'),{.75,1.5,2.75,3.5})
+
+    def test_genre_init_rejects_unsupported_meter_before_writing(self):
+        with tempfile.TemporaryDirectory() as temp:
+            project=Path(temp)/'invalid'
+            self.assertEqual(neospc.main(['init',str(project),'--title','Invalid','--category','bachata','--meter','3/4']),2)
+            self.assertFalse(project.exists())
 
     def test_symbolic_review_uses_library_scale_ids(self) -> None:
         style = {
@@ -210,7 +420,6 @@ class NeoSpcCliTests(unittest.TestCase):
             count_a, digest_a = package_skill.build(first)
             count_b, digest_b = package_skill.build(second)
             self.assertGreater(count_a, 60)
-            self.assertLess(count_a, 100)
             self.assertEqual(count_a, count_b)
             self.assertEqual(digest_a, digest_b)
             with zipfile.ZipFile(first) as archive:
@@ -219,7 +428,16 @@ class NeoSpcCliTests(unittest.TestCase):
             self.assertIn("game-music-composer/SKILL.md", names)
             self.assertIn("game-music-composer/LICENSE", names)
             self.assertIn("game-music-composer/agents/openai.yaml", names)
-            self.assertFalse(any("__pycache__" in name or name.endswith(".pyc") for name in names))
+            # The installed Atelier extension grows the package past 100 files.
+            # Check the published inventory and required entrypoints directly.
+            manifest_names = ["game-music-composer/" + line.split("  ./", 1)[1]
+                              for line in package_skill.MANIFEST.read_text(encoding="utf-8").splitlines()]
+            self.assertCountEqual(names, manifest_names + ["game-music-composer/MANIFEST.sha256"])
+            for entry in ("scripts/visualize_score.py", "scripts/refine_performance.py",
+                          "resources/ensemble-atelier/template.html", "resources/ensemble-atelier/audio.js",
+                          "references/canonical-compose-workflow.md"):
+                self.assertIn("game-music-composer/" + entry, names)
+            self.assertFalse(any("__pycache__" in name or ".pytest_cache" in name or name.endswith(".pyc") for name in names))
             self.assertNotIn("game-music-composer/data/neospc100-benchmark-v3.json", names)
             self.assertNotIn("game-music-composer/data/neospc100-benchmark.json", names)
             self.assertLess(unpacked_bytes, 25 * 1024 * 1024)

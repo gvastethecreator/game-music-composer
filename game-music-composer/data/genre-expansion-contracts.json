@@ -1,0 +1,7614 @@
+{
+  "version": "1.0.0",
+  "categories": [
+    "bachata",
+    "trip_hop",
+    "trap",
+    "reggaeton"
+  ],
+  "contracts": [
+    {
+      "id": "bachata_balcon_de_sal",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Guitar conversation",
+      "musical_direction": "Guitar conversation. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_balcon_de_sal",
+        "title": "Balcon de Sal",
+        "subcategory": "Guitar conversation",
+        "bpm": 122,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "D",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "guitar conversation"
+        ],
+        "notes": "Guitar conversation. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 0,
+          "degrees": [
+            0,
+            2,
+            4,
+            5,
+            4,
+            2,
+            3,
+            1
+          ],
+          "answer": [
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75,
+              0.875
+            ],
+            [
+              0,
+              0.25,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_carta_sin_sello",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Minor serenade",
+      "musical_direction": "Minor serenade. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_carta_sin_sello",
+        "title": "Carta sin Sello",
+        "subcategory": "Minor serenade",
+        "bpm": 116,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "A",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "minor serenade"
+        ],
+        "notes": "Minor serenade. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 1,
+          "degrees": [
+            2,
+            4,
+            3,
+            1,
+            0,
+            2,
+            1,
+            -1
+          ],
+          "answer": [
+            3,
+            2,
+            4,
+            1,
+            2,
+            0,
+            -1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.25,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVI",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1,
+            1.5,
+            2.5,
+            3,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_dos_pasos_tarde",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Bright street dance",
+      "musical_direction": "Bright street dance. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_dos_pasos_tarde",
+        "title": "Dos Pasos Tarde",
+        "subcategory": "Bright street dance",
+        "bpm": 132,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "G",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "bachata",
+          "bright street dance"
+        ],
+        "notes": "Bright street dance. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 2,
+          "degrees": [
+            4,
+            5,
+            7,
+            4,
+            2,
+            3,
+            1,
+            2
+          ],
+          "answer": [
+            7,
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.5,
+              0.625,
+              0.875
+            ],
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "I",
+            "vi",
+            "IV",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_jazmin_de_patio",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Quiet courtyard",
+      "musical_direction": "Quiet courtyard. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_jazmin_de_patio",
+        "title": "Jazmin de Patio",
+        "subcategory": "Quiet courtyard",
+        "bpm": 108,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "C",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "quiet courtyard"
+        ],
+        "notes": "Quiet courtyard. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 3,
+          "degrees": [
+            0,
+            3,
+            2,
+            4,
+            1,
+            2,
+            0,
+            1
+          ],
+          "answer": [
+            4,
+            3,
+            1,
+            2,
+            0,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75,
+              0.875
+            ],
+            [
+              0,
+              0.25,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i7",
+            "iv7",
+            "bVImaj7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1,
+            1.5,
+            2.5,
+            3,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_la_ultima_guagua",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Driving requinto",
+      "musical_direction": "Driving requinto. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_la_ultima_guagua",
+        "title": "La Ultima Guagua",
+        "subcategory": "Driving requinto",
+        "bpm": 136,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "E",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "driving requinto"
+        ],
+        "notes": "Driving requinto. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 4,
+          "degrees": [
+            2,
+            2,
+            4,
+            3,
+            5,
+            4,
+            1,
+            0
+          ],
+          "answer": [
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.25,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i",
+            "bVII",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_luna_en_el_malecon",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Open-air romance",
+      "musical_direction": "Open-air romance. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_luna_en_el_malecon",
+        "title": "Luna en el Malecon",
+        "subcategory": "Open-air romance",
+        "bpm": 120,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "bachata",
+          "open-air romance"
+        ],
+        "notes": "Open-air romance. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 5,
+          "degrees": [
+            4,
+            2,
+            1,
+            3,
+            2,
+            0,
+            1,
+            4
+          ],
+          "answer": [
+            3,
+            4,
+            2,
+            1,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.5,
+              0.625,
+              0.875
+            ],
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "Imaj7",
+            "vi7",
+            "ii7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1,
+            1.5,
+            2.5,
+            3,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_madera_y_miel",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Muted guitar pocket",
+      "musical_direction": "Muted guitar pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_madera_y_miel",
+        "title": "Madera y Miel",
+        "subcategory": "Muted guitar pocket",
+        "bpm": 126,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "B",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "muted guitar pocket"
+        ],
+        "notes": "Muted guitar pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 6,
+          "degrees": [
+            0,
+            2,
+            1,
+            4,
+            3,
+            5,
+            2,
+            1
+          ],
+          "answer": [
+            4,
+            2,
+            5,
+            3,
+            1,
+            2,
+            0,
+            1
+          ],
+          "rhythm": [
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75,
+              0.875
+            ],
+            [
+              0,
+              0.25,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_promesa_de_abril",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Major-key return",
+      "musical_direction": "Major-key return. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_promesa_de_abril",
+        "title": "Promesa de Abril",
+        "subcategory": "Major-key return",
+        "bpm": 130,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "Bb",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "bachata",
+          "major-key return"
+        ],
+        "notes": "Major-key return. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 7,
+          "degrees": [
+            2,
+            4,
+            6,
+            5,
+            3,
+            4,
+            2,
+            0
+          ],
+          "answer": [
+            6,
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.25,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "I",
+            "IV",
+            "ii",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1,
+            1.5,
+            2.5,
+            3,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_sombra_de_almendro",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Sparse bolero color",
+      "musical_direction": "Sparse bolero color. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_sombra_de_almendro",
+        "title": "Sombra de Almendro",
+        "subcategory": "Sparse bolero color",
+        "bpm": 112,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F#",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "sparse bolero color"
+        ],
+        "notes": "Sparse bolero color. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 8,
+          "degrees": [
+            4,
+            1,
+            3,
+            2,
+            0,
+            1,
+            -1,
+            2
+          ],
+          "answer": [
+            3,
+            1,
+            4,
+            2,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.5,
+              0.625,
+              0.875
+            ],
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i7",
+            "bVImaj7",
+            "iv7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "bachata_vuelve_despacio",
+      "category": "bachata",
+      "category_label": "Bachata",
+      "revision": "genre-expansion-1",
+      "game_function": "Mambo lift",
+      "musical_direction": "Mambo lift. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "bachata_vuelve_despacio",
+        "title": "Vuelve Despacio",
+        "subcategory": "Mambo lift",
+        "bpm": 140,
+        "meter": "4/4",
+        "bars": 24,
+        "key": "Eb",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "bachata",
+        "comp_b": "bachata_breakdown",
+        "bass": "pedal",
+        "drums": "bachata",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "bachata",
+          "mambo lift"
+        ],
+        "notes": "Mambo lift. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 8,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 8,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 23.9375,
+            "end_bar": 24,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "bachata",
+          "variant": 9,
+          "degrees": [
+            0,
+            4,
+            3,
+            5,
+            4,
+            6,
+            2,
+            1
+          ],
+          "answer": [
+            5,
+            4,
+            6,
+            3,
+            2,
+            4,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.125,
+              0.375,
+              0.625,
+              0.75,
+              0.875
+            ],
+            [
+              0,
+              0.25,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "muted_guitar",
+            "bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.5,
+            1,
+            1.5,
+            2.5,
+            3,
+            3.5
+          ],
+          "kick_pattern": [],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "bass": "bass.electric_finger",
+        "guitar": "guitar.requinto",
+        "muted_guitar": "guitar.segunda",
+        "tom": "drums.bongo",
+        "shaker": "drums.guira"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_static_at_dawn",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Dusty keys",
+      "musical_direction": "Dusty keys. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_static_at_dawn",
+        "title": "Static at Dawn",
+        "subcategory": "Dusty keys",
+        "bpm": 76,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "D",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "piano",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "dusty keys"
+        ],
+        "notes": "Dusty keys. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 0,
+          "degrees": [
+            2,
+            0,
+            3,
+            1,
+            4,
+            2,
+            1,
+            -1
+          ],
+          "answer": [
+            4,
+            3,
+            1,
+            2,
+            0,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375,
+              0.6875
+            ],
+            [
+              0.125,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "piano",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.12,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_glass_elevator",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Noir vibraphone",
+      "musical_direction": "Noir vibraphone. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_glass_elevator",
+        "title": "Glass Elevator",
+        "subcategory": "Noir vibraphone",
+        "bpm": 82,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "A",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "vibes",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "noir vibraphone"
+        ],
+        "notes": "Noir vibraphone. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 1,
+          "degrees": [
+            4,
+            1,
+            2,
+            0,
+            3,
+            2,
+            -1,
+            1
+          ],
+          "answer": [
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.4375
+            ],
+            [
+              0,
+              0.375,
+              0.625
+            ]
+          ],
+          "roles": [
+            "vibes",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVI",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.135,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_undertow_radio",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Dub-weight bass",
+      "musical_direction": "Dub-weight bass. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_undertow_radio",
+        "title": "Undertow Radio",
+        "subcategory": "Dub-weight bass",
+        "bpm": 70,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "G",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "muted_guitar",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.35,
+        "tags": [
+          "trip_hop",
+          "dub-weight bass"
+        ],
+        "notes": "Dub-weight bass. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 2,
+          "degrees": [
+            0,
+            3,
+            1,
+            4,
+            2,
+            0,
+            1,
+            -1
+          ],
+          "answer": [
+            3,
+            4,
+            2,
+            1,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.1875,
+              0.5,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "muted_guitar",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "I",
+            "vi",
+            "IV",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0.0,
+            2.25,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.15,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_blue_hour_motel",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Sparse cinematic beat",
+      "musical_direction": "Sparse cinematic beat. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_blue_hour_motel",
+        "title": "Blue Hour Motel",
+        "subcategory": "Sparse cinematic beat",
+        "bpm": 88,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "C",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "strings",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "sparse cinematic beat"
+        ],
+        "notes": "Sparse cinematic beat. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 3,
+          "degrees": [
+            2,
+            5,
+            3,
+            4,
+            1,
+            2,
+            0,
+            1
+          ],
+          "answer": [
+            4,
+            2,
+            5,
+            3,
+            1,
+            2,
+            0,
+            1
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375,
+              0.6875
+            ],
+            [
+              0.125,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "strings",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i7",
+            "iv7",
+            "bVImaj7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.16499999999999998,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_paper_satellites",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Suspended harmony",
+      "musical_direction": "Suspended harmony. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_paper_satellites",
+        "title": "Paper Satellites",
+        "subcategory": "Suspended harmony",
+        "bpm": 74,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "E",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "bell",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "suspended harmony"
+        ],
+        "notes": "Suspended harmony. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 4,
+          "degrees": [
+            4,
+            6,
+            3,
+            5,
+            2,
+            4,
+            1,
+            0
+          ],
+          "answer": [
+            6,
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.4375
+            ],
+            [
+              0,
+              0.375,
+              0.625
+            ]
+          ],
+          "roles": [
+            "bell",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVII",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.18,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_velvet_underpass",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Muted guitar haze",
+      "musical_direction": "Muted guitar haze. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_velvet_underpass",
+        "title": "Velvet Underpass",
+        "subcategory": "Muted guitar haze",
+        "bpm": 80,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "muted_guitar",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.35,
+        "tags": [
+          "trip_hop",
+          "muted guitar haze"
+        ],
+        "notes": "Muted guitar haze. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 5,
+          "degrees": [
+            0,
+            2,
+            4,
+            1,
+            3,
+            0,
+            2,
+            -1
+          ],
+          "answer": [
+            3,
+            1,
+            4,
+            2,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.1875,
+              0.5,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "muted_guitar",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "Imaj7",
+            "vi7",
+            "ii7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0.0,
+            2.25,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.195,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_slow_exit",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Broken beat",
+      "musical_direction": "Broken beat. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_slow_exit",
+        "title": "Slow Exit",
+        "subcategory": "Broken beat",
+        "bpm": 92,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "B",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "clav",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "broken beat"
+        ],
+        "notes": "Broken beat. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 6,
+          "degrees": [
+            3,
+            1,
+            4,
+            2,
+            5,
+            0,
+            2,
+            1
+          ],
+          "answer": [
+            5,
+            4,
+            6,
+            3,
+            2,
+            4,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375,
+              0.6875
+            ],
+            [
+              0.125,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "clav",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.21,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_rain_on_tape",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Warm tape piano",
+      "musical_direction": "Warm tape piano. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_rain_on_tape",
+        "title": "Rain on Tape",
+        "subcategory": "Warm tape piano",
+        "bpm": 72,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "Bb",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "piano",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.35,
+        "tags": [
+          "trip_hop",
+          "warm tape piano"
+        ],
+        "notes": "Warm tape piano. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 7,
+          "degrees": [
+            2,
+            4,
+            1,
+            3,
+            0,
+            2,
+            -1,
+            0
+          ],
+          "answer": [
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.4375
+            ],
+            [
+              0,
+              0.375,
+              0.625
+            ]
+          ],
+          "roles": [
+            "piano",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "I",
+            "IV",
+            "ii",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.22499999999999998,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_faded_coordinates",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Floating reed",
+      "musical_direction": "Floating reed. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_faded_coordinates",
+        "title": "Faded Coordinates",
+        "subcategory": "Floating reed",
+        "bpm": 84,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F#",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "reed",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "floating reed"
+        ],
+        "notes": "Floating reed. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 8,
+          "degrees": [
+            4,
+            2,
+            5,
+            1,
+            3,
+            2,
+            0,
+            1
+          ],
+          "answer": [
+            3,
+            2,
+            4,
+            1,
+            2,
+            0,
+            -1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.1875,
+              0.5,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "reed",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i7",
+            "bVImaj7",
+            "iv7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0.0,
+            2.25,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.24,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trip_hop_afterimage_hotel",
+      "category": "trip_hop",
+      "category_label": "Trip hop",
+      "revision": "genre-expansion-1",
+      "game_function": "Half-lit organ",
+      "musical_direction": "Half-lit organ. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trip_hop_afterimage_hotel",
+        "title": "Afterimage Hotel",
+        "subcategory": "Half-lit organ",
+        "bpm": 78,
+        "meter": "4/4",
+        "bars": 24,
+        "key": "Eb",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "organ",
+        "secondary": null,
+        "comp": "trip_hop",
+        "comp_b": "trip_hop_breakdown",
+        "bass": "pedal",
+        "drums": "trip_hop",
+        "architecture": "period",
+        "energy": 0.48,
+        "tension": 0.58,
+        "tags": [
+          "trip_hop",
+          "half-lit organ"
+        ],
+        "notes": "Half-lit organ. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 8,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 8,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 23.9375,
+            "end_bar": 24,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trip_hop",
+          "variant": 9,
+          "degrees": [
+            0,
+            1,
+            3,
+            2,
+            4,
+            1,
+            2,
+            0
+          ],
+          "answer": [
+            7,
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375,
+              0.6875
+            ],
+            [
+              0.125,
+              0.5,
+              0.75
+            ]
+          ],
+          "roles": [
+            "organ",
+            "piano",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2.5
+          ],
+          "percussion": true,
+          "palette": "velvet",
+          "swing": 0.255,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_chrome_staircase",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Bell hook",
+      "musical_direction": "Bell hook. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_chrome_staircase",
+        "title": "Chrome Staircase",
+        "subcategory": "Bell hook",
+        "bpm": 138,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "D",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "bell",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "bell hook"
+        ],
+        "notes": "Bell hook. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 0,
+          "degrees": [
+            0,
+            4,
+            2,
+            1,
+            5,
+            3,
+            2,
+            0
+          ],
+          "answer": [
+            4,
+            3,
+            1,
+            2,
+            0,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375
+            ],
+            [
+              0.125,
+              0.5,
+              0.875
+            ]
+          ],
+          "roles": [
+            "bell",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_midnight_inventory",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Dark piano",
+      "musical_direction": "Dark piano. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_midnight_inventory",
+        "title": "Midnight Inventory",
+        "subcategory": "Dark piano",
+        "bpm": 144,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "A",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "piano",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "dark piano"
+        ],
+        "notes": "Dark piano. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 1,
+          "degrees": [
+            2,
+            0,
+            4,
+            1,
+            3,
+            5,
+            1,
+            0
+          ],
+          "answer": [
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.375,
+              0.75
+            ]
+          ],
+          "roles": [
+            "piano",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVI",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.75,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_cold_orbit",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Minimal sub-bass",
+      "musical_direction": "Minimal sub-bass. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_cold_orbit",
+        "title": "Cold Orbit",
+        "subcategory": "Minimal sub-bass",
+        "bpm": 132,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "G",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "synth_lead",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "trap",
+          "minimal sub-bass"
+        ],
+        "notes": "Minimal sub-bass. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 2,
+          "degrees": [
+            0,
+            0,
+            3,
+            1,
+            4,
+            2,
+            1,
+            -1
+          ],
+          "answer": [
+            3,
+            4,
+            2,
+            1,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.5
+            ],
+            [
+              0,
+              0.375,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "synth_lead",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "I",
+            "vi",
+            "IV",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_quartz_teeth",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Tight synth stabs",
+      "musical_direction": "Tight synth stabs. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_quartz_teeth",
+        "title": "Quartz Teeth",
+        "subcategory": "Tight synth stabs",
+        "bpm": 152,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "C",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "pulse25",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "tight synth stabs"
+        ],
+        "notes": "Tight synth stabs. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 3,
+          "degrees": [
+            4,
+            2,
+            0,
+            3,
+            1,
+            4,
+            2,
+            5
+          ],
+          "answer": [
+            4,
+            2,
+            5,
+            3,
+            1,
+            2,
+            0,
+            1
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375
+            ],
+            [
+              0.125,
+              0.5,
+              0.875
+            ]
+          ],
+          "roles": [
+            "pulse25",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i7",
+            "iv7",
+            "bVImaj7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_low_battery_crown",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Wide pad space",
+      "musical_direction": "Wide pad space. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_low_battery_crown",
+        "title": "Low Battery Crown",
+        "subcategory": "Wide pad space",
+        "bpm": 140,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "E",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "synth_pad",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "wide pad space"
+        ],
+        "notes": "Wide pad space. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 4,
+          "degrees": [
+            2,
+            5,
+            3,
+            1,
+            4,
+            0,
+            2,
+            1
+          ],
+          "answer": [
+            6,
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.375,
+              0.75
+            ]
+          ],
+          "roles": [
+            "synth_pad",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i",
+            "bVII",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.75,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_smoke_arithmetic",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Triplet hat pocket",
+      "musical_direction": "Triplet hat pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_smoke_arithmetic",
+        "title": "Smoke Arithmetic",
+        "subcategory": "Triplet hat pocket",
+        "bpm": 146,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "bell",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "trap",
+          "triplet hat pocket"
+        ],
+        "notes": "Triplet hat pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 5,
+          "degrees": [
+            0,
+            3,
+            4,
+            2,
+            1,
+            5,
+            3,
+            0
+          ],
+          "answer": [
+            3,
+            1,
+            4,
+            2,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.5
+            ],
+            [
+              0,
+              0.375,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "bell",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "Imaj7",
+            "vi7",
+            "ii7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_ghost_freight",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Picked motif",
+      "musical_direction": "Picked motif. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_ghost_freight",
+        "title": "Ghost Freight",
+        "subcategory": "Picked motif",
+        "bpm": 156,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "B",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "muted_guitar",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "picked motif"
+        ],
+        "notes": "Picked motif. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 6,
+          "degrees": [
+            4,
+            1,
+            2,
+            5,
+            3,
+            0,
+            1,
+            2
+          ],
+          "answer": [
+            5,
+            4,
+            6,
+            3,
+            2,
+            4,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375
+            ],
+            [
+              0.125,
+              0.5,
+              0.875
+            ]
+          ],
+          "roles": [
+            "muted_guitar",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_basement_constellation",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Low-register keys",
+      "musical_direction": "Low-register keys. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_basement_constellation",
+        "title": "Basement Constellation",
+        "subcategory": "Low-register keys",
+        "bpm": 134,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "Bb",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "piano",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "trap",
+          "low-register keys"
+        ],
+        "notes": "Low-register keys. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 7,
+          "degrees": [
+            0,
+            2,
+            1,
+            3,
+            0,
+            4,
+            2,
+            -1
+          ],
+          "answer": [
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.625
+            ],
+            [
+              0.375,
+              0.75
+            ]
+          ],
+          "roles": [
+            "piano",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "I",
+            "IV",
+            "ii",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.75,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            0.75,
+            2.75
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_no_signal_halo",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Glass counterline",
+      "musical_direction": "Glass counterline. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_no_signal_halo",
+        "title": "No Signal Halo",
+        "subcategory": "Glass counterline",
+        "bpm": 148,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F#",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "vibes",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "glass counterline"
+        ],
+        "notes": "Glass counterline. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 8,
+          "degrees": [
+            2,
+            4,
+            6,
+            3,
+            5,
+            1,
+            2,
+            0
+          ],
+          "answer": [
+            3,
+            2,
+            4,
+            1,
+            2,
+            0,
+            -1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.5
+            ],
+            [
+              0,
+              0.375,
+              0.8125
+            ]
+          ],
+          "roles": [
+            "vibes",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i7",
+            "bVImaj7",
+            "iv7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            3.25
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "trap_ash_on_satin",
+      "category": "trap",
+      "category_label": "Trap",
+      "revision": "genre-expansion-1",
+      "game_function": "Sparse melodic trap",
+      "musical_direction": "Sparse melodic trap. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "trap_ash_on_satin",
+        "title": "Ash on Satin",
+        "subcategory": "Sparse melodic trap",
+        "bpm": 142,
+        "meter": "4/4",
+        "bars": 24,
+        "key": "Eb",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "harp",
+        "secondary": null,
+        "comp": "trap",
+        "comp_b": "trap_breakdown",
+        "bass": "pedal",
+        "drums": "trap",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "trap",
+          "sparse melodic trap"
+        ],
+        "notes": "Sparse melodic trap. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 8,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 8,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 23.9375,
+            "end_bar": 24,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "trap",
+          "variant": 9,
+          "degrees": [
+            4,
+            3,
+            1,
+            0,
+            2,
+            1,
+            5,
+            2
+          ],
+          "answer": [
+            7,
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.375
+            ],
+            [
+              0.125,
+              0.5,
+              0.875
+            ]
+          ],
+          "roles": [
+            "harp",
+            "synth_pad",
+            "sub"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.5,
+            3.5
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "sub": "bass.sub_sine"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_faro_de_neon",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Bright pluck",
+      "musical_direction": "Bright pluck. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_faro_de_neon",
+        "title": "Faro de Neon",
+        "subcategory": "Bright pluck",
+        "bpm": 94,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "D",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "synth_lead",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "bright pluck"
+        ],
+        "notes": "Bright pluck. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 0,
+          "degrees": [
+            0,
+            2,
+            4,
+            2,
+            5,
+            3,
+            1,
+            0
+          ],
+          "answer": [
+            4,
+            3,
+            1,
+            2,
+            0,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.1875,
+              0.375,
+              0.75
+            ],
+            [
+              0.125,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "synth_lead",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_cruce_de_miradas",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Minor guitar",
+      "musical_direction": "Minor guitar. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_cruce_de_miradas",
+        "title": "Cruce de Miradas",
+        "subcategory": "Minor guitar",
+        "bpm": 88,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "A",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "guitar",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "minor guitar"
+        ],
+        "notes": "Minor guitar. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 1,
+          "degrees": [
+            2,
+            1,
+            4,
+            3,
+            5,
+            2,
+            0,
+            1
+          ],
+          "answer": [
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.1875,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "guitar",
+            "clav",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVI",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_marea_de_asfalto",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Club dembow",
+      "musical_direction": "Club dembow. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_marea_de_asfalto",
+        "title": "Marea de Asfalto",
+        "subcategory": "Club dembow",
+        "bpm": 102,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "G",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "pulse25",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "reggaeton",
+          "club dembow"
+        ],
+        "notes": "Club dembow. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 2,
+          "degrees": [
+            4,
+            2,
+            0,
+            3,
+            2,
+            5,
+            1,
+            2
+          ],
+          "answer": [
+            3,
+            4,
+            2,
+            1,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.4375,
+              0.75
+            ],
+            [
+              0.1875,
+              0.375,
+              0.6875
+            ]
+          ],
+          "roles": [
+            "pulse25",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "I",
+            "vi",
+            "IV",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.75
+          ],
+          "percussion": true,
+          "palette": "circuit",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_patio_encendido",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Percussion dialogue",
+      "musical_direction": "Percussion dialogue. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_patio_encendido",
+        "title": "Patio Encendido",
+        "subcategory": "Percussion dialogue",
+        "bpm": 98,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "C",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "clav",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "percussion dialogue"
+        ],
+        "notes": "Percussion dialogue. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 3,
+          "degrees": [
+            0,
+            3,
+            2,
+            1,
+            4,
+            2,
+            5,
+            3
+          ],
+          "answer": [
+            4,
+            2,
+            5,
+            3,
+            1,
+            2,
+            0,
+            1
+          ],
+          "rhythm": [
+            [
+              0,
+              0.1875,
+              0.375,
+              0.75
+            ],
+            [
+              0.125,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "clav",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i7",
+            "iv7",
+            "bVImaj7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_sal_en_la_pista",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Warm melodic hook",
+      "musical_direction": "Warm melodic hook. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_sal_en_la_pista",
+        "title": "Sal en la Pista",
+        "subcategory": "Warm melodic hook",
+        "bpm": 92,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "E",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "vibes",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "warm melodic hook"
+        ],
+        "notes": "Warm melodic hook. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 4,
+          "degrees": [
+            2,
+            4,
+            5,
+            3,
+            1,
+            2,
+            4,
+            0
+          ],
+          "answer": [
+            6,
+            5,
+            3,
+            4,
+            2,
+            1,
+            3,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.1875,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "vibes",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVII",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_semaforo_azul",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Sparse night groove",
+      "musical_direction": "Sparse night groove. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_semaforo_azul",
+        "title": "Semaforo Azul",
+        "subcategory": "Sparse night groove",
+        "bpm": 86,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "piano",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "reggaeton",
+          "sparse night groove"
+        ],
+        "notes": "Sparse night groove. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 5,
+          "degrees": [
+            0,
+            1,
+            3,
+            2,
+            4,
+            0,
+            2,
+            1
+          ],
+          "answer": [
+            3,
+            1,
+            4,
+            2,
+            0,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.4375,
+              0.75
+            ],
+            [
+              0.1875,
+              0.375,
+              0.6875
+            ]
+          ],
+          "roles": [
+            "piano",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "Imaj7",
+            "vi7",
+            "ii7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.75
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_calle_de_cristal",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Synth response",
+      "musical_direction": "Synth response. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_calle_de_cristal",
+        "title": "Calle de Cristal",
+        "subcategory": "Synth response",
+        "bpm": 100,
+        "meter": "4/4",
+        "bars": 16,
+        "key": "B",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "pulse50",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "synth response"
+        ],
+        "notes": "Synth response. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 15.9375,
+            "end_bar": 16,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 6,
+          "degrees": [
+            4,
+            5,
+            2,
+            4,
+            1,
+            3,
+            2,
+            0
+          ],
+          "answer": [
+            5,
+            4,
+            6,
+            3,
+            2,
+            4,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.1875,
+              0.375,
+              0.75
+            ],
+            [
+              0.125,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "pulse50",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "bVI",
+            "iv",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2,
+            3.5
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2
+          ],
+          "percussion": true,
+          "palette": "circuit",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_puerta_del_sur",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Muted-key pocket",
+      "musical_direction": "Muted-key pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_puerta_del_sur",
+        "title": "Puerta del Sur",
+        "subcategory": "Muted-key pocket",
+        "bpm": 96,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "Bb",
+        "mode": "major",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "muted_guitar",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.35,
+        "tags": [
+          "reggaeton",
+          "muted-key pocket"
+        ],
+        "notes": "Muted-key pocket. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 7,
+          "degrees": [
+            2,
+            0,
+            4,
+            1,
+            3,
+            2,
+            5,
+            1
+          ],
+          "answer": [
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            1,
+            0
+          ],
+          "rhythm": [
+            [
+              0.125,
+              0.375,
+              0.5,
+              0.75
+            ],
+            [
+              0,
+              0.1875,
+              0.625,
+              0.75
+            ]
+          ],
+          "roles": [
+            "muted_guitar",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "I",
+            "IV",
+            "ii",
+            "V"
+          ],
+          "contrast_harmony": [
+            "vi",
+            "ii",
+            "IV",
+            "V"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            0.75,
+            2.5,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            1.75,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_noche_sin_prisa",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Slow dembow",
+      "musical_direction": "Slow dembow. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_noche_sin_prisa",
+        "title": "Noche sin Prisa",
+        "subcategory": "Slow dembow",
+        "bpm": 84,
+        "meter": "4/4",
+        "bars": 20,
+        "key": "F#",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "bell",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "slow dembow"
+        ],
+        "notes": "Slow dembow. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 4,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 4,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 8,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 19.9375,
+            "end_bar": 20,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 8,
+          "degrees": [
+            4,
+            2,
+            1,
+            3,
+            0,
+            2,
+            1,
+            -1
+          ],
+          "answer": [
+            3,
+            2,
+            4,
+            1,
+            2,
+            0,
+            -1,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.25,
+              0.4375,
+              0.75
+            ],
+            [
+              0.1875,
+              0.375,
+              0.6875
+            ]
+          ],
+          "roles": [
+            "bell",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i7",
+            "bVImaj7",
+            "iv7",
+            "V7"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "comp_pattern": [
+            0,
+            1.5,
+            2.75
+          ],
+          "kick_pattern": [
+            0,
+            2,
+            3.75
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            8,
+            10
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    },
+    {
+      "id": "reggaeton_pulso_de_arena",
+      "category": "reggaeton",
+      "category_label": "Reguetón",
+      "revision": "genre-expansion-1",
+      "game_function": "Open-air lift",
+      "musical_direction": "Open-air lift. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+      "status": "written; listening pending",
+      "native_engine_contract": {
+        "slug": "reggaeton_pulso_de_arena",
+        "title": "Pulso de Arena",
+        "subcategory": "Open-air lift",
+        "bpm": 104,
+        "meter": "4/4",
+        "bars": 24,
+        "key": "Eb",
+        "mode": "minor",
+        "budget": 12,
+        "prog": "journey",
+        "motif": "rising_fourth",
+        "motif_answer": "step_answer",
+        "lead": "harp",
+        "secondary": null,
+        "comp": "reggaeton",
+        "comp_b": "reggaeton_breakdown",
+        "bass": "pedal",
+        "drums": "reggaeton",
+        "architecture": "period",
+        "energy": 0.68,
+        "tension": 0.58,
+        "tags": [
+          "reggaeton",
+          "open-air lift"
+        ],
+        "notes": "Open-air lift. State the original hook, develop its answer, thin the middle section and bring the groove back with a clear last phrase.",
+        "form": [
+          {
+            "name": "A",
+            "bars": 4,
+            "function": "Introduce the hook and pocket.",
+            "intensity": 0.54
+          },
+          {
+            "name": "A2",
+            "bars": 8,
+            "function": "Answer and build the groove.",
+            "intensity": 0.72
+          },
+          {
+            "name": "B",
+            "bars": 8,
+            "function": "Leave foreground space in a breakdown.",
+            "intensity": 0.38
+          },
+          {
+            "name": "A3",
+            "bars": 4,
+            "function": "Return with a phrase-end fill.",
+            "intensity": 0.68
+          }
+        ],
+        "phrases": [
+          {
+            "bars": 4,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 8,
+            "kind": "consequent",
+            "closing": true
+          },
+          {
+            "bars": 8,
+            "kind": "antecedent",
+            "closing": false
+          },
+          {
+            "bars": 4,
+            "kind": "consequent",
+            "closing": true
+          }
+        ],
+        "role_rests": [
+          {
+            "start_bar": 23.9375,
+            "end_bar": 24,
+            "roles": [
+              "lead",
+              "comp",
+              "support"
+            ],
+            "purpose": "Release the final foreground before the loop."
+          }
+        ],
+        "loop_strategy": "The last phrase returns to the home chord and leaves a short foreground release.",
+        "writing": {
+          "version": "genres-1",
+          "grammar": "reggaeton",
+          "variant": 9,
+          "degrees": [
+            0,
+            4,
+            2,
+            5,
+            3,
+            1,
+            4,
+            2
+          ],
+          "answer": [
+            7,
+            5,
+            4,
+            2,
+            3,
+            1,
+            2,
+            0
+          ],
+          "rhythm": [
+            [
+              0,
+              0.1875,
+              0.375,
+              0.75
+            ],
+            [
+              0.125,
+              0.375,
+              0.625,
+              0.875
+            ]
+          ],
+          "roles": [
+            "harp",
+            "guitar",
+            "synth_bass"
+          ],
+          "harmony": [
+            "i",
+            "iv",
+            "bVII",
+            "V"
+          ],
+          "contrast_harmony": [
+            "iv",
+            "bVI",
+            "iiø7",
+            "V7"
+          ],
+          "bass_onsets": [
+            0,
+            0.375,
+            0.625
+          ],
+          "bass_pattern": [
+            0,
+            1.5,
+            2,
+            3.5
+          ],
+          "comp_pattern": [
+            0.75,
+            2.5,
+            3.5
+          ],
+          "kick_pattern": [
+            0,
+            2
+          ],
+          "percussion": true,
+          "palette": "factory",
+          "swing": 0,
+          "drop_bars": [
+            12,
+            14
+          ]
+        }
+      },
+      "patch_overrides": {
+        "synth_bass": "bass.analog_round"
+      },
+      "listening_checks": [
+        "Recognizable genre rhythm",
+        "Distinct hook and answer",
+        "Bass and drums leave room for each other",
+        "Loop and breakdown feel intentional"
+      ]
+    }
+  ]
+}

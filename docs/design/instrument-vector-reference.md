@@ -1,0 +1,11 @@
+# Selected vector reference
+
+Generated with the built-in image tool on 2026-09-08 after Cristian requested vectorized artwork. This replaces the photographic direction. The reference is a raster concept image with a vector aesthetic; the running instruments remain hand-authored SVG, with separate playable and animated parts.
+
+[Selected reference](instrument-vector-reference.png)
+
+Implementation direction: clean Bezier silhouettes, three color planes per material, restrained contour highlights, dark elliptical grounding shadows, no grain or blurred object shadows. Use warm wood, cream keys, muted brass, silver and burgundy. Keep the raised lid, guitar waist, violin C-bouts, graduated resonators and curved harp with strings attached to its soundboard.
+
+Final edit prompt (applied to the preceding twelve-instrument board):
+
+Re-illustrate this entire instrument reference sheet in a MUCH FLATTER, clearly 2D VECTOR ILLUSTRATION STYLE. Keep the twelve instrument identities and 4-by-3 arrangement. The current image is still too photorealistic. Replace the photographic rendering completely. Use approximately 30–80 large intentional closed vector shapes per instrument, bold elegant silhouettes, smooth Bezier geometry, a restrained consistent 2px dark outline, TWO OR THREE FLAT COLOR PLANES per material, one crisp highlight shape. Absolutely NO wood grain, NO texture, NO metallic reflections, NO realistic lighting, NO fine hardware clutter, NO soft airbrush shading, NO ambient occlusion, NO painterly strokes, NO 3D rendering. Think beautifully crafted editorial Illustrator artwork for a premium music app, not a photograph traced with hundreds of tiny polygons. Keep tasteful character and anatomically recognizable musical shapes: guitar waist, violin C-bouts, curved harp, piano raised lid. Warm caramel wood (#b97943 / #dda465 / #754b35), cream (#eadbbd), charcoal (#292a2b), muted brass (#bf934d / #ebc879 / #785b34), silver (#a9b2b4 / #e0e2dc / #626d73), muted burgundy (#8c453e). Solid warm charcoal background #1b1917, not transparent. No text. Strong clean SVG-ready visual language throughout. This should unmistakably look drawn from vector shapes, and be feasible to rebuild as a moderate-size hand-authored SVG.

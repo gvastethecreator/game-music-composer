@@ -45,8 +45,9 @@ def main() -> int:
     args = parser.parse_args()
     catalog = json.loads(args.source.read_text(encoding="utf-8"))
     styles = catalog.get("styles", [])
-    if len(styles) != 100:
-        raise SystemExit(f"Expected 100 styles, found {len(styles)}")
+    expected_count = sum(category['count'] for category in catalog['categories'])
+    if len(styles) != expected_count or any(sum(s['category']==c['id'] for s in styles)!=c['count'] for c in catalog['categories']):
+        raise SystemExit(f"Catalog category counts do not match {len(styles)} styles (expected {expected_count})")
     CUE_DIR.mkdir(parents=True, exist_ok=True)
     summaries = []
     expected: set[str] = set()

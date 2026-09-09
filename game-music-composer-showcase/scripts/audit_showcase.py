@@ -89,8 +89,12 @@ def main() -> int:
 
     catalog = load_assignment(ROOT / "data" / "catalog.js")
     styles = catalog.get("styles", []) if isinstance(catalog, dict) else []
-    if len(styles) != 100:
-        errors.append(f"expected 100 catalog cues, found {len(styles)}")
+    expected_count = sum(category['count'] for category in catalog['categories'])
+    if len(styles) != expected_count:
+        errors.append(f"expected {expected_count} catalog cues, found {len(styles)}")
+    for category in catalog['categories']:
+        if sum(s['category']==category['id'] for s in styles)!=category['count']:
+            errors.append(f"category count mismatch: {category['id']}")
     cue_ids = [str(style.get("id", "")) for style in styles]
     if len(cue_ids) != len(set(cue_ids)):
         errors.append("catalog contains duplicate cue ids")

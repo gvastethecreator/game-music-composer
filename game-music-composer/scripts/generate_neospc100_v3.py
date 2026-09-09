@@ -27,7 +27,7 @@ INSTRUMENTS={
  'viola':('string_ensemble_A3.wav',57,'#917ce0',(48,77),'strings'), 'cello':('string_ensemble_A3.wav',57,'#7869bd',(36,65),'strings'),
  'contrabass':('upright_bass_A2.wav',45,'#bb7048',(28,52),'bass'), 'strings':('string_ensemble_A3.wav',57,'#a889ff',(45,88),'strings'),
  'choir_s':('choir_ah_A3.wav',57,'#ffb3e6',(60,88),'choir'), 'choir_a':('choir_ah_A3.wav',57,'#ef90d8',(55,80),'choir'),
- 'choir_t':('choir_ah_A3.wav',57,'#d678bd',(45,72),'choir'), 'choir_b':('choir_ah_A3.wav',57,'#af5c98',(35,60),'choir'),
+ 'choir_t':('choir_ah_A3.wav',57,'#d678bd',(45,72),'choir'), 'choir_b':('choir_ah_A3.wav',57,'#af5c98',(36,60),'choir'),
  'drone':('low_drone_A3.wav',57,'#716a9f',(28,67),'texture'), 'organ':('small_organ_A3.wav',57,'#cbb0ff',(36,84),'keys'),
  'accordion':('accordion_A3.wav',57,'#ffc46d',(45,82),'keys'), 'harp':('harp_A4.wav',69,'#6ed9ff',(48,96),'pluck'),
  'pizz':('pizz_string_A3.wav',57,'#9adf78',(43,84),'pluck'), 'piano':('small_piano_A4.wav',69,'#eadbc2',(36,96),'keys'),
@@ -53,7 +53,7 @@ CATEGORY_DEFS = [
  ('adventure','Adventure & Exploration'), ('action','Action & Combat'), ('horror','Horror & Suspense'),
  ('towns','Towns & Social'), ('emotion','Emotion & Narrative'), ('mystery','Mystery & Puzzle'),
  ('fantasy','Fantasy & Sacred'), ('electronic','Electronic & Sci-Fi'), ('urban','Jazz, Funk & Urban'),
- ('classical','Classical & Experimental')
+ ('classical','Classical & Experimental'), ('bachata','Bachata'), ('trip_hop','Trip hop'), ('trap','Trap'), ('reggaeton','Reguetón')
 ]
 
 METERS={'4/4':4.0,'3/4':3.0,'6/8':3.0,'9/8':4.5,'12/8':6.0,'5/4':5.0,'7/8':3.5,'5/8':2.5,'7/4':7.0}
@@ -428,6 +428,7 @@ def form_sections(spec):
         for section in declared:
             length=int(section['bars']); item={'name':section['name'],'start_bar':pos,'bars':length}
             if section.get('function'):item['function']=section['function']
+            if 'intensity' in section:item['intensity']=section['intensity']
             out.append(item);pos+=length
         return out
     labels=declared.split()
@@ -445,6 +446,9 @@ def section_intensity(spec,sections):
         elif si==n-1 or any(k in func for k in ('return','loop','climax','resolution','final')):base=1.0
         elif 'B' in name or any(k in func for k in ('contrast','bridge','episode')):base=.72
         else:base=.85
+        if 'intensity' in s:
+            base=float(s['intensity'])
+            if not math.isfinite(base) or not 0<=base<=1:raise ValueError('Section intensity must be between 0 and 1')
         length=max(1,int(s['bars']))
         for k in range(length):
             b=s['start_bar']+k
@@ -577,6 +581,10 @@ def cadence_chord(spec,key_pc):
 def harmonic_rhythm(spec):
     """Bars per chord. A chord change every single bar is a treadmill: slow and quiet
     cues need the harmony to sit still long enough to be heard as a place."""
+    if 'harmonic_rhythm_bars' in spec:
+        span=spec['harmonic_rhythm_bars']
+        if type(span) is not int or not 1<=span<=4:raise ValueError('harmonic_rhythm_bars must be an integer from 1 to 4')
+        return span
     bpm=float(spec['bpm']);energy=float(spec.get('energy',.5))
     seconds_per_bar=METERS[spec['meter']]*60.0/bpm
     if seconds_per_bar>=3.2 or bpm<=76 or energy<=.3:return 2
@@ -592,6 +600,14 @@ def phrase_architecture(spec):
 def phrase_plan(spec):
     """Period: antecedent asks, consequent answers. Sentence: 2+2+4 idea, sequenced idea, continuation."""
     bars=int(spec['bars']); out=[]; pos=0
+    if 'phrases' in spec:
+        for item in spec['phrases']:
+            length=item['bars'];kind=item['kind'];closing=item['closing']
+            if type(length) is not int or length<2 or kind not in {'presentation','continuation','antecedent','consequent'} or type(closing) is not bool:
+                raise ValueError('Each phrase needs at least two bars, a supported kind and a boolean closing flag')
+            out.append(Phrase(pos,length,kind,closing));pos+=length
+        if pos!=bars or not out or not out[-1].closing:raise ValueError('Phrases must fill the cue and close the last phrase')
+        return out
     if bars<=0:return out
     if phrase_architecture(spec)=='sentence':
         while pos<bars:
@@ -785,7 +801,7 @@ def motif_events(spec,bar_len,chords,sections):
             if ph.start+k<spec['bars']:bar_reg[ph.start+k]=reg_plan[pi]
     guides=guide_tones(chords,tlo,thi,center,bar_reg)
     raw=[];handoff=None
-    home_theme=spec['motif']; answer_theme=MOTIF_ANSWER.get(home_theme,home_theme)
+    home_theme=spec['motif']; answer_theme=spec.get('motif_answer') or MOTIF_ANSWER.get(home_theme,home_theme)
     leap=max(2,int(ctrl['max_leap']))
     seq=0 if ctrl['sequence_rate']<.12 else (2 if ctrl['sequence_rate']>=.7 else 1)
     for pi,ph in enumerate(phrases):
@@ -1075,7 +1091,8 @@ def add_accompaniment(events,spec,bar_len,chords,intensity=None,floor=None):
         elif comp in ('chorale','processional','prophecy_fields','cluster_fields','reveal_clusters','ritual_drones','low_fields','space_fields'):
             lanes=['choir_b','choir_t','choir_a','choir_s'] if spec['budget']>=24 else ['choir_t','choir_a']
             for i,lane in enumerate(lanes):
-                notes=led(lane,c,2+i,1);events.append(event_note(lane,notes[0],t,bar_len*.93,.009,-.24+i*.16,.26,'pad',1,attack=.18,release=.6))
+                register=spec.get('choir_b_register',2) if lane=='choir_b' else 2+i
+                notes=led(lane,c,register,1);events.append(event_note(lane,notes[0],t,bar_len*.93,.009,-.24+i*.16,.26,'pad',1,attack=.18,release=.6))
             if comp in ('cluster_fields','reveal_clusters') and b%2:events.append(event_note('drone',c['root']+1,t+bar_len*.25,bar_len*.55,.008,.1,.3,'texture',.55,attack=.2,release=.7))
         elif comp in ('minimal_phase','minimal_pulse','techno_stabs','electro_stabs','synth_arp','breakbeat_pulse','panic_ostinato','fracture_patterns','signal_pulses','meltdown_layers'):
             lane='pulse25' if comp not in ('techno_stabs','electro_stabs') else 'clav';notes=led(lane,c,3,4)
@@ -1113,7 +1130,7 @@ def add_accompaniment(events,spec,bar_len,chords,intensity=None,floor=None):
                 if heat<.3 and off%1:continue
                 add_chord(events,lane,notes,t+off,min(.18,bar_len-off-.02),.009,.08,.04,'comp',strum=.003)
         elif comp in ('industrial_riff','guitar_riff'):
-            lane='dist_guitar_l';notes=chord_voicing(c,lane,2,3)
+            lane='dist_guitar_l';notes=chord_voicing(c,lane,spec.get('riff_register',2),3)
             offs=list(dict.fromkeys(o for o in (bar_grid(x,bar_len,spec['meter']) for x in (0,.5,1.25,2,2.75,3.25)) if o is not None))
             for j,off in enumerate(offs):
                 n=notes[j%len(notes)];events.append(event_note(lane,n,t+off,min(.3,bar_len-off-.02),.029,-.22,.035,'riff',1 if off==0 else .72))
@@ -1408,7 +1425,7 @@ def humanize(events,spec,bar_len,intensity=None):
         bar=int(beat/bar_len); local_rng=random.Random(seed_for(spec['slug'],spec.get('seed',''),bar,i%7)); noise=local_rng.uniform(-3.5,3.5)
         if spec['category'] in ('electronic','action') and spec['drums'] not in ('brush_jazz','bossa'):noise*=.45
         offset_ms=rubato+placement+noise
-        e['start_offset_ms']=round(offset_ms,3);e['performance_beat']=round((beat+offset_ms*spec['bpm']/60000)%total,5)
+        e['start_offset_ms']=round(offset_ms,3);e['performance_beat']=round((beat+offset_ms*spec['bpm']/60000)%total,5)%total
         section_curve=.86+.22*intensity[min(spec['bars']-1,max(0,int(beat/bar_len)))]
         phr_curve=.9+.18*math.sin(math.pi*phrase)
         role_curve=1.05 if role=='lead' else .94 if role in ('pad','support','ensemble') else 1
@@ -1434,7 +1451,7 @@ def humanize(events,spec,bar_len,intensity=None):
         if len(grp)<2:continue
         grp.sort(key=lambda x:x['midi']);spread={'guitar':18,'piano':14,'harp':9,'harpsichord':7,'accordion':12}.get(inst,8);center=(len(grp)-1)/2
         for i,e in enumerate(grp):
-            e['start_offset_ms']=round(e.get('start_offset_ms',0)+(i-center)*spread,3);e['performance_beat']=round((e['beat']+e['start_offset_ms']*spec['bpm']/60000)%total,5)
+            e['start_offset_ms']=round(e.get('start_offset_ms',0)+(i-center)*spread,3);e['performance_beat']=round((e['beat']+e['start_offset_ms']*spec['bpm']/60000)%total,5)%total
 
 def apply_velocity_expression(events,spec,bar_len):
     """Give every exported lane deterministic, role-aware MIDI dynamics."""
@@ -1473,12 +1490,41 @@ def peak_polyphony(events,total_beats):
     for _,d in points:cur+=d;peak=max(peak,cur)
     return peak
 
+def apply_written_rests(events,spec,bar_len):
+    """Make declared role rests audible in the score, including notes that cross into them."""
+    windows=spec.get('role_rests',[]);total=spec['bars']*bar_len
+    removed=shortened=0
+    for window in windows:
+        start=float(window['start_bar'])*bar_len;end=float(window['end_bar'])*bar_len
+        roles=set(window['roles'])
+        if not roles or not 0<=start<end<=total:raise ValueError('Role rests must name roles and stay inside the cue')
+        kept=[]
+        for e in events:
+            if e.get('role') not in roles:kept.append(e);continue
+            onset=float(e['beat']);duration=float(e.get('duration',.12))
+            if start<=onset<end:removed+=1;continue
+            if onset<start<onset+duration and e['kind']=='note':
+                if start-onset<.04:removed+=1;continue
+                e['duration']=round(start-onset,5);shortened+=1
+            kept.append(e)
+        events[:]=kept
+    return {'declared_windows':len(windows),'events_removed':removed,'notes_shortened':shortened}
+
+
 def compose(spec,category,label):
+    if "writing" in spec and spec["writing"].get("grammar") in {"bachata","trip_hop","trap","reggaeton"}:
+        from genre_composer import compose as write_genre
+        return write_genre(spec,category,label)
+    if "writing" in spec:
+        from phrase_composer import compose as write_score
+        return write_score(spec,category,label)
     spec=dict(spec);spec['category']=category;spec['category_label']=label
     bar_len=METERS[spec['meter']];total=bar_len*spec['bars'];chords=chord_plan(spec);sections=form_sections(spec);intensity=section_intensity(spec,sections);events=[]
     melody=motif_events(spec,bar_len,chords,sections);events.extend(melody)
     floor=melody_floor(melody,spec,bar_len)
-    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords,intensity,floor);add_countermelody(events,spec,bar_len,chords,melody,sections,intensity);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords,floor);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len,sections,intensity);humanize(events,spec,bar_len,intensity);apply_velocity_expression(events,spec,bar_len)
+    add_bass(events,spec,bar_len,chords);add_accompaniment(events,spec,bar_len,chords,intensity,floor);add_countermelody(events,spec,bar_len,chords,melody,sections,intensity);add_counterpoint(events,spec,bar_len,chords,melody);add_pad_layers(events,spec,bar_len,chords,floor);add_expanded_ensemble(events,spec,bar_len,chords);add_drums(events,spec,bar_len,sections,intensity)
+    rest_report=apply_written_rests(events,spec,bar_len)
+    humanize(events,spec,bar_len,intensity);apply_velocity_expression(events,spec,bar_len)
     # Ensure budget is a declared target, not a constant fill requirement. The actual peak may be lower.
     peak=peak_polyphony(events,total)
     if peak>32:
@@ -1498,7 +1544,8 @@ def compose(spec,category,label):
       'voice_budget':spec['budget'],'measured_peak_voices':peak,'form':sections,'chord_plan':chord_data,'events':sorted(events,key=lambda e:(e.get('performance_beat',e['beat']),e.get('midi',0))),
       'instrument_map':imap,'tags':list(spec['tags'])+[spec['subcategory'].lower().replace(' ','-')],
       'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'texture_b':str(spec.get('comp_b') or COMP_ANSWER.get(spec['comp'],spec['comp'])).replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
-      'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':'Final cadence and pickup are designed around the first harmony rather than a hard audio cut.'},
+      'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':spec.get('loop_strategy','Final cadence and pickup are designed around the first harmony rather than a hard audio cut.')},
+      'arrangement_rests':rest_report,
       'metrics':{'energy':spec['energy'],'tension':spec['tension']},
       # Echo locked to the tempo (dotted eighth) so repeats reinforce the groove instead of smearing it.
       'mix':{'echo_time':round(min(.42,max(.12,(60/spec['bpm'])*(.5 if category in ('action','electronic') else .75))),3),'echo_feedback':.14 if category in ('action','electronic') else .22,'preview_rms_db':-14.5 if spec['energy']>.75 else -15.5,'drive':.08 if category=='action' else .03 if category=='electronic' else 0}
@@ -1538,6 +1585,21 @@ def audit(styles):
     report['avg_measured_peak']=round(sum(s['measured_peak_voices'] for s in styles)/len(styles),2)
     return report
 
+def load_catalog_contracts():
+    """Load the authored catalog inputs. Missing or incomplete contracts are an error."""
+    path=Path(__file__).resolve().parents[1]/'data/catalog-contracts-r03.json'
+    contracts=json.loads(path.read_text(encoding='utf-8'))['contracts']
+    expected={s['slug'] for specs in SPECS.values() for s in specs}
+    if len(contracts)!=100 or {r['id'] for r in contracts}!=expected:raise ValueError('Expected exactly the 100 native catalog contracts')
+    for record in contracts:
+        spec=record['native_engine_contract'];sections=form_sections(spec)
+        if spec['slug']!=record['id'] or sum(s['bars'] for s in sections)!=spec['bars']:raise ValueError('Contract identity or form does not match')
+        phrase_plan(spec);harmonic_rhythm(spec)
+        if spec['motif'] not in MOTIFS or spec['motif_answer'] not in MOTIFS:raise ValueError('Unknown contract motif')
+        if not record['changes'] or not spec['role_rests']:raise ValueError('A revised contract must include structural changes and written rests')
+    return contracts
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Rebuild the deterministic Neo-SPC v4 benchmark into an explicit output directory.')
     parser.add_argument('--output', type=Path, required=True, help='Directory that receives neospc100.json and qa-symbolic.json.')
@@ -1545,10 +1607,11 @@ def main(argv=None):
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     styles=[]
-    for category,label in CATEGORY_DEFS:
-        for spec in SPECS[category]:styles.append(compose(spec,category,label))
+    genre_contracts=json.loads((Path(__file__).resolve().parents[1]/'data/genre-expansion-contracts.json').read_text(encoding='utf-8'))['contracts']
+    for record in load_catalog_contracts()+genre_contracts:
+        styles.append(compose(record['native_engine_contract'],record['category'],record['category_label']))
     report=audit(styles)
-    catalog={'version':'4.0.0-base','project':'Neo-SPC 100 / Full Rebuild Base','voice_model':{'recommended':16,'profiles':[8,12,16,24,32],'benchmark_max':32,'hard_hardware_limit_removed':True},'categories':[{'id':c,'label':l,'count':10} for c,l in CATEGORY_DEFS],'styles':styles}
+    catalog={'version':'6.1.0-four-genres-base','project':'Game Music Composer / Authored Contracts','voice_model':{'recommended':16,'profiles':[8,12,16,24,32],'benchmark_max':32,'hard_hardware_limit_removed':True},'categories':[{'id':c,'label':l,'count':10} for c,l in CATEGORY_DEFS],'styles':styles}
     (output/'neospc100.json').write_text(json.dumps(catalog,indent=2))
     (output/'qa-symbolic.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2))

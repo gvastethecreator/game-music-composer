@@ -48,3 +48,7 @@ Sources inform architecture. Benchmark: no extracted commercial SNES melodies or
 - Open Music Theory — modal schemas: https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/
 
 Workstation refs mark separations: harmony, progression, arpeggiation, note properties, groove, routing, master controls. Neo-SPC: original data model and interface; no copied application code, presets or proprietary assets.
+
+## Recorded Chamber sources
+
+VSCO 2 Community Edition, Versilian Studios / Sam Gossner: https://versilian-studios.com/vsco-community/ . CC0-1.0. Pinned repository revision: 440300901dfe9275fd84e0b7763af1f8443ae62e. See data/soundbank-provenance.json for the 103 selected recordings, their declared roots and SHA-256 hashes. Fifteen Chamber patch definitions use this subset; repeated mapped zones do not imply independent recorded takes.

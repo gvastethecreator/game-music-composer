@@ -1,6 +1,6 @@
-# Neo-SPC Factory Bank integration
+# Studio Multisample integration
 
-Factory Bank: default semantic instrument source for Neo-SPC live rendering.
+Studio Multisample v2 is the default semantic instrument source for Game Music Composer live rendering. Patch IDs and the `neo16` profile identifier remain score-format identifiers.
 
 ## Separation of concerns
 
@@ -20,8 +20,8 @@ Never pick a sample only because its label resembles an instrument. Check regist
 
 ## Profiles
 
-- `neo16`: compact mono multisamples, two velocity layers, retro processing; local web playback and BRR projection.
-- `neo32`: more zones, velocity layers, round robins and selective stereo; expanded web or offline rendering.
+- `neo16`: 608 mono regions at 32 kHz across 50 patches, all declared root registers, two velocity layers and two alternate attacks. Nyquist-limited synthesis and baked sustain crossfades; no intentional bit reduction.
+- `neo32`: one representative mono 44.1 kHz preview per patch. It is explicitly preview-only, not a complete second multisample bank.
 
 Profile changes render resolution and sample detail, not scale, harmony, form.
 
@@ -55,4 +55,6 @@ Reject when:
 
 ## Local playback
 
-Showcase embeds the complete Neo-16 region set as data URIs, so multisample playback works from `file://` without fetch or CORS. Neo-32: full downloadable bank plus audition previews.
+The showcase keeps metadata separate from 50 local per-patch sample scripts. Each needed script embeds WAV data URIs; playback works from `file://` without fetch or CORS. Failed loads can be retried. The 44.1 kHz previews use the same synthesis function.
+
+`scripts/synthesize_soundbanks.py` generates original tonal partials, body resonances, velocity-dependent excitation, ensemble beating and percussion modes at twice the output rate before lowpass resampling. `tools/build_soundbanks.py build <fresh-directory>` in the repository builds and verifies the banks; `publish` installs them. Studio Compact retains 46 source identities and is recalibrated from measured audio. The native renderer uses filtered polyphase pitch resampling. Hardware BRR budgets remain projections, not validated playback hardware.

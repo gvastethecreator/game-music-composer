@@ -16,7 +16,11 @@
           "fantasy",
           "electronic",
           "urban",
-          "classical"
+          "classical",
+          "bachata",
+          "trip_hop",
+          "trap",
+          "reggaeton"
         ],
         "default": "adventure"
       },
@@ -1017,7 +1021,8 @@
           "guitar",
           "piano",
           "vibes",
-          "synth_lead"
+          "synth_lead",
+          "bell"
         ],
         "default": "flute"
       },
