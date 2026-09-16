@@ -11,7 +11,13 @@ STUDIO = ROOT / 'game-music-composer-showcase'
 SOURCE = ROOT / 'game-music-composer/resources/ensemble-atelier'
 MODULES = ('music.js', 'visuals.js', 'atelier.js')
 
+def publish_recipes():
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from publish_studio_recipes import publish
+    publish()
+
 def sync():
+    publish_recipes()
     target = STUDIO / 'atelier'
     target.mkdir(exist_ok=True)
     for name in MODULES:

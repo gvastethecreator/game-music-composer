@@ -16,11 +16,7 @@
     <header class="top-rack hardware-panel">
       <div class="brand-stack">
         <div class="brand-badge"><span>G</span><b>MC</b></div>
-        <div>
-
-          <h1>Game Music Composer</h1>
-
-        </div>
+        <h1>Game Music Composer</h1>
       </div>
       <nav class="app-tabs" id="appTabs" aria-label="Studio views" role="tablist">
         <button id="tab-workstation" class="active" type="button" role="tab" aria-selected="true" aria-controls="view-workstation" data-view="workstation">Studio</button>
@@ -28,12 +24,16 @@
         <button id="tab-soundbank" type="button" role="tab" aria-selected="false" aria-controls="view-soundbank" data-view="soundbank">Soundbank</button>
         <button id="tab-review" type="button" role="tab" aria-selected="false" aria-controls="view-review" data-view="review">Review</button>
       </nav>
-      <details class="file-menu"><summary>Files</summary><div class="file-menu-content">      <a href="downloads/game-music-composer.zip" download>Composer skill</a>
-      <a href="downloads/neospc100-midis-v4.zip" download>140 Type-1 MIDI files</a>
-      <a id="audioDownloadLink" href="assets/audio/fernway_crossing.mp3" download>Current cue MP3</a>
-      <a href="downloads/neospc100-source-v4.zip" download>Catalog, review and source</a>
-      <a href="FACTORY-BANK-INTEGRATION.md">Factory Bank details</a>
-</div></details>
+      <details class="file-menu">
+        <summary>Files</summary>
+        <div class="file-menu-content">
+          <a href="downloads/game-music-composer.zip" download>Composer skill</a>
+          <a href="downloads/neospc100-midis-v4.zip" download>140 Type-1 MIDI files</a>
+          <a id="audioDownloadLink" href="assets/audio/fernway_crossing.mp3" download>Current cue MP3</a>
+          <a href="downloads/neospc100-source-v4.zip" download>Catalog, review and source</a>
+          <a href="FACTORY-BANK-INTEGRATION.md">Factory Bank notes</a>
+        </div>
+      </details>
       <i class="screw screw-a"></i><i class="screw screw-b"></i><i class="screw screw-c"></i><i class="screw screw-d"></i>
     </header>
 
@@ -47,7 +47,6 @@
           <div class="track-copy"><span class="project-mark" aria-hidden="true">◈</span>
             <span id="trackKicker" class="overline"></span>
             <h2 id="trackTitle" aria-live="polite">Loading…</h2>
-
           </div>
           <div id="trackMeta" class="track-meta"></div>
         </div>
@@ -147,13 +146,18 @@
     <section id="view-recipe" class="app-view" role="tabpanel" aria-labelledby="tab-recipe" hidden>
       <section class="harness-rack hardware-panel">
         <div class="view-heading">
-          <div><span class="overline">FULL GENERATION HARNESS</span><h2>Shape a composition recipe</h2><p>Set musical intent and production limits, then export JSON for the Game Music Composer skill.</p></div>
+          <div>
+            <span class="overline">GENERATION HARNESS V3</span>
+            <h2>Shape a composition recipe</h2>
+            <p>The current composition fills this recipe from its stored mix, form, palette and writing evidence. Export JSON for the Game Music Composer skill.</p>
+            <p id="recipeCueStatus" class="recipe-cue-status">Select a composition in Studio to load its recipe.</p>
+          </div>
           <div class="heading-actions"><button id="resetHarness" class="metal-button">Reset</button><button id="downloadHarness" class="metal-button">Download JSON</button><button id="copyHarness" class="metal-button amber">Copy JSON</button></div>
         </div>
         <div class="recipe-guide" role="note">
           <strong>Recipe path</strong>
-          <ol><li>Brief and harmony</li><li>Form and performance</li><li>Voices and soundbank</li><li>Review and export</li></ol>
-          <p>This builder prepares constraints. Use the downloaded skill to create and validate score JSON, MIDI and audio.</p>
+          <ol><li>Load a cue</li><li>Confirm brief and mix</li><li>Adjust voices if needed</li><li>Export JSON</li></ol>
+          <p>Reset restores the stored recipe for this cue against harness 3.0.0. The skill still writes and validates score JSON, MIDI and audio.</p>
         </div>
         <div class="recipe-layout">
           <nav id="harnessSections" class="harness-sections"></nav>
@@ -171,28 +175,33 @@
       <section class="bank-rack hardware-panel">
         <div class="view-heading bank-heading">
           <div><span class="overline">SYNTHESIS + MULTISAMPLES</span><h2>Choose a sound palette</h2><p>Choose a palette and audition a patch. Sample levels are matched while soft and hard attacks keep their dynamics.</p></div>
-          <div class="heading-actions"><select id="bankPaletteSelect" aria-label="Soundbank palette"></select><a class="metal-button" href="FACTORY-BANK-INTEGRATION.md">Integration notes</a><a class="metal-button amber" href="FACTORY-BANK-INTEGRATION.md">Bank download info</a></div>
+          <div class="heading-actions"><select id="bankPaletteSelect" aria-label="Soundbank palette"></select><a class="metal-button" href="FACTORY-BANK-INTEGRATION.md">Factory Bank notes</a></div>
         </div>
-        <details class="bank-palette-overview"><summary>Palettes, native demos and downloads</summary>
-        <details class="bank-console-packs bank-previous-palettes" open><summary>Console soundpacks · Mega Drive / SNES</summary>
+        <div class="bank-palette-overview">
+        <details class="bank-console-packs bank-previous-palettes" open>
+          <summary>01–02 · Console soundpacks · Mega Drive / SNES</summary>
           <p>Emulator-derived samples for the piano roll. Native demos below use console voice limits; Studio mixing and WAV export remain multisample previews.</p>
           <div class="soundbank-compare console-palette-grid">
-            <article data-soundbank-card="megadrive"><span>YM2612 + PSG · NATIVE VGM</span><strong>Mega Drive</strong><p>12 original four-operator FM patches, square tone and noise. Six FM voices plus three PSG tones and noise in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="megadrive">Use sampled bank</button><a class="micro-button" href="downloads/megadrive-soundpack.zip" download>Download VGM pack</a><audio controls preload="none" aria-label="Mega Drive native emulator demo" src="assets/console-packs/megadrive-demo.wav"></audio></article>
-            <article data-soundbank-card="snes"><span>BRR + S-DSP · NATIVE SPC</span><strong>SNES</strong><p>16 original BRR instruments. Eight voices, DSP envelopes, interpolation and hardware echo in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="snes">Use sampled bank</button><a class="micro-button" href="downloads/snes-soundpack.zip" download>Download SPC pack</a><audio controls preload="none" aria-label="SNES native emulator demo" src="assets/console-packs/snes-demo.wav"></audio></article>
+            <article data-soundbank-card="megadrive"><span>01 · YM2612 + PSG</span><strong>Mega Drive</strong><p>12 original four-operator FM patches, square tone and noise. Six FM voices plus three PSG tones and noise in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="megadrive">Use sampled bank</button><a class="micro-button" href="downloads/megadrive-soundpack.zip" download>Download VGM pack</a><audio controls preload="none" aria-label="Mega Drive native emulator demo" src="assets/console-packs/megadrive-demo.wav"></audio></article>
+            <article data-soundbank-card="snes"><span>02 · BRR + S-DSP</span><strong>SNES</strong><p>16 original BRR instruments. Eight voices, DSP envelopes, interpolation and hardware echo in the native writer.</p><button class="micro-button" type="button" data-use-soundbank="snes">Use sampled bank</button><a class="micro-button" href="downloads/snes-soundpack.zip" download>Download SPC pack</a><audio controls preload="none" aria-label="SNES native emulator demo" src="assets/console-packs/snes-demo.wav"></audio></article>
           </div>
         </details>
         <div class="soundbank-compare" aria-label="Live soundbank choices">
-          <article data-soundbank-card="timber"><span>MODAL · BODY + EXCITATION</span><strong>Timber</strong><p>Plucked strings, felt hammers, resonant wood and breath. Separate models for guitars, keys, winds and percussion.</p><button class="micro-button" type="button" data-use-soundbank="timber">Use Timber</button></article>
-          <article data-soundbank-card="prism"><span>FM · TINES + GLASS</span><strong>Prism</strong><p>Velocity-shaped operators, struck metal and round electric bass. Bright attacks settle into quieter bodies.</p><button class="micro-button" type="button" data-use-soundbank="prism">Use Prism</button></article>
-          <article data-soundbank-card="voltage"><span>SUBTRACTIVE · PULSE + DRIVE</span><strong>Voltage</strong><p>Band-limited oscillators, moving spectra, controlled detune and punchy drums. Oversampled nonlinear stages.</p><button class="micro-button" type="button" data-use-soundbank="voltage">Use Voltage</button></article>
+          <article data-soundbank-card="timber"><span>03 · MODAL</span><strong>Timber</strong><p>Plucked strings, felt hammers, resonant wood and breath. Separate models for guitars, keys, winds and percussion.</p><button class="micro-button" type="button" data-use-soundbank="timber">Use Timber</button></article>
+          <article data-soundbank-card="prism"><span>04 · FM</span><strong>Prism</strong><p>Velocity-shaped operators, struck metal and round electric bass. Bright attacks settle into quieter bodies.</p><button class="micro-button" type="button" data-use-soundbank="prism">Use Prism</button></article>
+          <article data-soundbank-card="voltage"><span>05 · SUBTRACTIVE</span><strong>Voltage</strong><p>Band-limited oscillators, moving spectra, controlled detune and punchy drums. Oversampled nonlinear stages.</p><button class="micro-button" type="button" data-use-soundbank="voltage">Use Voltage</button></article>
         </div>
-        <details class="bank-previous-palettes"><summary>Earlier palettes · Chamber, Velvet, Circuit, Compact and Chip</summary><div class="soundbank-compare">
-          <article data-soundbank-card="factory"><span>01 · MULTISAMPLE</span><strong>Chamber</strong><p>Recorded CC0 chamber instruments and original synthesis. Multiple registers and intensity layers; alternate recorded attacks where available.</p><button class="micro-button" type="button" data-use-soundbank="factory">Use Chamber</button></article>
-          <article data-soundbank-card="velvet"><span>02 · MAGNETIC</span><strong>Velvet</strong><p>Tine and reed synthesis, soft transients and shallow tape motion.</p><button class="micro-button" type="button" data-use-soundbank="velvet">Use Velvet</button></article><article data-soundbank-card="circuit"><span>03 · ELECTRONIC</span><strong>Circuit</strong><p>Dual oscillators, closing spectral envelopes and firm bass attacks.</p><button class="micro-button" type="button" data-use-soundbank="circuit">Use Circuit</button></article><article data-soundbank-card="original"><span>02 · COMPACT</span><strong>Studio Compact</strong><p>46 rebuilt instruments with body resonances, natural attacks and smooth sustain loops.</p><button class="micro-button" type="button" data-use-soundbank="original">Use Compact</button></article>
-          <article data-soundbank-card="chip"><span>03 · SYNTH</span><strong>Chip Core</strong><p>Pulse, triangle, noise and drum synthesis generated in Web Audio.</p><button class="micro-button" type="button" data-use-soundbank="chip">Use Chip Core</button></article>
+        <details class="bank-previous-palettes">
+          <summary>06–10 · Chamber, Velvet, Circuit, Compact and Chip</summary>
+          <div class="soundbank-compare">
+            <article data-soundbank-card="factory"><span>06 · MULTISAMPLE</span><strong>Chamber</strong><p>Recorded CC0 chamber instruments and original synthesis. Multiple registers and intensity layers; alternate recorded attacks where available.</p><button class="micro-button" type="button" data-use-soundbank="factory">Use Chamber</button></article>
+            <article data-soundbank-card="velvet"><span>07 · MAGNETIC</span><strong>Velvet</strong><p>Tine and reed synthesis, soft transients and shallow tape motion.</p><button class="micro-button" type="button" data-use-soundbank="velvet">Use Velvet</button></article>
+            <article data-soundbank-card="circuit"><span>08 · ELECTRONIC</span><strong>Circuit</strong><p>Dual oscillators, closing spectral envelopes and firm bass attacks.</p><button class="micro-button" type="button" data-use-soundbank="circuit">Use Circuit</button></article>
+            <article data-soundbank-card="original"><span>09 · COMPACT</span><strong>Studio Compact</strong><p>46 rebuilt instruments with body resonances, natural attacks and smooth sustain loops.</p><button class="micro-button" type="button" data-use-soundbank="original">Use Compact</button></article>
+            <article data-soundbank-card="chip"><span>10 · SYNTH</span><strong>Chip Core</strong><p>Pulse, triangle, noise and drum synthesis generated in Web Audio.</p><button class="micro-button" type="button" data-use-soundbank="chip">Use Chip Core</button></article>
+          </div>
+        </details>
         </div>
-        </details>
-        </details>
         <div class="bank-layout">
           <aside class="bank-browser inset-panel">
             <div class="bank-browser-head"><span class="module-label">PATCH BROWSER</span><strong id="bankPatchCount">54</strong></div>
@@ -258,6 +267,7 @@
   <audio id="audioPlayer" preload="none" loop></audio>
   <script src="data/catalog.js"></script>
   <script src="data/harness.js"></script>
+  <script src="data/libraries.js"></script>
   <script src="data/reviews.js"></script>
   <script src="data/factory-bank-previews.js"></script>
   <script src="data/soundbank-levels.js"></script>

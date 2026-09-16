@@ -122,6 +122,16 @@
       this.analyserR = analyserR;
       this.applyMaster();
       this.applyCeiling();
+      this.applyMixRecipe(this.style);
+    }
+
+    applyMixRecipe(style) {
+      if (!this.delay || !this.feedback) return;
+      const mix = style?.mix || {};
+      const echo = Number(mix.echo_time);
+      const feedback = Number(mix.echo_feedback);
+      this.delay.delayTime.value = Number.isFinite(echo) ? clamp(echo, .02, 1.4) : .22;
+      this.feedback.gain.value = Number.isFinite(feedback) ? clamp(feedback, 0, .8) : .16;
     }
 
     factoryPatch(info) {
@@ -208,7 +218,10 @@
     getBankMode() { return this.bankMode; }
 
     setStyle(style) {
-      if (this.style === style) return;
+      if (this.style === style) {
+        this.applyMixRecipe(style);
+        return;
+      }
       const wasPlaying = this.playing;
       const beat = this.getBeat();
       this.pause(false);
@@ -219,6 +232,7 @@
       if (this.ctx && style) {
         for (const inst of new Set(style.events.map(e => e.inst))) this.ensureInstrumentNode(inst);
       }
+      this.applyMixRecipe(style);
       if (wasPlaying) this.play(beat % style.beats);
     }
 

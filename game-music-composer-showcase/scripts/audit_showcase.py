@@ -88,6 +88,21 @@ def main() -> int:
             errors.append(f"missing live engine bank feature: {token}")
 
     catalog = load_assignment(ROOT / "data" / "catalog.js")
+    libraries_path = ROOT / "data" / "libraries.js"
+    if not libraries_path.is_file():
+        errors.append("missing recipe libraries: data/libraries.js")
+    else:
+        libraries = load_assignment(libraries_path)
+        if not isinstance(libraries, dict) or not libraries.get("scales", {}).get("scales"):
+            errors.append("invalid recipe scale library")
+        if not isinstance(libraries.get("mix_bus"), dict):
+            errors.append("missing mix-bus recipe in data/libraries.js")
+        harness = load_assignment(ROOT / "data" / "harness.js")
+        if libraries.get("harness_version") != harness.get("version"):
+            errors.append("studio libraries harness_version does not match data/harness.js")
+    voice_profiles = catalog.get("voice_model", {}).get("profiles") if isinstance(catalog, dict) else None
+    if voice_profiles != [8, 12, 16, 20, 24, 28, 32]:
+        errors.append(f"catalog voice profiles are not the latest harness budgets: {voice_profiles}")
     styles = catalog.get("styles", []) if isinstance(catalog, dict) else []
     expected_count = sum(category['count'] for category in catalog['categories'])
     if len(styles) != expected_count:
@@ -107,6 +122,10 @@ def main() -> int:
                 cue = load_cue(cue_path)
                 if cue.get("id") != cue_id or not cue.get("events") or not cue.get("instrument_map"):
                     errors.append(f"invalid lazy cue payload: data/cues/{cue_id}.js")
+                elif not isinstance(cue.get("mix_v3"), dict):
+                    errors.append(f"missing mix_v3 recipe: data/cues/{cue_id}.js")
+                elif not cue.get("sound_palette"):
+                    errors.append(f"missing sound palette: data/cues/{cue_id}.js")
             except (ValueError, json.JSONDecodeError) as exc:
                 errors.append(str(exc))
         for relative in (f"assets/midi/{cue_id}.mid", f"assets/audio/{cue_id}.ogg", f"assets/audio/{cue_id}.mp3"):

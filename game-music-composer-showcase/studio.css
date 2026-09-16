@@ -124,5 +124,11 @@ body[data-view=workstation] .app-shell { overflow: hidden; }
 
 .soundbank-compare article > p { align-self: start; }
 .bank-palette-overview > summary { cursor: pointer; padding: 12px 0; font: 12px var(--sans); color: #b8bcc5; border-bottom: 1px solid var(--rule); }
-#bankPaletteSelect { min-width: 180px; max-width: 100%; height: 32px; border: 1px solid #4a4b4e; background: #18191c; color: #dedfe3; border-radius: 4px; padding: 0 8px; }
-.bank-heading { align-items: center; flex-wrap: wrap; gap: 14px; }
+.recipe-cue-status{margin:8px 0 0;color:#b4b8c0;font-size:12px;line-height:1.5}
+.bank-palette-overview{margin:0 0 18px}
+.bank-palette-overview > .soundbank-compare{margin-top:12px}
+.harness-rack .view-heading,.bank-rack .view-heading,.review-rack .view-heading{gap:16px}
+.heading-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.recipe-layout{grid-template-columns:180px minmax(0,1fr) minmax(220px,320px);gap:16px}
+@media(max-width:1100px){.recipe-layout{grid-template-columns:1fr}}
+

@@ -19,6 +19,8 @@ The first screen starts with sound. From there you can:
 
 ## Run locally
 
+The published playground is [Composer Studio on GitHub Pages](https://gvastethecreator.github.io/game-music-composer/). See [docs/playground.md](../docs/playground.md) for the deploy path.
+
 ```bash
 python -m http.server 8000
 ```
