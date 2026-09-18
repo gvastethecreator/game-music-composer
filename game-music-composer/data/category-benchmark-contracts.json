@@ -1,45 +1,425 @@
 {
-  "version": "2.1.0",
+  "version": "3.0.0",
   "categories": [
     {
-      "id": "adventure",
-      "label": "Adventure & Exploration",
+      "id": "salsa",
+      "label": "Salsa",
       "required_examples": 10,
       "subcategories": [
-        "Pastoral Overworld",
-        "Mountain Ascent",
-        "Jungle Exploration",
-        "Sea Voyage",
-        "Sky Islands",
-        "Desert Caravan",
-        "Frozen Cavern",
-        "Ancient Ruins",
-        "Underground River",
-        "Homecoming Journey"
+        "Clave patio",
+        "Montuno night",
+        "Campana lift",
+        "Tumbao walk",
+        "Horn answer",
+        "Quiet clave",
+        "Bright salsa",
+        "Minor salsa",
+        "Break and return",
+        "Last campana"
       ],
       "meters": [
-        "12/8",
-        "4/4",
-        "5/4",
-        "6/8",
-        "7/8",
-        "9/8"
+        "4/4"
       ],
       "voice_budgets": [
-        12,
-        16,
-        18,
-        20,
-        24
+        12
       ],
       "quality_gates": [
-        "distinct macroform",
-        "distinct rhythmic topology",
-        "declared harmonic language",
-        "role-based orchestration",
-        "section-level density contrast",
-        "loop-aware ending",
-        "auditable novelty signature"
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "cumbia",
+      "label": "Cumbia",
+      "required_examples": 10,
+      "subcategories": [
+        "Two-step street",
+        "Güira porch",
+        "Accordion walk",
+        "Coastal cumbia",
+        "Night cumbia",
+        "Slow cumbia",
+        "Festival cumbia",
+        "Bass against",
+        "Quiet 2/4",
+        "Return step"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "bachata",
+      "label": "Bachata",
+      "required_examples": 10,
+      "subcategories": [
+        "Guitar conversation",
+        "Minor serenade",
+        "Bright street dance",
+        "Quiet courtyard",
+        "Driving requinto",
+        "Open-air romance",
+        "Muted guitar pocket",
+        "Major-key return",
+        "Sparse bolero color",
+        "Mambo lift"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "bossa_nova",
+      "label": "Bossa nova",
+      "required_examples": 10,
+      "subcategories": [
+        "Partido alto",
+        "Soft guitar",
+        "Quiet bossa",
+        "Minor bossa",
+        "Window bossa",
+        "Late bossa",
+        "Bright bossa",
+        "Held bass",
+        "Sparse bossa",
+        "Loop seam"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "tango",
+      "label": "Tango",
+      "required_examples": 10,
+      "subcategories": [
+        "Habanera bass",
+        "Bandoneon hold",
+        "Marked bass",
+        "Night tango",
+        "Quiet tango",
+        "Minor tango",
+        "Bright tango",
+        "Break tango",
+        "Answer line",
+        "Return habanera"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "funk",
+      "label": "Funk",
+      "required_examples": 10,
+      "subcategories": [
+        "Clav pocket",
+        "Slap walk",
+        "Sixteenth guitar",
+        "Quiet funk",
+        "Horn stab funk",
+        "Break funk",
+        "Minor funk",
+        "Bright funk",
+        "Ghost snare",
+        "Return pocket"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "house",
+      "label": "House",
+      "required_examples": 10,
+      "subcategories": [
+        "Four-on-floor",
+        "Offbeat hats",
+        "Ostinato bass",
+        "Warm house",
+        "Night house",
+        "Break house",
+        "Minor house",
+        "Bright house",
+        "Filter return",
+        "Last kick"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "dnb",
+      "label": "Drum & bass",
+      "required_examples": 10,
+      "subcategories": [
+        "Fast break",
+        "Sub hold",
+        "Double snare",
+        "Night dnb",
+        "Chase dnb",
+        "Quiet dnb",
+        "Minor dnb",
+        "Bright dnb",
+        "Break drop",
+        "Return break"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "synthwave",
+      "label": "Synthwave",
+      "required_examples": 10,
+      "subcategories": [
+        "Gated box",
+        "Octave bass",
+        "Pulse lead",
+        "Night rail",
+        "Neon pad",
+        "Quiet wave",
+        "Minor wave",
+        "Bright wave",
+        "Break gate",
+        "Return pulse"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "lofi",
+      "label": "Lo-fi",
+      "required_examples": 10,
+      "subcategories": [
+        "Dust piano",
+        "Swung hats",
+        "Broken hop",
+        "Quiet lofi",
+        "Tape keys",
+        "Minor lofi",
+        "Bright lofi",
+        "Skip hat",
+        "Warm bass",
+        "Loop dust"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "trap",
+      "label": "Trap",
+      "required_examples": 10,
+      "subcategories": [
+        "Bell hook",
+        "Dark piano",
+        "Minimal sub-bass",
+        "Tight synth stabs",
+        "Wide pad space",
+        "Triplet hat pocket",
+        "Picked motif",
+        "Low-register keys",
+        "Glass counterline",
+        "Sparse melodic trap"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "trip_hop",
+      "label": "Trip hop",
+      "required_examples": 10,
+      "subcategories": [
+        "Dusty keys",
+        "Noir vibraphone",
+        "Dub-weight bass",
+        "Sparse cinematic beat",
+        "Suspended harmony",
+        "Muted guitar haze",
+        "Broken beat",
+        "Warm tape piano",
+        "Floating reed",
+        "Half-lit organ"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "metal",
+      "label": "Metal",
+      "required_examples": 10,
+      "subcategories": [
+        "Palm mute",
+        "Unison bass",
+        "Double kick",
+        "Odd-meter riff",
+        "Backbeat metal",
+        "Quiet metal",
+        "Minor metal",
+        "Bright metal",
+        "Break riff",
+        "Last mute"
+      ],
+      "meters": [
+        "4/4",
+        "7/8"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
+      ]
+    },
+    {
+      "id": "reggaeton",
+      "label": "Reguetón",
+      "required_examples": 10,
+      "subcategories": [
+        "Bright pluck",
+        "Minor guitar",
+        "Club dembow",
+        "Percussion dialogue",
+        "Warm melodic hook",
+        "Sparse night groove",
+        "Synth response",
+        "Muted-key pocket",
+        "Slow dembow",
+        "Open-air lift"
+      ],
+      "meters": [
+        "4/4"
+      ],
+      "voice_budgets": [
+        12
+      ],
+      "quality_gates": [
+        "genre-specific rhythm",
+        "distinct written hook and answer",
+        "defined bass behavior",
+        "intentional breakdown",
+        "loop-aware ending"
       ]
     },
     {
@@ -73,6 +453,88 @@
         20,
         28,
         32
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "towns",
+      "label": "Towns & Social",
+      "required_examples": 10,
+      "subcategories": [
+        "Village Morning",
+        "Port Tavern",
+        "Night Market",
+        "Royal City",
+        "Desert Bazaar",
+        "Snow Inn",
+        "Carnival",
+        "Workshop District",
+        "Seaside Café",
+        "Festival Day"
+      ],
+      "meters": [
+        "12/8",
+        "3/4",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        24
+      ],
+      "quality_gates": [
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
+      ]
+    },
+    {
+      "id": "mystery",
+      "label": "Mystery & Puzzle",
+      "required_examples": 10,
+      "subcategories": [
+        "Detective Noir",
+        "Clockwork Puzzle",
+        "Arcane Library",
+        "Science Lab",
+        "Logic Temple",
+        "Stealth Infiltration",
+        "Ancient Mechanism",
+        "Dream Puzzle",
+        "Conspiracy",
+        "Time Fracture"
+      ],
+      "meters": [
+        "3/4",
+        "4/4",
+        "5/4",
+        "5/8",
+        "7/8",
+        "9/8"
+      ],
+      "voice_budgets": [
+        12,
+        14,
+        16,
+        18,
+        20
       ],
       "quality_gates": [
         "distinct macroform",
@@ -128,47 +590,6 @@
       ]
     },
     {
-      "id": "towns",
-      "label": "Towns & Social",
-      "required_examples": 10,
-      "subcategories": [
-        "Village Morning",
-        "Port Tavern",
-        "Night Market",
-        "Royal City",
-        "Desert Bazaar",
-        "Snow Inn",
-        "Carnival",
-        "Workshop District",
-        "Seaside Café",
-        "Festival Day"
-      ],
-      "meters": [
-        "12/8",
-        "3/4",
-        "4/4",
-        "5/4",
-        "6/8",
-        "7/8"
-      ],
-      "voice_budgets": [
-        12,
-        14,
-        16,
-        18,
-        24
-      ],
-      "quality_gates": [
-        "distinct macroform",
-        "distinct rhythmic topology",
-        "declared harmonic language",
-        "role-based orchestration",
-        "section-level density contrast",
-        "loop-aware ending",
-        "auditable novelty signature"
-      ]
-    },
-    {
       "id": "emotion",
       "label": "Emotion & Narrative",
       "required_examples": 10,
@@ -197,47 +618,6 @@
         18,
         20,
         24
-      ],
-      "quality_gates": [
-        "distinct macroform",
-        "distinct rhythmic topology",
-        "declared harmonic language",
-        "role-based orchestration",
-        "section-level density contrast",
-        "loop-aware ending",
-        "auditable novelty signature"
-      ]
-    },
-    {
-      "id": "mystery",
-      "label": "Mystery & Puzzle",
-      "required_examples": 10,
-      "subcategories": [
-        "Detective Noir",
-        "Clockwork Puzzle",
-        "Arcane Library",
-        "Science Lab",
-        "Logic Temple",
-        "Stealth Infiltration",
-        "Ancient Mechanism",
-        "Dream Puzzle",
-        "Conspiracy",
-        "Time Fracture"
-      ],
-      "meters": [
-        "3/4",
-        "4/4",
-        "5/4",
-        "5/8",
-        "7/8",
-        "9/8"
-      ],
-      "voice_budgets": [
-        12,
-        14,
-        16,
-        18,
-        20
       ],
       "quality_gates": [
         "distinct macroform",
@@ -332,7 +712,7 @@
     },
     {
       "id": "urban",
-      "label": "Jazz, Funk & Urban",
+      "label": "Jazz, Soul & Urban",
       "required_examples": 10,
       "subcategories": [
         "Jazz Noir",
@@ -407,123 +787,44 @@
       ]
     },
     {
-      "id": "bachata",
-      "label": "Bachata",
+      "id": "adventure",
+      "label": "Adventure & Exploration",
       "required_examples": 10,
       "subcategories": [
-        "Guitar conversation",
-        "Minor serenade",
-        "Bright street dance",
-        "Quiet courtyard",
-        "Driving requinto",
-        "Open-air romance",
-        "Muted guitar pocket",
-        "Major-key return",
-        "Sparse bolero color",
-        "Mambo lift"
+        "Ridge Survey",
+        "Switchback Market",
+        "Ferry Crossing",
+        "Cairn Notes",
+        "Pack Road",
+        "Chapel of Maps",
+        "Radio Ridge",
+        "Compass Study",
+        "Trail Walking",
+        "Home Jig"
       ],
       "meters": [
-        "4/4"
+        "12/8",
+        "4/4",
+        "5/4",
+        "6/8",
+        "7/8",
+        "9/8"
       ],
       "voice_budgets": [
-        12
+        12,
+        16,
+        18,
+        20,
+        24
       ],
       "quality_gates": [
-        "genre-specific rhythm",
-        "distinct written hook and answer",
-        "defined bass behavior",
-        "intentional breakdown",
-        "loop-aware ending"
-      ]
-    },
-    {
-      "id": "trip_hop",
-      "label": "Trip hop",
-      "required_examples": 10,
-      "subcategories": [
-        "Dusty keys",
-        "Noir vibraphone",
-        "Dub-weight bass",
-        "Sparse cinematic beat",
-        "Suspended harmony",
-        "Muted guitar haze",
-        "Broken beat",
-        "Warm tape piano",
-        "Floating reed",
-        "Half-lit organ"
-      ],
-      "meters": [
-        "4/4"
-      ],
-      "voice_budgets": [
-        12
-      ],
-      "quality_gates": [
-        "genre-specific rhythm",
-        "distinct written hook and answer",
-        "defined bass behavior",
-        "intentional breakdown",
-        "loop-aware ending"
-      ]
-    },
-    {
-      "id": "trap",
-      "label": "Trap",
-      "required_examples": 10,
-      "subcategories": [
-        "Bell hook",
-        "Dark piano",
-        "Minimal sub-bass",
-        "Tight synth stabs",
-        "Wide pad space",
-        "Triplet hat pocket",
-        "Picked motif",
-        "Low-register keys",
-        "Glass counterline",
-        "Sparse melodic trap"
-      ],
-      "meters": [
-        "4/4"
-      ],
-      "voice_budgets": [
-        12
-      ],
-      "quality_gates": [
-        "genre-specific rhythm",
-        "distinct written hook and answer",
-        "defined bass behavior",
-        "intentional breakdown",
-        "loop-aware ending"
-      ]
-    },
-    {
-      "id": "reggaeton",
-      "label": "Reguetón",
-      "required_examples": 10,
-      "subcategories": [
-        "Bright pluck",
-        "Minor guitar",
-        "Club dembow",
-        "Percussion dialogue",
-        "Warm melodic hook",
-        "Sparse night groove",
-        "Synth response",
-        "Muted-key pocket",
-        "Slow dembow",
-        "Open-air lift"
-      ],
-      "meters": [
-        "4/4"
-      ],
-      "voice_budgets": [
-        12
-      ],
-      "quality_gates": [
-        "genre-specific rhythm",
-        "distinct written hook and answer",
-        "defined bass behavior",
-        "intentional breakdown",
-        "loop-aware ending"
+        "distinct macroform",
+        "distinct rhythmic topology",
+        "declared harmonic language",
+        "role-based orchestration",
+        "section-level density contrast",
+        "loop-aware ending",
+        "auditable novelty signature"
       ]
     }
   ]

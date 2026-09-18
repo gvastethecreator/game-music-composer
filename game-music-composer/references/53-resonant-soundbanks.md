@@ -1,6 +1,6 @@
 # Resonant synthesis banks
 
-Timber, Prism and Voltage add three complete palettes. Each covers the same 54 patch IDs as Chamber, with 2,130 regions: roots at most six semitones apart, three intensity layers and two deterministic alternate attacks. They work with the existing 140 scores. Selecting a live palette does not replace the catalog's mastered recordings.
+Timber, Prism and Voltage add three complete palettes. Each covers the same 54 patch IDs as Chamber, with 2,130 regions: roots at most six semitones apart, three intensity layers and two deterministic alternate attacks. They work with the 240 authored scores. Selecting a live palette does not replace the catalog's mastered recordings.
 
 | Palette | Synthesis | Useful starting material |
 |---|---|---|

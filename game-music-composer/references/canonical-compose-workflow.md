@@ -74,11 +74,17 @@ Declare:
 - meter, tempo center and phrase grid;
 - scale or pitch collection;
 - harmonic language and cadence plan;
-- formal sections and loop seam;
+- formal sections, loop seam and one development operation per section;
 - rhythmic identity and silence budget;
+- energy curve with a descent, or a named loop/drone/combat exemption;
+- at least one subtraction event;
+- roster entry/exit, with one role leaving before the end;
+- a non-vocal arrangement hook;
 - bass family and behavior;
 - voice ceiling and role architecture;
 - timbre palette and render target.
+
+Read [56-arrangement-choices.md](56-arrangement-choices.md) when filling those fail-able arrangement fields. Quality gates stay `false` until evidence exists.
 
 Reject a brief that is only scale, tempo, arpeggiator.
 
@@ -132,7 +138,7 @@ Read when the current step needs them:
 
 Seeded values are constraints: keep phrase purpose, harmonic targets, genre identity across variants.
 
-`period`: antecedent/consequent — same idea, weak cadence, tonic close. `sentence`: 2+2+4 — idea, sequenced idea, continuation. Motif skeleton stays on home pitch class; only passing tones follow the chord. Contrast: related answer motif + different accompaniment, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review splits legality from identity: tiling the same cell or sitting too close to another catalog cue fails identity even if writing is legal.
+`period`: antecedent/consequent — same idea, weak cadence, tonic close. `sentence`: 2+2+4 — idea, sequenced idea, continuation. Motif skeleton stays on home pitch class; only passing tones follow the chord. Contrast: related answer motif + different accompaniment, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review splits legality, identity, plan compliance and rigidity tells: tiling the same cell or sitting too close to another catalog cue fails identity even if writing is legal. Compliance and tell counts stay separate from that diagnostic score.
 
 ### 5. Assign instruments by role
 
@@ -207,11 +213,12 @@ python scripts/neospc.py review ./my-cue/catalog.json ./my-cue/review.json
 python scripts/neospc.py audit-bank ./my-cue/catalog.json --output ./my-cue/bank-audit.json
 python scripts/neospc.py export-midi ./my-cue/catalog.json ./my-cue/midi
 python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio
+python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio-sf2 --backend soundfont --bank ./local.sf2
 ```
 
 `review`: deterministic symbolic rubric — score structure, phrase behavior, genre signals, orchestration, expression. Not human judgment or independent artistic review; use a separate reviewer.
 
-`render` needs `numpy`, `soundfile`, `pyloudnorm`, `scipy`, FFmpeg. Install extras: `python -m pip install -r requirements-render.txt`. Other commands use the stdlib. Missing render deps: valid JSON and MIDI, name blocked audio formats, give the exact retry command.
+Compact/multisample `render` needs `numpy`, `soundfile`, `pyloudnorm`, `scipy`, FFmpeg. SoundFont render needs FluidSynth on PATH (`-R 0 -C 0`). Install extras: `python -m pip install -r requirements-render.txt`. Other commands use the stdlib. Missing render deps: valid JSON and MIDI, name blocked audio formats, give the exact retry command. Each render writes receipts; skip only on fingerprint match. Read [57-sound-backends.md](57-sound-backends.md).
 
 Keep every review report. Revise only named dimensions; re-run validation and review after each revision. Keep `approved`, `revise`, `rebuild` labels honest.
 
@@ -228,7 +235,7 @@ Complete cue:
 - Factory Bank assignment audit;
 - sample provenance and license note.
 
-JSON is the main source; MIDI cannot retain every sample, envelope, role, bus, performance detail.
+JSON is the main source; MIDI cannot retain every sample, envelope, role, bus, performance detail. Export with `--sound-plan` writes bank MSB/LSB and program from the inspected map. Multi-port scores need `--adapt-ports` or a split. Percussion uses channel 10 only for bank 128 kits.
 
 ## Final checks
 

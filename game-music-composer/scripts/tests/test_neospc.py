@@ -29,7 +29,7 @@ class AudioSynthesisTests(unittest.TestCase):
             import console_soundpack as console
         except ImportError:
             self.skipTest('Optional audio dependencies are not installed')
-        for system,preset,voices in [('megadrive','organ',6),('snes','flute',8)]:
+        for system,preset,voices in [('megadrive','organ',6),('snes','flute',8),('nes','pulse',2)]:
             with self.subTest(system=system):
                 notes=[dict(preset=preset,midi=60+i,time=0,duration=.5,velocity=90) for i in range(voices)]
                 self.assertEqual(len(console.timeline(notes,system)),voices*2)
@@ -202,6 +202,12 @@ class NeoSpcCliTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Unknown writing grammar'):
             engine.compose(spec,record['category'],record['category_label'])
 
+    def test_scene_funk_grammar_stays_on_phrase_writer(self):
+        record=next(r for r in engine.load_catalog_contracts() if r['native_engine_contract']['writing']['grammar']=='funk')
+        score=engine.compose(record['native_engine_contract'], record['category'], record['category_label'])
+        self.assertNotIn('genre-composer', score.get('writing_evidence',{}).get('engine',''))
+        self.assertEqual(score['writing_evidence']['grammar'], 'funk')
+
     def test_doctor_and_benchmark_pass(self) -> None:
         self.assertEqual(neospc.doctor_issues(), [])
         benchmark = neospc.load_json(neospc.BENCHMARK_PATH)
@@ -257,6 +263,10 @@ class NeoSpcCliTests(unittest.TestCase):
             self.assertNotIn("describe", plan["musical_identity"]["silence_budget"].lower())
             self.assertEqual(neospc.validate_plan(plan), [])
             self.assertEqual(neospc.validate_harness(harness), [])
+            self.assertEqual(plan["form"][0]["development"], "repeat")
+            self.assertLess(plan["energy_curve"]["B"], plan["energy_curve"]["A2"])
+            self.assertTrue(any(item["exit"] not in {"end", plan["form"][-1]["name"]} for item in plan["roster"]))
+            self.assertTrue(plan["arrangement_hook"]["what"])
 
     def test_invalid_plan_reports_actionable_paths(self) -> None:
         plan = neospc.load_json(neospc.PLAN_TEMPLATE_PATH)
@@ -273,18 +283,40 @@ class NeoSpcCliTests(unittest.TestCase):
         self.assertIn("placeholder_text", {issue.code for issue in issues})
         self.assertIn("$.musical_identity.loop_strategy", {issue.path for issue in issues})
 
+    def test_arrangement_fields_warn_when_present_and_rigid(self) -> None:
+        plan = neospc.load_json(neospc.PLAN_TEMPLATE_PATH)
+        plan["energy_curve"] = {"A": 4, "A2": 6, "B": 8, "A3": 10}
+        plan["subtraction_events"] = []
+        plan["roster"] = [{"id": "lead", "role": "lead", "entry": "A", "exit": "end"}]
+        plan["form"][2]["development"] = "new"
+        plan["form"][0]["development"] = "new"
+        issues = neospc.validate_plan(plan)
+        self.assertTrue({issue.code for issue in issues} >= {"energy_never_descends", "subtraction_missing", "roster_never_exits", "new_material_majority"})
+        plan["arrangement_exemptions"] = ["short_loop"]
+        self.assertEqual({issue.code for issue in neospc.validate_plan(plan) if issue.level == "warning"}, set())
+
+    def test_missing_arrangement_fields_stay_optional(self) -> None:
+        plan = neospc.load_json(neospc.PLAN_TEMPLATE_PATH)
+        for field in ("energy_curve", "arrangement_exemptions", "subtraction_events", "roster", "arrangement_hook"):
+            plan.pop(field)
+        for section in plan["form"]:
+            section.pop("development", None)
+        self.assertEqual(neospc.validate_plan(plan), [])
+
     def test_genre_init_composes_its_groove_and_keeps_breakdown_in_contrast(self):
         import compose_from_plan
-        for genre in ('bachata','trip_hop','trap','reggaeton'):
+        for genre in neospc.GENRE_TEMPOS:
             with self.subTest(genre=genre), tempfile.TemporaryDirectory() as temp:
                 project=Path(temp)/genre
                 self.assertEqual(neospc.main(['init',str(project),'--title','New groove','--category',genre,'--bars','8','--seed','4']),0)
                 plan=neospc.load_json(project/'composition-plan.json');harness=neospc.load_json(project/'generation-harness.json');blueprint=neospc.load_json(project/'score-blueprint.json')
                 score,_=compose_from_plan.compose_project(plan,harness,blueprint)
-                self.assertEqual(score['meter'],'4/4')
+                self.assertEqual(blueprint['grammar'],genre)
                 self.assertEqual(blueprint['drop_bars'],[4])
                 self.assertTrue(any(e['role']=='lead' and 20<=e['beat']<24 for e in score['events']))
                 def onsets(inst):return {e['beat'] for e in score['events'] if e['inst']==inst and e['beat']<4}
+                if genre in neospc.GENRE_FOUR_FOUR:
+                    self.assertEqual(score['meter'],'4/4')
                 if genre=='bachata':
                     self.assertEqual(score['instrument_map']['guitar']['factory_label'],'Requinto Guitar')
                     self.assertEqual({e['midi'] for e in score['events'] if e['inst']=='tom'},{60,61})
@@ -294,13 +326,68 @@ class NeoSpcCliTests(unittest.TestCase):
                 elif genre=='trap':
                     self.assertEqual(onsets('snare'),{2})
                     self.assertEqual(score['instrument_map']['sub']['factory_patch'],'bass.sub_sine')
-                else:self.assertEqual(onsets('snare'),{.75,1.5,2.75,3.5})
+                elif genre=='reggaeton':
+                    self.assertEqual(onsets('snare'),{.75,1.5,2.75,3.5})
+                elif genre=='salsa':
+                    self.assertTrue(any(e['inst']=='wood' for e in score['events']))
+                    self.assertIn('piano', score['instrument_map'])
+                elif genre=='cumbia':
+                    self.assertTrue(any(e['inst']=='shaker' for e in score['events']))
+                elif genre=='bossa_nova':
+                    self.assertTrue(any(e['inst']=='rim' for e in score['events']))
+                elif genre=='funk':
+                    self.assertTrue({1,3}<=onsets('snare'))
+                elif genre=='house':
+                    self.assertTrue({0,1,2,3}<=onsets('kick'))
+                elif genre=='dnb':
+                    self.assertTrue(any(e['inst']=='snare' for e in score['events']))
+                    self.assertTrue(any(e['inst'] in ('sub','synth_bass') for e in score['events']))
+                elif genre=='synthwave':
+                    self.assertTrue({0,2}<=onsets('kick'))
+                elif genre=='lofi':
+                    self.assertTrue(any(e['inst']=='hat' and abs(e['performance_beat']-e['beat'])>0.01 for e in score['events']))
+                elif genre=='metal':
+                    self.assertTrue(any(e['inst'].startswith('dist_guitar') for e in score['events']))
+                elif genre=='tango':
+                    self.assertIn('accordion', score['instrument_map'])
+
+    def test_metal_init_accepts_seven_eight(self):
+        import compose_from_plan
+        with tempfile.TemporaryDirectory() as temp:
+            project=Path(temp)/'metal78'
+            self.assertEqual(neospc.main(['init',str(project),'--title','Odd riff','--category','metal','--meter','7/8','--bars','8','--seed','3']),0)
+            plan=neospc.load_json(project/'composition-plan.json');harness=neospc.load_json(project/'generation-harness.json');blueprint=neospc.load_json(project/'score-blueprint.json')
+            score,_=compose_from_plan.compose_project(plan,harness,blueprint)
+            self.assertEqual(score['meter'],'7/8')
+            self.assertEqual(blueprint['grammar'],'metal')
+            self.assertTrue(any(e['role']=='lead' for e in score['events']))
 
     def test_genre_init_rejects_unsupported_meter_before_writing(self):
         with tempfile.TemporaryDirectory() as temp:
             project=Path(temp)/'invalid'
             self.assertEqual(neospc.main(['init',str(project),'--title','Invalid','--category','bachata','--meter','3/4']),2)
             self.assertFalse(project.exists())
+            metal=Path(temp)/'metal-bad'
+            self.assertEqual(neospc.main(['init',str(metal),'--title','Invalid','--category','metal','--meter','5/4']),2)
+            self.assertFalse(metal.exists())
+
+    def test_category_order_is_genre_first_with_salsa_default(self):
+        order=neospc.category_order()
+        self.assertEqual(order[0],'salsa')
+        self.assertEqual(order[-1],'adventure')
+        self.assertLess(order.index('reggaeton'), order.index('action'))
+        self.assertEqual(neospc.category_ids(), set(order))
+        plan=neospc.load_json(neospc.PLAN_TEMPLATE_PATH)
+        self.assertEqual(plan['category'],'salsa')
+
+    def test_scene_catalog_recipes_are_unique_and_adventure_was_replaced(self):
+        contracts=engine.load_catalog_contracts()
+        self.assertEqual(engine.catalog_recipe_errors(contracts), [])
+        adventure_ids=[record['id'] for record in contracts if record['category']=='adventure']
+        expected=[spec['slug'] for spec in engine.SPECS['adventure']]
+        self.assertEqual(adventure_ids, expected)
+        self.assertNotIn('fernway_crossing', adventure_ids)
+        self.assertEqual(len(set(expected)), 10)
 
     def test_symbolic_review_uses_library_scale_ids(self) -> None:
         style = {
@@ -406,6 +493,13 @@ class NeoSpcCliTests(unittest.TestCase):
             self.assertEqual(len(review["tracks"]), 1)
             self.assertEqual(review["reviewer"], "Neo-SPC Symbolic Review")
             self.assertIn("human listening excluded", review["method"])
+            self.assertIn("plan_compliance", review)
+            self.assertIn("rigidity_tells", review)
+            self.assertNotEqual(review["plan_compliance"], review["rigidity_tells"])
+            self.assertEqual(review["backend_honors"]["backends"]["atelier"]["honors"]["mix.lufs"], "none")
+            self.assertEqual(review["backend_honors"]["backends"]["midi"]["honors"]["mix.buses"], "none")
+            self.assertIn("plan_compliance", review["tracks"][0])
+            self.assertIn("rigidity_tells", review["tracks"][0])
             self.assertEqual(bank["errors"], 0)
             self.assertIn(f"{bank['factory_mapped']}/{bank['assignments']} assignments mapped", audit_log.getvalue())
             self.assertTrue(midi.read_bytes().startswith(b"MThd"))
@@ -435,12 +529,14 @@ class NeoSpcCliTests(unittest.TestCase):
             self.assertCountEqual(names, manifest_names + ["game-music-composer/MANIFEST.sha256"])
             for entry in ("scripts/visualize_score.py", "scripts/refine_performance.py",
                           "resources/ensemble-atelier/template.html", "resources/ensemble-atelier/audio.js",
-                          "references/canonical-compose-workflow.md"):
+                          "references/canonical-compose-workflow.md", "references/56-arrangement-choices.md",
+                          "references/57-sound-backends.md", "data/backend-honors.json",
+                          "scripts/sound_plan.py", "resources/ensemble-atelier/soundfont-engine.js"):
                 self.assertIn("game-music-composer/" + entry, names)
             self.assertFalse(any("__pycache__" in name or ".pytest_cache" in name or name.endswith(".pyc") for name in names))
             self.assertNotIn("game-music-composer/data/neospc100-benchmark-v3.json", names)
             self.assertNotIn("game-music-composer/data/neospc100-benchmark.json", names)
-            self.assertLess(unpacked_bytes, 25 * 1024 * 1024)
+            self.assertLess(unpacked_bytes, 40 * 1024 * 1024)
 
 
 def _probe_spec(**overrides):
@@ -606,6 +702,40 @@ class ReviewIdentityTests(unittest.TestCase):
         report = professor_review.review(_review_style("unique", cells), siblings=[])
         self.assertGreaterEqual(report["identity_score"], 6.8)
         self.assertNotIn("strengthen_identity", report["required_actions"])
+
+    def test_review_keeps_compliance_and_tells_apart_from_identity(self):
+        cells = (
+            [[60, 64, 67, 72]] * 4
+            + [[62, 64, 65, 67]] * 4
+            + [[71, 69, 67, 65]] * 4
+            + [[60, 67, 64, 60]] * 4
+        )
+        plan = {
+            "form": [
+                {"name": "A", "function": "establish", "bars": 4, "development": "repeat"},
+                {"name": "A2", "function": "develop", "bars": 4, "development": "vary"},
+                {"name": "B", "function": "contrast", "bars": 4, "development": "fragment"},
+                {"name": "A3", "function": "return", "bars": 4, "development": "recap"},
+            ],
+            "energy_curve": {"A": 4, "A2": 6, "B": 3, "A3": 7},
+            "subtraction_events": [{"at": "B", "what": "drop drums"}],
+            "roster": [
+                {"id": "lead", "role": "lead", "entry": "A", "exit": "end"},
+                {"id": "bass", "role": "bass", "entry": "A", "exit": "B"},
+            ],
+            "arrangement_hook": {"what": "rising-fourth cell"},
+        }
+        report = professor_review.review(_review_style("unique", cells), siblings=[], plan=plan)
+        self.assertEqual(report["plan_compliance"]["plan_source"], "plan")
+        self.assertEqual(report["plan_compliance"]["passed"], report["plan_compliance"]["checked"])
+        self.assertIsInstance(report["rigidity_tells"]["flag_count"], int)
+        self.assertNotIn("plan_compliance", report["required_actions"])
+        honors = professor_review.load_backend_honors()
+        self.assertEqual(honors["backends"]["atelier"]["honors"]["mix.lufs"], "none")
+        self.assertEqual(honors["backends"]["midi"]["honors"]["mix.buses"], "none")
+        self.assertEqual(honors["backends"]["native"]["honors"]["meta.tempo"], "exact")
+        self.assertEqual(honors["backends"]["soundfont"]["honors"]["mix.lufs"], "none")
+        self.assertEqual(honors["backends"]["soundfont"]["honors"]["midi.ports"], "none")
 
 
 if __name__ == "__main__":

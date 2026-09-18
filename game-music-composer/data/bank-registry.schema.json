@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agents-matrix.local/game-music-composer/bank-registry.schema.json",
+  "title": "Neo-SPC bank registry",
+  "type": "object",
+  "required": ["version", "banks"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "banks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bank" }
+    }
+  },
+  "$defs": {
+    "bank": {
+      "type": "object",
+      "required": ["id", "name", "format", "engine", "provenance", "license", "redistribution", "presets", "known_losses"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "hash": { "type": ["string", "null"] },
+        "path": { "type": ["string", "null"] },
+        "format": {
+          "type": "string",
+          "enum": ["wav-compact", "wav-multisample", "sf2", "sf3", "dls", "brr-directory", "fm-json", "nes-json"]
+        },
+        "engine": { "type": "string", "minLength": 1 },
+        "provenance": { "type": "string", "minLength": 1 },
+        "license": { "type": "string", "minLength": 1 },
+        "redistribution": { "type": "string", "minLength": 1 },
+        "presets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/preset" }
+        },
+        "known_losses": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "preset": {
+      "type": "object",
+      "required": ["name", "bank", "program", "percussion"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "bank": { "type": "integer", "minimum": 0, "maximum": 16383 },
+        "program": { "type": "integer", "minimum": 0, "maximum": 127 },
+        "percussion": { "type": "boolean" },
+        "lo_key": { "type": "integer", "minimum": 0, "maximum": 127 },
+        "hi_key": { "type": "integer", "minimum": 0, "maximum": 127 }
+      }
+    }
+  }
+}

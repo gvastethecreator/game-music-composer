@@ -48,7 +48,27 @@ SNES = {
     'hat': ([],0x8f,0x00), 'tom': ([],0x8f,0x00),
 }
 
+def load_fm_presets(path):
+    data=json.loads(Path(path).read_text(encoding='utf-8'))
+    out={}
+    for name,row in (data.get('presets') or {}).items():
+        out[name]=(int(row['alg']),int(row['fb']),list(row['mults']),list(row['levels']),int(row['attack']),int(row['decay']),int(row['sustain']))
+    if not out:raise ValueError('FM JSON has no presets')
+    return out
+
+_FM_JSON=Path(__file__).resolve().parents[1]/'data'/'megadrive-fm-presets.json'
+if _FM_JSON.is_file():
+    FM=load_fm_presets(_FM_JSON)
+
+_NES_JSON=Path(__file__).resolve().parents[1]/'data'/'nes-2a03-macros.json'
+NES_MACROS=json.loads(_NES_JSON.read_text(encoding='utf-8')) if _NES_JSON.is_file() else {}
+PULSE_DUTY=int(((NES_MACROS.get('presets') or {}).get('pulse') or {}).get('duty', 2)) & 3
+
 def preset_for(patch, console):
+    if console == 'nes':
+        if any(x in patch for x in ('hat','snare','noise','kick','shaker','rim','ride','wood','impact','brush')): return 'noise'
+        if any(x in patch for x in ('bass','sub','triangle','contrabass')): return 'triangle'
+        return 'pulse'
     if console == 'megadrive':
         if any(x in patch for x in ('hat','snare','noise','scraper','guira','shaker','rim')): return 'psg_noise'
         if 'pulse' in patch: return 'psg_square'
@@ -81,17 +101,29 @@ def preset_for(patch, console):
 
 def timeline(notes, console):
     """Allocate actual hardware voices; reject overflow instead of dropping notes."""
-    free = {'fm':[0.0]*6,'tone':[0.0]*3,'noise':[0.0]} if console=='megadrive' else {'dsp':[0.0]*8}
+    if console=='nes':
+        free={'pulse':[0.0]*2,'triangle':[0.0],'noise':[0.0]}
+        allowed={'pulse','triangle','noise'}
+    elif console=='megadrive':
+        free={'fm':[0.0]*6,'tone':[0.0]*3,'noise':[0.0]}
+        allowed=set(FM)|{'psg_square','psg_noise'}
+    else:
+        free={'dsp':[0.0]*8}
+        allowed=set(SNES)
     events=[]
     for n in sorted(notes,key=lambda x:x['time']):
         n=dict(n);p=n['preset'];start=float(n['time']);duration=float(n['duration'])
         if not math.isfinite(start+duration) or start<0 or duration<=0 or not 0<=n['midi']<=127 or not 1<=n.get('velocity',96)<=127:
             raise ValueError('Invalid note time, duration, MIDI or velocity')
-        if p not in (set(FM)|{'psg_square','psg_noise'} if console=='megadrive' else SNES): raise ValueError('Unknown console preset: '+p)
-        group=('tone' if p=='psg_square' else 'noise' if p=='psg_noise' else 'fm') if console=='megadrive' else 'dsp'
+        if p not in allowed: raise ValueError('Unknown console preset: '+p)
+        if console=='nes':
+            group='pulse' if p=='pulse' else 'triangle' if p=='triangle' else 'noise'
+        elif console=='megadrive':
+            group=('tone' if p=='psg_square' else 'noise' if p=='psg_noise' else 'fm')
+        else:
+            group='dsp'
         channel=next((i for i,t in enumerate(free[group]) if t<=start+1e-8),None)
         if channel is None: raise ValueError(f'{console}: {group} voice budget exceeded at {start:.4f}s; arrange fewer simultaneous notes')
-        # Leave release time between notes when the score needs an audible tail.
         free[group][channel]=start+duration
         n.update(group=group,channel=channel)
         events.extend([(start,1,n),(start+duration,0,n)])
@@ -141,6 +173,48 @@ def vgm(notes):
     struct.pack_into('<H',header,0x28,9);header[0x2a]=16
     return bytes(header+stream)
 
+NES_CLOCK=1789773
+
+def nes_timer(midi, triangle=False):
+    freq=440*2**((midi-69)/12)
+    timer=round(NES_CLOCK/((32 if triangle else 16)*freq)-1)
+    if not 8<=timer<=0x7ff:raise ValueError('2A03 pitch out of range')
+    return timer
+
+def nes_vgm(notes):
+    stream=bytearray();clock=0
+    def apu(reg,value): stream.extend((0xb4,reg&255,value&255))
+    def wait(n):
+        while n: k=min(n,65535);stream.extend((0x61,k&255,k>>8));n-=k
+    apu(0x17,0x40);apu(0x15,0x0f)
+    for time,on,n in timeline(notes,'nes'):
+        target=round(time*44100);wait(target-clock);clock=target
+        velocity=n.get('velocity',96);vol=min(15,max(1,round(velocity/8)))
+        if n['group']=='pulse':
+            base=0 if n['channel']==0 else 4
+            if on:
+                timer=nes_timer(n['midi'])
+                apu(base,(PULSE_DUTY<<6)|0x30|vol);apu(base+1,0x08);apu(base+2,timer&255);apu(base+3,timer>>8)
+            else:
+                apu(base,0x30)
+        elif n['group']=='triangle':
+            if on:
+                timer=nes_timer(n['midi'],True)
+                apu(8,0x81);apu(0x0a,timer&255);apu(0x0b,timer>>8)
+            else:
+                apu(8,0x80)
+        else:
+            if on:
+                period=min(15,max(0,15-(n['midi']//8)))
+                apu(0x0c,0x30|vol);apu(0x0e,period);apu(0x0f,0x08)
+            else:
+                apu(0x0c,0x30)
+    wait(44100);clock+=44100;stream.append(0x66)
+    header=bytearray(0x100);header[:4]=b'Vgm '
+    for offset,value in ((4,len(header)+len(stream)-4),(8,0x161),(0x18,clock),(0x24,60),(0x34,0xcc),(0x84,NES_CLOCK)):
+        struct.pack_into('<I',header,offset,value)
+    return bytes(header+stream)
+
 def brr_source(preset, highest_midi=72):
     harmonics,_,_=SNES[preset]
     if harmonics:
@@ -160,8 +234,10 @@ def brr_source(preset, highest_midi=72):
         noise=rng.normal(0,1,len(t));x=np.diff(noise,prepend=noise[0])*np.exp(-t*62)
     x*=np.minimum(1,t*4000);return x/max(abs(x))*.72,261.625565,False
 
-def encode_brr(samples,loop):
+def encode_brr(samples,loop,filter_id=0):
     """Filter-zero BRR: independently quantized blocks without predictor drift."""
+    if int(filter_id)!=0:
+        raise ValueError('Only filter-zero BRR is implemented; pass --brr-filter 0')
     pcm=np.rint(np.asarray(samples)*32767).astype(np.int32)
     pcm=np.pad(pcm,(0,(-len(pcm))%16));out=bytearray()
     for i in range(0,len(pcm),16):
@@ -172,11 +248,34 @@ def encode_brr(samples,loop):
         out.extend(int((q[j]<<4)|q[j+1]) for j in range(0,16,2))
     return bytes(out)
 
-def spc(notes,echo=True):
+def load_brr_directory(path):
+    folder=Path(path)
+    index_path=folder/'directory.json' if folder.is_dir() else folder
+    index=json.loads(index_path.read_text(encoding='utf-8'))
+    root=index_path.parent
+    bank={}
+    for name,row in index.items():
+        raw=(root/row['file']).read_bytes()
+        bank[name]={
+            'bytes':raw,
+            'root_hz':float(row.get('root_hz',261.625565)),
+            'loop':bool(row.get('loop',False)),
+            'adsr1':int(row.get('adsr1', SNES[name][1] if name in SNES else 0x8f)),
+            'adsr2':int(row.get('adsr2', SNES[name][2] if name in SNES else 0x89)),
+        }
+        if name not in SNES:
+            SNES[name]=([],bank[name]['adsr1'],bank[name]['adsr2'])
+    return bank
+
+def spc(notes,echo=True,brr_bank=None,brr_filter=0):
     events=timeline(notes,'snes');ram=bytearray(65536);dsp=bytearray(128)
     directory=0x200;sample_at=0x8000;preset_data={}
     for idx,p in enumerate(sorted({n['preset'] for n in notes})):
-        x,root,loop=brr_source(p,max(n['midi'] for n in notes if n['preset']==p));raw=encode_brr(x,loop)
+        if brr_bank and p in brr_bank:
+            rec=brr_bank[p];raw=rec['bytes'];root=rec['root_hz']
+            SNES[p]= (SNES[p][0] if p in SNES else [], rec.get('adsr1',0x8f), rec.get('adsr2',0x89))
+        else:
+            x,root,loop=brr_source(p,max(n['midi'] for n in notes if n['preset']==p));raw=encode_brr(x,loop,brr_filter)
         if sample_at+len(raw)>0xe000:raise ValueError('BRR data exceeds reserved sample RAM')
         struct.pack_into('<HH',ram,directory+idx*4,sample_at,sample_at)
         ram[sample_at:sample_at+len(raw)]=raw;preset_data[p]=(idx,root);sample_at+=len(raw)
@@ -232,21 +331,37 @@ def demo(console):
             for m2 in ([60,63,67] if i<8 else [65,68,72]):add('electric_keys' if console=='megadrive' else 'strings',m2,i*.25,.75,76)
     if console=='megadrive':
         for i in range(8):add('psg_square',84+(i%2)*3,i*.5+.125,.09,70)
+    if console=='nes':
+        notes=[dict(preset='pulse',midi=60,time=0,duration=.5,velocity=96),
+               dict(preset='triangle',midi=48,time=0,duration=.5,velocity=80),
+               dict(preset='noise',midi=40,time=.25,duration=.2,velocity=70)]
     return notes
 
+def write_native(console,notes,output,echo=True,brr_bank=None,brr_filter=0):
+    if console=='megadrive':return vgm(notes)
+    if console=='nes':return nes_vgm(notes)
+    return spc(notes,echo,brr_bank=brr_bank,brr_filter=brr_filter)
+
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('console',choices=('megadrive','snes'))
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('console',choices=('megadrive','snes','nes'))
     parser.add_argument('output',type=Path);parser.add_argument('--notes',type=Path,help='JSON array: preset, midi, time/duration seconds, velocity')
     parser.add_argument('--wav',action='store_true');parser.add_argument('--dry',action='store_true')
-    args=parser.parse_args();notes=json.loads(args.notes.read_text()) if args.notes else demo(args.console)
+    parser.add_argument('--fm-json',type=Path,help='Editable YM2612 patch table (alg, fb, ops). Does not add DAC or pitch macros.')
+    parser.add_argument('--brr-dir',type=Path,help='External BRR directory.json plus .brr files. An SF2 never enters an SPC.')
+    parser.add_argument('--brr-filter',type=int,default=0,help='BRR filter id. Filter zero remains the implemented option.')
+    args=parser.parse_args();
+    if args.fm_json:
+        global FM;FM=load_fm_presets(args.fm_json)
+    brr_bank=load_brr_directory(args.brr_dir) if args.brr_dir else None
+    notes=json.loads(args.notes.read_text()) if args.notes else demo(args.console)
     if not notes:parser.error('At least one note is required')
-    expected='.vgm' if args.console=='megadrive' else '.spc'
+    expected='.spc' if args.console=='snes' else '.vgm'
     if args.output.suffix.lower()!=expected:parser.error('Output must end in '+expected)
     outputs=[args.output,args.output.with_suffix('.json')]+([args.output.with_suffix('.wav')] if args.wav else [])
     if any(p.exists() for p in outputs):parser.error('Output exists; choose a new path')
-    data=vgm(notes) if args.console=='megadrive' else spc(notes,not args.dry)
+    data=write_native(args.console,notes,args.output,not args.dry,brr_bank,args.brr_filter)
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_bytes(data)
-    args.output.with_suffix('.json').write_text(json.dumps({'version':VERSION,'console':args.console,'notes':notes,'sha256':hashlib.sha256(data).hexdigest(),'source':'Original register patches / BRR samples','physical_hardware_comparison':'pending'},indent=2)+'\n')
+    args.output.with_suffix('.json').write_text(json.dumps({'version':VERSION,'console':args.console,'notes':notes,'sha256':hashlib.sha256(data).hexdigest(),'source':'Original register patches / BRR samples','physical_hardware_comparison':'pending','dmc':None if args.console=='nes' else 'n/a'},indent=2)+'\n')
     if args.wav:render_native(args.output,args.output.with_suffix('.wav'),max(n['time']+n['duration'] for n in notes)+1)
     print('Created',args.output)
 

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "clock_hz": 1789773,
+  "dmc": null,
+  "notes": "NES 2A03 VGM writer: two pulse, triangle, noise. DMC is absent. Overflow is an error. This is not a SoundFont labelled NES original.",
+  "channels": {
+    "pulse": {"voices": 2, "duty_default": 2, "constant_volume": true},
+    "triangle": {"voices": 1, "linear": 127},
+    "noise": {"voices": 1, "mode": 0, "period_default": 4}
+  },
+  "presets": {
+    "pulse": {"group": "pulse", "duty": 2},
+    "triangle": {"group": "triangle"},
+    "noise": {"group": "noise", "mode": 0}
+  }
+}

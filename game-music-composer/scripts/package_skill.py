@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "dist" / "game-music-composer.zip"
 MANIFEST = ROOT / "MANIFEST.sha256"
 ARCHIVE_ROOT = "game-music-composer"
-SKIP_DIRS = {"__pycache__", ".git", ".pytest_cache", ".scratch", "dist", "work"}
-SKIP_SUFFIXES = {".pyc", ".pyo"}
+SKIP_DIRS = {"__pycache__", ".git", ".pytest_cache", ".scratch", "dist", "work", "private-banks", "spessasynth"}
+SKIP_SUFFIXES = {".pyc", ".pyo", ".sf2", ".sf3", ".dls"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".sha256", ".txt", ".yaml", ".yml"}
 FORBIDDEN_PATH = b"/mnt" + b"/data"
 

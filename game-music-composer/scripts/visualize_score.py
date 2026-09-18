@@ -15,7 +15,7 @@ import sys
 from typing import Any
 
 RESOURCES = Path(__file__).resolve().parents[1] / 'resources' / 'ensemble-atelier'
-JS_ORDER = ('music.js', 'audio.js', 'visuals.js', 'atelier.js', 'app.js')
+JS_ORDER = ('music.js', 'audio.js', 'soundfont-engine.js', 'visuals.js', 'atelier.js', 'app.js')
 DEMOS = ('instrumentarium', 'pocket', 'conversation', 'atlas', 'cycles')
 MAX_INPUT_BYTES = 25 * 1024 * 1024
 

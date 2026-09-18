@@ -192,7 +192,126 @@ def identity_score(ident,dens_contrast):
     score += min(1,dens_contrast)*1.2 + ident['contrast_diff']*.8
     return clamp(score,0,10)
 
-def review(style,siblings=()):
+BACKEND_HONORS_PATH=Path(__file__).resolve().parents[1]/'data'/'backend-honors.json'
+
+
+def load_backend_honors():
+    try:
+        return json.loads(BACKEND_HONORS_PATH.read_text(encoding='utf-8'))
+    except (FileNotFoundError, OSError, TypeError, ValueError, json.JSONDecodeError):
+        return {
+            'version': 0,
+            'scoring_rule': 'honors none excludes a field from scoring; do not treat it as zero',
+            'backends': {},
+        }
+
+
+def has_energy_drop(values, ratio=0.97):
+    return any(values[i] < values[i - 1] * ratio for i in range(1, len(values)))
+
+
+def exemption_set(plan):
+    if not isinstance(plan, dict):
+        return set()
+    items = plan.get('arrangement_exemptions') or []
+    return {str(item) for item in items if item}
+
+
+def role_sets_by_section(style):
+    forms = style.get('form') or [{'name': 'all', 'start_bar': 0, 'bars': style.get('bars', 1)}]
+    out = []
+    for form in forms:
+        start = float(form.get('start_bar', 0)) * style['barLength']
+        end = start + float(form.get('bars', 1)) * style['barLength']
+        out.append((str(form.get('name', '')), {role(event) for event in style['events'] if start <= onset(event) < end}))
+    return out
+
+
+def observed_role_exit(style):
+    sets = [roles for _, roles in role_sets_by_section(style)]
+    if len(sets) < 2:
+        return False
+    earlier = set().union(*sets[:-1])
+    return bool(earlier - sets[-1])
+
+
+def declared_role_exit(plan):
+    if not isinstance(plan, dict) or not isinstance(plan.get('roster'), list) or not plan['roster']:
+        return None
+    form = plan.get('form') if isinstance(plan.get('form'), list) else []
+    last = ''
+    if form and isinstance(form[-1], dict):
+        last = str(form[-1].get('name') or '')
+    end_tokens = {'end', last, ''}
+    return any(isinstance(item, dict) and str(item.get('exit') or 'end') not in end_tokens for item in plan['roster'])
+
+
+def arrangement_review(style, plan=None, dens=None, ident=None, expr=None):
+    dens = dens if dens is not None else section_densities(style)
+    ident = ident if ident is not None else identity_metrics(style)
+    expr = expr if expr is not None else expressive_metrics(style)
+    plan = plan if isinstance(plan, dict) else None
+    exemptions = exemption_set(plan)
+    if int(style.get('bars') or 0) <= 8:
+        exemptions = set(exemptions) | {'short_loop'}
+    exempt = bool(exemptions & {'short_loop', 'drone', 'continuous_combat'})
+    curve_vals = []
+    if plan and isinstance(plan.get('energy_curve'), dict):
+        names = [str(section.get('name') or '') for section in (plan.get('form') or []) if isinstance(section, dict)]
+        for name in names:
+            value = plan['energy_curve'].get(name)
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                curve_vals.append(float(value))
+    energy_ok = has_energy_drop(curve_vals) or has_energy_drop(dens) or exempt
+    if plan and isinstance(plan.get('subtraction_events'), list):
+        subtraction_ok = bool(plan['subtraction_events']) or exempt
+    else:
+        subtraction_ok = has_energy_drop(dens) or exempt
+    declared_exit = declared_role_exit(plan) if plan else None
+    exit_ok = (declared_exit if declared_exit is not None else observed_role_exit(style)) or exempt
+    ops = [section.get('development') for section in (plan.get('form') or []) if isinstance(section, dict) and section.get('development')] if plan else []
+    if ops:
+        development_ok = sum(op == 'new' for op in ops) * 2 < len(ops)
+    else:
+        development_ok = ident.get('contrast_diff', 0) > 0.2 or ident.get('phrase_tile_ratio', 1) < 0.88
+    hook_text = ''
+    if plan and isinstance(plan.get('arrangement_hook'), dict):
+        hook_text = str(plan['arrangement_hook'].get('what') or '').strip()
+    tile = ident.get('phrase_tile_ratio', 0)
+    hook_ok = bool(hook_text) or 0.08 <= tile < 0.88
+    checks = [
+        {'id': 'energy_descent_or_exemption', 'pass': bool(energy_ok)},
+        {'id': 'has_subtraction', 'pass': bool(subtraction_ok)},
+        {'id': 'a_role_exits_before_end', 'pass': bool(exit_ok)},
+        {'id': 'new_material_not_majority', 'pass': bool(development_ok or exempt)},
+        {'id': 'arrangement_hook_present', 'pass': bool(hook_ok)},
+    ]
+    forms = style.get('form') or []
+    bars = [int(section.get('bars') or 0) for section in forms if isinstance(section, dict)]
+    flags = [
+        {'id': 1, 'name': 'all_sections_eight_bar_multiples', 'flagged': bool(bars) and all(value >= 8 and value % 8 == 0 for value in bars)},
+        {'id': 2, 'name': 'energy_never_descends', 'flagged': not energy_ok, 'exempt': exempt},
+        {'id': 3, 'name': 'roster_never_changes', 'flagged': not exit_ok, 'exempt': exempt},
+        {'id': 6, 'name': 'no_nonvocal_hook', 'flagged': not hook_ok},
+        {'id': 8, 'name': 'onsets_fully_quantized', 'flagged': float(expr.get('timing_std_ms') or 0) < 0.5},
+    ]
+    return (
+        {
+            'plan_source': 'plan' if plan else 'score',
+            'exemption': sorted(exemptions),
+            'checks': checks,
+            'passed': sum(1 for check in checks if check['pass']),
+            'checked': len(checks),
+        },
+        {
+            'flags': flags,
+            'flag_count': sum(1 for flag in flags if flag['flagged']),
+            'checked': len(flags),
+        },
+    )
+
+
+def review(style,siblings=(),plan=None):
     mel=melodic_metrics(style); harm=harmonic_metrics(style); orch=orchestration_metrics(style); expr=expressive_metrics(style)
     tops=topology_by_bar(style); top_unique=len(set(tops))/max(1,len(tops)); adjacent=sum(tops[i]==tops[i-1] for i in range(1,len(tops)))/max(1,len(tops)-1)
     dens=section_densities(style); contrast=(max(dens)-min(dens))/max(.1,safe_mean(dens,1)) if len(dens)>1 else 0
@@ -224,18 +343,32 @@ def review(style,siblings=()):
         actions.append('strengthen_identity')
         critic.append('The cue tiles the same cell or sits too close to another score in the catalog.')
     status='approved' if weighted>=8.0 and not actions else 'revise' if weighted>=6.7 else 'rebuild'
+    compliance,tells=arrangement_review(style,plan,dens,ident,expr)
     return {
       'id':style['id'],'title':style['title'],'category':style['category'],'status':status,'score':round(weighted*10,1),
       'legality_score':round(legality,2),'identity_score':round(scores['identity'],2),
       'dimension_scores':{k:round(v,2) for k,v in scores.items()},
       'metrics':{'melody':mel,'harmony':harm,'orchestration':orch,'expression':expr,'identity':ident,'topology_unique_ratio':round(top_unique,4),'adjacent_repeat_ratio':round(adjacent,4),'section_density_contrast':round(contrast,4)},
+      'plan_compliance':compliance,'rigidity_tells':tells,
       'critique':critic or ['The composition is coherent; revisions should focus on refinement rather than repair.'],'required_actions':actions
     }
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('output',type=Path);args=ap.parse_args()
-    d=json.loads(args.catalog.read_text());tracks=[review(s, siblings=d['styles']) for s in d['styles']]
+    ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('output',type=Path);ap.add_argument('--plan',type=Path,default=None);args=ap.parse_args()
+    d=json.loads(args.catalog.read_text())
+    plan=None
+    if args.plan:
+        plan=json.loads(args.plan.read_text(encoding='utf-8'))
+    tracks=[review(s, siblings=d['styles'], plan=plan) for s in d['styles']]
     summary=collections.Counter(t['status'] for t in tracks)
-    out={'version':'3.0.0','reviewer':'Neo-SPC Symbolic Review','method':'deterministic symbolic score critique split into legality and identity; renderer, mix and human listening excluded','summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),'tracks':tracks}
+    honors=load_backend_honors()
+    out={
+      'version':'3.1.0','reviewer':'Neo-SPC Symbolic Review',
+      'method':'deterministic symbolic score critique split into legality, identity, plan compliance and rigidity tells; renderer, mix and human listening excluded',
+      'summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),
+      'plan_compliance':{'passed':sum(t['plan_compliance']['passed'] for t in tracks),'checked':sum(t['plan_compliance']['checked'] for t in tracks)},
+      'rigidity_tells':{'flag_count':sum(t['rigidity_tells']['flag_count'] for t in tracks),'checked':sum(t['rigidity_tells']['checked'] for t in tracks)},
+      'backend_honors':honors,'tracks':tracks
+    }
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(out,indent=2));print(json.dumps({'summary':dict(summary),'average':out['average_score']},indent=2))
 if __name__=='__main__':main()

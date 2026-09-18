@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "scoring_rule": "honors none excludes a field from scoring; do not treat it as zero. hint scores at reduced trust. exact is a miss if the backend did not honor the field.",
+  "honors_values": ["exact", "hint", "none"],
+  "backends": {
+    "native": {
+      "id": "native",
+      "name": "neospc compose and native render",
+      "honors": {
+        "meta.tempo": "exact",
+        "meta.meter": "exact",
+        "form.bars": "exact",
+        "form.harmony": "exact",
+        "arrangement.roster": "exact",
+        "arrangement.energy_curve": "hint",
+        "mix.lufs": "exact",
+        "mix.buses": "exact",
+        "midi.ports": "none"
+      }
+    },
+    "atelier": {
+      "id": "atelier",
+      "name": "Ensemble Atelier viewer",
+      "honors": {
+        "meta.tempo": "exact",
+        "meta.meter": "exact",
+        "form.bars": "exact",
+        "form.harmony": "exact",
+        "arrangement.roster": "hint",
+        "arrangement.energy_curve": "hint",
+        "mix.lufs": "none",
+        "mix.buses": "none",
+        "midi.ports": "none"
+      }
+    },
+    "console": {
+      "id": "console",
+      "name": "console soundpack VGM/SPC preview",
+      "honors": {
+        "meta.tempo": "exact",
+        "meta.meter": "exact",
+        "form.bars": "exact",
+        "form.harmony": "exact",
+        "arrangement.roster": "exact",
+        "arrangement.energy_curve": "hint",
+        "mix.lufs": "hint",
+        "mix.buses": "none",
+        "midi.ports": "none"
+      }
+    },
+    "midi": {
+      "id": "midi",
+      "name": "Type-1 MIDI export",
+      "honors": {
+        "meta.tempo": "exact",
+        "meta.meter": "exact",
+        "form.bars": "exact",
+        "form.harmony": "exact",
+        "arrangement.roster": "exact",
+        "arrangement.energy_curve": "hint",
+        "mix.lufs": "none",
+        "mix.buses": "none",
+        "midi.ports": "exact"
+      }
+    },
+    "soundfont": {
+      "id": "soundfont",
+      "name": "local SF2 via FluidSynth or optional SpessaSynth preview",
+      "honors": {
+        "meta.tempo": "exact",
+        "meta.meter": "exact",
+        "form.bars": "exact",
+        "form.harmony": "exact",
+        "arrangement.roster": "hint",
+        "arrangement.energy_curve": "hint",
+        "mix.lufs": "none",
+        "mix.buses": "none",
+        "midi.ports": "none"
+      }
+    }
+  }
+}

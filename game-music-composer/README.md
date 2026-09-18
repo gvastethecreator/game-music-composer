@@ -37,7 +37,7 @@ Refinement changes performed timing, gate and velocity while preserving the writ
 - `init`: creates a valid plan and recipe from a brief.
 - `compose`: writes `composition.json` and `catalog.json` from the plan, harness and seed.
 - `validate`: checks plans, recipes, cues and catalogs with exact JSON paths.
-- `review`: applies the bundled, repeatable score rubric to a catalog.
+- `review`: applies the bundled symbolic rubric to a catalog (legality, identity, plan compliance, rigidity tells). Honors native / atelier / console / MIDI separately. Optional `--plan`.
 - `export-midi`: writes Type-1 MIDI and an export audit. It has a standard-library fallback.
 - `audit-bank`: checks patch names, role coverage and playable ranges.
 - `render`: writes WAV, OGG and MP3 previews when NumPy, SoundFile and FFmpeg are present.

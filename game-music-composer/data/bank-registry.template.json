@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "banks": [
+    {
+      "id": "compact",
+      "name": "Neo-SPC compact original sample bank",
+      "hash": null,
+      "path": "resources/original-sample-bank",
+      "format": "wav-compact",
+      "engine": "render_mix_v4",
+      "provenance": "skill resources/original-sample-bank",
+      "license": "skill LICENSE; see data/soundbank-provenance.json",
+      "redistribution": "packaged with the skill",
+      "presets": [],
+      "known_losses": [
+        "unlooped samples pad remaining duration with silence",
+        "no SoundFont layers or MIDI CC articulations",
+        "instrument names suggest a role; they do not select a GM program"
+      ]
+    },
+    {
+      "id": "factory-chamber",
+      "name": "Factory Bank Chamber (operator-supplied build directory)",
+      "hash": null,
+      "path": null,
+      "format": "wav-multisample",
+      "engine": "render_mix_v4",
+      "provenance": "operator Chamber build via --factory-dir; CC0 recorded sources listed in data/soundbank-provenance.json",
+      "license": "CC0 recorded subset plus original synthesis; operator must keep the build directory",
+      "redistribution": "not packaged; never ship private or game SoundFonts",
+      "presets": [],
+      "known_losses": [
+        "54 score roles collapse onto named Factory patches",
+        "live mixer, effects and mastering still differ from native WAV"
+      ]
+    }
+  ]
+}

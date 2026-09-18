@@ -36,7 +36,7 @@ def main():
             lead={'bachata':'guitar','trip_hop':['piano','vibes','muted_guitar','strings','bell','muted_guitar','clav','piano','reed','organ'][i],'trap':['bell','piano','synth_lead','pulse25','synth_pad','bell','muted_guitar','piano','vibes','harp'][i],'reggaeton':['synth_lead','guitar','pulse25','clav','vibes','piano','pulse50','muted_guitar','bell','harp'][i]}[genre]
             harmony='muted_guitar' if genre=='bachata' else 'piano' if genre=='trip_hop' else 'synth_pad' if genre=='trap' else ('guitar' if lead!='guitar' else 'clav')
             bass='sub' if genre=='trap' else 'bass' if genre=='bachata' else 'synth_bass'
-            palette='factory' if genre in ('bachata','trap') else 'velvet' if genre=='trip_hop' else ('circuit' if i in (2,6) else 'factory')
+            palette=('factory','velvet','circuit','timber','prism','voltage','factory','velvet','circuit','timber')[i]
             spans=[4,4,4,4] if i%3==0 else [4,8,4,4] if i%3==1 else [4,4,4,8]
             if i==9:spans=[4,8,8,4]
             bars=sum(spans);drop=[sum(spans[:2])+j for j in (0,2)]

@@ -1,6 +1,6 @@
 # Phrase Studio
 
-The previous corpus used a shared motif generator and automatic ensemble layers. Its symbolic scores did not establish listening quality. This revision replaces the written material with 100 explicit subjects and answers, three-role reductions, nearest-inversion voice leading, phrase-end rests, and 17 finite accompaniment grammars. Scene names remain stable; the notes, arrangements and exports are replaced.
+The previous corpus used a shared motif generator and automatic ensemble layers. Its symbolic scores did not establish listening quality. This revision replaces the written material with 100 explicit subjects and answers, three-role reductions, nearest-inversion voice leading, phrase-end rests, and 17 finite accompaniment grammars. Nine scene categories keep stable ids; Adventure was rewritten as `ridge_survey`, `switchback_market`, `ferry_whistle`, `cairn_notes`, `pack_mule_swing`, `chapel_of_maps`, `radio_ridge`, `compass_invention`, `trail_walking` and `home_jig`. Groove packs live in a separate 140-cue file.
 
 ## Write a cue
 
@@ -23,7 +23,7 @@ Run the normal `neospc.py init` workflow. Add `score-blueprint.json` to that pro
 
 Degrees index the plan's scale. Each subject has eight degrees, split into two bars. Rhythm positions are increasing fractions of one bar. Phrase ends resolve onto the planned harmony and leave a breath. The answer is independently written; do not generate it merely by inverting every interval. Roles are lead, harmony, bass. An optional `answer_role` fills the final melodic gap with two notes. Use plan section `B` for contrasting material.
 
-Shared grammars: jig, waltz, swing, walking, bossa, tango, field, chorale, minimal, invention, funk, breaks, techno, drive, arp, dub, ska. The `bachata`, `trip_hop`, `trap` and `reggaeton` grammars use the additional contracts and dedicated rhythm writer in [52-genre-expansion.md](52-genre-expansion.md). These are bounded sketch grammars, not certification of traditional style, strict fugue, process music or atonal syntax. Use authored notes and specialist review when those claims matter. The plan/harness path remains available without a blueprint, and browser generators remain separate experiments.
+Shared grammars: jig, waltz, swing, walking, bossa, tango, field, chorale, minimal, invention, funk, breaks, techno, drive, arp, dub, ska. The 14 groove category grammars use dedicated contracts and `genre_composer.py`; see [52-genre-expansion.md](52-genre-expansion.md). Scene `funk`/`tango`/`bossa` grammars stay on this Phrase Studio writer. These are bounded sketch grammars, not certification of traditional style, strict fugue, process music or atonal syntax. Use authored notes and specialist review when those claims matter. The plan/harness path remains available without a blueprint, and browser generators remain separate experiments.
 
 ## Sound and export
 

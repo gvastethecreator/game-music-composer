@@ -32,6 +32,7 @@ SUMMARY_FIELDS = (
     "tags",
     "metrics",
     "composition_quality",
+    "sound_palette",
 )
 
 

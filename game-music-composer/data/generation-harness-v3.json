@@ -7,22 +7,32 @@
       "category": {
         "type": "enum",
         "values": [
-          "adventure",
+          "salsa",
+          "cumbia",
+          "bachata",
+          "bossa_nova",
+          "tango",
+          "funk",
+          "house",
+          "dnb",
+          "synthwave",
+          "lofi",
+          "trap",
+          "trip_hop",
+          "metal",
+          "reggaeton",
           "action",
-          "horror",
           "towns",
-          "emotion",
           "mystery",
+          "horror",
+          "emotion",
           "fantasy",
           "electronic",
           "urban",
           "classical",
-          "bachata",
-          "trip_hop",
-          "trap",
-          "reggaeton"
+          "adventure"
         ],
-        "default": "adventure"
+        "default": "salsa"
       },
       "game_context": {
         "type": "enum",
@@ -1022,7 +1032,14 @@
           "piano",
           "vibes",
           "synth_lead",
-          "bell"
+          "bell",
+          "accordion",
+          "clarinet",
+          "clav",
+          "trumpet",
+          "pulse25",
+          "pulse50",
+          "dist_guitar_l"
         ],
         "default": "flute"
       },
@@ -1036,7 +1053,15 @@
           "strings",
           "guitar",
           "vibes",
-          "synth_lead"
+          "synth_lead",
+          "piano",
+          "accordion",
+          "clarinet",
+          "trumpet",
+          "violin1",
+          "pulse25",
+          "pulse50",
+          "dist_guitar_r"
         ],
         "default": "none"
       },

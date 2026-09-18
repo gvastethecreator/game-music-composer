@@ -55,10 +55,57 @@
         "properties": {
           "name": { "type": "string" },
           "function": { "type": "string" },
-          "bars": { "type": "integer", "minimum": 1 }
+          "bars": { "type": "integer", "minimum": 1 },
+          "development": {
+            "enum": ["repeat", "sequence", "extend", "contract", "fragment", "vary", "augment", "counterpoint", "new", "recap"]
+          }
         },
         "additionalProperties": false
       }
+    },
+    "energy_curve": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 10 }
+    },
+    "arrangement_exemptions": {
+      "type": "array",
+      "items": { "enum": ["short_loop", "drone", "continuous_combat"] }
+    },
+    "subtraction_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["at", "what"],
+        "properties": {
+          "at": { "type": "string", "minLength": 1 },
+          "what": { "type": "string", "minLength": 1 },
+          "why": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "roster": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "entry", "exit"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "entry": { "type": "string", "minLength": 1 },
+          "exit": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "arrangement_hook": {
+      "type": "object",
+      "required": ["what"],
+      "properties": {
+        "what": { "type": "string", "minLength": 1 },
+        "register": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "quality_gates": {
       "type": "object",

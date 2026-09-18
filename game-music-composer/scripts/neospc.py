@@ -43,6 +43,11 @@ RUNTIME_JSON_PATHS = (
     DATA / "scale-library.json",
     DATA / "voice-architecture-profiles.json",
     DATA / "voice-budget-modes.json",
+    DATA / "backend-honors.json",
+    DATA / "bank-registry.schema.json",
+    DATA / "bank-registry.template.json",
+    DATA / "megadrive-fm-presets.json",
+    DATA / "nes-2a03-macros.json",
     SCHEMAS / "composition-plan.schema.json",
     SCHEMAS / "generation-harness-v3.schema.json",
     SCHEMAS / "neospc-composition.schema.json",
@@ -57,6 +62,10 @@ VOICE_PROFILES = {
     32: "symphonic_32",
 }
 KEYS = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+DEVELOPMENT_OPS = frozenset(
+    {"repeat", "sequence", "extend", "contract", "fragment", "vary", "augment", "counterpoint", "new", "recap"}
+)
+ARRANGEMENT_EXEMPTIONS = frozenset({"short_loop", "drone", "continuous_combat"})
 HARNESS_SECTIONS = (
     "brief",
     "harmony",
@@ -75,21 +84,37 @@ HARNESS_SECTIONS = (
     "review",
 )
 CATEGORY_PRESETS = {
+    "salsa": ("folk_ensemble", "piano", "trumpet", "bossa", "acoustic"),
+    "cumbia": ("folk_ensemble", "accordion", "clarinet", "bossa", "acoustic"),
     "bachata": ("folk_ensemble", "guitar", "guitar", "bossa", "acoustic"),
-    "trip_hop": ("jazz_combo", "piano", "vibes", "funk", "brush"),
+    "bossa_nova": ("jazz_combo", "guitar", "flute", "bossa", "acoustic"),
+    "tango": ("chamber", "accordion", "violin1", "ritual", "acoustic"),
+    "funk": ("jazz_combo", "clav", "brass", "funk", "acoustic"),
+    "house": ("electronic_stack", "synth_lead", "pulse50", "motor", "electronic"),
+    "dnb": ("electronic_stack", "synth_lead", "pulse25", "motor", "electronic"),
+    "synthwave": ("electronic_stack", "synth_lead", "pulse50", "motor", "electronic"),
+    "lofi": ("jazz_combo", "piano", "vibes", "funk", "brush"),
     "trap": ("electronic_stack", "bell", "synth_lead", "motor", "electronic"),
+    "trip_hop": ("jazz_combo", "piano", "vibes", "funk", "brush"),
+    "metal": ("rock_band", "dist_guitar_l", "dist_guitar_r", "motor", "orchestral"),
     "reggaeton": ("hybrid", "synth_lead", "guitar", "motor", "electronic"),
-    "adventure": ("folk_ensemble", "flute", "guitar", "floating", "acoustic"),
     "action": ("hybrid", "brass", "strings", "motor", "orchestral"),
-    "horror": ("choir_orchestra", "reed", "strings", "ritual", "minimal"),
     "towns": ("folk_ensemble", "ocarina", "flute", "bossa", "acoustic"),
-    "emotion": ("chamber", "piano", "strings", "floating", "brush"),
     "mystery": ("chamber", "vibes", "reed", "motor", "minimal"),
+    "horror": ("choir_orchestra", "reed", "strings", "ritual", "minimal"),
+    "emotion": ("chamber", "piano", "strings", "floating", "brush"),
     "fantasy": ("choir_orchestra", "flute", "brass", "ritual", "orchestral"),
     "electronic": ("electronic_stack", "synth_lead", "vibes", "motor", "electronic"),
     "urban": ("jazz_combo", "reed", "vibes", "funk", "brush"),
     "classical": ("chamber", "strings", "flute", "floating", "orchestral"),
+    "adventure": ("folk_ensemble", "ocarina", "guitar", "floating", "acoustic"),
 }
+GENRE_TEMPOS = {
+    "salsa": 104, "cumbia": 88, "bachata": 122, "bossa_nova": 84, "tango": 118, "funk": 108,
+    "house": 124, "dnb": 172, "synthwave": 110, "lofi": 78, "trap": 144, "trip_hop": 78,
+    "metal": 160, "reggaeton": 94,
+}
+GENRE_FOUR_FOUR = set(GENRE_TEMPOS) - {"metal"}
 
 
 @dataclass(frozen=True)
@@ -121,9 +146,13 @@ def atomic_json_write(path: Path, value: Any) -> None:
     staging.replace(path)
 
 
-def category_ids() -> set[str]:
+def category_order() -> list[str]:
     contracts = load_json(DATA / "category-benchmark-contracts.json")
-    return {str(item["id"]) for item in contracts["categories"]}
+    return [str(item["id"]) for item in contracts["categories"]]
+
+
+def category_ids() -> set[str]:
+    return set(category_order())
 
 
 def harness_defaults() -> dict[str, dict[str, Any]]:
@@ -248,6 +277,9 @@ def validate_plan(plan: Any, base: str = "$") -> list[Issue]:
             if require_fields(section, ("name", "function", "bars"), section_path, issues):
                 if not isinstance(section.get("bars"), int) or section["bars"] < 1:
                     add_issue(issues, "error", "invalid_section_bars", f"{section_path}.bars", "Section bars must be a positive integer.")
+                development = section.get("development")
+                if development is not None and development not in DEVELOPMENT_OPS:
+                    add_issue(issues, "error", "invalid_development", f"{section_path}.development", "Use a closed development operation from the composition-plan schema.")
     gates = plan.get("quality_gates")
     if isinstance(gates, dict):
         for name, state in gates.items():
@@ -255,7 +287,89 @@ def validate_plan(plan: Any, base: str = "$") -> list[Issue]:
                 add_issue(issues, "error", "invalid_gate", f"{base}.quality_gates.{name}", "Quality gate state must be true or false.")
     else:
         add_issue(issues, "error", "expected_object", f"{base}.quality_gates", "Expected a JSON object.")
+    validate_arrangement_choices(plan, base, issues)
     return issues
+
+
+def validate_arrangement_choices(plan: dict[str, Any], base: str, issues: list[Issue]) -> None:
+    form = plan.get("form") if isinstance(plan.get("form"), list) else []
+    names = [str(section.get("name") or "") for section in form if isinstance(section, dict)]
+    names = [name for name in names if name]
+    last_name = names[-1] if names else ""
+    exemptions = plan.get("arrangement_exemptions")
+    exemption_set: set[str] = set()
+    if exemptions is not None:
+        if not isinstance(exemptions, list):
+            add_issue(issues, "error", "expected_array", f"{base}.arrangement_exemptions", "Expected an array of exemption ids.")
+        else:
+            for index, item in enumerate(exemptions):
+                if item not in ARRANGEMENT_EXEMPTIONS:
+                    add_issue(issues, "error", "invalid_exemption", f"{base}.arrangement_exemptions[{index}]", "Use short_loop, drone or continuous_combat.")
+                else:
+                    exemption_set.add(str(item))
+    exempt = bool(exemption_set)
+
+    curve = plan.get("energy_curve")
+    if curve is not None:
+        if not isinstance(curve, dict):
+            add_issue(issues, "error", "expected_object", f"{base}.energy_curve", "Expected a JSON object keyed by section name.")
+        else:
+            values = []
+            for name in names:
+                if name not in curve:
+                    add_issue(issues, "warning", "missing_energy_section", f"{base}.energy_curve.{name}", "Declare an energy value for every form section.")
+                    continue
+                value = curve[name]
+                if not isinstance(value, (int, float)) or isinstance(value, bool) or not 0 <= value <= 10:
+                    add_issue(issues, "error", "invalid_energy", f"{base}.energy_curve.{name}", "Energy must be a number from 0 to 10.")
+                else:
+                    values.append(float(value))
+            for name in curve:
+                if name not in names:
+                    add_issue(issues, "warning", "unknown_energy_section", f"{base}.energy_curve.{name}", "Energy key does not match a form section.")
+            if values and not any(values[index] < values[index - 1] for index in range(1, len(values))) and not exempt:
+                add_issue(issues, "warning", "energy_never_descends", f"{base}.energy_curve", "Give the curve a descent or name a short_loop, drone or continuous_combat exemption.")
+
+    events = plan.get("subtraction_events")
+    if events is not None:
+        if not isinstance(events, list):
+            add_issue(issues, "error", "expected_array", f"{base}.subtraction_events", "Expected an array of subtraction events.")
+        else:
+            if not events and not exempt:
+                add_issue(issues, "warning", "subtraction_missing", f"{base}.subtraction_events", "Declare at least one subtraction event, or name an exemption.")
+            for index, event in enumerate(events):
+                path = f"{base}.subtraction_events[{index}]"
+                if require_fields(event, ("at", "what"), path, issues):
+                    if not str(event.get("at") or "").strip() or not str(event.get("what") or "").strip():
+                        add_issue(issues, "error", "placeholder_text", path, "Name where something is removed and what leaves.")
+
+    roster = plan.get("roster")
+    if roster is not None:
+        if not isinstance(roster, list):
+            add_issue(issues, "error", "expected_array", f"{base}.roster", "Expected an array of roster entries.")
+        else:
+            end_tokens = {"end", last_name} if last_name else {"end"}
+            exits_early = False
+            for index, item in enumerate(roster):
+                path = f"{base}.roster[{index}]"
+                if require_fields(item, ("id", "role", "entry", "exit"), path, issues):
+                    if str(item.get("exit") or "") not in end_tokens:
+                        exits_early = True
+            if roster and not exits_early and not exempt:
+                add_issue(issues, "warning", "roster_never_exits", f"{base}.roster", "At least one role must exit before the last section, or name an exemption.")
+
+    hook = plan.get("arrangement_hook")
+    if hook is not None:
+        if not isinstance(hook, dict):
+            add_issue(issues, "error", "expected_object", f"{base}.arrangement_hook", "Expected a JSON object.")
+        elif require_fields(hook, ("what",), f"{base}.arrangement_hook", issues):
+            text = str(hook.get("what") or "").strip().lower()
+            if not text or any(marker in text for marker in ("describe ", "todo", "<")):
+                add_issue(issues, "error", "placeholder_text", f"{base}.arrangement_hook.what", "Name the non-vocal figure that can be remembered without a lead vocal.")
+
+    ops = [section.get("development") for section in form if isinstance(section, dict) and section.get("development")]
+    if ops and sum(op == "new" for op in ops) * 2 >= len(ops) and not exempt:
+        add_issue(issues, "warning", "new_material_majority", f"{base}.form", "Keep `new` below half of the section development operations.")
 
 
 def library_values(source: str) -> set[Any]:
@@ -449,11 +563,13 @@ def print_report(label: str, issues: list[Issue], as_json: bool = False) -> None
 
 
 def cmd_init(args: argparse.Namespace) -> int:
-    genre_tempos = {"bachata": 122, "trip_hop": 78, "trap": 144, "reggaeton": 94}
-    args.meter = args.meter or ("4/4" if args.category in genre_tempos else "6/8")
-    args.bpm = args.bpm if args.bpm is not None else genre_tempos.get(args.category, 96)
-    if args.category in genre_tempos and args.meter != "4/4":
+    args.meter = args.meter or ("4/4" if args.category in GENRE_TEMPOS else "6/8")
+    args.bpm = args.bpm if args.bpm is not None else GENRE_TEMPOS.get(args.category, 96)
+    if args.category in GENRE_FOUR_FOUR and args.meter != "4/4":
         print("These genre blueprints require 4/4. Choose --meter 4/4.", file=sys.stderr)
+        return 2
+    if args.category == "metal" and args.meter not in {"4/4", "7/8"}:
+        print("Metal blueprints use 4/4 or 7/8. Choose one of those meters.", file=sys.stderr)
         return 2
     output = args.output.resolve()
     plan_path = output / "composition-plan.json"
@@ -502,7 +618,7 @@ def cmd_init(args: argparse.Namespace) -> int:
     atomic_json_write(harness_path, harness)
     print(f"Created {plan_path}")
     print(f"Created {harness_path}")
-    if args.category in {"bachata", "trip_hop", "trap", "reggaeton"}:
+    if args.category in GENRE_TEMPOS:
         records = [r for r in load_json(DATA / "genre-expansion-contracts.json")["contracts"] if r["category"] == args.category]
         record = records[args.seed % len(records)]
         blueprint = copy.deepcopy(record["native_engine_contract"]["writing"])
@@ -633,6 +749,12 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         patches = load_json(FACTORY_MANIFEST_PATH)["patches"]
         print(f"  READY   {len(benchmark['styles'])} benchmark cues, {len(patches)} Factory Bank patches, {len(HARNESS_SECTIONS)} harness sections")
     counts = issue_counts(issues)
+    if not args.json and not counts["errors"]:
+        fluidsynth = shutil.which("fluidsynth")
+        print(
+            "  extra   FluidSynth: "
+            + ("found on PATH (optional soundfont render)" if fluidsynth else "not on PATH (optional; not a skill error)")
+        )
     return 1 if counts["errors"] or (args.strict and counts["warnings"]) else 0
 
 
@@ -659,14 +781,27 @@ def cmd_review(args: argparse.Namespace) -> int:
     if not validate_catalog_path(args.catalog):
         return 1
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    return run_script("professor_review.py", [str(args.catalog), str(args.output)])
+    command = [str(args.catalog), str(args.output)]
+    plan = args.plan
+    if plan is None:
+        sibling = args.catalog.parent / "composition-plan.json"
+        if sibling.is_file():
+            plan = sibling
+    if plan:
+        command.extend(["--plan", str(plan)])
+    return run_script("professor_review.py", command)
 
 
 def cmd_export_midi(args: argparse.Namespace) -> int:
     if not validate_catalog_path(args.catalog):
         return 1
     args.output.mkdir(parents=True, exist_ok=True)
-    return run_script("export_midis_v4.py", [str(args.catalog), str(args.output)])
+    command = [str(args.catalog), str(args.output)]
+    if args.sound_plan:
+        command.extend(["--sound-plan", str(args.sound_plan)])
+    if args.adapt_ports:
+        command.append("--adapt-ports")
+    return run_script("export_midis_v4.py", command)
 
 
 def cmd_audit_bank(args: argparse.Namespace) -> int:
@@ -685,9 +820,88 @@ def cmd_audit_bank(args: argparse.Namespace) -> int:
     return code
 
 
+def cmd_inspect_bank(args: argparse.Namespace) -> int:
+    import sound_plan
+
+    try:
+        presets = sound_plan.list_sf2_presets(args.path)
+    except (OSError, ValueError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(json.dumps({"path": str(args.path), "presets": presets}, indent=2))
+    return 0
+
+
+def cmd_sound_plan(args: argparse.Namespace) -> int:
+    import sound_plan
+
+    if not validate_catalog_path(args.catalog):
+        return 1
+    try:
+        catalog = load_json(args.catalog)
+        if args.sf2:
+            inventory = sound_plan.inventory_from_sf2(args.sf2, args.bank)
+        else:
+            registry = sound_plan.load_registry(args.registry)
+            inventory = sound_plan.bank_by_id(registry, args.bank or "compact")
+        mapping = sound_plan.load_map(args.map)
+        plan = sound_plan.plan_from_catalog(
+            catalog,
+            inventory,
+            mapping,
+            backend="soundfont" if args.sf2 else "compact",
+            allow_fallback=args.allow_fallback,
+        )
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        sound_plan.dump_json(args.output, plan)
+    except (OSError, ValueError, KeyError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    collapse = plan["cues"][0]["role_collapse"]
+    print(
+        f"READY sound plan {args.output.resolve()} · "
+        f"{collapse['requested_roles']} roles -> {collapse['effective_presets']} presets"
+    )
+    return 0
+
+
 def cmd_render(args: argparse.Namespace) -> int:
     if not validate_catalog_path(args.catalog):
         return 1
+    import sound_plan
+
+    try:
+        requested = None if args.backend == "auto" else args.backend
+        backend, _bank_id, _fallback = sound_plan.resolve_backend(
+            requested,
+            factory_dir=args.factory_dir,
+            sound_plan=args.sound_plan,
+            bank=args.bank,
+            allow_fallback=args.allow_fallback,
+        )
+    except FileNotFoundError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    args.output.mkdir(parents=True, exist_ok=True)
+    if backend == "soundfont":
+        if shutil.which("fluidsynth") is None:
+            print(
+                "soundfont render needs fluidsynth on PATH. Doctor still passes; this backend is optional.",
+                file=sys.stderr,
+            )
+            return 2
+        command = [str(args.catalog), str(args.output), "--sample-rate", "32000"]
+        if args.bank:
+            command.extend(["--bank", str(args.bank)])
+        if args.sound_plan:
+            command.extend(["--sound-plan", str(args.sound_plan)])
+        if args.map:
+            command.extend(["--map", str(args.map)])
+        if args.adapt_ports:
+            command.append("--adapt-ports")
+        if args.allow_fallback:
+            command.append("--allow-fallback")
+        return run_script("render_soundfont.py", command)
     missing = render_dependency_issues()
     if missing:
         print(
@@ -696,12 +910,23 @@ def cmd_render(args: argparse.Namespace) -> int:
             file=sys.stderr,
         )
         return 2
-    args.output.mkdir(parents=True, exist_ok=True)
-    return run_script(
-        "render_mix_v4.py",
-        [str(args.catalog), str(args.sample_dir), str(args.calibration), str(args.output), "--workers", str(args.workers)]
-        + (["--factory-dir", str(args.factory_dir)] if args.factory_dir else []),
-    )
+    command = [
+        str(args.catalog),
+        str(args.sample_dir),
+        str(args.calibration),
+        str(args.output),
+        "--workers",
+        str(args.workers),
+        "--backend",
+        backend,
+    ]
+    if args.factory_dir:
+        command.extend(["--factory-dir", str(args.factory_dir)])
+    if args.allow_fallback:
+        command.append("--allow-fallback")
+    if args.sound_plan:
+        command.extend(["--sound-plan", str(args.sound_plan)])
+    return run_script("render_mix_v4.py", command)
 
 
 def render_dependency_issues() -> list[str]:
@@ -733,7 +958,7 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("output", type=Path, help="Project directory to create or update.")
     init.add_argument("--title", required=True)
     init.add_argument("--id", help="Optional lowercase cue id. Defaults to a slug of the title.")
-    init.add_argument("--category", choices=sorted(category_ids()), default="adventure")
+    init.add_argument("--category", choices=category_order(), default="salsa")
     init.add_argument("--subcategory", default="custom")
     init.add_argument("--game-function", help="Free-text scene or gameplay use. Defaults to the game context.")
     init.add_argument("--game-context", choices=brief_spec["game_context"]["values"], default="exploration")
@@ -766,11 +991,14 @@ def build_parser() -> argparse.ArgumentParser:
     review = sub.add_parser("review", help="Run the deterministic symbolic score rubric on a catalog.")
     review.add_argument("catalog", type=Path)
     review.add_argument("output", type=Path)
+    review.add_argument("--plan", type=Path, default=None, help="Optional composition-plan.json for plan-compliance checks.")
     review.set_defaults(func=cmd_review)
 
     midi = sub.add_parser("export-midi", help="Export Type-1 MIDI plus an audit report.")
     midi.add_argument("catalog", type=Path)
     midi.add_argument("output", type=Path)
+    midi.add_argument("--sound-plan", type=Path, help="Resolved sound-plan.json; writes bank MSB/LSB and program from the plan.")
+    midi.add_argument("--adapt-ports", action="store_true", help="Collapse MIDI port > 0 onto port 0 when a single-port adapter can keep every lane.")
     midi.set_defaults(func=cmd_export_midi)
 
     bank = sub.add_parser("audit-bank", help="Check Factory Bank assignments and playable ranges.")
@@ -779,13 +1007,33 @@ def build_parser() -> argparse.ArgumentParser:
     bank.add_argument("--output", type=Path)
     bank.set_defaults(func=cmd_audit_bank)
 
-    render = sub.add_parser("render", help="Render WAV, OGG and MP3 previews with the original sample bank.")
+    inspect_bank = sub.add_parser("inspect-bank", help="List presets from a local SF2 using the RIFF pdta parser (no FluidSynth).")
+    inspect_bank.add_argument("path", type=Path)
+    inspect_bank.set_defaults(func=cmd_inspect_bank)
+
+    sound_plan = sub.add_parser("sound-plan", help="Write a resolved sound-plan.json for a catalog.")
+    sound_plan.add_argument("catalog", type=Path)
+    sound_plan.add_argument("--bank", help="Registry bank id, or used with --sf2 as the inventory id.")
+    sound_plan.add_argument("--sf2", type=Path, help="Local SF2 to inventory. Not packaged with the skill.")
+    sound_plan.add_argument("--map", type=Path, help="Explicit inst -> {bank, program} map. Do not assume GM.")
+    sound_plan.add_argument("--registry", type=Path, default=DATA / "bank-registry.template.json")
+    sound_plan.add_argument("--output", type=Path, required=True)
+    sound_plan.add_argument("--allow-fallback", action="store_true", help="Record GM hints when a mapped preset is missing.")
+    sound_plan.set_defaults(func=cmd_sound_plan)
+
+    render = sub.add_parser("render", help="Render WAV, OGG and MP3 previews with a named backend and a receipt.")
     render.add_argument("catalog", type=Path)
     render.add_argument("output", type=Path)
     render.add_argument("--sample-dir", type=Path, default=SAMPLE_DIR)
     render.add_argument("--calibration", type=Path, default=CALIBRATION_PATH)
     render.add_argument("--workers", type=int, default=4)
     render.add_argument("--factory-dir", type=Path, help="Complete multisample build directory; respects each score sound_palette.")
+    render.add_argument("--backend", choices=("auto", "compact", "multisample", "soundfont"), default="auto")
+    render.add_argument("--bank", help="Local SF2 path for the soundfont backend.")
+    render.add_argument("--sound-plan", type=Path)
+    render.add_argument("--map", type=Path)
+    render.add_argument("--adapt-ports", action="store_true")
+    render.add_argument("--allow-fallback", action="store_true", help="If the requested bank is missing, render compact and write that on the receipt.")
     render.set_defaults(func=cmd_render)
 
     return parser

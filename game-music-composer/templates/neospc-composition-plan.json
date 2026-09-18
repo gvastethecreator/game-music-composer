@@ -1,23 +1,23 @@
 {
   "id": "new_cue",
   "title": "New Cue",
-  "category": "adventure",
+  "category": "salsa",
   "subcategory": "custom",
-  "game_function": "exploration",
-  "emotional_thesis": "Move from curiosity to earned confidence without losing forward motion.",
+  "game_function": "dance",
+  "emotional_thesis": "State a dance-floor hook, answer it, thin the breakdown, then return with a clear last phrase.",
   "voice_profile": "expanded_16",
   "voice_budget": 16,
   "musical_identity": {
-    "meter": "6/8",
-    "bpm": 96,
-    "key": "G",
+    "meter": "4/4",
+    "bpm": 104,
+    "key": "D",
     "mode": "dorian",
-    "motif": "Rising fourth answered by two short descending steps",
-    "harmonic_language": "Dorian field with a clear i-IV modal turn",
-    "bass_behavior": "Root-led motion that opens into stepwise links at phrase ends",
-    "groove": "Two broad 6/8 pulses with a light push into each second bar",
-    "silence_budget": "Leave the final eighth of each two-bar phrase open for the answer",
-    "loop_strategy": "Hold the last dominant color under a pickup that resolves on the first downbeat"
+    "motif": "Short tumbao-led cell answered by a descending close",
+    "harmonic_language": "Minor-key I-IV-V motion with a late dominant return",
+    "bass_behavior": "Tumbao roots with a syncopated pickup into bar two",
+    "groove": "Clave-shaped percussion under piano montuno offbeats",
+    "silence_budget": "Leave the last sixteenth of the loop open for the downbeat",
+    "loop_strategy": "Resolve the last phrase to the home chord and release the foreground"
   },
   "voice_architecture": {
     "core": [
@@ -43,24 +43,72 @@
     {
       "name": "A",
       "function": "establish",
-      "bars": 4
+      "bars": 4,
+      "development": "repeat"
     },
     {
       "name": "A2",
       "function": "develop",
-      "bars": 4
+      "bars": 4,
+      "development": "vary"
     },
     {
       "name": "B",
       "function": "contrast",
-      "bars": 4
+      "bars": 4,
+      "development": "fragment"
     },
     {
       "name": "A3",
       "function": "return and loop",
-      "bars": 4
+      "bars": 4,
+      "development": "recap"
     }
   ],
+  "energy_curve": {
+    "A": 4,
+    "A2": 6,
+    "B": 3,
+    "A3": 7
+  },
+  "arrangement_exemptions": [],
+  "subtraction_events": [
+    {
+      "at": "B",
+      "what": "Drop primary percussion and the sustained field",
+      "why": "Thin the mid-loop so the return can re-enter rather than stack"
+    }
+  ],
+  "roster": [
+    {
+      "id": "lead",
+      "role": "lead",
+      "entry": "A",
+      "exit": "end"
+    },
+    {
+      "id": "bass",
+      "role": "bass",
+      "entry": "A",
+      "exit": "end"
+    },
+    {
+      "id": "drums",
+      "role": "primary percussion",
+      "entry": "A",
+      "exit": "B"
+    },
+    {
+      "id": "pad",
+      "role": "texture",
+      "entry": "A2",
+      "exit": "A3"
+    }
+  ],
+  "arrangement_hook": {
+    "what": "Rising-fourth cell on the lead, answered by two short steps",
+    "register": "mid"
+  },
   "quality_gates": {
     "works_as_reduction": false,
     "distinct_from_reference_set": false,
@@ -68,6 +116,11 @@
     "loop_is_motivated": false,
     "timbre_roles_are_declared": false,
     "factory_bank_ranges_are_valid": false,
-    "midi_expression_is_role_aware": false
+    "midi_expression_is_role_aware": false,
+    "energy_curve_has_descent_or_exemption": false,
+    "has_subtraction_event": false,
+    "a_role_exits_before_end": false,
+    "arrangement_hook_is_hummable": false,
+    "new_material_is_not_majority": false
   }
 }

@@ -29,8 +29,8 @@
   },
   "mix_tracks": [
     {
-      "id": "fernway_crossing",
-      "title": "Fernway Crossing",
+      "id": "ridge_survey",
+      "title": "Ridge Survey",
       "category": "adventure",
       "lufs": -15.99,
       "peak_dbfs": -2.04,
@@ -44,8 +44,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "summit_lines",
-      "title": "Summit Lines",
+      "id": "switchback_market",
+      "title": "Switchback Market",
       "category": "adventure",
       "lufs": -16.04,
       "peak_dbfs": -2.32,
@@ -59,8 +59,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "emerald_canopy",
-      "title": "Emerald Canopy",
+      "id": "ferry_whistle",
+      "title": "Ferry Whistle",
       "category": "adventure",
       "lufs": -15.98,
       "peak_dbfs": -3.0,
@@ -74,8 +74,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "wake_of_amber",
-      "title": "Wake of Amber",
+      "id": "cairn_notes",
+      "title": "Cairn Notes",
       "category": "adventure",
       "lufs": -15.99,
       "peak_dbfs": -2.63,
@@ -89,8 +89,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "isles_above",
-      "title": "Isles Above",
+      "id": "pack_mule_swing",
+      "title": "Pack-Mule Swing",
       "category": "adventure",
       "lufs": -15.99,
       "peak_dbfs": -3.52,
@@ -104,8 +104,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "saffron_miles",
-      "title": "Saffron Miles",
+      "id": "chapel_of_maps",
+      "title": "Chapel of Maps",
       "category": "adventure",
       "lufs": -16.0,
       "peak_dbfs": -2.24,
@@ -119,8 +119,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "under_ice_lantern",
-      "title": "Under-Ice Lantern",
+      "id": "radio_ridge",
+      "title": "Radio Ridge",
       "category": "adventure",
       "lufs": -15.98,
       "peak_dbfs": -1.83,
@@ -134,8 +134,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "archive_of_roots",
-      "title": "Archive of Roots",
+      "id": "compass_invention",
+      "title": "Compass Invention",
       "category": "adventure",
       "lufs": -15.99,
       "peak_dbfs": -1.67,
@@ -149,8 +149,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "river_below",
-      "title": "River Below",
+      "id": "trail_walking",
+      "title": "Trail Walking",
       "category": "adventure",
       "lufs": -15.98,
       "peak_dbfs": -1.06,
@@ -164,8 +164,8 @@
       "target_lufs": -16.0
     },
     {
-      "id": "lanterns_homeward",
-      "title": "Lanterns Homeward",
+      "id": "home_jig",
+      "title": "Home Jig",
       "category": "adventure",
       "lufs": -15.99,
       "peak_dbfs": -2.75,
@@ -1531,7 +1531,7 @@
   ],
   "midi_tracks": [
     {
-      "id": "fernway_crossing",
+      "id": "ridge_survey",
       "tracks": 10,
       "ticks_per_beat": 480,
       "note_ons": 228,
@@ -1546,7 +1546,7 @@
       "cc91_count": 9
     },
     {
-      "id": "summit_lines",
+      "id": "switchback_market",
       "tracks": 9,
       "ticks_per_beat": 480,
       "note_ons": 256,
@@ -1561,7 +1561,7 @@
       "cc91_count": 8
     },
     {
-      "id": "emerald_canopy",
+      "id": "ferry_whistle",
       "tracks": 9,
       "ticks_per_beat": 480,
       "note_ons": 208,
@@ -1576,7 +1576,7 @@
       "cc91_count": 8
     },
     {
-      "id": "wake_of_amber",
+      "id": "cairn_notes",
       "tracks": 12,
       "ticks_per_beat": 480,
       "note_ons": 325,
@@ -1591,7 +1591,7 @@
       "cc91_count": 11
     },
     {
-      "id": "isles_above",
+      "id": "pack_mule_swing",
       "tracks": 12,
       "ticks_per_beat": 480,
       "note_ons": 212,
@@ -1606,7 +1606,7 @@
       "cc91_count": 11
     },
     {
-      "id": "saffron_miles",
+      "id": "chapel_of_maps",
       "tracks": 9,
       "ticks_per_beat": 480,
       "note_ons": 384,
@@ -1621,7 +1621,7 @@
       "cc91_count": 8
     },
     {
-      "id": "under_ice_lantern",
+      "id": "radio_ridge",
       "tracks": 7,
       "ticks_per_beat": 480,
       "note_ons": 162,
@@ -1636,7 +1636,7 @@
       "cc91_count": 6
     },
     {
-      "id": "archive_of_roots",
+      "id": "compass_invention",
       "tracks": 9,
       "ticks_per_beat": 480,
       "note_ons": 208,
@@ -1651,7 +1651,7 @@
       "cc91_count": 8
     },
     {
-      "id": "river_below",
+      "id": "trail_walking",
       "tracks": 10,
       "ticks_per_beat": 480,
       "note_ons": 207,
@@ -1666,7 +1666,7 @@
       "cc91_count": 9
     },
     {
-      "id": "lanterns_homeward",
+      "id": "home_jig",
       "tracks": 13,
       "ticks_per_beat": 480,
       "note_ons": 343,

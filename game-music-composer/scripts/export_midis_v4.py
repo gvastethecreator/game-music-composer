@@ -38,22 +38,65 @@ def expression_value(style,beat,role):
  role_adj={'lead':3,'counter':0,'riff':2,'bass':0,'kick':4,'snare':3,'pad':-5,'ensemble':-6,'texture':-8,'support':-3,'arp':-2}.get(role,0)
  return int(clamp(round(section+arc+role_adj),28,124))
 
-def export(style,outdir):
+def _plan_for(style,sound_plan):
+ if not sound_plan:return None
+ if sound_plan.get('tracks'):return sound_plan
+ cues=sound_plan.get('cues') or []
+ for cue in cues:
+  if cue.get('score_id')==style.get('id'):return cue
+ return cues[0] if cues else None
+
+def _source(plan,inst):
+ if not plan:return None
+ for row in plan.get('tracks') or []:
+  if row.get('inst')==inst:return row.get('source')
+ return None
+
+def _kit_channel(source,events):
+ if source:
+  bank=int(source.get('bank') or 0)
+  if source.get('percussion') and bank==128:return True
+  return False
+ return all(e['kind']=='drum' for e in events)
+
+def export(style,outdir,sound_plan=None,adapt_ports=False):
  mid=mido.MidiFile(type=1,ticks_per_beat=PPQ); meta=mido.MidiTrack();mid.tracks.append(meta)
  meta.append(mido.MetaMessage('track_name',name=safe(style['title']),time=0));meta.append(mido.MetaMessage('set_tempo',tempo=mido.bpm2tempo(style['bpm']),time=0));num,den=parse_meter(style['meter']);meta.append(mido.MetaMessage('time_signature',numerator=num,denominator=den,time=0));meta.append(mido.MetaMessage('text',text=safe(f"Neo-SPC v2.2 category={style['category']} bpm_center={style['bpm']} sample_bank=1.1"),time=0))
  lanes=collections.defaultdict(list)
  for e in style['events']:lanes[e['inst']].append(e)
- melodic=[0,1,2,3,4,5,6,7,8,10,11,12,13,14,15];ci=0;report=[]
+ plan=_plan_for(style,sound_plan)
+ melodic=[0,1,2,3,4,5,6,7,8,10,11,12,13,14,15]
+ melodic_names=[inst for inst,events in sorted(lanes.items()) if not _kit_channel(_source(plan,inst),events)]
+ if len(melodic_names)>len(melodic) and not adapt_ports and plan:
+  raise ValueError('multi-port MIDI: more than 15 melodic lanes; pass --adapt-ports to collapse onto one port or split the score')
+ if adapt_ports and len(melodic_names)>len(melodic):
+  raise ValueError('cannot adapt MIDI ports: more than 15 melodic lanes on one port')
+ ci=0;report=[]
  for inst,events in sorted(lanes.items()):
-  is_drum=all(e['kind']=='drum' for e in events);port=0 if is_drum else ci//len(melodic);ch=9 if is_drum else melodic[ci%len(melodic)];ci+=0 if is_drum else 1
+  source=_source(plan,inst)
+  is_drum=_kit_channel(source,events)
+  if is_drum:
+   port,ch=0,9
+  else:
+   port=0 if adapt_ports else ci//len(melodic)
+   ch=melodic[ci%len(melodic)];ci+=1
+  if port and plan and not adapt_ports:
+   raise ValueError(f'multi-port MIDI: {inst} assigned port {port}; pass --adapt-ports to collapse onto one port or split the score')
   role=collections.Counter(e.get('role','support') for e in events).most_common(1)[0][0]
   info=style.get('instrument_map',{}).get(inst,{})
   tr=mido.MidiTrack();mid.tracks.append(tr);tr.append(mido.MetaMessage('track_name',name=safe(f"{inst} [{role}]"),time=0))
   tr.append(mido.MetaMessage('midi_port',port=port,time=0))
-  if not is_drum:tr.append(mido.Message('program_change',program=PROGRAMS.get(inst,PROGRAMS.get(info.get('family',''),0)),channel=ch,time=0))
+  program=PROGRAMS.get(inst,PROGRAMS.get(info.get('family',''),0));bank_msb=0;bank_lsb=0
+  if source:
+   bank=int(source.get('bank') or 0);program=int(source.get('program') or 0)
+   bank_msb=0 if bank>=128 else bank
+   tr.append(mido.Message('control_change',control=0,value=bank_msb,channel=ch,time=0))
+   tr.append(mido.Message('control_change',control=32,value=bank_lsb,channel=ch,time=0))
+   tr.append(mido.Message('program_change',program=program,channel=ch,time=0))
+  elif not is_drum:
+   tr.append(mido.Message('program_change',program=program,channel=ch,time=0))
   base=ROLE_CC7.get(role,82)+INST_CC7.get(inst,0)
   tm=style.get('track_mix',{}).get(inst,{})
-  # Blend role-aware value with prior track balance rather than replacing either.
   cc7=int(clamp(round(base*.68+int(tm.get('cc7_volume',base))*.32),28,118))
   tr.append(mido.Message('control_change',control=7,value=cc7,channel=ch,time=0));tr.append(mido.Message('control_change',control=10,value=int(tm.get('cc10_pan',64)),channel=ch,time=0));tr.append(mido.Message('control_change',control=91,value=int(tm.get('cc91_reverb',18)),channel=ch,time=0))
   msgs=[]
@@ -69,10 +112,15 @@ def export(style,outdir):
    msgs.append((round(start*PPQ),0,mido.Message('note_on',note=note,velocity=vel,channel=ch,time=0)));msgs.append((round(end*PPQ),-1,mido.Message('note_off',note=note,velocity=rel,channel=ch,time=0)))
   msgs.sort(key=lambda x:(x[0],x[1]));last=0
   for tick,_,msg in msgs:msg.time=max(0,tick-last);tr.append(msg);last=tick
-  report.append({'inst':inst,'role':role,'port':port,'channel':ch,'cc7':cc7,'velocity_min':min(velocities),'velocity_max':max(velocities),'velocity_mean':round(sum(velocities)/len(velocities),2)})
+  report.append({'inst':inst,'role':role,'port':port,'channel':ch,'bank':bank_msb,'program':program if source or not is_drum else None,'cc7':cc7,'velocity_min':min(velocities),'velocity_max':max(velocities),'velocity_mean':round(sum(velocities)/len(velocities),2)})
  outdir.mkdir(parents=True,exist_ok=True);path=outdir/f"{style['id']}.mid";mid.save(path)
  return {'id':style['id'],'tracks':len(mid.tracks),'bytes':path.stat().st_size,'lanes':report}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('outdir',type=Path);args=ap.parse_args();d=json.loads(args.catalog.read_text());r=[export(s,args.outdir) for s in d['styles']];(args.outdir/'midi-report.json').write_text(json.dumps(r,indent=2));print('exported',len(r))
+ ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('outdir',type=Path)
+ ap.add_argument('--sound-plan',type=Path);ap.add_argument('--adapt-ports',action='store_true')
+ args=ap.parse_args();d=json.loads(args.catalog.read_text())
+ plan=json.loads(args.sound_plan.read_text()) if args.sound_plan else None
+ r=[export(s,args.outdir,sound_plan=plan,adapt_ports=args.adapt_ports) for s in d['styles']]
+ (args.outdir/'midi-report.json').write_text(json.dumps(r,indent=2));print('exported',len(r))
 if __name__=='__main__':main()

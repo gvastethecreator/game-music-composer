@@ -7,6 +7,7 @@ import numpy as np,soundfile as sf,pyloudnorm as pyln
 from scipy.signal import butter,sosfiltfilt,resample_poly
 from fractions import Fraction
 from scipy.ndimage import uniform_filter1d
+import sound_plan
 
 SR=32000
 SAMPLES=None;METAS=None;CAL=None;NOTE_CACHE=None;DRUM_CACHE=None
@@ -101,6 +102,7 @@ def init_worker(sample_dir,cal_path,factory_dir=None):
 
 def palette_sample(style, info, event):
  palette=style.get("sound_palette","factory")
+ if palette=="chamber": palette="factory"
  patch=PALETTES[palette]["patches"][info["factory_patch"]]
  regions=patch["profiles"]["neo16"]["regions"]
  midi=patch.get("note",info["root_midi"]) if event["kind"]=="drum" or patch["type"] in ("drum","fx") else event["midi"]
@@ -123,6 +125,7 @@ def make_note(src,meta,midi,duration,attack,release,cents=0):
   if len(lp)<2:lp=resample_rate(src,rate)
   needed=max(0,target-len(atk));reps=math.ceil(needed/max(1,len(lp)));y=np.concatenate([atk,np.tile(lp,reps)])[:target]
  else:
+  # Unlooped samples keep their recorded length; remaining duration is silence, not an invented loop.
   y=resample_rate(src,rate);y=np.pad(y,(0,max(0,target-len(y))))[:target]
  return (y*envelope(len(y),attack,release)).astype(np.float32)
 
@@ -135,9 +138,11 @@ def put_circular(dst,src,start):
 def render_style(style,outdir):
  global SAMPLES,METAS,NOTE_CACHE,DRUM_CACHE
  beat_sec=60/style['bpm'];n=int(style['beats']*beat_sec*SR);out=Path(outdir);out.mkdir(parents=True,exist_ok=True);wav=out/f"{style['id']}.wav";ogg=out/f"{style['id']}.ogg";mp3=out/f"{style['id']}.mp3"
- if ogg.exists() and mp3.exists():
+ ctx=style.get('_render') or {};digest=ctx.get('fingerprint')
+ if digest and sound_plan.should_skip_outputs(out,style['id'],digest):
   audio,sr=sf.read(ogg,dtype='float32',always_2d=True);meter=pyln.Meter(sr);lufs=float(meter.integrated_loudness(audio));peak=float(np.max(np.abs(audio))) or 1e-9;mono=audio.mean(axis=1);win=max(1,int(.4*sr));hop=max(1,int(.1*sr));vals=[20*math.log10(math.sqrt(float(np.mean(mono[i:i+win]**2))+1e-12)+1e-12) for i in range(0,max(1,len(mono)-win),hop)];dyn=float(np.percentile(vals,95)-np.percentile(vals,10)) if vals else 0
-  return {'id':style['id'],'category':style['category'],'target_lufs':style.get('mix_v3',style.get('mix_v2',{})).get('target_lufs',-16),'integrated_lufs':round(lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'skipped':True}
+  receipt=sound_plan.load_receipt(sound_plan.receipt_path(out,style['id'])) or {}
+  return {'id':style['id'],'category':style['category'],'target_lufs':style.get('mix_v3',style.get('mix_v2',{})).get('target_lufs',-16),'integrated_lufs':round(lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'skipped':True,'bank_id':ctx.get('bank_id'),'backend':ctx.get('backend'),'role_collapse':receipt.get('role_collapse')}
  buses={b:np.zeros((n,2),np.float32) for b in BUS_ORDER};kick_starts=[]
  for ev in style['events']:
   info=style['instrument_map'][ev['inst']]
@@ -206,13 +211,45 @@ def render_style(style,outdir):
  for i in range(0,max(1,n-win),hop):vals.append(20*math.log10(math.sqrt(float(np.mean(mono[i:i+win]**2))+1e-12)+1e-12))
  dyn=float(np.percentile(vals,95)-np.percentile(vals,10)) if vals else 0
  sf.write(wav,mix.astype(np.float32),SR,subtype='PCM_16');subprocess.run(['ffmpeg','-y','-loglevel','error','-i',str(wav),'-c:a','libvorbis','-q:a','5',str(ogg)],check=True);subprocess.run(['ffmpeg','-y','-loglevel','error','-i',str(wav),'-c:a','libmp3lame','-q:a','4',str(mp3)],check=True);wav.unlink(missing_ok=True)
- return {'id':style['id'],'category':style['category'],'target_lufs':target,'integrated_lufs':round(final_lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'sound_palette':style.get('sound_palette','factory') if PALETTES else 'original','sample_backend':'multisample' if PALETTES else 'compact'}
+ report={'id':style['id'],'category':style['category'],'target_lufs':target,'integrated_lufs':round(final_lufs,3),'peak_dbfs':round(20*math.log10(peak+1e-12),3),'short_term_range_db':round(dyn,3),'quality_status':style.get('composition_quality',{}).get('status'),'events':len(style['events']),'sound_palette':style.get('sound_palette','factory') if PALETTES else 'original','sample_backend':'multisample' if PALETTES else 'compact','skipped':False,'bank_id':ctx.get('bank_id'),'backend':ctx.get('backend') or ('multisample' if PALETTES else 'compact')}
+ if ctx.get('fields'):
+  receipt=sound_plan.build_receipt(style,ctx['fields'],skipped=False,outputs=[ogg.name,mp3.name],fallback=ctx.get('fallback'),extras={'integrated_lufs':report['integrated_lufs'],'peak_dbfs':report['peak_dbfs'],'role_collapse':ctx.get('role_collapse')})
+  sound_plan.write_receipt(sound_plan.receipt_path(out,style['id']),receipt)
+  report['role_collapse']=ctx.get('role_collapse')
+ return report
+
+def attach_render_context(style,args,catalog_path):
+ backend='multisample' if args.factory_dir else 'compact'
+ if getattr(args,'backend',None) in ('compact','multisample'):backend=args.backend
+ factory=Path(args.factory_dir) if args.factory_dir else None
+ if backend=='multisample' and (factory is None or not factory.is_dir()):
+  if not args.allow_fallback:
+   raise FileNotFoundError(f'requested Factory Bank directory is missing ({factory}); pass --allow-fallback to render compact and annotate the receipt')
+  fallback=f'requested factory-dir {factory} missing; using compact';backend='compact'
+ else:
+  fallback=None
+ bank_id='factory-chamber' if backend=='multisample' else 'compact'
+ bank_hash=sound_plan.hash_tree(factory) if backend=='multisample' else sound_plan.hash_tree(args.sample_dir)
+ effects={'chorus':0,'reverb':0,'bus_mix':True}
+ fields=sound_plan.fingerprint_fields(style,backend=backend,bank_id=bank_id,bank_hash=bank_hash,engine=sound_plan.RENDER_ENGINE,engine_version=sound_plan.VERSION,effects=effects,sample_rate=SR,map_hash=sound_plan.hash_file(getattr(args,'sound_plan',None)),sound_plan_hash=sound_plan.hash_file(getattr(args,'sound_plan',None)))
+ roles=sorted({str(e.get('role') or 'support') for e in style.get('events') or []})
+ palette=style.get('sound_palette')
+ collapse={'requested_roles':len(roles),'roles':roles,'effective_presets':None,'note':'compact/multisample map 54 roles onto named patches; see bank audit'}
+ copy=dict(style);copy['_render']={'fingerprint':sound_plan.fingerprint_digest(fields),'fields':fields,'backend':backend,'bank_id':bank_id,'fallback':fallback,'role_collapse':collapse}
+ return copy,fallback,backend,bank_id
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('sample_dir',type=Path);ap.add_argument('calibration',type=Path);ap.add_argument('outdir',type=Path);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--factory-dir',type=Path);args=ap.parse_args();cat=json.loads(args.catalog.read_text());args.outdir.mkdir(parents=True,exist_ok=True);reports=[]
- with ProcessPoolExecutor(max_workers=args.workers,initializer=init_worker,initargs=(str(args.sample_dir),str(args.calibration),str(args.factory_dir) if args.factory_dir else None)) as ex:
-  futs={ex.submit(render_style,s,args.outdir):s['id'] for s in cat['styles']}
+ ap=argparse.ArgumentParser();ap.add_argument('catalog',type=Path);ap.add_argument('sample_dir',type=Path);ap.add_argument('calibration',type=Path);ap.add_argument('outdir',type=Path);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--factory-dir',type=Path);ap.add_argument('--backend',choices=('compact','multisample'));ap.add_argument('--allow-fallback',action='store_true');ap.add_argument('--sound-plan',type=Path)
+ args=ap.parse_args();cat=json.loads(args.catalog.read_text());args.outdir.mkdir(parents=True,exist_ok=True);reports=[];prepared=[];batch_fallback=None;backend=None;bank_id=None
+ for s in cat['styles']:
+  item,fallback,backend,bank_id=attach_render_context(s,args,args.catalog)
+  prepared.append(item);batch_fallback=fallback or batch_fallback
+ worker_factory=str(args.factory_dir) if backend=='multisample' and args.factory_dir and Path(args.factory_dir).is_dir() else None
+ with ProcessPoolExecutor(max_workers=args.workers,initializer=init_worker,initargs=(str(args.sample_dir),str(args.calibration),worker_factory)) as ex:
+  futs={ex.submit(render_style,s,args.outdir):s['id'] for s in prepared}
   for fut in as_completed(futs):
-   r=fut.result();reports.append(r);print(r['id'],r['integrated_lufs'],r['peak_dbfs'],flush=True)
+   r=fut.result();reports.append(r);print(r['id'],r['integrated_lufs'],r['peak_dbfs'],'skip' if r.get('skipped') else 'render',flush=True)
  reports.sort(key=lambda x:x['id']);(args.outdir/'mix-report.json').write_text(json.dumps(reports,indent=2))
+ summary={'version':1,'backend':backend,'bank_id':bank_id,'fallback':batch_fallback,'cues':[{'id':r['id'],'skipped':bool(r.get('skipped')),'backend':r.get('backend'),'bank_id':r.get('bank_id')} for r in reports],'listening_approval':'pending'}
+ (args.outdir/'render-receipt.json').write_text(json.dumps(summary,indent=2)+'\n')
 if __name__=='__main__':main()

@@ -10,7 +10,9 @@
   };
   const DRUM_ROLES = new Set(['kick','snare','hat','tom','wood','ride','shaker','brush','rim','impact']);
   const SUSTAIN_FAMILIES = new Set(['strings','choir','texture','wind','brass']);
-  const BANK_MODES = new Set(['factory','original','chip','velvet','circuit','timber','prism','voltage','megadrive','snes']);
+  const BANK_ALIASES = {chamber:'factory'};
+  const BANK_MODES = new Set(['factory','chamber','original','chip','velvet','circuit','timber','prism','voltage','megadrive','snes']);
+  const resolveBankMode = mode => BANK_ALIASES[mode] || mode;
   const factoryChunks = new Map();
 
   function loadFactorySamples(file) {
@@ -63,7 +65,7 @@
       this.transpose = 0;
       this.masterDb = -3;
       this.ceilingDb = -1;
-      this.bankMode = 'factory';
+      this.bankMode = 'factory'; // Chamber production bank
       this.noiseBuffer = null;
       this.lookAheadSeconds = .24;
       this.schedulerIntervalMs = 42;
@@ -206,6 +208,7 @@
 
     setBankMode(mode) {
       if (!BANK_MODES.has(mode)) throw new Error(`Unknown soundbank mode: ${mode}`);
+      mode = resolveBankMode(mode);
       if (mode === this.bankMode) return;
       const beat = this.getBeat();
       const resume = this.playing;

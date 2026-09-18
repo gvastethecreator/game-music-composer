@@ -50,11 +50,18 @@ INSTRUMENTS={
 DRUMS={'kick','snare','hat','open_hat','tom','wood','rim','shaker','ride','impact','brush'}
 
 CATEGORY_DEFS = [
- ('adventure','Adventure & Exploration'), ('action','Action & Combat'), ('horror','Horror & Suspense'),
- ('towns','Towns & Social'), ('emotion','Emotion & Narrative'), ('mystery','Mystery & Puzzle'),
- ('fantasy','Fantasy & Sacred'), ('electronic','Electronic & Sci-Fi'), ('urban','Jazz, Funk & Urban'),
- ('classical','Classical & Experimental'), ('bachata','Bachata'), ('trip_hop','Trip hop'), ('trap','Trap'), ('reggaeton','Reguetón')
+ ('salsa','Salsa'), ('cumbia','Cumbia'), ('bachata','Bachata'), ('bossa_nova','Bossa nova'),
+ ('tango','Tango'), ('funk','Funk'), ('house','House'), ('dnb','Drum & bass'),
+ ('synthwave','Synthwave'), ('lofi','Lo-fi'), ('trap','Trap'), ('trip_hop','Trip hop'),
+ ('metal','Metal'), ('reggaeton','Reguetón'),
+ ('action','Action & Combat'), ('towns','Towns & Social'), ('mystery','Mystery & Puzzle'),
+ ('horror','Horror & Suspense'), ('emotion','Emotion & Narrative'), ('fantasy','Fantasy & Sacred'),
+ ('electronic','Electronic & Sci-Fi'), ('urban','Jazz, Soul & Urban'), ('classical','Classical & Experimental'),
+ ('adventure','Adventure & Exploration')
 ]
+SCENE_CATEGORIES = {
+    'action','towns','mystery','horror','emotion','fantasy','electronic','urban','classical','adventure'
+}
 
 METERS={'4/4':4.0,'3/4':3.0,'6/8':3.0,'9/8':4.5,'12/8':6.0,'5/4':5.0,'7/8':3.5,'5/8':2.5,'7/4':7.0}
 COMPOUND={'6/8','9/8','12/8'}
@@ -237,16 +244,16 @@ def S(slug,title,subcategory,bpm,meter,bars,key,mode,budget,prog,motif,lead,comp
 
 SPECS={
 'adventure':[
- S('fernway_crossing','Fernway Crossing','Pastoral Overworld',98,'6/8',16,'G','major',12,'journey','rising_fourth','ocarina','harp_broken','root_fifth','folk_light',secondary='flute',energy=.52,tags=('pastoral','folk')),
- S('summit_lines','Summit Lines','Mountain Ascent',116,'7/8',16,'D','mixolydian',16,'mixolydian','heroic','flute','pizz_ostinato','melodic','martial_light',secondary='horn',energy=.72,tags=('mountain','odd-meter')),
- S('emerald_canopy','Emerald Canopy','Jungle Exploration',104,'9/8',16,'A','dorian',16,'dorian','modal_call','flute','marimba_like','pedal_walk','tribal',secondary='ocarina',energy=.58,tags=('jungle','modal')),
- S('wake_of_amber','Wake of Amber','Sea Voyage',92,'6/8',20,'E','mixolydian',20,'mixolydian','floating','flute','harp_wave','root_fifth','sea',secondary='strings',energy=.48,tags=('ocean','travel')),
- S('isles_above','Isles Above','Sky Islands',110,'4/4',16,'C','lydian',20,'lydian','arch','flute','pulse_sparse','pedal_walk','air',secondary='trumpet',energy=.63,tags=('sky','lydian')),
- S('saffron_miles','Saffron Miles','Desert Caravan',106,'5/4',16,'D','phrygian',16,'phrygian','modal_call','reed','guitar_pattern','melodic','frame',secondary='flute',energy=.57,tension=.35,tags=('desert','caravan')),
- S('under_ice_lantern','Under-Ice Lantern','Frozen Cavern',76,'4/4',18,'F#','dorian',18,'dorian','floating','vibes','harp_sparse','pedal','ambient_sparse',secondary='flute',energy=.3,tags=('ice','cavern')),
- S('archive_of_roots','Archive of Roots','Ancient Ruins',84,'5/4',16,'C','minor',18,'lament','chant','reed','organ_pedal','pedal_walk','ritual_light',secondary='choir_a',energy=.38,tension=.5,tags=('ruins','ancient')),
- S('river_below','River Below','Underground River',88,'12/8',12,'Bb','dorian',16,'dorian','floating','flute','harp_wave','melodic','water',secondary='vibes',energy=.4,tags=('underground','water')),
- S('lanterns_homeward','Lanterns Homeward','Homecoming Journey',102,'6/8',20,'E','major',24,'home','rising_fourth','flute','orchestral_broken','melodic','orchestral_light',secondary='horn',energy=.68,tags=('homecoming','orchestral')),
+ S('ridge_survey','Ridge Survey','Ridge Survey',104,'5/4',16,'D','mixolydian',12,'mixolydian','modal_call','ocarina','guitar_pattern','root_fifth','folk_light',secondary='horn',energy=.52,tags=('ridge','survey')),
+ S('switchback_market','Switchback Market','Switchback Market',112,'3/4',16,'G','major',14,'home','waltz_line','accordion','guitar_strum','melodic','tavern',secondary='clarinet',energy=.58,tags=('market','switchback')),
+ S('ferry_whistle','Ferry Whistle','Ferry Crossing',128,'4/4',16,'C','mixolydian',16,'mixolydian','heroic','trumpet','ska_skank','melodic','ska',secondary='trombone',energy=.62,tags=('ferry','travel')),
+ S('cairn_notes','Cairn Notes','Cairn Notes',76,'4/4',16,'A','dorian',12,'dorian','minimal_cell','vibes','sparse_chords','pedal','none',secondary='bell',energy=.28,tags=('cairn','notes')),
+ S('pack_mule_swing','Pack-Mule Swing','Pack Road',118,'4/4',16,'F','major',16,'jazz_turn','arch','guitar','swing_comp','walking','swing',secondary='reed',energy=.55,tags=('pack','road')),
+ S('chapel_of_maps','Chapel of Maps','Chapel of Maps',72,'4/4',16,'Eb','major',20,'sacred','chant','horn','chorale','pedal','sacred',secondary='choir_a',energy=.34,tags=('chapel','maps')),
+ S('radio_ridge','Radio Ridge','Radio Ridge',84,'4/4',16,'E','minor',14,'reggae','floating','reed','dub_space','melodic','dub',secondary='organ',energy=.32,tags=('radio','ridge')),
+ S('compass_invention','Compass Invention','Compass Study',108,'4/4',16,'D','minor',16,'baroque','fugue_subject','harpsichord','two_voice_counterpoint','pedal_walk','none',secondary='pizz',energy=.48,tags=('compass','study')),
+ S('trail_walking','Trail Walking','Trail Walking',96,'5/4',16,'Bb','dorian',16,'dorian','step_answer','cello','jazz_shells','walking','brush_jazz',secondary='viola',energy=.4,tags=('trail','walking')),
+ S('home_jig','Home Jig','Home Jig',118,'6/8',16,'G','mixolydian',18,'mixolydian','pentatonic','piccolo','guitar_pattern','melodic','folk_light',secondary='ocarina',energy=.66,tags=('home','jig')),
 ],
 'action':[
  S('iron_pulse','Iron Pulse','Standard Battle',154,'4/4',16,'E','minor',16,'minor_drive','sync_hook','synth_lead','guitar_riff','ostinato','rock',secondary='brass',energy=.9,tension=.72,tags=('battle','rock')),
@@ -257,7 +264,7 @@ SPECS={
  S('cloud_lancers','Cloud Lancers','Aerial Combat',162,'6/8',16,'G','minor',20,'minor_drive','heroic','trumpet','strings_motor','melodic','air_combat',secondary='flute',energy=.91,tension=.68,tags=('aerial','combat')),
  S('last_heart','Last Heart','Desperate Survival',138,'4/4',18,'D','phrygian',14,'phrygian','chromatic_warning','reed','pulse_sparse','pedal_walk','survival',secondary='brass',energy=.82,tension=.94,tags=('survival','desperate')),
  S('victory_lap_zero','Victory Lap Zero','Arcade Sprint',188,'4/4',16,'C','mixolydian',16,'mixolydian','pentatonic','pulse50','chiptune_motor','melodic','arcade',secondary='brass',energy=.99,tension=.42,tags=('arcade','sprint')),
- S('walls_of_bronze','Walls of Bronze','Siege',110,'3/4',16,'G','minor',28,'heroic','heroic','brass','orchestral_march','pedal_walk','siege',secondary='choir_t',energy=.84,tension=.76,tags=('siege','march')),
+ S('walls_of_bronze','Walls of Bronze','Siege',110,'3/4',16,'G','minor',28,'heroic','heroic','trombone','orchestral_march','pedal_walk','siege',secondary='choir_t',energy=.84,tension=.76,tags=('siege','march')),
  S('vector_arena','Vector Arena','Cyber Combat',168,'7/8',16,'B','dorian',20,'dorian','sync_hook','synth_lead','electro_stabs','synth_ostinato','electro_battle',secondary='pulse50',energy=.96,tension=.7,tags=('cyber','arena')),
 ],
 'horror':[
@@ -288,13 +295,13 @@ SPECS={
  S('empty_chair','Empty Chair','Grief',62,'4/4',18,'D','minor',12,'lament','lament','piano','sparse_chords','descending','none',secondary='cello',energy=.15,tension=.42,tags=('grief','piano')),
  S('first_light_after','First Light After','Hope',84,'6/8',16,'A','major',18,'home','rising_fourth','flute','strings_swell','melodic','none',secondary='horn',energy=.42,tags=('hope','recovery')),
  S('postcard_in_june','Postcard in June','Bittersweet Memory',76,'3/4',16,'F','major',14,'home','falling_third','piano','memory_arpeggio','melodic','brush_waltz',secondary='violin1',energy=.28,tags=('memory','bittersweet')),
- S('at_the_station','At the Station','Reunion',92,'4/4',16,'C','major',20,'home','arch','flute','orchestral_broken','melodic','none',secondary='strings',energy=.55,tags=('reunion','warm')),
+ S('at_the_station','At the Station','Reunion',92,'4/4',16,'C','major',20,'home','arch','horn','orchestral_broken','melodic','none',secondary='strings',energy=.55,tags=('reunion','warm')),
  S('last_boat_west','Last Boat West','Farewell',70,'6/8',20,'E','minor',16,'lament','falling_third','reed','harp_sparse','descending','sea',secondary='cello',energy=.22,tension=.38,tags=('farewell','ocean')),
  S('hands_in_winter','Hands in Winter','Tenderness',68,'4/4',16,'Bb','major',12,'home','sigh','piano','sparse_chords','root_fifth','none',secondary='flute',energy=.18,tags=('tender','intimate')),
  S('flags_in_mud','Flags in Mud','Defeat',58,'3/4',16,'G','minor',20,'lament','lament','horn','low_strings','descending','funeral',secondary='choir_t',energy=.25,tension=.66,tags=('defeat','solemn')),
  S('stand_again','Stand Again','Resolve',106,'4/4',16,'D','dorian',20,'dorian','heroic','horn','strings_motor','melodic','martial_light',secondary='trumpet',energy=.7,tags=('resolve','determined')),
  S('name_on_the_glass','Name on the Glass','Recalled Mystery',74,'5/4',16,'A','minor',14,'uncanny','noir','vibes','sparse_chords','pedal_walk','none',secondary='reed',energy=.25,tension=.52,tags=('memory','mystery')),
- S('road_after_credits','Road After Credits','Epilogue',88,'6/8',20,'G','major',24,'home','arch','flute','strings_swell','melodic','orchestral_light',secondary='horn',energy=.48,tags=('epilogue','homecoming')),
+ S('road_after_credits','Road After Credits','Epilogue',88,'6/8',20,'G','major',24,'home','arch','ocarina','strings_swell','melodic','orchestral_light',secondary='horn',energy=.48,tags=('epilogue','homecoming')),
 ],
 'mystery':[
  S('ink_under_rain','Ink Under Rain','Detective Noir',88,'4/4',16,'C','melodic_minor',16,'noir','noir','reed','jazz_shells','walking','brush_jazz',secondary='vibes',energy=.36,tension=.58,tags=('noir','jazz')),
@@ -306,7 +313,7 @@ SPECS={
  S('stone_answers','Stone Answers','Ancient Mechanism',90,'9/8',16,'C','dorian',18,'dorian','modal_call','bassoon','ritual_ostinato','pedal_walk','mechanism',secondary='bell',energy=.42,tension=.48,tags=('ancient','mechanism')),
  S('rooms_that_fold','Rooms That Fold','Dream Puzzle',66,'3/4',18,'Eb','whole_tone',16,'whole','floating','vibes','floating_chords','pedal','none',secondary='flute',energy=.2,tension=.45,tags=('dream','puzzle')),
  S('redacted_pages','Redacted Pages','Conspiracy',98,'4/4',16,'D','minor',18,'noir','chromatic_warning','reed','jazz_shells','walking','tight_jazz',secondary='muted_brass',energy=.52,tension=.72,tags=('conspiracy','noir')),
- S('minute_hand_zero','Minute Hand Zero','Time Fracture',126,'7/8',16,'B','octatonic',20,'uncanny','mechanical','pulse50','fracture_patterns','synth_ostinato','glitch',secondary='prepared_piano',energy=.7,tension=.8,tags=('time','fracture')),
+ S('minute_hand_zero','Minute Hand Zero','Time Fracture',126,'7/8',16,'B','octatonic',20,'uncanny','mechanical','prepared_piano','fracture_patterns','synth_ostinato','glitch',secondary='pulse50',energy=.7,tension=.8,tags=('time','fracture')),
 ],
 'fantasy':[
  S('arches_of_mercy','Arches of Mercy','Cathedral',72,'4/4',20,'C','major',32,'sacred','chant','choir_s','chorale','pedal','sacred',secondary='organ',energy=.4,tags=('cathedral','sacred')),
@@ -318,12 +325,12 @@ SPECS={
  S('pilgrims_of_gold','Pilgrims of Gold','Holy Pilgrimage',88,'3/4',20,'G','mixolydian',28,'sacred','chant','choir_t','processional','pedal_walk','procession',secondary='horn',energy=.55,tags=('pilgrimage','sacred')),
  S('black_banner_kingdom','Black-Banner Kingdom','Dark Kingdom',104,'4/4',16,'Eb','harmonic_minor',28,'baroque','heroic','brass','dark_orchestra','pedal_walk','martial_dark',secondary='choir_b',energy=.76,tension=.72,tags=('dark-kingdom','royal')),
  S('four_element_shrine','Four-Element Shrine','Elemental Shrine',108,'7/8',16,'C','dorian',24,'dorian','modal_call','flute','elemental_layers','melodic','elemental',secondary='vibes',energy=.62,tags=('elemental','shrine')),
- S('the_oracle_opens','The Oracle Opens','Prophecy',68,'12/8',12,'E','minor',32,'lament','floating','choir_s','prophecy_fields','pedal','sacred',secondary='brass',energy=.5,tension=.68,tags=('oracle','prophecy')),
+ S('the_oracle_opens','The Oracle Opens','Prophecy',68,'12/8',12,'E','minor',32,'lament','floating','harp','prophecy_fields','pedal','sacred',secondary='brass',energy=.5,tension=.68,tags=('oracle','prophecy')),
 ],
 'electronic':[
- S('night_rail_88','Night Rail 88','Synthwave Transit',118,'4/4',16,'C','minor',16,'minor_drive','sync_hook','synth_lead','synth_arp','synth_ostinato','synthwave',secondary='pulse50',energy=.72,tags=('synthwave','transit')),
+ S('night_rail_88','Night Rail 88','Signal Transit',108,'4/4',16,'C','minor',16,'minor_drive','sync_hook','pulse50','synth_arp','synth_ostinato','signal',secondary='synth_lead',energy=.62,tags=('signal','transit')),
  S('concrete_frequency','Concrete Frequency','Techno Factory',132,'4/4',16,'F','dorian',18,'funk','minimal_cell','pulse25','techno_stabs','synth_ostinato','techno',secondary='clav',energy=.84,tags=('techno','factory')),
- S('escape_velocity_red','Escape Velocity Red','Drum & Bass Escape',176,'4/4',16,'D','minor',20,'minor_drive','sync_hook','synth_lead','dnb_pads','synth_ostinato','dnb',secondary='pulse50',energy=.97,tension=.82,tags=('dnb','escape')),
+ S('escape_velocity_red','Escape Velocity Red','Hangar Escape',118,'5/4',16,'D','minor',20,'minor_drive','floating','prepared_piano','space_fields','pedal','none',secondary='pulse25',energy=.7,tension=.72,tags=('hangar','escape')),
  S('quiet_orbit','Quiet Orbit','Space Ambient',62,'4/4',20,'A','lydian',24,'lydian','minimal_cell','vibes','space_fields','pedal','none',secondary='choir_s',energy=.15,tags=('space','ambient')),
  S('rain_neon_block','Rain / Neon / Block','Cyberpunk City',106,'4/4',16,'E','minor',20,'noir','noir','reed','electro_noir','walking','electro_jazz',secondary='synth_lead',energy=.58,tension=.58,tags=('cyberpunk','city')),
  S('hangar_nine','Hangar Nine','Mech Hangar',120,'5/4',16,'B','mixolydian',20,'mixolydian','mechanical','clav','industrial_riff','syncopated','industrial',secondary='brass',energy=.7,tags=('mech','hangar')),
@@ -336,17 +343,17 @@ SPECS={
  S('cigarette_geometry','Cigarette Geometry','Jazz Noir',86,'4/4',16,'Eb','melodic_minor',16,'jazz_turn','falling_third','muted_brass','swing_comp','walking','brush_jazz',secondary='vibes',energy=.38,tension=.55,tags=('jazz','noir')),
  S('swing_room_three','Swing Room Three','Swing Club',132,'4/4',16,'F','major',18,'jazz_turn','arch','trumpet','swing_comp','walking','swing',secondary='reed',energy=.68,tags=('swing','club')),
  S('stairs_two_at_once','Stairs Two at Once','Bebop Chase',184,'4/4',16,'Bb','major',16,'jazz_turn','bebop','reed','bebop_comp','walking','bebop',secondary='trumpet',energy=.9,tags=('bebop','chase')),
- S('assembly_line_soul','Assembly Line Soul','Funk Factory',112,'4/4',16,'E','dorian',18,'funk','sync_hook','clav','funk_comp','slap','funk',secondary='brass',energy=.82,tags=('funk','factory')),
+ S('assembly_line_soul','Assembly Line Soul','Soul Assembly',96,'4/4',16,'E','dorian',18,'funk','arch','clav','sparse_chords','melodic','slow_groove',secondary='organ',energy=.7,tags=('soul','assembly')),
  S('amber_booth','Amber Booth','Soul Lounge',72,'6/8',16,'Ab','major',16,'home','noir','reed','soul_chords','melodic','slow_groove',secondary='organ',energy=.32,tags=('soul','lounge')),
- S('roof_tiles_after_rain','Roof Tiles After Rain','Bossa Rooftop',92,'4/4',16,'D','major',14,'bossa','step_answer','flute','jazz_shells','melodic','bossa',secondary='vibes',energy=.38,tags=('bossa','rooftop')),
+ S('roof_tiles_after_rain','Roof Tiles After Rain','Rain Terrace',84,'4/4',16,'D','major',14,'home','step_answer','guitar','sparse_chords','melodic','none',secondary='vibes',energy=.32,tags=('rain','terrace')),
  S('green_harbor','Green Harbor','Reggae Harbor',82,'4/4',16,'G','mixolydian',14,'reggae','pentatonic','organ','reggae_skank','melodic','one_drop',secondary='flute',energy=.5,tags=('reggae','harbor')),
  S('echo_alley','Echo Alley','Dub Alley',74,'4/4',16,'D','minor',16,'reggae','floating','organ','dub_space','melodic','dub',secondary='reed',energy=.32,tags=('dub','alley')),
  S('saturday_horns','Saturday Horns','Ska Festival',154,'4/4',16,'C','major',18,'home','heroic','trumpet','ska_skank','melodic','ska',secondary='trombone',energy=.94,tags=('ska','festival')),
- S('underpass_tango','Underpass Tango','Tango Undercity',118,'4/4',16,'A','harmonic_minor',18,'tango','tango','accordion','tango_comp','melodic','tango',secondary='violin1',energy=.68,tension=.62,tags=('tango','undercity')),
+ S('underpass_tango','Underpass Workshop','Undercity Workshop',104,'4/4',16,'A','harmonic_minor',18,'baroque','fugue_subject','accordion','two_voice_counterpoint','pedal_walk','none',secondary='violin1',energy=.58,tension=.5,tags=('undercity','workshop')),
 ],
 'classical':[
  S('invention_in_copper','Invention in Copper','Baroque Invention',112,'4/4',16,'D','minor',16,'baroque','fugue_subject','harpsichord','two_voice_counterpoint','pedal_walk','none',secondary='pizz',energy=.5,tags=('baroque','invention')),
- S('fugue_of_small_machines','Fugue of Small Machines','Four-Part Fugue',104,'4/4',20,'G','minor',28,'baroque','fugue_subject','harpsichord','four_voice_fugue','pedal_walk','none',secondary='strings',energy=.64,tension=.5,tags=('fugue','counterpoint')),
+ S('fugue_of_small_machines','Fugue of Small Machines','Four-Part Fugue',104,'4/4',20,'G','minor',28,'baroque','fugue_subject','organ','four_voice_fugue','pedal_walk','none',secondary='strings',energy=.64,tension=.5,tags=('fugue','counterpoint')),
  S('winter_gallery','Winter Gallery','Classical Waltz',84,'3/4',20,'Eb','major',20,'home','waltz_line','violin1','orchestral_waltz','melodic','waltz',secondary='flute',energy=.4,tags=('waltz','chamber')),
  S('marble_steps','Marble Steps','Ceremonial March',108,'4/4',16,'C','major',28,'heroic','heroic','trumpet','orchestral_march','pedal_walk','march',secondary='horn',energy=.7,tags=('march','ceremonial')),
  S('phase_garden','Phase Garden','Minimal Process',126,'5/4',20,'E','dorian',16,'minimal','minimal_cell','piano','minimal_phase','pedal','minimal',secondary='vibes',energy=.44,tags=('minimalism','process')),
@@ -1512,10 +1519,12 @@ def apply_written_rests(events,spec,bar_len):
 
 
 def compose(spec,category,label):
-    if "writing" in spec and spec["writing"].get("grammar") in {"bachata","trip_hop","trap","reggaeton"}:
-        from genre_composer import compose as write_genre
-        return write_genre(spec,category,label)
-    if "writing" in spec:
+    grammar=(spec.get("writing") or {}).get("grammar")
+    if grammar:
+        from genre_composer import GENRES as GENRE_GRAMMARS
+        if category in GENRE_GRAMMARS:
+            from genre_composer import compose as write_genre
+            return write_genre(spec,category,label)
         from phrase_composer import compose as write_score
         return write_score(spec,category,label)
     spec=dict(spec);spec['category']=category;spec['category_label']=label
@@ -1546,6 +1555,7 @@ def compose(spec,category,label):
       'dna':{'form':' '.join(section['name'] for section in spec['form']) if isinstance(spec['form'],list) else spec['form'],'motif':spec['motif'].replace('_',' '),'texture':spec['comp'].replace('_',' '),'texture_b':str(spec.get('comp_b') or COMP_ANSWER.get(spec['comp'],spec['comp'])).replace('_',' '),'bass':spec['bass'].replace('_',' '),'drums':spec['drums'].replace('_',' ')},
       'musical_direction':{'thesis':spec['notes'] or f"A distinct {spec['subcategory'].lower()} identity with controlled density and section-level role changes.", 'loop_strategy':spec.get('loop_strategy','Final cadence and pickup are designed around the first harmony rather than a hard audio cut.')},
       'arrangement_rests':rest_report,
+      'sound_palette':(spec.get('writing') or {}).get('palette','factory'),
       'metrics':{'energy':spec['energy'],'tension':spec['tension']},
       # Echo locked to the tempo (dotted eighth) so repeats reinforce the groove instead of smearing it.
       'mix':{'echo_time':round(min(.42,max(.12,(60/spec['bpm'])*(.5 if category in ('action','electronic') else .75))),3),'echo_feedback':.14 if category in ('action','electronic') else .22,'preview_rms_db':-14.5 if spec['energy']>.75 else -15.5,'drive':.08 if category=='action' else .03 if category=='electronic' else 0}
@@ -1563,6 +1573,28 @@ def melody_signature(style):
     if len(notes)<2:return ()
     return tuple(notes[i+1]['midi']-notes[i]['midi'] for i in range(len(notes)-1))
 
+def catalog_recipe_errors(contracts):
+    errors=[]
+    bycat=defaultdict(list);subjects=defaultdict(list);palettes=defaultdict(set)
+    for record in contracts:
+        cat=record['category']
+        writing=record['native_engine_contract']['writing']
+        palettes[cat].add(writing.get('palette','factory'))
+        if cat not in SCENE_CATEGORIES: continue
+        pair=(writing['grammar'], writing['roles'][0])
+        bycat[cat].append((pair, record['id']))
+        subjects[tuple(writing['degrees'])].append(record['id'])
+    for cat, items in bycat.items():
+        seen=defaultdict(list)
+        for pair, cue_id in items: seen[pair].append(cue_id)
+        for pair, ids in seen.items():
+            if len(ids)>1: errors.append(f'{cat} repeats grammar+lead {pair}: {ids}')
+    for ids in subjects.values():
+        if len(ids)>1: errors.append(f'shared eight-degree subject {ids}')
+    for cat, pals in palettes.items():
+        if pals=={'factory'}: errors.append(f'{cat} palette is only factory')
+    return errors
+
 def audit(styles):
     report={'track_count':len(styles),'category_counts':{},'voice_budget_distribution':{},'meter_distribution':{},'errors':[],'warnings':[]}
     for c,_ in CATEGORY_DEFS:report['category_counts'][c]=sum(1 for s in styles if s['category']==c)
@@ -1573,12 +1605,14 @@ def audit(styles):
         if len(s['events'])<35:report['warnings'].append(f"{s['id']}: sparse event count")
         if not any(e.get('role')=='lead' for e in s['events']):report['errors'].append(f"{s['id']}: no lead")
     if any(v!=10 for v in report['category_counts'].values()):report['errors'].append('category count mismatch')
-    # exact duplicate checks
+    scene=[s for s in styles if s['category'] in SCENE_CATEGORIES]
     ms=defaultdict(list);ts=defaultdict(list)
-    for s in styles:ms[melody_signature(s)].append(s['id']);ts[topology_signature(s)].append(s['id'])
+    for s in scene:
+        ms[melody_signature(s)].append(s['id']);ts[topology_signature(s)].append(s['id'])
     report['exact_melody_duplicate_groups']=[v for k,v in ms.items() if k and len(v)>1]
     report['exact_topology_duplicate_groups']=[v for k,v in ts.items() if k and len(v)>1]
-    if report['exact_melody_duplicate_groups']:report['warnings'].append('exact melody signatures detected')
+    if report['exact_melody_duplicate_groups']:report['errors'].append('exact melody signatures detected')
+    if report['exact_topology_duplicate_groups']:report['warnings'].append('exact topology signatures detected')
     report['status']='PASS' if not report['errors'] else 'FAIL'
     report['total_events']=sum(len(s['events']) for s in styles)
     report['max_measured_peak']=max(s['measured_peak_voices'] for s in styles)
@@ -1591,6 +1625,8 @@ def load_catalog_contracts():
     contracts=json.loads(path.read_text(encoding='utf-8'))['contracts']
     expected={s['slug'] for specs in SPECS.values() for s in specs}
     if len(contracts)!=100 or {r['id'] for r in contracts}!=expected:raise ValueError('Expected exactly the 100 native catalog contracts')
+    recipe_errors=catalog_recipe_errors(contracts)
+    if recipe_errors:raise ValueError('Catalog recipe uniqueness failed: '+'; '.join(recipe_errors))
     for record in contracts:
         spec=record['native_engine_contract'];sections=form_sections(spec)
         if spec['slug']!=record['id'] or sum(s['bars'] for s in sections)!=spec['bars']:raise ValueError('Contract identity or form does not match')
@@ -1611,7 +1647,7 @@ def main(argv=None):
     for record in load_catalog_contracts()+genre_contracts:
         styles.append(compose(record['native_engine_contract'],record['category'],record['category_label']))
     report=audit(styles)
-    catalog={'version':'6.1.0-four-genres-base','project':'Game Music Composer / Authored Contracts','voice_model':{'recommended':16,'profiles':[8,12,16,24,32],'benchmark_max':32,'hard_hardware_limit_removed':True},'categories':[{'id':c,'label':l,'count':10} for c,l in CATEGORY_DEFS],'styles':styles}
+    catalog={'version':'6.3.0-production-banks','project':'Game Music Composer / Authored Contracts','voice_model':{'recommended':16,'profiles':[8,12,16,24,32],'benchmark_max':32,'hard_hardware_limit_removed':True},'categories':[{'id':c,'label':l,'count':10} for c,l in CATEGORY_DEFS],'styles':styles}
     (output/'neospc100.json').write_text(json.dumps(catalog,indent=2))
     (output/'qa-symbolic.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2))
