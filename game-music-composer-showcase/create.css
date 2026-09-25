@@ -45,6 +45,7 @@
 .create-count{font:700 9px var(--mono);color:#888}
 #createTracks{display:grid;gap:4px}
 .create-track{--track:#aaa;display:grid;grid-template-columns:minmax(0,1fr) minmax(64px,104px) auto;grid-template-areas:"name name flags" "sound vol out";gap:5px 6px;align-items:center;border:1px solid #2c2c2c;border-radius:7px;background:#0e0e0e;padding:6px 7px}
+.create-rack[data-mode="studio"] .create-track{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name flags" "sound sound" "vol out"}
 .create-track.selected{border-color:var(--track);box-shadow:inset 3px 0 var(--track)}
 .create-track.silent{opacity:.55}
 .create-track-name{grid-area:name;display:flex;align-items:center;gap:7px;border:0;background:transparent;color:#eee;padding:0;font:700 11px var(--sans);cursor:pointer;text-align:left;min-width:0}
@@ -66,6 +67,11 @@
 .create-chord span{font:9px var(--mono);color:#999}
 .create-chord small{font:8px var(--mono);color:#666}
 .create-chord.current{border-color:var(--cyan);box-shadow:inset 0 0 14px #78ece92a}
+.create-notebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px}
+.create-notebar .compact-button.active{background:linear-gradient(#9ff6f3,#48c7c3);color:#041414;border-color:#bffffc}
+.create-notebar select{height:28px;border:1px solid #3a3a3a;border-radius:5px;background:#0b0b0b;color:#ddd;font:10px var(--mono)}
+.create-notebar-vel{min-width:140px}
+.create-rack[data-mode="studio"] .create-roll{cursor:default}
 .create-roll{position:relative;height:clamp(260px,38vh,440px);padding:0;overflow:hidden;cursor:pointer}
 .create-roll canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .create-roll-head{pointer-events:none}

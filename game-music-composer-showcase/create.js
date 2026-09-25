@@ -10,7 +10,7 @@ const $=id=>document.getElementById(id);
 const STORE='gmc-create-project-v1',PREFS='gmc-create-prefs-v1';
 const D=E.data,S=E.session,P=E.player;
 const NOTE_NAMES=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
-const view={mode:'essential',ready:false,busy:false,rollKey:'',roll:null,raf:0,renderQueued:false,live:false,saveTimer:0};
+const view={mode:'essential',ready:false,busy:false,rollKey:'',roll:null,raf:0,renderQueued:false,live:false,saveTimer:0,edit:false,sel:null,drag:null,grid:1,geom:null};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const fmtTime=s=>{const n=Math.max(0,Math.floor(s));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');};
 const trackName=id=>L.name('tracks',id);
@@ -84,8 +84,9 @@ function bind(){
  $('createExportStems').addEventListener('click',guard(exportStems));
  $('createOpenStudio').addEventListener('click',guard(openInStudio));
  $('createImport').addEventListener('change',guard(async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;if(file.size>20*1024*1024)throw new Error('The JSON file is larger than 20 MB.');S.load(JSON.parse(await file.text()));notice('Project opened. Undo returns to the previous song.');}));
- $('createRoll').addEventListener('click',e=>{const r=e.target.getBoundingClientRect(),bars=E.totalBars(S.state),bar=Math.floor((e.clientX-r.left-view.rollGutter)/(r.width-view.rollGutter)*bars);if(bar>=0&&bar<bars)guard(()=>P.seekBar(bar))();});
- document.addEventListener('keydown',e=>{if(!isShown()||e.target.closest('input,select,textarea,[contenteditable]'))return;if(e.code==='Space'){e.preventDefault();guard(togglePlay)();}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?S.redo():S.undo();}});
+ $('createRoll').addEventListener('click',e=>{if(editing())return;const r=e.target.getBoundingClientRect(),bars=E.totalBars(S.state),bar=Math.floor((e.clientX-r.left-view.rollGutter)/(r.width-view.rollGutter)*bars);if(bar>=0&&bar<bars)guard(()=>P.seekBar(bar))();});
+ bindNoteEditor();
+ document.addEventListener('keydown',e=>{if(!isShown()||e.target.closest('input,select,textarea,[contenteditable]'))return;if(editing()&&view.sel&&(e.key==='Delete'||e.key==='Backspace')){e.preventDefault();deleteNote(view.sel);return;}if(e.code==='Space'){e.preventDefault();guard(togglePlay)();}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?S.redo():S.undo();}});
  P.onState=()=>{syncTransport();tick();};
  new ResizeObserver(()=>{view.rollKey='';if(isShown())queueRender();}).observe($('createRoll').parentElement);
 }
@@ -101,7 +102,7 @@ function render(){
  const s=S.state,rack=document.querySelector('.create-rack');rack.dataset.mode=view.mode;
  for(const [id,mode] of [['createEssential','essential'],['createStudio','studio']]){const b=$(id),on=view.mode===mode;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));}
  renderHead(s);syncTransport();syncHistory();
- if(!view.live){renderBank(s);renderTracks(s);renderHarmony(s);if(view.mode==='studio'){renderInspector(s);renderShape(s);}}
+ if(!view.live){renderBank(s);renderTracks(s);renderHarmony(s);renderNoteBar(s);if(view.mode==='studio'){renderInspector(s);renderShape(s);}}
  else syncTrackValues(s);
  drawRoll(s);view.live=false;
 }
@@ -155,7 +156,7 @@ function renderHarmony(s){
 
 // ── Score view (all tracks) ───────────────────────────────────────────────────
 function rollData(s){
- const key=JSON.stringify([s.patterns,s.tracks,s.bars,s.structure,s.degrees,s.chordEdits,s.root,s.scale,s.studio?.bindings,s.studio?.playMode,s.studio?.sections?.length,s.seed,s.mutation,s.bpm]);
+ const key=JSON.stringify([s.patterns,s.tracks,s.bars,s.structure,s.degrees,s.chordEdits,s.root,s.scale,s.seed,s.mutation,s.bpm,s.human,s.swing,s.studio&&{...s.studio,bank:null}]);
  if(view.roll&&view.rollKey===key)return view.roll;
  // Draw every track, including muted ones (dimmed): score a copy with all tracks audible.
  const shown=JSON.parse(JSON.stringify(s));const muted=new Set(s.tracks.filter(t=>!E.audible(t,s)||t.volume<=0).map(t=>t.id));for(const t of shown.tracks){t.mute=false;t.solo=false;if(t.volume<=0)t.volume=.01;}
@@ -166,7 +167,7 @@ function rollData(s){
 }
 function sizeCanvas(c){const r=c.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));if(c.width!==w||c.height!==h){c.width=w;c.height=h;}const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return{ctx,w:r.width,h:r.height};}
 function drawRoll(s){
- const canvas=$('createRoll');if(!canvas.getContext)return;const {ctx,w,h}=sizeCanvas(canvas),data=rollData(s),gutter=view.rollGutter=34,drumRows=5,drumH=Math.min(60,h*.22),top=6,pitchH=h-drumH-top-8,rows=data.hi-data.lo+1,rh=pitchH/rows,cw=(w-gutter)/data.total;
+ const canvas=$('createRoll');if(!canvas.getContext)return;const {ctx,w,h}=sizeCanvas(canvas),full=rollData(s),data=editing()?{...full,...editRange()}:full,gutter=view.rollGutter=34,drumRows=5,drumH=Math.min(60,h*.22),top=6,pitchH=h-drumH-top-8,rows=data.hi-data.lo+1,rh=pitchH/rows,cw=(w-gutter)/data.total;
  ctx.clearRect(0,0,w,h);ctx.fillStyle='#070808';ctx.fillRect(0,0,w,h);
  // Scale rows, bar grid and section boundaries.
  const scale=D.scaleDefs[s.scale].notes;
@@ -174,17 +175,70 @@ function drawRoll(s){
  for(let st=0;st<=data.total;st+=4){const x=gutter+st*cw;ctx.fillStyle=st%16===0?(st%(s.bars*16)===0?'#5a4a2a':'#333'):'#1a1a1a';ctx.fillRect(Math.round(x),top,1,h-top);}
  ctx.fillStyle='#111';ctx.fillRect(gutter,h-drumH-4,w-gutter,drumH+4);
  const drumIds=['kick','snare','hat','open','perc'];ctx.font='8px JetBrains Mono,monospace';drumIds.forEach((id,i)=>{ctx.fillStyle='#666';ctx.fillText(trackName(id).slice(0,5),2,h-drumH-2+(i+.8)*drumH/drumRows);});
- for(const note of data.notes){const color=D.trackColors[note.id]||'#aaa',x=gutter+note.at*cw;ctx.globalAlpha=note.muted?.18:.45+note.v*.55;ctx.fillStyle=color;
+ const edit=editing()?S.selected:null;view.geom={gutter,cw,top,rh,lo:data.lo,hi:data.hi,drumTop:h-drumH-2,drumRow:drumH/drumRows,drumIds,w,h};
+ for(const note of data.notes){const color=D.trackColors[note.id]||'#aaa',x=gutter+note.at*cw;ctx.globalAlpha=edit?(note.id===edit?0:.13):note.muted?.18:.45+note.v*.55;if(!ctx.globalAlpha)continue;ctx.fillStyle=color;
   if(note.drum){const row=drumIds.indexOf(note.id),y=h-drumH-2+row*drumH/drumRows;ctx.fillRect(x,y+1,Math.max(2,cw*.7),drumH/drumRows-2);}
   else{const y=top+(data.hi-note.n)*rh;ctx.fillRect(x,y+.5,Math.max(2,note.len*cw-1),Math.max(2,rh-1));}}
- ctx.globalAlpha=1;drawHead();
+ ctx.globalAlpha=1;if(edit)drawEditNotes(ctx,edit);drawHead();
 }
+function noteRect(n,id){const g=view.geom,drum=D.trackMap[id].drum,x=g.gutter+n.t*g.cw,w=Math.max(4,n.d*g.cw-1);if(drum){const row=g.drumIds.indexOf(id);return{x,y:g.drumTop+row*g.drumRow+1,w:Math.max(4,g.cw*.8),h:g.drumRow-2};}return{x,y:g.top+(g.hi-n.p)*g.rh,w,h:Math.max(3,g.rh-1)};}
+function editNotes(id){const d=view.drag;const notes=S.ops.notesForTrack(id);if(d?.moved)for(const n of notes)if(n.id===d.id)Object.assign(n,d.next);return notes;}
+function drawEditNotes(ctx,id){const color=D.trackColors[id]||'#fff';for(const n of editNotes(id)){const r=noteRect(n,id);ctx.globalAlpha=.35+n.v*.65;ctx.fillStyle=color;ctx.fillRect(r.x,r.y,r.w,r.h);if(n.id===view.sel){ctx.globalAlpha=1;ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.strokeRect(r.x-.5,r.y-.5,r.w+1,r.h+1);}if(n.anchor){ctx.globalAlpha=1;ctx.fillStyle='#fff';ctx.fillRect(r.x,r.y,2,r.h);}}ctx.globalAlpha=1;}
 function drawHead(){
  const canvas=$('createRollHead');if(!canvas.getContext||!view.roll)return;const {ctx,w,h}=sizeCanvas(canvas);ctx.clearRect(0,0,w,h);if(!P.playing||P.step<0)return;
  const total=view.roll.total,x=view.rollGutter+((P.step%total)+.5)*(w-view.rollGutter)/total;ctx.fillStyle='#78ece9';ctx.shadowColor='#5fffff';ctx.shadowBlur=8;ctx.fillRect(x,0,2,h);
 }
 let lastStep=-1;
 function tick(){cancelAnimationFrame(view.raf);if(!P.playing&&!P.starting){drawHead();return;}view.raf=requestAnimationFrame(()=>{if(P.step!==lastStep){lastStep=P.step;syncTransport();drawHead();if(P.step%16===0)renderHarmony(S.state);}tick();});}
+
+// ── Note editor (Studio, loop form) ──────────────────────────────────────────
+// Written notes live in the engine clip of the selected track; each gesture is one undo step.
+// While editing, rows start at the selected track's notes plus an octave each side and
+// grow only when a note leaves the view, so rows stay put under the pointer.
+function editRange(){const id=S.selected,notes=S.ops.notesForTrack(id).map(n=>n.p);if(D.trackMap[id].drum||!notes.length){view.editRange=view.editRange||{lo:48,hi:84,id};return view.editRange;}
+ const min=Math.min(...notes),max=Math.max(...notes),r=view.editRange;
+ view.editRange=r&&r.id===id?{lo:Math.min(r.lo,min-1),hi:Math.max(r.hi,max+1),id}:{lo:Math.max(24,min-12),hi:Math.min(108,max+12),id};return view.editRange;}
+function editBlocked(s=S.state){return s.structure!=='loop'||s.studio?.playMode==='song';}
+function editing(){return view.mode==='studio'&&view.edit&&!editBlocked();}
+function noteId(){return 'n_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function editAt(e){const r=$('createRoll').getBoundingClientRect(),g=view.geom,x=e.clientX-r.left,y=e.clientY-r.top,id=S.selected,drum=D.trackMap[id].drum;
+ const t=(x-g.gutter)/g.cw,p=drum?D.trackMap[id].midi:g.hi-Math.floor((y-g.top)/g.rh);return{x,y,t,p:Math.max(12,Math.min(119,p)),id,drum};}
+function hitNote(pt){const notes=S.ops.notesForTrack(pt.id).reverse();notes.sort((a,b)=>(b.id===view.sel)-(a.id===view.sel));for(const n of notes){const r=noteRect(n,pt.id);if(pt.x>=r.x-2&&pt.x<=r.x+r.w+2&&pt.y>=r.y-1&&pt.y<=r.y+r.h+1)return{n,edge:pt.x>r.x+r.w-Math.min(6,r.w*.3)};}return null;}
+const snap=t=>Math.round(t/view.grid)*view.grid;
+function commitNotes(id,fn,message){S.commit(()=>{const c=S.ops.ensureClip(id);fn(c);c.notes.sort((a,b)=>a.t-b.t||a.p-b.p);S.ops.syncProjection(id);},{message});}
+function bindNoteEditor(){
+ const canvas=$('createRoll'),length=()=>S.state.bars*16;
+ canvas.addEventListener('pointerdown',e=>{if(!editing()||e.button!==0)return;const pt=editAt(e);if(pt.t<0||pt.t>=length())return;const hit=hitNote(pt);
+  if(hit){view.sel=hit.n.id;view.drag={id:hit.n.id,mode:hit.edge?'resize':'move',start:pt,orig:{t:hit.n.t,p:hit.n.p,d:hit.n.d},next:{},moved:false};canvas.setPointerCapture(e.pointerId);}
+  else{const t=Math.max(0,Math.min(length()-view.grid,Math.floor(pt.t/view.grid)*view.grid)),id=noteId();view.sel=id;commitNotes(pt.id,c=>c.notes.push(S.ops.makeNote({id,t,p:pt.p,d:pt.drum?1:Math.max(view.grid,2),v:.75})));}
+  drawRoll(S.state);renderNoteBar(S.state);});
+ canvas.addEventListener('pointermove',e=>{const d=view.drag;if(!d)return;const pt=editAt(e),dt=snap(pt.t-d.start.t);
+  if(d.mode==='move')d.next={t:Math.max(0,Math.min(length()-.0625,d.orig.t+dt)),p:D.trackMap[pt.id].drum?d.orig.p:Math.max(12,Math.min(119,d.orig.p+pt.p-d.start.p))};
+  else d.next={d:Math.max(view.grid/2,Math.min(length()-d.orig.t,d.orig.d+dt))};
+  d.moved=Object.entries(d.next).some(([k,v])=>v!==d.orig[k]);drawRoll(S.state);});
+ const end=()=>{const d=view.drag;view.drag=null;if(d?.moved)commitNotes(S.selected,c=>{const n=c.notes.find(x=>x.id===d.id);if(n)Object.assign(n,d.next);});};
+ canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',()=>{view.drag=null;drawRoll(S.state);});
+ canvas.addEventListener('dblclick',e=>{if(!editing())return;const hit=hitNote(editAt(e));if(hit)deleteNote(hit.n.id);});
+}
+function deleteNote(id){const track=S.selected;commitNotes(track,c=>{c.notes=c.notes.filter(n=>n.id!==id);});if(view.sel===id)view.sel=null;}
+function selectedNote(){return view.sel?S.ops.notesForTrack(S.selected).find(n=>n.id===view.sel)||null:null;}
+function renderNoteBar(s){
+ let bar=$('createNoteBar');if(!bar){bar=el('div',{id:'createNoteBar',class:'create-notebar inset-panel create-studio-only'});document.querySelector('.create-roll').before(bar);}
+ bar.replaceChildren();const blocked=editBlocked(s),note=editing()?selectedNote():null;if(note===null&&view.sel&&editing())view.sel=null;
+ const toggle=el('button',{type:'button',class:'compact-button'+(view.edit?' active':''),'aria-pressed':String(view.edit),disabled:blocked,onclick:()=>{view.edit=!view.edit;view.sel=null;view.editRange=null;render();}},view.edit?'Editing notes':'Edit notes');
+ bar.append(el('span',{class:'module-label',text:'Notes · '+trackName(S.selected)}),toggle);
+ if(blocked){bar.append(el('span',{class:'create-note',text:'Note editing works on a looping phrase. Set Form to Loop and play the phrase to edit.'}));return;}
+ if(!view.edit){bar.append(el('span',{class:'create-note',text:'Select a track, then edit its written notes: click to add, drag to move, drag the right edge to lengthen, double-click or Delete to remove.'}));return;}
+ const grid=el('select',{'aria-label':'Grid'});options(grid,[[.25,'1/64'],[.5,'1/32'],[1,'1/16'],[2,'1/8'],[4,'1/4']],view.grid);grid.addEventListener('change',()=>{view.grid=Number(grid.value);});
+ bar.append(el('label',{class:'create-field'},el('span',{text:'Grid'}),grid));
+ if(note){const v=el('input',{type:'range',min:1,max:100,value:Math.round(note.v*100),'aria-label':'Note velocity'});v.addEventListener('change',()=>commitNotes(S.selected,c=>{const n=c.notes.find(x=>x.id===note.id);if(n)n.v=Number(v.value)/100;}));
+  bar.append(el('label',{class:'create-slider create-notebar-vel'},el('span',{},'Velocity',el('output',{text:Math.round(note.v*100)})),v),
+   el('button',{type:'button',class:'compact-button','aria-pressed':String(note.anchor),title:'Anchored notes survive transformations',onclick:()=>commitNotes(S.selected,c=>{const n=c.notes.find(x=>x.id===note.id);if(n)n.anchor=!n.anchor;})},note.anchor?'Anchored':'Anchor'),
+   el('button',{type:'button',class:'compact-button',onclick:()=>deleteNote(note.id)},'Delete'));}
+ const kinds=[['pitches','Vary pitches'],['rhythm','Vary rhythm'],['articulation','Vary articulation'],['invert','Invert'],['reverse','Reverse'],['answer','Answer'],['transition','Transition'],['quantize','Quantize'],['humanize','Humanize']];
+ const tx=el('select',{'aria-label':'Transform'});options(tx,[['','Transform…'],...kinds],'');tx.addEventListener('change',()=>{if(!tx.value)return;S.select(S.selected);S.ops.transform(tx.value,{selection:false});view.sel=null;});
+ bar.append(tx);
+}
 
 // ── Studio panels ─────────────────────────────────────────────────────────────
 function slider({label,value,min,max,step=1,format=v=>String(Math.round(v)),input,commit}){

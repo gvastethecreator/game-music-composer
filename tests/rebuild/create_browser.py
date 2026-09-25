@@ -82,6 +82,27 @@ def main():
         check('Studio mode shows song shape and master', page.locator('#createShape .create-group').count() >= 4)
         page.locator('[data-track="lead"] .create-track-name').click()
         check('Inspector follows the selected track', settle(page, 'document.querySelector("#createInspector .create-panel-head strong")?.textContent==="Melody"'))
+        if state(page, 'structure') != 'loop':
+            page.evaluate("GMCEngine.session.setHarmony('structure','loop')")
+            settle(page, '!document.querySelector("#createNoteBar button").disabled')
+        page.locator('#createNoteBar button').first.click()
+        before_notes = page.evaluate('GMCEngine.session.ops.notesForTrack("lead").length')
+        box = page.locator('#createRoll').bounding_box()
+        x, y = box['x'] + box['width'] * .52, box['y'] + 30
+        page.mouse.click(x, y)
+        check('Click adds a written note', settle(page, f'GMCEngine.session.ops.notesForTrack("lead").length==={before_notes + 1}'))
+        added = page.evaluate('GMCEngine.session.ops.notesForTrack("lead").find(n=>n.id.startsWith("n_"))')
+        # Grab the new note near its left edge (34 px gutter, one column per sixteenth).
+        cw = (box['width'] - 34) / (state(page, 'bars') * 16)
+        gx = box['x'] + 34 + added['t'] * cw + 1.5
+        page.mouse.move(gx, y); page.mouse.down(); page.mouse.move(gx + 90, y, steps=6); page.mouse.up()
+        moved = page.evaluate(f'GMCEngine.session.ops.notesForTrack("lead").find(n=>n.id==={json.dumps(added["id"])})')
+        check('Drag moves the note on the grid', moved['t'] > added['t'] and moved['t'] == int(moved['t']))
+        page.keyboard.press('Delete')
+        check('Delete removes the note', settle(page, f'GMCEngine.session.ops.notesForTrack("lead").length==={before_notes}'))
+        page.keyboard.press('Control+z')
+        check('Undo restores the deleted note', settle(page, f'GMCEngine.session.ops.notesForTrack("lead").length==={before_notes + 1}'))
+        page.locator('#createNoteBar button').first.click()
         page.locator('#createInspector select').nth(3).select_option('arp')
         check('Performance mode reaches the engine', state(page, 'tracks[9].performance.mode') == 'arp')
         page.screenshot(path=str(OUT / 'studio.png'), full_page=True)
