@@ -4,8 +4,8 @@ const M=require('../../game-music-composer/resources/ensemble-atelier/music.js')
 const S=require('../../game-music-composer-showcase/studio-score.js');
 const root=path.resolve(__dirname,'../../game-music-composer-showcase');
 const sandbox={window:{}};
-for(const file of ['data/cues/fernway_crossing.js','atelier/instruments.js','data/factory-bank.js','data/sample-bank.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox);
-const native=JSON.parse(JSON.stringify(sandbox.window.NEOSPC_CUES.fernway_crossing));
+for(const file of ['data/cues/all_bells_open.js','atelier/instruments.js','data/factory-bank.js','data/sample-bank.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox);
+const native=JSON.parse(JSON.stringify(sandbox.window.NEOSPC_CUES.all_bells_open));
 test('Native editor retains wrapped timing, sample metadata and unedited events',()=>{
   const fixture=JSON.parse(JSON.stringify(native)),i=fixture.events.findIndex(e=>e.kind==='note');
   assert.ok(i>=0);

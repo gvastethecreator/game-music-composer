@@ -7,3 +7,6 @@ __pycache__/
 **/__pycache__/
 *.py[cod]
 game-music-composer/dist/
+
+# Local rebuild handoff (private reference material, never publish)
+GMC-Rebuild-Handoff-v1/

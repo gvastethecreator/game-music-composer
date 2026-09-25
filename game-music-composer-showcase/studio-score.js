@@ -22,7 +22,11 @@ function measure(s){
 }
 function generated(score,instruments,id,category){
   const s={id,title:score.title,category:category.id,category_label:category.label,subcategory:'Atelier sketch',description:'A local sketch. Edit the notes, shape the performance and compare live soundbanks.',key:'D',mode:'dorian',meter:score.meter,bpm:score.bpm,beats:score.beats,bars:score.bars,barLength:score.barLength,voice_budget:32,form:'A A2 B A3',chord_plan:[],instrument_map:{},events:[],tags:['atelier'],musical_direction:{thesis:'Exploratory composition; review before production.'},studio_sections:copy(score.sections||[])};
-  for(const tr of score.tracks){const info=instruments[tr.patch];if(!info)throw Error('No studio bank mapping for '+tr.patch);s.instrument_map[tr.id]={...copy(info),atelier_patch:tr.patch,label:tr.label};}
+  // Authored balance travels as track_mix (linear gain, 0 stays silent); velocities are untouched.
+  s.track_mix={};
+  for(const tr of score.tracks){const info=instruments[tr.patch];if(!info)throw Error('No studio bank mapping for '+tr.patch);s.instrument_map[tr.id]={...copy(info),atelier_patch:tr.patch,label:tr.label};s.track_mix[tr.id]={gain:tr.volume??1,...(tr.send!==undefined?{send:tr.send}:{})};}
+  // Atelier generators write on a D tonic; the key is their convention, not an analysis.
+  s.key_source='atelier-default';s.generator={id:score.origin||score.kind||'atelier',version:score.version??null,seed:score.seed??null};
   const tracks=new Map(score.tracks.map(t=>[t.id,t]));
   s.events=score.events.map(e=>{const tr=tracks.get(e.track),info=s.instrument_map[e.track],v=Math.round((e.performedVelocity??e.velocity)*127);return{kind:info.family==='drum'?'drum':'note',inst:e.track,midi:e.midi,beat:e.beat,duration:e.duration,performance_beat:e.performedBeat??e.beat,performance_duration:e.performedDuration??e.duration,velocity:v,velocity_norm:v/127,velocity_gain:v/100,pan:tr.pan||0,role:({harmony:'comp',rhythm:'riff',texture:'pad',drums:tr.patch})[tr.role]||tr.role};});
   s.form=(score.sections||[]).map(section=>({name:section.name,start_bar:section.start/score.barLength,bars:(section.end-section.start)/score.barLength}));
