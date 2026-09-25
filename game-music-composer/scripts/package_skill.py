@@ -50,8 +50,21 @@ def assert_package_hygiene() -> None:
         raise ValueError("Package hygiene failed:\n- " + "\n- ".join(issues))
 
 
+# Match the repository's .gitattributes (eol=lf) so hashes equal the committed bytes on any OS.
+EOL_LF_SUFFIXES = {".py", ".md", ".json", ".js", ".cjs", ".css", ".html", ".yaml", ".yml", ".txt", ".sha256"}
+
+
+def normalize_line_endings() -> None:
+    for path in source_files():
+        if path.suffix.lower() in EOL_LF_SUFFIXES or path.name == "LICENSE":
+            data = path.read_bytes()
+            if b"\r\n" in data:
+                path.write_bytes(data.replace(b"\r\n", b"\n"))
+
+
 def build_manifest() -> tuple[int, str]:
     assert_package_hygiene()
+    normalize_line_endings()
     files = [path for path in source_files() if path != MANIFEST]
     lines = [f"{hashlib.sha256(path.read_bytes()).hexdigest()}  ./{path.relative_to(ROOT).as_posix()}" for path in files]
     content = "\n".join(lines) + "\n"

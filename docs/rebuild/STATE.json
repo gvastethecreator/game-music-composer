@@ -1,0 +1,107 @@
+{
+  "format": "gmc.rebuild-state",
+  "version": 1,
+  "objective": "Integrate the UMBRA 8 musical engine (composition, synthesis, mix, studio tools) into Game Music Composer: browser studio, native skill, game runtime and exports.",
+  "branch": "rebuild/umbra-integration",
+  "baseSha": "c7c6fffdb68f820b6e5b91fa24cb4d9514740e25",
+  "publishing": "Pushed; draft PR https://github.com/gvastethecreator/game-music-composer/pull/3 (no merge).",
+  "phases": {
+    "A": {
+      "status": "done",
+      "note": "Preflight matched the base SHA. Handoff folder ignored. Stale studio test fixture repointed to all_bells_open."
+    },
+    "B": {
+      "status": "done",
+      "note": "Authored gain, post-fader sends, drum oneShot/gated/legacy policy, hat chokes, offset validation, bridge track_mix."
+    },
+    "C": {
+      "status": "done",
+      "note": "UMBRA project format + validated gmc.game extension; native <-> engine bridges."
+    },
+    "D": {
+      "status": "done",
+      "note": "Engine composition golden-verified; Create exposes styles, new song, variation, chaos, harmony library."
+    },
+    "E": {
+      "status": "done",
+      "note": "Synthesis, strips, buses, finish; audio parity; stems."
+    },
+    "F": {
+      "status": "done",
+      "note": "Note editing, arp/chop/bake, idea bank, sections, automation. Marquee and per-note condition UI not built."
+    },
+    "G": {
+      "status": "done",
+      "note": "Create Essential/Studio in the GMC rack theme; accessibility and narrow layout checked. No light theme."
+    },
+    "H": {
+      "status": "done",
+      "note": "Game states, bar-quantized live switches, game package + runtime, CLI create-game."
+    },
+    "I": {
+      "status": "done",
+      "note": "Skill CLI create/create-render/create-import/create-game with receipts; docs and package."
+    },
+    "J": {
+      "status": "pending_human",
+      "note": "Technical QA done; blind listening pack ready (docs/rebuild/LISTENING.md). Owner listening pending."
+    }
+  },
+  "checks": [
+    {
+      "command": "node --test tests/ensemble-atelier/music.test.cjs tests/ensemble-atelier/studio.test.cjs tests/rebuild/p0_live_engine.test.cjs tests/test_director.cjs",
+      "result": "139 pass, 0 fail",
+      "date": "2026-09-24"
+    },
+    {
+      "command": "node --test tests/rebuild/engine_golden.test.cjs",
+      "result": "193/193 scenarios identical to the UMBRA 8 reference",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/rebuild/engine_audio_browser.py",
+      "result": "6/6 renders within 1e-3 RMS / 3e-3 peak of UMBRA 8 (observed <= 3e-5)",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "node --test tests/rebuild/*.test.cjs tests/ensemble-atelier/studio.test.cjs tests/ensemble-atelier/music.test.cjs tests/test_director.cjs",
+      "result": "144 pass, 0 fail",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/rebuild/create_browser.py",
+      "result": "All Create flow checks pass (desktop + 390 px)",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/ensemble-atelier/studio_tests.py",
+      "result": "Pass after fixing the review crash and updating stale 140-cue assertions",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python -m unittest discover -s game-music-composer/scripts/tests -p \"test_*.py\"",
+      "result": "89 tests OK (1 skipped)",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "node --test tests/rebuild/*.test.cjs + existing suites",
+      "result": "146 pass",
+      "date": "2026-09-25"
+    }
+  ],
+  "blockers": [
+    {
+      "what": "Windows Defender quarantines game-music-composer-showcase/data/banks/bass_electric_finger.js as Trojan:Script/ObfusScript.A!ml (heuristic on base64 audio in JS) whenever it is read, e.g. by tools/sync_studio.py.",
+      "effect": "The working copy loses the file; Git still holds it and the manifest hash is correct. The deletion is never committed.",
+      "owner": "Repository owner decides on a Defender exclusion or file restore (git checkout -- <path>)."
+    }
+  ],
+  "knownBaseline": [
+    "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff).",
+    "app.js renderReview crashed on every load since c7c6fff (reviews.js has no rubric), which blocked the default cue and tests/ensemble-atelier/studio_tests.py. Fixed with a guard.",
+    "studio_tests.py genre section still asserted 140 cues / 14 categories and old palettes; updated to the 240-cue catalog and the cue palette.",
+    "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work.",
+    "Release-gate CI failed on main since c7c6fff: the skill manifest was hashed over CRLF working copies. Fixed in 5b735c1."
+  ],
+  "nextAction": "Owner: run python tests/rebuild/listening_pack.py, listen with .scratch/listening/index.html, save docs/rebuild/listening-results.json. Then decide push/PR and which later polish to fund (marquee editing, light theme, flattening)."
+}

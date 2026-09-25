@@ -29,9 +29,14 @@ Use [55-level-matching.md](references/55-level-matching.md) when editing banks o
 |---|---|---|
 | `scripts/neospc.py` | init/compose/validate/review/audit-bank/inspect-bank/sound-plan/export-midi/render. One 8–32-bar cue per seed, 8/12/16/24/32 voice profiles. Render `--backend compact`, `multisample` or `soundfont` writes receipts. | General ambient-process engine, MIDI-as-canonical-score, or silent compact fallback when a bank is missing. |
 | `scripts/visualize_score.py` | Standalone instrument + piano-roll viewer from a composition/catalog; five independent demo generators. Opt-in local SF2 preview; compact palettes remain default. | Native/Factory Bank audio parity, CDN SoundFonts, physical fingering, DAW editing or production stems. |
+| `neospc.py create` · studio engine | Synthesis songs from 32 style presets (Create view engine): project, native score, catalog and MIDI; `create-render` synthesized WAV via local Chromium; `create-import` hears a native score through synthesis. Needs Node.js 18+ ([58-studio-engine.md](references/58-studio-engine.md)). | Odd meters, written blueprints, symbolic review, LUFS or listening approval. |
 | `scripts/refine_performance.py` | Opt-in phrase/role timing, gate and velocity changes on native composition/catalog JSON; written event structure preserved and hashed. | New melody/harmony/form, universal humanization, authenticity or automatic artistic approval. |
 
 Full canonical composing, bank assignment, mix and export procedure: read [canonical-compose-workflow.md](references/canonical-compose-workflow.md) when composing or delivering. Sound adapters: [57-sound-backends.md](references/57-sound-backends.md). Its original ambient/variation limitations refer to the native engine, not to the separate browser experiments. Viewer and interpretation details: [49-ensemble-atelier.md](references/49-ensemble-atelier.md). Research and anti-rigidity method: [50-composition-direction.md](references/50-composition-direction.md). Arrangement fields review can fail (energy drop, subtraction, roster exit, development, non-vocal hook): [56-arrangement-choices.md](references/56-arrangement-choices.md).
+
+## Studio engine songs
+
+For quick finished-sounding loops, or to hear a native score through synthesis instead of the sample banks, use the studio engine: `python scripts/neospc.py create ../dusk --preset lofi --seed DUSK`. It writes the engine project, a validated native score and catalog, and MIDI. Read [58-studio-engine.md](references/58-studio-engine.md) for presets, variation, rendering, import, game states (`--game-states`, `create-game` loops + manifest + web runtime) and limits (4/4 phrases, rule-based composer).
 
 ## Begin with musical decisions
 

@@ -10,6 +10,16 @@
   };
   const DRUM_ROLES = new Set(['kick','snare','hat','tom','wood','ride','shaker','brush','rim','impact']);
   const SUSTAIN_FAMILIES = new Set(['strings','choir','texture','wind','brass']);
+  // Drum playback policy. oneShot plays the sample body; gated follows the written
+  // duration; legacy keeps the historical 0.16-beat gate for compatibility renders.
+  const PLAYBACK_MODES = new Set(['oneShot', 'gated', 'legacy']);
+  const LEGACY_DRUM_BEATS = .16;
+  const ONE_SHOT_MAX_SECONDS = 6;
+  // Closed hats cut ringing open hats in the same group; open hats never cut closed ones.
+  const DEFAULT_CHOKE = { hat: ['hats', true], closed_hat: ['hats', true], open_hat: ['hats', false], open: ['hats', false] };
+  // Historical native send law: sample voices scale event.send by .45 (cap .45),
+  // chip voices by .22 (cap .3). Track sends use the same law.
+  const SEND_LAW = { sample: [.45, .45], chip: [.22, .3] };
   const BANK_ALIASES = {chamber:'factory'};
   const BANK_MODES = new Set(['factory','chamber','original','chip','velvet','circuit','timber','prism','voltage','megadrive','snes']);
   const resolveBankMode = mode => BANK_ALIASES[mode] || mode;
@@ -54,7 +64,10 @@
       this.style = null;
       this.buffers = new Map();
       this.instrumentNodes = new Map();
+      this.instrumentSends = new Map();
       this.instrumentVolumes = new Map();
+      this.chokeVoices = new Map();
+      this.drumPolicy = 'oneShot';
       this.sources = new Set();
       this.playing = false;
       this.offsetBeat = 0;
@@ -203,7 +216,18 @@
       const label = ({factory:'Chamber',original:'Compact',velvet:'Velvet',circuit:'Circuit',timber:'Timber',prism:'Prism',voltage:'Voltage',megadrive:'Mega Drive · sampled',snes:'SNES · sampled'})[this.bankMode].toUpperCase();
       if (typeof this.onReadyState === 'function') this.onReadyState(`LOADING ${uniqueFiles.length} ${label} SAMPLES`);
       await Promise.all(uniqueFiles.map(file => this.decodeFile(file)));
+      this.validateOffsets(style);
       if (typeof this.onReadyState === 'function') this.onReadyState(`${label} BANK READY`);
+    }
+
+    // Sample offsets past the buffer are rejected before playback instead of replaying from zero.
+    validateOffsets(style) {
+      for (const event of style.events) {
+        const offset = Number(event.sample_offset_ms || 0);
+        const resolved = this.resolveSample(style.instrument_map?.[event.inst], event);
+        const buffer = resolved && this.buffers.get(resolved.file);
+        if (buffer && (!Number.isFinite(offset) || offset < 0 || offset / 1000 >= buffer.duration)) throw new Error(`Sample offset outside ${resolved.file}: ${event.sample_offset_ms} ms`);
+      }
     }
 
     setBankMode(mode) {
@@ -231,7 +255,9 @@
       this.style = style;
       this.offsetBeat = 0;
       this.instrumentNodes.forEach(node => { try { node.disconnect(); } catch (_) {} });
+      this.instrumentSends.forEach(node => { try { node.disconnect(); } catch (_) {} });
       this.instrumentNodes.clear();
+      this.instrumentSends.clear();
       if (this.ctx && style) {
         for (const inst of new Set(style.events.map(e => e.inst))) this.ensureInstrumentNode(inst);
       }
@@ -239,14 +265,31 @@
       if (wasPlaying) this.play(beat % style.beats);
     }
 
+    // Authored track mix from the score: linear gain (neutral 1, 0 is silence) and an
+    // optional track send. It is independent of note velocity and sample-layer choice.
+    trackMix(inst) {
+      const mix = this.style?.track_mix?.[inst] || {};
+      const gain = Number(mix.gain);
+      const send = Number(mix.send);
+      return { gain: Number.isFinite(gain) ? clamp(gain, 0, 4) : 1, send: Number.isFinite(send) ? clamp(send, 0, 1) : null };
+    }
+
+    channelGain(inst) {
+      const fader = this.instrumentVolumes.has(inst) ? this.instrumentVolumes.get(inst) : 1;
+      return Math.pow(fader, 1.35) * this.trackMix(inst).gain;
+    }
+
     ensureInstrumentNode(inst) {
       if (this.instrumentNodes.has(inst)) return this.instrumentNodes.get(inst);
       if (!this.ctx) return null;
       const node = this.ctx.createGain();
-      const value = this.instrumentVolumes.has(inst) ? this.instrumentVolumes.get(inst) : 1;
-      node.gain.value = Math.pow(value, 1.35);
+      const send = this.ctx.createGain();
+      node.gain.value = send.gain.value = this.channelGain(inst);
       node.connect(this.master);
+      // Post-fader send bus: fader, authored gain and mute reach the echo return too.
+      send.connect(this.delay);
       this.instrumentNodes.set(inst, node);
+      this.instrumentSends.set(inst, send);
       return node;
     }
 
@@ -254,7 +297,72 @@
       const value = clamp(Number(percent) / 100, 0, 1);
       this.instrumentVolumes.set(inst, value);
       const node = this.ensureInstrumentNode(inst);
-      if (node && this.ctx) node.gain.setTargetAtTime(Math.pow(value, 1.35), this.ctx.currentTime, .018);
+      if (!node || !this.ctx) return;
+      const gain = this.channelGain(inst);
+      node.gain.setTargetAtTime(gain, this.ctx.currentTime, .018);
+      this.instrumentSends.get(inst).gain.setTargetAtTime(gain, this.ctx.currentTime, .018);
+    }
+
+    setDrumPolicy(policy) {
+      if (!['oneShot', 'legacy'].includes(policy)) throw new Error(`Unknown drum policy: ${policy}`);
+      this.drumPolicy = policy;
+    }
+
+    playbackMode(info, event) {
+      const declared = event.playback ?? info.playback;
+      if (declared !== undefined) {
+        if (!PLAYBACK_MODES.has(declared)) throw new Error(`Unknown playback mode: ${declared}`);
+        return declared;
+      }
+      return event.kind === 'drum' ? this.drumPolicy : 'gated';
+    }
+
+    chokeRule(info, event) {
+      const group = event.choke_group ?? info.choke_group;
+      if (group !== undefined) return group ? [group, Boolean(event.chokes ?? info.chokes)] : null;
+      return event.kind === 'drum' ? DEFAULT_CHOKE[event.inst] || null : null;
+    }
+
+    // A closing voice cuts earlier ringing voices of its group at its own start time.
+    // Voices that start at the same instant survive, so the order of the array is irrelevant.
+    applyChoke(rule, when, voice) {
+      if (!rule) return;
+      const [group, closes] = rule;
+      let voices = this.chokeVoices.get(group);
+      if (!voices) this.chokeVoices.set(group, voices = new Set());
+      if (closes) {
+        for (const old of voices) {
+          if (old.closes || old.when >= when || old.end <= when) continue;
+          const g = old.gain.gain;
+          if (g.cancelAndHoldAtTime) g.cancelAndHoldAtTime(when);
+          else { g.cancelScheduledValues(when); g.setValueAtTime(old.amp, when); }
+          g.setTargetAtTime(.0001, when, .006);
+          try { old.source.stop(when + .05); } catch (_) {}
+          old.end = when + .05;
+        }
+      }
+      for (const old of voices) if (old.end <= when) voices.delete(old);
+      voices.add({ ...voice, closes });
+    }
+
+    connectVoice(event, noteGain, branch) {
+      const [factor, cap] = SEND_LAW[branch];
+      const instNode = this.ensureInstrumentNode(event.inst);
+      const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
+      const out = pan || noteGain;
+      if (pan) {
+        pan.pan.value = clamp(Number(event.performance_pan ?? event.pan ?? 0), -1, 1);
+        noteGain.connect(pan);
+      }
+      out.connect(instNode);
+      // Event send overrides the track send; neither means a dry voice.
+      const send = clamp(Number(event.send ?? this.trackMix(event.inst).send ?? 0), 0, cap);
+      if (send > .001) {
+        const sendGain = this.ctx.createGain();
+        sendGain.gain.value = send * factor;
+        out.connect(sendGain);
+        sendGain.connect(this.instrumentSends.get(event.inst));
+      }
     }
 
     getInstrumentVolume(inst) {
@@ -350,6 +458,7 @@
         try { source.stop(); } catch (_) {}
       }
       this.sources.clear();
+      this.chokeVoices.clear();
     }
 
     async renderWav(style = this.style, settings = this) {
@@ -357,12 +466,14 @@
       const renderer = new NeoSpcLiveEngine();
       renderer.style = JSON.parse(JSON.stringify(style));
       for (const key of ['bankMode', 'tempoPct', 'transpose', 'masterDb', 'ceilingDb']) renderer[key] = settings[key];
+      renderer.drumPolicy = settings.drumPolicy || this.drumPolicy;
       renderer.instrumentVolumes = new Map(settings.instrumentVolumes);
       const seconds = renderer.getDuration(), sampleRate = 32000, length = Math.round(seconds * sampleRate);
       if (seconds > 120) throw new Error('Browser WAV export supports loops up to 2 minutes. Export longer scores with the skill.');
       if (renderer.bankMode !== 'chip') {
         const files = [...new Set(style.events.map(e => renderer.resolveSample(style.instrument_map[e.inst], e)?.file).filter(Boolean))];
         await Promise.all(files.map(async file => renderer.buffers.set(file, await this.decodeFile(file))));
+        renderer.validateOffsets(renderer.style);
       }
       const ctx = new OfflineAudioContext(2, length * 2, sampleRate);
       renderer.createGraph(ctx);
@@ -415,11 +526,9 @@
       if (!resolved) return;
       const buffer = this.buffers.get(resolved.file);
       if (!buffer) return;
-      const legacy = resolved.source === 'legacy' ? window.NEOSPC_SAMPLE_BANK?.samples?.[resolved.file] : null;
       const bps = this.beatsPerSecond();
       const when = Math.max(this.ctx.currentTime + .003, this.ctx.currentTime + (absoluteBeat - currentAbs) / bps);
-      const durationBeats = event.kind === 'drum' ? .16 : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2));
-      const durationSeconds = durationBeats / bps;
+      const mode = this.playbackMode(info, event);
       const family = info.family || '';
       const role = event.role || (event.kind === 'drum' ? event.inst : 'support');
       const source = this.ctx.createBufferSource();
@@ -427,50 +536,49 @@
       const transpose = event.kind === 'drum' || family === 'drum' ? 0 : this.transpose;
       const cents = Number(event.tuning_cents || 0);
       const midi = Number(event.kind === 'drum' ? (resolved.root ?? info.root_midi ?? 60) : (event.midi ?? resolved.root ?? info.root_midi ?? 60));
-      source.playbackRate.value = Math.pow(2, ((midi + transpose - Number(resolved.root ?? info.root_midi ?? 60)) + cents / 100) / 12);
+      const rate = Math.pow(2, ((midi + transpose - Number(resolved.root ?? info.root_midi ?? 60)) + cents / 100) / 12);
+      source.playbackRate.value = rate;
+      const offsetSeconds = Number(event.sample_offset_ms || 0) / 1000; // validated by prepareStyle
+      // A one-shot keeps its natural body: buffer length after the offset, at the played rate.
+      const body = (buffer.duration - offsetSeconds) / rate;
+      const durationSeconds = mode === 'oneShot' ? Math.min(body, ONE_SHOT_MAX_SECONDS)
+        : (mode === 'legacy' ? LEGACY_DRUM_BEATS : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2))) / bps;
       const loop = resolved.loop;
-      if (event.kind !== 'drum' && loop && durationSeconds > .22) {
+      if (mode === 'gated' && loop && durationSeconds > .22) {
         source.loop = true;
         const sampleRate = Number(window.NEOSPC_FACTORY_BANK?.profiles?.neo16?.sample_rate || 32000);
         source.loopStart = Number(loop.start_sec ?? (loop.start != null ? loop.start / sampleRate : 0));
         source.loopEnd = Math.min(buffer.duration, Number(loop.end_sec ?? (loop.end != null ? loop.end / sampleRate : buffer.duration)));
       }
       const noteGain = this.ctx.createGain();
-      const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
-      const instNode = this.ensureInstrumentNode(event.inst);
       const calibration = this.sampleGain(resolved.file);
       const sourceTrim = dbToGain(Number(info.mix_trim_db || 0));
       const velocityGain = Number(event.velocity_gain || 1);
-      const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * sourceTrim, 0, 1.2) * calibration;
+      const amp = Math.max(.0001, clamp((ROLE_AMP[role] || .15) * velocityGain * sourceTrim, 0, 1.2) * calibration);
       const attack = Number(event.attack ?? (event.kind === 'drum' ? .001 : (SUSTAIN_FAMILIES.has(family) ? .065 : .012)));
-      const release = Number(event.release ?? (event.kind === 'drum' ? .12 : (SUSTAIN_FAMILIES.has(family) ? .34 : .16)));
       noteGain.gain.setValueAtTime(.0001, when);
-      noteGain.gain.linearRampToValueAtTime(Math.max(.0001, amp), when + Math.min(attack, durationSeconds * .45));
-      const releaseStart = Math.max(when + .005, when + durationSeconds - Math.min(release, durationSeconds * .45));
-      noteGain.gain.setValueAtTime(Math.max(.0001, amp), releaseStart);
-      noteGain.gain.exponentialRampToValueAtTime(.0001, when + durationSeconds + release);
-      if (pan) {
-        pan.pan.value = clamp(Number(event.performance_pan ?? event.pan ?? 0), -1, 1);
-        source.connect(noteGain);
-        noteGain.connect(pan);
-        pan.connect(instNode);
-        const send = clamp(Number(event.send || 0), 0, .45);
-        if (send > .001) {
-          const sendGain = this.ctx.createGain();
-          sendGain.gain.value = send * .45;
-          pan.connect(sendGain);
-          sendGain.connect(this.delay);
-        }
+      noteGain.gain.linearRampToValueAtTime(amp, when + Math.min(attack, durationSeconds * .45));
+      let end;
+      if (mode === 'oneShot') {
+        // Only a short edge fade at the natural end (or the safety cap) to avoid a click.
+        const fade = Math.min(.012, durationSeconds * .2);
+        noteGain.gain.setValueAtTime(amp, when + durationSeconds - fade);
+        noteGain.gain.exponentialRampToValueAtTime(.0001, when + durationSeconds);
+        end = when + durationSeconds + .005;
       } else {
-        source.connect(noteGain);
-        noteGain.connect(instNode);
+        const release = Number(event.release ?? (event.kind === 'drum' ? .12 : (SUSTAIN_FAMILIES.has(family) ? .34 : .16)));
+        const releaseStart = Math.max(when + .005, when + durationSeconds - Math.min(release, durationSeconds * .45));
+        noteGain.gain.setValueAtTime(amp, releaseStart);
+        noteGain.gain.exponentialRampToValueAtTime(.0001, when + durationSeconds + release);
+        end = when + durationSeconds + release + .05;
       }
+      source.connect(noteGain);
+      this.connectVoice(event, noteGain, 'sample');
+      this.applyChoke(this.chokeRule(info, event), when, { when, end, amp, gain: noteGain, source });
       source.onended = () => this.sources.delete(source);
       this.sources.add(source);
-      const offsetSeconds = Math.max(0, Number(event.sample_offset_ms || 0) / 1000);
-      try { source.start(when, Math.min(offsetSeconds, Math.max(0, buffer.duration - .01))); }
-      catch (_) { source.start(when); }
-      source.stop(when + durationSeconds + release + .05);
+      source.start(when, offsetSeconds);
+      source.stop(end);
     }
 
     getNoiseBuffer() {
@@ -493,14 +601,13 @@
       const role = event.role || (event.kind === 'drum' ? event.inst : 'support');
       const family = info.family || '';
       const isDrum = event.kind === 'drum' || family === 'drum';
-      const durationBeats = isDrum ? .16 : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2));
+      // Chip drums are synthesized one-shots with fixed shapes; tonal chip voices follow the gate.
+      const durationBeats = isDrum ? LEGACY_DRUM_BEATS : Math.max(.035, Number(event.performance_duration ?? event.duration ?? .2));
       const baseDuration = durationBeats / bps;
       const velocityGain = Number(event.velocity_gain || 1) * Number(event.performance_gain || 1);
       const amp = clamp((ROLE_AMP[role] || .15) * velocityGain * (isDrum ? .55 : .48), .004, .34) * dbToGain(window.NEOSPC_LEVELS.chip_gain_db);
       const noteGain = this.ctx.createGain();
       const filter = this.ctx.createBiquadFilter();
-      const pan = this.ctx.createStereoPanner ? this.ctx.createStereoPanner() : null;
-      const instNode = this.ensureInstrumentNode(event.inst);
       let source;
       let release = isDrum ? .08 : (SUSTAIN_FAMILIES.has(family) ? .22 : .1);
       let duration = baseDuration;
@@ -551,20 +658,8 @@
       noteGain.gain.exponentialRampToValueAtTime(.0001, when + duration + release);
       source.connect(filter);
       filter.connect(noteGain);
-      if (pan) {
-        pan.pan.value = clamp(Number(event.performance_pan ?? event.pan ?? 0), -1, 1);
-        noteGain.connect(pan);
-        pan.connect(instNode);
-        const send = clamp(Number(event.send || 0), 0, .3);
-        if (send > .001) {
-          const sendGain = this.ctx.createGain();
-          sendGain.gain.value = send * .22;
-          pan.connect(sendGain);
-          sendGain.connect(this.delay);
-        }
-      } else {
-        noteGain.connect(instNode);
-      }
+      this.connectVoice(event, noteGain, 'chip');
+      this.applyChoke(this.chokeRule(info, event), when, { when, end: when + duration + release + .03, amp, gain: noteGain, source });
       source.onended = () => this.sources.delete(source);
       this.sources.add(source);
       source.start(when);
@@ -576,6 +671,7 @@
       if (this.ctx) this.ctx.close();
       this.ctx = null;
       this.instrumentNodes.clear();
+      this.instrumentSends.clear();
       this.noiseBuffer = null;
     }
   }

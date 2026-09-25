@@ -1,0 +1,836 @@
+{
+ "source": "UMBRA 8 bundle built from the private handoff (umbra8-source, build.py), run headless in Node with inert DOM stubs; seedRandom replaced by a shared counter.",
+ "generated": "2026-09-25",
+ "cases": {
+  "compose/nocturne/A1": {
+   "count": 247,
+   "sha": "97a0493b9493a57284b3733e"
+  },
+  "compose/nocturne/ORBITA": {
+   "count": 238,
+   "sha": "e4346701bed567a4b781fdef"
+  },
+  "compose/nocturne/Z-9": {
+   "count": 254,
+   "sha": "17249acd87bd6d3ac3380e29"
+  },
+  "compose/dub/A1": {
+   "count": 167,
+   "sha": "2a837d0482c835ea4380ee95"
+  },
+  "compose/dub/ORBITA": {
+   "count": 156,
+   "sha": "90f4dbe0f11424e864782ce5"
+  },
+  "compose/dub/Z-9": {
+   "count": 158,
+   "sha": "2e7cb8ad8be758ff540f470a"
+  },
+  "compose/micro/A1": {
+   "count": 289,
+   "sha": "a62eac694fbcc2dc8f6b199f"
+  },
+  "compose/micro/ORBITA": {
+   "count": 292,
+   "sha": "2c32b050e671786b5148032a"
+  },
+  "compose/micro/Z-9": {
+   "count": 311,
+   "sha": "cc1a0d3bfba6c2c245d5ad4a"
+  },
+  "compose/bossa/A1": {
+   "count": 312,
+   "sha": "e8924cd3ee6488ff4378cf3a"
+  },
+  "compose/bossa/ORBITA": {
+   "count": 308,
+   "sha": "5d432a99bdba7292d02c19cc"
+  },
+  "compose/bossa/Z-9": {
+   "count": 326,
+   "sha": "4a3b4151f4cf46ef8279580d"
+  },
+  "compose/ambient/A1": {
+   "count": 56,
+   "sha": "bc41b193277b358e88105577"
+  },
+  "compose/ambient/ORBITA": {
+   "count": 52,
+   "sha": "0ceb185889acc2b952fc7841"
+  },
+  "compose/ambient/Z-9": {
+   "count": 56,
+   "sha": "57b128d8e38a25793d759a00"
+  },
+  "compose/garage/A1": {
+   "count": 250,
+   "sha": "8c235e02a804d4ada1a85162"
+  },
+  "compose/garage/ORBITA": {
+   "count": 252,
+   "sha": "610e7d7c4a1ad91f3d4cc98a"
+  },
+  "compose/garage/Z-9": {
+   "count": 272,
+   "sha": "5568fb06a07978418e548089"
+  },
+  "compose/electro/A1": {
+   "count": 264,
+   "sha": "cccbb57da474dd874153bc8a"
+  },
+  "compose/electro/ORBITA": {
+   "count": 259,
+   "sha": "1a8b5923cb0a2c1c0b109e6b"
+  },
+  "compose/electro/Z-9": {
+   "count": 279,
+   "sha": "2e9106d7f357546e828bdf00"
+  },
+  "compose/broken/A1": {
+   "count": 312,
+   "sha": "abb5628516ccc0a7faeab784"
+  },
+  "compose/broken/ORBITA": {
+   "count": 307,
+   "sha": "92e77d286df5e471cbf862f9"
+  },
+  "compose/broken/Z-9": {
+   "count": 331,
+   "sha": "f1ea0c4757da229202acbcc2"
+  },
+  "compose/soul/A1": {
+   "count": 230,
+   "sha": "831d6e558ad049c3343054bf"
+  },
+  "compose/soul/ORBITA": {
+   "count": 226,
+   "sha": "775efc5d0df6b9f6db759852"
+  },
+  "compose/soul/Z-9": {
+   "count": 231,
+   "sha": "65b1f2e4bee21044321b10bf"
+  },
+  "compose/ritual/A1": {
+   "count": 186,
+   "sha": "0578205b2b9f0b55c3a1374f"
+  },
+  "compose/ritual/ORBITA": {
+   "count": 180,
+   "sha": "4ef35b072efd08bcab93b377"
+  },
+  "compose/ritual/Z-9": {
+   "count": 196,
+   "sha": "22c7eebe804c93a112cd90f1"
+  },
+  "compose/cinema/A1": {
+   "count": 53,
+   "sha": "e4883fd9ed2979c4f923180f"
+  },
+  "compose/cinema/ORBITA": {
+   "count": 51,
+   "sha": "4badbb3f08b4cb34da0c81b1"
+  },
+  "compose/cinema/Z-9": {
+   "count": 61,
+   "sha": "23e2d9cd446eaf011b0a7355"
+  },
+  "compose/chip/A1": {
+   "count": 330,
+   "sha": "5f7142c2569da03449925d7f"
+  },
+  "compose/chip/ORBITA": {
+   "count": 325,
+   "sha": "070886e6dbb7b62efab333ff"
+  },
+  "compose/chip/Z-9": {
+   "count": 356,
+   "sha": "e73862335fb4e58e826d2c63"
+  },
+  "compose/techno/A1": {
+   "count": 388,
+   "sha": "aed9782729f7c83573b5cccb"
+  },
+  "compose/techno/ORBITA": {
+   "count": 384,
+   "sha": "fbb3cc754a44f9550656ee1c"
+  },
+  "compose/techno/Z-9": {
+   "count": 403,
+   "sha": "8cb3bc93dd68aa1a4bc8a3bc"
+  },
+  "compose/dubtechno/A1": {
+   "count": 167,
+   "sha": "a984dde51db94d3e59857487"
+  },
+  "compose/dubtechno/ORBITA": {
+   "count": 165,
+   "sha": "4eaafe2b5b8ee822f9ceaa2f"
+  },
+  "compose/dubtechno/Z-9": {
+   "count": 163,
+   "sha": "92d74eabaa3b6342c148e770"
+  },
+  "compose/minimal/A1": {
+   "count": 229,
+   "sha": "c014d1939ae633e29ea27aae"
+  },
+  "compose/minimal/ORBITA": {
+   "count": 229,
+   "sha": "a271900c2f087f74c5e1556a"
+  },
+  "compose/minimal/Z-9": {
+   "count": 228,
+   "sha": "6f71b8088d080302e1178a2d"
+  },
+  "compose/melodic/A1": {
+   "count": 334,
+   "sha": "33b5eee1da45aa0986a74f40"
+  },
+  "compose/melodic/ORBITA": {
+   "count": 334,
+   "sha": "d3ce4d32e90b73feb9abf3f3"
+  },
+  "compose/melodic/Z-9": {
+   "count": 336,
+   "sha": "30d4ef7d40730b69c8d7ffe1"
+  },
+  "compose/trance/A1": {
+   "count": 437,
+   "sha": "00054bd239218567c18feda1"
+  },
+  "compose/trance/ORBITA": {
+   "count": 439,
+   "sha": "2f595b9b033e09f2eeeadc31"
+  },
+  "compose/trance/Z-9": {
+   "count": 447,
+   "sha": "eab6044d87949d609786977a"
+  },
+  "compose/dnb/A1": {
+   "count": 302,
+   "sha": "68b112b2c98043cd231eb241"
+  },
+  "compose/dnb/ORBITA": {
+   "count": 290,
+   "sha": "f0d332e92e843dbef4701365"
+  },
+  "compose/dnb/Z-9": {
+   "count": 303,
+   "sha": "f9cb589d82511cb6ecde6c4a"
+  },
+  "compose/jungle/A1": {
+   "count": 306,
+   "sha": "7716220d1977238fc25d9b85"
+  },
+  "compose/jungle/ORBITA": {
+   "count": 308,
+   "sha": "60dbc2db308f68b7f8dd01fa"
+  },
+  "compose/jungle/Z-9": {
+   "count": 326,
+   "sha": "5207f326467db8e14c5134ef"
+  },
+  "compose/liquid/A1": {
+   "count": 260,
+   "sha": "12f9debdc260f0b618177b28"
+  },
+  "compose/liquid/ORBITA": {
+   "count": 245,
+   "sha": "9d34c026efe7cf4d862728b4"
+  },
+  "compose/liquid/Z-9": {
+   "count": 267,
+   "sha": "2d473bf21f216eda5cf832c0"
+  },
+  "compose/halftime/A1": {
+   "count": 161,
+   "sha": "e91abc35e61f4892371d6e00"
+  },
+  "compose/halftime/ORBITA": {
+   "count": 166,
+   "sha": "1af0967ffc1f9d8a406d6dfd"
+  },
+  "compose/halftime/Z-9": {
+   "count": 171,
+   "sha": "31bf37861ca1b6aa75ff45c3"
+  },
+  "compose/trap/A1": {
+   "count": 426,
+   "sha": "b24f6280bbf10afc9c71c947"
+  },
+  "compose/trap/ORBITA": {
+   "count": 420,
+   "sha": "abd71c8b59980c0c09ca8e84"
+  },
+  "compose/trap/Z-9": {
+   "count": 454,
+   "sha": "7b761a4fb39e79811cda1dfd"
+  },
+  "compose/lofi/A1": {
+   "count": 205,
+   "sha": "478917cce4d212c877718a93"
+  },
+  "compose/lofi/ORBITA": {
+   "count": 205,
+   "sha": "362cede60f64c5eb1caac427"
+  },
+  "compose/lofi/Z-9": {
+   "count": 209,
+   "sha": "de6674c224e8401d5d740a3d"
+  },
+  "compose/synthwave/A1": {
+   "count": 355,
+   "sha": "98a17c272a4f2981a01777e0"
+  },
+  "compose/synthwave/ORBITA": {
+   "count": 359,
+   "sha": "3474df92622c7515c2f931c6"
+  },
+  "compose/synthwave/Z-9": {
+   "count": 355,
+   "sha": "b2482a686e9936c1720f6ebe"
+  },
+  "compose/disco/A1": {
+   "count": 355,
+   "sha": "f4f78663bdfd8fb3842af71c"
+  },
+  "compose/disco/ORBITA": {
+   "count": 353,
+   "sha": "e42be38f1ba48df6ce30bf11"
+  },
+  "compose/disco/Z-9": {
+   "count": 363,
+   "sha": "3ddcb7a618e6c656d70d242b"
+  },
+  "compose/funk/A1": {
+   "count": 526,
+   "sha": "ec2b41d697826c2dcafc0cd5"
+  },
+  "compose/funk/ORBITA": {
+   "count": 519,
+   "sha": "2609acc36c1a77ba1977a045"
+  },
+  "compose/funk/Z-9": {
+   "count": 535,
+   "sha": "cb58fae52b5173b8bfe245dc"
+  },
+  "compose/jazz/A1": {
+   "count": 224,
+   "sha": "30424ebf7a648b9ed4c2437a"
+  },
+  "compose/jazz/ORBITA": {
+   "count": 214,
+   "sha": "10799055f177f565d51e2545"
+  },
+  "compose/jazz/Z-9": {
+   "count": 212,
+   "sha": "3249b8fc19d32e51a6558a80"
+  },
+  "compose/afro/A1": {
+   "count": 343,
+   "sha": "5b524cd75cb3840e4642268a"
+  },
+  "compose/afro/ORBITA": {
+   "count": 344,
+   "sha": "eb679afb4619ec650456bf9a"
+  },
+  "compose/afro/Z-9": {
+   "count": 349,
+   "sha": "f6f30bde8c55877c27e4d90a"
+  },
+  "compose/reggaeton/A1": {
+   "count": 314,
+   "sha": "d68f0aaa76a8021cc3068b9b"
+  },
+  "compose/reggaeton/ORBITA": {
+   "count": 303,
+   "sha": "a72a4d3abe88e5bafd2a6ced"
+  },
+  "compose/reggaeton/Z-9": {
+   "count": 322,
+   "sha": "6cec038cb1eb6435363154b2"
+  },
+  "compose/footwork/A1": {
+   "count": 376,
+   "sha": "27dd08251c4d23219b6dd83e"
+  },
+  "compose/footwork/ORBITA": {
+   "count": 380,
+   "sha": "24809c7c33254a2ca74f155e"
+  },
+  "compose/footwork/Z-9": {
+   "count": 392,
+   "sha": "ebea1279d83e85fdb8d1d1f4"
+  },
+  "compose/idm/A1": {
+   "count": 410,
+   "sha": "456db93ddb3223b8783dbb12"
+  },
+  "compose/idm/ORBITA": {
+   "count": 409,
+   "sha": "141161eada09340b82569653"
+  },
+  "compose/idm/Z-9": {
+   "count": 439,
+   "sha": "91f3a3f611ef7ba3101c2af8"
+  },
+  "compose/breakbeat/A1": {
+   "count": 343,
+   "sha": "726a0885d58ac2a0b1c70b92"
+  },
+  "compose/breakbeat/ORBITA": {
+   "count": 333,
+   "sha": "44f19a380abe6bc1f1864175"
+  },
+  "compose/breakbeat/Z-9": {
+   "count": 349,
+   "sha": "a341fc151a177afb2c91409c"
+  },
+  "journey/nocturne": {
+   "count": 847,
+   "sha": "702f15835a07eef669cac08a"
+  },
+  "journey/techno": {
+   "count": 1369,
+   "sha": "8b1ef178130194751b7bdc4d"
+  },
+  "journey/ambient": {
+   "count": 220,
+   "sha": "2245710d73ee3c31c5323417"
+  },
+  "journey/jazz": {
+   "count": 712,
+   "sha": "158862fce26e74a3bd38eb9c"
+  },
+  "journey/dnb": {
+   "count": 1068,
+   "sha": "81a92ba4a2e617a092e0ef93"
+  },
+  "journey/trap": {
+   "count": 1510,
+   "sha": "56c56ee45c8820459f608c4a"
+  },
+  "arp/up3": {
+   "count": 288,
+   "sha": "802672c23fb577aca880de32"
+  },
+  "arp/up4": {
+   "count": 153,
+   "sha": "e282f387c8d30944dee39e32"
+  },
+  "arp/down3": {
+   "count": 333,
+   "sha": "1f26862974b8039f5964a94a"
+  },
+  "arp/down4": {
+   "count": 361,
+   "sha": "c0e63b5b0f6460defb3f9724"
+  },
+  "arp/downslow": {
+   "count": 64,
+   "sha": "4a038da15a42d9fae33dec3e"
+  },
+  "arp/updown": {
+   "count": 266,
+   "sha": "8814ea295141010a5202248e"
+  },
+  "arp/oscillate1": {
+   "count": 306,
+   "sha": "e9bc121d75b857fef0e4a8bf"
+  },
+  "arp/oscillate2": {
+   "count": 368,
+   "sha": "ad70d35c1279ab91cca71d7d"
+  },
+  "arp/oscillate3": {
+   "count": 253,
+   "sha": "5c87e12b7115ae73f2c35a26"
+  },
+  "arp/oscillate4": {
+   "count": 192,
+   "sha": "80fd4df1b878bd069c72fd14"
+  },
+  "arp/oscillate5": {
+   "count": 83,
+   "sha": "170e4f4b01b5e3401d1a0691"
+  },
+  "arp/oscillate6": {
+   "count": 385,
+   "sha": "c0ba04ec41d7ad9d39feb242"
+  },
+  "arp/repeats1": {
+   "count": 416,
+   "sha": "8d6a645bfe50a4a521562d24"
+  },
+  "arp/repeats2": {
+   "count": 173,
+   "sha": "571e0021b73a4b0b45c9cc6b"
+  },
+  "arp/repeats3": {
+   "count": 252,
+   "sha": "7540ac2294a8e6584e9d4644"
+  },
+  "arp/rhythm1": {
+   "count": 377,
+   "sha": "b87f19a25b52e3df389aa8af"
+  },
+  "arp/rhythm2": {
+   "count": 458,
+   "sha": "69082c374598182c86b9470a"
+  },
+  "arp/rhythm3": {
+   "count": 295,
+   "sha": "f60938d8335a1be071f42ba3"
+  },
+  "arp/rhythm4": {
+   "count": 343,
+   "sha": "544d44ecb0883241e83e4891"
+  },
+  "arp/synco1": {
+   "count": 295,
+   "sha": "91f4ce067fea009bbbb991d0"
+  },
+  "arp/synco2": {
+   "count": 176,
+   "sha": "c4fd4ddf32abe1c09d89b54c"
+  },
+  "arp/synco3": {
+   "count": 330,
+   "sha": "6e74bf471a98e6a4178688cd"
+  },
+  "arp/flourish1": {
+   "count": 230,
+   "sha": "fd63b457b8ca9ef99ebbab59"
+  },
+  "arp/flourish2": {
+   "count": 406,
+   "sha": "baf4deadcec43e6e267d8780"
+  },
+  "arp/flourish3": {
+   "count": 388,
+   "sha": "712c93983b3dbf6ff07f8321"
+  },
+  "arp/supersaw1": {
+   "count": 516,
+   "sha": "88061eea136b6d3c85f0ff95"
+  },
+  "arp/supersaw2": {
+   "count": 227,
+   "sha": "972287228c092bf3addd43a3"
+  },
+  "arp/supersaw3": {
+   "count": 386,
+   "sha": "8d6ff069417cb69adf78f8c0"
+  },
+  "arp/supersaw4": {
+   "count": 316,
+   "sha": "9887d33a5fbcd821dfac0028"
+  },
+  "arp/house1": {
+   "count": 315,
+   "sha": "fa411125a9170d40d9d693b7"
+  },
+  "arp/house2": {
+   "count": 407,
+   "sha": "cff5dcd79aadc9d479c8c7f3"
+  },
+  "arp/house3": {
+   "count": 382,
+   "sha": "3e9204dc48ba7bf273cd5f02"
+  },
+  "arp/house4": {
+   "count": 277,
+   "sha": "726856f4a76c60534a9c33d0"
+  },
+  "arp/slow": {
+   "count": 144,
+   "sha": "44553f5e1bcf261ce38b2e83"
+  },
+  "arp/morph1": {
+   "count": 346,
+   "sha": "a0809f68c597830d485962a0"
+  },
+  "arp/morph2": {
+   "count": 364,
+   "sha": "d55621f9ff17f897d2597c32"
+  },
+  "arp/umbra_helix": {
+   "count": 90,
+   "sha": "4ef761d91052b16fb8f42354"
+  },
+  "arp/umbra_pendulum": {
+   "count": 239,
+   "sha": "24d39ca796cc8c7fde09bac5"
+  },
+  "arp/umbra_ghost": {
+   "count": 303,
+   "sha": "abd504cd9c20afb5a986aa75"
+  },
+  "arp/umbra_fracture": {
+   "count": 374,
+   "sha": "55a7d7333ee8fe3781c44629"
+  },
+  "arp/umbra_six": {
+   "count": 225,
+   "sha": "0611206cefa7ba7670893781"
+  },
+  "arp/umbra_answer": {
+   "count": 166,
+   "sha": "ca30f53a655cf5bc7ad88dc4"
+  },
+  "arp/umbra_bloom": {
+   "count": 77,
+   "sha": "0103fff8633132179b082ad5"
+  },
+  "arp/umbra_split": {
+   "count": 385,
+   "sha": "2b5af421231b87e7fcec98d2"
+  },
+  "chop/3notes": {
+   "count": 254,
+   "sha": "3d7c4f671b609ce2d031022c"
+  },
+  "chop/6notes1": {
+   "count": 409,
+   "sha": "eda771c0f37ca2321bec6161"
+  },
+  "chop/6notes2": {
+   "count": 274,
+   "sha": "78d30874ad84ecc886c424ce"
+  },
+  "chop/6notes3": {
+   "count": 271,
+   "sha": "491f14e0c96acb7d17b4c5b3"
+  },
+  "chop/trance1": {
+   "count": 439,
+   "sha": "ba1c1c4211dd23259258c615"
+  },
+  "chop/trance2": {
+   "count": 286,
+   "sha": "71105947954ca82160b7f73b"
+  },
+  "chop/stab1": {
+   "count": 305,
+   "sha": "fc1f9e883f0f8b6a68c817bc"
+  },
+  "chop/stab2": {
+   "count": 507,
+   "sha": "9f3c72cfbd65afa994ad675e"
+  },
+  "chop/stab3": {
+   "count": 338,
+   "sha": "5a1a28b4955ca1cbce24d863"
+  },
+  "chop/pad1": {
+   "count": 347,
+   "sha": "0f9e2fba1969ff1689ac3ad6"
+  },
+  "chop/pad2": {
+   "count": 436,
+   "sha": "eb1ceef45fdd2d1237fe7628"
+  },
+  "chop/pad3": {
+   "count": 157,
+   "sha": "ea98615a1dd1e46dab2a54d1"
+  },
+  "chop/pad4": {
+   "count": 53,
+   "sha": "b45c93ceea68557a56aa3b5f"
+  },
+  "chop/pad5": {
+   "count": 371,
+   "sha": "95003628506c835c67913a95"
+  },
+  "chop/pad6": {
+   "count": 52,
+   "sha": "82d4aa03f019183d57486a59"
+  },
+  "chop/double": {
+   "count": 155,
+   "sha": "621a85e6afddacab2d904dcf"
+  },
+  "chop/treble": {
+   "count": 481,
+   "sha": "f2cf96147b2e28999325f8dd"
+  },
+  "chop/quad": {
+   "count": 269,
+   "sha": "33d45a4970e73f40fc1613d0"
+  },
+  "chop/umbra_tresillo": {
+   "count": 204,
+   "sha": "2c1fd814301d9250eec8237a"
+  },
+  "chop/umbra_dub": {
+   "count": 662,
+   "sha": "898ebf6634b70219e49a8ae1"
+  },
+  "chop/umbra_garage": {
+   "count": 281,
+   "sha": "d85f8f41586fe2450c05e51b"
+  },
+  "chop/umbra_stutter": {
+   "count": 433,
+   "sha": "5196ea93fbea0b19918980a3"
+  },
+  "chop/umbra_reverse": {
+   "count": 339,
+   "sha": "473629c764bacab5f5809e93"
+  },
+  "chop/umbra_breath": {
+   "count": 246,
+   "sha": "09420a9a87c0fea5313c71b2"
+  },
+  "chop/umbra_euclid": {
+   "count": 233,
+   "sha": "ef320a0141dcfa5449ea331c"
+  },
+  "chop/umbra_triplet": {
+   "count": 530,
+   "sha": "d8998c484d5a68431c79d4a9"
+  },
+  "chop/umbra_sparse": {
+   "count": 210,
+   "sha": "48f18d1e30f62e865c363085"
+  },
+  "chop/umbra_shuffle": {
+   "count": 370,
+   "sha": "ad504e0a8bb62eece7db4290"
+  },
+  "arp/classic-modes": {
+   "count": 992,
+   "sha": "269606e250e0e19ac52bc936"
+  },
+  "clips/conditions": {
+   "count": 346,
+   "sha": "d3ff781c72ad1e61c9275171"
+  },
+  "clips/bake-transform": {
+   "events": {
+    "count": 235,
+    "sha": "9269fb13db978ecb43ecfd45"
+   },
+   "clipCount": 3
+  },
+  "song/structure": {
+   "events": {
+    "count": 2146,
+    "sha": "9d7e93a2a6c5b9cd94a2c4c4"
+   },
+   "sections": [
+    [
+     "Intro",
+     8
+    ],
+    [
+     "Tema A",
+     8
+    ],
+    [
+     "Variación A′",
+     8
+    ],
+    [
+     "Ruptura",
+     8
+    ],
+    [
+     "Tema B",
+     8
+    ],
+    [
+     "Cierre",
+     8
+    ]
+   ]
+  },
+  "macros/automation": {
+   "count": 435,
+   "sha": "4aa424cb436e4aef002d0f97"
+  },
+  "harmony/rework": {
+   "count": 228,
+   "sha": "9e011ce05555d7ae042da9b0"
+  },
+  "harmony/parse": {
+   "specs": "43dc843fdaedd3f4800111d1",
+   "events": {
+    "count": 207,
+    "sha": "5f48f3d29d8c5df1b04a8477"
+   }
+  },
+  "random/variation/R1": {
+   "state": "16d39c3058d6b898858e403e",
+   "events": {
+    "count": 431,
+    "sha": "fde90eef3732650377294352"
+   }
+  },
+  "random/variation/R2": {
+   "state": "e89d98a7bed6ca285bc839e2",
+   "events": {
+    "count": 283,
+    "sha": "a56612301c1267a360a1371e"
+   }
+  },
+  "random/variation/R3": {
+   "state": "08e0f30493d6f4591b66904b",
+   "events": {
+    "count": 299,
+    "sha": "b3684a64e0e16e2d959a3515"
+   }
+  },
+  "random/song/R1": {
+   "state": "baadd9a9933d6aefb54326d1",
+   "events": {
+    "count": 299,
+    "sha": "50eeba062504a4a2346413aa"
+   }
+  },
+  "random/song/R2": {
+   "state": "9614cbea2dd4f30461617203",
+   "events": {
+    "count": 886,
+    "sha": "4103d6b74daffd2070dac66e"
+   }
+  },
+  "random/song/R3": {
+   "state": "2b7d8c96447863a2ccefc4c4",
+   "events": {
+    "count": 90,
+    "sha": "a90cc679f53850c95382c465"
+   }
+  },
+  "chaos/mutate": {
+   "state": "54468a243194bf81772b1b50",
+   "events": {
+    "count": 307,
+    "sha": "b1a8f2a3625d7b84039a61ec"
+   }
+  },
+  "chaos/reinvent": {
+   "state": "ce0d6492db3fed5bc381ab8e",
+   "events": {
+    "count": 1285,
+    "sha": "c81d14f9658c53f0557bddbb"
+   }
+  },
+  "chaos/fracture": {
+   "state": "9f4f167ae1083c3ddd9153f0",
+   "events": {
+    "count": 240,
+    "sha": "c1ab59357b5696211b681416"
+   }
+  },
+  "project/roundtrip": "735358416413f6cc3446f039",
+  "project/v6-import": {
+   "state": "bf63ca5366980cfab3adaee6",
+   "events": {
+    "count": 166,
+    "sha": "658dcb24cb889e663910dff9"
+   }
+  },
+  "midi/file": 3609
+ }
+}

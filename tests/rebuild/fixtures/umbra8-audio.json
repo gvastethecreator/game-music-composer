@@ -1,0 +1,35 @@
+{
+ "source": "UMBRA 8 offline renders (Chromium 153, 44.1 kHz, loops 1, tail 6 s). Chromium offline rendering varies around 1e-5 relative RMS between identical runs.",
+ "cases": {
+  "lofi/LUZ": {
+   "frames": 1350138,
+   "rms": 0.0690888016362235,
+   "peak": 0.43872207403182983
+  },
+  "nocturne/A1": {
+   "frames": 1297185,
+   "rms": 0.08732266271853176,
+   "peak": 0.45680925250053406
+  },
+  "techno/Z-9": {
+   "frames": 906055,
+   "rms": 0.0723117601815278,
+   "peak": 0.4591810703277588
+  },
+  "jazz/ORBITA": {
+   "frames": 1020600,
+   "rms": 0.0550877931539719,
+   "peak": 0.39120131731033325
+  },
+  "trance/K": {
+   "frames": 878165,
+   "rms": 0.05484734012200381,
+   "peak": 0.36402031779289246
+  },
+  "dnb/D": {
+   "frames": 756879,
+   "rms": 0.0672972266321642,
+   "peak": 0.4580770432949066
+  }
+ }
+}
