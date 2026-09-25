@@ -46,3 +46,11 @@ The JavaScript compiler is the single source of musical decisions for the browse
 - The player is GMC's own, following UMBRA's scheduler: AudioContext clock, 25 ms timer, 0.16 s lookahead, per-step automation.
 - Verification: `tests/rebuild/engine_golden.test.cjs` replays 193 scenarios and compares them with the reference signatures in `tests/rebuild/fixtures/umbra8-golden.json`. `tests/rebuild/engine_audio_browser.py` renders six presets offline in Chromium and compares level metrics.
 - Labels and messages are still UMBRA's Spanish text. The GMC UI maps what it shows.
+
+## ADR-05 · Create is the first view (2026-09-25)
+
+- A new **Create** tab opens first for new visitors; a shared `?cue=` link still opens Studio, and saved preferences win. Create runs on `GMCEngine` with its own player; Studio keeps the sample-bank engine. The two never play at once.
+- Essential shows the short path: style, play, New song, Variation, Chaos, idea slots A–D, tracks (mute, solo, lock, regenerate, timbre, level), harmony and a score view of every track. Studio adds the track inspector, performance templates, composition, master, macros and song building.
+- New song stores the previous song in a free idea slot (UMBRA's behaviour); the notice says which one.
+- **Open in Studio** converts the engine song through `engine/native-bridge.js`: every scoreEvents() note becomes a native event (written beat on a 1/48 grid, exact played beat in `performance_beat`), each timbre maps to the closest sampled studio instrument, track volume and send travel as `track_mix`. Songs above 32 simultaneous notes are refused with a reason.
+- Engine labels, generated names and messages are Spanish in the core. `engine/labels-en.js` translates what the view shows; the verified core is untouched.

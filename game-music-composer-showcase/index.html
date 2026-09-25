@@ -9,6 +9,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="studio.css">
+  <link rel="stylesheet" href="create.css">
 </head>
 <body>
   <a class="skip-link" href="#studioMain">Skip to studio</a>
@@ -19,6 +20,7 @@
         <h1>Game Music Composer</h1>
       </div>
       <nav class="app-tabs" id="appTabs" aria-label="Studio views" role="tablist">
+        <button id="tab-create" type="button" role="tab" aria-selected="false" aria-controls="view-create" data-view="create">Create</button>
         <button id="tab-workstation" class="active" type="button" role="tab" aria-selected="true" aria-controls="view-workstation" data-view="workstation">Studio</button>
         <button id="tab-recipe" type="button" role="tab" aria-selected="false" aria-controls="view-recipe" data-view="recipe">Compose</button>
         <button id="tab-soundbank" type="button" role="tab" aria-selected="false" aria-controls="view-soundbank" data-view="soundbank">Soundbank</button>
@@ -38,6 +40,79 @@
     </header>
 
     <main id="studioMain" tabindex="-1">
+
+    <section id="view-create" class="app-view" role="tabpanel" aria-labelledby="tab-create" hidden>
+      <section class="create-rack hardware-panel" data-mode="essential">
+        <header class="create-head">
+          <div class="create-title">
+            <span class="overline">Create · synthesis engine</span>
+            <h2 id="createTitle">New song</h2>
+            <p id="createSubtitle"></p>
+          </div>
+          <div class="create-meta" id="createMeta" aria-label="Song settings"></div>
+        </header>
+        <div class="create-transport inset-panel" role="toolbar" aria-label="Create transport">
+          <button id="createPlay" class="metal-button amber create-play" type="button" aria-pressed="false">Play</button>
+          <button id="createStop" class="metal-button" type="button">Stop</button>
+          <label class="create-field"><span>Style</span><select id="createPreset"></select></label>
+          <div class="create-actions" role="group" aria-label="Generate">
+            <button id="createNewSong" class="metal-button" type="button" title="A new song in another style, key and tempo">New song</button>
+            <button id="createVariation" class="metal-button" type="button" title="Vary rhythm and melody of unlocked tracks">Variation</button>
+            <button id="createChaos" class="metal-button" type="button" title="A deep seeded transformation">Chaos</button>
+            <select id="createChaosMode" class="create-mini-select" aria-label="Chaos mode"><option value="mutate">Mutate</option><option value="reinvent" selected>Reinvent</option><option value="fracture">Fracture</option></select>
+          </div>
+          <div class="create-actions" role="group" aria-label="History">
+            <button id="createUndo" class="compact-button" type="button" disabled>Undo</button>
+            <button id="createRedo" class="compact-button" type="button" disabled>Redo</button>
+          </div>
+          <label class="create-inline"><span>BPM</span><input id="createBpm" type="number" min="45" max="190" step="1"></label>
+          <label class="create-inline create-range"><span>Vol</span><input id="createVolume" type="range" min="0" max="100" step="1"></label>
+          <label class="create-field"><span>Finish</span><select id="createFinish"></select></label>
+          <div class="create-mode" role="group" aria-label="View">
+            <button id="createEssential" class="compact-button active" type="button" aria-pressed="true">Essential</button>
+            <button id="createStudio" class="compact-button" type="button" aria-pressed="false">Studio</button>
+          </div>
+          <details class="create-export">
+            <summary class="metal-button">Export</summary>
+            <div class="create-export-menu">
+              <button id="createExportWav" type="button">WAV audio</button>
+              <button id="createExportMidi" type="button">MIDI file</button>
+              <button id="createExportProject" type="button">Project JSON</button>
+              <button id="createExportStems" type="button">Stems (ZIP)</button>
+              <button id="createOpenStudio" type="button">Open in Studio (sample banks)</button>
+              <label class="create-import">Open project JSON<input id="createImport" type="file" accept="application/json,.json"></label>
+            </div>
+          </details>
+          <div class="create-readout"><span>POS</span><strong id="createPosition">01 · 1</strong><span id="createTime">00:00 / 00:00</span></div>
+        </div>
+        <div class="create-bank" id="createBank" aria-label="Idea bank"></div>
+        <div class="create-grid">
+          <aside class="create-tracks inset-panel" aria-label="Tracks">
+            <div class="create-panel-head"><span class="module-label">Tracks</span><span id="createTrackCount" class="create-count"></span></div>
+            <div id="createTracks"></div>
+          </aside>
+          <section class="create-center" aria-label="Song">
+            <div class="create-harmony inset-panel">
+              <div class="create-panel-head"><span class="module-label">Harmony</span>
+                <div class="create-harmony-controls">
+                  <label class="create-field"><span>Key</span><select id="createRoot"></select></label>
+                  <label class="create-field"><span>Scale</span><select id="createScale"></select></label>
+                  <label class="create-field create-wide"><span>Progression</span><select id="createProgression"></select></label>
+                  <button id="createRework" class="compact-button" type="button" title="Pick another progression from the library">New chords</button>
+                </div>
+              </div>
+              <div id="createChords" class="create-chords"></div>
+            </div>
+            <div class="create-roll inset-panel">
+              <canvas id="createRoll" aria-label="Notes of every track in the phrase"></canvas>
+              <canvas id="createRollHead" class="create-roll-head" aria-hidden="true"></canvas>
+            </div>
+            <div class="create-shape inset-panel create-studio-only" id="createShape"></div>
+          </section>
+          <aside class="create-inspector inset-panel create-studio-only" aria-label="Track inspector" id="createInspector"></aside>
+        </div>
+      </section>
+    </section>
 
     <section id="view-workstation" class="app-view active" role="tabpanel" aria-labelledby="tab-workstation">
 
@@ -278,6 +353,10 @@
   <script src="atelier/instruments.js"></script>
   <script src="studio-score.js"></script>
   <script src="studio-atelier.js"></script>
+  <script src="engine/core.js"></script>
+  <script src="engine/labels-en.js"></script>
+  <script src="engine/native-bridge.js"></script>
+  <script src="create.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

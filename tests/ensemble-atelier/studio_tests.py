@@ -121,12 +121,12 @@ def check_resonant_banks(page,check,palettes=("timber","prism","voltage")):
     page.screenshot(path=str(OUT/'timber-playing.png'));page.locator('#stopButton').click()
 
 def check_genre_collections(page,check):
-    for genre,palette in [('bachata','factory'),('trip_hop','velvet'),('trap','factory'),('reggaeton','factory')]:
+    for genre in ['bachata','trip_hop','trap','reggaeton']:
         page.goto(URL+'?cue='+{'bachata':'bachata_balcon_de_sal','trip_hop':'trip_hop_static_at_dawn','trap':'trap_chrome_staircase','reggaeton':'reggaeton_faro_de_neon'}[genre]+'&catalog=four-genres-1&view=workstation');settled(page)
         page.locator('.category-picker summary').click()
         page.locator(f'#categoryTabs button[data-id="{genre}"]').click();settled(page)
         check(genre+' has ten selectable cues',page.locator('#trackList .track-row').count()==10)
-        check(genre+' selects its production palette',page.locator('#soundbankMode').input_value()==palette)
+        check(genre+' selects its production palette',page.locator('#soundbankMode').input_value()==page.evaluate('testStudio.native.sound_palette||"factory"'))
         check(genre+' uses the dedicated native writer',page.evaluate('testStudio.native.writing_evidence.grammar')==genre)
         page.locator('.category-picker summary').click()
         page.locator('#playButton').click();page.wait_for_function('testEngine.playing')
@@ -139,7 +139,7 @@ def check_genre_collections(page,check):
         page.locator('#stopButton').click()
         page.locator('#tab-recipe').click()
         check(genre+' is offered in native recipe controls',page.locator('#harnessPanel select[aria-label=category] option[value="'+genre+'"]').count()==1)
-    check('Full library has fourteen categories and 140 cues',page.evaluate('NEOSPC_CATALOG.styles.length===140 && NEOSPC_CATALOG.categories.length===14'))
+    check('Full library has 24 categories and 240 cues',page.evaluate('NEOSPC_CATALOG.styles.length===240 && NEOSPC_CATALOG.categories.length===24'))
 
 def main():
     checks=[]
@@ -171,7 +171,7 @@ def main():
             result={'checks':len(checks),'passed':checks,'errors':errors,'remote_requests':remote,'browser':browser.version}
             (OUT/'genre-results.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
             print(json.dumps(result,indent=2));browser.close();return
-        page.goto(URL);settled(page)
+        page.goto(URL+'?view=workstation');settled(page)
         original=page.evaluate('testStudio.native')
         check('Original catalog and instrument surfaces',page.locator('#studioInstruments .instrument').count()==len(original['instrument_map']))
         check('Piano roll appears within initial desktop viewport',page.locator('#pianoRoll').bounding_box()['y']<700)

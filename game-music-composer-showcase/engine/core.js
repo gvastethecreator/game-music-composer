@@ -1379,6 +1379,10 @@ const player={
 };
 let audioContext=null;
 
+let liveBefore=null;
+const track=id=>{const t=state.tracks.find(x=>x.id===id);if(!t)throw new Error('Unknown track: '+id);return t;};
+// Regenerating one track drops its clip binding so the new pattern is heard.
+const regenerate=t=>{if(state.studio)delete state.studio.bindings[t.id];state.patterns[t.id]=generateTrack(t);ui.note=null;};
 const session={
  get state(){return state;},
  get selected(){return ui.selected;},
@@ -1394,9 +1398,22 @@ const session={
  edit(fn,{recompose=false,restart=false}={}){if(ui.rendering)return false;checkpoint();fn(state);changed({recompose,restart});return true;},
  commit:(fn,opts)=>commit7(()=>fn(state),opts),
  applyPreset(id){checkpoint();applyPreset(id);changed({restart:true});},
- setSeed(seed){checkpoint();state.seed=String(seed).slice(0,64)||'GMC';state.mutation=0;changed({recompose:true,restart:true});},
+ setSeed(seed){checkpoint();state.seed=String(seed).slice(0,64)||'UMBRA';state.mutation=0;state.tracks.forEach(t=>{if(!t.locked)t.revision=0;});changed({recompose:true,restart:true});},
+ newSeed(){this.setSeed(seedRandom());return state.seed;},
  mutate(){if(ui.rendering)return;checkpoint();state.mutation++;changed({recompose:true,restart:true});},
- regenerateTrack(id){checkpoint();const t=state.tracks.find(x=>x.id===id);if(state.studio)delete state.studio.bindings[t.id];state.patterns[t.id]=generateTrack(t);ui.note=null;changed({});},
+ regenerateTrack(id){checkpoint();const t=track(id);t.revision++;regenerate(t);changed({});},
+ // Continuous controls: the first input snapshots the session, commitLive stores one undo step.
+ live(fn){if(ui.rendering)return;if(!liveBefore)liveBefore=clone(state);fn(state);mix(state);host.render(state,{live:true});},
+ commitLive(){const before=liveBefore;liveBefore=null;if(before){rememberUndo(before);persist();}},
+ // Key, scale, progression, voicing, bars and form follow UMBRA's handlers.
+ setHarmony(id,value){if(id==='progression'&&progressions[value]?.meta){const entry=progressions[value];commitHarmony(entry.chords,{id:value,mode:entry.meta.mode});return;}if(!['root','scale','progression','voicing','bars','structure'].includes(id))throw new Error('Unknown harmony control: '+id);checkpoint();state[id]=['root','bars'].includes(id)?Number(value):value;if(id==='progression'&&state.progression!=='custom'){state.degrees=progressions[state.progression].degrees.slice();state.chordEdits=null;}fitHarmonyBars();if(id==='scale')state.degrees=state.degrees.map(n=>mod(n,scaleNotes(state,true).length));ui.note=null;changed({recompose:id!=='structure',respectLocks:false,restart:true});},
+ setGeneration(key,value){if(!['density','complexity','variation','human','swing'].includes(key))throw new Error('Unknown generation control: '+key);checkpoint();state[key]=clamp(Number(value),0,key==='swing'?65:100);if(['density','complexity','variation'].includes(key))generateAll();changed({});},
+ setBpm(value){checkpoint();state.bpm=clamp(Math.round(Number(value)||82),45,190);mix(state);persist();host.render(state);},
+ setTrack(id,patch,{regenerate:again=false}={}){checkpoint();Object.assign(track(id),patch);if(again)regenerate(track(id));changed({});},
+ toggleLock(id){checkpoint();const t=track(id);t.locked=!t.locked;t.arpLock=t.locked?{seed:state.seed,mutation:state.mutation}:null;persist();host.render(state);},
+ toggleFlag(id,key){if(!['mute','solo'].includes(key))throw new Error('Unknown track flag: '+key);checkpoint();const t=track(id);t[key]=!t[key];mix(state);persist();host.render(state);},
+ clearTrack(id){checkpoint();if(state.studio)delete state.studio.bindings[id];state.patterns[id]=emptyPattern(state.bars);const t=track(id);t.arp.enabled=false;t.performance.mode='original';ui.note=null;changed({});},
+ setMaster(patch){checkpoint();Object.assign(state.master,patch);mix(state);persist();host.render(state);},
  randomCandidate:(config,seed,kind='variation')=>makeRandomCandidate(state,{...randomDefaults(),...config},seed,kind,ui.selected),
  chaosCandidate:(config,seed)=>makeChaosCandidate5(state,{...chaosDefaults5(),...config},seed),
  applyCandidate(candidate){if(ui.rendering)return false;checkpoint();state=candidate.state;ui.bar=Math.min(ui.bar,state.bars-1);ui.note=null;scoreMemo7.clear();host.update(state,{restart:player.playing});persist();return true;},

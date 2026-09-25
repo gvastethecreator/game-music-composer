@@ -16,7 +16,7 @@
     },
     "C": {
       "status": "in_progress",
-      "note": "UMBRA 8 project model (clips, sections, automation, banks, validation, migrations v1-v8) runs inside engine/core.js. GMC native <-> engine adapter pending."
+      "note": "UMBRA 8 project model (clips, sections, automation, banks, validation, migrations v1-v8) runs inside engine/core.js. GMC native <-> engine adapter pending. Engine -> native bridge (engine/native-bridge.js) opens Create songs in Studio with sample banks."
     },
     "D": {
       "status": "in_progress",
@@ -30,7 +30,8 @@
       "status": "not_started"
     },
     "G": {
-      "status": "not_started"
+      "status": "in_progress",
+      "note": "Create tab (landing view) on GMCEngine: Essential (style, play, new song, variation, chaos, ideas A-D, tracks, harmony, score view) and Studio (inspector, performance, composition, master, macros, song). Piano-roll note editing, automation lanes and section editor pending."
     },
     "H": {
       "status": "not_started"
@@ -57,11 +58,29 @@
       "command": "python tests/rebuild/engine_audio_browser.py",
       "result": "6/6 renders within 1e-3 RMS / 3e-3 peak of UMBRA 8 (observed <= 3e-5)",
       "date": "2026-09-25"
+    },
+    {
+      "command": "node --test tests/rebuild/*.test.cjs tests/ensemble-atelier/studio.test.cjs tests/ensemble-atelier/music.test.cjs tests/test_director.cjs",
+      "result": "144 pass, 0 fail",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/rebuild/create_browser.py",
+      "result": "All Create flow checks pass (desktop + 390 px)",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/ensemble-atelier/studio_tests.py",
+      "result": "Pass after fixing the review crash and updating stale 140-cue assertions",
+      "date": "2026-09-25"
     }
   ],
   "blockers": [],
   "knownBaseline": [
-    "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff)."
+    "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff).",
+    "app.js renderReview crashed on every load since c7c6fff (reviews.js has no rubric), which blocked the default cue and tests/ensemble-atelier/studio_tests.py. Fixed with a guard.",
+    "studio_tests.py genre section still asserted 140 cues / 14 categories and old palettes; updated to the 240-cue catalog and the cue palette.",
+    "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work."
   ],
-  "nextAction": "Build the Create view (Essential first) on GMCEngine inside Composer Studio; then the engine -> native score bridge for sample banks and the skill."
+  "nextAction": "Phase F: piano-roll note editing, automation lanes and section editor in Create; then catalog cue -> engine adapter (hear the 240 cues through the synthesis engine)."
 }
