@@ -27,7 +27,8 @@
       "note": "SynthEngine (65 timbres, channel strips, buses, sound8 finish) ported; offline audio matches UMBRA within Chromium variance. Live UI and sample-bank bridge pending."
     },
     "F": {
-      "status": "not_started"
+      "status": "in_progress",
+      "note": "Note editing in Create piano roll done (d6cef7a). Catalog cue -> Create (a69d44c). Automation lanes and section editor pending."
     },
     "G": {
       "status": "in_progress",
@@ -37,7 +38,8 @@
       "status": "not_started"
     },
     "I": {
-      "status": "not_started"
+      "status": "in_progress",
+      "note": "Skill CLI: create, create-render, create-import; engine canonical in game-music-composer/resources/studio-engine synced to showcase (c29e615). Stems/receipts for engine renders pending."
     },
     "J": {
       "status": "not_started"
@@ -73,14 +75,30 @@
       "command": "python tests/ensemble-atelier/studio_tests.py",
       "result": "Pass after fixing the review crash and updating stale 140-cue assertions",
       "date": "2026-09-25"
+    },
+    {
+      "command": "python -m unittest discover -s game-music-composer/scripts/tests -p \"test_*.py\"",
+      "result": "89 tests OK (1 skipped)",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "node --test tests/rebuild/*.test.cjs + existing suites",
+      "result": "146 pass",
+      "date": "2026-09-25"
     }
   ],
-  "blockers": [],
+  "blockers": [
+    {
+      "what": "Windows Defender quarantines game-music-composer-showcase/data/banks/bass_electric_finger.js as Trojan:Script/ObfusScript.A!ml (heuristic on base64 audio in JS) whenever it is read, e.g. by tools/sync_studio.py.",
+      "effect": "The working copy loses the file; Git still holds it and the manifest hash is correct. The deletion is never committed.",
+      "owner": "Repository owner decides on a Defender exclusion or file restore (git checkout -- <path>)."
+    }
+  ],
   "knownBaseline": [
     "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff).",
     "app.js renderReview crashed on every load since c7c6fff (reviews.js has no rubric), which blocked the default cue and tests/ensemble-atelier/studio_tests.py. Fixed with a guard.",
     "studio_tests.py genre section still asserted 140 cues / 14 categories and old palettes; updated to the 240-cue catalog and the cue palette.",
     "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work."
   ],
-  "nextAction": "Phase F: piano-roll note editing, automation lanes and section editor in Create; then catalog cue -> engine adapter (hear the 240 cues through the synthesis engine)."
+  "nextAction": "Phase H: game runtime (music director states, layer/section transitions on bar boundaries, stems + manifest export) built on the engine and labs/composer-director ideas."
 }
