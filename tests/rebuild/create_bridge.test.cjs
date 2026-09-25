@@ -57,3 +57,18 @@ test('Generated names and engine messages are translated', () => {
   assert.equal(L.message('Versión C guardada. La sesión sigue intacta.'), 'Idea C saved. The session is unchanged.');
   assert.equal(L.message('Unknown text'), 'Unknown text');
 });
+
+test('Every catalog cue opens in the engine with all of its notes and its length', () => {
+  const cues = { window: {} };
+  for (const f of fs.readdirSync(path.join(showcase, 'data/cues'))) vm.runInNewContext(fs.readFileSync(path.join(showcase, 'data/cues', f), 'utf8'), cues);
+  const list = Object.values(cues.window.NEOSPC_CUES);
+  assert.equal(list.length, 240);
+  for (const cue of list) {
+    const s = B.fromNative(E, cue);
+    let notes = 0;
+    for (let i = 0; i < E.totalBars(s) * 16; i++) for (const e of E.scoreEvents(i, s)) notes += e.n.length;
+    assert.equal(notes, cue.events.length, cue.id);
+    const seconds = E.totalSeconds(s), original = cue.beats * 60 / cue.bpm;
+    assert.ok(Math.abs(seconds - original) / original < .01, cue.id + ' loop length');
+  }
+});

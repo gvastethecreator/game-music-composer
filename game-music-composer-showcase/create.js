@@ -150,6 +150,7 @@ function syncTrackValues(s){for(const row of $('createTracks').children){const t
 
 function renderHarmony(s){
  const root=$('createChords'),voicings=E.chordVoicings(s),step=Math.max(0,P.step),current=P.playing?E.harmonyIndex(Math.floor(step/16)%s.bars,s):-1;root.replaceChildren();
+ if(Object.values(s.studio?.clips||{}).some(c=>c.origin?.label==='GMC catalog'&&s.studio.bindings[c.track]===c.id))root.append(el('p',{class:'create-note create-chord-note',text:'These notes come from a Studio catalog cue; the cards show the engine progression, used only by tracks you regenerate.'}));
  s.degrees.forEach((_,i)=>{const start=Math.ceil(i*s.bars/s.degrees.length),end=Math.ceil((i+1)*s.bars/s.degrees.length);
   root.append(el('div',{class:'create-chord'+(i===current?' current':''),dataset:{index:i}},el('strong',{text:E.labels.chordLabel(i,s)}),el('span',{text:voicings[i].map(n=>NOTE_NAMES[n%12]).join(' ')}),el('small',{text:'Bars '+(start+1)+(end-start>1?'–'+end:'')})));});
 }
@@ -342,6 +343,8 @@ async function openInStudio(){
 // ── Public hooks for app.js ──────────────────────────────────────────────────
 window.GMCCreate={
  show(){if(!view.ready){restore();buildStatic();view.ready=true;}view.rollKey='';render();},
- pause(){if(P.playing||P.starting){P.pause();syncTransport();}}
+ pause(){if(P.playing||P.starting){P.pause();syncTransport();}},
+ // A Studio score keeps its notes and played timing; the engine replaces the sample banks.
+ openNative(native){if(!view.ready){restore();buildStatic();view.ready=true;}P.stop();const project=window.GMCNativeBridge.fromNative(E,native,{seed:(native.id||'CATALOG').slice(0,64)});S.load(E.project(project));view.rollKey='';notice('“'+native.title+'” opened in Create: the same notes through the synthesis engine. Change timbres per track or undo to return.');}
 };
 })();

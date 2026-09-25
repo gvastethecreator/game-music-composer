@@ -66,6 +66,7 @@
 .create-chord strong{font:800 15px var(--mono);color:#f1e6d0}
 .create-chord span{font:9px var(--mono);color:#999}
 .create-chord small{font:8px var(--mono);color:#666}
+.create-chord-note{flex:1 0 100%;align-self:center}
 .create-chord.current{border-color:var(--cyan);box-shadow:inset 0 0 14px #78ece92a}
 .create-notebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px}
 .create-notebar .compact-button.active{background:linear-gradient(#9ff6f3,#48c7c3);color:#041414;border-color:#bffffc}

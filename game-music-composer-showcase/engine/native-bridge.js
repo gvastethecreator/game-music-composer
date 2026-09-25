@@ -60,6 +60,51 @@ function toNative(E,s,{instruments,category,id,title,labels}={}){
   musical_direction:{thesis:'Engine sketch; review before production.'}
  };
 }
-const api={toNative,SOUND_TO_PATCH,peakVoices};
+// ── Native score -> engine project ───────────────────────────────────────────
+// A catalog cue keeps its notes and played timing; the engine supplies synthesis,
+// channel strips, buses and master. Each instrument joins one of the ten engine
+// tracks by role; its family picks the closest synthesized timbre.
+const ROLE_TO_TRACK={kick:'kick',snare:'snare',hat:'hat',shaker:'hat',open_hat:'open',tom:'perc',rim:'perc',wood:'perc',ride:'open',brush:'snare',impact:'kick',bass:'bass',lead:'lead',counter:'arp',arp:'arp',riff:'arp',motor:'arp',ostinato:'arp',pulse:'arp',comp:'keys',support:'pad',pad:'pad',ensemble:'pad',texture:'pad'};
+const FAMILY_TO_TRACK={drum:'perc',bass:'bass',strings:'pad',choir:'pad',texture:'pad',keys:'keys',guitar:'keys',wind:'lead',brass:'lead',mallet:'arp',pluck:'arp',synth:'lead'};
+const TIMBRE={
+ lead:{wind:i=>/reed|clarinet|bassoon/.test(i)?'reed':'flute',brass:()=>'brass',synth:i=>/pulse/.test(i)?'chip':'syncLead',keys:()=>'pianoModal',mallet:()=>'kalimba',pluck:()=>'fmPluck',guitar:()=>'fmPluck',strings:()=>'sinelead',choir:()=>'sinelead'},
+ arp:{guitar:()=>'nylon',pluck:i=>/harp/.test(i)?'dulcimer':'pluck',mallet:i=>/bell/.test(i)?'bell':'marimba',synth:i=>/pulse/.test(i)?'chip':'fmPluck',keys:()=>'velvetEP',strings:()=>'pluck',wind:()=>'kalimba',brass:()=>'brass'},
+ keys:{keys:i=>/organ|accordion/.test(i)?'organ':/harpsichord|clav/.test(i)?'dulcimer':/epiano/.test(i)?'velvetEP':'pianoModal',guitar:()=>'nylon',mallet:()=>'marimba',pluck:()=>'pluck',synth:()=>'electric'},
+ pad:{strings:()=>'strings',choir:()=>'choir',synth:()=>'airPad',texture:()=>'tape',keys:i=>/organ|accordion/.test(i)?'organ':'tape',brass:()=>'supersaw',wind:()=>'airPad'},
+ bass:{bass:i=>/slap/.test(i)?'rubber':/sub|triangle/.test(i)?'sub':/synth/.test(i)?'analog':'organbass'}
+};
+const SCALE={minor:'minor',major:'major',dorian:'dorian',phrygian:'phrygian',mixolydian:'mixolydian',lydian:'lydian',harmonic_minor:'harmonic',melodic_minor:'melodic',whole_tone:'whole',octatonic:'hungarian',locrian:'locrian',blues:'blues',pentatonic_minor:'pentminor',pentatonic_major:'pentmajor'};
+const ALLOWED_BARS=[1,2,3,4,6,8,12,16,24,32,48,64];
+const STYLE_PRESET={salsa:'bossa',cumbia:'afro',bachata:'bossa',bossa_nova:'bossa',tango:'cinema',funk:'funk',house:'micro',dnb:'liquid',synthwave:'synthwave',lofi:'lofi',trap:'trap',trip_hop:'nocturne',metal:'breakbeat',reggaeton:'reggaeton',action:'techno',towns:'soul',mystery:'cinema',horror:'cinema',emotion:'ambient',fantasy:'ritual',electronic:'electro',urban:'soul',classical:'ambient',adventure:'ambient'};
+
+function trackFor(event,info){return ROLE_TO_TRACK[event.inst]||ROLE_TO_TRACK[event.role]||FAMILY_TO_TRACK[info?.family]||'keys';}
+function fromNative(E,native,{seed='CATALOG'}={}){
+ // The engine loops whole 4/4 phrases of allowed lengths. Pick the length that needs the least
+ // stretch while the scaled tempo stays in 45-190 BPM; real-time length is kept.
+ const steps=Math.round(native.beats*4),fits=ALLOWED_BARS.map(b=>({b,stretch:b*16/steps})).filter(x=>native.bpm*x.stretch>=45&&native.bpm*x.stretch<=190);
+ const {b:bars,stretch}=(fits.length?fits:[{b:ALLOWED_BARS.find(b=>b*16>=steps)||64,stretch:(ALLOWED_BARS.find(b=>b*16>=steps)||64)*16/steps}]).sort((x,y)=>Math.abs(Math.log(x.stretch))-Math.abs(Math.log(y.stretch)))[0];
+ const preset=STYLE_PRESET[native.category]||'nocturne',s=E.compose(seed,preset);
+ s.bpm=Math.max(45,Math.min(190,Math.round(native.bpm*stretch)));s.root=Math.max(0,PITCH_NAMES.indexOf(native.key));s.scale=SCALE[native.mode]||(/min/.test(native.mode)?'minor':'major');
+ s.bars=bars;s.structure='loop';s.human=0;s.swing=0;s.mutation=0;s.seed=String(seed).slice(0,64);
+ if(s.degrees.length>bars){s.progression='custom';s.degrees=s.degrees.slice(0,Math.max(2,Math.min(bars,4)));s.chordEdits=null;}
+ const byTrack={},families={};
+ native.events.forEach((e,i)=>{const info=native.instrument_map[e.inst],track=trackFor(e,info),drum=E.data.trackMap[track].drum;
+  const t=Number(e.performance_beat??e.beat)*4*stretch,d=Math.max(.05,Number(e.performance_duration??e.duration??.25)*4*stretch);
+  if(!(t>=0&&t<bars*16))return;
+  (byTrack[track]||=[]).push({id:'c'+i,t:Math.round(t*10000)/10000,p:drum?E.data.trackMap[track].midi:Math.max(12,Math.min(119,Math.round(Number(e.midi??info.root_midi??60)))),d:Math.min(bars*16,Math.round(d*10000)/10000),v:Math.max(.01,Math.min(1,Number(e.velocity??80)/127))});
+  const f=(families[track]||={});f[info.family+'|'+e.inst]=(f[info.family+'|'+e.inst]||0)+1;});
+ s.studio.clips={};s.studio.bindings={};s.studio.sections=[];s.studio.selectedSection=null;s.studio.playMode='phrase';s.studio.automation=[];
+ for(const tr of s.tracks){
+  s.patterns[tr.id]=Array.from({length:bars},()=>Array(16).fill(null));
+  tr.performance={...tr.performance,mode:'original'};tr.arp={...tr.arp,enabled:false};tr.octave=0;tr.locked=false;tr.arpLock=null;
+  const notes=byTrack[tr.id];if(!notes){tr.mute=true;continue;}tr.mute=false;
+  const [family,inst]=Object.entries(families[tr.id]).sort((a,b)=>b[1]-a[1])[0][0].split('|'),pick=TIMBRE[tr.id]?.[family]?.(inst);
+  if(pick&&E.data.trackMap[tr.id].voices.includes(pick))tr.sound=pick;
+  const id='clip_'+tr.id;s.studio.clips[id]={id,track:tr.id,name:(native.title||'Catalog cue')+' · '+tr.id,length:bars*16,timing:'baked',notes:notes.slice(0,8192).map(n=>({...n,prob:1,every:1,phase:0,fill:false,ratchet:1,flam:0,anchor:false})),origin:{label:'GMC catalog',seed:'',sourceClip:null},recipe:null};
+  s.studio.bindings[tr.id]=id;}
+ s.session={...(s.session||{}),name:native.title||'Catalog cue'};
+ return E.validateProject({schema:'umbra-project',version:8,state:s});
+}
+const api={toNative,fromNative,SOUND_TO_PATCH,peakVoices};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.GMCNativeBridge=api;
 })(globalThis);
