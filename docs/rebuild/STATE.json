@@ -4,7 +4,7 @@
   "objective": "Integrate the UMBRA 8 musical engine (composition, synthesis, mix, studio tools) into Game Music Composer: browser studio, native skill, game runtime and exports.",
   "branch": "rebuild/umbra-integration",
   "baseSha": "c7c6fffdb68f820b6e5b91fa24cb4d9514740e25",
-  "publishing": "Local commits per phase. No push or PR without an explicit request.",
+  "publishing": "Pushed; draft PR https://github.com/gvastethecreator/game-music-composer/pull/3 (no merge).",
   "phases": {
     "A": {
       "status": "done",
@@ -100,7 +100,8 @@
     "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff).",
     "app.js renderReview crashed on every load since c7c6fff (reviews.js has no rubric), which blocked the default cue and tests/ensemble-atelier/studio_tests.py. Fixed with a guard.",
     "studio_tests.py genre section still asserted 140 cues / 14 categories and old palettes; updated to the 240-cue catalog and the cue palette.",
-    "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work."
+    "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work.",
+    "Release-gate CI failed on main since c7c6fff: the skill manifest was hashed over CRLF working copies. Fixed in 5b735c1."
   ],
   "nextAction": "Owner: run python tests/rebuild/listening_pack.py, listen with .scratch/listening/index.html, save docs/rebuild/listening-results.json. Then decide push/PR and which later polish to fund (marquee editing, light theme, flattening)."
 }
