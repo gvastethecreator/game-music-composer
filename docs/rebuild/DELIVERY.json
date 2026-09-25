@@ -1,0 +1,48 @@
+{
+  "format": "gmc.rebuild-delivery",
+  "version": 1,
+  "repo": "gvastethecreator/game-music-composer",
+  "baseSha": "c7c6fffdb68f820b6e5b91fa24cb4d9514740e25",
+  "headSha": "see git log -1 on branch rebuild/umbra-integration",
+  "branch": "rebuild/umbra-integration",
+  "prUrl": null,
+  "productStatus": "technical_integration_done_listening_pending",
+  "gateResults": [
+    {"id": "G00", "status": "pass", "evidence": ["tools/preflight.py matched base SHA", "docs/rebuild/STATE.json knownBaseline"], "note": "Baseline failures recorded before changes."},
+    {"id": "G01", "status": "pass", "evidence": ["tests/rebuild/p0_live_engine.test.cjs"], "note": "Gain 0/.1/.9, post-fader sends, fader mute, bridge track_mix, one-shot/gated/legacy drums, hat chokes, offset validation."},
+    {"id": "G02", "status": "partial", "evidence": ["UMBRA v1-v8 project validation in engine/core.js", "tests/rebuild/umbra-scenarios.cjs project/roundtrip and v6-import", "Create autosave to localStorage, undo 32 states"], "note": "The proposed gmc.project v2 schema was not adopted: the UMBRA project format plus the validated gmc.game extension is the contract (ADR-01/04). Native <-> engine adapters in native-bridge.js."},
+    {"id": "G03", "status": "pass", "evidence": ["tests/rebuild/engine_golden.test.cjs 193/193", "Python CLI runs the same JavaScript through Node"], "note": "One compiler for browser and CLI instead of two ports."},
+    {"id": "G04", "status": "partial", "evidence": ["golden scenarios: random/chaos candidates, locks, harmony rework, transforms"], "note": "UMBRA's lock and variation semantics are kept as-is; the handoff's specific 'A immutable while varying B' regression was not added as its own test."},
+    {"id": "G05", "status": "pass", "evidence": ["tests/rebuild/engine_audio_browser.py", "tests/rebuild/create_quality.py (60 play/stop cycles, heap, tempo)", "tests/rebuild/p0_live_engine.test.cjs"], "note": "Audio parity with UMBRA 8 within Chromium run-to-run variance."},
+    {"id": "G06", "status": "partial", "evidence": ["tests/rebuild/create_browser.py desktop + 390 px", "tests/rebuild/create_quality.py accessible names and keyboard"], "note": "Essential/Studio in GMC's dark rack theme. No light theme, no LIVE falling-note view or mini instruments from UMBRA's UI."},
+    {"id": "G07", "status": "partial", "evidence": ["note editor checks in create_browser.py", "idea bank A-D", "arp/chop templates and bake"], "note": "Single-note editing (add, move, resize, delete, velocity, anchor, transforms). No marquee selection, per-note conditions UI or bank blend."},
+    {"id": "G08", "status": "pass", "evidence": ["tests/rebuild/song_browser.py", "golden song/structure and macros/automation scenarios"], "note": "Sections (build, edit, repeat, add, remove), song/phrase playback, automation lanes, macros."},
+    {"id": "G09", "status": "pass", "evidence": ["MIDI byte-identical to UMBRA 8", "stems ZIP in create_quality.py", "create-render/create-game receipts in test_studio_engine.py"], "note": "Receipts report sample peak and RMS, not LUFS or true peak."},
+    {"id": "G10", "status": "pass", "evidence": ["game-music-composer/scripts/tests/test_studio_engine.py", "90 skill tests OK", "package_skill.py + sync_studio.py manifests"], "note": "neospc create, create-render, create-import, create-game; doctor reports Node and Playwright."},
+    {"id": "G11", "status": "pass", "evidence": ["tests/rebuild/game.test.cjs", "tests/rebuild/game_browser.py (live switch on next bar, package, 100 runtime transitions)"], "note": "Vertical layering of one song with beat/bar/phrase quantize. Console and SF2 backends are unchanged native paths."},
+    {"id": "G12", "status": "pass", "evidence": ["git diff c7c6fff..HEAD contains no reference/, WORKBENCH, fonts or handoff paths", "engine has no WORKBENCH code"], "note": "The handoff folder is gitignored."},
+    {"id": "G13", "status": "pending_human", "evidence": ["tests/rebuild/listening_pack.py", "docs/rebuild/LISTENING.md"], "note": "Blind RMS-matched pack prepared for the owner. No listening result exists yet."},
+    {"id": "G14", "status": "partial", "evidence": ["local commits on rebuild/umbra-integration"], "note": "No push or draft PR: the owner authorized local commits only."}
+  ],
+  "testRuns": [
+    {"command": "node --test tests/rebuild/*.test.cjs tests/ensemble-atelier/studio.test.cjs tests/ensemble-atelier/music.test.cjs tests/test_director.cjs", "result": "pass"},
+    {"command": "python -m unittest discover -s game-music-composer/scripts/tests -p \"test_*.py\"", "result": "90 OK, 1 skipped"},
+    {"command": "python tests/rebuild/create_browser.py", "result": "34 checks pass"},
+    {"command": "python tests/rebuild/song_browser.py", "result": "pass"},
+    {"command": "python tests/rebuild/game_browser.py", "result": "pass"},
+    {"command": "python tests/rebuild/create_quality.py", "result": "pass"},
+    {"command": "python tests/rebuild/engine_audio_browser.py", "result": "6/6 within tolerance"},
+    {"command": "python tests/ensemble-atelier/studio_tests.py", "result": "pass after fixing the review crash and stale 140-cue assertions"}
+  ],
+  "limitations": [
+    "Musical quality is unproven until the owner completes the blind listening in docs/rebuild/LISTENING.md.",
+    "The engine composer is rule-based UMBRA 8 logic in 4/4 phrases; odd-meter catalog cues are fitted by tempo scaling when opened in Create.",
+    "UMBRA's layered functions are private to one closure and not yet flattened (ADR-04).",
+    "Engine messages and names are Spanish in the core; labels-en.js translates what Create shows. Rare error messages may appear in Spanish.",
+    "Windows Defender quarantines game-music-composer-showcase/data/banks/bass_electric_finger.js on this machine (heuristic false positive). Git keeps the file.",
+    "scripts/audit_showcase.py still reports 330 missing assets for pre-rebuild cue IDs (baseline, unchanged).",
+    "Showcase README sections describing earlier catalog releases were left as history."
+  ],
+  "changedFiles": "git diff --stat c7c6fff..rebuild/umbra-integration",
+  "rollback": "main is untouched. Delete or do not merge branch rebuild/umbra-integration. Individual phases revert with git revert <commit>."
+}

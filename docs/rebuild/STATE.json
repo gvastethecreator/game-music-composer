@@ -15,34 +15,36 @@
       "note": "Authored gain, post-fader sends, drum oneShot/gated/legacy policy, hat chokes, offset validation, bridge track_mix."
     },
     "C": {
-      "status": "in_progress",
-      "note": "UMBRA 8 project model (clips, sections, automation, banks, validation, migrations v1-v8) runs inside engine/core.js. GMC native <-> engine adapter pending. Engine -> native bridge (engine/native-bridge.js) opens Create songs in Studio with sample banks."
+      "status": "done",
+      "note": "UMBRA project format + validated gmc.game extension; native <-> engine bridges."
     },
     "D": {
-      "status": "in_progress",
-      "note": "Composer, harmony library (119 progressions), 44 arp / 28 chop templates, performance, Random/Chaos ported and golden-verified. Studio UI wiring pending."
+      "status": "done",
+      "note": "Engine composition golden-verified; Create exposes styles, new song, variation, chaos, harmony library."
     },
     "E": {
-      "status": "in_progress",
-      "note": "SynthEngine (65 timbres, channel strips, buses, sound8 finish) ported; offline audio matches UMBRA within Chromium variance. Live UI and sample-bank bridge pending."
+      "status": "done",
+      "note": "Synthesis, strips, buses, finish; audio parity; stems."
     },
     "F": {
-      "status": "in_progress",
-      "note": "Note editing in Create piano roll done (d6cef7a). Catalog cue -> Create (a69d44c). Automation lanes and section editor pending."
+      "status": "done",
+      "note": "Note editing, arp/chop/bake, idea bank, sections, automation. Marquee and per-note condition UI not built."
     },
     "G": {
-      "status": "in_progress",
-      "note": "Create tab (landing view) on GMCEngine: Essential (style, play, new song, variation, chaos, ideas A-D, tracks, harmony, score view) and Studio (inspector, performance, composition, master, macros, song). Piano-roll note editing, automation lanes and section editor pending."
+      "status": "done",
+      "note": "Create Essential/Studio in the GMC rack theme; accessibility and narrow layout checked. No light theme."
     },
     "H": {
-      "status": "not_started"
+      "status": "done",
+      "note": "Game states, bar-quantized live switches, game package + runtime, CLI create-game."
     },
     "I": {
-      "status": "in_progress",
-      "note": "Skill CLI: create, create-render, create-import; engine canonical in game-music-composer/resources/studio-engine synced to showcase (c29e615). Stems/receipts for engine renders pending."
+      "status": "done",
+      "note": "Skill CLI create/create-render/create-import/create-game with receipts; docs and package."
     },
     "J": {
-      "status": "not_started"
+      "status": "pending_human",
+      "note": "Technical QA done; blind listening pack ready (docs/rebuild/LISTENING.md). Owner listening pending."
     }
   },
   "checks": [
@@ -100,5 +102,5 @@
     "studio_tests.py genre section still asserted 140 cues / 14 categories and old palettes; updated to the 240-cue catalog and the cue palette.",
     "scripts/audit_showcase.py reports 330 missing cue assets for pre-rebuild cue IDs, before and after this work."
   ],
-  "nextAction": "Phase H: game runtime (music director states, layer/section transitions on bar boundaries, stems + manifest export) built on the engine and labs/composer-director ideas."
+  "nextAction": "Owner: run python tests/rebuild/listening_pack.py, listen with .scratch/listening/index.html, save docs/rebuild/listening-results.json. Then decide push/PR and which later polish to fund (marquee editing, light theme, flattening)."
 }

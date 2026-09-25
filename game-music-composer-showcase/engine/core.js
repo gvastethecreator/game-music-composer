@@ -1005,12 +1005,12 @@ function makeRandomCandidate(before,config,seed,kind='variation',selected=ui.sel
  const delta=diffRandom(before,after);if(!delta.total)throw new Error(cfg.respectLocks&&before.tracks.every(t=>t.locked)?'Todas las pistas están bloqueadas. Desbloqueá una o elegí un parámetro global.':'Esta selección no produjo cambios musicales. Probá otro grupo, otra pista o una intensidad mayor.');return{state:after,delta,seed,kind,config:cfg};
 }
 function diffRandom(a,b){const tracks=[];let total=0;for(const t of b.tracks){const old=a.tracks.find(x=>x.id===t.id),fields=Object.keys(t).filter(k=>!sameJSON(old[k],t[k])),notes=!sameJSON(a.patterns[t.id],b.patterns[t.id]);if(fields.length||notes){tracks.push({id:t.id,fields,notes});total+=fields.length+(notes?1:0);}}const globals=[];for(const k of ['preset','genre','bpm','root','scale','progression','degrees','voicing','bars','structure','seed','mutation','density','complexity','variation','human','swing','chordEdits','harmony'])if(!sameJSON(a[k],b[k]))globals.push(k);const master=Object.keys(b.master).filter(k=>!sameJSON(a.master[k],b.master[k]));total+=globals.length+master.length;return{tracks,globals,master,total};}
-// UMBRA 4 — Workbench controls as a view over the existing musical model.
-// Workbench owns gestures; UMBRA owns state, audio, undo and persistence.
+// UMBRA 4 — channel meters over the existing musical model (UI not included).
+// The engine owns state, audio, undo and persistence.
 // Adapt the original slider factory, keeping its callbacks and all musical controls.
 const engineInitBefore4=SynthEngine.prototype.initV2;
 SynthEngine.prototype.initV2=function(s){engineInitBefore4.call(this,s);if(this.offline)return;for(const t of s.tracks){const ch=this.channels[t.id];ch.dawAnalyser=this.N('createAnalyser');ch.dawAnalyser.fftSize=256;ch.dawSamples=new Float32Array(256);ch.pan.connect(ch.dawAnalyser);}};
-// UMBRA 5 · Carbon surfaces, a single Workbench Main rig, and bounded visual preferences.
+// UMBRA 5 · bounded visual preferences kept in the project format.
 const V5='5.0.0';
 const PALETTE5={kick:'#e2a075',snare:'#dec273',hat:'#bfc781',open:'#87c2a2',perc:'#db9194',bass:'#78a8e6',keys:'#b39de3',pad:'#8e9dd9',arp:'#dd94c3',lead:'#73c9c9'};
 Object.assign(trackColors,PALETTE5);for(const d of trackDefs)d.color=PALETTE5[d.id];
