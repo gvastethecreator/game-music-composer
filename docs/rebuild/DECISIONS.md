@@ -35,3 +35,14 @@ The JavaScript compiler is the single source of musical decisions for the browse
 - Chokes: closed hats (`hat`, `closed_hat`) cut earlier open hats (`open_hat`, `open`) in group `hats` at the closing hit. Voices that start at the same instant survive. `choke_group`/`chokes` override the default.
 - Sample offsets past the buffer fail before playback instead of replaying from zero.
 - Atelier sketches keep their D-tonic convention; the bridge labels it `key_source: "atelier-default"` and records the generator.
+
+## ADR-04 · How the engine was ported (2026-09-25)
+
+`game-music-composer-showcase/engine/core.js` holds UMBRA 8's music core: dictionaries, composer, harmony parser and library, arpeggiator and chop templates, performance timeline, clips and sections, macros and automation, Random/Chaos candidates, project validation and migration (UMBRA v1–v8), synthesis, offline render, WAV, MIDI and session ZIP.
+
+- Source: the UMBRA 8 bundle built from the private handoff (`umbra8-source/build.py`, so its verified text patches are included). Top-level blocks were selected by rule: UI, DOM, WORKBENCH, canvas and shell code stay out. The rest runs unchanged inside one closure with no globals.
+- UMBRA's own UI calls (toast, render, persist, undo) became host hooks. Undo keeps UMBRA's limits (32 states, 32 MB).
+- Layer chains (`x=function(){...xBefore(...)}`) are now private to the closure. They are flattened only when a change touches them, with the golden tests as the safety net. Rewriting 250 KB of verified code by hand now would add risk without changing a note.
+- The player is GMC's own, following UMBRA's scheduler: AudioContext clock, 25 ms timer, 0.16 s lookahead, per-step automation.
+- Verification: `tests/rebuild/engine_golden.test.cjs` replays 193 scenarios and compares them with the reference signatures in `tests/rebuild/fixtures/umbra8-golden.json`. `tests/rebuild/engine_audio_browser.py` renders six presets offline in Chromium and compares level metrics.
+- Labels and messages are still UMBRA's Spanish text. The GMC UI maps what it shows.

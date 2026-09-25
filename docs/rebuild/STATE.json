@@ -6,23 +6,62 @@
   "baseSha": "c7c6fffdb68f820b6e5b91fa24cb4d9514740e25",
   "publishing": "Local commits per phase. No push or PR without an explicit request.",
   "phases": {
-    "A": {"status": "done", "note": "Preflight matched the base SHA. Handoff folder ignored. Stale studio test fixture repointed to all_bells_open."},
-    "B": {"status": "done", "note": "Authored gain, post-fader sends, drum oneShot/gated/legacy policy, hat chokes, offset validation, bridge track_mix."},
-    "C": {"status": "not_started"},
-    "D": {"status": "not_started"},
-    "E": {"status": "not_started"},
-    "F": {"status": "not_started"},
-    "G": {"status": "not_started"},
-    "H": {"status": "not_started"},
-    "I": {"status": "not_started"},
-    "J": {"status": "not_started"}
+    "A": {
+      "status": "done",
+      "note": "Preflight matched the base SHA. Handoff folder ignored. Stale studio test fixture repointed to all_bells_open."
+    },
+    "B": {
+      "status": "done",
+      "note": "Authored gain, post-fader sends, drum oneShot/gated/legacy policy, hat chokes, offset validation, bridge track_mix."
+    },
+    "C": {
+      "status": "in_progress",
+      "note": "UMBRA 8 project model (clips, sections, automation, banks, validation, migrations v1-v8) runs inside engine/core.js. GMC native <-> engine adapter pending."
+    },
+    "D": {
+      "status": "in_progress",
+      "note": "Composer, harmony library (119 progressions), 44 arp / 28 chop templates, performance, Random/Chaos ported and golden-verified. Studio UI wiring pending."
+    },
+    "E": {
+      "status": "in_progress",
+      "note": "SynthEngine (65 timbres, channel strips, buses, sound8 finish) ported; offline audio matches UMBRA within Chromium variance. Live UI and sample-bank bridge pending."
+    },
+    "F": {
+      "status": "not_started"
+    },
+    "G": {
+      "status": "not_started"
+    },
+    "H": {
+      "status": "not_started"
+    },
+    "I": {
+      "status": "not_started"
+    },
+    "J": {
+      "status": "not_started"
+    }
   },
   "checks": [
-    {"command": "node --test tests/ensemble-atelier/music.test.cjs tests/ensemble-atelier/studio.test.cjs tests/rebuild/p0_live_engine.test.cjs tests/test_director.cjs", "result": "139 pass, 0 fail", "date": "2026-09-24"}
+    {
+      "command": "node --test tests/ensemble-atelier/music.test.cjs tests/ensemble-atelier/studio.test.cjs tests/rebuild/p0_live_engine.test.cjs tests/test_director.cjs",
+      "result": "139 pass, 0 fail",
+      "date": "2026-09-24"
+    },
+    {
+      "command": "node --test tests/rebuild/engine_golden.test.cjs",
+      "result": "193/193 scenarios identical to the UMBRA 8 reference",
+      "date": "2026-09-25"
+    },
+    {
+      "command": "python tests/rebuild/engine_audio_browser.py",
+      "result": "6/6 renders within 1e-3 RMS / 3e-3 peak of UMBRA 8 (observed <= 3e-5)",
+      "date": "2026-09-25"
+    }
   ],
   "blockers": [],
   "knownBaseline": [
     "Before this work, tests/ensemble-atelier/studio.test.cjs failed: its fixture cue fernway_crossing was removed by the 240-cue rebuild (c7c6fff)."
   ],
-  "nextAction": "Phase C/D/E: build the headless UMBRA golden generator, then port theory + composer + arpeggiator into game-music-composer-showcase/engine/ and match the golden events."
+  "nextAction": "Build the Create view (Essential first) on GMCEngine inside Composer Studio; then the engine -> native score bridge for sample banks and the skill."
 }
