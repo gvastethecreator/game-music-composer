@@ -497,6 +497,7 @@ aa662bf5262cef3a9c7afc49e3d2470945f4a3e210ce32513e460c7897f05d24  ./atelier/visu
 874c0174b04aee8f70628a6fb4008e222d63be83013e0bc1dd905cc8d3640013  ./data/banks/bass_analog_resonant.js
 5bf8080228e42fc73fad0b6cdb146ed1647e382f3e4c88e21610ef6df466a057  ./data/banks/bass_analog_round.js
 3bcb003432cb7c7f7bbe3cff13a4aae5ae257a2b5dc848512bf9a24243f690f5  ./data/banks/bass_bowed_contrabass.js
+7098a53431f98fb7d2137e7f0d21ba073b1cabe521b19f6a7e5487b084b3fb59  ./data/banks/bass_electric_finger.js
 dde153082694dc2b59c1a7ab084b8374e4587fbaea7dde2ecc5064cd92e27bc7  ./data/banks/bass_electric_pick.js
 68b913ed874279745ae26d05ea97980f6c16f43ab42ed1901ad3ec5ab490ab40  ./data/banks/bass_fm.js
 d8609223ab320772e85e3f09ad5fbe2d27e8ce5d5907ee879fbe7a756bad61a8  ./data/banks/bass_slap.js
@@ -1094,7 +1095,7 @@ d34d28fb9ac5a384a1b1f7c0d3d074ac9a261004a6401a7cf1892074565b8518  ./data/librari
 2cabb90f445ec021e0f11b5d2462d686ae7439981b07e0e8873f7bbe5695ec1c  ./data/sample-bank.js
 9be29c8033c64d5bd07bd647a8d52106ae4189eb894cf05ff5d51555b47fbef3  ./data/soundbank-levels.js
 c96825518243e9782f70473371e2c14a2f446cf6cdd0ba75a4dbe10ecf1e3b0e  ./data/studio-palettes.js
-d378671f815791244a1018065c40a97a7adc68fadaad6147267564bb6fbadadb  ./downloads/game-music-composer.zip
+5df6535fca0a4555bfc7c513b21c12f465fd8da337e1c777a015c0b081d074e7  ./downloads/game-music-composer.zip
 567f080126691b68825b46ebbf31a9fd985f3446470fb918c6fa9b9ba325afe8  ./downloads/megadrive-soundpack.zip
 c0caecb361b18591a879c7a84ae897f3b9cce1e3779e3deaf61bec49c4b86202  ./downloads/neospc100-midis-v4.zip
 1abcffc6291debbe689bd8ba06fab05c2dda7d92fa1ddf6f534f14cf952252bb  ./downloads/neospc100-source-v4.zip
