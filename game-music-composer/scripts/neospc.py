@@ -62,6 +62,15 @@ VOICE_PROFILES = {
     32: "symphonic_32",
 }
 KEYS = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+
+# Studio engine presets and the catalog category that fits each (mirrors labels-en.js).
+ENGINE_GENRE_CATEGORY = {
+    "nocturne": "trip_hop", "dub": "trip_hop", "micro": "house", "bossa": "bossa_nova", "ambient": "adventure", "garage": "electronic",
+    "electro": "electronic", "broken": "electronic", "soul": "urban", "ritual": "fantasy", "cinema": "emotion", "chip": "electronic",
+    "techno": "electronic", "dubtechno": "electronic", "minimal": "electronic", "melodic": "house", "trance": "electronic", "dnb": "dnb",
+    "jungle": "dnb", "liquid": "dnb", "halftime": "dnb", "trap": "trap", "lofi": "lofi", "synthwave": "synthwave", "disco": "house",
+    "funk": "funk", "jazz": "urban", "afro": "house", "reggaeton": "reggaeton", "footwork": "electronic", "idm": "electronic", "breakbeat": "electronic",
+}
 DEVELOPMENT_OPS = frozenset(
     {"repeat", "sequence", "extend", "contract", "fragment", "vary", "augment", "counterpoint", "new", "recap"}
 )
@@ -704,6 +713,11 @@ def doctor_issues() -> list[Issue]:
         SCRIPTS / "export_midis_v4.py",
         SCRIPTS / "audit_soundbank_assignments.py",
         SCRIPTS / "compose_from_plan.py",
+        SCRIPTS / "studio_engine.cjs",
+        SCRIPTS / "studio_engine.py",
+        ROOT / "resources" / "studio-engine" / "core.js",
+        ROOT / "resources" / "studio-engine" / "native-bridge.js",
+        ROOT / "resources" / "studio-engine" / "labels-en.js",
     )
     for path in required_paths:
         if not path.is_file():
@@ -754,6 +768,18 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         print(
             "  extra   FluidSynth: "
             + ("found on PATH (optional soundfont render)" if fluidsynth else "not on PATH (optional; not a skill error)")
+        )
+        import importlib.util
+        import studio_engine
+
+        version = studio_engine.node_version()
+        print(
+            "  extra   Node.js: "
+            + (f"{'.'.join(map(str, version))} (studio engine: create, create-import)" if version and version >= (18,) else "not found or older than 18 (needed only for create and create-import)")
+        )
+        print(
+            "  extra   Playwright: "
+            + ("found (create-render synthesizes WAV in local headless Chromium)" if importlib.util.find_spec("playwright") else "not installed (needed only for create-render)")
         )
     return 1 if counts["errors"] or (args.strict and counts["warnings"]) else 0
 
@@ -941,6 +967,100 @@ def render_dependency_issues() -> list[str]:
     return missing
 
 
+def category_label(category: str) -> str:
+    contracts = load_json(DATA / "category-benchmark-contracts.json")
+    return next((str(item["label"]) for item in contracts["categories"] if item["id"] == category), category)
+
+
+def cmd_create(args: argparse.Namespace) -> int:
+    """Compose with the studio engine and write engine project, native score, catalog and MIDI."""
+    import studio_engine
+
+    out = args.output.resolve()
+    paths = {name: out / name for name in ("project.json", "composition.json", "catalog.json", "engine.mid")}
+    occupied = [path for path in paths.values() if path.exists()]
+    if occupied and not args.force:
+        print(f"Refusing to overwrite {', '.join(str(path) for path in occupied)}. Pass --force to replace them.", file=sys.stderr)
+        return 2
+    out.mkdir(parents=True, exist_ok=True)
+    cue_id = args.id or slugify(args.title or f"{args.preset}_{args.seed}")
+    category = args.category or ENGINE_GENRE_CATEGORY.get(args.preset, "electronic")
+    try:
+        summary = studio_engine.compose(
+            args.preset, args.seed, paths["project.json"], paths["composition.json"], cue_id=cue_id,
+            title=args.title or f"{args.preset.title()} · {args.seed}", category=category, category_label=category_label(category),
+            variation=args.variation, bars=args.bars, form=args.form,
+        )
+        studio_engine.midi(paths["project.json"], paths["engine.mid"], loops=args.loops)
+    except studio_engine.EngineUnavailable as exc:
+        print(str(exc), file=sys.stderr)
+        return 3
+    except (RuntimeError, ValueError, OSError) as exc:
+        print(f"Studio engine failed: {exc}", file=sys.stderr)
+        return 1
+    composition = load_json(paths["composition.json"])
+    catalog = {
+        "version": "1.0.0-engine", "project": composition["title"],
+        "voice_model": {"profiles": [8, 12, 16, 24, 32], "selected": composition["voice_budget"]},
+        "categories": [{"id": category, "label": category_label(category), "count": 1}],
+        "styles": [composition],
+    }
+    issues = validate_composition(composition, "composition.json") + validate_catalog(catalog, "catalog.json")
+    if any(issue.level == "error" for issue in issues):
+        print_report("engine composition", issues)
+        return 1
+    atomic_json_write(paths["catalog.json"], catalog)
+    for path in paths.values():
+        print(f"Created {path}")
+    print(f"  READY   {summary['preset']} · seed {summary['seed']} · {summary['bpm']} BPM · {summary['bars']} bars · {summary['seconds']} s · {len(summary['tracks'])} tracks")
+    print(f"  READY   native score: {len(composition['events'])} events, peak {composition['measured_peak_voices']}/{composition['voice_budget']} voices")
+    here = Path(__file__).resolve()
+    print(f'Synthesized audio: "{sys.executable}" "{here}" create-render "{paths["project.json"]}" "{out / "engine.wav"}"')
+    print(f'Sample-bank audio: "{sys.executable}" "{here}" render "{paths["catalog.json"]}" "{out / "render"}"')
+    return 0
+
+
+def cmd_create_render(args: argparse.Namespace) -> int:
+    import studio_engine
+
+    if args.output.exists() and not args.force:
+        print(f"Refusing to overwrite {args.output}. Pass --force to replace it.", file=sys.stderr)
+        return 2
+    try:
+        result = studio_engine.render_synth(args.project.resolve(), args.output.resolve(), loops=args.loops, tail=args.tail, sample_rate=args.sample_rate)
+    except studio_engine.EngineUnavailable as exc:
+        print(str(exc), file=sys.stderr)
+        return 3
+    except (RuntimeError, ValueError, OSError) as exc:
+        print(f"Synthesized render failed: {exc}", file=sys.stderr)
+        return 1
+    peak = result["peak"]
+    peak_db = f"{20 * __import__('math').log10(peak):.1f} dBFS" if peak > 0 else "silent"
+    print(f"Created {args.output}")
+    print(f"  READY   {result['seconds']:.2f} s · {result['sampleRate']} Hz · sample peak {peak_db} · RMS {result['rms']:.4f}")
+    print("  note    Sample peak and RMS, not LUFS or true peak. Listening approval stays with a person.")
+    return 0
+
+
+def cmd_create_import(args: argparse.Namespace) -> int:
+    import studio_engine
+
+    if args.output.exists() and not args.force:
+        print(f"Refusing to overwrite {args.output}. Pass --force to replace it.", file=sys.stderr)
+        return 2
+    try:
+        studio_engine.import_native(args.composition.resolve(), args.output.resolve())
+    except studio_engine.EngineUnavailable as exc:
+        print(str(exc), file=sys.stderr)
+        return 3
+    except (RuntimeError, ValueError, OSError) as exc:
+        print(f"Import failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"Created {args.output}")
+    print("  READY   the score's notes and played timing, voiced by the studio engine. Open it in Composer Studio Create or run create-render.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     brief_spec = load_json(HARNESS_SPEC_PATH)["sections"]["brief"]
     parser = argparse.ArgumentParser(
@@ -1035,6 +1155,35 @@ def build_parser() -> argparse.ArgumentParser:
     render.add_argument("--adapt-ports", action="store_true")
     render.add_argument("--allow-fallback", action="store_true", help="If the requested bank is missing, render compact and write that on the receipt.")
     render.set_defaults(func=cmd_render)
+
+    create = sub.add_parser("create", help="Compose with the studio engine (synthesis, harmony library, arps) and write project, score, catalog and MIDI.")
+    create.add_argument("output", type=Path, help="Directory for project.json, composition.json, catalog.json and engine.mid.")
+    create.add_argument("--preset", required=True, choices=sorted(ENGINE_GENRE_CATEGORY), help="Engine style preset.")
+    create.add_argument("--seed", default="GMC", help="Seed text (1-64 characters). The same seed and preset give the same song.")
+    create.add_argument("--variation", help="Apply one seeded variation of rhythm and melody to unlocked tracks.")
+    create.add_argument("--bars", type=int, choices=(1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64))
+    create.add_argument("--form", choices=("loop", "journey"))
+    create.add_argument("--title")
+    create.add_argument("--id", help="Lowercase cue id for the native score.")
+    create.add_argument("--category", choices=category_order(), help="Catalog category. Defaults from the preset genre.")
+    create.add_argument("--loops", type=int, default=1, help="Loops in engine.mid.")
+    create.add_argument("--force", action="store_true")
+    create.set_defaults(func=cmd_create)
+
+    create_render = sub.add_parser("create-render", help="Render a studio-engine project to WAV with its own synthesis (needs Playwright + Chromium).")
+    create_render.add_argument("project", type=Path)
+    create_render.add_argument("output", type=Path)
+    create_render.add_argument("--loops", type=int, default=1)
+    create_render.add_argument("--tail", choices=("tail", "loop"), default="tail", help="tail: add 6 s of release; loop: seamless loop with a warm-up pass.")
+    create_render.add_argument("--sample-rate", type=int, default=44100)
+    create_render.add_argument("--force", action="store_true")
+    create_render.set_defaults(func=cmd_create_render)
+
+    create_import = sub.add_parser("create-import", help="Turn a native composition into a studio-engine project (same notes, engine synthesis).")
+    create_import.add_argument("composition", type=Path)
+    create_import.add_argument("output", type=Path)
+    create_import.add_argument("--force", action="store_true")
+    create_import.set_defaults(func=cmd_create_import)
 
     return parser
 

@@ -72,3 +72,8 @@ test('Every catalog cue opens in the engine with all of its notes and its length
     assert.ok(Math.abs(seconds - original) / original < .01, cue.id + ' loop length');
   }
 });
+
+test('Studio engine modules are exact publications of the skill sources', () => {
+  for (const file of ['core.js', 'native-bridge.js', 'labels-en.js'])
+    assert.equal(fs.readFileSync(path.join(showcase, 'engine', file), 'utf8'), fs.readFileSync(path.resolve(__dirname, '../../game-music-composer/resources/studio-engine', file), 'utf8'), file);
+});

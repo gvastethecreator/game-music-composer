@@ -2,7 +2,7 @@
 
 Write inspectable instrumental game music, then hear it in a browser studio.
 
-Composer Studio is a static playground: 140 cues, a piano roll, live soundbanks, and a generation recipe you can export. The installed skill is a Python CLI that composes, reviews, writes MIDI, and renders audio. No server or API key is required.
+Composer Studio is a static playground. **Create** writes and plays new songs with a synthesis engine (32 styles, ten tracks, arpeggiator, mixer and effects). **Studio** holds 240 catalog cues with a piano roll, live soundbanks and a generation recipe you can export. The installed skill is a Python CLI that composes, reviews, writes MIDI, and renders audio; its `create` command runs the same synthesis engine through Node.js. No server or API key is required.
 
 ## Quick start
 

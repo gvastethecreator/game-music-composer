@@ -2,11 +2,13 @@
 
 A static, local-friendly showcase for the Game Music Composer skill.
 
-The catalog contains 140 instrumental cues across 14 categories. The hundred Phrase Studio cues are joined by ten Bachatas, ten Trip hop cues, ten Traps and ten Reggaeton cues. Each new collection has authored subjects, answers, harmony and genre-specific bass and percussion. Timber, Prism and Voltage add new synthesis models alongside Chamber, Velvet and Circuit. Live playback and native masters resolve the same multisample regions; mastering effects differ. Symbolic review is diagnostic. Human artistic approval remains pending.
+The catalog contains 240 instrumental cues across 24 categories: 100 Phrase Studio scene scores and 14 groove packs of ten. Each new collection has authored subjects, answers, harmony and genre-specific bass and percussion. Timber, Prism and Voltage add new synthesis models alongside Chamber, Velvet and Circuit. Live playback and native masters resolve the same multisample regions; mastering effects differ. Symbolic review is diagnostic. Human artistic approval remains pending.
 
 The first screen starts with sound. From there you can:
 
-- hear 140 instrumental cues with Chamber, Velvet, Circuit, Compact, Chip or mastered audio;
+- create new songs in **Create** with the synthesis engine: pick a style, play, ask for a new song, a variation or a chaos transformation, keep ideas in slots A–D, and shape tracks, harmony, notes, mix and song sections;
+- open any catalog cue in Create to hear its notes through the synthesis engine, or open a Create song in Studio to hear it through the sampled banks;
+- hear 240 instrumental cues with Chamber, Velvet, Circuit, Compact, Chip or mastered audio;
 - load `composition.json` or `catalog.json` from the skill and compare the same notes across all eight live banks;
 - inspect form, harmony, voices, notes and patch routing;
 - create ensemble, pocket, phrase, genre and cycle sketches directly beside the piano roll;
@@ -16,6 +18,10 @@ The first screen starts with sound. From there you can:
 - shape and export a 15-part composition recipe;
 - browse and audition 54 Factory Bank patches;
 - read a repeatable score review and download MIDI, source data or the full skill.
+
+## Create
+
+Create is the first view for new visitors. It runs `engine/core.js`, a port of the UMBRA 8 music core published from `game-music-composer/resources/studio-engine/` by `tools/sync_studio.py`. Essential mode keeps the short path; Studio mode adds the track inspector, arpeggio/chop performance, note editing, composition, master, macros and song building. Songs save in the browser; export a project JSON to keep them. Exports: WAV, MIDI, project JSON and stems (ZIP). Create and Studio never play at the same time.
 
 ## Run locally
 
