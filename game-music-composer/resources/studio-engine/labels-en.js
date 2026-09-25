@@ -55,6 +55,8 @@ const labels={
  voicings:{triad:'Triads',seventh:'Sevenths',ninth:'Ninths',sus:'Sus',sus4:'Sus4',sixth:'Sixths',add9:'Add9',eleventh:'Elevenths',power:'Power'},
  reverbKinds:{room:'Room',plate:'Plate',hall:'Hall',cavern:'Cavern'},
  macros:{energy:'Energy',tension:'Tension',space:'Space',movement:'Movement'},
+ sectionNames:{'Tema A':'Theme A','Tema B':'Theme B','Variación A′':'Variation A′','Ruptura':'Break','Cierre':'Ending','Intro':'Intro','Desarrollo':'Development','Sección':'Section','copia':'copy'},
+ automationParams:{volume:'Volume',pan:'Pan',cutoff:'Filter',send:'Reverb',delay:'Delay',phaser:'Phaser',chorus:'Chorus',reverb:'Reverb'},
  // Studio catalog category that best fits each engine genre (Open in Studio).
  genreCategory:{trip:'trip_hop',dub:'trip_hop',house:'house',micro:'house',melodic:'house',afro:'house',disco:'house',bossa:'bossa_nova',ambient:'adventure',garage:'electronic',electro:'electronic',broken:'electronic',soul:'urban',jazz:'urban',ritual:'fantasy',cinema:'emotion',chip:'electronic',techno:'electronic',dubtechno:'electronic',minimal:'electronic',trance:'electronic',dnb:'dnb',jungle:'dnb',liquid:'dnb',halftime:'dnb',trap:'trap',lofi:'lofi',synthwave:'synthwave',funk:'funk',reggaeton:'reggaeton',footwork:'electronic',idm:'electronic',breakbeat:'electronic'},
  // Words of the engine's generated song names.
@@ -68,7 +70,7 @@ const labels={
   [/^Interpretación convertida en notas independientes\. La fuente sigue guardada\.$/,'Interpretation baked into independent notes. The source clip is kept.'],
   [/^Intro, temas, ruptura y cierre creados con material independiente\.$/,'Intro, themes, break and ending created with independent material.'],
   [/^La estructura se añade después de las secciones existentes\.$/,'The structure is added after the existing sections.'],
-  [/^Sección independiente creada\.$/,'Independent section created.'],[/^Transformación aplicada; anclas conservadas\.$/,'Transformation applied; anchors kept.'],
+  [/^Sección independiente creada\.$/,'Independent section created.'],[/^Duración de sección inconsistente\.$/,'A section needs an allowed length with at least one bar per chord.'],[/^Sección inválida\.$/,'Unknown section.'],[/^Transformación aplicada; anclas conservadas\.$/,'Transformation applied; anchors kept.'],
   [/^Versión (.) guardada\. La sesión sigue intacta\.$/,'Idea $1 saved. The session is unchanged.'],[/^Versión (.) cargada\. Deshacer recupera la anterior\.$/,'Idea $1 loaded. Undo brings back the previous song.'],
   [/^Armonía renovada\. Acordes y pistas bloqueados conservados\.$/,'New chords. Locked chords and tracks are kept.'],[/^Alternativa aplicada al acorde (\d+)\.$/,'Alternative applied to chord $1.'],
   [/^(\d+) clips sin uso eliminados\. Deshacer permite recuperarlos\.$/,'$1 unused clips removed. Undo brings them back.'],
@@ -89,7 +91,7 @@ const labels={
 function name(group,id,fallback){return labels[group]?.[id]??fallback??id;}
 // Engine messages and generated names are Spanish; unknown text passes through unchanged.
 function message(text){for(const [re,out] of labels.messages)if(re.test(text))return text.replace(re,out);return text;}
-function songName(text){if(!text)return text;let out=text;for(const [es,en] of Object.entries(labels.nameWords).sort((a,b)=>b[0].length-a[0].length))out=out.split(es).join(en);return out;}
+function songName(text){if(!text)return text;let out=text;for(const [es,en] of Object.entries({...labels.nameWords,...labels.sectionNames}).sort((a,b)=>b[0].length-a[0].length))out=out.split(es).join(en);return out;}
 const api={labels,name,message,songName};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.GMCLabels=api;
 })(globalThis);

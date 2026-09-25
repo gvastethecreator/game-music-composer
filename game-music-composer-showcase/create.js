@@ -316,12 +316,62 @@ function renderShape(s){
   slider({label:'Finish amount',value:s.sound8?.amount??65,min:0,max:100,input:()=>{},commit:v=>S.ops.changeSound({amount:v})})));
  const macros=st.macros||{};
  root.append(group('Macros',...Object.keys(L.labels.macros).map(k=>slider({label:L.name('macros',k),value:macros[k]??0,min:0,max:100,input:v=>S.live(x=>{x.studio.macros[k]=v;})}))));
- const song=st.playMode==='song';
  root.append(gameGroup(s));
- root.append(group('Song',
-  el('p',{class:'create-note',text:st.sections?.length?`${st.sections.length} sections · playing ${song?'the whole song':'the selected phrase'}.`:'Build an intro, themes, a break and an ending from this phrase. Each section gets independent material.'}),
-  el('div',{class:'create-row'},el('button',{type:'button',class:'compact-button',onclick:()=>S.ops.structureSong()},'Build song'),st.sections?.length?el('button',{type:'button',class:'compact-button','aria-pressed':String(song),onclick:()=>S.ops.setSongMode(song?'phrase':'song')},song?'Play phrase':'Play song'):null)));
+ root.append(songGroup(s));
+ root.append(automationGroup(s));
 }
+// ── Song sections ────────────────────────────────────────────────────────────
+function songGroup(s){
+ const st=s.studio||{},sections=st.sections||[],song=st.playMode==='song';
+ if(!sections.length)return el('section',{class:'create-group create-group-wide'},el('h3',{text:'Song'}),el('div',{class:'create-group-body'},
+  el('p',{class:'create-note',text:'Build an intro, themes, a break and an ending from this phrase. Each section gets independent material you can edit.'}),
+  el('div',{class:'create-row'},el('button',{type:'button',class:'compact-button',onclick:()=>S.ops.structureSong()},'Build song'),el('button',{type:'button',class:'compact-button',onclick:()=>S.ops.addSection('copy')},'Add a section'))));
+ const rows=sections.map(sec=>{const selected=sec.id===st.selectedSection;
+  const name=el('input',{class:'create-seed',value:L.songName(sec.name),maxlength:70,'aria-label':'Section name',onchange:e=>S.ops.updateSection(sec.id,{name:e.target.value})});
+  const bars=el('select',{'aria-label':'Section bars'});options(bars,[1,2,3,4,6,8,12,16,24,32,48,64].filter(b=>b>=sec.frame.degrees.length).map(b=>[b,b+' bars']),sec.bars);bars.addEventListener('change',()=>S.ops.updateSection(sec.id,{bars:Number(bars.value)}));
+  const repeat=el('select',{'aria-label':'Section repeats'});options(repeat,[1,2,3,4,5,6,7,8].map(n=>[n,'×'+n]),sec.repeat||1);repeat.addEventListener('change',()=>S.ops.updateSection(sec.id,{repeat:Number(repeat.value)}));
+  return el('div',{class:'create-section'+(selected?' selected':''),dataset:{section:sec.id}},
+   el('button',{type:'button',class:'compact-button'+(selected?' active':''),'aria-pressed':String(selected),title:'Edit this section',onclick:()=>{S.ops.selectSection(sec.id);view.rollKey='';}},selected?'Editing':'Edit'),
+   name,bars,repeat,el('button',{type:'button',class:'create-flag',title:'Remove section','aria-label':'Remove '+L.songName(sec.name),disabled:sections.length<2,onclick:()=>S.ops.removeSection(sec.id)},'×'));});
+ const add=el('select',{'aria-label':'Add section'});options(add,[['','Add after the edited section…'],['copy','Copy'],['develop','Development'],['contrast','Contrast (theme B)'],['reduce','Break'],['intro','Intro'],['close','Ending']],'');add.addEventListener('change',()=>{if(add.value)S.ops.addSection(add.value);});
+ const total=sections.reduce((n,x)=>n+x.bars*(x.repeat||1),0);
+ return el('section',{class:'create-group create-group-wide'},el('h3',{text:'Song'}),el('div',{class:'create-group-body'},
+  el('p',{class:'create-note',text:`${sections.length} sections · ${total} bars · ${song?'playing the whole song':'playing the edited section as a loop'}.`}),
+  ...rows,el('div',{class:'create-row'},add,el('button',{type:'button',class:'compact-button','aria-pressed':String(song),onclick:()=>S.ops.setSongMode(song?'phrase':'song')},song?'Play section only':'Play whole song'))));
+}
+// ── Automation lanes ─────────────────────────────────────────────────────────
+// Points are normalized 0..1 over the song in sixteenths; Read lanes drive the audio clock.
+function automationLabel(target){const [id,key]=target.split('.');if(id==='macro')return 'Macro · '+L.name('macros',key);if(id==='master')return 'Master · '+L.name('automationParams',key,key);return trackName(id)+' · '+L.name('automationParams',key,key);}
+function automationGroup(s){
+ const st=s.studio||{},lanes=st.automation||[],targets=S.ops.automationTargets();
+ if(!lanes.some(l=>l.target===view.lane))view.lane=lanes[0]?.target||null;
+ const lane=lanes.find(l=>l.target===view.lane);
+ const pick=el('select',{'aria-label':'Automation target'});options(pick,[['','Automate a parameter…'],...Object.keys(targets).map(k=>[k,(lanes.some(l=>l.target===k)?'● ':'')+automationLabel(k)])],view.lane||'');
+ pick.addEventListener('change',()=>{if(!pick.value)return;view.lane=pick.value;if(!lanes.some(l=>l.target===pick.value))S.commit(()=>{S.ops.ensureLane(pick.value);});else render();});
+ const body=[el('div',{class:'create-row'},pick)];
+ if(lane){const index=lanes.indexOf(lane);
+  body.push(el('div',{class:'create-row'},
+   el('button',{type:'button',class:'compact-button'+(lane.enabled?' active':''),'aria-pressed':String(lane.enabled),onclick:()=>S.edit(x=>{x.studio.automation[index].enabled=!lane.enabled;})},lane.enabled?'Read: on':'Read: off'),
+   select({label:'Shape',rows:[['linear','Ramps'],['step','Steps']],value:lane.shape,change:v=>S.edit(x=>{x.studio.automation[index].shape=v;})}),
+   el('button',{type:'button',class:'compact-button',onclick:()=>S.edit(x=>{x.studio.automation.splice(index,1);})},'Delete lane')),
+   el('canvas',{class:'create-lane',id:'createLane','aria-label':'Automation curve for '+automationLabel(lane.target)}),
+   el('p',{class:'create-note',text:'Click to add a point, drag to move it, double-click to remove it.'}));
+  requestAnimationFrame(()=>bindLane(index));}
+ return el('section',{class:'create-group create-group-wide'},el('h3',{text:'Automation'}),el('div',{class:'create-group-body'},...body));
+}
+function drawLane(canvas,lane,len){const {ctx,w,h}=sizeCanvas(canvas);ctx.clearRect(0,0,w,h);ctx.fillStyle='#080808';ctx.fillRect(0,0,w,h);
+ for(let t=0;t<=len;t+=16){ctx.fillStyle=t%64===0?'#333':'#1b1b1b';ctx.fillRect(Math.round(t/len*w),0,1,h);}
+ const pts=lane.points;ctx.strokeStyle=lane.enabled?'#78ece9':'#555';ctx.lineWidth=2;ctx.beginPath();
+ if(!pts.length){ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);}else{ctx.moveTo(0,(1-pts[0].v)*h);pts.forEach((p,i)=>{const x=p.t/len*w,y=(1-p.v)*h;if(lane.shape==='step'&&i)ctx.lineTo(x,(1-pts[i-1].v)*h);ctx.lineTo(x,y);});ctx.lineTo(w,(1-pts.at(-1).v)*h);}
+ ctx.stroke();ctx.fillStyle='#fff';for(const p of pts){ctx.beginPath();ctx.arc(p.t/len*w,(1-p.v)*h,4,0,Math.PI*2);ctx.fill();}}
+function bindLane(index){const canvas=$('createLane');if(!canvas)return;const len=()=>E.totalBars(S.state)*16,lane=()=>S.state.studio.automation[index];drawLane(canvas,lane(),len());
+ const at=e=>{const r=canvas.getBoundingClientRect();return{t:Math.max(0,Math.min(len()-.001,(e.clientX-r.left)/r.width*len())),v:Math.max(0,Math.min(1,1-(e.clientY-r.top)/r.height)),x:e.clientX-r.left,y:e.clientY-r.top,w:r.width,h:r.height};};
+ const hit=pt=>lane().points.findIndex(p=>Math.abs(p.t/len()*pt.w-pt.x)<7&&Math.abs((1-p.v)*pt.h-pt.y)<7);
+ let drag=null;
+ canvas.addEventListener('pointerdown',e=>{const pt=at(e),i=hit(pt);if(i>=0){drag=i;canvas.setPointerCapture(e.pointerId);S.live(()=>{});return;}S.commit(x=>{const l=x.studio.automation[index];l.points.push({t:Math.round(pt.t*4)/4,v:Math.round(pt.v*1000)/1000});l.points.sort((a,b)=>a.t-b.t);});});
+ canvas.addEventListener('pointermove',e=>{if(drag===null)return;const pt=at(e);S.live(x=>{const l=x.studio.automation[index],p=l.points[drag];p.t=Math.round(pt.t*4)/4;p.v=Math.round(pt.v*1000)/1000;});drawLane(canvas,lane(),len());});
+ canvas.addEventListener('pointerup',()=>{if(drag===null)return;drag=null;S.state.studio.automation[index].points.sort((a,b)=>a.t-b.t);S.commitLive();});
+ canvas.addEventListener('dblclick',e=>{const i=hit(at(e));if(i>=0)S.commit(x=>{x.studio.automation[index].points.splice(i,1);});});}
 
 // ── Game music ──────────────────────────────────────────────────────────────
 // States keep every note and change track levels and macros. While playing, a switch

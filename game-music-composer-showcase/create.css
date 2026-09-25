@@ -97,6 +97,12 @@
 .create-game-col{display:grid;gap:6px;align-content:start}
 .create-game-col h4{margin:4px 0 0;font:700 9px var(--mono);color:#999;text-transform:uppercase;letter-spacing:.1em}
 @media(max-width:900px){.create-game-edit{grid-template-columns:1fr}}
+.create-section{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto;gap:5px;align-items:center;border:1px solid #262626;border-radius:6px;padding:5px}
+.create-section.selected{border-color:var(--amber)}
+.create-section select,.create-group-body>.create-row>select{height:28px;border:1px solid #3a3a3a;border-radius:5px;background:#0b0b0b;color:#ddd;font:10px var(--mono)}
+.create-section .compact-button.active,.create-group .compact-button.active{background:linear-gradient(#ffc455,#df8e13);color:#191006;border-color:#ffce73}
+.create-lane{width:100%;height:110px;border:1px solid #2a2a2a;border-radius:6px;cursor:crosshair;display:block}
+@media(max-width:620px){.create-section{grid-template-columns:auto minmax(0,1fr) auto}.create-section select{grid-column:span 1}}
 .create-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .create-seed{flex:1 1 90px}
 .create-note{margin:0;color:#999;font-size:11px}

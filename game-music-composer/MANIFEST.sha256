@@ -99,9 +99,9 @@ e81a79adc8971a3f677d2ae2a82d0e4bba0d78f862e1022436c730b1280a56d5  ./resources/or
 1701abd128ff8991286805c1a87b42ce32c6019aedbeb8ce525308998158b193  ./resources/original-sample-bank/vibraphone_A4.wav
 83f627758287bf1c42b525f956a41a309f6da0935f5a6056b6ce5f6490abf041  ./resources/original-sample-bank/wood_block.wav
 94861510fe5f8563b0885606e5dc22cc1fcb02fc7ae010b2e2dfd3b213ce6d38  ./resources/original-sample-bank/wood_flute_A4.wav
-dd98817080a016cbc8b2c40f8661934d1fc999280845de3fbc1d39400f2d762b  ./resources/studio-engine/core.js
+10ce4be8697f687b00d63eca2c04c04fa9a5f87cc01b9da5d5fb387e72ce3b8b  ./resources/studio-engine/core.js
 70f0338e00b621276c5bc1d15696106ab6f6e3da5dab30035fcb4964c90fd6a5  ./resources/studio-engine/director-runtime.js
-406d0a89784948729ac72be16aefcbe1c88e5eb9d652ebe653dcb4882e089afa  ./resources/studio-engine/labels-en.js
+f10c722e007b3f1f4c5ee6b7001a72eca352bb1342534415e20f6034a5f9bcfe  ./resources/studio-engine/labels-en.js
 400a77faf3033b82bae4806fe8a51cae1b44d5d41d339c79e912b1ef729a8363  ./resources/studio-engine/native-bridge.js
 479805b5b4717cba17d34cdde4ca4196ec6ec1963eee6b4ed0d939bb61fe81fa  ./schemas/composition-plan.schema.json
 90b531b6500979d3812ce0931bf045c6edbbfbf7bea342efa711b6d7490bc6e2  ./schemas/generation-harness-v3.schema.json
