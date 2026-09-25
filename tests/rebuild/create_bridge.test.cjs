@@ -74,6 +74,8 @@ test('Every catalog cue opens in the engine with all of its notes and its length
 });
 
 test('Studio engine modules are exact publications of the skill sources', () => {
-  for (const file of ['core.js', 'native-bridge.js', 'labels-en.js'])
-    assert.equal(fs.readFileSync(path.join(showcase, 'engine', file), 'utf8'), fs.readFileSync(path.resolve(__dirname, '../../game-music-composer/resources/studio-engine', file), 'utf8'), file);
+  // Git stores both with LF (.gitattributes); a Windows checkout may differ only in CR.
+  const text = file => fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  for (const file of ['core.js', 'native-bridge.js', 'labels-en.js', 'director-runtime.js'])
+    assert.equal(text(path.join(showcase, 'engine', file)), text(path.resolve(__dirname, '../../game-music-composer/resources/studio-engine', file)), file);
 });

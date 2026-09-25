@@ -86,6 +86,17 @@
 .create-slider output{color:var(--amber-hi)}
 .create-slider input{width:100%;accent-color:var(--amber)}
 .create-group .create-field select{width:100%}
+.create-group-wide{grid-column:1/-1}
+.create-game-chips{display:flex;flex-wrap:wrap;gap:5px}
+.create-chip{border:1px solid #3a3a3a;border-radius:16px;background:#141414;color:#ccc;padding:6px 12px;font:700 10px var(--mono);cursor:pointer}
+.create-chip.active{background:linear-gradient(#9ff6f3,#48c7c3);color:#041414;border-color:#bffffc}
+.create-chip.pending{border-color:var(--cyan);color:var(--cyan);animation:create-pending .6s ease-in-out infinite alternate}
+@keyframes create-pending{to{box-shadow:0 0 10px #78ece966}}
+@media(prefers-reduced-motion:reduce){.create-chip.pending{animation:none}}
+.create-game-edit{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px}
+.create-game-col{display:grid;gap:6px;align-content:start}
+.create-game-col h4{margin:4px 0 0;font:700 9px var(--mono);color:#999;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:900px){.create-game-edit{grid-template-columns:1fr}}
 .create-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .create-seed{flex:1 1 90px}
 .create-note{margin:0;color:#999;font-size:11px}

@@ -290,7 +290,7 @@ class SynthEngine{
   for(const tr of s.tracks){const input=N('createGain'),filter=N('createBiquadFilter'),gain=N('createGain'),pan=N('createStereoPanner'),rev=N('createGain'),del=N('createGain');filter.type='lowpass';filter.Q.value=.55;input.connect(filter).connect(gain).connect(pan);pan.connect(trackMap[tr.id].drum?this.sum:this.musicDuck);pan.connect(rev).connect(this.reverbInput);pan.connect(del).connect(this.delayInput);this.channels[tr.id]={input,filter,gain,pan,rev,del,level:0};}
   this.initV2(s);this.update(s,true);
  }
- set(param,value,immediate=false){if(this.disposed)return;const now=this.ctx.currentTime;if(immediate){param.setValueAtTime(value,now);}else{param.cancelScheduledValues(now);param.setTargetAtTime(value,now,.022);}}
+ set(param,value,immediate=false){if(this.disposed)return;const now=Math.max(this.ctx.currentTime,this.timeOverride??0);if(immediate){param.setValueAtTime(value,now);}else{param.cancelScheduledValues(now);param.setTargetAtTime(value,now,.022);}}
  update(s,immediate=false){if(this.disposed)return;this.state=s;const m=s.master;this.set(this.master.gain,m.volume/100*.68,immediate);this.set(this.masterFilter.frequency,Math.min(m.cutoff,this.ctx.sampleRate*.47),immediate);this.set(this.reverbWet.gain,m.reverb/100*1.5,immediate);this.set(this.delayWet.gain,m.delay/100*.9,immediate);const delayTime=60/s.bpm*m.division;this.set(this.delayL.delayTime,delayTime,immediate);this.set(this.delayR.delayTime,delayTime,immediate);this.set(this.feedbackL.gain,clamp(m.feedback/100,0,.65),immediate);this.set(this.feedbackR.gain,clamp(m.feedback/100,0,.65),immediate);for(const tr of s.tracks){const ch=this.channels[tr.id];this.set(ch.gain.gain,audible(tr,s)?tr.volume:0,immediate);this.set(ch.pan.pan,tr.pan,immediate);this.set(ch.rev.gain,tr.send,immediate);this.set(ch.del.gain,tr.delay,immediate);const cutoff=tr.id==='bass'?180+(tr.tone/100)**2*9000:900+(tr.tone/100)**1.7*19000;this.set(ch.filter.frequency,Math.min(this.ctx.sampleRate*.46,cutoff),immediate);}}
  makePulse(duty){const re=new Float32Array(65),im=new Float32Array(65);for(let n=1;n<65;n++){re[n]=2*Math.sin(2*Math.PI*n*duty)/(Math.PI*n);im[n]=2*(1-Math.cos(2*Math.PI*n*duty))/(Math.PI*n);}return this.ctx.createPeriodicWave(re,im);}
  createImpulse(){const len=Math.ceil(this.ctx.sampleRate*2.7),buf=this.ctx.createBuffer(2,len,this.ctx.sampleRate);for(let c=0;c<2;c++){const r=rng('umbra-space-'+c),a=buf.getChannelData(c);let last=0;for(let i=0;i<len;i++){last=.58*last+.42*(r()*2-1);const env=Math.pow(1-i/len,3.2);a[i]=last*env*(i<300?i/300:1);}for(const [delay,amp]of[[.025,.22],[.048,.17],[.079,.12],[.113,.09]]){const idx=Math.floor((delay+c*.003)*this.ctx.sampleRate);a[idx]+=amp;}}return buf;}
@@ -1351,7 +1351,34 @@ const VERSION8='8.0.0';
 // from AudioContext time with a lookahead window, exactly as UMBRA does.
 const ENGINE_VERSION='gmc-studio-engine/1 (UMBRA 8 core)';
 const project=(s=state)=>({schema:'umbra-project',version:8,state:clone(s)});
-const mix=(s)=>{engine?.update(s);previewEngine?.update(s);};
+// ── Game music: states over one song ─────────────────────────────────────────
+// A game state keeps every note and changes the arrangement: a level per track
+// (vertical layering) and the four note/sound macros. Stored as state.gmc.game.
+const GAME_ID=/^[a-z0-9_-]{1,32}$/,MACRO_KEYS=['energy','tension','space','movement'],QUANTIZE=['beat','bar','phrase'];
+const gameDefaults=()=>({version:1,transition:{quantize:'bar'},states:[
+ {id:'explore',name:'Explore',levels:{kick:.6,snare:0,hat:.7,open:0,perc:.8,bass:1,keys:1,pad:1,arp:.8,lead:1},macros:{energy:40,tension:0,space:62,movement:10}},
+ {id:'tension',name:'Tension',levels:{kick:.75,snare:.45,hat:1,open:.4,perc:1,bass:1,keys:.7,pad:1.1,arp:1,lead:.55},macros:{energy:55,tension:45,space:55,movement:35}},
+ {id:'combat',name:'Combat',levels:{kick:1.1,snare:1.1,hat:1.05,open:1,perc:1.05,bass:1.1,keys:1,pad:.8,arp:1.1,lead:1},macros:{energy:88,tension:22,space:40,movement:25}},
+ {id:'calm',name:'Calm',levels:{kick:0,snare:0,hat:0,open:0,perc:.4,bass:.75,keys:.85,pad:1.2,arp:.5,lead:.8},macros:{energy:28,tension:0,space:78,movement:0}}]});
+function validateGame(x){if(x===undefined||x===null)return null;const fail=m=>{throw new Error('Invalid game music: '+m);};if(typeof x!=='object'||Array.isArray(x))fail('expected an object.');
+ if(!Array.isArray(x.states)||x.states.length<1||x.states.length>8)fail('1 to 8 states.');const ids=new Set();
+ const states=x.states.map(st=>{if(!st||typeof st!=='object')fail('state.');if(typeof st.id!=='string'||!GAME_ID.test(st.id)||ids.has(st.id))fail('state id '+st?.id);ids.add(st.id);if(typeof st.name!=='string'||!st.name.trim()||st.name.length>40)fail('state name.');
+  const levels={};for(const t of trackDefs){const v=st.levels?.[t.id]??1;if(typeof v!=='number'||!Number.isFinite(v)||v<0||v>1.5)fail('level of '+t.id);levels[t.id]=v;}
+  const macros={};for(const k of MACRO_KEYS){const v=st.macros?.[k]??(k==='energy'||k==='space'?50:0);if(typeof v!=='number'||!Number.isFinite(v)||v<0||v>100)fail('macro '+k);macros[k]=v;}
+  return{id:st.id,name:st.name.trim(),levels,macros};});
+ const quantize=x.transition?.quantize??'bar';if(!QUANTIZE.includes(quantize))fail('transition.');return{version:1,transition:{quantize},states};}
+// Project validation keeps the GMC extension next to UMBRA's own fields.
+function validateGmcProject(payload){const s=validateProject(payload),game=validateGame(payload?.state?.gmc?.game);if(game)s.gmc={game};return s;}
+function gameState(s,id){const st=s.gmc?.game?.states.find(x=>x.id===id);if(!st)return s;const out=clone(s);for(const t of out.tracks)t.volume=clamp(t.volume*(st.levels[t.id]??1),0,1.25);studio7(out).macros={...studio7(out).macros,...st.macros};return out;}
+let stateRev=0;
+const director={active:null,pending:null,cache:null,onChange:null,
+ view(){if(!this.active)return state;if(!this.cache||this.cache.base!==state||this.cache.rev!==stateRev||this.cache.id!==this.active)this.cache={base:state,rev:stateRev,id:this.active,s:gameState(state,this.active)};return this.cache.s;},
+ steps(){const q=state.gmc?.game?.transition?.quantize||'bar';return q==='beat'?4:q==='phrase'?state.bars*16:16;},
+ // While playing, the switch waits for the next beat, bar or phrase line; stopped, it is immediate.
+ set(id){if(id&&!state.gmc?.game?.states.some(x=>x.id===id))throw new Error('Unknown game state: '+id);if(player.playing){this.pending={id:id||null};this.onChange?.(this.active,id||null);return;}this.active=id||null;this.pending=null;mix(state);this.onChange?.(this.active,null);},
+ apply(time){this.active=this.pending.id;this.pending=null;if(engine){engine.timeOverride=time;engine.update(this.view());engine.timeOverride=undefined;}this.onChange?.(this.active,null);}
+};
+const mix=(s)=>{stateRev++;const v=director.view();engine?.update(v);previewEngine?.update(v);};
 host.restart=was=>{if(was&&player.playing)player.restart();};
 host.update=(s,{restart=false}={})=>{if(restart&&player.playing)player.restart();else mix(s);host.render(s);};
 
@@ -1359,11 +1386,11 @@ const player={
  playing:false,starting:false,loop:true,step:-1,token:0,timer:null,nextStep:0,nextTime:0,pausedStep:0,finishAt:null,queue:[],onStep:null,onEvent:null,onState:null,
  async context(){const AC=root.AudioContext||root.webkitAudioContext;if(!AC)throw new Error('This browser does not offer Web Audio.');if(!audioContext||audioContext.state==='closed')audioContext=new AC({latencyHint:'interactive'});if(audioContext.state==='suspended')await audioContext.resume();return audioContext;},
  fade(eng){if(!eng)return;const t=eng.ctx.currentTime;try{eng.output.gain.cancelScheduledValues(t);eng.output.gain.setValueAtTime(eng.output.gain.value,t);eng.output.gain.linearRampToValueAtTime(0,t+.035);}catch{}setTimeout(()=>{eng.dispose();if(!player.playing&&!player.starting&&!engine&&!previewEngine&&audioContext?.state==='running')audioContext.suspend().catch(()=>{});},65);},
- async start(){if(this.playing||this.starting||ui.rendering)return;this.starting=true;const token=++this.token;try{const ctx=await this.context();if(token!==this.token)return;this.releasePreview();saveSection7();engine=new SynthEngine(ctx,state);this.playing=ui.playing=true;this.starting=false;this.nextStep=this.pausedStep;this.nextTime=ctx.currentTime+.085;this.queue=[];this.finishAt=null;this.timer=setInterval(()=>this.schedule(),25);this.schedule();this.onState?.('playing');}catch(err){this.starting=false;this.playing=ui.playing=false;this.onState?.('error',err);throw err;}},
+ async start(){if(this.playing||this.starting||ui.rendering)return;this.starting=true;const token=++this.token;try{const ctx=await this.context();if(token!==this.token)return;this.releasePreview();saveSection7();engine=new SynthEngine(ctx,director.view());this.playing=ui.playing=true;this.starting=false;this.nextStep=this.pausedStep;this.nextTime=ctx.currentTime+.085;this.queue=[];this.finishAt=null;this.timer=setInterval(()=>this.schedule(),25);this.schedule();this.onState?.('playing');}catch(err){this.starting=false;this.playing=ui.playing=false;this.onState?.('error',err);throw err;}},
  schedule(lookahead=.16){if(!this.playing||!engine)return;const ctx=engine.ctx;if(ctx.state!=='running')return;const dt=stepSeconds(state),length=totalBars(state)*16;
   if(this.finishAt!==null){if(ctx.currentTime>=this.finishAt)this.stop(false);return;}
   if(this.nextTime<ctx.currentTime-.07){this.pause();this.onState?.('underrun');return;}
-  while(this.nextTime<ctx.currentTime+lookahead){if(!this.loop&&this.nextStep>=length){this.finishAt=this.nextTime+4;break;}const absolute=mod(this.nextStep,length);engine.automate7(this.nextStep,this.nextTime);const es=scoreEvents(this.nextStep);for(const e of es){const at=engine.schedule(e,this.nextTime);this.onEvent?.(e,at,absolute);}this.queue.push({time:this.nextTime,step:absolute});this.nextStep++;this.nextTime+=dt;}
+  while(this.nextTime<ctx.currentTime+lookahead){if(!this.loop&&this.nextStep>=length){this.finishAt=this.nextTime+4;break;}const absolute=mod(this.nextStep,length);if(director.pending&&mod(this.nextStep,director.steps())===0)director.apply(this.nextTime);engine.automate7(this.nextStep,this.nextTime);const es=scoreEvents(this.nextStep,director.view());for(const e of es){const at=engine.schedule(e,this.nextTime);this.onEvent?.(e,at,absolute);}this.queue.push({time:this.nextTime,step:absolute});this.nextStep++;this.nextTime+=dt;}
   while(this.queue.length&&this.queue[0].time<=ctx.currentTime){this.step=ui.absStep=this.queue.shift().step;this.onStep?.(this.step);}},
  pause(){++this.token;this.starting=false;if(!this.playing)return;this.pausedStep=mod(this.step+1,totalBars(state)*16);this.playing=ui.playing=false;clearInterval(this.timer);this.timer=null;this.queue=[];this.fade(engine);engine=null;this.finishAt=null;this.onState?.('paused');},
  stop(reset=true){++this.token;this.starting=false;this.playing=ui.playing=false;clearInterval(this.timer);this.timer=null;this.queue=[];this.fade(engine);engine=null;this.releasePreview();this.finishAt=null;this.pausedStep=0;this.step=-1;ui.absStep=0;if(reset)ui.bar=0;this.onState?.('stopped');},
@@ -1389,7 +1416,7 @@ const session={
  select(id){if(!trackMap[id])throw new Error('Unknown track: '+id);ui.selected=id;ui7.selection=new Set();},
  get bar(){return ui.bar;},set bar(v){ui.bar=clamp(Math.round(v),0,state.bars-1);},
  get canUndo(){return ui.undo.length>0;},get canRedo(){return ui.redo.length>0;},
- load(payload){const next=validateProject(payload);checkpoint();player.stop();state=next;ui.bar=0;ui.note=null;scoreMemo7.clear();host.render(state);persist();return state;},
+ load(payload){const next=validateGmcProject(payload);checkpoint();player.stop();state=next;ui.bar=0;ui.note=null;scoreMemo7.clear();host.render(state);persist();return state;},
  replace(next){state=next;ui.undo=[];ui.redo=[];ui.bar=0;scoreMemo7.clear();updateHistoryButtons();host.render(state);return state;},
  project:()=>project(state),
  undo:()=>{const ok=undo();if(ok)player.playing?player.restart():mix(state);return ok;},
@@ -1416,8 +1443,8 @@ const session={
  setMaster(patch){checkpoint();Object.assign(state.master,patch);mix(state);persist();host.render(state);},
  randomCandidate:(config,seed,kind='variation')=>makeRandomCandidate(state,{...randomDefaults(),...config},seed,kind,ui.selected),
  chaosCandidate:(config,seed)=>makeChaosCandidate5(state,{...chaosDefaults5(),...config},seed),
- applyCandidate(candidate){if(ui.rendering)return false;checkpoint();state=candidate.state;ui.bar=Math.min(ui.bar,state.bars-1);ui.note=null;scoreMemo7.clear();host.update(state,{restart:player.playing});persist();return true;},
- ops:{commitHarmony:(...a)=>commitHarmony(...a),reworkHarmony:(...a)=>reworkHarmony(...a),setPerformanceMode:(...a)=>setPerformanceMode(...a),applyPerformanceTemplate:(...a)=>applyPerformanceTemplate(...a),bake:(...a)=>bake7(...a),transform:(...a)=>transform7(...a),ensureClip:(...a)=>ensureClip7(...a),duplicateClip:(...a)=>duplicateClip7(...a),deleteClip:(...a)=>deleteClip7(...a),changeBinding:(...a)=>changeBinding7(...a),collectUnusedClips:()=>collectUnusedClips7(),storeBank:(...a)=>storeBank7(...a),loadBank:(...a)=>loadBank7(...a),structureSong:()=>structureSong7(),setSongMode:(...a)=>setSongMode7(...a),dropClip:(...a)=>dropClip7(...a),copyPhraseIntoTrack:(...a)=>copyPhraseIntoTrack7(...a),automate:(...a)=>automateControl7(...a),ensureLane:(...a)=>ensureLane7(...a),changeSound:(...a)=>changeSound8(...a),syncProjection:(...a)=>syncProjection7(...a),makeNote:(...a)=>makeNote7(...a),notesForTrack:id=>clone(notesForTrack7(id,state)),boundClip:id=>boundClip7(id,state),refreshHarmonyMaterial:()=>refreshHarmonyMaterial()}
+ applyCandidate(candidate){if(ui.rendering)return false;const game=state.gmc;checkpoint();state=candidate.state;if(game&&!state.gmc)state.gmc=clone(game);ui.bar=Math.min(ui.bar,state.bars-1);ui.note=null;scoreMemo7.clear();host.update(state,{restart:player.playing});persist();return true;},
+ ops:{commitHarmony:(...a)=>commitHarmony(...a),reworkHarmony:(...a)=>reworkHarmony(...a),setPerformanceMode:(...a)=>setPerformanceMode(...a),applyPerformanceTemplate:(...a)=>applyPerformanceTemplate(...a),bake:(...a)=>bake7(...a),transform:(...a)=>transform7(...a),ensureClip:(...a)=>ensureClip7(...a),duplicateClip:(...a)=>duplicateClip7(...a),deleteClip:(...a)=>deleteClip7(...a),changeBinding:(...a)=>changeBinding7(...a),collectUnusedClips:()=>collectUnusedClips7(),storeBank:(...a)=>storeBank7(...a),loadBank:(...a)=>{const game=state.gmc;loadBank7(...a);if(game&&!state.gmc){state.gmc=clone(game);persist();}},structureSong:()=>structureSong7(),setSongMode:(...a)=>setSongMode7(...a),dropClip:(...a)=>dropClip7(...a),copyPhraseIntoTrack:(...a)=>copyPhraseIntoTrack7(...a),automate:(...a)=>automateControl7(...a),ensureLane:(...a)=>ensureLane7(...a),changeSound:(...a)=>changeSound8(...a),syncProjection:(...a)=>syncProjection7(...a),makeNote:(...a)=>makeNote7(...a),notesForTrack:id=>clone(notesForTrack7(id,state)),boundClip:id=>boundClip7(id,state),refreshHarmonyMaterial:()=>refreshHarmonyMaterial()}
 };
 
 async function renderWav(s,opts={}){const rendered=await renderOffline(s,opts);return{...await encodeWav(rendered,opts.onProgress),seconds:rendered.seconds};}
@@ -1427,7 +1454,15 @@ const api=Object.freeze({
  catalog:()=>({sounds:Object.keys(sounds).length,presets:presets.length,genres:Object.keys(grooves).length,scales:Object.keys(scaleDefs).length,progressions:Object.keys(progressions).length-1,referenceProgressions:REF_PROGRESSIONS.length,arpTemplates:Object.keys(ARP_LIBRARY).length,chopTemplates:Object.keys(CHOP_LIBRARY).length,arpModes:Object.keys(arpModes).length,arpRates:Object.keys(arpRates).length}),
  data:Object.freeze({presets,sounds,trackDefs,trackMap,genreNames,scaleDefs,progressions,refProgressions:REF_PROGRESSIONS,arpLibrary:ARP_LIBRARY,chopLibrary:CHOP_LIBRARY,arpModes,arpRates,patternDefs,grooves,qualityLabels,routeTargets:routeTargets7,soundFinish:soundFinish8,trackColors,genreTonePools:GENRE_TONE_POOLS}),
  compose:(seed,presetId='nocturne')=>composeFresh(seed,presetId),
- validateProject,project,parseProgression:(text,opts)=>parseProgression(text,opts),parseChord:(token,opts)=>parseChordToken(token,opts),
+ validateProject:validateGmcProject,project,director,
+ game:Object.freeze({defaults:gameDefaults,validate:validateGame,state:(s,id)=>gameState(s,id),
+  // One seamless loop per state; every loop has the same length so a runtime can crossfade on bar lines.
+  async renderPackage(s,{sampleRate=44100,onProgress=()=>{}}={}){const game=validateGame(s.gmc?.game);if(!game)throw new Error('Add game states first.');const files=[],states=[];
+   for(const [i,st] of game.states.entries()){onProgress('Rendering '+st.name+' ('+(i+1)+'/'+game.states.length+')…');const derived=clone(gameState(s,st.id));derived.structure=derived.structure||'loop';const r=await renderOffline(derived,{loops:1,tail:'loop',sampleRate});const wav=await encodeWav(r);const file='states/'+st.id+'.wav';files.push({name:file,blob:wav.blob});states.push({id:st.id,name:st.name,file,peak:wav.peak,rms:wav.rms,levels:st.levels,macros:st.macros});}
+   const manifest={format:'gmc.game-music',version:1,engine:ENGINE_VERSION,title:s.session?.name||s.preset,bpm:s.bpm,beatsPerBar:4,bars:totalBars(s),loopSeconds:totalSeconds(s),sampleRate,transition:game.transition,initialState:game.states[0].id,states,note:'Loops share length and phase: start every loop together and crossfade gains on the quantize line. Peak/RMS are sample measures, not LUFS.'};
+   files.unshift({name:'manifest.json',blob:new Blob([JSON.stringify(manifest,null,2)],{type:'application/json'})},{name:'project.json',blob:new Blob([JSON.stringify(project(s),null,2)],{type:'application/json'})});
+   return{files,manifest};}}),
+ parseProgression:(text,opts)=>parseProgression(text,opts),parseChord:(token,opts)=>parseChordToken(token,opts),
  scoreEvents:(step,s=state)=>scoreEvents(step,s),totalBars:(s=state)=>totalBars(s),stepSeconds:(s=state)=>stepSeconds(s),totalSeconds:(s=state)=>totalSeconds(s),
  chordVoicings:(s=state)=>chordVoicings(s),harmonyIndex:(bar,s=state)=>harmonyIndex(bar,s),audible:(tr,s=state)=>audible(tr,s),labels,
  SynthEngine,renderOffline:(s,opts)=>renderOffline(s,opts),encodeWav:(r,p)=>encodeWav(r,p),renderWav,midi:(s=state,loops=1)=>midiFile(s,loops),

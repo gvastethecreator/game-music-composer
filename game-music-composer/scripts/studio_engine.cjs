@@ -6,7 +6,7 @@
 //   node studio_engine.cjs presets
 //   node studio_engine.cjs compose --preset lofi --seed DUSK --instruments inst.json \
 //        --project project.json --native composition.json --id my_cue --title "My cue" \
-//        --category lofi --category-label "Lo-fi" [--variation SEED] [--bars 8] [--form loop|journey]
+//        --category lofi --category-label "Lo-fi" [--variation SEED] [--bars 8] [--form loop|journey] [--game] [--game]
 //   node studio_engine.cjs midi project.json out.mid [--loops 1]
 //   node studio_engine.cjs import composition.json project.json [--seed CATALOG]
 const fs = require('node:fs'), path = require('node:path');
@@ -33,6 +33,7 @@ function compose(a) {
   if (a.bars) E.session.setHarmony('bars', Number(a.bars));
   if (a.form) E.session.setHarmony('structure', a.form);
   if (a.variation) E.session.applyCandidate(E.session.randomCandidate({}, String(a.variation), 'variation'));
+  if (a.game) E.session.edit(st => { st.gmc = { game: E.game.defaults() }; });
   const s = E.session.state;
   if (a.project) writeJson(a.project, E.project(s));
   if (a.native) {
@@ -76,6 +77,7 @@ async function main() {
   else if (command === 'midi') await midi(a);
   else if (command === 'import') importNative(a);
   else if (command === 'version') process.stdout.write(E.version + '\n');
-  else fail('Commands: presets, compose, midi, import, version');
+  else if (command === 'runtime') process.stdout.write(require(path.join(ENGINE, 'director-runtime.js')).source);
+  else fail('Commands: presets, compose, midi, import, runtime, version');
 }
 main().catch(err => fail(L.message(err.message || String(err))));

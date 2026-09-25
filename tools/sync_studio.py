@@ -11,7 +11,7 @@ STUDIO = ROOT / 'game-music-composer-showcase'
 SOURCE = ROOT / 'game-music-composer/resources/ensemble-atelier'
 MODULES = ('music.js', 'visuals.js', 'atelier.js')
 ENGINE_SOURCE = ROOT / 'game-music-composer/resources/studio-engine'
-ENGINE_MODULES = ('core.js', 'native-bridge.js', 'labels-en.js')
+ENGINE_MODULES = ('core.js', 'native-bridge.js', 'labels-en.js', 'director-runtime.js')
 
 def publish_recipes():
     sys.path.insert(0, str(Path(__file__).resolve().parent))

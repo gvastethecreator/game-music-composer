@@ -989,7 +989,7 @@ def cmd_create(args: argparse.Namespace) -> int:
         summary = studio_engine.compose(
             args.preset, args.seed, paths["project.json"], paths["composition.json"], cue_id=cue_id,
             title=args.title or f"{args.preset.title()} · {args.seed}", category=category, category_label=category_label(category),
-            variation=args.variation, bars=args.bars, form=args.form,
+            variation=args.variation, bars=args.bars, form=args.form, game=args.game_states,
         )
         studio_engine.midi(paths["project.json"], paths["engine.mid"], loops=args.loops)
     except studio_engine.EngineUnavailable as exc:
@@ -1039,6 +1039,27 @@ def cmd_create_render(args: argparse.Namespace) -> int:
     print(f"Created {args.output}")
     print(f"  READY   {result['seconds']:.2f} s · {result['sampleRate']} Hz · sample peak {peak_db} · RMS {result['rms']:.4f}")
     print("  note    Sample peak and RMS, not LUFS or true peak. Listening approval stays with a person.")
+    return 0
+
+
+def cmd_create_game(args: argparse.Namespace) -> int:
+    import studio_engine
+
+    out = args.output.resolve()
+    if out.exists() and any(out.iterdir()) and not args.force:
+        print(f"Refusing to write into non-empty {out}. Pass --force to replace its files.", file=sys.stderr)
+        return 2
+    try:
+        manifest = studio_engine.render_game(args.project.resolve(), out, sample_rate=args.sample_rate)
+    except studio_engine.EngineUnavailable as exc:
+        print(str(exc), file=sys.stderr)
+        return 3
+    except (RuntimeError, ValueError, OSError) as exc:
+        print(f"Game package failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"Created {out}")
+    print(f"  READY   {len(manifest['states'])} state loops · {manifest['bpm']} BPM · {manifest['bars']} bars · {manifest['loopSeconds']:.3f} s · switch on {manifest['transition']['quantize']}")
+    print("  note    Loops share length and phase; gmc-music-director.js crossfades them on the quantize line.")
     return 0
 
 
@@ -1167,6 +1188,7 @@ def build_parser() -> argparse.ArgumentParser:
     create.add_argument("--id", help="Lowercase cue id for the native score.")
     create.add_argument("--category", choices=category_order(), help="Catalog category. Defaults from the preset genre.")
     create.add_argument("--loops", type=int, default=1, help="Loops in engine.mid.")
+    create.add_argument("--game-states", action="store_true", help="Add Explore/Tension/Combat/Calm game states to project.json (see create-game).")
     create.add_argument("--force", action="store_true")
     create.set_defaults(func=cmd_create)
 
@@ -1178,6 +1200,13 @@ def build_parser() -> argparse.ArgumentParser:
     create_render.add_argument("--sample-rate", type=int, default=44100)
     create_render.add_argument("--force", action="store_true")
     create_render.set_defaults(func=cmd_create_render)
+
+    create_game = sub.add_parser("create-game", help="Render a game-music package (one loop per game state, manifest, runtime) from a project with game states.")
+    create_game.add_argument("project", type=Path)
+    create_game.add_argument("output", type=Path, help="Directory for manifest.json, states/*.wav, project.json and gmc-music-director.js.")
+    create_game.add_argument("--sample-rate", type=int, default=44100)
+    create_game.add_argument("--force", action="store_true")
+    create_game.set_defaults(func=cmd_create_game)
 
     create_import = sub.add_parser("create-import", help="Turn a native composition into a studio-engine project (same notes, engine synthesis).")
     create_import.add_argument("composition", type=Path)

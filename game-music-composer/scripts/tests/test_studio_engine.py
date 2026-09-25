@@ -58,6 +58,20 @@ class StudioEngineCommands(unittest.TestCase):
         clip_notes = sum(len(c["notes"]) for c in state["studio"]["clips"].values())
         self.assertEqual(clip_notes, len(json.loads(composition.read_text(encoding="utf-8"))["events"]))
 
+    @unittest.skipUnless(importlib.util.find_spec("playwright"), "Playwright is required for create-game")
+    def test_create_game_writes_aligned_state_loops(self) -> None:
+        self.assertEqual(self.create("--game-states"), 0)
+        game = self.out / "game"
+        self.assertEqual(neospc.main(["create-game", str(self.out / "song" / "project.json"), str(game)]), 0)
+        manifest = json.loads((game / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual([s["id"] for s in manifest["states"]], ["explore", "tension", "combat", "calm"])
+        lengths = set()
+        for state in manifest["states"]:
+            with wave.open(str(game / state["file"])) as wav:
+                lengths.add(wav.getnframes())
+        self.assertEqual(len(lengths), 1, "every state loop has the same length")
+        self.assertIn("class GMCMusicDirector", (game / "gmc-music-director.js").read_text(encoding="utf-8"))
+
     @unittest.skipUnless(importlib.util.find_spec("playwright"), "Playwright is required for create-render")
     def test_create_render_writes_audible_wav(self) -> None:
         self.assertEqual(self.create(), 0)

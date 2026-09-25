@@ -21,7 +21,7 @@ The first screen starts with sound. From there you can:
 
 ## Create
 
-Create is the first view for new visitors. It runs `engine/core.js`, a port of the UMBRA 8 music core published from `game-music-composer/resources/studio-engine/` by `tools/sync_studio.py`. Essential mode keeps the short path; Studio mode adds the track inspector, arpeggio/chop performance, note editing, composition, master, macros and song building. Songs save in the browser; export a project JSON to keep them. Exports: WAV, MIDI, project JSON and stems (ZIP). Create and Studio never play at the same time.
+Create is the first view for new visitors. It runs `engine/core.js`, a port of the UMBRA 8 music core published from `game-music-composer/resources/studio-engine/` by `tools/sync_studio.py`. Essential mode keeps the short path; Studio mode adds the track inspector, arpeggio/chop performance, note editing, composition, master, macros and song building. Songs save in the browser; export a project JSON to keep them. Exports: WAV, MIDI, project JSON and stems (ZIP). The Game music panel turns a song into states (Explore, Tension, Combat, Calm by default) that change track levels and macros, auditions switches on the next bar while playing, and exports a game package: one aligned loop per state, a manifest and `gmc-music-director.js`. Create and Studio never play at the same time.
 
 ## Run locally
 

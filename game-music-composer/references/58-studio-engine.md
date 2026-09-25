@@ -34,6 +34,29 @@ The same preset and seed give the same song. `--variation SEED` applies one seed
 
 `create-import` keeps a native score's notes and played timing as baked engine clips. Each instrument joins an engine track by role, with the closest synthesized timbre. Odd lengths (7/8, 5/4, 20 bars) are fitted to an allowed phrase and the tempo is scaled so the loop keeps its real duration; integer BPM rounding can move it by under 1%.
 
+## Game music
+
+A project can carry game states (`state.gmc.game`): each keeps every note and sets a level per track (vertical layering, 0–150%) and the energy, tension, space and movement macros. Defaults: Explore, Tension, Combat and Calm. Switches wait for the next beat, bar or phrase line.
+
+```bash
+python scripts/neospc.py create ../run --preset dnb --seed RUN --game-states
+python scripts/neospc.py create-game ../run/project.json ../run/game
+```
+
+The package holds `manifest.json` (`format: gmc.game-music`), `states/<id>.wav` (one seamless loop per state, all with the same length and phase), `project.json` and `gmc-music-director.js`. In Create (Studio mode) the Game music panel edits states, auditions switches while playing and exports the same package as a ZIP.
+
+Web runtime:
+
+```js
+const director = new GMCMusicDirector({ baseUrl: 'music/run/' });
+await director.load();
+director.start('explore');                         // after a user gesture
+director.setState('combat');                       // next bar line
+director.setState('calm', { quantize: 'phrase', fade: 1.5 });
+```
+
+Godot 4: add one `AudioStreamPlayer` per state on its own bus, load each WAV with loop mode enabled, call `play()` on all of them in the same frame, and at the next bar (`60.0 / bpm * 4` seconds from the start) tween the old bus volume to silence and the new one to 0 dB. Unity and FMOD follow the same idea: synchronized loops, gain changes on the quantize line. This is layer switching of one song, not branching composition; write a new song for a new area.
+
 ## Verification
 
 `tests/rebuild/engine_golden.test.cjs` (repository) replays 193 scenarios against signatures recorded from the original UMBRA 8 bundle. `tests/rebuild/engine_audio_browser.py` compares offline render levels. These checks prove the port, not the music; listening stays with a person.

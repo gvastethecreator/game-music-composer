@@ -10,7 +10,7 @@ const $=id=>document.getElementById(id);
 const STORE='gmc-create-project-v1',PREFS='gmc-create-prefs-v1';
 const D=E.data,S=E.session,P=E.player;
 const NOTE_NAMES=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
-const view={mode:'essential',ready:false,busy:false,rollKey:'',roll:null,raf:0,renderQueued:false,live:false,saveTimer:0,edit:false,sel:null,drag:null,grid:1,geom:null};
+const view={gameEdit:null,mode:'essential',ready:false,busy:false,rollKey:'',roll:null,raf:0,renderQueued:false,live:false,saveTimer:0,edit:false,sel:null,drag:null,grid:1,geom:null};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const fmtTime=s=>{const n=Math.max(0,Math.floor(s));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');};
 const trackName=id=>L.name('tracks',id);
@@ -317,9 +317,49 @@ function renderShape(s){
  const macros=st.macros||{};
  root.append(group('Macros',...Object.keys(L.labels.macros).map(k=>slider({label:L.name('macros',k),value:macros[k]??0,min:0,max:100,input:v=>S.live(x=>{x.studio.macros[k]=v;})}))));
  const song=st.playMode==='song';
+ root.append(gameGroup(s));
  root.append(group('Song',
   el('p',{class:'create-note',text:st.sections?.length?`${st.sections.length} sections · playing ${song?'the whole song':'the selected phrase'}.`:'Build an intro, themes, a break and an ending from this phrase. Each section gets independent material.'}),
   el('div',{class:'create-row'},el('button',{type:'button',class:'compact-button',onclick:()=>S.ops.structureSong()},'Build song'),st.sections?.length?el('button',{type:'button',class:'compact-button','aria-pressed':String(song),onclick:()=>S.ops.setSongMode(song?'phrase':'song')},song?'Play phrase':'Play song'):null)));
+}
+
+// ── Game music ──────────────────────────────────────────────────────────────
+// States keep every note and change track levels and macros. While playing, a switch
+// waits for the next beat, bar or phrase line, exactly like the exported runtime.
+function gameChips(){for(const b of document.querySelectorAll('[data-game-state]')){const id=b.dataset.gameState||null,dir=E.director;b.classList.toggle('active',dir.active===id&&!dir.pending);b.classList.toggle('pending',dir.pending?.id===id);b.setAttribute('aria-pressed',String(dir.active===id));}}
+E.director.onChange=()=>gameChips();
+function gameGroup(s){
+ const game=s.gmc?.game;
+ if(!game)return el('section',{class:'create-group create-group-wide'},el('h3',{text:'Game music'}),el('div',{class:'create-group-body'},
+  el('p',{class:'create-note',text:'Turn this song into adaptive game music. States such as Explore, Tension, Combat and Calm keep every note and change track levels and the energy, tension, space and movement macros. While playing, a switch waits for the next bar.'}),
+  el('div',{class:'create-row'},el('button',{type:'button',class:'compact-button',onclick:()=>{S.edit(st=>{st.gmc={game:E.game.defaults()};});view.gameEdit='explore';}},'Add game states'))));
+ if(!game.states.some(x=>x.id===view.gameEdit))view.gameEdit=game.states[0].id;
+ const index=game.states.findIndex(x=>x.id===view.gameEdit),st=game.states[index];
+ const chips=el('div',{class:'create-game-chips',role:'group','aria-label':'Audition a game state'},
+  el('button',{type:'button',class:'create-chip',dataset:{gameState:''},onclick:()=>E.director.set(null)},'Song'),
+  ...game.states.map(x=>el('button',{type:'button',class:'create-chip',dataset:{gameState:x.id},onclick:()=>{E.director.set(x.id);view.gameEdit=x.id;renderShape(S.state);}},x.name)));
+ const liveState=(fn)=>v=>S.live(t=>fn(t.gmc.game.states[index],v));
+ const levels=D.trackDefs.map(t=>slider({label:trackName(t.id),value:Math.round((st.levels[t.id]??1)*100),min:0,max:150,format:v=>v+'%',input:liveState((x,v)=>{x.levels[t.id]=v/100;})}));
+ const macros=Object.keys(L.labels.macros).map(k=>slider({label:L.name('macros',k),value:st.macros[k],min:0,max:100,input:liveState((x,v)=>{x.macros[k]=v;})}));
+ const name=el('input',{class:'create-seed',value:st.name,maxlength:40,'aria-label':'State name',onchange:e=>{const v=e.target.value.trim();if(v)S.edit(t=>{t.gmc.game.states[index].name=v;});}});
+ const quantize=select({label:'Switch on',rows:[['beat','Next beat'],['bar','Next bar'],['phrase','Next phrase']],value:game.transition.quantize,change:v=>S.edit(t=>{t.gmc.game.transition.quantize=v;})});
+ const add=el('button',{type:'button',class:'compact-button',disabled:game.states.length>=8,onclick:()=>{let n=game.states.length+1,id;do id='state_'+n++;while(game.states.some(x=>x.id===id));S.edit(t=>{t.gmc.game.states.push({id,name:'State '+(n-1),levels:{...st.levels},macros:{...st.macros}});});view.gameEdit=id;}},'Add state');
+ const remove=el('button',{type:'button',class:'compact-button',disabled:game.states.length<=1,onclick:()=>{if(E.director.active===st.id)E.director.set(null);S.edit(t=>{t.gmc.game.states.splice(index,1);});}},'Remove state');
+ const exportBtn=el('button',{type:'button',class:'compact-button',onclick:guard(exportGame)},'Export game package');
+ const body=el('div',{class:'create-group-body'},chips,
+  el('div',{class:'create-game-edit'},
+   el('div',{class:'create-game-col'},el('h4',{text:'Track levels · '+st.name}),...levels),
+   el('div',{class:'create-game-col'},el('h4',{text:'Macros'}),...macros,el('label',{class:'create-field'},el('span',{text:'Name'}),name),quantize,el('div',{class:'create-row'},add,remove),el('div',{class:'create-row'},exportBtn))));
+ const section=el('section',{class:'create-group create-group-wide'},el('h3',{text:'Game music'}),body);
+ requestAnimationFrame(gameChips);return section;
+}
+async function exportGame(){
+ if(view.busy)return;view.busy=true;
+ try{P.pause();const s=JSON.parse(JSON.stringify(S.state)),{files,manifest}=await E.game.renderPackage(s,{onProgress:t=>notice(t)});
+  files.push({name:'gmc-music-director.js',blob:new Blob([window.GMCMusicDirector.source],{type:'text/javascript'})});
+  files.push({name:'README.txt',blob:new Blob([`GMC game music · ${manifest.title}\n\n${manifest.states.length} states, ${manifest.bpm} BPM, ${manifest.bars} bars, ${manifest.loopSeconds.toFixed(3)} s per loop.\nEvery loop in states/ has the same length and phase. Start them together and crossfade gains on the ${manifest.transition.quantize} line.\n\nWeb:\n  <script src="gmc-music-director.js"></script>\n  const director = new GMCMusicDirector({ baseUrl: './' });\n  await director.load();\n  director.start('${manifest.initialState}');   // after a user gesture\n  director.setState('${manifest.states.at(-1).id}');\n\nOther engines (Godot, Unity, FMOD): play all loops in sync on separate buses at the same start time and change bus volumes on the next ${manifest.transition.quantize} (bar = ${(240/manifest.bpm).toFixed(3)} s).\nproject.json reopens the song in Composer Studio Create.\n`],{type:'text/plain'})});
+  download(await E.zip(files),fileBase()+'_game.zip');notice('Game package exported: '+manifest.states.length+' state loops, manifest and runtime.');}
+ finally{view.busy=false;}
 }
 
 // ── Export and bridge ─────────────────────────────────────────────────────────

@@ -36,7 +36,7 @@ Full canonical composing, bank assignment, mix and export procedure: read [canon
 
 ## Studio engine songs
 
-For quick finished-sounding loops, or to hear a native score through synthesis instead of the sample banks, use the studio engine: `python scripts/neospc.py create ../dusk --preset lofi --seed DUSK`. It writes the engine project, a validated native score and catalog, and MIDI. Read [58-studio-engine.md](references/58-studio-engine.md) for presets, variation, rendering, import and limits (4/4 phrases, rule-based composer).
+For quick finished-sounding loops, or to hear a native score through synthesis instead of the sample banks, use the studio engine: `python scripts/neospc.py create ../dusk --preset lofi --seed DUSK`. It writes the engine project, a validated native score and catalog, and MIDI. Read [58-studio-engine.md](references/58-studio-engine.md) for presets, variation, rendering, import, game states (`--game-states`, `create-game` loops + manifest + web runtime) and limits (4/4 phrases, rule-based composer).
 
 ## Begin with musical decisions
 
