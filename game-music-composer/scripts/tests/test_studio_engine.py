@@ -71,12 +71,16 @@ class StudioEngineCommands(unittest.TestCase):
                 lengths.add(wav.getnframes())
         self.assertEqual(len(lengths), 1, "every state loop has the same length")
         self.assertIn("class GMCMusicDirector", (game / "gmc-music-director.js").read_text(encoding="utf-8"))
+        receipt = json.loads((game / "receipt.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(receipt["outputs"]), 4)
 
     @unittest.skipUnless(importlib.util.find_spec("playwright"), "Playwright is required for create-render")
     def test_create_render_writes_audible_wav(self) -> None:
         self.assertEqual(self.create(), 0)
         wav_path = self.out / "engine.wav"
         self.assertEqual(neospc.main(["create-render", str(self.out / "song" / "project.json"), str(wav_path)]), 0)
+        receipt = json.loads(wav_path.with_suffix(".receipt.json").read_text(encoding="utf-8"))
+        self.assertEqual(receipt["outputs"][0]["bytes"], wav_path.stat().st_size)
         with wave.open(str(wav_path)) as wav:
             self.assertEqual((wav.getnchannels(), wav.getsampwidth(), wav.getframerate()), (2, 2, 44100))
             frames = wav.readframes(wav.getnframes())

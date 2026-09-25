@@ -30,7 +30,7 @@ python scripts/neospc.py create-import ../my-cue/composition.json ../my-cue/engi
 
 The same preset and seed give the same song. `--variation SEED` applies one seeded variation of rhythm and melody. `--bars` and `--form loop|journey` change the phrase.
 
-`create-render` reports sample peak and RMS, not LUFS or true peak. `render` on the catalog plays the same notes through the sample banks and writes the usual receipts.
+`create-render` writes `<name>.receipt.json` (engine version, project and output SHA-256, settings, sample peak and RMS) and `create-game` writes `receipt.json`. They report sample peak and RMS, not LUFS or true peak. `render` on the catalog plays the same notes through the sample banks and writes the usual receipts.
 
 `create-import` keeps a native score's notes and played timing as baked engine clips. Each instrument joins an engine track by role, with the closest synthesized timbre. Odd lengths (7/8, 5/4, 20 bars) are fitted to an allowed phrase and the tempo is scaled so the loop keeps its real duration; integer BPM rounding can move it by under 1%.
 

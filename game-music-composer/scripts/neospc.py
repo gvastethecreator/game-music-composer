@@ -1020,6 +1020,20 @@ def cmd_create(args: argparse.Namespace) -> int:
     return 0
 
 
+def engine_receipt(project: Path, outputs: list[Path], settings: dict, measures: dict) -> dict:
+    """Render receipt: what was rendered, by which engine, and the bytes that came out."""
+    import hashlib
+    import studio_engine
+
+    digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+    return {
+        "format": "gmc.engine-render-receipt", "version": 1, "backend": "studio-engine synthesis (headless Chromium Web Audio)",
+        "engine": studio_engine.run("version").strip(), "project": {"path": project.name, "sha256": digest(project)},
+        "settings": settings, "measures": measures, "outputs": [{"path": path.name, "sha256": digest(path), "bytes": path.stat().st_size} for path in outputs],
+        "limits": "Sample peak and RMS only; no LUFS, true peak or listening approval.",
+    }
+
+
 def cmd_create_render(args: argparse.Namespace) -> int:
     import studio_engine
 
@@ -1036,7 +1050,10 @@ def cmd_create_render(args: argparse.Namespace) -> int:
         return 1
     peak = result["peak"]
     peak_db = f"{20 * __import__('math').log10(peak):.1f} dBFS" if peak > 0 else "silent"
+    receipt = args.output.with_suffix(".receipt.json")
+    atomic_json_write(receipt, engine_receipt(args.project, [args.output], {"loops": args.loops, "tail": args.tail, "sampleRate": args.sample_rate}, {"peak": peak, "rms": result["rms"], "seconds": result["seconds"]}))
     print(f"Created {args.output}")
+    print(f"Created {receipt}")
     print(f"  READY   {result['seconds']:.2f} s · {result['sampleRate']} Hz · sample peak {peak_db} · RMS {result['rms']:.4f}")
     print("  note    Sample peak and RMS, not LUFS or true peak. Listening approval stays with a person.")
     return 0
@@ -1057,6 +1074,8 @@ def cmd_create_game(args: argparse.Namespace) -> int:
     except (RuntimeError, ValueError, OSError) as exc:
         print(f"Game package failed: {exc}", file=sys.stderr)
         return 1
+    wavs = [out / state["file"] for state in manifest["states"]]
+    atomic_json_write(out / "receipt.json", engine_receipt(args.project, wavs, {"sampleRate": args.sample_rate, "tail": "loop", "states": [s["id"] for s in manifest["states"]]}, {s["id"]: {"peak": s["peak"], "rms": s["rms"]} for s in manifest["states"]}))
     print(f"Created {out}")
     print(f"  READY   {len(manifest['states'])} state loops · {manifest['bpm']} BPM · {manifest['bars']} bars · {manifest['loopSeconds']:.3f} s · switch on {manifest['transition']['quantize']}")
     print("  note    Loops share length and phase; gmc-music-director.js crossfades them on the quantize line.")
