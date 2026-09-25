@@ -29,7 +29,7 @@ with sync_playwright() as p:
     files={n:base64.b64encode(z.read(n)).decode() for n in names if n.endswith('.wav')}
     rt=z.read('gmc-music-director.js').decode()
     page2=ctx.new_page(); page2.set_content('<!doctype html><title>runtime</title>'); page2.add_script_tag(content=rt)
-    res=page2.evaluate("""async ([man,files])=>{const fetcher=async u=>({json:async()=>man,arrayBuffer:async()=>Uint8Array.from(atob(files[u]),c=>c.charCodeAt(0)).buffer});const d=new GMCMusicDirector({manifest:man});await d.load(fetcher);d.start('explore');await new Promise(r=>setTimeout(r,300));const at=d.setState('combat');const bar=240/man.bpm;return {loaded:[...d.buffers.keys()],at:at-d.startTime,bar,aligned:Math.abs(((at-d.startTime)/bar)-Math.round((at-d.startTime)/bar))<1e-6,pending:d.pending?.id};}""",[man,files])
+    res=page2.evaluate("""async ([man,files])=>{const fetcher=async u=>({json:async()=>man,arrayBuffer:async()=>Uint8Array.from(atob(files[u]),c=>c.charCodeAt(0)).buffer});const d=new GMCMusicDirector({manifest:man});await d.load(fetcher);d.start('explore');await new Promise(r=>setTimeout(r,300));const at=d.setState('combat');const bar=240/man.bpm;const first={loaded:[...d.buffers.keys()],at:at-d.startTime,bar,aligned:Math.abs(((at-d.startTime)/bar)-Math.round((at-d.startTime)/bar))<1e-6,pending:d.pending?.id};const ids=man.states.map(s=>s.id);let misaligned=0;for(let i=0;i<100;i++){const q=['beat','bar','phrase'][i%3],t=d.setState(ids[i%ids.length],{quantize:q}),span=d.period(q),k=(t-d.startTime)/span;if(Math.abs(k-Math.round(k))>1e-6)misaligned++;}d.stop();return {...first,hundred:{misaligned,voicesAfterStop:d.voices.size}};}""",[man,files])
     out['runtime']=res
     out['errors']=errs
     b.close()
@@ -40,6 +40,7 @@ checks = {
     'all state loops have the same length': len(set(out['wav_sizes'].values())) == 1,
     'runtime loads every state': sorted(out['runtime']['loaded']) == ['calm', 'combat', 'explore', 'tension'],
     'runtime switches on a bar line': out['runtime']['aligned'] and out['runtime']['pending'] == 'combat',
+    '100 transitions land on beat, bar and phrase lines': out['runtime']['hundred'] == {'misaligned': 0, 'voicesAfterStop': 0},
     'no browser errors': not out['errors'],
 }
 failed = [k for k, v in checks.items() if not v]

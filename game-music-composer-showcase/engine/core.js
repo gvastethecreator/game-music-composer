@@ -27,6 +27,12 @@ function rememberUndo(before){if(sameJSON(before,state))return;ui.undo.push(befo
 function changed({recompose=false,respectLocks=true,restart=false}={}){if(recompose)generateAll({respectLocks});host.update(state,{restart});persist();}
 // A fresh composition from a preset and seed, leaving the session untouched.
 function composeFresh(seed,presetId='nocturne'){const original=state,originalBar=ui.bar,originalNote=ui.note;try{state=defaultState();applyPreset(presetId,true);state.seed=String(seed).slice(0,64)||'UMBRA';generateAll({respectLocks:false});return clone(state);}finally{state=original;ui.bar=originalBar;ui.note=originalNote;}}
+// UMBRA UI refreshers called by inherited operations; the host re-renders instead.
+function renderSong7(){}
+function setStudioView7(){}
+function syncSoundUI8(){}
+// Stem session size estimate (UMBRA 7 export).
+function exportSessionPlan7(s,mode='wet',sr=44100){const time=totalSeconds(s)+6,count=mode==='both'?23:13,mb=time*sr*4*count/1048576;return{seconds:time,count,mb};}
 // One reversible transaction: failures restore the previous session exactly.
 function commit7(fn,{restart=false,message=null}={}){if(ui.rendering)return false;const before=clone(state),undoBefore=ui.undo.slice(),redoBefore=ui.redo.slice();checkpoint();try{fn();ui7.revision++;saveSection7();host.update(state,{restart});persist();if(message)toast(message);return true;}catch(err){state=before;ui.undo=undoBefore;ui.redo=redoBefore;ui7.revision++;scoreMemo7.clear();updateHistoryButtons();toast(err.message,true);return false;}}
 

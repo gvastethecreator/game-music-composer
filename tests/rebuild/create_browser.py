@@ -69,6 +69,9 @@ def main():
         check('Two undos return to the new song', state(page, 'patterns') == before)
         page.locator('#createPlay').click()
         check('Pause stops the player', not page.evaluate('GMCEngine.player.playing'))
+        page.locator('#createFinish').select_option('warm')
+        check('Finish reaches the engine', settle(page, 'GMCEngine.session.state.sound8.finish==="warm"'))
+        check('Finish change raises no error', page.locator('#appNotice').get_attribute('data-tone') != 'error')
 
         page.locator('#createBank .create-slot:not(.filled) .create-slot-main').first.click()
         check('Empty idea slot stores the song', settle(page, 'document.querySelectorAll("#createBank .create-slot.filled").length===2'))
