@@ -25,15 +25,25 @@ python scripts/neospc.py render CATALOG.json OUT --backend soundfont --bank PATH
 
 `--map` is explicit `inst -> {bank, program}`. Do not assume General MIDI. Percussion uses channel 10 only when the inspected preset is bank 128. Other kits stay on melodic channels.
 
+MIDI export and SoundFont rendering require a plan matching the cue, score fingerprint and complete instrument roster. SoundFont rendering also checks the bank hash and preserves a matching plan's custom bank ID. A separate `--map` overrides individual assignments; it does not make a stale plan valid. Older plans using the previous fingerprint need regeneration at a new path, preserving their explicit mappings.
+
+With `--allow-fallback`, a missing mapped preset resolves to an available inspected preset of the same kind and is recorded in the plan and receipt. If no suitable preset exists, resolution fails; a nonexistent GM hint is not an inspected fallback.
+
 `data/backend-honors.json` scores the `soundfont` backend as hint for roster/energy and none for LUFS, buses and MIDI ports.
 
 Packaging skips `.sf2`, `.sf3`, `.dls`, `private-banks/` and `spessasynth/`. Never ship William Kage banks, game rips or operator SoundFonts.
 
 ## Receipts and cache (stage 0)
 
-`render_mix_v4.py` and `render_soundfont.py` hash score + map + effective bank + engine/version + effects + sample rate. Skip only when `{id}.receipt.json` matches that fingerprint and the required audio files exist. Changing the bank invalidates audio.
+`render_mix_v4.py` and `render_soundfont.py` fingerprint the score, map, effective bank, engine/version, effects and sample rate. Native fingerprints also include the loaded source trims; SoundFont fingerprints include the resolved cue plan. Skip only when `{id}.receipt.json` matches and the required audio files exist.
 
 Each cue writes `{id}.receipt.json`. The batch writes `render-receipt.json` with backend, bank id, skipped vs regenerated, fallback text and `listening_approval: pending`. Approval is never inferred.
+
+The dispatcher forwards the reason for an allowed backend substitution. Native cache hits keep the audio and refresh the receipt's fallback/skipped fields for the current request.
+
+Multisample cue receipts name the selected palette. A mixed-palette batch lists `bank_ids`; its single `bank_id` is null rather than naming only the last cue's bank.
+
+Compact/multisample renders retain OGG and MP3; their intermediate WAV is removed. FluidSynth retains WAV and MIDI, adding OGG/MP3 when FFmpeg is available. The native mix report measures sample peak, not true peak; a configured ceiling and margin do not establish an intersample-peak measurement.
 
 Console output reports role collapse: 54 score roles onto N inspected presets.
 

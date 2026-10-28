@@ -6,7 +6,9 @@ import struct
 import sys
 import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPTS = Path(__file__).resolve().parents[1]
@@ -61,13 +63,19 @@ class SoundBackendTests(unittest.TestCase):
             sound_plan.resolve_plan(style, inventory, mapping, allow_fallback=False)
         plan = sound_plan.resolve_plan(style, inventory, mapping, allow_fallback=True)
         piano = next(row for row in plan["tracks"] if row["inst"] == "piano")
-        self.assertEqual(piano["source"]["bank"], 3)
-        self.assertEqual(piano["source"]["program"], 17)
+        self.assertEqual(piano["source"]["bank"], 0)
+        self.assertEqual(piano["source"]["program"], 0)
+        self.assertIn("piano", plan["fallbacks"])
         self.assertTrue(any("3:17" in note for note in plan["substitutions"]))
+        with self.assertRaisesRegex(KeyError, "no percussion preset"):
+            sound_plan.resolve_plan(style, {"id": "tone-only", "presets": [inventory["presets"][0]]}, allow_fallback=True)
 
     def test_midi_writes_bank_msb_lsb_and_program_from_plan(self):
         style = _cue()
-        inventory = {"id": "custom", "presets": [{"name": "Toy", "bank": 3, "program": 17, "percussion": False}]}
+        inventory = {"id": "custom", "presets": [
+            {"name": "Toy", "bank": 3, "program": 17, "percussion": False},
+            {"name": "Kit", "bank": 128, "program": 0, "percussion": True},
+        ]}
         mapping = {"piano": {"bank": 3, "program": 17}, "kick": {"bank": 128, "program": 0, "percussion": True}}
         plan = sound_plan.resolve_plan(style, inventory, mapping, allow_fallback=True)
         with tempfile.TemporaryDirectory() as temp:
@@ -83,7 +91,10 @@ class SoundBackendTests(unittest.TestCase):
 
     def test_non_gm_percussion_stays_off_channel_10(self):
         style = _cue()
-        inventory = {"id": "kit", "presets": [{"name": "ToyDrum", "bank": 5, "program": 2, "percussion": True}]}
+        inventory = {"id": "kit", "presets": [
+            {"name": "ToyDrum", "bank": 5, "program": 2, "percussion": True},
+            {"name": "Tone", "bank": 0, "program": 0, "percussion": False},
+        ]}
         mapping = {"kick": {"bank": 5, "program": 2, "percussion": True}}
         plan = sound_plan.resolve_plan(style, inventory, mapping, allow_fallback=True)
         with tempfile.TemporaryDirectory() as temp:
@@ -144,6 +155,33 @@ class SoundBackendTests(unittest.TestCase):
             )
             self.assertTrue(sound_plan.should_skip_outputs(out, "probe", digest))
             self.assertFalse(sound_plan.should_skip_outputs(out, "probe", sound_plan.fingerprint_digest(other_bank)))
+            for changed in (
+                dict(style, category="action"),
+                dict(style, form=[{"start_bar": 0, "bars": 1, "intensity": 0.1}]),
+                dict(style, barLength=3),
+            ):
+                changed_fields = dict(fields, score=sound_plan.score_digest(changed))
+                self.assertFalse(sound_plan.should_skip_outputs(out, "probe", sound_plan.fingerprint_digest(changed_fields)))
+
+    def test_midi_plan_requires_the_current_cue_and_complete_lanes(self):
+        style = _cue()
+        plan = sound_plan.resolve_plan(style, {"id": "compact", "presets": []})
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "exports"
+            output.mkdir()
+            outside = Path(temp) / "outside.mid"
+            outside.write_bytes(b"preserve this file")
+            with self.assertRaisesRegex(ValueError, "cue id"):
+                export_midis_v4.export(dict(style, id="../outside"), output)
+            self.assertEqual(outside.read_bytes(), b"preserve this file")
+            with self.assertRaisesRegex(ValueError, "exactly one entry"):
+                export_midis_v4.export(dict(style, id="foreign"), output, sound_plan={"cues": [plan]})
+            with self.assertRaisesRegex(ValueError, "score changed"):
+                export_midis_v4.export(dict(style, category="action"), output, sound_plan=plan)
+            incomplete = dict(plan, tracks=plan["tracks"][:1])
+            with self.assertRaisesRegex(ValueError, "match score lanes once"):
+                export_midis_v4.export(style, output, sound_plan=incomplete)
+            self.assertFalse(list(output.iterdir()))
 
     def test_missing_soundfont_errors_without_allow_fallback(self):
         with self.assertRaises(FileNotFoundError):
@@ -154,6 +192,112 @@ class SoundBackendTests(unittest.TestCase):
         self.assertEqual(backend, "compact")
         self.assertEqual(bank_id, "compact")
         self.assertIn("compact", fallback)
+
+    def test_soundfont_render_applies_plan_and_rejects_stale_inputs(self):
+        import render_soundfont
+
+        style = _cue()
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            bank = sound_plan.write_fixture_sf2(folder / "fixture.sf2")
+            inventory = sound_plan.inventory_from_sf2(bank, "operator-bank")
+            catalog = {"styles": [style]}
+            catalog_path, plan_path = folder / "catalog.json", folder / "plan.json"
+            sound_plan.dump_json(catalog_path, catalog)
+            plan = sound_plan.plan_from_catalog(catalog, inventory, {
+                "piano": {"bank": 128, "program": 0},
+                "kick": {"bank": 128, "program": 0},
+            })
+            sound_plan.dump_json(plan_path, plan)
+            out = folder / "audio"
+            out.mkdir()
+            sound_plan.write_silence_wav(out / "probe.wav")
+            legacy_fields = sound_plan.fingerprint_fields(
+                style, backend="soundfont", bank_id=inventory["id"], bank_hash=inventory["hash"],
+                engine=sound_plan.SOUNDFONT_ENGINE, engine_version="fixture-version",
+                effects={"chorus": 0, "reverb": 0, "bus_mix": False}, sample_rate=32000,
+                sound_plan_hash=sound_plan.hash_file(plan_path),
+            )
+            sound_plan.write_receipt(sound_plan.receipt_path(out, "probe"), sound_plan.build_receipt(
+                style, legacy_fields, skipped=False, outputs=["probe.wav"], fallback=None,
+            ))
+            exports = []
+            resolved_plans = []
+
+            def capture_render(cue, outdir, sf2, resolved, **options):
+                resolved_plans.append(resolved)
+                exports.append(export_midis_v4.export(cue, outdir / "midi", sound_plan=resolved))
+                return {"outputs": ["probe.wav"], "midi": str(outdir / "midi/probe.mid")}
+
+            argv = ["render_soundfont.py", str(catalog_path), str(out), "--bank", str(bank), "--sound-plan", str(plan_path)]
+            with patch.object(sys, "argv", argv), patch.object(render_soundfont.shutil, "which", return_value="fixture-fluidsynth"), patch.object(render_soundfont, "fluidsynth_version", return_value="fixture-version"), patch.object(render_soundfont, "render_cue", side_effect=capture_render):
+                self.assertEqual(render_soundfont.main(), 0)
+                self.assertEqual(len(exports), 1, "old receipts must not reuse audio made with an ignored plan")
+                self.assertEqual(sound_plan.load_receipt(sound_plan.receipt_path(out, "probe"))["bank_id"], "operator-bank")
+                source = next(row["source"] for row in resolved_plans[-1]["tracks"] if row["inst"] == "piano")
+                self.assertEqual((source["bank"], source["program"], source["percussion"]), (128, 0, True))
+                piano = next(row for row in exports[-1]["lanes"] if row["inst"] == "piano")
+                self.assertEqual((piano["bank"], piano["program"], piano["channel"]), (0, 0, 9))
+                plan = sound_plan.plan_from_catalog(catalog, inventory, {"piano": {"bank": 3, "program": 17}}, allow_fallback=True)
+                sound_plan.dump_json(plan_path, plan)
+                self.assertEqual(render_soundfont.main(), 0)
+                receipt = sound_plan.load_receipt(sound_plan.receipt_path(out, "probe"))
+                self.assertIn("3:17", receipt["fallback"])
+                piano = next(row for row in exports[-1]["lanes"] if row["inst"] == "piano")
+                self.assertEqual((piano["bank"], piano["program"], piano["channel"]), (0, 0, 0))
+                mapping_path = folder / "map.json"
+                sound_plan.dump_json(mapping_path, {"piano": {"bank": 128, "program": 0}})
+                argv.extend(["--map", str(mapping_path)])
+                self.assertEqual(render_soundfont.main(), 0)
+                piano = next(row for row in exports[-1]["lanes"] if row["inst"] == "piano")
+                self.assertEqual((piano["bank"], piano["program"], piano["channel"]), (0, 0, 9))
+                receipt = sound_plan.load_receipt(sound_plan.receipt_path(out, "probe"))
+                self.assertIsNone(receipt["fallback"])
+                plan["cues"][0]["score_digest"] = "stale"
+                sound_plan.dump_json(plan_path, plan)
+                with self.assertRaisesRegex(ValueError, "score changed"):
+                    render_soundfont.main()
+                plan["cues"][0]["score_digest"] = sound_plan.score_digest(style)
+                plan["cues"][0]["bank"]["hash"] = "stale"
+                sound_plan.dump_json(plan_path, plan)
+                with self.assertRaisesRegex(ValueError, "bank changed"):
+                    render_soundfont.main()
+                self.assertEqual(len(exports), 3)
+
+    def test_native_render_cache_tracks_source_level_changes(self):
+        try:
+            import render_mix_v4 as renderer
+        except ImportError:
+            self.skipTest("Optional audio dependencies are not installed")
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            bank = folder / "compact"
+            bank.mkdir()
+            (bank / "sample.bin").write_bytes(b"unchanged sample")
+            args = Namespace(backend="compact", factory_dir=None, allow_fallback=False, sample_dir=bank, sound_plan=None)
+            before = renderer.attach_render_context(_cue(), args, folder / "catalog.json")[0]["_render"]
+            for suffix in ("ogg", "mp3"):
+                (folder / f"probe.{suffix}").write_bytes(b"cached")
+            sound_plan.write_receipt(sound_plan.receipt_path(folder, "probe"), sound_plan.build_receipt(
+                _cue(), before["fields"], skipped=False, outputs=["probe.ogg", "probe.mp3"], fallback=None,
+            ))
+            self.assertTrue(sound_plan.should_skip_outputs(folder, "probe", before["fingerprint"]))
+            with patch.dict(renderer.LEVELS, {"fixture.wav": -9.0}):
+                after = renderer.attach_render_context(_cue(), args, folder / "catalog.json")[0]["_render"]
+            self.assertFalse(sound_plan.should_skip_outputs(folder, "probe", after["fingerprint"]))
+            args.fallback_reason = "soundfont requested without a local SF2; using compact"
+            prepared = renderer.attach_render_context(_cue(), args, folder / "catalog.json")[0]
+            signal = renderer.np.random.default_rng(7).normal(0, 0.03, (2 * renderer.SR, 2)).astype(renderer.np.float32)
+            with patch.object(renderer.sf, "read", return_value=(signal, renderer.SR)):
+                cached = renderer.render_style(prepared, folder)
+            self.assertTrue(cached["skipped"])
+            self.assertEqual(sound_plan.load_receipt(sound_plan.receipt_path(folder, "probe"))["fallback"], args.fallback_reason)
+            args.fallback_reason = None
+            args.backend, args.factory_dir = "multisample", bank
+            chamber = renderer.attach_render_context(_cue(), args, folder / "catalog.json")[0]["_render"]
+            prism = renderer.attach_render_context(dict(_cue(), sound_palette="prism"), args, folder / "catalog.json")[0]["_render"]
+            self.assertEqual(chamber["bank_id"], "factory-chamber")
+            self.assertEqual(prism["bank_id"], "factory-prism")
 
     def test_fluidsynth_optional_skips_without_binary(self):
         if shutil.which("fluidsynth"):

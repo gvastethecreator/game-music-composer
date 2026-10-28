@@ -6,7 +6,7 @@
 //   node studio_engine.cjs presets
 //   node studio_engine.cjs compose --preset lofi --seed DUSK --instruments inst.json \
 //        --project project.json --native composition.json --id my_cue --title "My cue" \
-//        --category lofi --category-label "Lo-fi" [--variation SEED] [--bars 8] [--form loop|journey] [--game] [--game]
+//        --category lofi --category-label "Lo-fi" [--variation SEED] [--bars 8] [--form loop|journey] [--game]
 //   node studio_engine.cjs midi project.json out.mid [--loops 1]
 //   node studio_engine.cjs import composition.json project.json [--seed CATALOG]
 const fs = require('node:fs'), path = require('node:path');

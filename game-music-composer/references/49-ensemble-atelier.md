@@ -45,6 +45,8 @@ The original score remains authoritative. Edits and WAV exports in the viewer ar
 
 `refine_performance.py` preserves written kind/inst/role/midi/beat/duration, makes a deep copy, and records the sorted event hash. Timing gestures are stable per instrument and four-bar phrase; chord members agree. The amount blends existing performance toward the selected target. Amount zero retains the original object contents. Profiles are not automatic genre labels; ritual deliberately keeps a quantized target.
 
+It accepts one cue or 1–100 catalog cues, at most 50,000 events per cue and a 25 MiB CLI input. The bundled 240-cue corpus exceeds that cue-count limit; select a smaller batch rather than treating the whole corpus as one refinement input.
+
 The helper bounds target onset shifts by 25 ms and a fraction of the instrument's minimum written onset gap. It blends signed circular offsets so an early downbeat stays near the loop seam, and records loop-boundary crossings. It adjusts gate and velocity fields and checks exact symbolic overlaps under the legacy drum proxy. It refuses a resulting voice overflow without removing notes. It rejects applying itself twice; compare candidate amounts from the original, not a cumulatively degraded copy.
 
 The native renderer/exporters were not replaced. A successful hash test proves preservation, not artistic preference or audio parity. Re-run canonical validation, symbolic review, bank audit, MIDI checks and fresh-directory native render before declaring a production improvement.

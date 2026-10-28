@@ -74,12 +74,34 @@ def main() -> int:
     plan = json.loads(args.sound_plan.read_text(encoding="utf-8-sig")) if args.sound_plan else sound_plan.plan_from_catalog(
         catalog, inventory, mapping, backend="soundfont", allow_fallback=args.allow_fallback
     )
+    declared_bank = plan.get("bank", {})
+    if args.sound_plan and declared_bank.get("hash") == inventory["hash"] and declared_bank.get("id"):
+        inventory["id"] = declared_bank["id"]
     args.outdir.mkdir(parents=True, exist_ok=True)
     version = fluidsynth_version()
     effects = {"chorus": 0, "reverb": 0, "bus_mix": False}
     reports = []
     for style in catalog["styles"]:
-        cue_plan = sound_plan.resolve_plan(style, inventory, mapping, backend="soundfont", allow_fallback=args.allow_fallback)
+        assignments = mapping
+        inherited_fallbacks = {}
+        if args.sound_plan:
+            selected = sound_plan.select_cue_plan(style, plan)
+            if selected.get("bank", {}).get("hash") != inventory["hash"]:
+                raise ValueError(f"sound-plan bank changed for {style['id']}; regenerate the plan")
+            tracks = selected.get("tracks", [])
+            inherited_fallbacks = {inst: reason for inst, reason in selected.get("fallbacks", {}).items() if inst not in mapping}
+            assignments = {}
+            for track in tracks:
+                source = track["source"]
+                if source.get("bank_id") != inventory["id"]:
+                    raise ValueError(f"sound-plan track bank differs for {track['inst']}")
+                assignments[track["inst"]] = {
+                    "bank": source["bank"], "program": source["program"],
+                    "percussion": source["percussion"], "name": source.get("preset"),
+                }
+            assignments.update(mapping)
+        cue_plan = sound_plan.resolve_plan(style, inventory, assignments, backend="soundfont", allow_fallback=args.allow_fallback)
+        cue_plan["fallbacks"].update(inherited_fallbacks)
         fields = sound_plan.fingerprint_fields(
             style,
             backend="soundfont",
@@ -90,7 +112,7 @@ def main() -> int:
             effects=effects,
             sample_rate=args.sample_rate,
             map_hash=sound_plan.hash_file(args.map),
-            sound_plan_hash=sound_plan.hash_file(args.sound_plan) or sound_plan.sha256_json(plan),
+            sound_plan_hash=sound_plan.sha256_json(cue_plan),
         )
         digest = sound_plan.fingerprint_digest(fields)
         wav = args.outdir / f"{style['id']}.wav"
@@ -103,11 +125,12 @@ def main() -> int:
             fields,
             skipped=False,
             outputs=rendered["outputs"],
-            fallback=None,
+            fallback="; ".join(cue_plan["fallbacks"].values()) or None,
             extras={
                 "fluidsynth_version": version,
                 "role_collapse": cue_plan["role_collapse"],
                 "midi": Path(rendered["midi"]).name,
+                "substitutions": cue_plan["substitutions"],
             },
         )
         sound_plan.write_receipt(sound_plan.receipt_path(args.outdir, style["id"]), receipt)

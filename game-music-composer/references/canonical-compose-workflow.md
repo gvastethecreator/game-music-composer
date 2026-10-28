@@ -1,9 +1,4 @@
----
-name: game-music-composer
-description: "SNES game music: compose, arrange, review, render, export; 16-bit cues, loop-ready scores, MIDI, soundbank planning, composition audits, $game-music-composer."
----
-
-# Game Music Composer
+# Native composing and delivery
 
 Original game music: clear roles, short sample IDs, memorable motifs, useful loops. Voice ceiling 8–32. `legacy_8` for hardware-style limits; expanded profiles for browser/production.
 
@@ -22,7 +17,7 @@ python scripts/neospc.py doctor --strict
 2. Create a composition plan and full harness:
 
 ```bash
-python scripts/neospc.py init ./my-cue \
+python scripts/neospc.py init ../my-cue \
   --title "Glass Harbor" \
   --category mystery \
   --game-context puzzle \
@@ -42,14 +37,14 @@ python scripts/neospc.py init ./my-cue \
 5. Validate both files before writing notes:
 
 ```bash
-python scripts/neospc.py validate ./my-cue/composition-plan.json ./my-cue/generation-harness.json --strict
+python scripts/neospc.py validate ../my-cue/composition-plan.json ../my-cue/generation-harness.json --strict
 ```
 
 6. Write the first complete score draft:
 
 ```bash
-python scripts/neospc.py compose ./my-cue
-python scripts/neospc.py validate ./my-cue/composition.json ./my-cue/catalog.json --strict
+python scripts/neospc.py compose ../my-cue
+python scripts/neospc.py validate ../my-cue/composition.json ../my-cue/catalog.json --strict
 ```
 
 `compose` uses plan, harness and declared seed. Writes one composition plus one-cue catalog for review, bank, MIDI, render. Won't replace either output without `--force`. Inspect reduction, form, ranges, density, loop before approval.
@@ -138,7 +133,9 @@ Read when the current step needs them:
 
 Seeded values are constraints: keep phrase purpose, harmonic targets, genre identity across variants.
 
-`period`: antecedent/consequent — same idea, weak cadence, tonic close. `sentence`: 2+2+4 — idea, sequenced idea, continuation. Motif skeleton stays on home pitch class; only passing tones follow the chord. Contrast: related answer motif + different accompaniment, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review splits legality, identity, plan compliance and rigidity tells: tiling the same cell or sitting too close to another catalog cue fails identity even if writing is legal. Compliance and tell counts stay separate from that diagnostic score.
+`period`: antecedent/consequent — same idea, weak cadence, tonic close. `sentence`: 2+2+4 — idea, sequenced idea, continuation. Motif skeleton stays on home pitch class; only passing tones follow the chord. Contrast: related answer motif + different accompaniment, not an inversion of the same cell. Harness melody knobs (`contour`, `tessitura`, `range_semitones`, `max_leap`, `rest_ratio`) reach the writing engine. Review can flag repeated cells and close catalog neighbors. Its `legality_score` is a heuristic, not schema validation. `plan_compliance` counts declarations and score proxies, not verified execution; keep it and rigidity tells separate from the diagnostic score.
+
+The reviewer rejects explicit unknown keys or modes; omitted values retain its C-major assumption. Timing spread uses effective performed onsets. Note peak polyphony uses an exact overlap sweep; mean polyphony and saturation sample quarter-beat positions. These metrics exclude drum voices, release tails, rendered sound and listening judgment.
 
 ### 5. Assign instruments by role
 
@@ -149,7 +146,7 @@ Read:
 - `data/voice-budget-modes.json`;
 - `references/48-factory-bank-integration.md`.
 
-Patches by role, register, velocity response, articulation, era profile. `neo16` for browser playback; `neo32` for expanded renders. Declare assignment before rendering.
+Choose patches by role, register, velocity response, articulation and era profile. `neo16` is the complete multisample map; `neo32` is preview-only. Use a complete bank build for production multisample renders. Declare assignment before rendering.
 
 Bass:
 
@@ -208,12 +205,11 @@ MIDI duties:
 Gates:
 
 ```bash
-python scripts/neospc.py validate ./my-cue/catalog.json --kind catalog --strict
-python scripts/neospc.py review ./my-cue/catalog.json ./my-cue/review.json
-python scripts/neospc.py audit-bank ./my-cue/catalog.json --output ./my-cue/bank-audit.json
-python scripts/neospc.py export-midi ./my-cue/catalog.json ./my-cue/midi
-python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio
-python scripts/neospc.py render ./my-cue/catalog.json ./my-cue/audio-sf2 --backend soundfont --bank ./local.sf2
+python scripts/neospc.py validate ../my-cue/catalog.json --kind catalog --strict
+python scripts/neospc.py review ../my-cue/catalog.json ../my-cue/review.json
+python scripts/neospc.py audit-bank ../my-cue/catalog.json --output ../my-cue/bank-audit.json
+python scripts/neospc.py export-midi ../my-cue/catalog.json ../my-cue/midi
+python scripts/neospc.py render ../my-cue/catalog.json ../my-cue/audio
 ```
 
 `review`: deterministic symbolic rubric — score structure, phrase behavior, genre signals, orchestration, expression. Not human judgment or independent artistic review; use a separate reviewer.
@@ -265,6 +261,6 @@ Reject generic bass substitution, uniform gain, constant arpeggiation, copied be
 
 Use `data/neospc100-benchmark-v4.1.json` only as an evaluation corpus and structure reference — never as a phrase source.
 
-The full-catalog rebuild uses the 100 authored inputs in `data/catalog-contracts-r03.json`. Each input declares its game function, protected motif seed, phrase spans, A/B texture, harmonic hold, section intensity, written role rests and return. The corpus engine consumes these controls before performance refinement. This path does not claim to execute every field of the general plan/harness interface. In the source delivery, each cue has a complete seeded `composition-contract.json` and native `composition.json`, with both symbolic reviews and source hashes. The original benchmark event arrays are not used as phrase material.
+Scene inputs live in `data/catalog-contracts-r03.json`; groove inputs live in `data/genre-expansion-contracts.json`. The source repository's `tools/rebuild_full_catalog.py` combines them. Contracts declare protected subjects and answers, phrase spans, texture, harmony, section intensity, role rests and return. This path does not claim to execute every field of the general plan/harness interface. Inspect the actual source/export receipt for the revision delivered; do not infer publication or listening approval from the bundled catalog. Benchmark event arrays are not a source of phrase material.
 
 Native MIDI assigns each melodic lane a unique port/channel pair. Scores with more than 15 melodic instruments need a player that honors MIDI Port metadata; a single-port hardware synth cannot reproduce every part simultaneously. Section expression uses declared intensity when present, including quieter returns. Coincident note-offs precede retriggers. These guarantees do not establish acoustic parity between General MIDI playback and the sample renderer.

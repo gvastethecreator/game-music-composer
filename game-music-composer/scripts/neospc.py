@@ -13,6 +13,7 @@ import unicodedata
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
+from sound_plan import require_cue_id
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -251,9 +252,10 @@ def validate_plan(plan: Any, base: str = "$") -> list[Issue]:
     )
     if not require_fields(plan, fields, base, issues):
         return issues
-    cue_id = str(plan.get("id", ""))
-    if not re.fullmatch(r"[a-z0-9_]+", cue_id):
-        add_issue(issues, "error", "invalid_id", f"{base}.id", "Use lowercase letters, digits and underscores.")
+    try:
+        require_cue_id(plan.get("id"))
+    except ValueError as exc:
+        add_issue(issues, "error", "invalid_id", f"{base}.id", str(exc))
     if plan.get("category") not in category_ids():
         add_issue(issues, "error", "unknown_category", f"{base}.category", "Use a category from category-benchmark-contracts.json.")
     budget = plan.get("voice_budget")
@@ -465,8 +467,10 @@ def validate_composition(style: Any, base: str = "$") -> list[Issue]:
     )
     if not require_fields(style, required, base, issues):
         return issues
-    if not re.fullmatch(r"[a-z0-9_]+", str(style.get("id", ""))):
-        add_issue(issues, "error", "invalid_id", f"{base}.id", "Use lowercase letters, digits and underscores.")
+    try:
+        require_cue_id(style.get("id"))
+    except ValueError as exc:
+        add_issue(issues, "error", "invalid_id", f"{base}.id", str(exc))
     if style.get("category") not in category_ids():
         add_issue(issues, "error", "unknown_category", f"{base}.category", "Use a bundled benchmark category.")
     bpm = style.get("bpm")
@@ -952,6 +956,8 @@ def cmd_render(args: argparse.Namespace) -> int:
         command.append("--allow-fallback")
     if args.sound_plan:
         command.extend(["--sound-plan", str(args.sound_plan)])
+    if _fallback:
+        command.extend(["--fallback-reason", _fallback])
     return run_script("render_mix_v4.py", command)
 
 
@@ -1161,7 +1167,7 @@ def build_parser() -> argparse.ArgumentParser:
     midi.add_argument("--adapt-ports", action="store_true", help="Collapse MIDI port > 0 onto port 0 when a single-port adapter can keep every lane.")
     midi.set_defaults(func=cmd_export_midi)
 
-    bank = sub.add_parser("audit-bank", help="Check Factory Bank assignments and playable ranges.")
+    bank = sub.add_parser("audit-bank", help="Report mapped Factory patch IDs and range warnings.")
     bank.add_argument("catalog", type=Path)
     bank.add_argument("--manifest", type=Path, default=FACTORY_MANIFEST_PATH)
     bank.add_argument("--output", type=Path)
@@ -1178,10 +1184,10 @@ def build_parser() -> argparse.ArgumentParser:
     sound_plan.add_argument("--map", type=Path, help="Explicit inst -> {bank, program} map. Do not assume GM.")
     sound_plan.add_argument("--registry", type=Path, default=DATA / "bank-registry.template.json")
     sound_plan.add_argument("--output", type=Path, required=True)
-    sound_plan.add_argument("--allow-fallback", action="store_true", help="Record GM hints when a mapped preset is missing.")
+    sound_plan.add_argument("--allow-fallback", action="store_true", help="Resolve a missing preset to an available inspected preset and record the substitution.")
     sound_plan.set_defaults(func=cmd_sound_plan)
 
-    render = sub.add_parser("render", help="Render WAV, OGG and MP3 previews with a named backend and a receipt.")
+    render = sub.add_parser("render", help="Render backend audio and a receipt; retained formats depend on the backend.")
     render.add_argument("catalog", type=Path)
     render.add_argument("output", type=Path)
     render.add_argument("--sample-dir", type=Path, default=SAMPLE_DIR)
@@ -1244,9 +1250,12 @@ def main(argv: list[str] | None = None) -> int:
     if getattr(args, "tension", 0.5) < 0 or getattr(args, "tension", 0.5) > 1:
         print("--tension must be between 0 and 1.", file=sys.stderr)
         return 2
-    if getattr(args, "id", None) and not re.fullmatch(r"[a-z0-9_]+", args.id):
-        print("--id must use lowercase letters, digits and underscores.", file=sys.stderr)
-        return 2
+    if getattr(args, "id", None):
+        try:
+            require_cue_id(args.id)
+        except ValueError as exc:
+            print(f"--id: {exc}", file=sys.stderr)
+            return 2
     return int(args.func(args))
 
 

@@ -58,6 +58,26 @@ class StudioEngineCommands(unittest.TestCase):
         clip_notes = sum(len(c["notes"]) for c in state["studio"]["clips"].values())
         self.assertEqual(clip_notes, len(json.loads(composition.read_text(encoding="utf-8"))["events"]))
 
+    def test_create_import_refuses_silent_note_and_loop_loss(self) -> None:
+        note = {"kind": "note", "inst": "flute", "role": "lead", "midi": 60,
+                "beat": 0, "duration": .1, "velocity": 80}
+        base = {"id": "import_fixture", "title": "Import fixture", "category": "electronic",
+                "beats": 16, "bpm": 120, "key": "C", "mode": "major",
+                "instrument_map": {"flute": {"family": "wind", "root_midi": 60}}, "events": [note]}
+        cases = {
+            "clip_capacity": {**base, "events": [{**note, "beat": i / 1024} for i in range(8193)]},
+            "pitch_range": {**base, "events": [{**note, "midi": 0}]},
+            "loop_duration": {**base, "beats": 1024, "bpm": 30},
+        }
+        for label, score in cases.items():
+            with self.subTest(label=label):
+                source = self.out / (label + ".json")
+                target = self.out / (label + "-project.json")
+                source.write_text(json.dumps(score), encoding="utf-8")
+                target.write_bytes(b"prior project")
+                self.assertEqual(neospc.main(["create-import", str(source), str(target), "--force"]), 1)
+                self.assertEqual(target.read_bytes(), b"prior project")
+
     @unittest.skipUnless(importlib.util.find_spec("playwright"), "Playwright is required for create-game")
     def test_create_game_writes_aligned_state_loops(self) -> None:
         self.assertEqual(self.create("--game-states"), 0)

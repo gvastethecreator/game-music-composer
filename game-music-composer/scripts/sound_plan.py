@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 import struct
 import wave
 from pathlib import Path
@@ -40,6 +41,12 @@ DRUM_HINTS = {
     "wood": True, "shaker": True, "rim": True, "ride": True, "impact": True,
     "brush": True, "clap": True,
 }
+
+
+def require_cue_id(value: Any) -> str:
+    if not isinstance(value, str) or not re.fullmatch(r"[a-z0-9_]+", value):
+        raise ValueError("cue id must use lowercase letters, digits and underscores")
+    return value
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -339,8 +346,13 @@ def resolve_track_assignment(
         program = int(override.get("program", 0))
         found = _preset_match(presets, bank, program)
         if found is None:
-            if presets and not allow_fallback:
-                raise KeyError(f"{inst} map {bank}:{program} is not in bank {inventory.get('id')}")
+            if presets:
+                if not allow_fallback:
+                    raise KeyError(f"{inst} map {bank}:{program} is not in bank {inventory.get('id')}")
+                hint = {**info, "kind": "drum"} if override.get("percussion") else info
+                found = suggest_assignment(inst, hint, inventory)
+                note = f"{inst}: mapped {bank}:{program} is not in the inspected preset list; using {found['bank']}:{found['program']} ({found['name']})"
+                return {**found, "fallback": note}, [note]
             found = {
                 "name": str(override.get("name") or inst),
                 "bank": bank,
@@ -367,31 +379,20 @@ def resolve_track_assignment(
             "percussion": percussion,
             "suggested": True,
         }, notes
-    try:
-        found = suggest_assignment(inst, info, inventory)
-        notes.append(f"{inst}: assigned {found['bank']}:{found['program']} ({found['name']}) from inventory")
-        return found, notes
-    except KeyError as exc:
-        if not allow_fallback:
-            raise
-        notes.append(str(exc) + "; fallback GM hint")
-        program = GM_PROGRAM_HINTS.get(inst, 0)
-        percussion = bool(DRUM_HINTS.get(inst))
-        return {
-            "name": inst,
-            "bank": 128 if percussion else 0,
-            "program": 0 if percussion else program,
-            "percussion": percussion,
-            "suggested": True,
-        }, notes
+    found = suggest_assignment(inst, info, inventory)
+    notes.append(f"{inst}: assigned {found['bank']}:{found['program']} ({found['name']}) from inventory")
+    return found, notes
 
 
 def score_digest(style: dict[str, Any]) -> str:
     payload = {
-        "id": style.get("id"),
+        "id": require_cue_id(style.get("id")),
         "bpm": style.get("bpm"),
         "meter": style.get("meter"),
+        "barLength": style.get("barLength"),
         "beats": style.get("beats"),
+        "category": style.get("category"),
+        "form": style.get("form"),
         "events": style.get("events"),
         "instrument_map": style.get("instrument_map"),
         "sound_palette": style.get("sound_palette"),
@@ -427,6 +428,7 @@ def resolve_plan(
     mapping = mapping or {}
     tracks = []
     substitutions: list[str] = []
+    fallbacks: dict[str, str] = {}
     assignments: dict[str, Any] = {}
     lanes = sorted({str(event.get("inst")) for event in style.get("events") or [] if event.get("inst")})
     instrument_map = style.get("instrument_map") or {}
@@ -439,6 +441,8 @@ def resolve_plan(
         info = instrument_map.get(inst) or {}
         assignment, notes = resolve_track_assignment(inst, info, inventory, mapping, allow_fallback=allow_fallback)
         substitutions.extend(notes)
+        if assignment.get("fallback"):
+            fallbacks[inst] = assignment["fallback"]
         assignments[inst] = assignment
         tracks.append({
             "inst": inst,
@@ -472,10 +476,30 @@ def resolve_plan(
         "score_digest": score_digest(style),
         "tracks": tracks,
         "substitutions": substitutions,
+        "fallbacks": fallbacks,
         "role_collapse": role_collapse(style, assignments),
         "allow_fallback": allow_fallback,
         "listening_approval": "pending",
     }
+
+
+def select_cue_plan(style: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
+    """Require one current plan covering exactly this score's instrument lanes."""
+    candidates = plan.get("cues", [plan])
+    if not isinstance(candidates, list) or not all(isinstance(cue, dict) for cue in candidates):
+        raise ValueError("sound-plan cues must be an array of objects")
+    matches = [cue for cue in candidates if cue.get("score_id") == style["id"]]
+    if len(matches) != 1:
+        raise ValueError(f"sound-plan needs exactly one entry for {style['id']}")
+    selected = matches[0]
+    if selected.get("score_digest") != score_digest(style):
+        raise ValueError(f"sound-plan score changed for {style['id']}; regenerate the plan")
+    tracks = selected.get("tracks", [])
+    names = [track["inst"] for track in tracks]
+    lanes = {event["inst"] for event in style["events"]}
+    if len(names) != len(set(names)) or set(names) != lanes:
+        raise ValueError(f"sound-plan tracks must match score lanes once for {style['id']}")
+    return selected
 
 
 def fingerprint_fields(
@@ -510,7 +534,7 @@ def fingerprint_digest(fields: dict[str, Any]) -> str:
 
 
 def receipt_path(outdir: Path, style_id: str) -> Path:
-    return Path(outdir) / f"{style_id}.receipt.json"
+    return Path(outdir) / f"{require_cue_id(style_id)}.receipt.json"
 
 
 def load_receipt(path: Path) -> dict[str, Any] | None:
@@ -605,17 +629,6 @@ def plan_from_catalog(
         "allow_fallback": allow_fallback,
         "listening_approval": "pending",
     }
-
-
-def track_assignment(plan: dict[str, Any], inst: str) -> dict[str, Any] | None:
-    cues = plan.get("cues")
-    tracks = plan.get("tracks")
-    if tracks is None and isinstance(cues, list) and cues:
-        tracks = cues[0].get("tracks")
-    for row in tracks or []:
-        if row.get("inst") == inst:
-            return row.get("source")
-    return None
 
 
 def write_silence_wav(path: Path, seconds: float = 0.05, sample_rate: int = SAMPLE_RATE) -> None:

@@ -20,8 +20,6 @@ PROFILES = {
     "pocket": {"lead_ms": 16, "bass_ms": -4, "support_ms": 6, "phrase_ms": 2, "arc": .07},
     "ritual": {"lead_ms": 0, "bass_ms": 0, "support_ms": 0, "phrase_ms": 0, "arc": .12},
 }
-PERFORMANCE_FIELDS = ("performance_beat", "performance_duration", "performance_gain",
-                      "start_offset_ms", "velocity", "velocity_norm", "velocity_gain")
 STRUCTURE_FIELDS = ("kind", "inst", "role", "midi", "beat", "duration")
 
 

@@ -34,3 +34,5 @@ For native masters use `render_mix_v4.py CATALOG COMPACT_BANK CALIBRATION OUTPUT
 ## Review
 
 Check the written reduction before layers. Listen to opening, answer, contrast and loop seam at matched volume. Reject a subject that only makes sense under reverb. Do not fill a voice ceiling. Inspect similar pitch contours and onset patterns across the corpus, but permit meaningful recurrence within a piece. Symbolic legality, export integrity and human artistic approval are separate results.
+
+Inspect `generation.trimmed_events_for_voice_budget` before accepting a generated draft: the compose bridge can remove generated events to meet the ceiling. This is separate from score-preserving performance refinement. Legacy catalog `foreground_rest_fraction` values were fixed annotations, not measured rests; inspect the events rather than using those values as quality evidence.

@@ -1,6 +1,6 @@
 # Studio Multisample integration
 
-Studio Multisample v2 is the default semantic instrument source for Game Music Composer live rendering. Patch IDs and the `neo16` profile identifier remain score-format identifiers.
+The current Chamber bank combines cleared recordings and original synthesis. Read `data/factory-bank-manifest.json` for patch ranges, roots, velocity layers, alternate attacks and source kind. Patch IDs and the `neo16` profile identifier remain score-format identifiers.
 
 ## Separation of concerns
 
@@ -20,8 +20,8 @@ Never pick a sample only because its label resembles an instrument. Check regist
 
 ## Profiles
 
-- `neo16`: 608 mono regions at 32 kHz across 50 patches, all declared root registers, two velocity layers and two alternate attacks. Nyquist-limited synthesis and baked sustain crossfades; no intentional bit reduction.
-- `neo32`: one representative mono 44.1 kHz preview per patch. It is explicitly preview-only, not a complete second multisample bank.
+- `neo16`: the complete 32 kHz multisample map declared in the manifest. Use each region's loop declaration; do not assume every patch sustains.
+- `neo32`: one representative 44.1 kHz audition per patch, explicitly preview-only. It is not a complete second bank or a production render profile.
 
 Profile changes render resolution and sample detail, not scale, harmony, form.
 
@@ -55,6 +55,6 @@ Reject when:
 
 ## Local playback
 
-The showcase keeps metadata separate from 50 local per-patch sample scripts. Each needed script embeds WAV data URIs; playback works from `file://` without fetch or CORS. Failed loads can be retried. The 44.1 kHz previews use the same synthesis function.
+Production samples live with the Studio distribution, outside the portable skill. See [51-phrase-studio.md](51-phrase-studio.md) and [53-resonant-soundbanks.md](53-resonant-soundbanks.md) for builders and palette-specific storage. The compact bank is a separate reduced projection; do not infer production parity from its patch labels.
 
-`scripts/synthesize_soundbanks.py` generates original tonal partials, body resonances, velocity-dependent excitation, ensemble beating and percussion modes at twice the output rate before lowpass resampling. `tools/build_soundbanks.py build <fresh-directory>` in the repository builds and verifies the banks; `publish` installs them. Studio Compact retains 46 source identities and is recalibrated from measured audio. The native renderer uses filtered polyphase pitch resampling. Hardware BRR budgets remain projections, not validated playback hardware.
+`scripts/synthesize_soundbanks.py` remains an original-synthesis helper; it is not the source of the recorded Chamber instruments. Use the current palette builders from the source repository root when rebuilding production banks. Recalibrate after changing source audio. Hardware BRR budgets remain projections, not validated playback hardware.

@@ -79,10 +79,11 @@ const STYLE_PRESET={salsa:'bossa',cumbia:'afro',bachata:'bossa',bossa_nova:'boss
 
 function trackFor(event,info){return ROLE_TO_TRACK[event.inst]||ROLE_TO_TRACK[event.role]||FAMILY_TO_TRACK[info?.family]||'keys';}
 function fromNative(E,native,{seed='CATALOG'}={}){
- // The engine loops whole 4/4 phrases of allowed lengths. Pick the length that needs the least
- // stretch while the scaled tempo stays in 45-190 BPM; real-time length is kept.
+ // Fit an allowed 4/4 phrase with the least stretch at 45-190 BPM.
+ // The engine then rounds tempo to an integer, so duration can still change slightly.
  const steps=Math.round(native.beats*4),fits=ALLOWED_BARS.map(b=>({b,stretch:b*16/steps})).filter(x=>native.bpm*x.stretch>=45&&native.bpm*x.stretch<=190);
- const {b:bars,stretch}=(fits.length?fits:[{b:ALLOWED_BARS.find(b=>b*16>=steps)||64,stretch:(ALLOWED_BARS.find(b=>b*16>=steps)||64)*16/steps}]).sort((x,y)=>Math.abs(Math.log(x.stretch))-Math.abs(Math.log(y.stretch)))[0];
+ if(!fits.length)throw new Error('This loop cannot fit the engine phrase lengths at 45–190 BPM. Choose a shorter cue or a supported tempo.');
+ const {b:bars,stretch}=fits.sort((x,y)=>Math.abs(Math.log(x.stretch))-Math.abs(Math.log(y.stretch)))[0];
  const preset=STYLE_PRESET[native.category]||'nocturne',s=E.compose(seed,preset);
  s.bpm=Math.max(45,Math.min(190,Math.round(native.bpm*stretch)));s.root=Math.max(0,PITCH_NAMES.indexOf(native.key));s.scale=SCALE[native.mode]||(/min/.test(native.mode)?'minor':'major');
  s.bars=bars;s.structure='loop';s.human=0;s.swing=0;s.mutation=0;s.seed=String(seed).slice(0,64);
@@ -90,17 +91,20 @@ function fromNative(E,native,{seed='CATALOG'}={}){
  const byTrack={},families={};
  native.events.forEach((e,i)=>{const info=native.instrument_map[e.inst],track=trackFor(e,info),drum=E.data.trackMap[track].drum;
   const t=Number(e.performance_beat??e.beat)*4*stretch,d=Math.max(.05,Number(e.performance_duration??e.duration??.25)*4*stretch);
-  if(!(t>=0&&t<bars*16))return;
-  (byTrack[track]||=[]).push({id:'c'+i,t:Math.round(t*10000)/10000,p:drum?E.data.trackMap[track].midi:Math.max(12,Math.min(119,Math.round(Number(e.midi??info.root_midi??60)))),d:Math.min(bars*16,Math.round(d*10000)/10000),v:Math.max(.01,Math.min(1,Number(e.velocity??80)/127))});
+  if(!(t>=0&&t<bars*16))throw new Error('Note '+i+' has an onset outside the imported loop.');
+  const pitch=Number(e.midi??info.root_midi??60);
+  if(!drum&&(!Number.isInteger(pitch)||pitch<12||pitch>119))throw new Error('Note '+i+' has a melodic MIDI pitch outside the engine range 12–119.');
+  (byTrack[track]||=[]).push({id:'c'+i,t:Math.round(t*10000)/10000,p:drum?E.data.trackMap[track].midi:pitch,d:Math.min(bars*16,Math.round(d*10000)/10000),v:Math.max(.01,Math.min(1,Number(e.velocity??80)/127))});
   const f=(families[track]||={});f[info.family+'|'+e.inst]=(f[info.family+'|'+e.inst]||0)+1;});
  s.studio.clips={};s.studio.bindings={};s.studio.sections=[];s.studio.selectedSection=null;s.studio.playMode='phrase';s.studio.automation=[];
  for(const tr of s.tracks){
   s.patterns[tr.id]=Array.from({length:bars},()=>Array(16).fill(null));
   tr.performance={...tr.performance,mode:'original'};tr.arp={...tr.arp,enabled:false};tr.octave=0;tr.locked=false;tr.arpLock=null;
   const notes=byTrack[tr.id];if(!notes){tr.mute=true;continue;}tr.mute=false;
+  if(notes.length>8192)throw new Error('Imported track '+tr.id+' exceeds the engine clip limit of 8192 notes. Split the cue before importing.');
   const [family,inst]=Object.entries(families[tr.id]).sort((a,b)=>b[1]-a[1])[0][0].split('|'),pick=TIMBRE[tr.id]?.[family]?.(inst);
   if(pick&&E.data.trackMap[tr.id].voices.includes(pick))tr.sound=pick;
-  const id='clip_'+tr.id;s.studio.clips[id]={id,track:tr.id,name:(native.title||'Catalog cue')+' · '+tr.id,length:bars*16,timing:'baked',notes:notes.slice(0,8192).map(n=>({...n,prob:1,every:1,phase:0,fill:false,ratchet:1,flam:0,anchor:false})),origin:{label:'GMC catalog',seed:'',sourceClip:null},recipe:null};
+  const id='clip_'+tr.id;s.studio.clips[id]={id,track:tr.id,name:(native.title||'Catalog cue')+' · '+tr.id,length:bars*16,timing:'baked',notes:notes.map(n=>({...n,prob:1,every:1,phase:0,fill:false,ratchet:1,flam:0,anchor:false})),origin:{label:'GMC catalog',seed:'',sourceClip:null},recipe:null};
   s.studio.bindings[tr.id]=id;}
  s.session={...(s.session||{}),name:native.title||'Catalog cue'};
  return E.validateProject({schema:'umbra-project',version:8,state:s});

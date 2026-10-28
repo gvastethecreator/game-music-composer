@@ -33,7 +33,7 @@ def compose(spec,category,label):
         for j in range(section["bars"]):
             index=min(len(progression)-1,int(j*len(progression)/section["bars"]))
             symbol=progression[index]
-            if section is sections[-1] and j==section["bars"]-1:symbol="I" if spec["mode"] in ("major","lydian","mixolydian","pentatonic_major") else "i"
+            if section is sections[-1] and j==section["bars"]-1:symbol="I" if spec["mode"] in ("major","ionian","lydian","mixolydian","pentatonic_major") else "i"
             chord=core.parse_chord(symbol,tonic)
             chords.append(chord)
     def note(lane,pitch,beat,dur,role,vel=82,pan=0):
@@ -131,7 +131,7 @@ def compose(spec,category,label):
                 for k in range(subdiv):
                     if grammar=="swing" and k%3==1:continue
                     drum("shaker" if grammar in ("bossa","jig") else "hat",offset+k*bl/subdiv,49+16*(k%2))
-        phrase_evidence.append({"section":section["name"],"material":"answer" if contrast else "identity","cadence_bar":start+bars-1,"foreground_rest_fraction":.27})
+        phrase_evidence.append({"section":section["name"],"material":"answer" if contrast else "identity","cadence_bar":start+bars-1})
     rests=core.apply_written_rests(events,spec,bl)
     events.sort(key=lambda e:(e["beat"],e.get("midi",0)))
     used=list(dict.fromkeys(e["inst"] for e in events));imap={x:{"sample":core.INSTRUMENTS[x][0].replace(".wav",""),"file":core.INSTRUMENTS[x][0],"root_midi":core.INSTRUMENTS[x][1],"label":x.replace("_"," ").title(),"color":core.INSTRUMENTS[x][2],"family":core.INSTRUMENTS[x][4]} for x in used}

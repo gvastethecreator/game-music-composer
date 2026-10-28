@@ -7,7 +7,7 @@ description: "Compose, arrange, inspect and refine original game music. Neo-SPC 
 
 Compose original music with a recognizable identity, purposeful form, instrumental roles and useful loops. Preserve a good idea while revising a named dimension. Clear writing comes before density, humanization or mastering.
 
-Run commands from this skill directory and keep generated projects outside it. All JSON, MIDI and viewer helpers use Python's standard library; native audio rendering needs the optional extras and FFmpeg. The browser viewer needs Web Audio and Workers, not an API, account or Node installation.
+Run commands from this skill directory and keep generated projects outside it. The native score, MIDI and viewer-generation helpers use Python's standard library; studio-engine commands also need Node.js. Audio dependencies vary by backend; see [57-sound-backends.md](references/57-sound-backends.md). The browser viewer needs Web Audio and Workers, not an API, account or Node installation.
 
 ## Phrase Studio writing and sound palettes
 
@@ -101,19 +101,11 @@ This changes actual native performance fields, not just descriptive metadata. Va
 
 ## Review and deliver honestly
 
-```bash
-python scripts/neospc.py review ../my-cue/catalog-performed.json ../my-cue/review-performed.json
-python scripts/neospc.py audit-bank ../my-cue/catalog-performed.json --output ../my-cue/bank-audit.json
-python scripts/neospc.py export-midi ../my-cue/catalog-performed.json ../my-cue/midi-performed
-python scripts/neospc.py render ../my-cue/catalog-performed.json ../my-cue/audio-performed-new
-python scripts/neospc.py inspect-bank ../local-bank.sf2
-python scripts/neospc.py sound-plan ../my-cue/catalog-performed.json --sf2 ../local-bank.sf2 --map ../my-cue/sf2-map.json --output ../my-cue/sound-plan.json
-python scripts/neospc.py render ../my-cue/catalog-performed.json ../my-cue/audio-sf2 --backend soundfont --bank ../local-bank.sf2 --sound-plan ../my-cue/sound-plan.json
-```
+Use the review, bank-audit and export commands in [the canonical workflow](references/canonical-compose-workflow.md). For an operator-supplied SoundFont, follow the explicit bank inspection and mapping steps in [57-sound-backends.md](references/57-sound-backends.md).
 
-Review reports legality, identity, plan compliance and rigidity tells as separate numbers. Do not merge them. Score a backend only for fields it honors (`data/backend-honors.json`): Ensemble Atelier is not scored on LUFS; Type-1 MIDI is not scored on mix buses. Pass `--plan` when the catalog sits away from `composition-plan.json`.
+Review reports heuristic legality, identity, `plan_compliance` and rigidity tells separately. Keep them separate. `plan_compliance` checks declarations and score proxies; it does not verify plan execution. The script attaches `data/backend-honors.json` as guidance but does not test backends. Use that registry when inspecting real exports: Atelier has no LUFS measurement and Type-1 MIDI has no mix buses. Pass `--plan` when the catalog sits away from `composition-plan.json`.
 
-Reuse audio only when `{id}.receipt.json` matches the content fingerprint (score, map, bank hash, engine, effects, sample rate). A changed bank regenerates. Missing Factory/SF2 paths error unless `--allow-fallback`, which is written on the receipt. A `factory_patch` label does not make compact samples equal Chamber. MIDI channel/retrigger limits remain. Do not treat viewer/SF2 preview as native render evidence.
+Use the backend's receipt and required-output checks before reusing audio. A `factory_patch` label does not make compact samples equal Chamber. MIDI channel/retrigger limits remain. Do not treat viewer/SF2 preview as native render evidence.
 
 Required delivery: concrete plan, harness, canonical score/catalog, exact engine/seed/backend, Type-1 MIDI when valid, WAV/OGG/MP3 when available, symbolic and bank reports, provenance/licensing, and optionally the HTML viewer plus refinement report. Name blocked formats/dependencies and exact retry commands. Keep approval false until supported; distinguish technical validation, independent listening and game integration.
 

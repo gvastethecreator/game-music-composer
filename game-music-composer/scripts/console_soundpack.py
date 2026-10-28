@@ -361,7 +361,9 @@ def main():
     if any(p.exists() for p in outputs):parser.error('Output exists; choose a new path')
     data=write_native(args.console,notes,args.output,not args.dry,brr_bank,args.brr_filter)
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_bytes(data)
-    args.output.with_suffix('.json').write_text(json.dumps({'version':VERSION,'console':args.console,'notes':notes,'sha256':hashlib.sha256(data).hexdigest(),'source':'Original register patches / BRR samples','physical_hardware_comparison':'pending','dmc':None if args.console=='nes' else 'n/a'},indent=2)+'\n')
+    supplied=(args.console=='megadrive' and args.fm_json is not None) or (args.console=='snes' and args.brr_dir is not None)
+    source='Operator-supplied patches / BRR samples; licensing not verified' if supplied else 'Original register patches / BRR samples'
+    args.output.with_suffix('.json').write_text(json.dumps({'version':VERSION,'console':args.console,'notes':notes,'sha256':hashlib.sha256(data).hexdigest(),'source':source,'physical_hardware_comparison':'pending','dmc':None if args.console=='nes' else 'n/a'},indent=2)+'\n')
     if args.wav:render_native(args.output,args.output.with_suffix('.wav'),max(n['time']+n['duration'] for n in notes)+1)
     print('Created',args.output)
 

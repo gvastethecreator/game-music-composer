@@ -4,10 +4,12 @@ import copy
 import contextlib
 import io
 import json
+import statistics
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPTS = Path(__file__).resolve().parents[1]
@@ -195,6 +197,19 @@ class NeoSpcCliTests(unittest.TestCase):
         self.assertEqual(before['sound_palette'],spec['writing']['palette'])
         self.assertEqual(before['writing_evidence']['answer'],spec['writing']['answer'])
         self.assertTrue(all(e['role'] not in ('pad','ensemble') for e in before['events']))
+
+    def test_major_and_ionian_blueprints_keep_the_same_cadence(self):
+        record = engine.load_catalog_contracts()[0]
+        spec = copy.deepcopy(record['native_engine_contract'])
+        spec.update(key='C', mode='major')
+        spec['writing'].update(harmony=['I'], contrast_harmony=['I'])
+        major = engine.compose(spec, record['category'], record['category_label'])
+        spec['mode'] = 'ionian'
+        with patch.dict(engine.MODES, {'ionian': list(engine.MODES['major'])}):
+            ionian = engine.compose(spec, record['category'], record['category_label'])
+        self.assertEqual(ionian['chord_plan'][-1]['pcs'], [0, 4, 7])
+        self.assertEqual(ionian['chord_plan'], major['chord_plan'])
+        self.assertEqual(ionian['events'], major['events'])
 
     def test_unknown_blueprint_grammar_is_rejected(self):
         record=engine.load_catalog_contracts()[0]
@@ -633,7 +648,7 @@ def _review_style(style_id, cells):
         })
     return {
         "id": style_id, "title": style_id, "category": "adventure", "subcategory": "Study",
-        "beats": 64, "bars": 16, "barLength": 4, "key": "C", "mode": "major",
+        "beats": 64, "bars": 16, "barLength": 4, "bpm": 120, "key": "C", "mode": "major",
         "events": events,
         "chord_plan": [{"bar": index, "symbol": "I", "root_pc": 0, "pcs": [0, 4, 7]} for index in range(16)],
         "voice_budget": 16,
@@ -682,6 +697,38 @@ class MelodyHarnessTests(unittest.TestCase):
 
 
 class ReviewIdentityTests(unittest.TestCase):
+    def test_review_uses_effective_timing_and_short_note_overlaps(self):
+        style = _review_style("timing", [[60, 64, 67]])
+        style.update(beats=4, bars=1)
+        style["events"] = style["events"][:3]
+        for event, performed in zip(style["events"], (3.99, 1.02, 2.03)):
+            event.update(performance_beat=performed, start_offset_ms=0)
+        expression = professor_review.expressive_metrics(style)
+        self.assertAlmostEqual(expression["timing_std_ms"], statistics.pstdev([-5, 10, 15]))
+        _, tells = professor_review.arrangement_review(style, expr=expression)
+        self.assertFalse(next(flag["flagged"] for flag in tells["flags"] if flag["id"] == 8))
+
+        style["events"] = [
+            {**style["events"][0], "beat": beat, "performance_beat": beat,
+             "duration": .02, "performance_duration": .02}
+            for beat in (.05, .06)
+        ]
+        self.assertEqual(professor_review.orchestration_metrics(style)["max_polyphony"], 2)
+
+    def test_review_rejects_unknown_context_and_missing_registry(self):
+        self.assertEqual(professor_review.scale_pcs({}), {0, 2, 4, 5, 7, 9, 11})
+        for context in ({"key": "H"}, {"mode": "unlisted_collection"}):
+            with self.subTest(context=context), self.assertRaisesRegex(ValueError, "Unsupported score"):
+                professor_review.scale_pcs(context)
+        with tempfile.TemporaryDirectory() as tmp:
+            registry = Path(tmp) / "backend-honors.json"
+            with patch.object(professor_review, "BACKEND_HONORS_PATH", registry):
+                with self.assertRaises(FileNotFoundError):
+                    professor_review.load_backend_honors()
+                registry.write_text("{}", encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "backends object"):
+                    professor_review.load_backend_honors()
+
     def test_tiled_catalog_neighbors_fail_identity(self):
         cell = [[60, 64, 67, 64]] * 16
         clone_a = _review_style("tile_a", cell)

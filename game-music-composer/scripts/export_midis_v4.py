@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse,json,math,collections
 from pathlib import Path
+import sound_plan as plans
 try:
     import mido
 except ImportError:
@@ -38,14 +39,6 @@ def expression_value(style,beat,role):
  role_adj={'lead':3,'counter':0,'riff':2,'bass':0,'kick':4,'snare':3,'pad':-5,'ensemble':-6,'texture':-8,'support':-3,'arp':-2}.get(role,0)
  return int(clamp(round(section+arc+role_adj),28,124))
 
-def _plan_for(style,sound_plan):
- if not sound_plan:return None
- if sound_plan.get('tracks'):return sound_plan
- cues=sound_plan.get('cues') or []
- for cue in cues:
-  if cue.get('score_id')==style.get('id'):return cue
- return cues[0] if cues else None
-
 def _source(plan,inst):
  if not plan:return None
  for row in plan.get('tracks') or []:
@@ -60,11 +53,12 @@ def _kit_channel(source,events):
  return all(e['kind']=='drum' for e in events)
 
 def export(style,outdir,sound_plan=None,adapt_ports=False):
+ plans.require_cue_id(style.get('id'))
  mid=mido.MidiFile(type=1,ticks_per_beat=PPQ); meta=mido.MidiTrack();mid.tracks.append(meta)
- meta.append(mido.MetaMessage('track_name',name=safe(style['title']),time=0));meta.append(mido.MetaMessage('set_tempo',tempo=mido.bpm2tempo(style['bpm']),time=0));num,den=parse_meter(style['meter']);meta.append(mido.MetaMessage('time_signature',numerator=num,denominator=den,time=0));meta.append(mido.MetaMessage('text',text=safe(f"Neo-SPC v2.2 category={style['category']} bpm_center={style['bpm']} sample_bank=1.1"),time=0))
+ meta.append(mido.MetaMessage('track_name',name=safe(style['title']),time=0));meta.append(mido.MetaMessage('set_tempo',tempo=mido.bpm2tempo(style['bpm']),time=0));num,den=parse_meter(style['meter']);meta.append(mido.MetaMessage('time_signature',numerator=num,denominator=den,time=0));meta.append(mido.MetaMessage('text',text=safe(f"Neo-SPC category={style['category']} bpm_center={style['bpm']}"),time=0))
  lanes=collections.defaultdict(list)
  for e in style['events']:lanes[e['inst']].append(e)
- plan=_plan_for(style,sound_plan)
+ plan=plans.select_cue_plan(style,sound_plan) if sound_plan is not None else None
  melodic=[0,1,2,3,4,5,6,7,8,10,11,12,13,14,15]
  melodic_names=[inst for inst,events in sorted(lanes.items()) if not _kit_channel(_source(plan,inst),events)]
  if len(melodic_names)>len(melodic) and not adapt_ports and plan:

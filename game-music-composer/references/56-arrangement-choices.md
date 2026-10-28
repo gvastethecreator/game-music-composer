@@ -18,7 +18,7 @@ Method adapted from [jtydhr88/music-composition-skills](https://github.com/jtydh
 
 `arrangement_exemptions`: `short_loop`, `drone`, `continuous_combat`. Use one when a descent, exit or 8-bar break would fight the game function. Do not use them to skip a choice the cue can still make.
 
-Do not require every section to avoid multiples of 8, or a 3:30 duration. Game default is 8-bar (or 4+4) phrases; **break that grid once with a motive** (shorter A2, 6-bar B, 2-bar tag). Do not treat random onset jitter as groove; systematic placement lives in `refine_performance.py`.
+Choose phrase lengths for the game function. A shorter A2, 6-bar B or 2-bar tag can serve a musical motive; a regular grid and intentional recurrence can also fit. The rubric's rigidity tells are diagnostics, not universal composition rules. Do not treat random onset jitter as groove; systematic placement lives in `refine_performance.py`.
 
 ## Quality gates
 
@@ -32,15 +32,15 @@ These stay `false` until evidence exists. They are separate from symbolic legali
 
 ## Two numbers, not one
 
-`neospc.py review` reports **plan compliance** (did the score honor the declared curve, rest, roster, development, hook?) and **rigidity tells** (enumerable machine defaults) separately from legality and identity. Do not merge them into the 0–100 diagnostic.
+`neospc.py review` keeps the legacy **plan compliance** field for declaration lint and score proxies, alongside **rigidity tells** (enumerable machine defaults). Declaring a curve, subtraction, exit or hook does not prove the score performed it. Keep these counts separate from heuristic legality and identity.
 
 Tells checked here, without vocal items: all sections 8-bar multiples with no motive break (1); energy never descends (2); roster never changes (3); no non-vocal hook (6); every onset locked to the grid with no systematic placement (8). Tells 4–5, 7, 9–14 stay out of this skill.
 
-High compliance with many tells means the **plan** itself is rigid. Low compliance with few tells means the backend improvised; the result may still need a rewritten plan to be reproducible.
+Inspect the plan and score when these counts disagree. Neither count establishes that a backend followed or improvised on the plan; that needs export inspection and listening.
 
 ## Honors
 
-Read `data/backend-honors.json`. Values: `exact` (score it), `hint` (score at reduced trust), `none` (exclude; never score as zero).
+Read `data/backend-honors.json` when inspecting real exports. Values: `exact` (inspect it), `hint` (treat as an approximation), `none` (exclude; never score as zero). The review script attaches this registry as metadata; it does not run or score each backend.
 
 | Backend | Do not score as if it were native render |
 |---|---|

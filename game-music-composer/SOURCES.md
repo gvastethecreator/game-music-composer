@@ -24,19 +24,11 @@
 
 ## MIDI
 
-- MIDI Association — MIDI 2.0: https://midi.org/midi-2-0
+- MIDI Association — Standard MIDI Files: https://midi.org/standard-midi-files
 
 ## Trackers and expanded retro workflows
 
 - Furnace Tracker: https://github.com/tildearrow/furnace
-
-## Structured and multitrack generation research
-
-- MusicFrameworks: hierarchical structure for music generation, ICLR 2024.
-- Structure-informed generation via section and phrase hierarchy.
-- Multitrack arrangement with explicit track and orchestration representations.
-
-Sources inform architecture. Benchmark: no extracted commercial SNES melodies or samples.
 
 ## Arrangement-spec method
 
@@ -58,8 +50,8 @@ Sources inform architecture. Benchmark: no extracted commercial SNES melodies or
 ## Symbolic music representation and evaluation
 
 - MusPy: A Toolkit for Symbolic Music Generation — arXiv: https://arxiv.org/abs/2008.01951
-- musicaiz: A Python Library for Symbolic Music Generation, Analysis and Visualization — arXiv: https://arxiv.org/abs/2209.07984
-- MusicFrameworks: hierarchical music structure — ICLR 2024 proceedings.
+- musicaiz: A Python Library for Symbolic Music Generation, Analysis and Visualization — arXiv: https://arxiv.org/abs/2209.07974
+- Dai, Jin, Gomes and Dannenberg — Controllable Deep Melody Generation via Hierarchical Music Structure Representation (MusicFrameworks), ISMIR 2021: https://arxiv.org/abs/2109.00663
 - Open Music Theory — jazz voicings: https://viva.pressbooks.pub/openmusictheory/chapter/jazz-voicings/
 - Open Music Theory — chord-scale theory: https://viva.pressbooks.pub/openmusictheory/chapter/chord-scale-theory/
 - Open Music Theory — modal schemas: https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/
@@ -68,7 +60,7 @@ Workstation refs mark separations: harmony, progression, arpeggiation, note prop
 
 ## Recorded Chamber sources
 
-VSCO 2 Community Edition, Versilian Studios / Sam Gossner: https://versilian-studios.com/vsco-community/ . CC0-1.0. Pinned repository revision: 440300901dfe9275fd84e0b7763af1f8443ae62e. See data/soundbank-provenance.json for the 103 selected recordings, their declared roots and SHA-256 hashes. Fifteen Chamber patch definitions use this subset; repeated mapped zones do not imply independent recorded takes.
+VSCO 2 Community Edition, Versilian Studios: https://versilian-studios.com/vsco-community/ . Recordings by Sam Gossner and Simon Dalzell; sample cutting by Elan Hickler / Soundemote, as credited in the [pinned README](https://github.com/sgossner/VSCO-2-CE/blob/440300901dfe9275fd84e0b7763af1f8443ae62e/README.md). CC0-1.0. See data/soundbank-provenance.json for the selected recordings, their declared roots and SHA-256 hashes. Repeated mapped zones do not imply independent recorded takes.
 
 ## Genre rhythm method
 

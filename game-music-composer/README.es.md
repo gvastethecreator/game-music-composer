@@ -29,28 +29,30 @@ python scripts/neospc.py render ../ash-crown/catalog-performed.json ../ash-crown
 
 El HTML autónomo incluye instrumentos tocables, piano roll y exportación de sesión JSON y WAV de boceto. Su síntesis no usa el banco nativo. Para explorar sin una partitura, sustituye `--input` por `--demo instrumentarium`, `pocket`, `conversation`, `atlas` o `cycles`.
 
-El refinador cambia timing, gate y velocity interpretados; conserva las notas escritas. Ofrece los perfiles `chamber`, `pocket` y `ritual`. Cada revisión parte del catálogo original. Los dos helpers rechazan archivos de salida existentes. Usa una carpeta nueva por render: el motor actual reutiliza audio por existencia de archivos. Consulta los límites de [Ensemble Atelier](references/49-ensemble-atelier.md) y el [procedimiento de entrega](references/canonical-compose-workflow.md).
+El refinador cambia timing, gate y velocity interpretados; conserva las notas escritas. Ofrece los perfiles `chamber`, `pocket` y `ritual`. Cada revisión parte del catálogo original. Los dos helpers rechazan archivos de salida existentes. Usa una carpeta nueva para conservar cada revisión: la caché exige fingerprints coincidentes y las salidas requeridas, no sólo archivos existentes. Consulta los límites de [Ensemble Atelier](references/49-ensemble-atelier.md) y los formatos y recibos de [cada backend](references/57-sound-backends.md).
 
 ## Comandos
 
-El catálogo completo se reconstruye desde `data/catalog-contracts-r03.json`: 100 contratos revisados con frases explícitas, ritmo armónico, texturas contrastantes, silencios escritos por rol e intensidad por sección. El generador nativo consume estos campos. `generate_neospc100_v3.py --output ../catalog-base` genera las partituras base; la herramienta `tools/regenerate_catalog.py` del repositorio añade bancos, interpretación, revisión y publicación verificada.
+Los contratos de escenas viven en `data/catalog-contracts-r03.json` y los de grooves en `data/genre-expansion-contracts.json`. Definen sujetos, respuestas, frases, armonía, silencios por rol e intensidad por sección. Para reconstruir el catálogo desde el repositorio fuente, revisa `tools/rebuild_full_catalog.py`, que combina ambos conjuntos. La entrada antigua `tools/regenerate_catalog.py` exige un catálogo de escenas y no acepta el corpus combinado actual. Estas herramientas no están en la skill portable; usa `init` y `compose` para una pieza individual.
 
-La revisión simbólica del catálogo regenerado marca 74 cues aprobados y 26 para revisar. La escucha y la aprobación en juego siguen pendientes. Siete MIDI usan más de 15 instrumentos melódicos y requieren un reproductor o DAW que respete los metadatos MIDI Port. Cada instrumento melódico tiene un par puerto/canal propio.
+Usa la revisión y la auditoría de exportación de la versión del catálogo entregada; los conteos históricos de aprobación y puertos no son evidencia vigente. La aprobación simbólica no demuestra escucha ni aceptación en juego. Los MIDI con más de 15 instrumentos melódicos requieren un reproductor o DAW que respete los metadatos MIDI Port. Cada instrumento melódico tiene un par puerto/canal propio.
 
-- `doctor`: revisa JSON, schemas, templates, scripts, el corpus de 100 cues y el banco de 50 patches.
+- `doctor`: revisa JSON, schemas, templates, scripts, corpus y banco; informa sus conteos actuales.
 - `init`: crea un plan y una receta válidos desde un brief.
 - `compose`: genera la partitura y un catálogo desde el plan, el harness y la semilla.
 - `validate`: revisa planes, recetas, cues y catálogos con rutas JSON exactas.
 - `review`: aplica una rúbrica de partitura estable al catálogo.
 - `export-midi`: genera MIDI Type-1 y un informe; incluye un fallback sin paquetes externos.
-- `audit-bank`: revisa patches, cobertura de roles y rangos.
-- `render`: genera WAV, OGG y MP3 cuando NumPy, SoundFile y FFmpeg están disponibles.
+- `audit-bank`: informa IDs de patches y avisos de rango; no certifica adecuación al rol ni reproducción.
+- `render`: exporta audio y recibos cuando están disponibles las dependencias opcionales de su backend; consulta [los formatos](references/57-sound-backends.md).
 
 ## Pruebas
 
-`data/neospc100-benchmark-v4.1.json` sirve como corpus de prueba y guía de estructura. No debe usarse como fuente de frases. Consulta `LICENSE-NOTES.md` y `SOURCES.md` antes de distribuir samples.
+`data/neospc100-benchmark-v4.1.json` conserva su nombre histórico y contiene el corpus de prueba actual. No debe usarse como fuente de frases. Consulta `LICENSE-NOTES.md` y `SOURCES.md` antes de distribuir samples.
 
-El paquete runtime sólo contiene el corpus v4.1 y las herramientas canónicas. El material histórico de reconstrucción v3/legacy se conserva aparte para mantenimiento y no hace falta para usar la skill.
+El material histórico de reconstrucción v3/legacy se conserva aparte para mantenimiento y no hace falta para usar la skill.
+
+Para mantenimiento, elige las comprobaciones afectadas. `--smoke` repite la suite tras extraer el paquete y escribe el manifest y el ZIP.
 
 ```bash
 python -m unittest discover -s scripts/tests -v

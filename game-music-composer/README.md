@@ -29,30 +29,30 @@ python scripts/neospc.py render ../ash-crown/catalog-performed.json ../ash-crown
 
 The standalone HTML provides playable instruments, a piano roll, and session JSON and sketch WAV exports. Its synthetic voices do not use the native sample bank. To explore without a score, use `--demo instrumentarium`, `pocket`, `conversation`, `atlas`, or `cycles` instead of `--input`.
 
-Refinement changes performed timing, gate and velocity while preserving the written notes. The profiles are `chamber`, `pocket`, and `ritual`; start each revision from the original catalog. Both helpers refuse existing output files. Use a new native render directory for each revision because the existing renderer reuses audio by file existence. See [Ensemble Atelier](references/49-ensemble-atelier.md) for limits and [the canonical workflow](references/canonical-compose-workflow.md) for delivery checks.
+Refinement changes performed timing, gate and velocity while preserving the written notes. The profiles are `chamber`, `pocket`, and `ritual`; start each revision from the original catalog. Both helpers refuse existing output files. Use a new render directory to preserve each revision; renderer cache reuse requires matching fingerprints and required outputs, not file existence alone. See [Ensemble Atelier](references/49-ensemble-atelier.md) for limits and [sound backends](references/57-sound-backends.md) for receipts and output formats.
 
 ## Command surface
 
-- `doctor`: checks bundled JSON, schemas, templates, scripts, 100-cue benchmark and 50-patch bank.
+- `doctor`: checks bundled JSON, schemas, templates, scripts, benchmark and bank; reports their current counts.
 - `init`: creates a valid plan and recipe from a brief.
 - `compose`: writes `composition.json` and `catalog.json` from the plan, harness and seed.
 - `validate`: checks plans, recipes, cues and catalogs with exact JSON paths.
-- `review`: applies the bundled symbolic rubric to a catalog (legality, identity, plan compliance, rigidity tells). Honors native / atelier / console / MIDI separately. Optional `--plan`.
+- `review`: applies a heuristic symbolic rubric to a catalog. `plan_compliance` checks declarations and score proxies; it does not verify plan execution. The attached backend registry is guidance, not a backend test. Optional `--plan`.
 - `export-midi`: writes Type-1 MIDI and an export audit. It has a standard-library fallback.
-- `audit-bank`: checks patch names, role coverage and playable ranges.
-- `render`: writes WAV, OGG and MP3 previews when NumPy, SoundFile and FFmpeg are present.
+- `audit-bank`: reports mapped patch IDs and range warnings; it does not certify role fit or playback.
+- `render`: exports backend audio and receipts when its optional dependencies are available; see [sound backends](references/57-sound-backends.md).
 
 ## Proof and samples
 
-The full catalog is rebuilt from `data/catalog-contracts-r03.json`. Its 100 contracts preserve cue identity while defining phrase spans, harmonic holds, contrasting accompaniment, written role rests and section intensity. The native corpus generator consumes these fields; they are not browser-only annotations. `generate_neospc100_v3.py --output ../catalog-base` writes the base scores. The repository's `tools/regenerate_catalog.py` adds current bank assignments, performance, review and publication checks. Source downloads contain all seeded contracts and scores.
+Scene contracts live in `data/catalog-contracts-r03.json`; groove contracts live in `data/genre-expansion-contracts.json`. They define subjects, answers, phrase spans, harmony, role rests and section intensity. For a source-repository catalog rebuild, inspect `tools/rebuild_full_catalog.py`, which combines both sets. The older `tools/regenerate_catalog.py` entry point requires a scene-only catalog and does not accept the current combined corpus. These tools are outside the portable skill; use `init` and `compose` for an individual cue.
 
-The regenerated corpus contains 74 symbolically approved cues and 26 marked for revision. This is not a listening approval. Seven MIDI files need a player or DAW that honors MIDI Port metadata because they use more than 15 melodic instruments. Every melodic lane has a unique port/channel pair; the optional `mido` writer and bundled writer use the same routing.
+Use the review and export audit for the catalog revision being delivered; historical approval and multi-port counts are not current evidence. Symbolic approval is not listening approval. Scores with more than 15 melodic instruments need a player or DAW that honors MIDI Port metadata. Every melodic lane has a unique port/channel pair; the optional `mido` writer and bundled writer use the same routing.
 
-`data/neospc100-benchmark-v4.1.json` is a 100-cue test corpus and structure reference. It is not a phrase source. `resources/original-sample-bank/` and the Factory Bank hold original or cleared sample material; see `LICENSE-NOTES.md` and `SOURCES.md`.
+`data/neospc100-benchmark-v4.1.json` retains its historical filename and contains the current test corpus. It is not a phrase source. `resources/original-sample-bank/` and the Factory Bank hold original or cleared sample material; see `LICENSE-NOTES.md` and `SOURCES.md`.
 
-The runtime package contains only the current v4.1 corpus and canonical tools. Historical v3/legacy rebuild material is kept separately for maintainers and is not required to use the skill.
+Historical v3/legacy rebuild material is kept separately for maintainers and is not required to use the skill.
 
-Run focused checks with:
+For package maintenance, choose the affected checks. Packaging with `--smoke` runs the unit suite again after extraction; it writes the manifest and ZIP.
 
 ```bash
 python -m unittest discover -s scripts/tests -v

@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse, json, math, statistics, collections
 from pathlib import Path
+from generate_neospc100_v3 import peak_polyphony
 
 MODES={
  'major':[0,2,4,5,7,9,11], 'minor':[0,2,3,5,7,8,10], 'dorian':[0,2,3,5,7,9,10],
@@ -9,11 +10,8 @@ MODES={
  'harmonic_minor':[0,2,3,5,7,8,11], 'melodic_minor':[0,2,3,5,7,9,11],
  'whole_tone':[0,2,4,6,8,10], 'octatonic':[0,2,3,5,6,8,9,11], 'pentatonic_major':[0,2,4,7,9], 'pentatonic_minor':[0,3,5,7,10]
 }
-try:
-    scale_library=json.loads((Path(__file__).resolve().parents[1]/'data'/'scale-library.json').read_text(encoding='utf-8'))
-    MODES.update({str(scale['id']):[int(interval) for interval in scale['intervals']] for scale in scale_library['scales']})
-except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError):
-    pass
+scale_library=json.loads((Path(__file__).resolve().parents[1]/'data'/'scale-library.json').read_text(encoding='utf-8'))
+MODES.update({str(scale['id']):[int(interval) for interval in scale['intervals']] for scale in scale_library['scales']})
 MODES.setdefault('ionian',MODES['major']);MODES.setdefault('aeolian',MODES['minor'])
 PCS={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 MELODIC_ROLES={'lead','counter','riff'}
@@ -35,8 +33,10 @@ def chord_for(style,beat):
     return style['chord_plan'][min(bar,len(style['chord_plan'])-1)]
 
 def scale_pcs(style):
-    root=PCS.get(style.get('key','C'),0)
-    return {(root+x)%12 for x in MODES.get(style.get('mode','major'),MODES['major'])}
+    key=style.get('key','C');mode=style.get('mode','major')
+    if not isinstance(key,str) or key not in PCS:raise ValueError(f'Unsupported score key: {key!r}')
+    if not isinstance(mode,str) or mode not in MODES:raise ValueError(f'Unsupported score mode: {mode!r}')
+    return {(PCS[key]+x)%12 for x in MODES[mode]}
 
 def polyphony_profile(style,step=.25):
     n=max(1,int(math.ceil(style['beats']/step))); vals=[]
@@ -99,7 +99,7 @@ def harmonic_metrics(style):
 
 def orchestration_metrics(style):
     events=style['events']; byrole=collections.Counter(role(e) for e in events); byinst=collections.Counter(e['inst'] for e in events)
-    prof=polyphony_profile(style); maxp=max(prof or [0]); meanp=safe_mean(prof); saturation=sum(v>=max(8,style.get('voice_budget',16)*.72) for v in prof)/max(1,len(prof))
+    prof=polyphony_profile(style); notes=[dict(e,performance_beat=onset(e),performance_duration=dur(e)) for e in events if e.get('kind')=='note'];maxp=peak_polyphony(notes,style['beats']);meanp=safe_mean(prof); saturation=sum(v>=max(8,style.get('voice_budget',16)*.72) for v in prof)/max(1,len(prof))
     support=sum(byrole[r] for r in SUPPORT_ROLES); lead=sum(byrole[r] for r in MELODIC_ROLES); drums=sum(byrole[r] for r in DRUM_ROLES)
     register=[]
     for inst in byinst:
@@ -113,7 +113,7 @@ def orchestration_metrics(style):
     return {'instrument_count':len(byinst),'max_polyphony':maxp,'mean_polyphony':meanp,'saturation_ratio':saturation,'support_to_lead':support/max(1,lead),'drum_ratio':drums/max(1,len(events)),'register_collisions':collisions}
 
 def expressive_metrics(style):
-    events=style['events']; gains=[float(e.get('performance_gain',1)) for e in events]; offsets=[float(e.get('start_offset_ms',0)) for e in events]; durs=[dur(e) for e in events if e.get('kind')=='note']; velocities=[int(e.get('velocity',0)) for e in events if e.get('velocity')]
+    events=style['events']; gains=[float(e.get('performance_gain',1)) for e in events];total=float(style['beats']);bpm=float(style['bpm']);offsets=[((onset(e)-float(e.get('beat',0))+total/2)%total-total/2)*60000/bpm for e in events]; durs=[dur(e) for e in events if e.get('kind')=='note']; velocities=[int(e.get('velocity',0)) for e in events if e.get('velocity')]
     return {'gain_std':statistics.pstdev(gains) if len(gains)>1 else 0,'timing_std_ms':statistics.pstdev(offsets) if len(offsets)>1 else 0,'duration_cv':statistics.pstdev(durs)/max(.001,safe_mean(durs,1)) if len(durs)>1 else 0,'velocity_std':statistics.pstdev(velocities) if len(velocities)>1 else 0}
 
 def idiom_score(style,top_unique,mel,orch):
@@ -193,17 +193,14 @@ def identity_score(ident,dens_contrast):
     return clamp(score,0,10)
 
 BACKEND_HONORS_PATH=Path(__file__).resolve().parents[1]/'data'/'backend-honors.json'
+ARRANGEMENT_CHECK_SCOPE='declaration lint and score proxies; execution unverified'
 
 
 def load_backend_honors():
-    try:
-        return json.loads(BACKEND_HONORS_PATH.read_text(encoding='utf-8'))
-    except (FileNotFoundError, OSError, TypeError, ValueError, json.JSONDecodeError):
-        return {
-            'version': 0,
-            'scoring_rule': 'honors none excludes a field from scoring; do not treat it as zero',
-            'backends': {},
-        }
+    data=json.loads(BACKEND_HONORS_PATH.read_text(encoding='utf-8'))
+    if not isinstance(data,dict) or not isinstance(data.get('backends'),dict):
+        raise ValueError('Backend honors registry must contain a backends object')
+    return data
 
 
 def has_energy_drop(values, ratio=0.97):
@@ -298,6 +295,7 @@ def arrangement_review(style, plan=None, dens=None, ident=None, expr=None):
     return (
         {
             'plan_source': 'plan' if plan else 'score',
+            'scope': ARRANGEMENT_CHECK_SCOPE,
             'exemption': sorted(exemptions),
             'checks': checks,
             'passed': sum(1 for check in checks if check['pass']),
@@ -359,14 +357,14 @@ def main():
     plan=None
     if args.plan:
         plan=json.loads(args.plan.read_text(encoding='utf-8'))
+    honors=load_backend_honors()
     tracks=[review(s, siblings=d['styles'], plan=plan) for s in d['styles']]
     summary=collections.Counter(t['status'] for t in tracks)
-    honors=load_backend_honors()
     out={
       'version':'3.1.0','reviewer':'Neo-SPC Symbolic Review',
-      'method':'deterministic symbolic score critique split into legality, identity, plan compliance and rigidity tells; renderer, mix and human listening excluded',
+      'method':'deterministic heuristic score critique; plan_compliance is declaration lint and score proxies, not execution verification; note peak uses an exact sweep, mean/saturation use quarter-beat note samples; renderer, mix and human listening excluded',
       'summary':dict(summary),'average_score':round(safe_mean([t['score'] for t in tracks]),2),
-      'plan_compliance':{'passed':sum(t['plan_compliance']['passed'] for t in tracks),'checked':sum(t['plan_compliance']['checked'] for t in tracks)},
+      'plan_compliance':{'scope':ARRANGEMENT_CHECK_SCOPE,'passed':sum(t['plan_compliance']['passed'] for t in tracks),'checked':sum(t['plan_compliance']['checked'] for t in tracks)},
       'rigidity_tells':{'flag_count':sum(t['rigidity_tells']['flag_count'] for t in tracks),'checked':sum(t['rigidity_tells']['checked'] for t in tracks)},
       'backend_honors':honors,'tracks':tracks
     }
