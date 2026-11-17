@@ -107,6 +107,14 @@ Review reports heuristic legality, identity, `plan_compliance` and rigidity tell
 
 Use the backend's receipt and required-output checks before reusing audio. A `factory_patch` label does not make compact samples equal Chamber. MIDI channel/retrigger limits remain. Do not treat viewer/SF2 preview as native render evidence.
 
+Receipts report sample peak and RMS only. Measure a rendered master yourself before stating loudness:
+
+```bash
+ffmpeg -hide_banner -nostats -i cue.wav -af ebur128=peak=true -f null -
+```
+
+Read `I:` (integrated LUFS) and the `Peak:` line under `True peak:` from the summary. FFmpeg labels it dBFS, but with `peak=true` it is the true-peak value. For loops, ship WAV or OGG Vorbis. MP3 adds encoder delay and padding, so a looping MP3 gaps or clicks unless the player honours gapless metadata; keep MP3 as a browser preview. To check a seam, render the loop twice end to end and listen at the join: `ffmpeg -i cue.wav -i cue.wav -filter_complex "[0:a][1:a]concat=n=2:v=0:a=1" twice.wav`. A click there is a waveform discontinuity or a cut release tail, not a mix problem.
+
 Required delivery: concrete plan, harness, canonical score/catalog, exact engine/seed/backend, Type-1 MIDI when valid, WAV/OGG/MP3 when available, symbolic and bank reports, provenance/licensing, and optionally the HTML viewer plus refinement report. Name blocked formats/dependencies and exact retry commands. Keep approval false until supported; distinguish technical validation, independent listening and game integration.
 
 Compare the same fixtures with fresh outputs and level-controlled listening. Keep failures, intentional repetitions and genre exceptions visible. A single 0–100 symbolic score is diagnostic, not a composer, originality certificate or listener preference. Plan compliance and rigidity-tell counts stay beside it; do not merge the three.
