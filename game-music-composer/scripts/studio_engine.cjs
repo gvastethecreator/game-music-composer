@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // Command-line access to the studio engine (the same code the browser Create view runs).
-// Requires Node.js 18 or later. No network access and no npm packages.
+// Requires Node.js 22 or later. No network access and no npm packages.
 //
 //   node studio_engine.cjs presets
 //   node studio_engine.cjs compose --preset lofi --seed DUSK --instruments inst.json \

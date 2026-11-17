@@ -12,7 +12,7 @@ The engine writes 4/4 phrases of 1–64 bars. Its composer is rule-based: seeded
 
 ## Commands
 
-Composition, MIDI and import run the engine's JavaScript with Node.js 18 or later. `create-render` needs Web Audio, so it runs the same engine offline in local headless Chromium through Playwright for Python (`pip install playwright`, then `playwright install chromium`). `doctor` reports both.
+Composition, MIDI and import run the engine's JavaScript with Node.js 22 or later, the oldest release line still supported. `create-render` needs Web Audio, so it runs the same engine offline in local headless Chromium through Playwright for Python (`pip install playwright`, then `playwright install chromium`). `doctor` reports both.
 
 ```bash
 python scripts/neospc.py create ../dusk --preset lofi --seed DUSK

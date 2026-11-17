@@ -18,7 +18,7 @@ import studio_engine  # noqa: E402
 NODE = studio_engine.node_version()
 
 
-@unittest.skipUnless(NODE and NODE >= (18,), "Node.js 18+ is required for the studio engine")
+@unittest.skipUnless(NODE and NODE >= (22,), "Node.js 22+ is required for the studio engine")
 class StudioEngineCommands(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()

@@ -1,6 +1,6 @@
 """Python access to the studio engine (the synthesis engine behind the browser Create view).
 
-Composition, MIDI and catalog import run the engine's own JavaScript through Node.js 18+.
+Composition, MIDI and catalog import run the engine's own JavaScript through Node.js 22+.
 Synthesized WAV rendering needs Web Audio, so it runs the same engine offline in a local
 headless Chromium through Playwright (optional). Nothing uses the network.
 """
@@ -40,10 +40,10 @@ def node_version() -> tuple[int, ...] | None:
 def run(*arguments: str) -> str:
     node = node_path()
     if not node:
-        raise EngineUnavailable('Node.js 18 or later is required for the studio engine (not found on PATH).')
+        raise EngineUnavailable('Node.js 22 or later is required for the studio engine (not found on PATH).')
     version = node_version()
-    if version and version < (18,):
-        raise EngineUnavailable(f'Node.js 18 or later is required for the studio engine; found {".".join(map(str, version))}.')
+    if version and version < (22,):
+        raise EngineUnavailable(f'Node.js 22 or later is required for the studio engine; found {".".join(map(str, version))}.')
     result = subprocess.run([node, str(CLI), *arguments], capture_output=True, text=True, encoding='utf-8', timeout=600)
     if result.returncode:
         raise RuntimeError(result.stderr.strip() or f'studio engine exited with {result.returncode}')

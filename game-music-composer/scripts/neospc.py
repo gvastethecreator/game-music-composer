@@ -779,7 +779,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         version = studio_engine.node_version()
         print(
             "  extra   Node.js: "
-            + (f"{'.'.join(map(str, version))} (studio engine: create, create-import)" if version and version >= (18,) else "not found or older than 18 (needed only for create and create-import)")
+            + (f"{'.'.join(map(str, version))} (studio engine: create, create-import)" if version and version >= (22,) else "not found or older than 22 (needed only for create and create-import)")
         )
         print(
             "  extra   Playwright: "
